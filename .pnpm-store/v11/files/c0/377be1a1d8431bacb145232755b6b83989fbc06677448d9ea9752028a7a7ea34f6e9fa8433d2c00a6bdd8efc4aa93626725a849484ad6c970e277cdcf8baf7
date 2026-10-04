@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/folder-lock-filled.d.ts
+declare function FolderLockFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FolderLockFilled };
+//# sourceMappingURL=folder-lock-filled.d.ts.map

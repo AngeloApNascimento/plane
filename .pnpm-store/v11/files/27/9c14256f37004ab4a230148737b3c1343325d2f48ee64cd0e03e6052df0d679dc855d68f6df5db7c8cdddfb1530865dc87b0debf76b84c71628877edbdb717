@@ -1,0 +1,35 @@
+"use client";
+import { ToolbarButton } from "../../elements/toolbar/toolbar-button.js";
+import { ToolbarItemLabel } from "../../elements/toolbar/toolbar-item-label.js";
+import { ToolbarSizeContext } from "./toolbar-context.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Toggle } from "@base-ui/react/toggle";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar-toggle.tsx
+/**
+* A two-state toolbar button for formatting toggles like bold or italic. Grafts Base UI's
+* `Toolbar.Button` (roving-focus item) and `Toggle` (pressed state) behaviors onto the styled
+* `ToolbarButton`, and takes its `size` from the surrounding `Toolbar` via context.
+*/
+function ToolbarToggle({ render, size, icon, label, disabled, "aria-label": ariaLabel, ...toggleProps }) {
+	const toolbarSize = React.useContext(ToolbarSizeContext);
+	return /* @__PURE__ */ jsxs(Toolbar.Button, {
+		disabled,
+		render: /* @__PURE__ */ jsx(Toggle, {
+			...toggleProps,
+			disabled,
+			render: /* @__PURE__ */ jsx(ToolbarButton, {
+				size: size ?? toolbarSize,
+				labeled: !!label,
+				"aria-label": ariaLabel,
+				render
+			})
+		}),
+		children: [icon, label && /* @__PURE__ */ jsx(ToolbarItemLabel, { children: label })]
+	});
+}
+//#endregion
+export { ToolbarToggle };
+
+//# sourceMappingURL=toolbar-toggle.js.map

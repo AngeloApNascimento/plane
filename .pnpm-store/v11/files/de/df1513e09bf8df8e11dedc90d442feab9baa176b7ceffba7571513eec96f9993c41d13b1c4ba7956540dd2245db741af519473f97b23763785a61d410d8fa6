@@ -1,0 +1,36 @@
+"use client";
+import { MenuItemContent } from "../../elements/menu/menu-item-content.js";
+import { MenuItemTitle } from "../../elements/menu/menu-item-title.js";
+import { MenuItemTitleRow } from "../../elements/menu/menu-item-title-row.js";
+import { MenuItemTrailing } from "../../elements/menu/menu-item-trailing.js";
+import { MenuSubmenuTrigger as MenuSubmenuTrigger$1 } from "../../elements/menu/menu-submenu-trigger.js";
+import { DisclosureIndicator } from "../../internal/disclosure-indicator.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-submenu-trigger.tsx
+/**
+* The ready-made submenu trigger row: grafts Base UI's `Menu.SubmenuTrigger` behavior onto the
+* styled `MenuSubmenuTrigger` and lays out an optional leading icon, label, end content, and the
+* submenu chevron indicator.
+*/
+function MenuSubmenuTrigger({ variant, icon, trailing, label, ...props }) {
+	return /* @__PURE__ */ jsxs(Menu.SubmenuTrigger, {
+		...props,
+		render: /* @__PURE__ */ jsx(MenuSubmenuTrigger$1, { variant }),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(MenuItemContent, { children: /* @__PURE__ */ jsx(MenuItemTitleRow, { children: /* @__PURE__ */ jsx(MenuItemTitle, { children: label }) }) }),
+			trailing != null ? /* @__PURE__ */ jsx(MenuItemTrailing, { children: trailing }) : null,
+			/* @__PURE__ */ jsx(DisclosureIndicator, {
+				motion: "pointEnd",
+				tint: "tertiary",
+				children: /* @__PURE__ */ jsx(ChevronDown, {})
+			})
+		]
+	});
+}
+//#endregion
+export { MenuSubmenuTrigger };
+
+//# sourceMappingURL=menu-submenu-trigger.js.map

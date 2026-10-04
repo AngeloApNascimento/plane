@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-viewport.d.ts
+type DialogViewportProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The full-screen container that anchors the popup 80 px from the top edge, with the same margin
+ * below once the popup reaches its ceiling. Base-UI-agnostic — graft the dialog behavior in
+ * `components` via `<BaseDialog.Viewport render={<DialogViewport />} />`.
+ */
+declare function DialogViewport({ render, ...props }: DialogViewportProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogViewport, DialogViewportProps };
+//# sourceMappingURL=dialog-viewport.d.ts.map

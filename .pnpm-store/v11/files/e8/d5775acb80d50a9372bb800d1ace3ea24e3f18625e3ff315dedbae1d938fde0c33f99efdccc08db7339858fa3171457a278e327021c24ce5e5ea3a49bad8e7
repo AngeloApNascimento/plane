@@ -1,0 +1,15 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-group.d.ts
+type ToolbarGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * A cluster of related controls. Per Figma it carries the SAME `gap-2` as the toolbar row, so it
+ * packs nothing more tightly than bare children — grouping reads from the separators either side,
+ * and this part exists for the semantics (`role="group"` + group `disabled`) rather than the
+ * spacing. Base-UI-agnostic: graft the group behavior in `components` via `<BaseToolbar.Group
+ * render={<ToolbarGroup/>} />`.
+ */
+declare function ToolbarGroup({ render, ...props }: ToolbarGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToolbarGroup, ToolbarGroupProps };
+//# sourceMappingURL=toolbar-group.d.ts.map

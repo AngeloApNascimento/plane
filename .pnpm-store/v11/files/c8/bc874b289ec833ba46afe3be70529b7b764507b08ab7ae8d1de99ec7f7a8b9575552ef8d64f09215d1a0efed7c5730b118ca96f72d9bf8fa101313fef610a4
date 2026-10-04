@@ -1,0 +1,6 @@
+"use client";
+import { OTPFieldInput } from "../../elements/otp-field/otp-field-input.js";
+import { OTPFieldLabel } from "../../elements/otp-field/otp-field-label.js";
+import { OTPFieldSeparator } from "../../elements/otp-field/otp-field-separator.js";
+import { OTPField } from "./otp-field.js";
+export { OTPField, OTPFieldInput, OTPFieldLabel, OTPFieldSeparator };

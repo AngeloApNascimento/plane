@@ -1,0 +1,5 @@
+"use client";
+import { AVATAR_VARIANTS, Avatar, getAvatarVariant, getAvatarVariantSeed } from "./avatar.js";
+import { AvatarFallback } from "./avatar-fallback.js";
+import { AvatarImage } from "./avatar-image.js";
+export { AVATAR_VARIANTS, Avatar, AvatarFallback, AvatarImage, getAvatarVariant, getAvatarVariantSeed };

@@ -1,0 +1,20 @@
+"use client";
+import { badgeLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/badge/badge-label.tsx
+/**
+* The badge's text label. Single-line (the pill clips wrapping); sits between optional leading and
+* trailing `BadgeIcon` slots.
+*/
+function BadgeLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: badgeLabelVariants() }, props)
+	});
+}
+//#endregion
+export { BadgeLabel };
+
+//# sourceMappingURL=badge-label.js.map

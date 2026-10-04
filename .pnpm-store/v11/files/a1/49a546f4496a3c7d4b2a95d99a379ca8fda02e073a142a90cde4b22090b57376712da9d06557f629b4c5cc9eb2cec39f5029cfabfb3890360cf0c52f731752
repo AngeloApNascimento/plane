@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/created-at-outline.d.ts
+declare function CreatedAtOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CreatedAtOutline };
+//# sourceMappingURL=created-at-outline.d.ts.map

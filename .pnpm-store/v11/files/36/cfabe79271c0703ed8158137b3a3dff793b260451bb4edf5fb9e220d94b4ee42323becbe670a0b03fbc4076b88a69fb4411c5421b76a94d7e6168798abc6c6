@@ -1,0 +1,22 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/icon-button/variants.d.ts
+declare const iconButtonLocalVariants: (props?: ({
+  variant?: "primary" | "secondary" | "tertiary" | "ghost" | "danger" | "danger-outline" | null | undefined;
+  size?: "sm" | "md" | "lg" | "xs" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+/** The full icon button className: the shared control chrome composed with the square geometry. */
+declare const iconButtonVariants: (props: VariantProps<(props?: ({
+  variant?: "primary" | "secondary" | "tertiary" | "ghost" | "danger" | "danger-outline" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string> & VariantProps<(props?: ({
+  variant?: "primary" | "secondary" | "tertiary" | "ghost" | "danger" | "danger-outline" | null | undefined;
+  size?: "sm" | "md" | "lg" | "xs" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string>) => string;
+type IconButtonVariantConfig = VariantProps<typeof iconButtonLocalVariants>;
+type IconButtonVariant = NonNullable<IconButtonVariantConfig["variant"]>;
+type IconButtonSize = NonNullable<IconButtonVariantConfig["size"]>;
+type IconButtonVariantProps = StrictVariantProps<typeof iconButtonVariants>;
+//#endregion
+export { IconButtonSize, IconButtonVariant, IconButtonVariantProps, iconButtonVariants };
+//# sourceMappingURL=variants.d.ts.map

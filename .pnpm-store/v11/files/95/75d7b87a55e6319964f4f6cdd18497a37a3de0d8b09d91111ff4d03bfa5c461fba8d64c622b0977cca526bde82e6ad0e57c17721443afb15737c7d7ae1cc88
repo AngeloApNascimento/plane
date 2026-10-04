@@ -1,0 +1,37 @@
+"use client";
+import { AvatarSize } from "../../elements/avatar/variants.js";
+import { AvatarProps as AvatarProps$1 } from "../../elements/avatar/avatar.js";
+import "../../elements/avatar/index.js";
+import * as React from "react";
+//#region src/components/avatar/avatar.d.ts
+type AvatarProps = Omit<AvatarProps$1, "size"> & {
+  /**
+   * Avatar size. Optional here — resolved from the `AvatarGroup` context, else `md`.
+   *
+   * @default "md"
+   */
+  size?: AvatarSize;
+  /** Image URL. When omitted, or while it is loading/failing, the fallback shows. */
+  src?: string;
+  /** Accessible name for the avatar (the person it represents). */
+  alt?: string;
+  /** Initials shown when there is no image. When omitted too, a person icon shows. */
+  fallback?: React.ReactNode;
+  /** Milliseconds before the fallback shows, to avoid a flash while `src` loads quickly. */
+  delay?: number;
+  /**
+   * Name shown in a tooltip on hover. Pass `true` to reuse `alt`, or a string for the label (works
+   * without `alt`). Omit for no tooltip.
+   */
+  tooltip?: boolean | string;
+};
+/**
+ * The ready-made avatar: an image that falls back to initials (or an anonymous person icon),
+ * composed from the `elements/avatar` parts (`Avatar` root + `AvatarImage` + `AvatarFallback`).
+ * Pass `src` for the photo and `fallback` for initials; the initials color is chosen automatically
+ * and is not a consumer prop.
+ */
+declare function Avatar({ size, src, alt, fallback, delay, tooltip, tabIndex, ...props }: AvatarProps): React.JSX.Element;
+//#endregion
+export { Avatar, AvatarProps };
+//# sourceMappingURL=avatar.d.ts.map

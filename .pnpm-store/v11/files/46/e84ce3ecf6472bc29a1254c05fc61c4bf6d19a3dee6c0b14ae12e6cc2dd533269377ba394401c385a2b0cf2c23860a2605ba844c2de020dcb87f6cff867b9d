@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/library-filled.d.ts
+declare function LibraryFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { LibraryFilled };
+//# sourceMappingURL=library-filled.d.ts.map

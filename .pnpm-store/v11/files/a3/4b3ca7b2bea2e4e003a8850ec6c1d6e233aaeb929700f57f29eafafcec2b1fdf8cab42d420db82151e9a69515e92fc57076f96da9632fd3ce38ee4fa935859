@@ -1,0 +1,16 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-control.tsx
+/**
+* Base UI's `Field.Control` — registers the form control with the surrounding `Field` (name,
+* validation, `data-invalid` propagation). Graft a styled control via `render`: `<FieldControl
+* render={<Input size="lg" />} />`.
+*/
+function FieldControl(props) {
+	return /* @__PURE__ */ jsx(Field.Control, { ...props });
+}
+//#endregion
+export { FieldControl };
+
+//# sourceMappingURL=field-control.js.map

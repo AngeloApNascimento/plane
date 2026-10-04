@@ -1,0 +1,13 @@
+"use client";
+import * as React from "react";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-item.d.ts
+type FieldItemProps = Omit<Field.Item.Props, "className" | "style">;
+/**
+ * Groups one checkbox or radio option with its label and optional description: Base UI's
+ * `Field.Item` behavior grafted onto the styled `FieldItem` element (rule 1a).
+ */
+declare function FieldItem(props: FieldItemProps): React.JSX.Element;
+//#endregion
+export { FieldItem, FieldItemProps };
+//# sourceMappingURL=field-item.d.ts.map

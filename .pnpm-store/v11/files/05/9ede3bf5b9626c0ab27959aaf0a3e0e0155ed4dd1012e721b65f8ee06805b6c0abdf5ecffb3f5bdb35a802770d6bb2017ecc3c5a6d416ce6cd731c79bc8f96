@@ -1,0 +1,16 @@
+"use client";
+import { ButtonGroupButtonSize, ButtonGroupButtonVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/button-group/button-group-button.d.ts
+type ButtonGroupButtonProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & ButtonGroupButtonVariantProps;
+/**
+ * The styled segment of a `ButtonGroup`: a transparent, borderless `<button>` whose group chrome
+ * (surface, border, dividers, radius) is owned by the surrounding `ButtonGroup` container. Its only
+ * visual axis is `size`; the Base UI `Button` behavior grafts onto it in `components` via
+ * `<BaseButton render={<ButtonGroupButton/>} />`. `children` is passed through; it is not a
+ * variant.
+ */
+declare function ButtonGroupButton({ size, render, ...props }: ButtonGroupButtonProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ButtonGroupButton, ButtonGroupButtonProps, type ButtonGroupButtonSize };
+//# sourceMappingURL=button-group-button.d.ts.map

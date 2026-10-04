@@ -1,0 +1,56 @@
+"use client";
+import { ComboboxSize, ComboboxVariant } from "../../elements/combobox/variants.js";
+import "../../elements/combobox/index.js";
+import * as React from "react";
+//#region src/components/combobox/combobox-chips.d.ts
+type ComboboxChipsProps<Value = string> = {
+  /**
+   * Frame look. `neutral` is the bordered field surface; `ghost` is borderless.
+   *
+   * @default "neutral"
+   */
+  variant?: ComboboxVariant;
+  /** Visual size of the chips frame: height, text, and glyph sizing. Required. */
+  size: ComboboxSize;
+  /** Input placeholder shown while typing to add another value. */
+  placeholder?: string;
+  /**
+   * Cap on how many chips render inline. When more are selected, the frame collapses to a single
+   * row showing the first `maxVisible` chips followed by an overflow count (the rest stay managed
+   * from the popup). Omit for the default behavior — chips wrap onto new rows as the selection
+   * grows.
+   */
+  maxVisible?: number;
+  /**
+   * Copy for the overflow count when `maxVisible` hides selected chips. Called with how many values
+   * are hidden. Override to localize.
+   *
+   * @default (hiddenCount) => `+${hiddenCount} more`
+   */
+  overflowLabel?: (hiddenCount: number) => React.ReactNode;
+  /**
+   * The popup-trigger control (e.g. an `IconButton`), grafted onto Base UI's `Trigger` behavior. It
+   * carries its own — localizable — `aria-label`. Omit it to show a decorative chevron (the Figma
+   * end node) — the input still opens the list.
+   */
+  trigger?: React.ReactElement;
+  /**
+   * Renders one selected value as a `ComboboxChip` — the `ComboboxChips` counterpart of
+   * `ComboboxList`'s item template. Set your own `key`, exactly like `ComboboxList`'s function
+   * child, e.g. `(value) => <ComboboxChip key={value} label={value} remove={<... />} />`.
+   */
+  children: (value: Value) => React.ReactNode;
+};
+/**
+ * The ready-made multiselect input frame — it replaces `ComboboxInputGroup` in the `multiple`
+ * anatomy. Grafts Base UI's `Chips` behavior onto the styled `elements/combobox` frame, owning only
+ * the frame, the selected-values loop, and `maxVisible` overflow ahead of the inline input — each
+ * chip's template is the consumer's `children`, mirroring `ComboboxList`. Without `maxVisible` the
+ * chips wrap onto new rows; with it the frame collapses to one row of the first `maxVisible` chips
+ * plus an overflow count (`+N more` by default; pass `overflowLabel` to localize). Arrow keys move
+ * focus across chips; Backspace removes.
+ */
+declare function ComboboxChips<Value = string>({ size, variant, placeholder, maxVisible, overflowLabel, trigger, children }: ComboboxChipsProps<Value>): React.JSX.Element;
+//#endregion
+export { ComboboxChips, ComboboxChipsProps };
+//# sourceMappingURL=combobox-chips.d.ts.map

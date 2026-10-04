@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/asterisk-filled.tsx
+function AsteriskFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M8.667 2.667a.667.667 0 0 0-1.334 0V6.39L4.471 3.529a.667.667 0 1 0-.942.942L6.39 7.333H2.667a.667.667 0 0 0 0 1.334H6.39l-2.862 2.862a.667.667 0 1 0 .942.942L7.333 9.61v3.724a.667.667 0 1 0 1.334 0V9.61l2.862 2.862a.667.667 0 1 0 .942-.942L9.61 8.667h3.724a.667.667 0 1 0 0-1.334H9.61l2.862-2.862a.667.667 0 1 0-.942-.942L8.667 6.39z"
+		})
+	});
+}
+//#endregion
+export { AsteriskFilled };
+
+//# sourceMappingURL=asterisk-filled.js.map

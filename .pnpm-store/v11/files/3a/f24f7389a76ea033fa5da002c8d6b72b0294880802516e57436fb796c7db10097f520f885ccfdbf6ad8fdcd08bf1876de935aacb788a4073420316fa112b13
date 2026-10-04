@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/disc-filled.d.ts
+declare function DiscFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DiscFilled };
+//# sourceMappingURL=disc-filled.d.ts.map

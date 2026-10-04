@@ -1,0 +1,17 @@
+"use client";
+import { AlertDialogIconVariant, AlertDialogIconVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-icon.d.ts
+type AlertDialogIconProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & AlertDialogIconVariantProps;
+/**
+ * The leading intent badge above the title. Soft tinted surface + 20px glyph (caller passes the
+ * icon child; the `components` ready-made supplies an outline glyph from `variant`). Decorative —
+ * the title carries the accessible name — so it is `aria-hidden`.
+ *
+ * `variant` is required and sets the badge fill + glyph tint (`danger` | `warning` | `info` |
+ * `success`).
+ */
+declare function AlertDialogIcon({ variant, render, ...props }: AlertDialogIconProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AlertDialogIcon, AlertDialogIconProps, type AlertDialogIconVariant };
+//# sourceMappingURL=alert-dialog-icon.d.ts.map

@@ -1,0 +1,21 @@
+"use client";
+import { tableCellVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell.tsx
+/** A data cell (`<td>`). Borders follow the `variant`. */
+function TableCell({ variant, pinned, padding, render, ...props }) {
+	return useRender({
+		defaultTagName: "td",
+		render,
+		props: mergeProps({ className: tableCellVariants({
+			variant,
+			pinned,
+			padding
+		}) }, props)
+	});
+}
+//#endregion
+export { TableCell };
+
+//# sourceMappingURL=table-cell.js.map

@@ -1,0 +1,21 @@
+"use client";
+import { circularProgressIndicatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/circular-progress/circular-progress-indicator.tsx
+/**
+* The toned arc proportional to the value (the circular analogue of `ProgressIndicator`). `variant`
+* drives the stroke color. Pass the geometry (`cx` / `cy` / `r` / `strokeWidth` / `strokeDasharray`
+* / `strokeDashoffset` / `strokeLinecap`) as SVG attributes.
+*/
+function CircularProgressIndicator({ variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "circle",
+		render,
+		props: mergeProps({ className: circularProgressIndicatorVariants({ variant }) }, props)
+	});
+}
+//#endregion
+export { CircularProgressIndicator };
+
+//# sourceMappingURL=circular-progress-indicator.js.map

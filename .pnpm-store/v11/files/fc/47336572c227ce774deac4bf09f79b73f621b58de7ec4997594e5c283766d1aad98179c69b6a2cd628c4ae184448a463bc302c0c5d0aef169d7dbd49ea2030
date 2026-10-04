@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-search-input.d.ts
+type MenuSearchInputProps = Omit<useRender.ComponentProps<"input">, "className" | "style">;
+/**
+ * The styled borderless text field inside `MenuSearch`. Base-UI-agnostic — the ready-made
+ * `MenuSearch` (`components`) keeps text-editing keys from bubbling so typing does not trigger the
+ * menu's own type-ahead navigation, while letting Escape and the arrow keys through to the menu.
+ */
+declare function MenuSearchInput({ render, ...props }: MenuSearchInputProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuSearchInput, MenuSearchInputProps };
+//# sourceMappingURL=menu-search-input.d.ts.map

@@ -1,0 +1,56 @@
+"use client";
+import { FieldControlContent } from "../../elements/field/field-control-content.js";
+import { Input as Input$1 } from "../../elements/input/input.js";
+import { InputGroup } from "../../elements/input/input-group.js";
+import { InputField as InputField$1 } from "../../elements/input-field/input-field.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import { FieldLabelGroup } from "../field/field-label-group.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Field } from "@base-ui/react/field";
+import { Input } from "@base-ui/react/input";
+//#region src/components/input-field/input-field.tsx
+/**
+* Single-line text field built on Base UI `Field`. Supports inline start/end slots and a
+* `horizontal` orientation where the label sits beside the control.
+*/
+function InputField({ size, orientation, name, label, required, description, hint, error, startIcon, endIcon, disabled, ...controlProps }) {
+	return /* @__PURE__ */ jsxs(Field.Root, {
+		name,
+		disabled,
+		invalid: error != null || void 0,
+		render: /* @__PURE__ */ jsx(InputField$1, {
+			orientation,
+			size
+		}),
+		children: [/* @__PURE__ */ jsx(FieldLabelGroup, {
+			size,
+			required,
+			label,
+			description,
+			orientation
+		}), /* @__PURE__ */ jsxs(FieldControlContent, {
+			orientation,
+			size,
+			children: [/* @__PURE__ */ jsxs(InputGroup, {
+				size,
+				children: [
+					startIcon,
+					/* @__PURE__ */ jsx(Input, {
+						"aria-required": required || void 0,
+						...controlProps,
+						render: /* @__PURE__ */ jsx(Input$1, { size })
+					}),
+					endIcon
+				]
+			}), /* @__PURE__ */ jsx(FieldHelperText, {
+				size,
+				hint,
+				error
+			})]
+		})]
+	});
+}
+//#endregion
+export { InputField };
+
+//# sourceMappingURL=input-field.js.map

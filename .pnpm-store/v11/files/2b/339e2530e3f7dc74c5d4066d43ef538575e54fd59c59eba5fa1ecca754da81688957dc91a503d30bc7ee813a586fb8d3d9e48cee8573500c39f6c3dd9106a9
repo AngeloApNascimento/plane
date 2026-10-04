@@ -1,0 +1,43 @@
+"use client";
+import { SelectTriggerSize, SelectTriggerVariant } from "../../elements/select/variants.js";
+import "../../elements/select/index.js";
+import { SelectProps } from "../select/select.js";
+import "../select/index.js";
+import * as React from "react";
+//#region src/components/select-field/select-field.d.ts
+type SelectFieldOption = {
+  label: string;
+  value: string;
+};
+type SelectFieldProps = Omit<SelectProps<string>, "children" | "items"> & {
+  /**
+   * Supporting text shown below the label, above the trigger. Always shown, alongside
+   * `hint`/`error`.
+   */
+  description?: React.ReactNode;
+  /** Error text shown below the control. */
+  error?: React.ReactNode;
+  /** Helper text shown below the control. Replaced by `error` when an error is set. */
+  hint?: React.ReactNode;
+  /** Element shown before the value, e.g. `<Icon icon={Server} tint="placeholder" />`. */
+  icon?: React.ReactNode;
+  /** Visible field label. */
+  label: string;
+  /** Marks the field required: adds a `*` asterisk and sets `required`. */
+  required?: boolean;
+  /** Trigger, label and helper text size. */
+  size: SelectTriggerSize;
+  /**
+   * Figma "Prominence": `secondary` is the bordered trigger, `ghost` drops its border and fill.
+   *
+   * @default "secondary"
+   */
+  variant?: SelectTriggerVariant;
+  /** Options rendered in the popup. */
+  options: readonly SelectFieldOption[];
+};
+/** Ready-to-use select field with label, trigger, popup options, and helper/error text. */
+declare function SelectField({ description, disabled, error, hint, icon, label, required, size, variant, name, options, ...selectProps }: SelectFieldProps): React.JSX.Element;
+//#endregion
+export { SelectField, SelectFieldOption, SelectFieldProps, type SelectTriggerSize };
+//# sourceMappingURL=select-field.d.ts.map

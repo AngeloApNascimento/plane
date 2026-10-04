@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/layouts/calendar-layout-outline.d.ts
+declare function CalendarLayoutOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CalendarLayoutOutline };
+//# sourceMappingURL=calendar-layout-outline.d.ts.map

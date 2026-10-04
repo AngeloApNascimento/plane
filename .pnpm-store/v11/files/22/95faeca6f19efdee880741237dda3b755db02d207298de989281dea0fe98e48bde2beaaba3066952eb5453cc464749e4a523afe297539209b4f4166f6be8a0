@@ -1,0 +1,35 @@
+"use client";
+import { SkeletonItemVariant, SkeletonItemVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/skeleton/skeleton-item.d.ts
+type SkeletonItemProps = Omit<useRender.ComponentProps<"div">, "className" | "style" | "width" | "height"> & Omit<SkeletonItemVariantProps, "variant"> & {
+  /**
+   * Look of the bone: `bar` is a rounded-md block; `circle` is a disc.
+   *
+   * @default "bar"
+   */
+  variant?: SkeletonItemVariant;
+  /**
+   * CSS block-size (height) of the bone, e.g. `"50px"`, `"100%"`, or `"1rem"`. Omit to fill a
+   * region that has a `blockSize`; in a region without one the bone is one text line tall (16px)
+   * instead of collapsing. On `variant="circle"`, a lone `blockSize` is also applied as the
+   * inline size (square).
+   */
+  blockSize?: string;
+  /**
+   * CSS inline-size (width) of the bone, e.g. `"70px"` or `"60%"`. Omit for the parent's full
+   * inline size. On `variant="circle"`, a lone `inlineSize` is also applied as the block size
+   * (square).
+   */
+  inlineSize?: string;
+};
+/**
+ * One styled placeholder bone. `variant="bar"` (default) is a rounded-md block; `variant="circle"`
+ * is a disc. A bone is full width unless `inlineSize` narrows it. Exact lengths are applied as
+ * `--skeleton-block-size` / `--skeleton-inline-size` so `style` is never exposed. Decorative —
+ * `aria-hidden` is baked in; the region's `status` names it.
+ */
+declare function SkeletonItem({ variant, blockSize, inlineSize, render, ...props }: SkeletonItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SkeletonItem, SkeletonItemProps, type SkeletonItemVariant };
+//# sourceMappingURL=skeleton-item.d.ts.map

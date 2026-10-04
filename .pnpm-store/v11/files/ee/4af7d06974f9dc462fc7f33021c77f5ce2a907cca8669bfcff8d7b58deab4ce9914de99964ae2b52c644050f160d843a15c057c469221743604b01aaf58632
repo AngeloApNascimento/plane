@@ -1,0 +1,21 @@
+"use client";
+import { tabUnderlineLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tab-underline-label.tsx
+/**
+* The label row of an `underline`-variant tab: a rounded, padded box that tints and fills on
+* hover/active and draws the keyboard focus ring, all via the tab's `group/tab` state. Sits inside
+* a `Tab`; owns the styled `<span>` so consumers never touch the underline cva directly.
+*/
+function TabUnderlineLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: tabUnderlineLabelVariants() }, props)
+	});
+}
+//#endregion
+export { TabUnderlineLabel };
+
+//# sourceMappingURL=tab-underline-label.js.map

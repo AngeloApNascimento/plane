@@ -1,0 +1,57 @@
+Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const require_skill = require("./skill-jUjxJNrh.cjs");
+const require_mcp = require("./mcp-Ccqdolho.cjs");
+const require_agents_md = require("./agents-md-pBrQa6sm.cjs");
+exports.CANONICAL_SKILLS_DIR = require_skill.CANONICAL_SKILLS_DIR;
+exports.GitCloneError = require_skill.GitCloneError;
+exports.SKILL_MANIFEST_FILE = require_skill.SKILL_MANIFEST_FILE;
+exports.add = require_skill.installSkillsFromSource;
+Object.defineProperty(exports, "agentsMd", {
+	enumerable: true,
+	get: function() {
+		return require_agents_md.agents_md_exports;
+	}
+});
+exports.cleanupTempDir = require_skill.cleanupTempDir;
+exports.cloneRepo = require_skill.cloneRepo;
+exports.detectInstalledSkillAgents = require_skill.detectInstalledSkillAgents;
+exports.discover = require_skill.discoverSkills;
+exports.discoverSkills = require_skill.discoverSkills;
+exports.fetchSkillManifestFromUrl = require_skill.fetchSkillManifestFromUrl;
+exports.fetchWellKnownSkills = require_skill.fetchWellKnownSkills;
+exports.filterSkillsByName = require_skill.filterSkillsByName;
+exports.getCanonicalSkillsDir = require_skill.getCanonicalSkillsDir;
+exports.getNonUniversalSkillAgents = require_skill.getNonUniversalSkillAgents;
+exports.getPluginGroupings = require_skill.getPluginGroupings;
+exports.getPluginSkillPaths = require_skill.getPluginSkillPaths;
+exports.getSkillAgentBaseDir = require_skill.getSkillAgentBaseDir;
+exports.getSkillAgentConfig = require_skill.getSkillAgentConfig;
+exports.getSkillAgentDir = require_skill.getSkillAgentDir;
+exports.getSkillAgentTypes = require_skill.getSkillAgentTypes;
+exports.getSkillDisplayName = require_skill.getSkillDisplayName;
+exports.getUniversalSkillAgents = require_skill.getUniversalSkillAgents;
+exports.install = require_skill.installSkillsFromSource;
+exports.installSkillForAgent = require_skill.installSkillForAgent;
+exports.installSkillsFromSource = require_skill.installSkillsFromSource;
+exports.isSkillAgentType = require_skill.isSkillAgentType;
+exports.isSkillInstalledForAgent = require_skill.isSkillInstalledForAgent;
+exports.isUniversalSkillAgent = require_skill.isUniversalSkillAgent;
+Object.defineProperty(exports, "mcp", {
+	enumerable: true,
+	get: function() {
+		return require_mcp.mcp_exports;
+	}
+});
+exports.parseFrontmatter = require_skill.parseFrontmatter;
+exports.parseSkillManifest = require_skill.parseSkillManifest;
+exports.parseSkillSource = require_skill.parseSkillSource;
+exports.parseSource = require_skill.parseSkillSource;
+exports.sanitizeMetadata = require_skill.sanitizeMetadata;
+exports.sanitizeName = require_skill.sanitizeName;
+Object.defineProperty(exports, "skill", {
+	enumerable: true,
+	get: function() {
+		return require_skill.skill_exports;
+	}
+});
+exports.skillAgents = require_skill.skillAgents;

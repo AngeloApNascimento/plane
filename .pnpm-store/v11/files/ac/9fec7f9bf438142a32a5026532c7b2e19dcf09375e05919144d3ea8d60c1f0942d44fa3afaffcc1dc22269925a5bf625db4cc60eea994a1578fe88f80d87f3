@@ -1,0 +1,19 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+/**
+* Tooltip surface. `layout` mirrors Figma singleline / multiline: a one-line nowrap row vs a
+* stacked wrapping description with the shortcut beneath. Shared chrome (fill, border, shadow,
+* padding) stays on the base; type, radius, direction, and gap switch per layout.
+*/
+const tooltipPopupVariants = cva("flex border-sm border-subtle-1 bg-layer-2 px-2 py-1.5 wrap-anywhere text-primary shadow-overlay-200", {
+	variants: { layout: {
+		single: "items-center gap-3 rounded-md text-caption-md-regular whitespace-nowrap",
+		stacked: "max-w-[500px] flex-col items-start gap-1.5 rounded-lg text-body-xs-regular"
+	} },
+	defaultVariants: { layout: "single" }
+});
+const tooltipArrowVariants = cva(cx("size-2 rotate-45 border-sm border-subtle-1 bg-layer-2", "data-[side=bottom]:top-[-3px] data-[side=bottom]:[clip-path:polygon(0_0,100%_0,0_100%)]", "data-[side=top]:bottom-[-3px] data-[side=top]:[clip-path:polygon(100%_0,100%_100%,0_100%)]", "data-[side=left]:right-[-3px] data-[side=left]:[clip-path:polygon(0_0,100%_0,100%_100%)]", "data-[side=right]:left-[-3px] data-[side=right]:[clip-path:polygon(0_0,0_100%,100%_100%)]", "data-[side=inline-start]:inset-e-[-3px] data-[side=inline-start]:[clip-path:polygon(0_0,100%_0,100%_100%)] rtl:data-[side=inline-start]:[clip-path:polygon(0_0,0_100%,100%_100%)]", "data-[side=inline-end]:inset-s-[-3px] data-[side=inline-end]:[clip-path:polygon(0_0,0_100%,100%_100%)] rtl:data-[side=inline-end]:[clip-path:polygon(0_0,100%_0,100%_100%)]"));
+//#endregion
+export { tooltipArrowVariants, tooltipPopupVariants };
+
+//# sourceMappingURL=variants.js.map

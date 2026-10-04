@@ -1,0 +1,20 @@
+"use client";
+import { menuSeparatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-separator.tsx
+/**
+* A styled thin divider between groups of items. Base-UI-agnostic — graft the separator behavior in
+* `components` via `<BaseMenu.Separator render={<MenuSeparator />} />`.
+*/
+function MenuSeparator({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: menuSeparatorVariants() }, props)
+	});
+}
+//#endregion
+export { MenuSeparator };
+
+//# sourceMappingURL=menu-separator.js.map

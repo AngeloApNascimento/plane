@@ -1,0 +1,17 @@
+"use client";
+import { menuLabelTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-label-title.tsx
+/** The growing title within a `MenuLabel`. Grows so a trailing `MenuLabelMeta` sits at the edge. */
+function MenuLabelTitle({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: menuLabelTitleVariants() }, props)
+	});
+}
+//#endregion
+export { MenuLabelTitle };
+
+//# sourceMappingURL=menu-label-title.js.map

@@ -1,0 +1,14 @@
+"use client";
+import { FieldVariantProps } from "../../elements/field/variants.js";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field.d.ts
+type FieldProps = Omit<Field.Root.Props, "className" | "style"> & FieldVariantProps;
+/**
+ * The shared field chrome for custom controls: Base UI's labeling/validation `Field.Root` behavior
+ * grafted onto the styled `Field` element (rule 1a). Compose it with `FieldLabel`, a control,
+ * `FieldDescription`, and `FieldError`.
+ */
+declare function Field$1({ size, ...props }: FieldProps): import("react").JSX.Element;
+//#endregion
+export { Field$1 as Field, FieldProps };
+//# sourceMappingURL=field.d.ts.map

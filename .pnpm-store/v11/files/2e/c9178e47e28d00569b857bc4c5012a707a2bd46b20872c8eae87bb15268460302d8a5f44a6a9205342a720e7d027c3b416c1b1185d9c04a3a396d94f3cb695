@@ -1,0 +1,20 @@
+"use client";
+import { collapsibleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/collapsible/collapsible.tsx
+/**
+* The styled collapsible frame (`w-full`). Base-UI-agnostic — graft the collapsible behavior in
+* `components` via `<BaseCollapsible.Root render={<Collapsible />} />`.
+*/
+function Collapsible({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: collapsibleVariants() }, props)
+	});
+}
+//#endregion
+export { Collapsible };
+
+//# sourceMappingURL=collapsible.js.map

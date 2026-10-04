@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/ai-filter-outline.d.ts
+declare function AiFilterOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AiFilterOutline };
+//# sourceMappingURL=ai-filter-outline.d.ts.map

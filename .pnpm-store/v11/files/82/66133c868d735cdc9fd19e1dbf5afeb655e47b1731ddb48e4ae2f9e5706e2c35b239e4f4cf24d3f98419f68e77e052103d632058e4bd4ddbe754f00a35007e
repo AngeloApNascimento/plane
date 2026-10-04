@@ -1,0 +1,15 @@
+"use client";
+import * as React from "react";
+//#region src/components/toast/toast-list.d.ts
+type ToastListProps = {
+  /** The close control node forwarded to each toast's close button (carries its own aria-label). */
+  close: React.ReactElement;
+};
+/**
+ * Renders one styled {@link Toast} per queued toast from the manager. Mounted inside
+ * {@link ToastProvider}'s viewport — you normally don't render this directly.
+ */
+declare function ToastList({ close }: ToastListProps): React.JSX.Element[];
+//#endregion
+export { ToastList, ToastListProps };
+//# sourceMappingURL=toast-list.d.ts.map

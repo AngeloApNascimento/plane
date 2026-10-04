@@ -1,0 +1,34 @@
+"use client";
+import { AutocompleteInput } from "../../elements/autocomplete/autocomplete-input.js";
+import { AutocompleteInputGroup as AutocompleteInputGroup$1 } from "../../elements/autocomplete/autocomplete-input-group.js";
+import { AutocompleteInputGroupClear } from "../../elements/autocomplete/autocomplete-input-group-clear.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-input-group.tsx
+/**
+* The ready-made autocomplete input row: grafts Base UI's `InputGroup` onto the styled bordered
+* frame and Base UI's `Input` onto the styled text field, laying out an optional leading `icon`
+* slot and the consumer-provided `clear`/`trigger` controls. All remaining props pass through to
+* the input (the element that carries the combobox behavior and accessible name).
+*/
+function AutocompleteInputGroup({ size, icon, clear, trigger, ...props }) {
+	return /* @__PURE__ */ jsxs(Autocomplete.InputGroup, {
+		render: /* @__PURE__ */ jsx(AutocompleteInputGroup$1, { size }),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(Autocomplete.Input, {
+				...props,
+				render: /* @__PURE__ */ jsx(AutocompleteInput, {})
+			}),
+			clear != null ? /* @__PURE__ */ jsx(AutocompleteInputGroupClear, { children: /* @__PURE__ */ jsx(Autocomplete.Clear, {
+				render: clear,
+				keepMounted: true
+			}) }) : null,
+			trigger != null ? /* @__PURE__ */ jsx(Autocomplete.Trigger, { render: trigger }) : null
+		]
+	});
+}
+//#endregion
+export { AutocompleteInputGroup };
+
+//# sourceMappingURL=autocomplete-input-group.js.map

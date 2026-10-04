@@ -1,0 +1,19 @@
+"use client";
+import { MenuRadioMarker } from "../../internal/menu-radio-marker.js";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-radio-group.d.ts
+type ContextMenuRadioGroupProps = Omit<ContextMenu.RadioGroup.Props, "className" | "style"> & {
+  /**
+   * How the group marks its current row. Defaults to `check` — the trailing tick every other
+   * single-select row uses. Pass `radio` only when this group shares a popup with a multi-select
+   * (checkbox) group and the two need telling apart.
+   *
+   * @default "check"
+   */
+  marker?: MenuRadioMarker;
+};
+/** Wraps `ContextMenuRadioItem`s sharing one `value` — Base UI's radio-group state, no chrome. */
+declare function ContextMenuRadioGroup({ marker, ...props }: ContextMenuRadioGroupProps): import("react").JSX.Element;
+//#endregion
+export { ContextMenuRadioGroup, ContextMenuRadioGroupProps };
+//# sourceMappingURL=context-menu-radio-group.d.ts.map

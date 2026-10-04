@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/button-group/button-group.d.ts
+type ButtonGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled connected container around `ButtonGroupButton`s — raised white surface, shared outer
+ * border, dividers between items, and clipped corners. Base-UI-agnostic (there is no Base UI
+ * button-group primitive); the `components` ready-made adds the `group` role and shares one `size`
+ * with every item via context.
+ */
+declare function ButtonGroup({ render, ...props }: ButtonGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ButtonGroup, ButtonGroupProps };
+//# sourceMappingURL=button-group.d.ts.map

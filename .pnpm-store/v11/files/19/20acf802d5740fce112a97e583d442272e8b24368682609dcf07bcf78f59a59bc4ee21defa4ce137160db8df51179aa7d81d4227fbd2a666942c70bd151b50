@@ -1,0 +1,22 @@
+/**
+ * Node.js implementation of the Crypto service.
+ *
+ * @since 1.0.0
+ */
+import * as EffectCrypto from "effect/Crypto";
+import * as Layer from "effect/Layer";
+/**
+ * The default Node.js Crypto service implementation.
+ *
+ * @category constructors
+ * @since 1.0.0
+ */
+export declare const make: EffectCrypto.Crypto;
+/**
+ * A layer that provides the Node.js Crypto service implementation.
+ *
+ * @category layers
+ * @since 1.0.0
+ */
+export declare const layer: Layer.Layer<EffectCrypto.Crypto>;
+//# sourceMappingURL=NodeCrypto.d.ts.map

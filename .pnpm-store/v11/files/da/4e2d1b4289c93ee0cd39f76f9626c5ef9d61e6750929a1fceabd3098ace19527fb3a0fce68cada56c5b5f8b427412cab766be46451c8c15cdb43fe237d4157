@@ -1,0 +1,17 @@
+"use client";
+import { comboboxSearchVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-search.tsx
+/** The sticky search row pinned above a combobox popup list (a search icon + `ComboboxSearchInput`). */
+function ComboboxSearch({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: comboboxSearchVariants() }, props)
+	});
+}
+//#endregion
+export { ComboboxSearch };
+
+//# sourceMappingURL=combobox-search.js.map

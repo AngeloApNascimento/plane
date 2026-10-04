@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/stack-layers-two-outline.d.ts
+declare function StackLayersTwoOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { StackLayersTwoOutline };
+//# sourceMappingURL=stack-layers-two-outline.d.ts.map

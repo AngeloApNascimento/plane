@@ -1,0 +1,17 @@
+"use client";
+import { breadcrumbListVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-list.tsx
+/** The ordered list of crumbs inside a `Breadcrumb` landmark. */
+function BreadcrumbList({ render, ...props }) {
+	return useRender({
+		defaultTagName: "ol",
+		render,
+		props: mergeProps({ className: breadcrumbListVariants() }, props)
+	});
+}
+//#endregion
+export { BreadcrumbList };
+
+//# sourceMappingURL=breadcrumb-list.js.map

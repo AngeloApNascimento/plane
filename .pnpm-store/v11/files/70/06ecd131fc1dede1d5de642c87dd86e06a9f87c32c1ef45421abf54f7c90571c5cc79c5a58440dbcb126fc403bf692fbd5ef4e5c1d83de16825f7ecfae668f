@@ -1,0 +1,14 @@
+"use client";
+import { FormBodyVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/form/form-body.d.ts
+type FormBodyProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & FormBodyVariantProps;
+/**
+ * The field-stacking region of a form. Fields stack with a consistent gap (always the same); the
+ * `layout` axis selects single-column (`"single"`) or a wrapping multi-column (`"multi"`)
+ * arrangement.
+ */
+declare function FormBody({ layout, render, ...props }: FormBodyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FormBody, FormBodyProps };
+//# sourceMappingURL=form-body.d.ts.map

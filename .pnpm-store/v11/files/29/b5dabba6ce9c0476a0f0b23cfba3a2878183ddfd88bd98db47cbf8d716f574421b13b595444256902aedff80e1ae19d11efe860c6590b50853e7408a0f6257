@@ -1,0 +1,10 @@
+"use client";
+import { ListItemLabelVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list-item-label.d.ts
+type ListItemLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & ListItemLabelVariantProps;
+/** The row's label — fills the remaining width and truncates. Renders a `<span>` by default. */
+declare function ListItemLabel({ render, ...props }: ListItemLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ListItemLabel, ListItemLabelProps };
+//# sourceMappingURL=list-item-label.d.ts.map

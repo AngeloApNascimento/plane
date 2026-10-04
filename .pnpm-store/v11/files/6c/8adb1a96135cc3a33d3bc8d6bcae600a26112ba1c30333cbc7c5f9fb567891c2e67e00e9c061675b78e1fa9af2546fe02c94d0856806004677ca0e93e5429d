@@ -1,0 +1,9 @@
+"use client";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-group.d.ts
+type SelectGroupProps = Omit<Select.Group.Props, "className" | "style">;
+/** Groups related options under a `SelectGroupLabel`. */
+declare function SelectGroup(props: SelectGroupProps): import("react").JSX.Element;
+//#endregion
+export { SelectGroup, SelectGroupProps };
+//# sourceMappingURL=select-group.d.ts.map

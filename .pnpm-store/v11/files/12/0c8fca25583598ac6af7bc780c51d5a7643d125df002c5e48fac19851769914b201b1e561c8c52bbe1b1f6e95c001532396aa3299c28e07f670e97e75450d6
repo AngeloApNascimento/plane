@@ -1,0 +1,16 @@
+"use client";
+import { controlSize } from "../../internal/control-group.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/expandable-search/variants.ts
+const expandableSearchTrackVariants = cva("grid [&>*]:col-start-1 [&>*]:row-start-1");
+const expandableSearchTriggerVariants = cva(cx("grid place-items-center [&>*]:min-w-0", "overflow-visible data-expanded:overflow-hidden", "grid-cols-[minmax(0,1fr)] opacity-100 data-expanded:grid-cols-[minmax(0,0fr)] data-expanded:opacity-0", "motion-safe:transition-[grid-template-columns,opacity] motion-safe:duration-200 motion-safe:ease-out"), { variants: { size: {
+	md: controlSize.md,
+	lg: controlSize.lg,
+	xl: controlSize.xl,
+	"2xl": controlSize["2xl"]
+} } });
+const expandableSearchRowVariants = cva(cx("grid [&>*]:min-w-0", "overflow-hidden data-expanded:overflow-visible", "grid-cols-[minmax(0,0fr)] opacity-0 data-expanded:grid-cols-[minmax(0,1fr)] data-expanded:opacity-100", "motion-safe:transition-[grid-template-columns,opacity] motion-safe:duration-200 motion-safe:ease-out"));
+//#endregion
+export { expandableSearchRowVariants, expandableSearchTrackVariants, expandableSearchTriggerVariants };
+
+//# sourceMappingURL=variants.js.map

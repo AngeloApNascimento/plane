@@ -1,0 +1,49 @@
+"use client";
+import { MenuContentSizing, MenuSurfaceProps } from "./menu-content.shared.js";
+import * as React from "react";
+//#region src/components/menu/menu-content.d.ts
+type MenuContentProps = Omit<MenuSurfaceProps, "side" | "sideOffset" | "collisionPadding" | "sizing"> & {
+  /** Which side of the trigger the menu opens toward. @default "bottom" */
+  side?: MenuSurfaceProps["side"];
+  /** Distance in px between the trigger and the menu. @default 6 */
+  sideOffset?: MenuSurfaceProps["sideOffset"];
+  /**
+   * Minimum gap in px between the menu and the viewport edge it would otherwise touch.
+   *
+   * @default 8
+   */
+  collisionPadding?: MenuSurfaceProps["collisionPadding"];
+  /**
+   * How the menu popup takes its width. `auto` is the content's width — never narrower than 192px,
+   * never wider than 384px or the room beside the trigger, and held while open so a list that
+   * filters down does not reflow; it caps the list at 384px tall. `anchor` matches the trigger's
+   * width instead, growing only with its content, and caps the list at 288px tall. The default
+   * applies to an omitted _and_ an explicitly `undefined` value.
+   *
+   * @default "auto"
+   */
+  sizing?: MenuSurfaceProps["sizing"];
+  /**
+   * What decides which side of the trigger the menu opens on when space is short. `fit`, the
+   * default, shrinks before flipping: the menu keeps `side` while the usable space there clears a
+   * 178px floor (six rows plus the panel's chrome), and flips only when it does not and the other
+   * side does; when neither clears the floor, the bigger side wins. The side is resolved each time
+   * the menu opens and holds while it stays open. `flip` is Base UI's behavior: jump to the other
+   * side whenever the menu's full height does not fit and the other side has more room — even when
+   * this side held a usable menu. `fit` applies to a vertical `side`, needs the menu's own
+   * `MenuTrigger` to measure against (a menu opened without one falls back to `flip`), and defers
+   * to an explicit `collisionAvoidance`.
+   *
+   * @default "fit"
+   */
+  heightBehavior?: "flip" | "fit";
+};
+/**
+ * The menu surface: Base UI's portal and positioner wrapped around an elevated, scrollable panel
+ * holding the `role="menu"` popup. Optional `search` and `footer` chrome stays pinned outside the
+ * scroll area. Rows (`MenuItem`, `MenuGroup`, `MenuSeparator`, …) are its children.
+ */
+declare function MenuContent({ side, sideOffset, align, collisionPadding, sizing, heightBehavior, collisionBoundary, collisionAvoidance, ...props }: MenuContentProps): React.JSX.Element;
+//#endregion
+export { MenuContent, MenuContentProps, type MenuContentSizing };
+//# sourceMappingURL=menu-content.d.ts.map

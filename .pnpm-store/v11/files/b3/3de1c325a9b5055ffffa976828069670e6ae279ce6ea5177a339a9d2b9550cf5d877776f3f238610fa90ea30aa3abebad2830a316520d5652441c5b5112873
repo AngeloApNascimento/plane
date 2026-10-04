@@ -1,0 +1,20 @@
+"use client";
+import { expandableSearchRowVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/expandable-search/expandable-search-row.tsx
+/**
+* The expanded row's width/opacity track — grows from the collapsed trigger's footprint to its own
+* intrinsic width (and back), via the same `data-expanded` boolean the trigger toggles in reverse.
+*/
+function ExpandableSearchRow({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: expandableSearchRowVariants() }, props)
+	});
+}
+//#endregion
+export { ExpandableSearchRow };
+
+//# sourceMappingURL=expandable-search-row.js.map

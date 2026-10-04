@@ -1,0 +1,37 @@
+"use client";
+import { MenuItemContent } from "../../elements/menu/menu-item-content.js";
+import { MenuItemTitle } from "../../elements/menu/menu-item-title.js";
+import { MenuItemTitleRow } from "../../elements/menu/menu-item-title-row.js";
+import { MenuItemTrailing } from "../../elements/menu/menu-item-trailing.js";
+import { MenuLinkItem as MenuLinkItem$1 } from "../../elements/menu/menu-link-item.js";
+import { resolveExternalLinkProps } from "../../internal/external-link.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-link-item.tsx
+/**
+* The ready-made navigational `<a>` menu row: grafts Base UI's `Menu.LinkItem` behavior onto the
+* styled `MenuLinkItem` and lays out an optional leading icon, label, and end content.
+*/
+function MenuLinkItem({ variant, icon, label, trailing, external = false, ...props }) {
+	const { target, rel, end } = resolveExternalLinkProps({
+		external,
+		target: props.target,
+		rel: props.rel,
+		trailing
+	});
+	return /* @__PURE__ */ jsxs(Menu.LinkItem, {
+		...props,
+		target,
+		rel,
+		render: /* @__PURE__ */ jsx(MenuLinkItem$1, { variant }),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(MenuItemContent, { children: /* @__PURE__ */ jsx(MenuItemTitleRow, { children: /* @__PURE__ */ jsx(MenuItemTitle, { children: label }) }) }),
+			end != null ? /* @__PURE__ */ jsx(MenuItemTrailing, { children: end }) : null
+		]
+	});
+}
+//#endregion
+export { MenuLinkItem };
+
+//# sourceMappingURL=menu-link-item.js.map

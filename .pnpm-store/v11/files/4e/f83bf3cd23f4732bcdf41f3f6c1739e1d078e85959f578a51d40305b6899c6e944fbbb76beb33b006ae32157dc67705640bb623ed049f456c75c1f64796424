@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-input.d.ts
+type ComboboxInputProps = Omit<useRender.ComponentProps<"input">, "className" | "style">;
+/**
+ * The styled combobox text field. Base-UI-agnostic — graft the combobox behavior in `components`
+ * via `<BaseCombobox.Input render={<ComboboxInput/>} />`.
+ */
+declare function ComboboxInput({ render, ...props }: ComboboxInputProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxInput, ComboboxInputProps };
+//# sourceMappingURL=combobox-input.d.ts.map

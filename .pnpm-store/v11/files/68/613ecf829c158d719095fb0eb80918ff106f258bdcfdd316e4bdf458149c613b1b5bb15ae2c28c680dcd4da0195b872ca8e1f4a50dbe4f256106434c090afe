@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-item-indicator.d.ts
+type ContextMenuItemIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The single-select check slot shown at a row's inline-end, after the label and before any trailing
+ * node (Figma: icon, then label, then check). A multi-select checkbox keeps the inline-start slot.
+ * Decorative (the row carries the selected state), so it is `aria-hidden`. Renders and sizes its
+ * single child; pass the glyph as `children`. Base-UI-agnostic.
+ */
+declare function ContextMenuItemIndicator({ render, ...props }: ContextMenuItemIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ContextMenuItemIndicator, ContextMenuItemIndicatorProps };
+//# sourceMappingURL=context-menu-item-indicator.d.ts.map

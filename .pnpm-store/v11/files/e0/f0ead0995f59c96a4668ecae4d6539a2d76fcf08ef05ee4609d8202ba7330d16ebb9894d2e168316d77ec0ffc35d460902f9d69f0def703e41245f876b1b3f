@@ -1,0 +1,165 @@
+"use client";
+import { TooltipLayout } from "../../elements/tooltip/variants.js";
+import "../../elements/tooltip/index.js";
+import * as React from "react";
+import { Tooltip, TooltipRoot } from "@base-ui/react/tooltip";
+//#region src/components/tooltip/tooltip.d.ts
+type TooltipProps<Payload = unknown> = Omit<TooltipRoot.Props<Payload>, "children" | "className" | "label" | "style" | "disabled"> & {
+  /**
+   * The text shown inside the tooltip popup. `null` / `undefined` / `""` (or whitespace-only)
+   * unmounts the popup itself (children still render, unaffected) — use this instead of `label={x
+   * ?? ""}` for copy that may be missing (an email, a name).
+   */
+  label: string | null | undefined;
+  /**
+   * When `true`, no popup ever mounts for this trigger — not merely closed. Use this for a boolean
+   * gate (e.g. only show a hint while a sidebar is collapsed). Passing Base UI's own `disabled`
+   * directly still leaves the popup markup mounted (just visually closed), so it doesn't give the
+   * same guarantee on its own — this prop drives that same Base UI `disabled` internally _and_
+   * gates the popup markup.
+   *
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * Optional keyboard-shortcut hint, dimmed (e.g. `"⌘ K"`). Sits inline-end of `label` when
+   * `layout="single"`, or beneath it when `layout="stacked"`. Maps to the Figma "Cmd + K" slot —
+   * omit it for a plain tooltip. This is visual text; put the canonical `aria-keyshortcuts` value
+   * on the trigger element.
+   */
+  shortcut?: string;
+  /**
+   * Content arrangement. `single` is the one-line Figma singleline chip (`whitespace-nowrap` — long
+   * labels do not wrap); `stacked` is the multiline description layout (body type, larger radius,
+   * soft `max-w-60`, shortcut below). Prefer `stacked` for wrapping copy — longer content belongs
+   * in a popover.
+   *
+   * @default "single"
+   */
+  layout?: TooltipLayout;
+  /**
+   * The element the tooltip is attached to. Base UI renders the trigger as a `<button>` by default;
+   * pass a single element and it is used as the trigger via the `render` prop, so any focusable
+   * element (a real button, an icon button) can anchor the tooltip. Give the element an `id` when
+   * using `createTooltipHandle` — `handle.open(id)` looks up that trigger id (a no-op while the
+   * tooltip is gated off by `disabled` or a missing label — no popup mounts to open). Custom
+   * components must forward the ref, event handlers, and aria attributes to the same DOM element.
+   * The description is attached only while the popup is mounted; existing descriptions are
+   * preserved.
+   */
+  children: React.ReactElement;
+  /**
+   * Which side of the trigger to place the popup on. May flip automatically to stay in view.
+   *
+   * @default "top"
+   */
+  side?: Tooltip.Positioner.Props["side"];
+  /**
+   * Gap in pixels between the trigger and the popup. Increase when using `showArrow` so the caret
+   * has room between the trigger and the surface.
+   *
+   * @default 8
+   */
+  sideOffset?: number;
+  /**
+   * Alignment of the popup relative to the trigger along `side`.
+   *
+   * @default "center"
+   */
+  align?: Tooltip.Positioner.Props["align"];
+  /**
+   * Additional offset in px along the align axis — slides the popup along the trigger's edge
+   * without changing `align`.
+   *
+   * @default 0
+   */
+  alignOffset?: Tooltip.Positioner.Props["alignOffset"];
+  /**
+   * Minimum gap in px between the popup and the viewport edge it would otherwise touch.
+   *
+   * @default 5
+   */
+  collisionPadding?: Tooltip.Positioner.Props["collisionPadding"];
+  /**
+   * The element or rect the popup is confined to when avoiding collisions. Base UI's clipping
+   * ancestors when unset.
+   */
+  collisionBoundary?: Tooltip.Positioner.Props["collisionBoundary"];
+  /**
+   * What to do when the popup would overflow the boundary, set per axis: flip to the other side,
+   * shift along it, or stay put. Base UI flips the side and shifts the alignment when unset.
+   */
+  collisionAvoidance?: Tooltip.Positioner.Props["collisionAvoidance"];
+  /**
+   * Render the caret pointing back at the trigger. Off by default — the Figma tooltip is a flat
+   * surface with no built-in caret.
+   *
+   * @default false
+   */
+  showArrow?: boolean;
+  /**
+   * Minimum distance in px between the arrow and the popup's rounded corners. Ignored when
+   * `showArrow` is false.
+   *
+   * @default 5
+   */
+  arrowPadding?: Tooltip.Positioner.Props["arrowPadding"];
+  /**
+   * Keep the popup on screen after the trigger scrolls out of view, instead of following it out.
+   * Base UI may still set `data-anchor-hidden` when the anchor is clipped — that attribute is
+   * independent of `sticky`. When `sticky` is false (default), this tooltip's positioner opts into
+   * `hideWhenAnchorHidden` so `data-anchor-hidden` makes the tip `invisible` and it does not
+   * linger. When `sticky` is true, the positioner stays visible even if the anchor is marked
+   * hidden.
+   *
+   * @default false
+   */
+  sticky?: Tooltip.Positioner.Props["sticky"];
+  /**
+   * Which CSS `position` the positioner uses. `fixed` escapes overflow-clipping ancestors, e.g. a
+   * trigger inside a sticky header.
+   *
+   * @default "absolute"
+   */
+  positionMethod?: Tooltip.Positioner.Props["positionMethod"];
+  /**
+   * Position against this element instead of the trigger — an element, a ref, a virtual element, or
+   * a function returning one (e.g. a chart's pointer position). Geometry only; hover and focus stay
+   * on the trigger.
+   */
+  anchor?: Tooltip.Positioner.Props["anchor"];
+  /**
+   * Stop tracking layout shifts of the anchor — position once, on open.
+   *
+   * @default false
+   */
+  disableAnchorTracking?: Tooltip.Positioner.Props["disableAnchorTracking"];
+  /**
+   * How long to wait (ms) before opening on hover. Focus opens immediately. When omitted, Base UI's
+   * trigger default (`600`) applies unless a wrapping `TooltipProvider` supplies `delay` — the
+   * per-tooltip value wins over the provider. Close timing is not on this prop — use the provider's
+   * `closeDelay` (and shared grouping) when adjacent tooltips should linger or swap without
+   * restarting the open delay.
+   *
+   * @default 600
+   */
+  delay?: number;
+};
+/**
+ * A small popup that describes the element it is attached to. Appears on hover or keyboard focus of
+ * the trigger and is dismissed on blur, pointer-leave, or `Esc`.
+ *
+ * Built on Base UI's tooltip, so it's accessible by default: the popup is exposed as
+ * `role="tooltip"` and wired to the trigger. Pass the trigger as `children`, the popup copy as
+ * `label`, and an optional `shortcut` for a dimmed visual keyboard hint.
+ *
+ * Grafts Base UI's tooltip behavior onto propel's styled parts: `Tooltip.Root` + `Tooltip.Trigger`
+ * + `Tooltip.Portal` → `Tooltip.Positioner` (shared `internal/positioner`) → `TooltipPopup`, with
+ * an optional `TooltipArrow` when `showArrow` is set. Colors come from propel's adaptive surface
+ * tokens (`bg-layer-2` / `text-primary` / `border-subtle-1`), so the tooltip is light on light
+ * themes and dark on dark themes, matching the Figma "Tooltip" component.
+ */
+declare function Tooltip$1<Payload = unknown>({ label, disabled, shortcut, layout, children, side, sideOffset, align, alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, showArrow, arrowPadding, sticky, positionMethod, anchor, disableAnchorTracking, delay, ...props }: TooltipProps<Payload>): React.JSX.Element;
+//#endregion
+export { Tooltip$1 as Tooltip, type TooltipLayout, TooltipProps };
+//# sourceMappingURL=tooltip.d.ts.map

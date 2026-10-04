@@ -1,0 +1,15 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-submenu.tsx
+/**
+* The submenu Root — Base UI's `SubmenuRoot` context/state provider (renders no element of its
+* own). A behavior-only role, so it lives in `components` (rules 1a, 2).
+*/
+function MenuSubmenu(props) {
+	return /* @__PURE__ */ jsx(Menu.SubmenuRoot, { ...props });
+}
+//#endregion
+export { MenuSubmenu };
+
+//# sourceMappingURL=menu-submenu.js.map

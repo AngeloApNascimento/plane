@@ -1,0 +1,27 @@
+"use client";
+import { dialogMainVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-main.tsx
+/**
+* The padded top section of the dialog popup: stacks optional `DialogProgression`, `DialogHeader` /
+* `DialogHeading`, and the scrollable `DialogBody`. Content-sized; when the popup hits its ceiling
+* this section shrinks (`min-h-0`) while `DialogActions` stays put, so the footer is always visible
+* and the body scrolls. Inside `DialogPanes` it fills the width beside `DialogAside`. The absolute
+* close overlays the top-end — it does not widen the end gutter.
+*/
+function DialogMain({ size, density, inPanes, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: dialogMainVariants({
+			size,
+			density,
+			inPanes
+		}) }, props)
+	});
+}
+//#endregion
+export { DialogMain };
+
+//# sourceMappingURL=dialog-main.js.map

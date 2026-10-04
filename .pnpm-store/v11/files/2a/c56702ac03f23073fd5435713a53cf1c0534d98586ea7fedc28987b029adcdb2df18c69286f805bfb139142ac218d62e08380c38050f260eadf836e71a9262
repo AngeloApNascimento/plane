@@ -1,0 +1,22 @@
+"use client";
+import * as React from "react";
+import { Accordion } from "@base-ui/react/accordion";
+//#region src/components/accordion/accordion-trigger.d.ts
+type AccordionTriggerProps = Omit<Accordion.Trigger.Props, "children" | "className" | "style"> & {
+  /**
+   * Element rendered before the label (inline-start), e.g. `<Icon icon={Folder} tint="secondary"
+   * />`.
+   */
+  icon?: React.ReactNode;
+  /** Visible trigger label. */
+  label: string;
+};
+/**
+ * The ready-made accordion trigger: grafts Base UI's trigger behavior onto the styled
+ * `AccordionTrigger`, composing an optional `icon`, the `AccordionTriggerTitle`, and the
+ * `DisclosureIndicator` chevron that rotates when the panel opens.
+ */
+declare function AccordionTrigger({ icon, label, ...props }: AccordionTriggerProps): React.JSX.Element;
+//#endregion
+export { AccordionTrigger, AccordionTriggerProps };
+//# sourceMappingURL=accordion-trigger.d.ts.map

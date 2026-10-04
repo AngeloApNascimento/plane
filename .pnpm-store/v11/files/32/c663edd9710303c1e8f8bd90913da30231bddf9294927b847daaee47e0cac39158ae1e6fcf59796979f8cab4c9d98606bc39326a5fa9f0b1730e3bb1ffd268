@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/callout-outline.d.ts
+declare function CalloutOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CalloutOutline };
+//# sourceMappingURL=callout-outline.d.ts.map

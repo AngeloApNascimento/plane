@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/italic-filled.d.ts
+declare function ItalicFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ItalicFilled };
+//# sourceMappingURL=italic-filled.d.ts.map

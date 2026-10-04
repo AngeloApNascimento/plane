@@ -1,0 +1,54 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/menu/variants.d.ts
+/** Popup: shared raised/flat list surface (see `internal/menu-row-parts`). */
+declare const menuPopupVariants: (props?: ({
+  elevation?: "flat" | "raised" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const menuRowDefaultVariants: {
+  readonly variant: "neutral";
+};
+/** Standalone `MenuItem` row: `layout` (single-line vs stacked) + `variant`. */
+declare const menuRowVariants: (props?: ({
+  layout?: "single" | "stacked" | null | undefined;
+  variant?: "danger" | "neutral" | "accent" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+/**
+ * CheckboxItem row: the shared row base, fixed to the single-line/default-emphasis pairing (a
+ * checkbox row never carries a description).
+ */
+declare const menuCheckboxItemVariants: (props?: ({
+  variant?: "danger" | "neutral" | "accent" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+/**
+ * SubmenuTrigger row: the shared row base; also highlights while its submenu popup is open
+ * (`data-popup-open`).
+ */
+declare const menuSubmenuTriggerVariants: (props?: ({
+  variant?: "danger" | "neutral" | "accent" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type MenuPopupVariantProps = StrictVariantProps<typeof menuPopupVariants>;
+type MenuPopupVariantConfig = VariantProps<typeof menuPopupVariants>;
+/**
+ * Popup chrome: `raised` is the standalone elevated surface; `flat` is padding-only for use inside
+ * an `OverlayPanel`.
+ */
+type MenuPopupElevation = NonNullable<MenuPopupVariantConfig["elevation"]>;
+type MenuRowVariantConfig = VariantProps<typeof menuRowVariants>;
+/**
+ * Row look. `neutral` is the standard text hierarchy, `accent` marks the primary action, and
+ * `danger` marks a destructive one.
+ */
+type MenuItemVariant = NonNullable<MenuRowVariantConfig["variant"]>;
+/**
+ * How a row arranges its text: `single` for a one-line row, `stacked` when a description sits
+ * beneath the title.
+ */
+type MenuItemLayout = NonNullable<MenuRowVariantConfig["layout"]>;
+type MenuRowVariantProps = StrictVariantProps<typeof menuRowVariants, keyof typeof menuRowDefaultVariants>;
+type MenuCheckboxItemVariantProps = StrictVariantProps<typeof menuCheckboxItemVariants, keyof typeof menuRowDefaultVariants>;
+type MenuSubmenuTriggerVariantProps = StrictVariantProps<typeof menuSubmenuTriggerVariants, keyof typeof menuRowDefaultVariants>;
+//#endregion
+export { MenuCheckboxItemVariantProps, MenuItemLayout, MenuItemVariant, MenuPopupElevation, MenuPopupVariantProps, MenuRowVariantProps, MenuSubmenuTriggerVariantProps, menuCheckboxItemVariants, menuPopupVariants, menuRowVariants, menuSubmenuTriggerVariants };
+//# sourceMappingURL=variants.d.ts.map

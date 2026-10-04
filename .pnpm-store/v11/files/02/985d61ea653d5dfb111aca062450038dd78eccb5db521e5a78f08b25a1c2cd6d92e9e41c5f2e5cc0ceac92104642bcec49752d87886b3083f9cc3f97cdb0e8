@@ -1,0 +1,30 @@
+"use client";
+import { SelectTriggerSize, SelectTriggerVariant } from "../../elements/select/variants.js";
+import "../../elements/select/index.js";
+import * as React from "react";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-trigger.d.ts
+type SelectTriggerProps = Omit<Select.Trigger.Props, "children" | "className" | "render" | "style"> & {
+  /** Visual size of the trigger: controls its height, text, and icon size. Required. */
+  size: SelectTriggerSize;
+  /**
+   * Figma "Prominence": `secondary` is the bordered surface, `ghost` drops the border and fill.
+   *
+   * @default "secondary"
+   */
+  variant?: SelectTriggerVariant;
+  /** Shown in the trigger while nothing is selected — Base UI's `Select.Value` placeholder. */
+  placeholder?: React.ReactNode;
+  /** Element shown before the value, e.g. `<Icon icon={Server} tint="placeholder" />`. */
+  icon?: React.ReactNode;
+};
+/**
+ * The ready-made select trigger: grafts Base UI's `Select.Trigger` behavior onto the styled trigger
+ * and bakes its anatomy — an optional leading icon, the selected value (Base UI's `Select.Value`
+ * grafted onto `SelectValue`), and the owned chevron indicator. Children are baked, so the prop is
+ * omitted.
+ */
+declare function SelectTrigger({ size, variant, placeholder, icon, ...props }: SelectTriggerProps): React.JSX.Element;
+//#endregion
+export { SelectTrigger, SelectTriggerProps };
+//# sourceMappingURL=select-trigger.d.ts.map

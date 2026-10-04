@@ -1,0 +1,15 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/anchor-button/variants.d.ts
+declare const anchorButtonVariants: (props?: ({
+  variant?: "primary" | "secondary" | null | undefined;
+  size?: "sm" | "md" | "lg" | "xs" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type AnchorButtonVariantConfig = VariantProps<typeof anchorButtonVariants>;
+type AnchorButtonVariant = NonNullable<AnchorButtonVariantConfig["variant"]>;
+type AnchorButtonSize = NonNullable<AnchorButtonVariantConfig["size"]>;
+type AnchorButtonVariantProps = StrictVariantProps<typeof anchorButtonVariants>;
+//#endregion
+export { AnchorButtonSize, AnchorButtonVariant, AnchorButtonVariantProps, anchorButtonVariants };
+//# sourceMappingURL=variants.d.ts.map

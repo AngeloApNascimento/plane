@@ -1,0 +1,15 @@
+"use client";
+import { IconPillSize, IconPillVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pill/icon-pill.d.ts
+type IconPillProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & IconPillVariantProps;
+/**
+ * The icon-only square pill container: a styled `<button>` with no baked content. Compose an `Icon`
+ * (or `Spinner` while busy) inside it. Base-UI-agnostic — graft the Base UI `Button` behavior in
+ * `components` via `<BaseButton render={<IconPill/>} />` (which also supplies the required
+ * `aria-label`).
+ */
+declare function IconPill({ size, render, ...props }: IconPillProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { IconPill, IconPillProps, type IconPillSize };
+//# sourceMappingURL=icon-pill.d.ts.map

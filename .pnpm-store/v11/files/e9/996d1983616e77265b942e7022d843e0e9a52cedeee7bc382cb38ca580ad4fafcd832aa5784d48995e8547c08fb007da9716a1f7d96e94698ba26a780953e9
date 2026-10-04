@@ -1,0 +1,19 @@
+"use client";
+import { ComboboxEmpty as ComboboxEmpty$1 } from "../../elements/combobox/combobox-empty.js";
+import { jsx } from "react/jsx-runtime";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-empty.tsx
+/**
+* The ready-made empty-state row: Base UI's `Empty` behavior grafted onto the styled
+* `elements/combobox` row. Pass the — localizable — no-matches message as children.
+*/
+function ComboboxEmpty(props) {
+	return /* @__PURE__ */ jsx(Combobox.Empty, {
+		...props,
+		render: /* @__PURE__ */ jsx(ComboboxEmpty$1, {})
+	});
+}
+//#endregion
+export { ComboboxEmpty };
+
+//# sourceMappingURL=combobox-empty.js.map

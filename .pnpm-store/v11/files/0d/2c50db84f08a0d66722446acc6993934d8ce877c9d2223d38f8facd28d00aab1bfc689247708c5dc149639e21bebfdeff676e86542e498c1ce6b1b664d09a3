@@ -1,0 +1,19 @@
+"use client";
+import { AccordionItem as AccordionItem$2 } from "../../elements/accordion/accordion-item.js";
+import { jsx } from "react/jsx-runtime";
+import { Accordion } from "@base-ui/react/accordion";
+//#region src/components/accordion/accordion-item.tsx
+/**
+* A single collapsible section: pairs an `AccordionHeader` and `AccordionPanel`. Grafts Base UI's
+* item behavior onto the styled `AccordionItem`.
+*/
+function AccordionItem$1(props) {
+	return /* @__PURE__ */ jsx(Accordion.Item, {
+		...props,
+		render: /* @__PURE__ */ jsx(AccordionItem$2, {})
+	});
+}
+//#endregion
+export { AccordionItem$1 as AccordionItem };
+
+//# sourceMappingURL=accordion-item.js.map

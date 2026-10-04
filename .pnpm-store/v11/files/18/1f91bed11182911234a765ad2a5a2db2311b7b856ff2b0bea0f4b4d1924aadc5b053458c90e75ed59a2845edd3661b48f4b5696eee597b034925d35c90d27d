@@ -1,0 +1,21 @@
+"use client";
+import { dialogCloseGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-close-group.tsx
+/**
+* Positions the dismiss control at the popup's top inline-end corner. Hold an `IconButton` (size
+* `xs`, variant `ghost`) with `render={<DialogClose />}` so the button chrome wins and Base UI
+* supplies close behavior.
+*/
+function DialogCloseGroup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: dialogCloseGroupVariants() }, props)
+	});
+}
+//#endregion
+export { DialogCloseGroup };
+
+//# sourceMappingURL=dialog-close-group.js.map

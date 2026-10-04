@@ -1,0 +1,41 @@
+"use client";
+import { ButtonProps as ButtonProps$1 } from "../../elements/button/button.js";
+import "../../elements/button/index.js";
+import * as React from "react";
+//#region src/components/button/button.d.ts
+type ButtonProps = Omit<ButtonProps$1, "children"> & {
+  /**
+   * Set `false` when `render` swaps the underlying tag away from `<button>` (e.g. a `<div>` or an
+   * `<a>`): Base UI then adds `role="button"`, tab focus, and Enter/Space activation.
+   */
+  nativeButton?: boolean;
+  /** Icon rendered beside the label (inline-start by default), e.g. `<Icon icon={Plus} />`. */
+  icon?: React.ReactNode;
+  /**
+   * Which side of the label the icon sits on. The `loading` spinner takes the same slot.
+   *
+   * @default "start"
+   */
+  iconPosition?: "start" | "end";
+  /** Visible button label. */
+  label: string;
+  /** Shows a spinner in the icon slot, sets `aria-busy`, and makes the button non-interactive. */
+  loading?: boolean;
+  /** Hard, non-focusable native disabled state (`loading` stays focusable instead). */
+  disabled?: boolean;
+  /**
+   * The button's form behavior.
+   *
+   * @default "button"
+   */
+  type?: "submit" | "reset" | "button";
+};
+/**
+ * The ready-made `Button`: grafts Base UI's `Button` behavior onto the styled `Button` element and
+ * lays out an optional `icon` beside the label (`iconPosition`), swapping it for the `loading`
+ * spinner in the same slot. Content — the label, icon, and `loading` state — is not a variant.
+ */
+declare function Button(props: ButtonProps): React.JSX.Element;
+//#endregion
+export { Button, ButtonProps };
+//# sourceMappingURL=button.d.ts.map

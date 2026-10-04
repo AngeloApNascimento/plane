@@ -1,0 +1,16 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/popover/popover-body.d.ts
+type PopoverBodyProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The scrollable slot inside `PopoverContent`. Grows to fill leftover space under the popup's
+ * available-height cap and scrolls when the body is taller than that space. Put forms and long
+ * stacks here; keep `PopoverTitle` and action rows as siblings so they stay pinned.
+ *
+ * When the body can overflow, pass `tabIndex={0}` so the scroll region is keyboard-reachable (axe
+ * `scrollable-region-focusable`).
+ */
+declare function PopoverBody({ render, ...props }: PopoverBodyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PopoverBody, PopoverBodyProps };
+//# sourceMappingURL=popover-body.d.ts.map

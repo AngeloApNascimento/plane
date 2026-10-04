@@ -1,0 +1,22 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/otp-field/variants.d.ts
+/**
+ * Input: a single character cell with the shared field-control surface.
+ *
+ * Size — controls the box size (lg/xl/2xl); required, no default. The error look isn't a prop: the
+ * cell rests at the `subtle-1` border and recolors to `danger` off Base UI's `data-invalid` (set on
+ * the digit when the field is wrapped in a `Field.Root invalid`), including the danger focus ring —
+ * so there's no hand-rolled danger ring here. Disabled steps the border back to lighter `subtle` so
+ * it stays distinct from rest, matching the other field-control surfaces.
+ */
+declare const otpFieldInputVariants: (props?: ({
+  size?: "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type OTPFieldInputVariantConfig = VariantProps<typeof otpFieldInputVariants>;
+type OTPFieldInputSize = NonNullable<OTPFieldInputVariantConfig["size"]>;
+type OTPFieldInputVariantProps = StrictVariantProps<typeof otpFieldInputVariants>;
+//#endregion
+export { OTPFieldInputSize, OTPFieldInputVariantProps, otpFieldInputVariants };
+//# sourceMappingURL=variants.d.ts.map

@@ -1,0 +1,3 @@
+"use client";
+import { AvatarGroup, AvatarGroupProps, AvatarGroupSize } from "./avatar-group.js";
+export { AvatarGroup, AvatarGroupProps, AvatarGroupSize };

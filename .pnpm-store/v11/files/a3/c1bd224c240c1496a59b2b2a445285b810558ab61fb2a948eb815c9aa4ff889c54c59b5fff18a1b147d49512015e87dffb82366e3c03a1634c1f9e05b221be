@@ -1,0 +1,20 @@
+"use client";
+import { fieldsetLegendVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/fieldset/fieldset-legend.tsx
+/**
+* The styled label for a `Fieldset`. Base-UI-agnostic — graft the legend behavior in `components`
+* via `<BaseFieldset.Legend render={<FieldsetLegend/>} />`.
+*/
+function FieldsetLegend({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: fieldsetLegendVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { FieldsetLegend };
+
+//# sourceMappingURL=fieldset-legend.js.map

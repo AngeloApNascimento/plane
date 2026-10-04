@@ -1,0 +1,15 @@
+"use client";
+import { DrawerContentSize, DrawerContentVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-content.d.ts
+type DrawerContentProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & DrawerContentVariantProps;
+/**
+ * The styled padded inner content region of the popup. Holds the title, description, body, and
+ * close affordances, and allows mouse text selection without triggering swipe-dismiss. Padding
+ * follows `size` (`sm` p-4, `md`/`lg` px-8 py-7). Base-UI-agnostic — graft the drawer behavior in
+ * `components` via `<BaseDrawer.Content render={<DrawerContent />} />`.
+ */
+declare function DrawerContent({ size, render, ...props }: DrawerContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerContent, DrawerContentProps, type DrawerContentSize };
+//# sourceMappingURL=drawer-content.d.ts.map

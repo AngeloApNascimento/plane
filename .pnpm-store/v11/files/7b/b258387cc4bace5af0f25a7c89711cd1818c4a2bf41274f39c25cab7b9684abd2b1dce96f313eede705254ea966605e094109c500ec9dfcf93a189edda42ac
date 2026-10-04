@@ -1,0 +1,38 @@
+"use client";
+import { TableCell } from "../../elements/table/table-cell.js";
+import { TableCellTrigger } from "../../elements/table/table-cell-trigger.js";
+import { TableCellTriggerIndicator } from "../../elements/table/table-cell-trigger-indicator.js";
+import { TableCellTriggerLabel } from "../../elements/table/table-cell-trigger-label.js";
+import { Menu } from "../menu/menu.js";
+import { MenuTrigger } from "../menu/menu-trigger.js";
+import { useTableVariant } from "./table-context.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+//#region src/components/table/table-editable-cell.tsx
+/** An editable data cell (`<td>`) with a full-cell menu trigger. */
+function TableEditableCell({ pinned = "none", value, children, open, defaultOpen, onOpenChange, disabled, selected, "aria-label": ariaLabel, ...props }) {
+	return /* @__PURE__ */ jsx(TableCell, {
+		variant: useTableVariant(),
+		pinned,
+		padding: "trigger",
+		...props,
+		children: /* @__PURE__ */ jsxs(Menu, {
+			open,
+			defaultOpen,
+			onOpenChange,
+			children: [/* @__PURE__ */ jsxs(MenuTrigger, {
+				disabled,
+				"aria-label": ariaLabel,
+				render: /* @__PURE__ */ jsx(TableCellTrigger, {
+					layout: "editable",
+					selected
+				}),
+				children: [/* @__PURE__ */ jsx(TableCellTriggerLabel, { children: value }), /* @__PURE__ */ jsx(TableCellTriggerIndicator, { children: /* @__PURE__ */ jsx(ChevronDown, {}) })]
+			}), children]
+		})
+	});
+}
+//#endregion
+export { TableEditableCell };
+
+//# sourceMappingURL=table-editable-cell.js.map

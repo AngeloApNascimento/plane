@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/divider-outline.d.ts
+declare function DividerOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DividerOutline };
+//# sourceMappingURL=divider-outline.d.ts.map

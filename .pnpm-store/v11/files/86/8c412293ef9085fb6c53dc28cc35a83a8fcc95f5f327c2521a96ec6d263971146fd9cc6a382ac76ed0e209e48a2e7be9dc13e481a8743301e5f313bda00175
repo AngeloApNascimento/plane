@@ -1,0 +1,83 @@
+"use client";
+import { OverlayPanelSizing } from "../../internal/overlay-panel.js";
+import * as React from "react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-content.shared.d.ts
+type MenuContentSizing = OverlayPanelSizing;
+/**
+ * The props both menu surfaces share. `side`, `sideOffset`, `collisionPadding` and `sizing` carry
+ * no `@default` here because the two surfaces pick different ones — `MenuContent` opens below its
+ * trigger at 6px with an 8px viewport gutter, `MenuSubmenuContent` opens beside its parent row at
+ * 4px and sets no gutter (both size themselves `auto`) — so each declares its own; otherwise the
+ * generated props table would advertise one surface's default on both. `render` is omitted because
+ * this surface always renders the styled `MenuPopup` as the popup's element, so a consumer-passed
+ * one would be overwritten and silently do nothing.
+ */
+type MenuSurfaceProps = Omit<Menu.Popup.Props, "className" | "style" | "render"> & {
+  /** Which side of the trigger the menu opens toward. */
+  side?: Menu.Positioner.Props["side"];
+  /** Distance in px between the trigger and the menu. */
+  sideOffset?: Menu.Positioner.Props["sideOffset"];
+  /** Alignment of the menu relative to the trigger along `side`. @default "start" */
+  align?: Menu.Positioner.Props["align"];
+  /**
+   * Additional offset in px along the align axis — slides the menu along the trigger's edge without
+   * changing `align`.
+   *
+   * @default 0
+   */
+  alignOffset?: Menu.Positioner.Props["alignOffset"];
+  /** Minimum gap in px between the menu and the viewport edge it would otherwise touch. */
+  collisionPadding?: Menu.Positioner.Props["collisionPadding"];
+  /**
+   * The element or rect the menu is confined to when avoiding collisions. Base UI's clipping
+   * ancestors when unset.
+   */
+  collisionBoundary?: Menu.Positioner.Props["collisionBoundary"];
+  /**
+   * What to do when the menu would overflow the boundary, set per axis: flip to the other side,
+   * shift along it, or stay put. Base UI flips the side and shifts the alignment when unset.
+   */
+  collisionAvoidance?: Menu.Positioner.Props["collisionAvoidance"];
+  /**
+   * Keep the menu on screen after the trigger scrolls out of view, instead of following it out.
+   *
+   * @default false
+   */
+  sticky?: Menu.Positioner.Props["sticky"];
+  /**
+   * Which CSS `position` the positioner uses. `fixed` escapes overflow-clipping ancestors, e.g. a
+   * trigger inside a sticky header.
+   *
+   * @default "absolute"
+   */
+  positionMethod?: Menu.Positioner.Props["positionMethod"];
+  /**
+   * Position against this element instead of the trigger — an element, a ref, a virtual element, or
+   * a function returning one. Geometry only; the trigger keeps its role and interactions.
+   */
+  anchor?: Menu.Positioner.Props["anchor"];
+  /**
+   * Stop tracking layout shifts of the anchor — position once, on open.
+   *
+   * @default false
+   */
+  disableAnchorTracking?: Menu.Positioner.Props["disableAnchorTracking"];
+  /**
+   * How the menu popup takes its width. `auto` is the content's width — never narrower than 192px,
+   * never wider than 384px or the room beside the trigger, and held while open so a list that
+   * filters down does not reflow; it caps the list at 384px tall. `anchor` matches the trigger's
+   * width instead, growing only with its content, and caps the list at 288px tall.
+   */
+  sizing?: MenuContentSizing;
+  /**
+   * A search field pinned above the `role="menu"` popup, e.g. a `MenuSearch`. The menu focuses it
+   * when it opens, Escape closes from inside it, and ArrowDown/ArrowUp move focus into the list.
+   */
+  search?: React.ReactNode;
+  /** Sticky chrome pinned below the `role="menu"` popup, e.g. a `MenuFooter`. */
+  footer?: React.ReactNode;
+};
+//#endregion
+export { MenuContentSizing, MenuSurfaceProps };
+//# sourceMappingURL=menu-content.shared.d.ts.map

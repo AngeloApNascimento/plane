@@ -1,0 +1,25 @@
+"use client";
+import { alertDialogActionsVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-actions.tsx
+/**
+* The footer row of action buttons. Sits flush under the body with no divider, pads 12px on top and
+* 20px on the sides and bottom (Figma), and end-aligns children with a 12px gap. Below 640px,
+* actions form a reversed full-width column, retaining the legacy mobile order.
+*
+* Layout groups actions at the end, or separates a leading action from an action group.
+*
+* @default "inline"
+*/
+function AlertDialogActions({ layout, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: alertDialogActionsVariants({ layout }) }, props)
+	});
+}
+//#endregion
+export { AlertDialogActions };
+
+//# sourceMappingURL=alert-dialog-actions.js.map

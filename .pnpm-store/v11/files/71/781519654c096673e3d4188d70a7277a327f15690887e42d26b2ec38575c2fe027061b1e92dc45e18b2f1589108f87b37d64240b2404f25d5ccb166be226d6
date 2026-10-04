@@ -1,0 +1,67 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import { ComboboxProps } from "../combobox/combobox.js";
+import { ComboboxVariant } from "../../elements/combobox/variants.js";
+import "../combobox/index.js";
+import * as React from "react";
+//#region src/components/combobox-field/combobox-field.d.ts
+type ComboboxFieldProps<Value = string> = Omit<ComboboxProps<Value, true>, "children" | "items" | "multiple" | "onValueChange"> & {
+  /**
+   * Frame look. `neutral` is the bordered field surface; `ghost` is borderless. Invalid on ghost
+   * has no trigger chrome — the danger cue is the helper text below.
+   *
+   * @default "neutral"
+   */
+  variant?: ComboboxVariant;
+  /** Supporting text shown below the label. */
+  description?: React.ReactNode;
+  /** Decorative trailing glyph inside the trigger. Omit it to show a chevron. */
+  trailing?: React.ReactNode;
+  /** Decorative leading element at the inline-start, e.g. `<Icon icon={Plus} tint="placeholder" />`. */
+  icon?: React.ReactNode;
+  /** Message rendered when no item matches. */
+  empty: React.ReactNode;
+  /** Error text shown below the control. */
+  error?: React.ReactNode;
+  /** Helper text shown below the control. Replaced by `error` when an error is set. */
+  hint?: React.ReactNode;
+  /** Items rendered in the popup. */
+  items: readonly Value[];
+  /** Visible field label. */
+  label: string;
+  /** Label and helper text size. */
+  size: FieldSize;
+  /** Shown in the trigger while nothing is selected. */
+  placeholder?: string;
+  /**
+   * Accessible name and placeholder for the panel search field.
+   *
+   * @default "Search"
+   */
+  searchLabel?: string;
+  /**
+   * Label for the sticky row that selects or clears every item.
+   *
+   * Acts on the whole `items` list, NOT on whatever the panel search has filtered down to — so
+   * pressing it while a query is active also selects the values the query hid, and the row's
+   * checked / indeterminate state likewise reflects `items` rather than the visible subset. That is
+   * deliberate ("all" means all), but it is the surprising half of the behaviour, so give the row a
+   * label that says so if a screen's search is prominent.
+   *
+   * @default "Select all"
+   */
+  selectAllLabel?: string;
+  /**
+   * Called when the selection changes. Item presses pass Base UI's event `details`; Select all
+   * passes only the next value.
+   */
+  onValueChange?: (value: Value[], details?: Parameters<NonNullable<ComboboxProps<Value, true>["onValueChange"]>>[1]) => void;
+};
+/**
+ * Ready-to-use combobox field: a closed trigger, overlay search, checkbox rows, and helper/error
+ * text.
+ */
+declare function ComboboxField<Value = string>({ variant, description, trailing, icon, disabled, empty, error, hint, items, label, size, name, placeholder, required, searchLabel, selectAllLabel, value, defaultValue, onValueChange, isItemEqualToValue, ...comboboxProps }: ComboboxFieldProps<Value>): React.JSX.Element;
+//#endregion
+export { ComboboxField, ComboboxFieldProps, type ComboboxVariant, type FieldSize };
+//# sourceMappingURL=combobox-field.d.ts.map

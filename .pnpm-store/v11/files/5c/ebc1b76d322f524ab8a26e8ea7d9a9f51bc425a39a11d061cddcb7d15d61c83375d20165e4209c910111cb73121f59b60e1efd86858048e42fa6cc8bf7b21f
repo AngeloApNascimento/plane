@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/fast-forward-outline.d.ts
+declare function FastForwardOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FastForwardOutline };
+//# sourceMappingURL=fast-forward-outline.d.ts.map

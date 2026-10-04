@@ -1,0 +1,21 @@
+"use client";
+import { workspaceAvatarImageVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/workspace-avatar/workspace-avatar-image.tsx
+/**
+* The styled workspace logo image, cropped to the square frame. Base-UI-agnostic — graft the
+* `Avatar.Image` behavior in `components` via `<BaseAvatar.Image render={<WorkspaceAvatarImage/>}
+* />`.
+*/
+function WorkspaceAvatarImage({ render, ...props }) {
+	return useRender({
+		defaultTagName: "img",
+		render,
+		props: mergeProps({ className: workspaceAvatarImageVariants() }, props)
+	});
+}
+//#endregion
+export { WorkspaceAvatarImage };
+
+//# sourceMappingURL=workspace-avatar-image.js.map

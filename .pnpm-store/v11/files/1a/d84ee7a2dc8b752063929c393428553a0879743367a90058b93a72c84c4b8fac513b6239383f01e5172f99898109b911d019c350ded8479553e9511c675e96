@@ -1,0 +1,34 @@
+"use client";
+import { CompositeItemProps } from "../../base/composite/composite-item.js";
+import "../../base/composite/index.js";
+import * as React from "react";
+//#region src/components/list/list-item-button.d.ts
+type ListItemButtonProps = Omit<CompositeItemProps, "children" | "className" | "style" | "tag" | "render"> & {
+  /** Element rendered before the label, usually `<Icon icon={...} />`. */
+  startIcon?: React.ReactNode;
+  /** Visible row label. */
+  label: string;
+  /**
+   * Trailing count chip, e.g. an unread total. `0` and `""` are omitted (no empty/zero chip); pass
+   * a non-empty node (or the string `"0"`) when a zero must stay visible.
+   */
+  count?: React.ReactNode;
+  /**
+   * Trailing visual after the count, usually `<Icon icon={...} />`. Part of the primary hit target
+   * — not a separate control. Put interactive trailing actions (disclosure, menus) as siblings of
+   * this button, not here.
+   */
+  endIcon?: React.ReactNode;
+};
+/**
+ * A list row's primary action — a `<button>` that is also a roving `Composite` item. Base UI's
+ * `CompositeItem` roving behavior grafted onto the styled `elements` `ListItemButton` element (rule
+ * 1a). Pass `startIcon` for the leading visual, `label` for the visible row text, `count` for a
+ * trailing count chip, and `endIcon` for a trailing visual. A row's expand/collapse control
+ * (`ListItemDisclosureTrigger`) is a separate sibling, never a child — a button can't nest inside
+ * this `<button>`.
+ */
+declare function ListItemButton({ startIcon, label, count, endIcon, ...props }: ListItemButtonProps): React.JSX.Element;
+//#endregion
+export { ListItemButton, ListItemButtonProps };
+//# sourceMappingURL=list-item-button.d.ts.map

@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb.d.ts
+type BreadcrumbProps = Omit<useRender.ComponentProps<"nav">, "className" | "style" | "aria-label"> & {
+  "aria-label": string;
+};
+/**
+ * Breadcrumb trail landmark: a `<nav>` wrapping a `BreadcrumbList`. Requires an `aria-label` (its
+ * landmark name, conventionally "Breadcrumb") — the consumer supplies it so it can be localized.
+ */
+declare function Breadcrumb({ render, ...props }: BreadcrumbProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Breadcrumb, BreadcrumbProps };
+//# sourceMappingURL=breadcrumb.d.ts.map

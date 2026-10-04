@@ -1,0 +1,21 @@
+"use client";
+import { tooltipArrowVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tooltip/tooltip-arrow.tsx
+/**
+* The styled tooltip caret — a rotated square clipped per `data-side` so it points back at the
+* trigger. Base-UI-agnostic; graft in `components` via `<BaseTooltip.Arrow render={<TooltipArrow/>}
+* />`.
+*/
+function TooltipArrow({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: tooltipArrowVariants() }, props)
+	});
+}
+//#endregion
+export { TooltipArrow };
+
+//# sourceMappingURL=tooltip-arrow.js.map

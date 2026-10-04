@@ -1,0 +1,23 @@
+"use client";
+import { Composite } from "../../base/composite/composite.js";
+import { List as List$1 } from "../../elements/list/list.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/list/list.tsx
+/**
+* A vertical roving-tabindex list — the primitive sidebars compose. Base UI's `Composite`
+* roving-focus behavior grafted onto the styled `elements` `List` element (rule 1a). One tab stop
+* for the whole list; arrow keys move between every `CompositeItem` in document order — row
+* primaries (`ListItemLink` / `ListItemButton`) and sibling controls that opt in
+* (`ListItemDisclosureTrigger`). Role-flexible: pass the `role`/`aria-*` the context calls for.
+* Compose `ListItem` rows inside.
+*/
+function List(props) {
+	return /* @__PURE__ */ jsx(Composite, {
+		...props,
+		render: /* @__PURE__ */ jsx(List$1, {})
+	});
+}
+//#endregion
+export { List };
+
+//# sourceMappingURL=list.js.map

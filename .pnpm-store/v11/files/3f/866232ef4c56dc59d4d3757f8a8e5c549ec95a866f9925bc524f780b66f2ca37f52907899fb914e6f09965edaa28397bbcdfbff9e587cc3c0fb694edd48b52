@@ -1,0 +1,23 @@
+"use client";
+import { avatarFallbackClass, avatarImageClass, avatarVariantClasses } from "../../internal/avatar-shared.js";
+import { cva } from "class-variance-authority";
+//#region src/elements/avatar/variants.ts
+const avatarImageVariants = cva(avatarImageClass);
+const avatarFallbackVariants = cva(avatarFallbackClass, { variants: { variant: avatarVariantClasses } });
+const avatarVariants = cva("relative inline-flex shrink-0 items-center justify-center overflow-clip rounded-full border-subtle bg-layer-1", {
+	variants: { size: {
+		"2xs": "size-4 border-sm text-caption-2xs-regular [--node-size:0.875rem]",
+		xs: "size-5 border-sm text-caption-2xs-regular [--node-size:0.875rem]",
+		sm: "size-6 border-sm text-caption-sm-regular [--node-size:1rem]",
+		md: "size-7 border-sm text-body-xs-regular [--node-size:1.25rem]",
+		lg: "size-8 border-sm text-body-md-regular [--node-size:1.5rem]",
+		xl: "size-10 border-lg text-h5-regular [--node-size:1.5rem]",
+		"2xl": "size-14 border-lg text-h3-regular [--node-size:2rem]",
+		"3xl": "size-16 border-lg text-h2-regular [--node-size:2rem]"
+	} },
+	defaultVariants: { size: "md" }
+});
+//#endregion
+export { avatarFallbackVariants, avatarImageVariants, avatarVariants };
+
+//# sourceMappingURL=variants.js.map

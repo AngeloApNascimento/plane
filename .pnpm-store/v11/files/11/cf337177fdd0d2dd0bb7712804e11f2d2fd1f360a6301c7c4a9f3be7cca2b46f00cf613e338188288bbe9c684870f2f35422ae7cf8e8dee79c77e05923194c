@@ -1,0 +1,16 @@
+"use client";
+import { DialogAsideProps as DialogAsideProps$1 } from "../../elements/dialog/dialog-aside.js";
+import * as React from "react";
+//#region src/components/dialog/dialog-aside.d.ts
+type DialogAsideProps = Omit<DialogAsideProps$1, "size" | "density">;
+/**
+ * A 280 px start-side column inside `DialogPanes`, beside `DialogMain`. Stretches to the panes'
+ * height so its end seam is the full popup. Holds navigation for the dialog's content — a step
+ * list, a section list. Its gutter follows the `size` chosen on `DialogContent` (16 px, 48 px at
+ * `full`); `density="compact"` keeps 16 px at `full`. Pass `tabIndex={0}` when its content can
+ * overflow.
+ */
+declare function DialogAside(props: DialogAsideProps): React.JSX.Element;
+//#endregion
+export { DialogAside, DialogAsideProps };
+//# sourceMappingURL=dialog-aside.d.ts.map

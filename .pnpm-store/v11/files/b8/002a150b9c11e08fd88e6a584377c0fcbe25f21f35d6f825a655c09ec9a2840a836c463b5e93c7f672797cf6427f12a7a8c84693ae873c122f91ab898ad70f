@@ -1,0 +1,25 @@
+"use client";
+import { Backdrop } from "../../internal/backdrop.js";
+import { jsx } from "react/jsx-runtime";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-backdrop.tsx
+/**
+* The dimmed overlay behind the drawer: Base UI's `Drawer.Backdrop` behavior grafted onto the
+* shared `internal/Backdrop` surface (rule 4a). Fades in/out via Base UI's
+* `data-starting-style`/`data-ending-style` transition hooks.
+*
+* Nested drawers keep their own dim (`forceRender` defaults on): Base UI omits a nested Backdrop
+* unless it is set. Pass `forceRender={false}` to opt out.
+*/
+function DrawerBackdrop({ forceRender = true, ...props }) {
+	return /* @__PURE__ */ jsx(Drawer.Backdrop, {
+		...props,
+		forceRender,
+		style: (state) => state.open ? void 0 : { pointerEvents: "none" },
+		render: /* @__PURE__ */ jsx(Backdrop, {})
+	});
+}
+//#endregion
+export { DrawerBackdrop };
+
+//# sourceMappingURL=drawer-backdrop.js.map

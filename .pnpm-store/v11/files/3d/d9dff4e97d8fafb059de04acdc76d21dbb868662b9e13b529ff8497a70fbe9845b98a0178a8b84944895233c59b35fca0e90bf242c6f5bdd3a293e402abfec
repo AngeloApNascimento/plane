@@ -1,0 +1,17 @@
+"use client";
+import * as React from "react";
+//#region src/components/table/table-context.ts
+/**
+* Carries the root `Table`'s `variant` down to each `TableHead`/`TableCell` so they pick the
+* matching borders. Lives in the components tier: a context is cross-tree coordination —
+* composition — not a single-element `elements` concern.
+*/
+const TableVariantContext = React.createContext("table");
+/** Reads the surrounding `Table`'s `variant` (used by the components `TableCell`/`TableHead`). */
+function useTableVariant() {
+	return React.useContext(TableVariantContext);
+}
+//#endregion
+export { TableVariantContext, useTableVariant };
+
+//# sourceMappingURL=table-context.js.map

@@ -1,0 +1,20 @@
+"use client";
+import { accordionHeaderVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/accordion/accordion-header.tsx
+/**
+* The heading wrapper for an accordion trigger. Base-UI-agnostic — graft in `components` via
+* `<BaseAccordion.Header render={<AccordionHeader/>} />`.
+*/
+function AccordionHeader({ render, ...props }) {
+	return useRender({
+		defaultTagName: "h3",
+		render,
+		props: mergeProps({ className: accordionHeaderVariants() }, props)
+	});
+}
+//#endregion
+export { AccordionHeader };
+
+//# sourceMappingURL=accordion-header.js.map

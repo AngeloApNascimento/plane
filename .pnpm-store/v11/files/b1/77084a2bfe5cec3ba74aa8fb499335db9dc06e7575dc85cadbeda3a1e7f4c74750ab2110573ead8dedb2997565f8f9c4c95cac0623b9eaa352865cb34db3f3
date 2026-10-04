@@ -1,0 +1,44 @@
+"use client";
+import { ComboboxInput } from "../../elements/combobox/combobox-input.js";
+import { ComboboxInputGroup as ComboboxInputGroup$1 } from "../../elements/combobox/combobox-input-group.js";
+import { ComboboxInputGroupClear } from "../../elements/combobox/combobox-input-group-clear.js";
+import { Icon } from "../../internal/icon.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-input-group.tsx
+/**
+* The ready-made single-select input frame: grafts Base UI's `InputGroup` onto the styled frame and
+* Base UI's `Input` onto the styled text field, laying out an optional leading `icon` slot and the
+* consumer-provided `clear`/`trigger` controls. `clear` stays `keepMounted` in a reserved slot so
+* the trailing trigger does not shift when the value is empty. When `trigger` is omitted, a
+* decorative chevron is shown. All remaining props pass through to the input (the element that
+* carries the combobox behavior and accessible name).
+*/
+function ComboboxInputGroup({ size, variant, icon, clear, trigger, ...props }) {
+	return /* @__PURE__ */ jsxs(Combobox.InputGroup, {
+		render: /* @__PURE__ */ jsx(ComboboxInputGroup$1, {
+			size,
+			variant
+		}),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(Combobox.Input, {
+				...props,
+				render: /* @__PURE__ */ jsx(ComboboxInput, {})
+			}),
+			clear != null ? /* @__PURE__ */ jsx(ComboboxInputGroupClear, { children: /* @__PURE__ */ jsx(Combobox.Clear, {
+				render: clear,
+				keepMounted: true
+			}) }) : null,
+			trigger != null ? /* @__PURE__ */ jsx(Combobox.Trigger, { render: trigger }) : /* @__PURE__ */ jsx(Icon, {
+				tint: "secondary",
+				children: /* @__PURE__ */ jsx(ChevronDown, { "aria-hidden": true })
+			})
+		]
+	});
+}
+//#endregion
+export { ComboboxInputGroup };
+
+//# sourceMappingURL=combobox-input-group.js.map

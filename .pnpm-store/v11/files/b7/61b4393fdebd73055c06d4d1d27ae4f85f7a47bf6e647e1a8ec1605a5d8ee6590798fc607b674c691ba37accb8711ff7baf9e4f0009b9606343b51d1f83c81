@@ -1,0 +1,14 @@
+"use client";
+import { ComboboxPopupElevation, ComboboxPopupVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-popup.d.ts
+type ComboboxPopupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & ComboboxPopupVariantProps;
+/**
+ * The styled combobox list surface. Base-UI-agnostic — graft the popup behavior in `components` via
+ * `<BaseCombobox.Popup render={<ComboboxPopup elevation="…" />} />`. `raised` is the standalone
+ * surface; `flat` is padding-only for use inside an `OverlayPanel`.
+ */
+declare function ComboboxPopup({ elevation, render, ...props }: ComboboxPopupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxPopup, type ComboboxPopupElevation, ComboboxPopupProps };
+//# sourceMappingURL=combobox-popup.d.ts.map

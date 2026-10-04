@@ -1,0 +1,3 @@
+"use client";
+import { CircularProgress, CircularProgressProps, CircularProgressSize, CircularProgressVariant } from "./circular-progress.js";
+export { CircularProgress, CircularProgressProps, CircularProgressSize, CircularProgressVariant };

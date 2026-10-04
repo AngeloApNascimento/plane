@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/module-states/module-paused.d.ts
+declare function ModulePaused(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ModulePaused };
+//# sourceMappingURL=module-paused.d.ts.map

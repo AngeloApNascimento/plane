@@ -1,0 +1,21 @@
+"use client";
+import { linearProgressValueVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress-value.tsx
+/**
+* The styled percentage readout — a neutral number (the semantic variant lives on the fill, not on
+* the number). Base-UI-agnostic — graft in `components` via `<BaseProgress.Value
+* render={<LinearProgressValue/>} />`.
+*/
+function LinearProgressValue({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: linearProgressValueVariants() }, props)
+	});
+}
+//#endregion
+export { LinearProgressValue };
+
+//# sourceMappingURL=linear-progress-value.js.map

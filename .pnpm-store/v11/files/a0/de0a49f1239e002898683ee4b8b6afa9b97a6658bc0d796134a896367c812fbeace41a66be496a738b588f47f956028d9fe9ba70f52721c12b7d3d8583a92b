@@ -1,0 +1,13 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+//#region src/elements/avatar-group/variants.d.ts
+declare const avatarGroupCounterDefaultVariants: {
+  readonly size: "xs";
+};
+declare const avatarGroupCounterVariants: (props?: ({
+  size?: "sm" | "xs" | "2xs" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type AvatarGroupCounterVariantProps = StrictVariantProps<typeof avatarGroupCounterVariants, keyof typeof avatarGroupCounterDefaultVariants>;
+//#endregion
+export { AvatarGroupCounterVariantProps, avatarGroupCounterVariants };
+//# sourceMappingURL=variants.d.ts.map

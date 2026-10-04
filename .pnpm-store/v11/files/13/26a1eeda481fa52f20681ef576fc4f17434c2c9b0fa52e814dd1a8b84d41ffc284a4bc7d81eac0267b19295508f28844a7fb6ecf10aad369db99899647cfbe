@@ -1,0 +1,12 @@
+"use client";
+import { TabsAppearance, TabsLayout, TabsPanelLayout, TabsStretch } from "./variants.js";
+import { Tab, TabProps } from "./tab.js";
+import { TabUnderlineBar, TabUnderlineBarProps } from "./tab-underline-bar.js";
+import { TabUnderlineBarTrack, TabUnderlineBarTrackProps } from "./tab-underline-bar-track.js";
+import { TabUnderlineLabel, TabUnderlineLabelProps } from "./tab-underline-label.js";
+import { Tabs, TabsProps } from "./tabs.js";
+import { TabsIndicator, TabsIndicatorProps } from "./tabs-indicator.js";
+import { TabsList, TabsListProps } from "./tabs-list.js";
+import { TabsListScrollArea, TabsListScrollAreaProps } from "./tabs-list-scroll-area.js";
+import { TabsPanel, TabsPanelProps } from "./tabs-panel.js";
+export { Tab, TabProps, TabUnderlineBar, TabUnderlineBarProps, TabUnderlineBarTrack, TabUnderlineBarTrackProps, TabUnderlineLabel, TabUnderlineLabelProps, Tabs, type TabsAppearance, TabsIndicator, TabsIndicatorProps, type TabsLayout, TabsList, TabsListProps, TabsListScrollArea, TabsListScrollAreaProps, TabsPanel, type TabsPanelLayout, TabsPanelProps, TabsProps, type TabsStretch };

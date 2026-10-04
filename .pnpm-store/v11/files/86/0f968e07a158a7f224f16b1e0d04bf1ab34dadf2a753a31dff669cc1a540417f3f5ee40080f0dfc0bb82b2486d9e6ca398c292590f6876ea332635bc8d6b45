@@ -1,0 +1,13 @@
+"use client";
+import { DrawerHeaderActionsSide, DrawerHeaderActionsVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-header-actions.d.ts
+type DrawerHeaderActionsProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & DrawerHeaderActionsVariantProps;
+/**
+ * Header icon-button toolbar. `side="start"` / `side="end"` pin the cluster to the header's inline
+ * edges (Figma top-left / top-right sockets). Pass `IconButton`s and/or `DrawerClose`.
+ */
+declare function DrawerHeaderActions({ side, render, ...props }: DrawerHeaderActionsProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerHeaderActions, DrawerHeaderActionsProps, type DrawerHeaderActionsSide };
+//# sourceMappingURL=drawer-header-actions.d.ts.map

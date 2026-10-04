@@ -1,0 +1,27 @@
+"use client";
+import { isClickDisabledTrigger } from "./popover-context.js";
+import { jsx } from "react/jsx-runtime";
+import { Popover } from "@base-ui/react/popover";
+//#region src/components/popover/popover.tsx
+function Popover$1({ onOpenChange, ...props }) {
+	return /* @__PURE__ */ jsx(Popover.Root, {
+		...props,
+		onOpenChange: (open, details) => {
+			if (details.reason === "trigger-press" && isClickDisabledTrigger(details.trigger) && isMouseTriggerPress(details.event)) {
+				details.cancel();
+				return;
+			}
+			onOpenChange?.(open, details);
+		}
+	});
+}
+function isMouseTriggerPress(event) {
+	if (event instanceof KeyboardEvent) return false;
+	if (typeof PointerEvent !== "undefined" && event instanceof PointerEvent) return event.pointerType === "mouse" || event.pointerType === "pen";
+	if (typeof TouchEvent !== "undefined" && event instanceof TouchEvent) return false;
+	return event instanceof MouseEvent && event.detail > 0;
+}
+//#endregion
+export { Popover$1 as Popover };
+
+//# sourceMappingURL=popover.js.map

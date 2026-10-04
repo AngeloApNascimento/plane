@@ -1,0 +1,28 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/toggle/variants.d.ts
+/** Shared size rung for `Toggle` and `IconToggle` — both cvas must cover every entry. */
+declare const toggleSizes: readonly ["xs", "sm", "md"];
+type ToggleSize = (typeof toggleSizes)[number];
+declare const iconToggleDefaultVariants: {
+  readonly variant: "secondary";
+  readonly size: "md";
+};
+declare const iconToggleVariants: (props?: ({
+  variant?: "secondary" | "ghost" | null | undefined;
+  size?: "sm" | "md" | "xs" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type IconToggleVariantConfig = VariantProps<typeof iconToggleVariants>;
+type IconToggleVariant = NonNullable<IconToggleVariantConfig["variant"]>;
+type IconToggleVariantProps = StrictVariantProps<typeof iconToggleVariants, keyof typeof iconToggleDefaultVariants>;
+declare const toggleDefaultVariants: {
+  readonly size: "md";
+};
+declare const toggleVariants: (props?: ({
+  size?: "sm" | "md" | "xs" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type ToggleVariantProps = StrictVariantProps<typeof toggleVariants, keyof typeof toggleDefaultVariants>;
+//#endregion
+export { IconToggleVariant, IconToggleVariantProps, ToggleSize, ToggleVariantProps, iconToggleVariants, toggleVariants };
+//# sourceMappingURL=variants.d.ts.map

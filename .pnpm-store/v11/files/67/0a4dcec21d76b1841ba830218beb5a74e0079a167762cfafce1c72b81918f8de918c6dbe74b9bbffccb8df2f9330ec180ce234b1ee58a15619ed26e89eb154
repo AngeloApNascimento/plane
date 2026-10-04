@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/rocket-filled.d.ts
+declare function RocketFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RocketFilled };
+//# sourceMappingURL=rocket-filled.d.ts.map

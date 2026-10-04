@@ -1,0 +1,9 @@
+"use client";
+import { Collapsible } from "./collapsible.js";
+import { CollapsibleHeader } from "./collapsible-header.js";
+import { CollapsiblePanel } from "./collapsible-panel.js";
+import { CollapsiblePanelContent } from "./collapsible-panel-content.js";
+import { CollapsibleTrigger } from "./collapsible-trigger.js";
+import { CollapsibleTriggerTitle } from "./collapsible-trigger-title.js";
+import { CollapsibleTriggerTrailing } from "./collapsible-trigger-trailing.js";
+export { Collapsible, CollapsibleHeader, CollapsiblePanel, CollapsiblePanelContent, CollapsibleTrigger, CollapsibleTriggerTitle, CollapsibleTriggerTrailing };

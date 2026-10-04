@@ -1,0 +1,26 @@
+
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/icons/workspace-features/time-tracking-filled.tsx
+function TimeTrackingFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsxs("g", {
+			fill: "currentColor",
+			children: [/* @__PURE__ */ jsx("path", {
+				fillRule: "evenodd",
+				d: "M6.667.667a.667.667 0 0 0 0 1.333h.666v.702a6.334 6.334 0 1 0 1.333 0V2h.667a.667.667 0 0 0 0-1.333zm2 5.667a.667.667 0 1 0-1.334 0V9c0 .235.123.452.324.572l1.667 1a.667.667 0 0 0 .685-1.143l-1.343-.806z",
+				clipRule: "evenodd"
+			}), /* @__PURE__ */ jsx("path", { d: "M12.081 2.257c.26-.26.683-.26.943 0l1 1a.667.667 0 0 1-.943.943l-1-1a.667.667 0 0 1 0-.943M3.919 2.257c.26.26.26.682 0 .943l-1 1a.667.667 0 0 1-.943-.943l1-1c.26-.26.682-.26.943 0" })]
+		})
+	});
+}
+//#endregion
+export { TimeTrackingFilled };
+
+//# sourceMappingURL=time-tracking-filled.js.map

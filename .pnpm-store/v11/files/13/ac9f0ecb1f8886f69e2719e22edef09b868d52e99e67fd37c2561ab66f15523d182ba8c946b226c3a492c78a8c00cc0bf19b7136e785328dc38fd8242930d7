@@ -1,0 +1,15 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-skeleton-body.d.ts
+type TableSkeletonBodyProps = Omit<useRender.ComponentProps<"tbody">, "className" | "style">;
+/**
+ * The body section (`<tbody>`) of a loading table: pulsing and non-interactive, so the placeholder
+ * rows inside it neither animate out of step nor take the row hover tint.
+ *
+ * It deliberately does not hold the rows — repeating a row is composition, which belongs to the
+ * ready-made in `components/table`.
+ */
+declare function TableSkeletonBody({ render, ...props }: TableSkeletonBodyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableSkeletonBody, TableSkeletonBodyProps };
+//# sourceMappingURL=table-skeleton-body.d.ts.map

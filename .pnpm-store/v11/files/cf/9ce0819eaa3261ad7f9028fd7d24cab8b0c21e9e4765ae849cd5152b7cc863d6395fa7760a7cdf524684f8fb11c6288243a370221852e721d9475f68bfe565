@@ -1,0 +1,21 @@
+"use client";
+import { scrollAreaCornerVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/scroll-area/scroll-area-corner.tsx
+/**
+* The styled corner that fills the gap where the vertical and horizontal scrollbars meet.
+* Base-UI-agnostic — graft in `components` via `<BaseScrollArea.Corner render={<ScrollAreaCorner/>}
+* />`.
+*/
+function ScrollAreaCorner({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: scrollAreaCornerVariants() }, props)
+	});
+}
+//#endregion
+export { ScrollAreaCorner };
+
+//# sourceMappingURL=scroll-area-corner.js.map

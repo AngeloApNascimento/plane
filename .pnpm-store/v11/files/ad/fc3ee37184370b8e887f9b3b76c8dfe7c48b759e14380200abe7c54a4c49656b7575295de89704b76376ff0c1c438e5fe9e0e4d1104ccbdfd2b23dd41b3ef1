@@ -1,0 +1,34 @@
+"use client";
+import { WorkspaceAvatarProps as WorkspaceAvatarProps$1 } from "../../elements/workspace-avatar/workspace-avatar.js";
+import "../../elements/workspace-avatar/index.js";
+import * as React from "react";
+//#region src/components/workspace-avatar/workspace-avatar.d.ts
+type WorkspaceAvatarProps = WorkspaceAvatarProps$1 & {
+  /** Workspace logo URL. Falls back to the initial when absent/loading/failed. */
+  src?: string;
+  /** Accessible name for the workspace avatar. */
+  alt?: string;
+  /**
+   * Shown when there is no logo. When omitted, derives up to two initials from `alt`; without a
+   * name, shows the anonymous workspace icon.
+   */
+  fallback?: React.ReactNode;
+  /** Milliseconds before the fallback shows, to avoid a flash while `src` loads quickly. */
+  delay?: number;
+  /**
+   * Name shown in a tooltip on hover. Pass `true` to reuse `alt`, or a string for the label (works
+   * without `alt`). Omit for no tooltip.
+   */
+  tooltip?: boolean | string;
+};
+/**
+ * The ready-made workspace avatar: a logo that falls back to initials, or an anonymous workspace
+ * icon when there are no initials either, composed from the `elements/workspace-avatar` parts
+ * (`WorkspaceAvatar` root + `WorkspaceAvatarImage` + `WorkspaceAvatarFallback`). Pass `src` for the
+ * logo and `fallback` for initials; the initials color is chosen automatically and is not a
+ * consumer prop.
+ */
+declare function WorkspaceAvatar({ size, src, alt, fallback, delay, tooltip, tabIndex, ...props }: WorkspaceAvatarProps): React.JSX.Element;
+//#endregion
+export { WorkspaceAvatar, WorkspaceAvatarProps };
+//# sourceMappingURL=workspace-avatar.d.ts.map

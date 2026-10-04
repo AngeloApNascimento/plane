@@ -1,0 +1,27 @@
+"use client";
+import { scrollAreaScrollbarVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/scroll-area/scroll-area-scrollbar.tsx
+/**
+* The styled scrollbar track. Base-UI-agnostic — graft in `components` via
+* `<BaseScrollArea.Scrollbar render={<ScrollAreaScrollbar/>} />` (the Base UI Scrollbar sets the
+* `data-orientation`/`data-hovering`/`data-scrolling` state the cva reads).
+*
+* @param visibility — When the rail shows. @default "auto"
+* @param size — Gutter scale. @default "sm"
+*/
+function ScrollAreaScrollbar({ visibility, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: scrollAreaScrollbarVariants({
+			visibility,
+			size
+		}) }, props)
+	});
+}
+//#endregion
+export { ScrollAreaScrollbar };
+
+//# sourceMappingURL=scroll-area-scrollbar.js.map

@@ -1,0 +1,20 @@
+"use client";
+import { linearProgressLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress-label.tsx
+/**
+* The styled progress label. Base-UI-agnostic — graft in `components` via `<BaseProgress.Label
+* render={<LinearProgressLabel/>} />`.
+*/
+function LinearProgressLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: linearProgressLabelVariants() }, props)
+	});
+}
+//#endregion
+export { LinearProgressLabel };
+
+//# sourceMappingURL=linear-progress-label.js.map

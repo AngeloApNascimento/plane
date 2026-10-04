@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/message-support-outline.d.ts
+declare function MessageSupportOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MessageSupportOutline };
+//# sourceMappingURL=message-support-outline.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/charts/pie-outline.d.ts
+declare function PieOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PieOutline };
+//# sourceMappingURL=pie-outline.d.ts.map

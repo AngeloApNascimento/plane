@@ -1,0 +1,14 @@
+"use client";
+import { DialogActionsProps as DialogActionsProps$1 } from "../../elements/dialog/dialog-actions.js";
+import * as React from "react";
+//#region src/components/dialog/dialog-actions.d.ts
+type DialogActionsProps = Omit<DialogActionsProps$1, "size" | "density">;
+/**
+ * The footer of the dialog popup: an optional `DialogInfo` at the inline-start, then action
+ * buttons. Its gutter follows the `size` chosen on `DialogContent` (16 px, 48 × 18 px at `full`);
+ * `density="compact"` keeps 16 px at `full`. Stays visible while `DialogBody` scrolls.
+ */
+declare function DialogActions(props: DialogActionsProps): React.JSX.Element;
+//#endregion
+export { DialogActions, DialogActionsProps };
+//# sourceMappingURL=dialog-actions.d.ts.map

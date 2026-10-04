@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-close.d.ts
+type DrawerCloseProps = Omit<useRender.ComponentProps<"button">, "className" | "style">;
+/**
+ * The styled bare close control. Place inside the content for a dismiss button. Base-UI-agnostic —
+ * graft the drawer behavior in `components` via `<BaseDrawer.Close render={<DrawerClose />} />`.
+ */
+declare function DrawerClose({ render, ...props }: DrawerCloseProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerClose, DrawerCloseProps };
+//# sourceMappingURL=drawer-close.d.ts.map

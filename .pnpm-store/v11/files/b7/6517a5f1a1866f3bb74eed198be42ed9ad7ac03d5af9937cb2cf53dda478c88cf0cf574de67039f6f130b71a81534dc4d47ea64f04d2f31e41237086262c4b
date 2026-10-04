@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/boolean-outline.d.ts
+declare function BooleanOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BooleanOutline };
+//# sourceMappingURL=boolean-outline.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/memory-filled.d.ts
+declare function MemoryFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MemoryFilled };
+//# sourceMappingURL=memory-filled.d.ts.map

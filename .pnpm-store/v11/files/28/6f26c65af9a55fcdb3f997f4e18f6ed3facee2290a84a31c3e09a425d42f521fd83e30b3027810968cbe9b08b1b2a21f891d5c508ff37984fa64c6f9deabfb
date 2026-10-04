@@ -1,0 +1,25 @@
+"use client";
+import { dialogToolbarVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-toolbar.tsx
+/**
+* Top chrome of the dialog popup, sibling of `DialogMain`. Bottom border spans the popup the way
+* `DialogActions`' top border does — do not put a divider on a child inside Main. Compose a start
+* cluster (tabs, title) and an optional end control. End padding clears the absolute
+* `DialogCloseGroup`, so that control is not under the dismiss.
+*/
+function DialogToolbar({ size, density, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: dialogToolbarVariants({
+			size,
+			density
+		}) }, props)
+	});
+}
+//#endregion
+export { DialogToolbar };
+
+//# sourceMappingURL=dialog-toolbar.js.map

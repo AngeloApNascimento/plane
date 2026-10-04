@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/tool-filled.d.ts
+declare function ToolFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ToolFilled };
+//# sourceMappingURL=tool-filled.d.ts.map

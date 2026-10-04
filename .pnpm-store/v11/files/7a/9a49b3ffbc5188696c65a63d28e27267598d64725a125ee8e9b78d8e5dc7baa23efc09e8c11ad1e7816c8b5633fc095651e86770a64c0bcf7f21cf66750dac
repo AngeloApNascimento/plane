@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/stack-layers-2-filled.d.ts
+declare function StackLayers2Filled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { StackLayers2Filled };
+//# sourceMappingURL=stack-layers-2-filled.d.ts.map

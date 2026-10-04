@@ -1,0 +1,5 @@
+"use client";
+import { AvatarGroup } from "./avatar-group.js";
+import { AvatarGroupCounter } from "./avatar-group-counter.js";
+import { AvatarGroupOverflow } from "./avatar-group-overflow.js";
+export { AvatarGroup, AvatarGroupCounter, AvatarGroupOverflow };

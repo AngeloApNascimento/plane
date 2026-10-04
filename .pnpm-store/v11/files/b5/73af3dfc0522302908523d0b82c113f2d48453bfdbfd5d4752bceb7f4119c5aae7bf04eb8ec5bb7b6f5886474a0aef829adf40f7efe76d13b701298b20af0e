@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell-layout.d.ts
+type TableCellLayoutProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The inline layout inside a plain `TableCell`: a leading node slot, a growing `TableCellContent`,
+ * and a trailing node slot (the shared internal `NodeSlot`). Sets the slot `--node-size`.
+ */
+declare function TableCellLayout({ render, ...props }: TableCellLayoutProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableCellLayout, TableCellLayoutProps };
+//# sourceMappingURL=table-cell-layout.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/check-square-outline.d.ts
+declare function CheckSquareOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CheckSquareOutline };
+//# sourceMappingURL=check-square-outline.d.ts.map

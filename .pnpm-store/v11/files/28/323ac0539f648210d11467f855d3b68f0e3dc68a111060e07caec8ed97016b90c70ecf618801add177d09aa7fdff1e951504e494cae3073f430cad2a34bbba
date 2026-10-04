@@ -1,0 +1,41 @@
+"use client";
+import { AnchorButtonSize, AnchorButtonVariant } from "../../elements/anchor-button/variants.js";
+import { AnchorButtonProps as AnchorButtonProps$1 } from "../../elements/anchor-button/anchor-button.js";
+import "../../elements/anchor-button/index.js";
+import * as React from "react";
+//#region src/components/anchor-button/anchor-button.d.ts
+type AnchorButtonRender = NonNullable<AnchorButtonProps$1["render"]>;
+type AnchorButtonDestinationProps = {
+  href: string;
+  render?: AnchorButtonRender;
+} | {
+  href?: never;
+  render: AnchorButtonRender;
+};
+type AnchorButtonProps = Omit<AnchorButtonProps$1, "children" | "href" | "render"> & AnchorButtonDestinationProps & {
+  /** Icon rendered beside the label (inline-start by default), e.g. `<Icon icon={Plus} />`. */
+  icon?: React.ReactNode;
+  /**
+   * Which side of the label the icon sits on.
+   *
+   * @default "start"
+   */
+  iconPosition?: "start" | "end";
+  /** Visible action/link label. */
+  label: string;
+  /**
+   * Removes the destination and custom renderer, blocks interaction, and leaves an inert anchor.
+   * Toggling this with a custom renderer changes the element type and remounts it.
+   */
+  disabled?: boolean;
+};
+/**
+ * A semantic link with inline text-link chrome. It renders a native `<a>` by default and lays out
+ * an optional `icon` beside the label (`iconPosition`). Pass `href`, or use `render` to project the
+ * anchor props onto a router or framework link. For actions, use `Button`; for a navigation link
+ * wearing button chrome, use `Button`'s render path.
+ */
+declare function AnchorButton({ variant, size, icon, iconPosition, disabled, label, href, render, onAuxClick, onClick, onKeyDown, onKeyUp, onMouseDown, onPointerDown, tabIndex, "aria-disabled": ariaDisabled, ...props }: AnchorButtonProps): React.JSX.Element;
+//#endregion
+export { AnchorButton, AnchorButtonProps, type AnchorButtonSize, type AnchorButtonVariant };
+//# sourceMappingURL=anchor-button.d.ts.map

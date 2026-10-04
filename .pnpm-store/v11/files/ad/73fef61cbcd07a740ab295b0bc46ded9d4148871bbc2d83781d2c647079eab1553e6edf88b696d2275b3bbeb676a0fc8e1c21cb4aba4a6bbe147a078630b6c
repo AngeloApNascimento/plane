@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-body.d.ts
+type DrawerBodyProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The drawer's main content region (the Figma body). Grows to fill the space between the header and
+ * footer and scrolls its own overflow.
+ */
+declare function DrawerBody({ render, ...props }: DrawerBodyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerBody, DrawerBodyProps };
+//# sourceMappingURL=drawer-body.d.ts.map

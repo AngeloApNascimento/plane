@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/drag-drop-outline.d.ts
+declare function DragDropOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DragDropOutline };
+//# sourceMappingURL=drag-drop-outline.d.ts.map

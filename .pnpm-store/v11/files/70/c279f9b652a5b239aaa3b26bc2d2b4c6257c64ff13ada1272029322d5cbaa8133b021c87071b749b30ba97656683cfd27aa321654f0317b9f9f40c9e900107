@@ -1,0 +1,43 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import "react";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/skeleton/variants.d.ts
+declare const skeletonDefaultVariants: {
+  readonly layout: "stack";
+};
+/**
+ * The loading-region frame: pulse lives here so every bone animates together. `layout` is the flex
+ * axis (`stack` / `row`). Inline size is not a cva axis — see `skeletonFrameProps`: exactly one
+ * width utility is emitted per part, chosen from `stretch` and `inlineSize`, so a fit-content
+ * region and an explicit length can never fight over the same property.
+ */
+declare const skeletonVariants: (props?: ({
+  layout?: "row" | "stack" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const skeletonItemDefaultVariants: {
+  readonly variant: "bar";
+};
+/**
+ * One decorative bone. `variant` is the look (`bar` has rounded-md corners; `circle` is a disc).
+ * Height is not an axis — `blockSize` lands as a CSS variable. Omitting it fills a sized region
+ * (`h-full`) and, in an unsized one, keeps the bone one text line tall (`min-h-4`) rather than
+ * collapsing to nothing.
+ */
+declare const skeletonItemVariants: (props?: ({
+  variant?: "circle" | "bar" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+/**
+ * Full vs fit-content inline size of the region. Not a cva axis (see `skeletonFrameProps`), so the
+ * union is declared here and stays the public per-axis type.
+ */
+type SkeletonStretch = "auto" | "full";
+type SkeletonVariantConfig = VariantProps<typeof skeletonVariants>;
+type SkeletonLayout = NonNullable<SkeletonVariantConfig["layout"]>;
+type SkeletonVariantProps = StrictVariantProps<typeof skeletonVariants, keyof typeof skeletonDefaultVariants>;
+type SkeletonItemVariantConfig = VariantProps<typeof skeletonItemVariants>;
+type SkeletonItemVariant = NonNullable<SkeletonItemVariantConfig["variant"]>;
+type SkeletonItemVariantProps = StrictVariantProps<typeof skeletonItemVariants, keyof typeof skeletonItemDefaultVariants>;
+//#endregion
+export { SkeletonItemVariant, SkeletonItemVariantProps, SkeletonLayout, SkeletonStretch, SkeletonVariantProps, skeletonItemVariants, skeletonVariants };
+//# sourceMappingURL=variants.d.ts.map

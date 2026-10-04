@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/create-folder-filled.d.ts
+declare function CreateFolderFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CreateFolderFilled };
+//# sourceMappingURL=create-folder-filled.d.ts.map

@@ -1,0 +1,5 @@
+"use client";
+import { IconButtonSize, IconButtonVariant } from "../../elements/icon-button/variants.js";
+import "../../elements/icon-button/index.js";
+import { IconButton, IconButtonProps } from "./icon-button.js";
+export { IconButton, IconButtonProps, type IconButtonSize, type IconButtonVariant };

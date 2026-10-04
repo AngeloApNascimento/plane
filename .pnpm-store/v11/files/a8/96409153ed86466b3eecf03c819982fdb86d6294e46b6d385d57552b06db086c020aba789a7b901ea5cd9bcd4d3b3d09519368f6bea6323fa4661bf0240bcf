@@ -1,0 +1,23 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+//#region src/elements/fieldset/variants.d.ts
+declare const fieldsetVariants: (props?: ({
+  bordered?: boolean | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const fieldsetLegendVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+/**
+ * Supporting text shown directly below the legend. Steps with `size` the way `FieldDescription`
+ * does: one tier below the legend.
+ */
+declare const fieldsetDescriptionVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type FieldsetVariantProps = StrictVariantProps<typeof fieldsetVariants>;
+type FieldsetLegendVariantProps = StrictVariantProps<typeof fieldsetLegendVariants>;
+type FieldsetDescriptionVariantProps = StrictVariantProps<typeof fieldsetDescriptionVariants>;
+type FieldsetDescriptionSize = NonNullable<FieldsetDescriptionVariantProps["size"]>;
+//#endregion
+export { FieldsetDescriptionSize, FieldsetDescriptionVariantProps, FieldsetLegendVariantProps, FieldsetVariantProps, fieldsetDescriptionVariants, fieldsetLegendVariants, fieldsetVariants };
+//# sourceMappingURL=variants.d.ts.map

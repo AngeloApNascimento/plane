@@ -1,0 +1,4 @@
+"use client";
+import { MenuFooter, MenuFooterProps } from "../../elements/menu/menu-footer.js";
+import "../../elements/menu/index.js";
+export { MenuFooter, type MenuFooterProps };

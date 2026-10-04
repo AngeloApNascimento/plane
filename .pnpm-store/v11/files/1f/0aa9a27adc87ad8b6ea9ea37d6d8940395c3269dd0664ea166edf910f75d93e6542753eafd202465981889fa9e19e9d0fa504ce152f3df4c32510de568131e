@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/insert-excerpt-outline.d.ts
+declare function InsertExcerptOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { InsertExcerptOutline };
+//# sourceMappingURL=insert-excerpt-outline.d.ts.map

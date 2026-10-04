@@ -1,0 +1,26 @@
+
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/icons/cycle-states/cycle-completed.tsx
+function CycleCompleted(props) {
+	return /* @__PURE__ */ jsxs("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		color: "var(--txt-icon-states-completed, currentColor)",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: [/* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M15.081 8A7.08 7.08 0 1 1 .919 8a7.08 7.08 0 0 1 14.162 0M2.69 8a5.31 5.31 0 1 0 10.62 0A5.31 5.31 0 0 0 2.69 8"
+		}), /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0"
+		})]
+	});
+}
+//#endregion
+export { CycleCompleted };
+
+//# sourceMappingURL=cycle-completed.js.map

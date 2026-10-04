@@ -1,0 +1,20 @@
+"use client";
+import { tableCellContentVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell-content.tsx
+/**
+* The growing text region inside a `TableCellLayout`. Truncates instead of overflowing, and carries
+* the column's `align` — the cell's layout is a flex row, so `text-align` has to land here.
+*/
+function TableCellContent({ align, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: tableCellContentVariants({ align }) }, props)
+	});
+}
+//#endregion
+export { TableCellContent };
+
+//# sourceMappingURL=table-cell-content.js.map

@@ -1,0 +1,16 @@
+"use client";
+import { ToggleGroup } from "@base-ui/react/toggle-group";
+//#region src/components/toolbar/toolbar-toggle-group.d.ts
+type ToolbarToggleGroupProps<Value extends string = string> = Omit<ToggleGroup.Props<Value>, "className" | "style" | "render" | "aria-label"> & {
+  /** Accessible name for the toggle cluster. */
+  "aria-label": string;
+};
+/**
+ * A cluster of `ToolbarToggle`s sharing one selection: grafts Base UI `Toolbar.Group` (toolbar
+ * group semantics + group `disabled`) and `ToggleGroup` (value state) onto the styled toggle-group
+ * container. Drive it with `value`/`defaultValue` + `onValueChange`. An `aria-label` is required.
+ */
+declare function ToolbarToggleGroup<Value extends string = string>({ disabled, ...props }: ToolbarToggleGroupProps<Value>): import("react").JSX.Element;
+//#endregion
+export { ToolbarToggleGroup, ToolbarToggleGroupProps };
+//# sourceMappingURL=toolbar-toggle-group.d.ts.map

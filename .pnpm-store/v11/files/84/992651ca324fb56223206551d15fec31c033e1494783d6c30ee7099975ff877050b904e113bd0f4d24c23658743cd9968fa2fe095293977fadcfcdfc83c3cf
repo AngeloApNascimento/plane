@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/corner-up-left-filled.d.ts
+declare function CornerUpLeftFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CornerUpLeftFilled };
+//# sourceMappingURL=corner-up-left-filled.d.ts.map

@@ -1,0 +1,13 @@
+"use client";
+import { MenuItemLayout, MenuItemVariant, MenuRowVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-item.d.ts
+type MenuItemProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & MenuRowVariantProps;
+/**
+ * A styled selectable menu row. Base-UI-agnostic — graft the menu-item behavior in `components` via
+ * `<BaseMenu.Item render={<MenuItem layout="…" />} />`.
+ */
+declare function MenuItem({ layout, variant, render, ...props }: MenuItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuItem, type MenuItemLayout, MenuItemProps, type MenuItemVariant };
+//# sourceMappingURL=menu-item.d.ts.map

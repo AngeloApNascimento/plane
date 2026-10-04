@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/convert-to-work-item-outline.d.ts
+declare function ConvertToWorkItemOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ConvertToWorkItemOutline };
+//# sourceMappingURL=convert-to-work-item-outline.d.ts.map

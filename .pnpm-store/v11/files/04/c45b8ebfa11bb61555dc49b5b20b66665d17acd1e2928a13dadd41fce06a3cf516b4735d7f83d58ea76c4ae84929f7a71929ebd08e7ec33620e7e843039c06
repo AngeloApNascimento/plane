@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-range-current.d.ts
+type PaginationRangeCurrentProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The emphasized current-range portion (e.g. `1-50`) inside `PaginationRange`, in the primary text
+ * color.
+ */
+declare function PaginationRangeCurrent({ render, ...props }: PaginationRangeCurrentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationRangeCurrent, PaginationRangeCurrentProps };
+//# sourceMappingURL=pagination-range-current.d.ts.map

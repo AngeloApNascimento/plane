@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/2-columns-outline.d.ts
+declare function Icon2ColumnsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Icon2ColumnsOutline };
+//# sourceMappingURL=2-columns-outline.d.ts.map

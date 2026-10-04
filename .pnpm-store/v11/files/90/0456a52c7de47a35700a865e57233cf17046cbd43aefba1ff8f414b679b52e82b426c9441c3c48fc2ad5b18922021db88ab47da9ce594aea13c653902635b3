@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/rank-outline.d.ts
+declare function RankOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RankOutline };
+//# sourceMappingURL=rank-outline.d.ts.map

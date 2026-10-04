@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/file-spreadsheet-filled.d.ts
+declare function FileSpreadsheetFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FileSpreadsheetFilled };
+//# sourceMappingURL=file-spreadsheet-filled.d.ts.map

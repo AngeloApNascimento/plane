@@ -1,0 +1,22 @@
+"use client";
+import { DialogActions as DialogActions$1 } from "../../elements/dialog/dialog-actions.js";
+import { DialogDensityContext, DialogSizeContext } from "./dialog-context.js";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/dialog/dialog-actions.tsx
+/**
+* The footer of the dialog popup: an optional `DialogInfo` at the inline-start, then action
+* buttons. Its gutter follows the `size` chosen on `DialogContent` (16 px, 48 × 18 px at `full`);
+* `density="compact"` keeps 16 px at `full`. Stays visible while `DialogBody` scrolls.
+*/
+function DialogActions(props) {
+	return /* @__PURE__ */ jsx(DialogActions$1, {
+		size: React.useContext(DialogSizeContext),
+		density: React.useContext(DialogDensityContext),
+		...props
+	});
+}
+//#endregion
+export { DialogActions };
+
+//# sourceMappingURL=dialog-actions.js.map

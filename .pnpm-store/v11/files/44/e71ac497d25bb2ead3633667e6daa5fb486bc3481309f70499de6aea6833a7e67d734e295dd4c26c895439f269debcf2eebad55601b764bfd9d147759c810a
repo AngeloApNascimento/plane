@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/companion-outline.d.ts
+declare function CompanionOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CompanionOutline };
+//# sourceMappingURL=companion-outline.d.ts.map

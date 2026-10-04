@@ -1,0 +1,14 @@
+"use client";
+import { ToolbarItemVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-link.d.ts
+type ToolbarLinkProps = Omit<useRender.ComponentProps<"a">, "className" | "style"> & ToolbarItemVariantProps;
+/**
+ * The styled chrome for a toolbar item that navigates — a single `<a>` sharing the item chrome with
+ * `ToolbarButton` (rule 6c: different element, same look). Base-UI-agnostic: graft the toolbar link
+ * behavior in `components` via `<BaseToolbar.Link render={<ToolbarLink/>} />`.
+ */
+declare function ToolbarLink({ size, labeled, render, ...props }: ToolbarLinkProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToolbarLink, ToolbarLinkProps };
+//# sourceMappingURL=toolbar-link.d.ts.map

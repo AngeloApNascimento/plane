@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/text-area-field/text-area-field.d.ts
+type TextAreaFieldProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The layout frame for a text area field (label above the control). Base-UI-agnostic — graft
+ * `Field.Root` in `components` via `<BaseField.Root render={<TextAreaField/>} />`.
+ */
+declare function TextAreaField({ render, ...props }: TextAreaFieldProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TextAreaField, TextAreaFieldProps };
+//# sourceMappingURL=text-area-field.d.ts.map

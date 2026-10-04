@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/connections-filled.d.ts
+declare function ConnectionsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ConnectionsFilled };
+//# sourceMappingURL=connections-filled.d.ts.map

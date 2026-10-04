@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/404-outline.d.ts
+declare function Icon404Outline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Icon404Outline };
+//# sourceMappingURL=404-outline.d.ts.map

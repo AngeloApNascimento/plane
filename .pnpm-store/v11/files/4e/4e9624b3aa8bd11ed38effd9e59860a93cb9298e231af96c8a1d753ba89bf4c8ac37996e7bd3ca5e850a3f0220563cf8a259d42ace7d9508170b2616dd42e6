@@ -1,0 +1,14 @@
+"use client";
+import { CollapsibleTriggerPlacement, CollapsibleTriggerVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/collapsible/collapsible-trigger.d.ts
+type CollapsibleTriggerProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & CollapsibleTriggerVariantProps;
+/**
+ * The styled disclosure trigger button. Base-UI-agnostic — graft the collapsible behavior in
+ * `components` via `<BaseCollapsible.Trigger render={<CollapsibleTrigger/>} />`, which sets
+ * `aria-expanded`/`aria-controls` and reflects open state as `[data-panel-open]`.
+ */
+declare function CollapsibleTrigger({ placement, render, ...props }: CollapsibleTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { CollapsibleTrigger, type CollapsibleTriggerPlacement, CollapsibleTriggerProps };
+//# sourceMappingURL=collapsible-trigger.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/layouts/card-filled.d.ts
+declare function CardFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CardFilled };
+//# sourceMappingURL=card-filled.d.ts.map

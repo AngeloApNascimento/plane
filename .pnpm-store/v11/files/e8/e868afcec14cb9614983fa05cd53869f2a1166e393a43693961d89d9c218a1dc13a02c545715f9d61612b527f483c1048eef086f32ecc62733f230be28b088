@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/monospace-outline.d.ts
+declare function MonospaceOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MonospaceOutline };
+//# sourceMappingURL=monospace-outline.d.ts.map

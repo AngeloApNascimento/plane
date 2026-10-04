@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-trigger-label.d.ts
+type NavigationMenuTriggerLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The trigger's text label, sitting beside the disclosure `NavigationMenuIcon`. Splitting the label
+ * into its own styled part keeps `NavigationMenuTrigger` a single styled element that composes
+ * parts rather than baking in raw text.
+ */
+declare function NavigationMenuTriggerLabel({ render, ...props }: NavigationMenuTriggerLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NavigationMenuTriggerLabel, NavigationMenuTriggerLabelProps };
+//# sourceMappingURL=navigation-menu-trigger-label.d.ts.map

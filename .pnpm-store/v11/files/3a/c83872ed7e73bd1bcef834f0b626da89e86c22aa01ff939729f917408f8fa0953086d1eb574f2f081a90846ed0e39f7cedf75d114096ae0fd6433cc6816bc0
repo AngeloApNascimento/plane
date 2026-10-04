@@ -1,0 +1,34 @@
+"use client";
+import { ComboboxContentSizing, ComboboxSurfaceProps } from "./combobox-content.shared.js";
+//#region src/components/combobox/combobox-content.d.ts
+type ComboboxContentProps = Omit<ComboboxSurfaceProps, "side" | "sideOffset" | "align" | "sizing"> & {
+  /** Which side of the input the list opens toward. @default "bottom" */
+  side?: ComboboxSurfaceProps["side"];
+  /** Distance in px between the input and the list. @default 4 */
+  sideOffset?: ComboboxSurfaceProps["sideOffset"];
+  /** Alignment of the list relative to the input along `side`. @default "start" */
+  align?: ComboboxSurfaceProps["align"];
+  /**
+   * How the popup takes its width. `anchor` matches the input's width, grows only with its content
+   * up to the room beside the input, and caps the list at 288px tall. `auto` is the content's width
+   * instead — never narrower than 192px, never wider than 384px or the room beside the input, and
+   * held while open so a filtering list does not reflow; it caps the list at 384px tall.
+   *
+   * @default "anchor"
+   */
+  sizing?: ComboboxSurfaceProps["sizing"];
+};
+/**
+ * The combobox list surface: Base UI portal + positioner, with `Combobox.Popup` grafted onto the
+ * same elevated `OverlayPanel` `MenuContent` uses. Search/footer therefore live _inside_ the dialog
+ * (unlike Menu, where they must sit outside `role="menu"`). The inner `ComboboxPopup` is
+ * padding-only; sticky chrome stays pinned outside the scroll area.
+ *
+ * When the input is in the panel (`ComboboxSearch` in `search`), the overlay is a dialog — name it
+ * with `aria-labelledby` on the visible field label, or `aria-label`. Filter-in-field compositions
+ * (`ComboboxInputGroup` / `ComboboxChips`) keep `role="presentation"` and need no dialog name.
+ */
+declare function ComboboxContent({ side, sideOffset, align, sizing, ...props }: ComboboxContentProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxContent, ComboboxContentProps, type ComboboxContentSizing };
+//# sourceMappingURL=combobox-content.d.ts.map

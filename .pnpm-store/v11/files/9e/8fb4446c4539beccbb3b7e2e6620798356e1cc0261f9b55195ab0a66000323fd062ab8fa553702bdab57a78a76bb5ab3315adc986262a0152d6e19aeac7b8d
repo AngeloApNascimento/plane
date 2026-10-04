@@ -1,0 +1,41 @@
+"use client";
+import { Collapsible as Collapsible$1 } from "../../elements/collapsible/collapsible.js";
+import { CollapsiblePanel } from "../../elements/collapsible/collapsible-panel.js";
+import { ListSectionPanelContent } from "../../elements/list/list-section-panel-content.js";
+import { ListSectionTrigger } from "../../elements/list/list-section-trigger.js";
+import { DisclosureIndicator } from "../../internal/disclosure-indicator.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { Collapsible } from "@base-ui/react/collapsible";
+//#region src/components/list/list-section.tsx
+/**
+* A ready-made collapsible list section: a muted heading that toggles its body, with the disclosure
+* chevron (points inline-end while collapsed, rotates down when open). Pass `label` for the heading
+* and `children` for the body (typically a `List` of rows); forward `defaultOpen` (uncontrolled) or
+* `open` + `onOpenChange` (controlled) to drive it. Set `indicator={false}` to omit the chevron.
+*
+* Children sit in `ListSectionPanelContent` (heading-to-row gap only) inside the height-animating
+* panel — list rows own their own horizontal padding, so this does not wrap
+* `CollapsiblePanelContent` (that part carries Collapsible's Figma panel inset + prose).
+*/
+function ListSection({ label, children, indicator = true, render, ...props }) {
+	return /* @__PURE__ */ jsxs(Collapsible.Root, {
+		...props,
+		render: /* @__PURE__ */ jsx(Collapsible$1, { render }),
+		children: [/* @__PURE__ */ jsxs(Collapsible.Trigger, {
+			render: /* @__PURE__ */ jsx(ListSectionTrigger, {}),
+			children: [label, indicator ? /* @__PURE__ */ jsx(DisclosureIndicator, {
+				motion: "disclose",
+				tint: "secondary",
+				children: /* @__PURE__ */ jsx(ChevronDown, {})
+			}) : null]
+		}), /* @__PURE__ */ jsx(Collapsible.Panel, {
+			render: /* @__PURE__ */ jsx(CollapsiblePanel, {}),
+			children: /* @__PURE__ */ jsx(ListSectionPanelContent, { children })
+		})]
+	});
+}
+//#endregion
+export { ListSection };
+
+//# sourceMappingURL=list-section.js.map

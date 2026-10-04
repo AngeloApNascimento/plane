@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/sub-brands/plane-ai-two.d.ts
+declare function PlaneAiTwo(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PlaneAiTwo };
+//# sourceMappingURL=plane-ai-two.d.ts.map

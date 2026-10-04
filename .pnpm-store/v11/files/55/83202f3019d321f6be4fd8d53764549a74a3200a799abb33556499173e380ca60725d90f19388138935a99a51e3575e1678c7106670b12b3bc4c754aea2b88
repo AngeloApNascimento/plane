@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tab-underline-bar.d.ts
+type TabUnderlineBarProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The decorative bar beneath an `underline`-variant tab's label: tints on hover and goes
+ * transparent when active (the shared `TabsIndicator` takes over). Sits inside a
+ * `TabUnderlineBarTrack`. Owns the styled `<span>` so the underline cva stays internal.
+ */
+declare function TabUnderlineBar({ render, ...props }: TabUnderlineBarProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TabUnderlineBar, TabUnderlineBarProps };
+//# sourceMappingURL=tab-underline-bar.d.ts.map

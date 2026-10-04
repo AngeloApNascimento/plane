@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/mail-x-outline.d.ts
+declare function MailXOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MailXOutline };
+//# sourceMappingURL=mail-x-outline.d.ts.map

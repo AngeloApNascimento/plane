@@ -1,0 +1,19 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+//#region src/elements/linear-progress/variants.d.ts
+declare const linearProgressTrackVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+/**
+ * Indicator fill variants. `variant` drives the fill color of the bar; all other indicator styles
+ * (pill radius, transition, inset) are always the same. Base UI's `data-indeterminate` triggers a
+ * slide-pulse so the bar can communicate an unknown-duration operation without a fixed value.
+ */
+declare const linearProgressIndicatorVariants: (props?: ({
+  variant?: "danger" | "brand" | "success" | "warning" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type LinearProgressTrackVariantProps = StrictVariantProps<typeof linearProgressTrackVariants>;
+type LinearProgressIndicatorVariantProps = StrictVariantProps<typeof linearProgressIndicatorVariants>;
+//#endregion
+export { LinearProgressIndicatorVariantProps, LinearProgressTrackVariantProps, linearProgressIndicatorVariants, linearProgressTrackVariants };
+//# sourceMappingURL=variants.d.ts.map

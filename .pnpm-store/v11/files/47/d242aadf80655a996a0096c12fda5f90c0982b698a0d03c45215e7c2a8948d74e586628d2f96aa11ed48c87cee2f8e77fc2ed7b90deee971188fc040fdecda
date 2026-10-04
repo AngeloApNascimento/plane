@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/formatting-and-editors/align-left-outline.tsx
+function AlignLeftOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M11 11.375a.625.625 0 0 1 0 1.25H2.334a.625.625 0 1 1 0-1.25zm2.666-2.667a.625.625 0 0 1 0 1.25H2.334a.625.625 0 1 1 0-1.25zm-2.665-2.666a.625.625 0 0 1 0 1.25H2.334a.625.625 0 0 1 0-1.25zm2.665-2.667a.625.625 0 1 1 0 1.25H2.334a.625.625 0 1 1 0-1.25z"
+		})
+	});
+}
+//#endregion
+export { AlignLeftOutline };
+
+//# sourceMappingURL=align-left-outline.js.map

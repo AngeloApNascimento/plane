@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/anchor-link-filled.d.ts
+declare function AnchorLinkFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AnchorLinkFilled };
+//# sourceMappingURL=anchor-link-filled.d.ts.map

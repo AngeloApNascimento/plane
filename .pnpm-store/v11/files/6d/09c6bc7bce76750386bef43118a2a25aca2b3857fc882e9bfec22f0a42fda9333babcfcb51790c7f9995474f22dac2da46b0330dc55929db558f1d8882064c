@@ -1,0 +1,14 @@
+"use client";
+import { ToastStatusIconVariantProps, ToastVariant } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-status-icon.d.ts
+type ToastStatusIconProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & ToastStatusIconVariantProps;
+/**
+ * The variant-colored status-icon slot at a toast's inline-start. A single styled `<span>` that
+ * sizes and colors its bare `<svg>` glyph child (passed as `children`); the variant→glyph mapping
+ * is a `components` concern (see `components/toast`).
+ */
+declare function ToastStatusIcon({ variant, render, ...props }: ToastStatusIconProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToastStatusIcon, ToastStatusIconProps, type ToastVariant };
+//# sourceMappingURL=toast-status-icon.d.ts.map

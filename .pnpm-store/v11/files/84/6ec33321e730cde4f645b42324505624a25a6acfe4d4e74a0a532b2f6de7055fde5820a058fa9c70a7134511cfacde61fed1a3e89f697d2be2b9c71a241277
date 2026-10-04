@@ -1,0 +1,59 @@
+"use client";
+import { AutocompleteProps } from "../autocomplete/autocomplete.js";
+import { AutocompleteSize } from "../../elements/autocomplete/variants.js";
+import "../autocomplete/index.js";
+import * as React from "react";
+//#region src/components/expandable-search/expandable-search.d.ts
+type ExpandableSearchProps<Value = string> = Omit<AutocompleteProps<Value>, "children"> & {
+  /** Accessible name applied to both the collapsed trigger and the expanded input. */
+  "aria-label": string;
+  /** Accessible name for the clear button shown once the input has a value. Localizable. */
+  clearLabel: string;
+  /**
+   * Size, shared by the collapsed trigger and the expanded input row (same scale as
+   * `Autocomplete`). The trigger/clear `IconButton`s step one ladder rung below it (see
+   * `ICON_BUTTON_SIZE`), so the collapsed icon reads as a smaller control inside the expanded row's
+   * own box — `ExpandableSearchTrigger` pads that box up to the row's height at the same step, so
+   * toggling between them never shifts height.
+   */
+  size: AutocompleteSize;
+  /**
+   * Input placeholder shown once expanded.
+   *
+   * @default "Search…"
+   */
+  placeholder?: string;
+  /**
+   * Controlled expand state. When set, the trigger/row visibility is driven by the consumer (e.g. a
+   * `/` shortcut). Pair with `onExpandedChange`. Distinct from Autocomplete's `open` (popup).
+   */
+  expanded?: boolean;
+  /**
+   * Uncontrolled initial expand state. Defaults to expanded when `value`/`defaultValue` is
+   * non-empty so a pre-filled search is not trapped under an inert trigger.
+   */
+  defaultExpanded?: boolean;
+  /** Called when expand state changes, in both controlled and uncontrolled mode. */
+  onExpandedChange?: (expanded: boolean) => void;
+  /** Popup content (e.g. `AutocompleteContent`) shown once expanded, when `items` are provided. */
+  children?: React.ReactNode;
+};
+/**
+ * A collapsed icon trigger that expands into a search input on click, collapsing again on blur or
+ * Escape while empty — unless it's `required` and still invalid, in which case it stays expanded so
+ * the field remains focusable instead of collapsing back into an inert trigger. Escape restores
+ * focus to the trigger. Expand is controllable via `expanded`/`defaultExpanded`/`onExpandedChange`
+ * (separate from Autocomplete's popup `open`). Built on `Autocomplete` — pass `items` and
+ * `children` (e.g. `AutocompleteContent`) for suggestions, or omit both for a plain search box.
+ * Without `children` the popup is forced closed (no listbox ever mounts), so a plain search box
+ * never claims `aria-expanded`. Non-empty `value`/`defaultValue` starts expanded (and controlled
+ * non-empty `value` keeps it expanded); a controlled `open` is forced closed while collapsed so a
+ * popup never mounts over an inert input. The `Autocomplete` root and its input stay mounted at
+ * every state — the trigger/row swap width via an animated CSS grid track and `inert` instead of
+ * unmounting or `hidden` — so a `required`/`defaultValue` input keeps working under native form
+ * validation and keeps its own state across collapse/expand instead of resetting.
+ */
+declare function ExpandableSearch<Value = string>({ "aria-label": ariaLabel, clearLabel, size, placeholder, children, open, disabled, value, defaultValue, expanded: expandedProp, defaultExpanded, onExpandedChange, ...rootProps }: ExpandableSearchProps<Value>): React.JSX.Element;
+//#endregion
+export { ExpandableSearch, ExpandableSearchProps };
+//# sourceMappingURL=expandable-search.d.ts.map

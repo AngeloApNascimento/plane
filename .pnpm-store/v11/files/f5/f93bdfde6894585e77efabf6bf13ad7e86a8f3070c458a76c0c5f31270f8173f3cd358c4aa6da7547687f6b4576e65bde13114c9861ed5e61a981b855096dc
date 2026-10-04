@@ -1,0 +1,17 @@
+"use client";
+import { bannerActionsVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/banner/banner-actions.tsx
+/** The trailing actions group, placed after the message at the banner's inline-end. */
+function BannerActions({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: bannerActionsVariants() }, props)
+	});
+}
+//#endregion
+export { BannerActions };
+
+//# sourceMappingURL=banner-actions.js.map

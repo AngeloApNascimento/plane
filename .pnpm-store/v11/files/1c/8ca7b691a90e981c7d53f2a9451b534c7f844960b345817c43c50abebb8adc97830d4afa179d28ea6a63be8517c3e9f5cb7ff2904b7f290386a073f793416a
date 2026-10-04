@@ -1,0 +1,20 @@
+"use client";
+import { expandableSearchTriggerVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/expandable-search/expandable-search-trigger.tsx
+/**
+* Centers the collapsed trigger's own (smaller) `IconButton` square inside a box matching the
+* expanded row's height at the same size step, so collapsing/expanding never shifts height.
+*/
+function ExpandableSearchTrigger({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: expandableSearchTriggerVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { ExpandableSearchTrigger };
+
+//# sourceMappingURL=expandable-search-trigger.js.map

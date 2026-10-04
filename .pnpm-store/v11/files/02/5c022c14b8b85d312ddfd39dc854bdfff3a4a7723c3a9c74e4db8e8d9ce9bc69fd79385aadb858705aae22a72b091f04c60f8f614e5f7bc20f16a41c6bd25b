@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/work-item-states/work-item-done.d.ts
+declare function WorkItemDone(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { WorkItemDone };
+//# sourceMappingURL=work-item-done.d.ts.map

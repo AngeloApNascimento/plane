@@ -1,0 +1,154 @@
+"use client";
+import { nodeSlotClass } from "../../internal/node-slot.js";
+import { fieldControlSurfaceVariants } from "../../internal/field-control-surface.js";
+import { controlGroupClass, controlSize } from "../../internal/control-group.js";
+import { controlInputClass } from "../../internal/control-input.js";
+import { listboxEmptyClass } from "../../internal/listbox-empty.js";
+import { checkboxBoxVariants } from "../../internal/checkbox-box.js";
+import { menuItemIndicatorClass, menuListPopupVariants, menuRowBaseClass, menuRowHighlightClass, menuRowPopupOpenHighlightClass, menuRowSingleClass, menuSeparatorClass, menuSubmenuRowVariantClasses } from "../../internal/menu-row-parts.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/combobox/variants.ts
+const comboboxFrameSize = {
+	md: cx(controlSize.md, "gap-(--control-gap-md) rounded-(--control-radius-md) px-(--field-inset-md)"),
+	lg: cx(controlSize.lg, "gap-(--control-gap-lg) rounded-(--control-radius-lg) px-(--field-inset-lg)"),
+	xl: cx(controlSize.xl, "gap-(--control-gap-xl) rounded-(--control-radius-xl) px-(--field-inset-xl)"),
+	"2xl": cx(controlSize["2xl"], "gap-(--control-gap-2xl) rounded-(--control-radius-2xl) px-(--field-inset-2xl)")
+};
+const comboboxGhostFrameClass = cx("border border-transparent bg-layer-transparent", "hover:bg-layer-transparent-hover", "data-disabled:cursor-not-allowed data-disabled:border-transparent data-disabled:bg-transparent data-disabled:text-disabled data-disabled:hover:bg-transparent");
+const comboboxInputGroupVariants = cva(cx("group/control flex min-w-72 items-center transition-[color,background-color,border-color,box-shadow]", "has-[button]:pr-1"), {
+	variants: {
+		/**
+		* Frame look. `neutral` is the bordered field surface; `ghost` is borderless and fills only
+		* on hover / focus / open.
+		*/
+		variant: {
+			neutral: controlGroupClass,
+			ghost: cx(comboboxGhostFrameClass, "focus-within:bg-layer-transparent-active", "has-[[data-popup-open]]:bg-layer-transparent-active", "has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-transparent")
+		},
+		size: comboboxFrameSize
+	},
+	defaultVariants: { variant: "neutral" }
+});
+const comboboxInputVariants = cva(cx(controlInputClass, "flex-1"));
+const comboboxInputGroupClearVariants = cva("shrink-0 [&>*:not([data-visible])]:invisible");
+/**
+* The closed-field trigger: a focusable button (not a filter input). Same geometry as
+* `ComboboxInputGroup`, but `focus-visible` keys off this element — it IS the control, like
+* `SelectTrigger`.
+*/
+const comboboxTriggerVariants = cva(cx("group/control flex min-w-72 items-center text-start outline-none", "transition-[color,background-color,border-color,box-shadow]", "text-primary data-placeholder:text-placeholder"), {
+	variants: {
+		/**
+		* Frame look. `neutral` is the bordered field surface; `ghost` is borderless and fills only
+		* on hover / focus / open.
+		*/
+		variant: {
+			neutral: cx(fieldControlSurfaceVariants({ focus: "visible" }), "hover:border-strong hover:bg-layer-2-hover", "data-popup-open:border-accent-strong data-popup-open:ring-2 data-popup-open:ring-accent-strong/20", "data-invalid:data-popup-open:border-danger-strong data-invalid:data-popup-open:ring-danger-strong/20", "data-disabled:cursor-not-allowed data-disabled:border-subtle-1 data-disabled:bg-layer-2 data-disabled:text-disabled data-disabled:ring-0 data-disabled:hover:border-subtle-1 data-disabled:hover:bg-layer-2"),
+			ghost: cx(comboboxGhostFrameClass, "focus-visible:bg-layer-transparent-active", "data-popup-open:bg-layer-transparent-active")
+		},
+		size: comboboxFrameSize
+	},
+	defaultVariants: { variant: "neutral" }
+});
+/** Selected-value (or placeholder) label inside `ComboboxTrigger`. */
+const comboboxValueVariants = cva("min-w-0 flex-1 truncate");
+const comboboxChipsVariants = cva(cx("group/control flex min-w-72 items-center transition-[color,background-color,border-color,box-shadow]", "py-1", "has-[>button]:pr-1"), {
+	variants: {
+		/**
+		* Frame look. `neutral` is the bordered field surface; `ghost` is borderless and fills only
+		* on hover / focus / open.
+		*/
+		variant: {
+			neutral: controlGroupClass,
+			ghost: cx(comboboxGhostFrameClass, "focus-within:bg-layer-transparent-active", "has-[[data-popup-open]]:bg-layer-transparent-active", "has-[:disabled]:cursor-not-allowed has-[:disabled]:bg-transparent")
+		},
+		size: comboboxFrameSize,
+		layout: {
+			wrap: "flex-wrap",
+			collapse: "flex-nowrap overflow-hidden"
+		}
+	},
+	defaultVariants: { variant: "neutral" }
+});
+const comboboxChipVariants = cva(cx("flex max-w-[150px] min-w-0 shrink-0 cursor-default items-center gap-1 overflow-hidden rounded-sm border-sm border-subtle-1 bg-layer-2 ps-1.5 pe-0.5 text-secondary", "outline-none focus-visible:ring-2 focus-visible:ring-accent-strong", "data-disabled:cursor-not-allowed data-disabled:border-subtle-1 data-disabled:text-disabled"), { variants: { size: {
+	xs: "relative h-(--control-height-xs) text-caption-md-regular [--node-size:var(--control-glyph-xs)] before:absolute before:-inset-0.5 before:-z-10 before:content-['']",
+	sm: "h-(--control-height-sm) text-body-xs-regular [--node-size:var(--control-glyph-sm)]",
+	md: "h-(--control-height-md) text-body-xs-regular [--node-size:var(--control-glyph-md)]",
+	lg: "h-(--control-height-lg) text-body-sm-regular [--node-size:var(--control-glyph-lg)]"
+} } });
+const comboboxChipOverflowVariants = cva("shrink-0 truncate text-placeholder select-none", { variants: { size: {
+	xs: "text-caption-md-regular",
+	sm: "text-body-xs-regular",
+	md: "text-body-xs-regular",
+	lg: "text-body-sm-regular"
+} } });
+/** Popup: shared raised/flat list surface (see `internal/menu-row-parts`). */
+const comboboxPopupVariants = menuListPopupVariants;
+/** Option row: the shared menu-row chrome so the combobox list matches the dropdown panel. */
+const comboboxItemVariants = cva(cx(menuRowBaseClass, menuRowSingleClass, menuRowHighlightClass, "border-0 bg-transparent py-0 text-start"), {
+	variants: { 
+	/**
+	* Row look. `neutral` is the standard text hierarchy, `accent` marks the primary action, and
+	* `danger` marks a destructive one.
+	*/
+variant: {
+		neutral: "text-primary",
+		accent: "text-accent-primary data-disabled:text-disabled data-highlighted:text-accent-primary",
+		danger: "text-danger-primary data-disabled:text-disabled data-highlighted:text-danger-primary"
+	} },
+	defaultVariants: { variant: "neutral" }
+});
+/**
+* Submenu-trigger row: the same menu-row chrome as `comboboxItemVariants`, plus the
+* `data-popup-open` highlight that keeps the row lit while its nested list is open beside it. The
+* look palette is `menuSubmenuRowVariantClasses` rather than the option row's own, so an
+* accent/danger submenu row holds its text colour while open (shared with `MenuSubmenuTrigger`).
+*/
+const comboboxSubmenuTriggerVariants = cva(cx(menuRowBaseClass, menuRowSingleClass, menuRowHighlightClass, menuRowPopupOpenHighlightClass, "border-0 bg-transparent py-0 text-start"), {
+	variants: { 
+	/**
+	* Row look. `neutral` is the standard text hierarchy, `accent` marks the primary action, and
+	* `danger` marks a destructive one.
+	*/
+variant: menuSubmenuRowVariantClasses },
+	defaultVariants: { variant: "neutral" }
+});
+const comboboxItemContentVariants = cva("flex min-w-0 flex-1 flex-col gap-1");
+const comboboxItemTitleVariants = cva("truncate");
+const comboboxItemTrailingVariants = cva(nodeSlotClass);
+const comboboxItemControlVariants = cva("flex shrink-0 items-center");
+/** Trailing single-select check gutter — shared `menuItemIndicatorClass`. */
+const comboboxItemIndicatorVariants = cva(menuItemIndicatorClass);
+/**
+* Checkbox-row indicator: the leading checkbox BOX, the marker that stays at the inline-start while
+* the single-select check moved to the inline-end. Combobox's `ItemIndicator` speaks
+* `data-selected` (not Menu's `data-checked`), so the filled look and glyph visibility key off
+* that. Kept mounted so the empty box shows when unselected. `data-indeterminate` (set by
+* `ComboboxSelectAll` when only some items are selected) gets the same fill — the glyph itself
+* (`Check` vs `Minus`) is chosen in JS by the consumer, not toggled here, since this indicator has
+* no Base UI-mounted counterpart to split across the way `Checkbox`'s two `Indicator`s do.
+*/
+const comboboxCheckboxItemIndicatorVariants = cva(cx(checkboxBoxVariants(), nodeSlotClass, "data-selected:bg-accent-primary data-selected:text-icon-on-color data-selected:shadow-none", "data-selected:not-data-disabled:hover:bg-accent-primary-hover", "data-indeterminate:bg-accent-primary data-indeterminate:text-icon-on-color data-indeterminate:shadow-none", "data-indeterminate:not-data-disabled:hover:bg-accent-primary-hover", "not-data-selected:not-data-indeterminate:[&>*]:invisible"));
+const comboboxEmptyVariants = cva(listboxEmptyClass);
+const comboboxSeparatorVariants = cva(menuSeparatorClass);
+/**
+* Same `p-1` inset as a flat `ComboboxPopup`, for sticky rows that sit in the overlay header
+* (Select all + separator). Without this, those rows sit flush under Search's border while the
+* separator's `my-1` still adds space below — the checkbox reads top-heavy. The inset matches the
+* scrolling list so the divider's `-mx-1` still reaches the panel edge.
+*/
+const comboboxStickyListVariants = cva("p-1");
+/**
+* Search: the sticky search row pinned above the popup list. No fill: it shows the panel surface
+* through.
+*/
+const comboboxSearchVariants = cva("flex shrink-0 items-center gap-1.5 border-b border-subtle px-3 py-2");
+/**
+* Search input: the borderless text field in `ComboboxSearch`. Carries the same type and colour as
+* the rows it filters.
+*/
+const comboboxSearchInputVariants = cva("min-w-0 flex-1 bg-transparent text-body-xs-regular text-primary outline-none placeholder:text-placeholder");
+//#endregion
+export { comboboxCheckboxItemIndicatorVariants, comboboxChipOverflowVariants, comboboxChipVariants, comboboxChipsVariants, comboboxEmptyVariants, comboboxInputGroupClearVariants, comboboxInputGroupVariants, comboboxInputVariants, comboboxItemContentVariants, comboboxItemControlVariants, comboboxItemIndicatorVariants, comboboxItemTitleVariants, comboboxItemTrailingVariants, comboboxItemVariants, comboboxPopupVariants, comboboxSearchInputVariants, comboboxSearchVariants, comboboxSeparatorVariants, comboboxStickyListVariants, comboboxSubmenuTriggerVariants, comboboxTriggerVariants, comboboxValueVariants };
+
+//# sourceMappingURL=variants.js.map

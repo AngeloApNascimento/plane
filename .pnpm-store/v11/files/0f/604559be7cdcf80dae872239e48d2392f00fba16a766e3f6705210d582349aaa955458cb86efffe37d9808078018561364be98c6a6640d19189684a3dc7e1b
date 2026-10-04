@@ -1,0 +1,14 @@
+"use client";
+import { FieldDescriptionVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-description.d.ts
+type FieldDescriptionProps = Omit<useRender.ComponentProps<"p">, "className" | "style"> & FieldDescriptionVariantProps;
+/**
+ * Supporting / helper text for a custom field. Base-UI-agnostic — graft the Base UI
+ * `Field.Description` behavior in `components` via `<BaseField.Description
+ * render={<FieldDescription/>} />`.
+ */
+declare function FieldDescription({ size, render, ...props }: FieldDescriptionProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldDescription, FieldDescriptionProps };
+//# sourceMappingURL=field-description.d.ts.map

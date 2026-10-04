@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/deactivated-outline.d.ts
+declare function DeactivatedOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DeactivatedOutline };
+//# sourceMappingURL=deactivated-outline.d.ts.map

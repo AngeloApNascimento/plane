@@ -1,0 +1,18 @@
+"use client";
+import { RadioGroupDensity } from "../../elements/radio/variants.js";
+import "../../elements/radio/index.js";
+import { RadioGroup } from "@base-ui/react/radio-group";
+//#region src/components/radio/radio-group.d.ts
+type RadioGroupProps<Value = any> = Omit<RadioGroup.Props<Value>, "className" | "style"> & {
+  /** Spacing between radio options. */
+  density: RadioGroupDensity;
+};
+/**
+ * Groups a set of `Radio` options so at most one can be selected at a time. Grafts Base UI's
+ * radio-group behavior (single-select state + roving focus) onto the styled `RadioGroup` frame,
+ * which owns the required row-spacing `density`.
+ */
+declare function RadioGroup$1<Value = any>({ density, ...props }: RadioGroupProps<Value>): import("react").JSX.Element;
+//#endregion
+export { RadioGroup$1 as RadioGroup, type RadioGroupDensity, RadioGroupProps };
+//# sourceMappingURL=radio-group.d.ts.map

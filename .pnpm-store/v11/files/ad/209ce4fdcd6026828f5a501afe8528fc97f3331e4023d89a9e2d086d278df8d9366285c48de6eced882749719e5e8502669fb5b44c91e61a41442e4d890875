@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-header.d.ts
+type DrawerHeaderProps = Omit<useRender.ComponentProps<"header">, "className" | "style">;
+/**
+ * The drawer's top region (the Figma header). Compose a start cluster (`DrawerHeaderStart` or
+ * `DrawerHeaderActions side="start"`) and an end cluster (`DrawerHeaderActions side="end"`) for the
+ * title/icon sockets.
+ */
+declare function DrawerHeader({ render, ...props }: DrawerHeaderProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerHeader, DrawerHeaderProps };
+//# sourceMappingURL=drawer-header.d.ts.map

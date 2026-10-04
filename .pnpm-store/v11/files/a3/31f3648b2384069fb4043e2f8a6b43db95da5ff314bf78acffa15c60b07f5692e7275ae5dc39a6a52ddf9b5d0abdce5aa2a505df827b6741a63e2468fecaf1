@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/arrow-collapse-outline.d.ts
+declare function ArrowCollapseOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ArrowCollapseOutline };
+//# sourceMappingURL=arrow-collapse-outline.d.ts.map

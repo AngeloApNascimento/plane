@@ -1,0 +1,14 @@
+"use client";
+import { ListSectionHeadingVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list-section-heading.d.ts
+type ListSectionHeadingProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & ListSectionHeadingVariantProps;
+/**
+ * A static section heading that labels a group of rows — the non-interactive sibling of
+ * `ListSectionTrigger`. Renders a `<div>` by default; it is a plain styled label (no button, no
+ * group, no hover/focus/cursor), for settings-style sidebars whose sections don't collapse.
+ */
+declare function ListSectionHeading({ render, ...props }: ListSectionHeadingProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ListSectionHeading, ListSectionHeadingProps };
+//# sourceMappingURL=list-section-heading.d.ts.map

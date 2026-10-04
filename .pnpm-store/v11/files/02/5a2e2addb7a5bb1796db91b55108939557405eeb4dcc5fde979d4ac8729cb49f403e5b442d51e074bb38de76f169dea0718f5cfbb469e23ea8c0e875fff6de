@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/expandable-search/expandable-search-row.d.ts
+type ExpandableSearchRowProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The expanded row's width/opacity track — grows from the collapsed trigger's footprint to its own
+ * intrinsic width (and back), via the same `data-expanded` boolean the trigger toggles in reverse.
+ */
+declare function ExpandableSearchRow({ render, ...props }: ExpandableSearchRowProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ExpandableSearchRow, ExpandableSearchRowProps };
+//# sourceMappingURL=expandable-search-row.d.ts.map

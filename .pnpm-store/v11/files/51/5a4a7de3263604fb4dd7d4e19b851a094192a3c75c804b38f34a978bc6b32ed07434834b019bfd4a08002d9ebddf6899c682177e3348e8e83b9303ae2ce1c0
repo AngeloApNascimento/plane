@@ -1,0 +1,14 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+//#region src/elements/form/variants.d.ts
+declare const formBodyVariants: (props?: ({
+  layout?: "single" | "multi" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const formActionsVariants: (props?: ({
+  layout?: "stretch" | "inline" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type FormActionsVariantProps = StrictVariantProps<typeof formActionsVariants>;
+type FormBodyVariantProps = StrictVariantProps<typeof formBodyVariants>;
+//#endregion
+export { FormActionsVariantProps, FormBodyVariantProps, formActionsVariants, formBodyVariants };
+//# sourceMappingURL=variants.d.ts.map

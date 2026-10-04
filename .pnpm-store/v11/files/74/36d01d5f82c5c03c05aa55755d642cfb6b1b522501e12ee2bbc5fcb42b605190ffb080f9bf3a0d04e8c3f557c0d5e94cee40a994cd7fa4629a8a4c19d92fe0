@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/reply-outline.d.ts
+declare function ReplyOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ReplyOutline };
+//# sourceMappingURL=reply-outline.d.ts.map

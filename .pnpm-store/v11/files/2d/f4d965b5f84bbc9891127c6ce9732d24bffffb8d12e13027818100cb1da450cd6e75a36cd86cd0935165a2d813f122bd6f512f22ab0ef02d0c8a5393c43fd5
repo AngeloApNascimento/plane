@@ -1,0 +1,81 @@
+"use client";
+import { OverlayPanelSizing } from "../../internal/overlay-panel.js";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-content.shared.d.ts
+type ContextMenuContentSizing = OverlayPanelSizing;
+/**
+ * The props both context-menu surfaces share. `sizing` carries no `@default` here because the root
+ * and a submenu pick different ones — `ContextMenuContent` sizes itself `menu`,
+ * `ContextMenuSubmenuContent` sizes itself `auto` — so each declares its own; otherwise the
+ * generated props table would advertise one surface's default on both. `render` is omitted because
+ * this surface always grafts the styled `ContextMenuPopup` at `elevation="flat"` inside an
+ * `OverlayPanel`, so a consumer-passed `render` would be overwritten and silently do nothing.
+ */
+type ContextMenuSurfaceProps = Omit<ContextMenu.Popup.Props, "className" | "style" | "render"> & {
+  /**
+   * Which side of the anchor the popup opens toward. Leave it unset at the root: an explicit `side`
+   * opts out of Base UI's pointer-hugging offsets, so the menu detaches from the cursor. A submenu
+   * opens toward `inline-end` unless told otherwise.
+   */
+  side?: ContextMenu.Positioner.Props["side"];
+  /** Distance in px between the anchor and the popup. */
+  sideOffset?: ContextMenu.Positioner.Props["sideOffset"];
+  /** Alignment of the popup relative to the anchor along `side`. */
+  align?: ContextMenu.Positioner.Props["align"];
+  /**
+   * Additional offset in px along the align axis — slides the popup along the anchor's edge without
+   * changing `align`.
+   *
+   * @default 0
+   */
+  alignOffset?: ContextMenu.Positioner.Props["alignOffset"];
+  /**
+   * Minimum gap in px between the popup and the viewport edge it would otherwise touch.
+   *
+   * @default 5
+   */
+  collisionPadding?: ContextMenu.Positioner.Props["collisionPadding"];
+  /**
+   * The element or rect the popup is confined to when avoiding collisions. Base UI's clipping
+   * ancestors when unset.
+   */
+  collisionBoundary?: ContextMenu.Positioner.Props["collisionBoundary"];
+  /**
+   * What to do when the popup would overflow the boundary, set per axis: flip to the other side,
+   * shift along it, or stay put. Base UI flips the side and shifts the alignment when unset.
+   */
+  collisionAvoidance?: ContextMenu.Positioner.Props["collisionAvoidance"];
+  /**
+   * Keep the popup on screen after its anchor scrolls out of view, instead of following it out.
+   *
+   * @default false
+   */
+  sticky?: ContextMenu.Positioner.Props["sticky"];
+  /**
+   * Which CSS `position` the positioner uses. `fixed` escapes overflow-clipping ancestors.
+   *
+   * @default "absolute"
+   */
+  positionMethod?: ContextMenu.Positioner.Props["positionMethod"];
+  /**
+   * Position against this element instead of the pointer — an element, a ref, a virtual element, or
+   * a function returning one. Geometry only; right-click targeting is unchanged.
+   */
+  anchor?: ContextMenu.Positioner.Props["anchor"];
+  /**
+   * Stop tracking layout shifts of the anchor — position once, on open.
+   *
+   * @default false
+   */
+  disableAnchorTracking?: ContextMenu.Positioner.Props["disableAnchorTracking"];
+  /**
+   * How the menu popup takes its width. `auto` is the content's width — never narrower than 192px,
+   * never wider than 384px or the room beside the pointer, and held while open; it caps the list at
+   * 384px tall. `anchor` matches the anchor's width instead, growing only with its content, and
+   * caps the list at 288px tall.
+   */
+  sizing?: ContextMenuContentSizing;
+};
+//#endregion
+export { ContextMenuContentSizing, ContextMenuSurfaceProps };
+//# sourceMappingURL=context-menu-content.shared.d.ts.map

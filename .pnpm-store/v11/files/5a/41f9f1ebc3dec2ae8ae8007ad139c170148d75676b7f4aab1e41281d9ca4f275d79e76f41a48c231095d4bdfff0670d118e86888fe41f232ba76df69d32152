@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/to-do-outline.d.ts
+declare function ToDoOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ToDoOutline };
+//# sourceMappingURL=to-do-outline.d.ts.map

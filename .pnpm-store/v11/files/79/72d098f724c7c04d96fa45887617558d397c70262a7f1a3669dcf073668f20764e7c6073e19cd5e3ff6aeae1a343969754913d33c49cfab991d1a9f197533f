@@ -1,0 +1,57 @@
+"use client";
+import { CollapsibleHeaderProps } from "../../elements/collapsible/collapsible-header.js";
+import "../../elements/collapsible/index.js";
+import * as React from "react";
+import { Collapsible } from "@base-ui/react/collapsible";
+//#region src/components/collapsible/collapsible.d.ts
+type CollapsibleProps = Omit<Collapsible.Root.Props, "className" | "style" | "render"> & {
+  /**
+   * Element to graft the styled frame onto instead of the default `div` — element form only, the
+   * callback form's `state` isn't wired through the styled frame.
+   */
+  render?: React.ReactElement;
+  /**
+   * Element rendered before the label (inline-start), e.g. `<Icon icon={Folder} tint="secondary"
+   * size="inherit" />`.
+   */
+  icon?: React.ReactNode;
+  /** The button content that opens and closes the panel. */
+  trigger: React.ReactNode;
+  /**
+   * Control rendered at the header's inline-end, as a sibling of the trigger — never inside it (the
+   * trigger is a button; nested buttons are invalid). Typical content is an `IconButton`.
+   * Independent of open state: clicking it does not toggle the panel. Root `disabled` does not
+   * disable this control.
+   */
+  trailing?: React.ReactNode;
+  /**
+   * Sidebar placement uses compact insets, an unpadded body, and an independent action before the
+   * end-aligned indicator. Inline placement keeps the label and indicator together.
+   *
+   * @default "inline"
+   */
+  placement?: CollapsibleHeaderProps["placement"];
+  /** The collapsible content region. */
+  children: React.ReactNode;
+  /**
+   * Whether to show the rotating chevron indicator after the trigger label.
+   *
+   * @default true
+   */
+  indicator?: boolean;
+  /** Keep the panel in the DOM while closed — Base UI's `Panel.keepMounted`. */
+  keepMounted?: boolean;
+  /** Reveal on the browser's find-in-page — Base UI's `Panel.hiddenUntilFound`. */
+  hiddenUntilFound?: boolean;
+};
+/**
+ * The ready-made collapsible: a single show/hide disclosure that wires the trigger and panel for
+ * the 90% case. Pass `trigger` for the toggle button label and `children` for the body; optional
+ * `icon` for a leading glyph and `trailing` for a header-end control (sibling of the trigger).
+ * Forward `defaultOpen` (uncontrolled) or `open` + `onOpenChange` (controlled) to drive it. Set
+ * `indicator={false}` to omit the rotating chevron from the trigger.
+ */
+declare function Collapsible$1({ icon, trigger, trailing, children, indicator, placement, keepMounted, hiddenUntilFound, render, ...props }: CollapsibleProps): React.JSX.Element;
+//#endregion
+export { Collapsible$1 as Collapsible, CollapsibleProps };
+//# sourceMappingURL=collapsible.d.ts.map

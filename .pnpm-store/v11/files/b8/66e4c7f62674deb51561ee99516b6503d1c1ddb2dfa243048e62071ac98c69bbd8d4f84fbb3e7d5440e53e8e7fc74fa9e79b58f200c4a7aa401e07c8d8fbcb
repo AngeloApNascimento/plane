@@ -1,0 +1,20 @@
+"use client";
+import { toastActionsVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-actions.tsx
+/**
+* The full-width action row beneath a toast's text and optional progress bar. Holds the
+* inline-start `ToastActionGroup` cluster and an optional inline-end `ToastAction`.
+*/
+function ToastActions({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: toastActionsVariants() }, props)
+	});
+}
+//#endregion
+export { ToastActions };
+
+//# sourceMappingURL=toast-actions.js.map

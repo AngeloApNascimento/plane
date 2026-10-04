@@ -1,0 +1,25 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/arrows/move-horizontal-filled.tsx
+function MoveHorizontalFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			stroke: "currentColor",
+			strokeLinecap: "round",
+			strokeLinejoin: "round",
+			strokeWidth: 1.25,
+			d: "M2.667 8h10.666m-8 2.666L2.667 8l2.666-2.667m5.333 5.333L13.333 8l-2.667-2.667"
+		})
+	});
+}
+//#endregion
+export { MoveHorizontalFilled };
+
+//# sourceMappingURL=move-horizontal-filled.js.map

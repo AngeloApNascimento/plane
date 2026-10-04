@@ -1,0 +1,23 @@
+"use client";
+import { tableSkeletonBodyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-skeleton-body.tsx
+/**
+* The body section (`<tbody>`) of a loading table: pulsing and non-interactive, so the placeholder
+* rows inside it neither animate out of step nor take the row hover tint.
+*
+* It deliberately does not hold the rows — repeating a row is composition, which belongs to the
+* ready-made in `components/table`.
+*/
+function TableSkeletonBody({ render, ...props }) {
+	return useRender({
+		defaultTagName: "tbody",
+		render,
+		props: mergeProps({ className: tableSkeletonBodyVariants() }, props)
+	});
+}
+//#endregion
+export { TableSkeletonBody };
+
+//# sourceMappingURL=table-skeleton-body.js.map

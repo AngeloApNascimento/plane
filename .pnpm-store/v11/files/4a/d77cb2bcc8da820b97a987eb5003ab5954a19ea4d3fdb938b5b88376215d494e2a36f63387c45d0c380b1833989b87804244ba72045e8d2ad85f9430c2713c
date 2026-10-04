@@ -1,0 +1,9 @@
+"use client";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-row.d.ts
+type ComboboxRowProps = Omit<Combobox.Row.Props, "className" | "style">;
+/** A grid row wrapper for multi-column listbox layouts (pass `cols` on the root's `grid`). */
+declare function ComboboxRow(props: ComboboxRowProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxRow, ComboboxRowProps };
+//# sourceMappingURL=combobox-row.d.ts.map

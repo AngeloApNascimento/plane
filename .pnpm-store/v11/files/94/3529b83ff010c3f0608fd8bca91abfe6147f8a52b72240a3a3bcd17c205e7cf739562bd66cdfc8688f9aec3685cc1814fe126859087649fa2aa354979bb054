@@ -1,0 +1,12 @@
+"use client";
+import { Accordion } from "@base-ui/react/accordion";
+//#region src/components/accordion/accordion-header.d.ts
+type AccordionHeaderProps = Omit<Accordion.Header.Props, "className" | "style">;
+/**
+ * The heading wrapper for an accordion trigger. Grafts Base UI's header behavior onto the styled
+ * `AccordionHeader`.
+ */
+declare function AccordionHeader(props: AccordionHeaderProps): import("react").JSX.Element;
+//#endregion
+export { AccordionHeader, AccordionHeaderProps };
+//# sourceMappingURL=accordion-header.d.ts.map

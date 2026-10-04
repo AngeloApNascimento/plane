@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toggle/toggle-label.d.ts
+type ToggleLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The toggle's single-line label. Shrinks and truncates instead of wrapping. When `children` is a
+ * string, bakes a native `title` so hover recovers the full text past the 120px cap; pass `title`
+ * explicitly to override (or `title=""` to suppress).
+ */
+declare function ToggleLabel({ render, children, title, ...props }: ToggleLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToggleLabel, ToggleLabelProps };
+//# sourceMappingURL=toggle-label.d.ts.map

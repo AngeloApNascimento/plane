@@ -1,0 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.applyMotions = void 0;
+function applyMotions(j, source, motions) {
+    motions.forEach(motionTransformer => motionTransformer(j, source));
+}
+exports.applyMotions = applyMotions;

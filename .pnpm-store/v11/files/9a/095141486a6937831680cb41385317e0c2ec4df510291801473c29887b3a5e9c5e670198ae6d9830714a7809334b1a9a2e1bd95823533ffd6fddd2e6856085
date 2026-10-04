@@ -1,0 +1,12 @@
+"use client";
+import { Dialog } from "@base-ui/react/dialog";
+//#region src/components/dialog/dialog-title.d.ts
+type DialogTitleProps = Omit<Dialog.Title.Props, "className" | "style">;
+/**
+ * The accessible title for the dialog: Base UI's `Dialog.Title` behavior (links to the popup via
+ * `aria-labelledby`) grafted onto the dialog-owned title chrome (`text-h5-medium`).
+ */
+declare function DialogTitle(props: DialogTitleProps): import("react").JSX.Element;
+//#endregion
+export { DialogTitle, DialogTitleProps };
+//# sourceMappingURL=dialog-title.d.ts.map

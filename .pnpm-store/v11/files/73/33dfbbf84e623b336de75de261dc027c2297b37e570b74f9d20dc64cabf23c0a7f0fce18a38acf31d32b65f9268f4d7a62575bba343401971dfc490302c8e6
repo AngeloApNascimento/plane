@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/expandable-search/expandable-search-track.d.ts
+type ExpandableSearchTrackProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * Stacks the trigger and the row on top of each other so collapsing/expanding grows or shrinks in
+ * place, instead of the two rendering as separate sequential boxes. Renders a `div` (flow content)
+ * so it can legally wrap the row's own `div`.
+ */
+declare function ExpandableSearchTrack({ render, ...props }: ExpandableSearchTrackProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ExpandableSearchTrack, ExpandableSearchTrackProps };
+//# sourceMappingURL=expandable-search-track.d.ts.map

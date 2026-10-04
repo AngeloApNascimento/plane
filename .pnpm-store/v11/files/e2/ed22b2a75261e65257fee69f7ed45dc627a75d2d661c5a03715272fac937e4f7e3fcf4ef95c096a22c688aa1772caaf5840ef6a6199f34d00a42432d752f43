@@ -1,0 +1,100 @@
+//#region src/agents-md/types.d.ts
+type AgentsMdAgent = "claude-code" | "cursor" | "codex" | "gemini-cli" | "windsurf" | "opencode" | "aider" | "universal";
+interface AgentsMdFileDescriptor {
+  agent: AgentsMdAgent;
+  displayName: string;
+  filename: string;
+  supplementaryFilenames?: readonly string[];
+  subdirectory?: string;
+  fileExtension: "md" | "mdc" | "txt";
+  supportsMultipleFiles: boolean;
+  aliasOf?: "AGENTS.md";
+}
+interface AgentsMdSection {
+  heading: string;
+  level: number;
+  body: string;
+  start: number;
+  end: number;
+}
+interface AgentsMdDocument {
+  path: string;
+  content: string;
+  sections: AgentsMdSection[];
+}
+type SectionPlacement = "append" | "prepend" | "replace";
+interface UpsertSectionOptions {
+  cwd?: string;
+  agent?: AgentsMdAgent;
+  file?: string;
+  heading: string;
+  body: string;
+  placement?: SectionPlacement;
+  level?: number;
+}
+interface RemoveSectionOptions {
+  cwd?: string;
+  agent?: AgentsMdAgent;
+  file?: string;
+  heading: string;
+}
+interface ReadAgentsMdOptions {
+  cwd?: string;
+  agent?: AgentsMdAgent;
+  file?: string;
+}
+interface WriteAgentsMdOptions {
+  cwd?: string;
+  agent?: AgentsMdAgent;
+  file?: string;
+  content: string;
+}
+//#endregion
+//#region src/agents-md/known-files.d.ts
+declare const agentsMdFiles: Record<AgentsMdAgent, AgentsMdFileDescriptor>;
+declare const getAgentsMdDescriptor: (agent: AgentsMdAgent) => AgentsMdFileDescriptor;
+declare const listAgentsMdDescriptors: () => AgentsMdFileDescriptor[];
+//#endregion
+//#region src/agents-md/read-write.d.ts
+declare const readAgentsMd: (options?: ReadAgentsMdOptions) => AgentsMdDocument;
+declare const writeAgentsMd: (options: WriteAgentsMdOptions) => string;
+//#endregion
+//#region src/agents-md/remove-section.d.ts
+declare const removeAgentsMdSection: (options: RemoveSectionOptions) => boolean;
+//#endregion
+//#region src/agents-md/resolve-file-path.d.ts
+interface ResolveAgentsMdFilePathOptions {
+  cwd?: string;
+  agent?: AgentsMdAgent;
+  file?: string;
+}
+declare const resolveAgentsMdFilePath: (options: ResolveAgentsMdFilePathOptions) => string;
+//#endregion
+//#region src/agents-md/sections.d.ts
+declare const parseSections: (content: string) => AgentsMdSection[];
+declare const findSection: (sections: AgentsMdSection[], heading: string) => AgentsMdSection | undefined;
+declare const renderSection: (heading: string, body: string, level?: number) => string;
+//#endregion
+//#region src/agents-md/symlink-claude.d.ts
+interface SymlinkClaudeToAgentsOptions {
+  cwd?: string;
+  overwrite?: boolean;
+  backupName?: string;
+}
+interface SymlinkClaudeToAgentsResult {
+  claudePath: string;
+  agentsPath: string;
+  created: boolean;
+  alreadyLinked: boolean;
+  backedUpTo?: string;
+  fellBackToCopy?: boolean;
+}
+declare const symlinkClaudeToAgents: (options?: SymlinkClaudeToAgentsOptions) => Promise<SymlinkClaudeToAgentsResult>;
+//#endregion
+//#region src/agents-md/upsert-section.d.ts
+declare const upsertAgentsMdSection: (options: UpsertSectionOptions) => string;
+declare namespace index_d_exports {
+  export { AgentsMdAgent, AgentsMdDocument, AgentsMdFileDescriptor, AgentsMdSection, ReadAgentsMdOptions, RemoveSectionOptions, SectionPlacement, SymlinkClaudeToAgentsOptions, SymlinkClaudeToAgentsResult, UpsertSectionOptions, WriteAgentsMdOptions, agentsMdFiles, findSection, getAgentsMdDescriptor, listAgentsMdDescriptors, parseSections, readAgentsMd as read, readAgentsMd, removeAgentsMdSection, removeAgentsMdSection as removeSection, renderSection, resolveAgentsMdFilePath, upsertAgentsMdSection as setSection, symlinkClaudeToAgents as symlinkClaude, symlinkClaudeToAgents, upsertAgentsMdSection, writeAgentsMd as write, writeAgentsMd };
+}
+//#endregion
+export { UpsertSectionOptions as C, SectionPlacement as S, AgentsMdDocument as _, symlinkClaudeToAgents as a, ReadAgentsMdOptions as b, renderSection as c, readAgentsMd as d, writeAgentsMd as f, AgentsMdAgent as g, listAgentsMdDescriptors as h, SymlinkClaudeToAgentsResult as i, resolveAgentsMdFilePath as l, getAgentsMdDescriptor as m, upsertAgentsMdSection as n, findSection as o, agentsMdFiles as p, SymlinkClaudeToAgentsOptions as r, parseSections as s, index_d_exports as t, removeAgentsMdSection as u, AgentsMdFileDescriptor as v, WriteAgentsMdOptions as w, RemoveSectionOptions as x, AgentsMdSection as y };

@@ -1,0 +1,21 @@
+"use client";
+import { tooltipPopupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tooltip/tooltip-popup.tsx
+/**
+* The styled tooltip surface — adaptive popup with caption/body text, radius, shadow, and the gap
+* to the shortcut. `layout` switches Figma singleline vs multiline chrome. Base-UI-agnostic; graft
+* in `components` via `<BaseTooltip.Popup render={<TooltipPopup/>} />`.
+*/
+function TooltipPopup({ layout = "single", render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: tooltipPopupVariants({ layout }) }, props)
+	});
+}
+//#endregion
+export { TooltipPopup };
+
+//# sourceMappingURL=tooltip-popup.js.map

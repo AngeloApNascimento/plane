@@ -1,0 +1,39 @@
+"use client";
+import { TableHead } from "../../elements/table/table-head.js";
+import { TableSelectLayout } from "../../elements/table/table-select-layout.js";
+import { Checkbox } from "../checkbox/checkbox.js";
+import { useTableVariant } from "./table-context.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/table/table-select-head.tsx
+/**
+* The select-all header cell (`<th>`): a tri-state checkbox centred in the header.
+*
+* `checked="indeterminate"` is a real third state, not a styling flag — it is what a partly
+* selected page must show, and Base UI maps it to `aria-checked="mixed"`.
+*/
+function TableSelectHead({ checked, onCheckedChange, pinned = "none", disabled, "aria-label": ariaLabel, ...props }) {
+	const variant = useTableVariant();
+	const indeterminate = checked === "indeterminate";
+	return /* @__PURE__ */ jsx(TableHead, {
+		variant,
+		pinned,
+		...props,
+		children: /* @__PURE__ */ jsx(TableSelectLayout, {
+			onClick: (event) => {
+				if (event.target !== event.currentTarget || disabled) return;
+				onCheckedChange?.(!(checked === true));
+			},
+			children: /* @__PURE__ */ jsx(Checkbox, {
+				checked: indeterminate ? false : checked,
+				indeterminate,
+				onCheckedChange,
+				disabled,
+				"aria-label": ariaLabel
+			})
+		})
+	});
+}
+//#endregion
+export { TableSelectHead };
+
+//# sourceMappingURL=table-select-head.js.map

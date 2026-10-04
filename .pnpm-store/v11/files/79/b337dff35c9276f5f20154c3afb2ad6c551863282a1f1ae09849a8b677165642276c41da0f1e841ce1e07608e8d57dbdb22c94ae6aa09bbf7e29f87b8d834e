@@ -1,0 +1,38 @@
+"use client";
+import { ComboboxSubmenuTriggerVariant } from "../../elements/combobox/variants.js";
+import "../../elements/combobox/index.js";
+import * as React from "react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-submenu-trigger.d.ts
+type ComboboxSubmenuTriggerProps = Omit<Combobox.Item.Props, "children" | "className" | "label" | "style" | "render" | "value"> & {
+  /**
+   * Row look. `neutral` is the standard text hierarchy, `accent` marks the primary action, and
+   * `danger` marks a destructive one.
+   *
+   * @default "neutral"
+   */
+  variant?: ComboboxSubmenuTriggerVariant;
+  /** Leading element shown before the label, e.g. `<Icon icon={Users} tint="secondary" />`. */
+  icon?: React.ReactNode;
+  /** Row label — the name of the nested list, not of a value. */
+  label: string;
+  /** Content pinned before the submenu chevron, e.g. a count. */
+  trailing?: React.ReactElement;
+};
+/**
+ * The parent row that opens a nested combobox. It is an option of the PARENT list — Base UI's
+ * `Combobox.Item` behavior, so it keeps that list's highlight, arrow-key navigation and filtering —
+ * but it carries **no value**: the pointer and `Enter` paths both suppress Base UI's own selection
+ * (`preventBaseUIHandler`) and open the nested list instead. Only the nested list's items select.
+ *
+ * Pass it to `ComboboxSubmenu`'s `trigger` prop rather than rendering it as a child, so it resolves
+ * against the parent combobox's context instead of the nested root's.
+ *
+ * It still registers with the parent list as an item, so a parent that derives its options from the
+ * DOM rather than an `items` prop counts this row among them. Give such a parent an explicit
+ * `items` list when that matters (a `ComboboxSelectAll`, for instance, should not count it).
+ */
+declare function ComboboxSubmenuTrigger({ variant, icon, label, trailing, ...props }: ComboboxSubmenuTriggerProps): React.JSX.Element;
+//#endregion
+export { ComboboxSubmenuTrigger, ComboboxSubmenuTriggerProps };
+//# sourceMappingURL=combobox-submenu-trigger.d.ts.map

@@ -1,0 +1,19 @@
+"use client";
+import { ListboxStatus } from "../../internal/listbox-status.js";
+import { jsx } from "react/jsx-runtime";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-status.tsx
+/**
+* A polite live region inside the popup for async hints ("Searching…", "12 results") — Base UI's
+* `Status` behavior grafted onto the shared muted listbox hint styling.
+*/
+function AutocompleteStatus(props) {
+	return /* @__PURE__ */ jsx(Autocomplete.Status, {
+		...props,
+		render: /* @__PURE__ */ jsx(ListboxStatus, {})
+	});
+}
+//#endregion
+export { AutocompleteStatus };
+
+//# sourceMappingURL=autocomplete-status.js.map

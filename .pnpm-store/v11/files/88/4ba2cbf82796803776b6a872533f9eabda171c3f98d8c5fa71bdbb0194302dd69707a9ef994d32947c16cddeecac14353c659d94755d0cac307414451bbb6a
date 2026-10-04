@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/close-outline.d.ts
+declare function CloseOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CloseOutline };
+//# sourceMappingURL=close-outline.d.ts.map

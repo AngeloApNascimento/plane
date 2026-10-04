@@ -1,0 +1,20 @@
+"use client";
+import { tabUnderlineBarTrackVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tab-underline-bar-track.tsx
+/**
+* The padded track that holds an `underline`-variant tab's sliding bar. Compose a `<TabUnderlineBar
+* />` inside it; owns the styled `<span>` so the underline track cva stays internal.
+*/
+function TabUnderlineBarTrack({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: tabUnderlineBarTrackVariants() }, props)
+	});
+}
+//#endregion
+export { TabUnderlineBarTrack };
+
+//# sourceMappingURL=tab-underline-bar-track.js.map

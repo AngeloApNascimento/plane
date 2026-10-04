@@ -1,0 +1,21 @@
+"use client";
+import { radioIndicatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/radio/radio-indicator.tsx
+/**
+* The styled selected dot: an 8px circle filled with the ring's `currentColor`, rendered inside a
+* `Radio`. Base-UI-agnostic — graft `<BaseRadio.Indicator render={<RadioIndicator />} />` in
+* `components`; the primitive mounts it only while the option is checked.
+*/
+function RadioIndicator({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: radioIndicatorVariants() }, props)
+	});
+}
+//#endregion
+export { RadioIndicator };
+
+//# sourceMappingURL=radio-indicator.js.map

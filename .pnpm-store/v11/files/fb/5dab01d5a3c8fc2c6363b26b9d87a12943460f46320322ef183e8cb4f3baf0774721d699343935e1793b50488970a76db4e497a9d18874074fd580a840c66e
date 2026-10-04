@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-per-page.d.ts
+type PaginationPerPageProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The per-page region: the selector pill (`PaginationPerPageTrigger`) followed by the trailing
+ * `PaginationPerPageLabel`.
+ */
+declare function PaginationPerPage({ render, ...props }: PaginationPerPageProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationPerPage, PaginationPerPageProps };
+//# sourceMappingURL=pagination-per-page.d.ts.map

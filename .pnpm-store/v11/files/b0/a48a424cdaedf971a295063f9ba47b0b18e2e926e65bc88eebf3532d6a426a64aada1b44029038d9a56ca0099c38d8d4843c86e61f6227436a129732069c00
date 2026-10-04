@@ -1,0 +1,13 @@
+"use client";
+import { Popover } from "@base-ui/react/popover";
+//#region src/components/popover/popover-description.d.ts
+type PopoverDescriptionProps = Omit<Popover.Description.Props, "className" | "style">;
+/**
+ * Supporting text for the popover: Base UI's `Popover.Description` behavior (wired as the popup's
+ * `aria-describedby` target) grafted onto the shared `internal/OverlayDescription` at `md` (body-xs
+ * secondary).
+ */
+declare function PopoverDescription(props: PopoverDescriptionProps): import("react").JSX.Element;
+//#endregion
+export { PopoverDescription, PopoverDescriptionProps };
+//# sourceMappingURL=popover-description.d.ts.map

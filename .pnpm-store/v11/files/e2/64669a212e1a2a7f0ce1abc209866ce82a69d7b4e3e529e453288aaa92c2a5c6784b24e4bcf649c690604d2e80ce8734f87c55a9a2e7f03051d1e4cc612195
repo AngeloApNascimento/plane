@@ -1,0 +1,19 @@
+"use client";
+import { FieldError as FieldError$1 } from "../../elements/field/field-error.js";
+import { jsx } from "react/jsx-runtime";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-error.tsx
+/**
+* Error text for a field: Base UI's `Field.Error` (shown per the control's validity / `match`)
+* grafted onto the styled `FieldError` element (rule 1a).
+*/
+function FieldError({ size, ...props }) {
+	return /* @__PURE__ */ jsx(Field.Error, {
+		...props,
+		render: /* @__PURE__ */ jsx(FieldError$1, { size })
+	});
+}
+//#endregion
+export { FieldError };
+
+//# sourceMappingURL=field-error.js.map

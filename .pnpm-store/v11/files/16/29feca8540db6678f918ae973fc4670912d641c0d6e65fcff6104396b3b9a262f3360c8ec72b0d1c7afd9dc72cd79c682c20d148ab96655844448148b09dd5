@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/triage-outline.d.ts
+declare function TriageOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TriageOutline };
+//# sourceMappingURL=triage-outline.d.ts.map

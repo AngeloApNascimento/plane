@@ -1,0 +1,4 @@
+"use client";
+import { TextAreaGroup } from "../../elements/text-area/text-area-group.js";
+import { TextArea } from "./text-area.js";
+export { TextArea, TextAreaGroup };

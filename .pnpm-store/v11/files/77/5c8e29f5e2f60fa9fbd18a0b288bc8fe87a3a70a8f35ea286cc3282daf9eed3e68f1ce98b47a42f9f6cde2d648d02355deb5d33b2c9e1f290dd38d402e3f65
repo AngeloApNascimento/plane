@@ -1,0 +1,23 @@
+"use client";
+import { toolbarItemVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-button.tsx
+/**
+* The styled chrome for a toolbar action button — a single `<button>`. Base-UI-agnostic: graft the
+* toolbar item behavior in `components` via `<BaseToolbar.Button render={<ToolbarButton/>} />`.
+*/
+function ToolbarButton({ size, labeled, render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({ className: toolbarItemVariants({
+			size,
+			labeled
+		}) }, props)
+	});
+}
+//#endregion
+export { ToolbarButton };
+
+//# sourceMappingURL=toolbar-button.js.map

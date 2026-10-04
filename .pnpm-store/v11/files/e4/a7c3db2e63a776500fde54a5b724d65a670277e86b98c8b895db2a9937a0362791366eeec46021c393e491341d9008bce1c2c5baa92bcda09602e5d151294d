@@ -1,0 +1,68 @@
+"use client";
+import * as React from "react";
+//#region src/components/pagination/pagination.d.ts
+type PaginationLabels = {
+  /** Accessible name for the `<nav>` landmark. */
+  root: string;
+  /** Accessible name for the previous-page button. */
+  previous: string;
+  /** Accessible name for the next-page button. */
+  next: string;
+  /**
+   * Accessible name for a page button, given its number. Defaults to e.g. `"Go to page 3"`; the
+   * current page is additionally marked `aria-current`.
+   */
+  page: (page: number) => string;
+  /** Visible text on the per-page selector trigger, given the size. Defaults to `"50"`. */
+  perPageValue: (pageSize: number) => string;
+  /** Trailing text after the per-page selector. Defaults to `"per page"`. */
+  perPage: string;
+};
+type PaginationProps = Omit<React.ComponentProps<"nav">, "className" | "style" | "children" | "aria-label" | "onChange"> & {
+  /** The current page, 1-based. */
+  page: number;
+  /** Total number of pages. */
+  pageCount: number;
+  /** Called with the target page (1-based) when a control is activated. */
+  onPageChange: (page: number) => void;
+  /**
+   * The current page is rendered as a loading spinner instead of its number — for when navigating
+   * to that page is in flight.
+   */
+  loading?: boolean;
+  /**
+   * Optional per-page size selector (Figma `50 v per page`). Provide `value`, the `options`, and
+   * `onValueChange`; omit to hide the selector entirely.
+   */
+  pageSize?: {
+    /** Currently selected page size. */
+    value: number;
+    /** Selectable page sizes. */
+    options: number[];
+    /** Called with the chosen page size. */
+    onValueChange: (pageSize: number) => void;
+  };
+  /**
+   * Optional range label shown before the controls (Figma `1-50 of 250`). Provide the
+   * already-formatted `current` range and `total`.
+   */
+  range?: {
+    /** The visible range, e.g. `"1-50"` (rendered in the primary text color). */
+    current: React.ReactNode;
+    /** The total count, e.g. `250` (rendered after `of` in the tertiary color). */
+    total: React.ReactNode;
+  };
+  /** Override the default English accessible names / visible selector text. */
+  labels?: Partial<PaginationLabels>;
+};
+/**
+ * Page navigation for a paginated list or table. Renders a `<nav>` landmark holding an optional
+ * per-page selector and range label plus an ordered list of page controls: a previous button,
+ * first/last anchors with ellipses around a window of pages near the current one, and a next
+ * button. The current page is marked `aria-current="page"`; the prev/next ends disable at the
+ * bounds and their arrows mirror under RTL.
+ */
+declare function Pagination({ page, pageCount, onPageChange, loading, pageSize, range, labels, ...props }: PaginationProps): React.JSX.Element;
+//#endregion
+export { Pagination, PaginationLabels, PaginationProps };
+//# sourceMappingURL=pagination.d.ts.map

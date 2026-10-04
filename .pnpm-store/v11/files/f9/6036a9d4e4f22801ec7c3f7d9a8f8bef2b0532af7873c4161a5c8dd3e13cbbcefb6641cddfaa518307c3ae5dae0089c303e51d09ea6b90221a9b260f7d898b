@@ -1,0 +1,17 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { PreviewCard } from "@base-ui/react/preview-card";
+//#region src/components/preview-card/preview-card.tsx
+/**
+* The preview-card Root — Base UI's context/state provider (renders no element of its own). A
+* behavior-only role, so it lives in `components` (rules 1a, 2); the styled parts live in
+* `elements/preview-card` (and shared `internal/` primitives) and are grafted onto Base UI behavior
+* here.
+*/
+function PreviewCard$1(props) {
+	return /* @__PURE__ */ jsx(PreviewCard.Root, { ...props });
+}
+//#endregion
+export { PreviewCard$1 as PreviewCard };
+
+//# sourceMappingURL=preview-card.js.map

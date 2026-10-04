@@ -1,0 +1,47 @@
+"use client";
+import { MenuItem as MenuItem$1 } from "../../elements/menu/menu-item.js";
+import { MenuItemContent } from "../../elements/menu/menu-item-content.js";
+import { MenuItemDescription } from "../../elements/menu/menu-item-description.js";
+import { MenuItemSecondaryText } from "../../elements/menu/menu-item-secondary-text.js";
+import { MenuItemIndicator } from "../../elements/menu/menu-item-indicator.js";
+import { MenuItemTitle } from "../../elements/menu/menu-item-title.js";
+import { MenuItemTitleRow } from "../../elements/menu/menu-item-title-row.js";
+import { MenuItemTrailing } from "../../elements/menu/menu-item-trailing.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Check } from "lucide-react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-item.tsx
+/**
+* The ready-made selectable menu row: grafts Base UI's `Menu.Item` behavior onto the styled
+* `MenuItem` and lays out an optional leading icon, the label, a secondary line, the single-select
+* check, and trailing content.
+*/
+function MenuItem({ variant, icon, description, secondaryText, trailing, selected, label, render, ...props }) {
+	const layout = description != null ? "stacked" : "single";
+	const selectionProps = selected === void 0 ? void 0 : {
+		role: "menuitemradio",
+		"aria-checked": selected
+	};
+	return /* @__PURE__ */ jsxs(Menu.Item, {
+		...selectionProps,
+		...props,
+		render: /* @__PURE__ */ jsx(MenuItem$1, {
+			layout,
+			variant,
+			render
+		}),
+		children: [
+			icon,
+			/* @__PURE__ */ jsxs(MenuItemContent, { children: [/* @__PURE__ */ jsxs(MenuItemTitleRow, { children: [/* @__PURE__ */ jsx(MenuItemTitle, { children: label }), secondaryText != null ? /* @__PURE__ */ jsx(MenuItemSecondaryText, { children: secondaryText }) : null] }), description != null ? /* @__PURE__ */ jsx(MenuItemDescription, { children: description }) : null] }),
+			selected !== void 0 ? /* @__PURE__ */ jsx(MenuItemIndicator, {
+				"data-selected": selected ? "" : void 0,
+				children: /* @__PURE__ */ jsx(Check, {})
+			}) : null,
+			trailing != null ? /* @__PURE__ */ jsx(MenuItemTrailing, { children: trailing }) : null
+		]
+	});
+}
+//#endregion
+export { MenuItem };
+
+//# sourceMappingURL=menu-item.js.map

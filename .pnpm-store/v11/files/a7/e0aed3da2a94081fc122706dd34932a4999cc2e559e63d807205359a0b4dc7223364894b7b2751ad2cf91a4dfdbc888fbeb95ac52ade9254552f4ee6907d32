@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/lock-keyhole-circle-outline.d.ts
+declare function LockKeyholeCircleOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { LockKeyholeCircleOutline };
+//# sourceMappingURL=lock-keyhole-circle-outline.d.ts.map

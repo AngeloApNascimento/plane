@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/popover/popover-title.d.ts
+/** Props for {@link PopoverTitle}. */
+type PopoverTitleProps = Omit<useRender.ComponentProps<"h2">, "className" | "style">;
+/**
+ * The panel's accessible heading — `text-body-sm-medium` per the compact text card. Wraps with
+ * word-break instead of truncating. Diverges from the shared `internal/overlay-title` "md" step
+ * (`semibold`); this family binds the lighter `medium` weight, so it keeps its own recipe.
+ */
+declare function PopoverTitle({ render, ...props }: PopoverTitleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PopoverTitle, PopoverTitleProps };
+//# sourceMappingURL=popover-title.d.ts.map

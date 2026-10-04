@@ -1,0 +1,15 @@
+"use client";
+import { AlertDialogActionGroup } from "./alert-dialog-action-group.js";
+import { AlertDialogBackdrop } from "./alert-dialog-backdrop.js";
+import { AlertDialogActions } from "./alert-dialog-actions.js";
+import { AlertDialogBody } from "./alert-dialog-body.js";
+import { AlertDialogClose } from "./alert-dialog-close.js";
+import { AlertDialogCloseGroup } from "./alert-dialog-close-group.js";
+import { AlertDialogDescription } from "./alert-dialog-description.js";
+import { AlertDialogHeader } from "./alert-dialog-header.js";
+import { AlertDialogIcon } from "./alert-dialog-icon.js";
+import { AlertDialogIntro } from "./alert-dialog-intro.js";
+import { AlertDialogPopup } from "./alert-dialog-popup.js";
+import { AlertDialogTitle } from "./alert-dialog-title.js";
+import { AlertDialogViewport } from "./alert-dialog-viewport.js";
+export { AlertDialogActionGroup, AlertDialogActions, AlertDialogBackdrop, AlertDialogBody, AlertDialogClose, AlertDialogCloseGroup, AlertDialogDescription, AlertDialogHeader, AlertDialogIcon, AlertDialogIntro, AlertDialogPopup, AlertDialogTitle, AlertDialogViewport };

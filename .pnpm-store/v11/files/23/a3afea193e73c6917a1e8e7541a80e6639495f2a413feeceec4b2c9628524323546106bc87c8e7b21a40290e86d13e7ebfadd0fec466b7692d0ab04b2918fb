@@ -1,0 +1,14 @@
+"use client";
+import { InputFieldVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/input-field/input-field.d.ts
+type InputFieldProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & InputFieldVariantProps;
+/**
+ * The orientation-aware layout frame for an input field (label above or beside the control).
+ * Base-UI-agnostic — graft `Field.Root` in `components` via `<BaseField.Root render={<InputField/>}
+ * />`.
+ */
+declare function InputField({ orientation, size, render, ...props }: InputFieldProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { InputField, InputFieldProps };
+//# sourceMappingURL=input-field.d.ts.map

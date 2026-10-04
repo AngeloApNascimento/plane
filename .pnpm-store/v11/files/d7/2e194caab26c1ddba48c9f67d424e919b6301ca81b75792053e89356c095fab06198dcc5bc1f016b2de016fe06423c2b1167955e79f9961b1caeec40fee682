@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/number-field/number-field.d.ts
+type NumberFieldProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled number field frame — stacks the label, group, and messages. Base-UI-agnostic — graft
+ * the number field behavior in `components` via `<BaseNumberField.Root render={<NumberField/>}
+ * />`.
+ */
+declare function NumberField({ render, ...props }: NumberFieldProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NumberField, NumberFieldProps };
+//# sourceMappingURL=number-field.d.ts.map

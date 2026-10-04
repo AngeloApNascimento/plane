@@ -1,0 +1,15 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-radio-item-indicator.d.ts
+type MenuRadioItemIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled radio ring of a radio item — drawn on every row, filling with the accent dot once the
+ * row is selected (the same ring the standalone `Radio` draws). Base-UI-agnostic — graft the
+ * indicator behavior in `components` via `<BaseMenu.RadioItemIndicator keepMounted
+ * render={<MenuRadioItemIndicator />} />`; `keepMounted` is what keeps the empty ring on unselected
+ * rows.
+ */
+declare function MenuRadioItemIndicator({ render, ...props }: MenuRadioItemIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuRadioItemIndicator, MenuRadioItemIndicatorProps };
+//# sourceMappingURL=menu-radio-item-indicator.d.ts.map

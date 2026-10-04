@@ -1,0 +1,12 @@
+"use client";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-separator.d.ts
+type MenuSeparatorProps = Omit<Menu.Separator.Props, "className" | "style" | "render">;
+/**
+ * Ready-made divider between groups of menu items: grafts Base UI's `Menu.Separator` behavior
+ * (`role="separator"`) onto the styled `MenuSeparator` element.
+ */
+declare function MenuSeparator(props: MenuSeparatorProps): import("react").JSX.Element;
+//#endregion
+export { MenuSeparator, MenuSeparatorProps };
+//# sourceMappingURL=menu-separator.d.ts.map

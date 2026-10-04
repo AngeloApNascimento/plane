@@ -1,0 +1,41 @@
+"use client";
+import { SuggestionMenuItem as SuggestionMenuItem$1 } from "../../elements/suggestion-menu/suggestion-menu-item.js";
+import { SuggestionMenuItemIcon } from "../../elements/suggestion-menu/suggestion-menu-item-icon.js";
+import { SuggestionMenuItemTitle } from "../../elements/suggestion-menu/suggestion-menu-item-title.js";
+import { SuggestionMenuItemTrailing } from "../../elements/suggestion-menu/suggestion-menu-item-trailing.js";
+import { useSuggestionMenuContext } from "./suggestion-menu-context.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { mergeProps } from "@base-ui/react/merge-props";
+//#region src/components/suggestion-menu/suggestion-menu-item.tsx
+/**
+* A suggestion row. `onClick` runs when the row is chosen — by a click, or by `Enter`/`Tab`
+* forwarded through `SuggestionMenu`'s `actionsRef`. Pointer movement highlights the row, and a
+* press never takes focus from the input.
+*/
+function SuggestionMenuItem({ icon, label, trailing, id, ...props }) {
+	const generatedId = React.useId();
+	const rowId = id ?? generatedId;
+	const { highlightedId, highlight } = useSuggestionMenuContext();
+	const highlighted = rowId === highlightedId;
+	return /* @__PURE__ */ jsxs(SuggestionMenuItem$1, {
+		"data-highlighted": highlighted ? "" : void 0,
+		...mergeProps(props, {
+			id: rowId,
+			role: "option",
+			"aria-selected": highlighted,
+			onMouseMove: () => {
+				if (!highlighted) highlight(rowId);
+			}
+		}),
+		children: [
+			icon != null ? /* @__PURE__ */ jsx(SuggestionMenuItemIcon, { children: icon }) : null,
+			/* @__PURE__ */ jsx(SuggestionMenuItemTitle, { children: label }),
+			trailing != null ? /* @__PURE__ */ jsx(SuggestionMenuItemTrailing, { children: trailing }) : null
+		]
+	});
+}
+//#endregion
+export { SuggestionMenuItem };
+
+//# sourceMappingURL=suggestion-menu-item.js.map

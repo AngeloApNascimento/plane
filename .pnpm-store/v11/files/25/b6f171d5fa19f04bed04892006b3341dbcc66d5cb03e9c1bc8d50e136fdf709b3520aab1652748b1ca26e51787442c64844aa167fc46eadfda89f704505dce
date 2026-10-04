@@ -1,0 +1,13 @@
+"use client";
+import { ToolbarItemVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-button.d.ts
+type ToolbarButtonProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & ToolbarItemVariantProps;
+/**
+ * The styled chrome for a toolbar action button — a single `<button>`. Base-UI-agnostic: graft the
+ * toolbar item behavior in `components` via `<BaseToolbar.Button render={<ToolbarButton/>} />`.
+ */
+declare function ToolbarButton({ size, labeled, render, ...props }: ToolbarButtonProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToolbarButton, ToolbarButtonProps };
+//# sourceMappingURL=toolbar-button.d.ts.map

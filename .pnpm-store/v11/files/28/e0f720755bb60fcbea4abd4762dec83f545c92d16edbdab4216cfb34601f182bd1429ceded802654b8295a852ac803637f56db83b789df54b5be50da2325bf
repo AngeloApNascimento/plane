@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/ms-word.d.ts
+declare function MsWord(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MsWord };
+//# sourceMappingURL=ms-word.d.ts.map

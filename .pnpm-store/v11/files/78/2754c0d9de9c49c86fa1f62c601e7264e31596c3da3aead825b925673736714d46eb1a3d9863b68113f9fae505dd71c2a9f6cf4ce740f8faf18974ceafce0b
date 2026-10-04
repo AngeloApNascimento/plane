@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/between-vertical-end-outline.d.ts
+declare function BetweenVerticalEndOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BetweenVerticalEndOutline };
+//# sourceMappingURL=between-vertical-end-outline.d.ts.map

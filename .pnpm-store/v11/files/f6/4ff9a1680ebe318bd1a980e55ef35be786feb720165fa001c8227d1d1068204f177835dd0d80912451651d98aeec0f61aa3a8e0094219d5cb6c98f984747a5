@@ -1,0 +1,41 @@
+"use client";
+import { numberFieldStepperSize } from "../../elements/number-field/variants.js";
+import { NumberField as NumberField$2 } from "../../elements/number-field/number-field.js";
+import { NumberFieldGroup } from "../../elements/number-field/number-field-group.js";
+import { NumberFieldInput } from "../../elements/number-field/number-field-input.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { NumberField } from "@base-ui/react/number-field";
+//#region src/components/number-field/number-field.tsx
+/**
+* The ready-made number field: a numeric input flanked by decrement / increment buttons. Drive it
+* with `value`/`defaultValue` + `onValueChange`, bound it with `min`/`max`/`step`, and pass
+* `format` (an `Intl.NumberFormatOptions`) to format the displayed value. Name the input with
+* `aria-label` or `aria-labelledby` — the ready-made has no baked visible label.
+*
+* Grafts Base UI `NumberField` behavior onto the `elements/number-field` styled parts
+* (`NumberField` root + `NumberFieldGroup` + `NumberFieldInput`) via `render`. The
+* `decrement`/`increment` steppers are consumer-provided controls, grafted onto Base UI's
+* `Decrement`/`Increment` behavior.
+*/
+function NumberField$1({ "aria-label": ariaLabel, "aria-labelledby": ariaLabelledby, size, decrement, increment, ...props }) {
+	return /* @__PURE__ */ jsx(NumberField.Root, {
+		...props,
+		render: /* @__PURE__ */ jsx(NumberField$2, {}),
+		children: /* @__PURE__ */ jsxs(NumberField.Group, {
+			render: /* @__PURE__ */ jsx(NumberFieldGroup, { size }),
+			children: [
+				/* @__PURE__ */ jsx(NumberField.Decrement, { render: decrement }),
+				/* @__PURE__ */ jsx(NumberField.Input, { render: /* @__PURE__ */ jsx(NumberFieldInput, {
+					size,
+					"aria-label": ariaLabel,
+					"aria-labelledby": ariaLabelledby
+				}) }),
+				/* @__PURE__ */ jsx(NumberField.Increment, { render: increment })
+			]
+		})
+	});
+}
+//#endregion
+export { NumberField$1 as NumberField, numberFieldStepperSize };
+
+//# sourceMappingURL=number-field.js.map

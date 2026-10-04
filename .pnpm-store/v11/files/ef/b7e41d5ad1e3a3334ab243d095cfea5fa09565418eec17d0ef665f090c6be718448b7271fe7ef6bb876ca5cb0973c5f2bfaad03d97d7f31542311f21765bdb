@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/add-filter-outline.d.ts
+declare function AddFilterOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AddFilterOutline };
+//# sourceMappingURL=add-filter-outline.d.ts.map

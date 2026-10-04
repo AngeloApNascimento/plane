@@ -1,0 +1,97 @@
+"use client";
+import { SuggestionMenu as SuggestionMenu$1 } from "../../elements/suggestion-menu/suggestion-menu.js";
+import { SuggestionMenuContext } from "./suggestion-menu-context.js";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+import { mergeProps } from "@base-ui/react/merge-props";
+//#region src/components/suggestion-menu/suggestion-menu.tsx
+const OPTION_SELECTOR = "[role=\"option\"]";
+/** Rows moved by `PageDown`/`PageUp` — a fixed page, so hosts need no measuring. */
+const PAGE_SIZE = 10;
+/**
+* A list of suggestions that follows an input which keeps focus — a `/` command menu in an editor,
+* `@` mentions, query completions. Unlike `Menu` it never moves focus: the input forwards its key
+* presses through `actionsRef`, and the menu owns which row is highlighted. The highlight starts on
+* the first row and falls back to it whenever the highlighted row is filtered out.
+*
+* Renders the `listbox`; compose `SuggestionMenuGroup` sections of `SuggestionMenuItem` rows inside
+* it. Positioning is the host's job — the menu renders in place.
+*
+* Wire the input as a combobox: give the menu an `id`, point the input's `aria-controls` at it, and
+* mirror `onHighlightChange` into the input's `aria-activedescendant`, so the highlight is
+* announced while focus stays in the input.
+*/
+function SuggestionMenu({ actionsRef, loopFocus = true, onHighlightChange, ...props }) {
+	const listRef = React.useRef(null);
+	const [highlightedId, setHighlightedId] = React.useState(null);
+	const highlightedIdRef = React.useRef(highlightedId);
+	React.useEffect(() => {
+		highlightedIdRef.current = highlightedId;
+	}, [highlightedId]);
+	const getOptions = React.useCallback(() => Array.from(listRef.current?.querySelectorAll(OPTION_SELECTOR) ?? []), []);
+	React.useLayoutEffect(() => {
+		const options = getOptions();
+		if (options.some((option) => option.id === highlightedIdRef.current)) return;
+		setHighlightedId(options[0]?.id ?? null);
+	});
+	React.useEffect(() => {
+		onHighlightChange?.(highlightedId);
+	}, [highlightedId, onHighlightChange]);
+	const moveHighlight = React.useCallback((current, delta, length) => {
+		let next = current === -1 ? delta >= 0 ? 0 : length - 1 : current + delta;
+		if (next < 0 || next >= length) {
+			if (!loopFocus) return current === -1 ? 0 : current;
+			next = (next + length) % length;
+		}
+		return next;
+	}, [loopFocus]);
+	React.useImperativeHandle(actionsRef, () => ({ handleKeyDown(event) {
+		const options = getOptions();
+		if (options.length === 0) return false;
+		const current = options.findIndex((option) => option.id === highlightedIdRef.current);
+		if (event.key === "Enter" || event.key === "Tab") {
+			options[Math.max(current, 0)]?.click();
+			return true;
+		}
+		let delta = null;
+		if (event.key === "ArrowDown") delta = 1;
+		else if (event.key === "ArrowUp") delta = -1;
+		else if (event.key === "PageDown") delta = PAGE_SIZE;
+		else if (event.key === "PageUp") delta = -10;
+		else if (event.key === "Home" || event.key === "End") {
+			const target = options[event.key === "Home" ? 0 : options.length - 1];
+			if (target && target.id !== highlightedIdRef.current) {
+				setHighlightedId(target.id);
+				target.scrollIntoView({ block: "nearest" });
+			}
+			return true;
+		} else return false;
+		const next = moveHighlight(current, delta, options.length);
+		if (next !== current) {
+			const target = options[next];
+			if (target) {
+				setHighlightedId(target.id);
+				target.scrollIntoView({ block: "nearest" });
+			}
+		}
+		return true;
+	} }), [getOptions, moveHighlight]);
+	const context = React.useMemo(() => ({
+		highlightedId,
+		highlight: setHighlightedId
+	}), [highlightedId]);
+	return /* @__PURE__ */ jsx(SuggestionMenuContext.Provider, {
+		value: context,
+		children: /* @__PURE__ */ jsx(SuggestionMenu$1, {
+			role: "listbox",
+			render: /* @__PURE__ */ jsx("div", { ref: listRef }),
+			...mergeProps({ onMouseDown: (event) => {
+				if (event.target !== event.currentTarget) event.preventDefault();
+			} }, props)
+		})
+	});
+}
+//#endregion
+export { SuggestionMenu };
+
+//# sourceMappingURL=suggestion-menu.js.map

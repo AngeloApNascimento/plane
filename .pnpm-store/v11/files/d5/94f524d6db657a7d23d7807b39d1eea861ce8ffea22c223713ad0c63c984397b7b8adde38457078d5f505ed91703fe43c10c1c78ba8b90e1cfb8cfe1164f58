@@ -1,0 +1,21 @@
+"use client";
+import { controlGroupClass, controlSize } from "../../internal/control-group.js";
+import { controlInputClass } from "../../internal/control-input.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/input/variants.ts
+const inputVariants = cva(cx(controlInputClass, "flex-1"), { variants: { size: {
+	md: "text-body-xs-regular",
+	lg: "text-body-sm-regular",
+	xl: "text-body-sm-regular",
+	"2xl": "text-body-md-regular"
+} } });
+const inputGroupVariants = cva(cx(controlGroupClass, "w-full items-center"), { variants: { size: {
+	md: cx(controlSize.md, "gap-(--control-gap-md) rounded-(--control-radius-md) px-(--field-inset-md)"),
+	lg: cx(controlSize.lg, "gap-(--control-gap-lg) rounded-(--control-radius-lg) px-(--field-inset-lg)"),
+	xl: cx(controlSize.xl, "gap-(--control-gap-xl) rounded-(--control-radius-xl) px-(--field-inset-xl)"),
+	"2xl": cx(controlSize["2xl"], "gap-(--control-gap-2xl) rounded-(--control-radius-2xl) px-(--field-inset-2xl)")
+} } });
+//#endregion
+export { inputGroupVariants, inputVariants };
+
+//# sourceMappingURL=variants.js.map

@@ -1,0 +1,30 @@
+"use client";
+import { ComboboxChip as ComboboxChip$1 } from "../../elements/combobox/combobox-chip.js";
+import { useComboboxChipSize } from "./combobox-chip-size-context.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-chip.tsx
+/**
+* Ready-made chip: Base UI's chip behavior (arrow-key focus, Backspace/Delete removal) grafted onto
+* the styled tag, laying out an optional leading/trailing node around the label plus the
+* consumer-provided `remove` control. Base UI derives which selected value a chip represents from
+* its position among its siblings — pass one per value from `ComboboxChips`' `children`.
+*/
+function ComboboxChip({ startContent, endContent, label, remove, size, ...props }) {
+	const resolvedSize = useComboboxChipSize(size);
+	return /* @__PURE__ */ jsxs(Combobox.Chip, {
+		...props,
+		"aria-label": label,
+		render: /* @__PURE__ */ jsx(ComboboxChip$1, { size: resolvedSize }),
+		children: [
+			startContent,
+			label,
+			endContent,
+			/* @__PURE__ */ jsx(Combobox.ChipRemove, { render: remove })
+		]
+	});
+}
+//#endregion
+export { ComboboxChip };
+
+//# sourceMappingURL=combobox-chip.js.map

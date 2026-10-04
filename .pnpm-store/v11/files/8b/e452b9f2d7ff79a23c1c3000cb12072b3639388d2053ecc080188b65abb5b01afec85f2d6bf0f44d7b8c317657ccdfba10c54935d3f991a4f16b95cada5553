@@ -1,0 +1,20 @@
+"use client";
+import { tableSelectLayoutVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-select-layout.tsx
+/**
+* Centres a selection checkbox inside an unpadded cell or header, filling it so the whole 44px box
+* is the pointer target.
+*/
+function TableSelectLayout({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: tableSelectLayoutVariants() }, props)
+	});
+}
+//#endregion
+export { TableSelectLayout };
+
+//# sourceMappingURL=table-select-layout.js.map

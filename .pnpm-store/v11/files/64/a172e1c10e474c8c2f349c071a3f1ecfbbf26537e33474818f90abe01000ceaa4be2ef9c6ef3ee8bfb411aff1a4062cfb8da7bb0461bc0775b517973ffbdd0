@@ -1,0 +1,20 @@
+"use client";
+import { workspaceAvatarFallbackVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/workspace-avatar/workspace-avatar-fallback.tsx
+/**
+* The styled workspace initials surface. Base-UI-agnostic — graft the `Avatar.Fallback` behavior in
+* `components` via `<BaseAvatar.Fallback render={<WorkspaceAvatarFallback/>} />`.
+*/
+function WorkspaceAvatarFallback({ variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: workspaceAvatarFallbackVariants({ variant }) }, props)
+	});
+}
+//#endregion
+export { WorkspaceAvatarFallback };
+
+//# sourceMappingURL=workspace-avatar-fallback.js.map

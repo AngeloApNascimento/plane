@@ -1,0 +1,12 @@
+"use client";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-group-label.d.ts
+type SelectGroupLabelProps = Omit<Select.GroupLabel.Props, "className" | "style" | "render">;
+/**
+ * The muted heading naming a `SelectGroup` — Base UI's `GroupLabel` behavior grafted onto the
+ * shared styled listbox heading.
+ */
+declare function SelectGroupLabel(props: SelectGroupLabelProps): import("react").JSX.Element;
+//#endregion
+export { SelectGroupLabel, SelectGroupLabelProps };
+//# sourceMappingURL=select-group-label.d.ts.map

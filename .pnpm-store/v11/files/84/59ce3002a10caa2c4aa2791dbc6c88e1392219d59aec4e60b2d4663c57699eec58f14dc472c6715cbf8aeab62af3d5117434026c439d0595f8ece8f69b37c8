@@ -1,0 +1,149 @@
+//#region src/skill/types.d.ts
+type SkillAgentType = "adal" | "aider-desk" | "amp" | "antigravity" | "augment" | "bob" | "claude-code" | "cline" | "codearts-agent" | "codebuddy" | "codemaker" | "codestudio" | "codex" | "command-code" | "continue" | "cortex" | "crush" | "cursor" | "deepagents" | "devin" | "dexto" | "droid" | "firebender" | "forgecode" | "gemini-cli" | "github-copilot" | "goose" | "iflow-cli" | "junie" | "kilo" | "kimi-cli" | "kiro-cli" | "kode" | "mcpjam" | "mistral-vibe" | "mux" | "neovate" | "openclaw" | "opencode" | "openhands" | "pi" | "pochi" | "qoder" | "qwen-code" | "replit" | "roo" | "rovodev" | "tabnine-cli" | "trae" | "trae-cn" | "universal" | "warp" | "windsurf" | "zencoder";
+type SkillSourceType = "local" | "github" | "gitlab" | "git" | "url" | "well-known";
+type InstallMode = "symlink" | "copy";
+interface ParsedSkillSource {
+  type: SkillSourceType;
+  url: string;
+  localPath?: string;
+  subpath?: string;
+  ref?: string;
+  skillFilter?: string;
+}
+interface Skill {
+  name: string;
+  description: string;
+  path: string;
+  rawContent: string;
+  metadata?: Record<string, unknown>;
+  pluginName?: string;
+}
+interface SkillAgentConfig {
+  name: SkillAgentType;
+  displayName: string;
+  skillsDir: string;
+  globalSkillsDir: string | undefined;
+  detectInstalled: () => Promise<boolean>;
+  isUniversal?: boolean;
+}
+interface InstallSkillsFromSourceOptions {
+  source: string;
+  cwd?: string;
+  agents?: SkillAgentType[];
+  skills?: string[];
+  mode?: InstallMode;
+  global?: boolean;
+}
+interface InstalledSkillRecord {
+  skill: string;
+  agent: SkillAgentType;
+  path: string;
+  canonicalPath?: string;
+  mode: InstallMode;
+  symlinkFailed?: boolean;
+}
+interface FailedSkillRecord {
+  skill: string;
+  agent: SkillAgentType;
+  error: string;
+}
+interface SkillInstallResult {
+  installed: InstalledSkillRecord[];
+  failed: FailedSkillRecord[];
+  skills: Skill[];
+}
+//#endregion
+//#region src/skill/agents.d.ts
+declare const skillAgents: Record<SkillAgentType, SkillAgentConfig>;
+declare const getSkillAgentConfig: (agentType: SkillAgentType) => SkillAgentConfig;
+declare const isUniversalSkillAgent: (agentType: SkillAgentType) => boolean;
+declare const getSkillAgentDir: (agentType: SkillAgentType, options?: {
+  global?: boolean;
+  cwd?: string;
+}) => string;
+declare const getSkillAgentTypes: () => SkillAgentType[];
+declare const isSkillAgentType: (value: string) => value is SkillAgentType;
+declare const getUniversalSkillAgents: () => SkillAgentType[];
+declare const getNonUniversalSkillAgents: () => SkillAgentType[];
+declare const detectInstalledSkillAgents: () => Promise<SkillAgentType[]>;
+//#endregion
+//#region src/skill/constants.d.ts
+declare const CANONICAL_SKILLS_DIR = ".agents/skills";
+declare const SKILL_MANIFEST_FILE = "SKILL.md";
+//#endregion
+//#region src/skill/fetch-url.d.ts
+declare const fetchSkillManifestFromUrl: (url: string) => Promise<string>;
+//#endregion
+//#region src/skill/fetch-well-known.d.ts
+declare const fetchWellKnownSkills: (inputUrl: string) => Promise<string>;
+//#endregion
+//#region src/skill/frontmatter.d.ts
+interface Frontmatter {
+  data: Record<string, unknown>;
+  content: string;
+}
+declare const parseFrontmatter: (raw: string) => Frontmatter;
+//#endregion
+//#region src/skill/plugin-manifest.d.ts
+declare const getPluginSkillPaths: (basePath: string) => Promise<string[]>;
+declare const getPluginGroupings: (basePath: string) => Promise<Map<string, string>>;
+//#endregion
+//#region src/skill/git.d.ts
+type GitCloneErrorKind = "timeout" | "auth" | "unknown";
+declare class GitCloneError extends Error {
+  readonly url: string;
+  readonly kind: GitCloneErrorKind;
+  constructor(message: string, url: string, kind?: GitCloneErrorKind);
+  get isTimeout(): boolean;
+  get isAuthError(): boolean;
+}
+declare const cloneRepo: (url: string, ref?: string) => Promise<string>;
+declare const cleanupTempDir: (dir: string) => Promise<void>;
+//#endregion
+//#region src/skill/install-skills-from-source.d.ts
+declare const installSkillsFromSource: (options: InstallSkillsFromSourceOptions) => Promise<SkillInstallResult>;
+//#endregion
+//#region src/skill/installer.d.ts
+interface InstallResultForAgent {
+  success: boolean;
+  path: string;
+  canonicalPath?: string;
+  mode: InstallMode;
+  symlinkFailed?: boolean;
+  error?: string;
+}
+interface InstallSkillForAgentOptions {
+  global?: boolean;
+  cwd?: string;
+  mode?: InstallMode;
+}
+declare const getCanonicalSkillsDir: (isGlobal: boolean, cwd?: string) => string;
+declare const getSkillAgentBaseDir: (agentType: SkillAgentType, isGlobal: boolean, cwd?: string) => string;
+declare const installSkillForAgent: (skill: Skill, agentType: SkillAgentType, options?: InstallSkillForAgentOptions) => Promise<InstallResultForAgent>;
+declare const isSkillInstalledForAgent: (skillName: string, agentType: SkillAgentType, options?: {
+  global?: boolean;
+  cwd?: string;
+}) => Promise<boolean>;
+//#endregion
+//#region src/skill/skills.d.ts
+declare const parseSkillManifest: (manifestPath: string) => Promise<Skill | null>;
+interface DiscoverSkillsOptions {
+  fullDepth?: boolean;
+}
+declare const discoverSkills: (basePath: string, subpath?: string, options?: DiscoverSkillsOptions) => Promise<Skill[]>;
+declare const getSkillDisplayName: (skill: Skill) => string;
+declare const filterSkillsByName: (skills: Skill[], inputNames: string[]) => Skill[];
+//#endregion
+//#region src/skill/source-parser.d.ts
+declare const parseSkillSource: (input: string) => ParsedSkillSource;
+//#endregion
+//#region src/utils/sanitize-name.d.ts
+declare const sanitizeName: (name: string) => string;
+//#endregion
+//#region src/utils/sanitize-metadata.d.ts
+declare const sanitizeMetadata: (input: string) => string;
+declare namespace index_d_exports {
+  export { CANONICAL_SKILLS_DIR, FailedSkillRecord, GitCloneError, GitCloneErrorKind, InstallMode, InstallSkillsFromSourceOptions, InstalledSkillRecord, ParsedSkillSource, SKILL_MANIFEST_FILE, Skill, SkillAgentConfig, SkillAgentType, SkillInstallResult, SkillSourceType, installSkillsFromSource as add, cleanupTempDir, cloneRepo, detectInstalledSkillAgents, discoverSkills as discover, discoverSkills, fetchSkillManifestFromUrl, fetchWellKnownSkills, filterSkillsByName, getCanonicalSkillsDir, getNonUniversalSkillAgents, getPluginGroupings, getPluginSkillPaths, getSkillAgentBaseDir, getSkillAgentConfig, getSkillAgentDir, getSkillAgentTypes, getSkillDisplayName, getUniversalSkillAgents, installSkillsFromSource as install, installSkillForAgent, installSkillsFromSource, isSkillAgentType, isSkillInstalledForAgent, isUniversalSkillAgent, parseFrontmatter, parseSkillManifest, parseSkillSource, parseSkillSource as parseSource, sanitizeMetadata, sanitizeName, skillAgents };
+}
+//#endregion
+export { getUniversalSkillAgents as A, SkillAgentConfig as B, CANONICAL_SKILLS_DIR as C, getSkillAgentConfig as D, getNonUniversalSkillAgents as E, InstallMode as F, SkillInstallResult as H, InstallSkillsFromSourceOptions as I, InstalledSkillRecord as L, isUniversalSkillAgent as M, skillAgents as N, getSkillAgentDir as O, FailedSkillRecord as P, ParsedSkillSource as R, fetchSkillManifestFromUrl as S, detectInstalledSkillAgents as T, SkillSourceType as U, SkillAgentType as V, cloneRepo as _, discoverSkills as a, parseFrontmatter as b, parseSkillManifest as c, installSkillForAgent as d, isSkillInstalledForAgent as f, cleanupTempDir as g, GitCloneErrorKind as h, parseSkillSource as i, isSkillAgentType as j, getSkillAgentTypes as k, getCanonicalSkillsDir as l, GitCloneError as m, sanitizeMetadata as n, filterSkillsByName as o, installSkillsFromSource as p, sanitizeName as r, getSkillDisplayName as s, index_d_exports as t, getSkillAgentBaseDir as u, getPluginGroupings as v, SKILL_MANIFEST_FILE as w, fetchWellKnownSkills as x, getPluginSkillPaths as y, Skill as z };

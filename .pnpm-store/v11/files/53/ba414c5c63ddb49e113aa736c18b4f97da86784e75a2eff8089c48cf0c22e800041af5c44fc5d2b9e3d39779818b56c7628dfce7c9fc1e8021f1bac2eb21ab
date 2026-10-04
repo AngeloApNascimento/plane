@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/add-outline.d.ts
+declare function AddOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AddOutline };
+//# sourceMappingURL=add-outline.d.ts.map

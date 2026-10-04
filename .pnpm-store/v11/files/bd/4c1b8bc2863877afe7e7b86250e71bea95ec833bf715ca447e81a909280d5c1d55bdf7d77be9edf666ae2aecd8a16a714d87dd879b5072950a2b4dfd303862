@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/warning-circle-outline.d.ts
+declare function WarningCircleOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { WarningCircleOutline };
+//# sourceMappingURL=warning-circle-outline.d.ts.map

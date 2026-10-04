@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-item.d.ts
+type FieldItemProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * Groups one checkbox or radio option with its label and optional description. Base-UI-agnostic —
+ * graft the Base UI `Field.Item` behavior in `components` via `<BaseField.Item
+ * render={<FieldItem/>} />`.
+ */
+declare function FieldItem({ render, ...props }: FieldItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldItem, FieldItemProps };
+//# sourceMappingURL=field-item.d.ts.map

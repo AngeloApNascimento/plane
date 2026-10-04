@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/flag-outline.d.ts
+declare function FlagOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FlagOutline };
+//# sourceMappingURL=flag-outline.d.ts.map

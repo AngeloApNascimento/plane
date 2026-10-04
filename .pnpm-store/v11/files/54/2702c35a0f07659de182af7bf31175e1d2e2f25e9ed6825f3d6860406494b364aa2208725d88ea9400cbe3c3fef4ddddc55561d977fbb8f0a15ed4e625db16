@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/templates-outline.d.ts
+declare function TemplatesOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TemplatesOutline };
+//# sourceMappingURL=templates-outline.d.ts.map

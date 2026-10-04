@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/plus-circle-filled.tsx
+function PlusCircleFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			d: "M8 .667a7.333 7.333 0 1 0 0 14.667A7.333 7.333 0 0 0 8 .667m0 4c.368 0 .667.298.667.667v2h2a.667.667 0 1 1 0 1.333h-2v2a.667.667 0 1 1-1.334 0v-2h-2a.667.667 0 1 1 0-1.333h2v-2c0-.369.299-.667.667-.667",
+			clipRule: "evenodd"
+		})
+	});
+}
+//#endregion
+export { PlusCircleFilled };
+
+//# sourceMappingURL=plus-circle-filled.js.map

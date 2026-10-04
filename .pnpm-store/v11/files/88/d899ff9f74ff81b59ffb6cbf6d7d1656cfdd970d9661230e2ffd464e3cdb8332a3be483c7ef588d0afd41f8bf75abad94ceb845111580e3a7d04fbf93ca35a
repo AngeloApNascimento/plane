@@ -1,0 +1,13 @@
+"use client";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-description.d.ts
+type DrawerDescriptionProps = Omit<Drawer.Description.Props, "className" | "style">;
+/**
+ * Supporting text for the drawer: Base UI's `Drawer.Description` behavior (wired as the popup's
+ * `aria-describedby` target) grafted onto the shared `internal/OverlayDescription` at `size="md"`
+ * (body-xs per Figma; rule 4a).
+ */
+declare function DrawerDescription(props: DrawerDescriptionProps): import("react").JSX.Element;
+//#endregion
+export { DrawerDescription, DrawerDescriptionProps };
+//# sourceMappingURL=drawer-description.d.ts.map

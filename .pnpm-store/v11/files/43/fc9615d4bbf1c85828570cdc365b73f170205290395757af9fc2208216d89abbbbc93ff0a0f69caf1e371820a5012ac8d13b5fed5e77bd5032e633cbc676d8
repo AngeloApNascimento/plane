@@ -1,0 +1,20 @@
+"use client";
+import { paginationRangeVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-range.tsx
+/**
+* The optional range label shown before the controls (Figma `1-50 of 250`): tertiary, nowrap. The
+* current range inside it is emphasized via `PaginationRangeCurrent`.
+*/
+function PaginationRange({ render, ...props }) {
+	return useRender({
+		defaultTagName: "p",
+		render,
+		props: mergeProps({ className: paginationRangeVariants() }, props)
+	});
+}
+//#endregion
+export { PaginationRange };
+
+//# sourceMappingURL=pagination-range.js.map

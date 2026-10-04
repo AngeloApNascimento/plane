@@ -1,0 +1,16 @@
+"use client";
+import { cva } from "class-variance-authority";
+//#region src/elements/form/variants.ts
+const formVariants = cva("flex flex-col gap-6");
+const formBodyVariants = cva("flex gap-4", { variants: { layout: {
+	single: "flex-col",
+	multi: "flex-row flex-wrap"
+} } });
+const formActionsVariants = cva("flex gap-3", { variants: { layout: {
+	inline: "flex-row justify-end",
+	stretch: "flex-col [&>*]:w-full"
+} } });
+//#endregion
+export { formActionsVariants, formBodyVariants, formVariants };
+
+//# sourceMappingURL=variants.js.map

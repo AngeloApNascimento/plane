@@ -1,0 +1,34 @@
+"use client";
+import { ButtonGroupButton as ButtonGroupButton$1 } from "../../elements/button-group/button-group-button.js";
+import { ButtonGroupContext } from "./button-group-context.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Button } from "@base-ui/react/button";
+//#region src/components/button-group/button-group-button.tsx
+/**
+* The ready-made group segment: grafts Base UI's `Button` behavior onto the styled
+* `ButtonGroupButton` (behavior outer, the styled button as the render target), lays out an
+* optional `icon` beside the label (`iconPosition`), and takes its `size` from the surrounding
+* `ButtonGroup` via context.
+*/
+function ButtonGroupButton({ size, icon, iconPosition = "start", label, type = "button", render, nativeButton, ...props }) {
+	const groupSize = React.useContext(ButtonGroupContext);
+	return /* @__PURE__ */ jsxs(Button, {
+		...props,
+		type,
+		nativeButton,
+		render: /* @__PURE__ */ jsx(ButtonGroupButton$1, {
+			size: size ?? groupSize,
+			render
+		}),
+		children: [
+			iconPosition === "start" ? icon : null,
+			label,
+			iconPosition === "end" ? icon : null
+		]
+	});
+}
+//#endregion
+export { ButtonGroupButton };
+
+//# sourceMappingURL=button-group-button.js.map

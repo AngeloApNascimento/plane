@@ -1,0 +1,634 @@
+import { A as skillAgents, D as getUniversalSkillAgents, E as getSkillAgentTypes, O as isSkillAgentType, S as detectInstalledSkillAgents, T as getSkillAgentDir, a as filterSkillsByName, b as sanitizeName, h as cloneRepo, i as discoverSkills, j as CANONICAL_SKILLS_DIR, k as isUniversalSkillAgent, m as cleanupTempDir, n as installSkillsFromSource, r as parseSkillSource, v as fetchWellKnownSkills, y as fetchSkillManifestFromUrl } from "./skill-DRd1jW7a.js";
+import { t as toErrorMessage } from "./to-error-message-Bg0SEUet.js";
+import { D as resolveMcpAgentAlias, a as installMcpServer, i as listInstalledMcpServers, l as parseMcpSource, n as removeMcpServer, v as detectGloballyInstalledMcpAgents, x as getMcpAgentTypes, y as detectProjectInstalledMcpAgents } from "./mcp-D24Z3PhI.js";
+import { a as readAgentsMd, i as removeAgentsMdSection, n as upsertAgentsMdSection, p as listAgentsMdDescriptors, r as symlinkClaudeToAgents, s as resolveAgentsMdFilePath } from "./agents-md-CLVomM5F.js";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { homedir } from "node:os";
+import { basename, join } from "node:path";
+import { mkdir, readdir, rm, stat, writeFile } from "node:fs/promises";
+import { Command } from "commander";
+import pc from "picocolors";
+import prompts from "prompts";
+//#region src/cli/utils/logger.ts
+const logger = {
+	info: (message) => {
+		console.log(pc.cyan("ℹ"), message);
+	},
+	success: (message) => {
+		console.log(pc.green("✔"), message);
+	},
+	warn: (message) => {
+		console.log(pc.yellow("⚠"), message);
+	},
+	error: (message) => {
+		console.error(pc.red("✖"), message);
+	}
+};
+//#endregion
+//#region src/cli/commands/doc/resolve-agent.ts
+const knownAgents = new Set(listAgentsMdDescriptors().map((descriptor) => descriptor.agent));
+const isAgentsMdAgent = (value) => knownAgents.has(value);
+const resolveAgentsMdAgent = (value) => {
+	if (value === void 0) return void 0;
+	if (!isAgentsMdAgent(value)) throw new Error(`Unknown agent "${value}"`);
+	return value;
+};
+//#endregion
+//#region src/cli/commands/doc/init.ts
+const TEMPLATE = `# AGENTS.md
+
+This document is the source of truth for AI coding agents working in this repository.
+
+## Project overview
+
+Short description of what this project does.
+
+## Setup commands
+
+\`\`\`bash
+pnpm install
+pnpm dev
+\`\`\`
+
+## Conventions
+
+- Describe coding style, framework, and patterns agents should follow.
+- Link to any other docs that are relevant.
+
+## Testing
+
+\`\`\`bash
+pnpm test
+\`\`\`
+`;
+const docInitCommand = new Command("init").description("Create an AGENTS.md (or agent-specific variant) in the current directory").option("-a, --agent <agent>", "Agent to target (defaults to universal AGENTS.md)").action((options) => {
+	try {
+		const filePath = resolveAgentsMdFilePath({
+			cwd: process.cwd(),
+			agent: resolveAgentsMdAgent(options.agent)
+		});
+		if (existsSync(filePath)) {
+			logger.warn(`${pc.cyan(filePath)} already exists`);
+			return;
+		}
+		writeFileSync(filePath, TEMPLATE, "utf-8");
+		logger.success(`Created ${pc.bold(filePath)}`);
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/doc/read.ts
+const docReadCommand = new Command("read").description("Read the current AGENTS.md (or agent-specific variant) and list its sections").option("-a, --agent <agent>", "Agent variant to read (claude-code, cursor, codex, ...)").option("-f, --file <file>", "Explicit file path (overrides --agent)").option("--json", "Output as JSON").action((options) => {
+	try {
+		const document = readAgentsMd({
+			agent: resolveAgentsMdAgent(options.agent),
+			file: options.file,
+			cwd: process.cwd()
+		});
+		if (options.json) {
+			console.log(JSON.stringify({
+				path: document.path,
+				sections: document.sections.map((section) => ({
+					heading: section.heading,
+					level: section.level,
+					body: section.body
+				}))
+			}, null, 2));
+			return;
+		}
+		if (!document.content) {
+			logger.warn(`No file at ${pc.cyan(document.path)}`);
+			return;
+		}
+		logger.info(pc.bold(document.path));
+		for (const section of document.sections) {
+			const prefix = "#".repeat(section.level);
+			console.log(`  ${pc.dim(prefix)} ${section.heading}`);
+		}
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/doc/remove-section.ts
+const docRemoveSectionCommand = new Command("remove-section").alias("rm-section").description("Remove a section from an AGENTS.md file").argument("<heading>", "Section heading to remove").option("-a, --agent <agent>", "Agent variant to target").option("-f, --file <file>", "Explicit file path (overrides --agent)").action((heading, options) => {
+	try {
+		if (removeAgentsMdSection({
+			heading,
+			agent: resolveAgentsMdAgent(options.agent),
+			file: options.file,
+			cwd: process.cwd()
+		})) logger.success(`Removed ${pc.bold(heading)}`);
+		else logger.warn(`Section ${pc.bold(heading)} not found`);
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/doc/set-section.ts
+const MIN_HEADING_LEVEL = 1;
+const MAX_HEADING_LEVEL = 6;
+const isValidPlacement = (value) => value === "append" || value === "prepend" || value === "replace";
+const docSetSectionCommand = new Command("set-section").description("Create or replace a section in an AGENTS.md file").argument("<heading>", "Section heading (used as the Markdown heading)").option("-a, --agent <agent>", "Agent variant to target").option("-f, --file <file>", "Explicit file path (overrides --agent)").option("--body <body>", "Inline body content").option("--body-file <path>", "Read body from a file").option("--placement <mode>", "append, prepend, or replace (default: replace)").option("--level <level>", "Heading level (1-6, default: 2)").action((heading, options) => {
+	try {
+		const agent = resolveAgentsMdAgent(options.agent);
+		const body = options.body ?? (options.bodyFile ? readFileSync(options.bodyFile, "utf-8") : "");
+		if (!body.trim()) throw new Error("Body is empty. Provide --body or --body-file with content.");
+		const placement = options.placement ?? "replace";
+		if (!isValidPlacement(placement)) throw new Error(`Invalid placement "${placement}" (expected: append, prepend, replace)`);
+		const level = options.level ? Number.parseInt(options.level, 10) : 2;
+		if (!Number.isInteger(level) || level < MIN_HEADING_LEVEL || level > MAX_HEADING_LEVEL) throw new Error(`Invalid heading level "${options.level}" (expected: ${MIN_HEADING_LEVEL}-${MAX_HEADING_LEVEL})`);
+		const filePath = upsertAgentsMdSection({
+			heading,
+			body,
+			agent,
+			file: options.file,
+			placement,
+			level,
+			cwd: process.cwd()
+		});
+		logger.success(`Updated ${pc.bold(heading)} in ${pc.cyan(filePath)}`);
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/doc/symlink-claude.ts
+const docSymlinkClaudeCommand = new Command("symlink-claude").description("Create a CLAUDE.md → AGENTS.md symlink (migration helper)").option("--overwrite", "Replace an existing CLAUDE.md (backs it up first)").option("--backup <name>", "Backup filename if overwriting (default: CLAUDE.md.bak)").action(async (options) => {
+	try {
+		const result = await symlinkClaudeToAgents({
+			cwd: process.cwd(),
+			overwrite: Boolean(options.overwrite),
+			backupName: options.backup
+		});
+		if (result.alreadyLinked) {
+			logger.info(`CLAUDE.md already points to AGENTS.md`);
+			return;
+		}
+		if (result.created) {
+			const suffix = result.backedUpTo ? ` (backed up existing to ${pc.dim(result.backedUpTo)})` : "";
+			logger.success(`Linked ${pc.cyan(result.claudePath)} → AGENTS.md${suffix}`);
+			return;
+		}
+		logger.warn(`CLAUDE.md already exists at ${pc.cyan(result.claudePath)}. Pass --overwrite to replace it.`);
+		process.exitCode = 1;
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/doc/index.ts
+const docCommand = new Command("agents-md").alias("doc").description("Manage AGENTS.md / CLAUDE.md / GEMINI.md / Cursor rules").addCommand(docInitCommand).addCommand(docReadCommand).addCommand(docSetSectionCommand).addCommand(docRemoveSectionCommand).addCommand(docSymlinkClaudeCommand);
+//#endregion
+//#region src/cli/utils/format-agent-list.ts
+const formatAgentList = (agentList, emptyLabel = "(none)") => agentList.length === 0 ? emptyLabel : agentList.join(", ");
+//#endregion
+//#region src/cli/utils/parse-mcp-agent-list.ts
+const parseMcpAgentList = (input) => {
+	if (!input || input.length === 0) return void 0;
+	if (input.includes("*")) return getMcpAgentTypes();
+	const resolved = [];
+	for (const value of input) {
+		const agentType = resolveMcpAgentAlias(value);
+		if (!agentType) throw new Error(`Unknown MCP agent "${value}"`);
+		resolved.push(agentType);
+	}
+	return resolved;
+};
+//#endregion
+//#region src/cli/commands/mcp/add.ts
+const parseKeyValueList = (entries, separator) => {
+	if (!entries || entries.length === 0) return {};
+	const result = {};
+	for (const entry of entries) {
+		const splitIndex = entry.indexOf(separator);
+		if (splitIndex === -1) throw new Error(`Invalid entry "${entry}": expected "${separator}" separator`);
+		const key = entry.slice(0, splitIndex).trim();
+		const value = entry.slice(splitIndex + separator.length).trim();
+		if (!key) throw new Error(`Invalid entry "${entry}": empty key`);
+		result[key] = value;
+	}
+	return result;
+};
+const resolveTransport = (input) => {
+	if (!input) return void 0;
+	if (input === "http" || input === "sse") return input;
+	throw new Error(`Unsupported transport "${input}" (expected: http, sse)`);
+};
+const detectCandidateAgents = (cwd, isGlobal) => isGlobal ? detectGloballyInstalledMcpAgents() : detectProjectInstalledMcpAgents(cwd);
+const mcpAddCommand = new Command("add").description("Add an MCP server to coding agents").argument("<source>", "Remote URL, npm package, or command line").option("-a, --agent <agents...>", "Target specific agents (use '*' for all)").option("-g, --global", "Install to user-level config instead of project").option("-t, --transport <type>", "Transport type for remote servers (http or sse)").option("--header <header...>", "HTTP header (Key: Value), repeatable").option("--env <env...>", "Env var for stdio servers (KEY=VALUE), repeatable").option("-n, --name <name>", "Server name override").option("-y, --yes", "Skip all prompts").option("--all", "Install to all supported agents").action((source, options) => {
+	try {
+		const parsed = parseMcpSource(source);
+		const cwd = process.cwd();
+		const isGlobal = Boolean(options.global);
+		let agentTypes = options.all ? getMcpAgentTypes() : parseMcpAgentList(options.agent);
+		if (!agentTypes) {
+			const detected = detectCandidateAgents(cwd, isGlobal);
+			if (detected.length === 0) {
+				logger.warn(`No ${isGlobal ? "global" : "project"}-installed MCP agents detected. Pass ${pc.cyan("-a <agent>")} (e.g. ${pc.cyan("-a cursor")}) or ${pc.cyan("--all")} to install.`);
+				process.exitCode = 1;
+				return;
+			}
+			agentTypes = detected;
+			logger.info(`Detected ${isGlobal ? "global" : "project"} agents: ${pc.cyan(formatAgentList(detected, "(none detected)"))}`);
+		}
+		const result = installMcpServer({
+			source,
+			name: options.name,
+			agents: agentTypes,
+			global: isGlobal,
+			cwd,
+			transport: resolveTransport(options.transport),
+			headers: parseKeyValueList(options.header, ":"),
+			env: parseKeyValueList(options.env, "=")
+		});
+		logger.info(`Installing ${pc.bold(result.serverName)} (${pc.cyan(parsed.type)}) to ${pc.cyan(String(result.results.length))} agent(s)`);
+		for (const record of result.results) if (record.success) logger.success(`${pc.cyan(record.agent)} ${pc.dim(record.path)}`);
+		else logger.error(`${pc.cyan(record.agent)}: ${record.error}`);
+		if (result.results.some((record) => !record.success)) process.exitCode = 1;
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/mcp/list.ts
+const mcpListCommand = new Command("list").alias("ls").description("List installed MCP servers across agents").option("-g, --global", "List global configs instead of project").option("-a, --agent <agents...>", "Filter by specific agents").option("--json", "Output as JSON").action((options) => {
+	try {
+		const entries = listInstalledMcpServers({
+			global: Boolean(options.global),
+			cwd: process.cwd(),
+			agents: parseMcpAgentList(options.agent)
+		});
+		if (options.json) {
+			console.log(JSON.stringify(entries, null, 2));
+			return;
+		}
+		if (entries.length === 0) {
+			logger.warn("No MCP servers installed");
+			return;
+		}
+		const grouped = /* @__PURE__ */ new Map();
+		for (const entry of entries) {
+			const existing = grouped.get(entry.serverName) ?? [];
+			existing.push(entry);
+			grouped.set(entry.serverName, existing);
+		}
+		for (const [serverName, group] of grouped) {
+			const agentLabels = group.map((record) => record.agent).join(", ");
+			console.log(`  ${pc.bold(serverName)} ${pc.dim(`[${agentLabels}]`)}`);
+			const firstPath = group[0]?.path;
+			if (firstPath) console.log(`    ${pc.dim(firstPath)}`);
+		}
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/mcp/remove.ts
+const mcpRemoveCommand = new Command("remove").alias("rm").description("Remove an MCP server from agent configs").argument("<name>", "Server name").option("-g, --global", "Remove from global scope").option("-a, --agent <agents...>", "Filter by specific agents (use '*' for all)").option("-y, --yes", "Skip confirmation prompts").action((name, options) => {
+	try {
+		const results = removeMcpServer({
+			name,
+			agents: parseMcpAgentList(options.agent),
+			global: Boolean(options.global),
+			cwd: process.cwd()
+		});
+		if (results.length === 0) {
+			logger.warn(`No agent config contained ${pc.bold(name)}`);
+			return;
+		}
+		for (const record of results) if (record.removed) logger.success(`${pc.cyan(record.agent)} removed ${pc.bold(name)} ${pc.dim(record.path)}`);
+		else logger.error(`${pc.cyan(record.agent)}: ${record.error ?? "not found"}`);
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/mcp/index.ts
+const mcpCommand = new Command("mcp").description("Install, list, and remove MCP servers across coding agents").addCommand(mcpAddCommand).addCommand(mcpListCommand).addCommand(mcpRemoveCommand);
+//#endregion
+//#region src/cli/utils/parse-skill-agent-list.ts
+const parseSkillAgentList = (input) => {
+	if (!input || input.length === 0) return void 0;
+	if (input.includes("*")) return getSkillAgentTypes();
+	const validated = [];
+	for (const value of input) {
+		if (!isSkillAgentType(value)) throw new Error(`Unknown agent "${value}"`);
+		validated.push(value);
+	}
+	return validated;
+};
+//#endregion
+//#region src/cli/commands/skill/add.ts
+const resolveSkillFilter = (input) => {
+	if (!input || input.length === 0) return void 0;
+	if (input.includes("*")) return void 0;
+	return input;
+};
+const resolveTargetAgentsForPrompt = async (requested, yes) => {
+	if (requested) return requested;
+	const installed = await detectInstalledSkillAgents();
+	const fallback = installed.length > 0 ? installed : getUniversalSkillAgents();
+	if (yes || !process.stdin.isTTY) return fallback;
+	const rawSelected = (await prompts({
+		type: "multiselect",
+		name: "agents",
+		message: "Install to which agents?",
+		choices: Object.values(skillAgents).map((agent) => ({
+			title: agent.displayName,
+			value: agent.name,
+			selected: fallback.includes(agent.name)
+		})),
+		min: 1
+	})).agents;
+	if (!Array.isArray(rawSelected) || rawSelected.length === 0) {
+		logger.warn("No agents selected, using detected defaults");
+		return fallback;
+	}
+	const selected = rawSelected.filter((value) => typeof value === "string" && isSkillAgentType(value));
+	return selected.length > 0 ? selected : fallback;
+};
+const listSkillsInSource = async (source) => {
+	const parsed = parseSkillSource(source);
+	let basePath = "";
+	let subpath;
+	let cleanup;
+	try {
+		if (parsed.type === "local") basePath = parsed.localPath ?? parsed.url;
+		else if (parsed.type === "url") {
+			basePath = await fetchSkillManifestFromUrl(parsed.url);
+			cleanup = () => cleanupTempDir(basePath);
+		} else if (parsed.type === "well-known") {
+			basePath = await fetchWellKnownSkills(parsed.url);
+			cleanup = () => cleanupTempDir(basePath);
+		} else {
+			basePath = await cloneRepo(parsed.url, parsed.ref);
+			subpath = parsed.subpath;
+			cleanup = () => cleanupTempDir(basePath);
+		}
+		const skills = await discoverSkills(basePath, subpath);
+		const visible = parsed.skillFilter ? filterSkillsByName(skills, [parsed.skillFilter]) : skills;
+		if (visible.length === 0) {
+			logger.warn("No SKILL.md files found in source");
+			return;
+		}
+		logger.info(`Found ${visible.length} skill${visible.length === 1 ? "" : "s"}`);
+		for (const skill of visible) console.log(`  ${pc.bold(skill.name)} ${pc.dim("-")} ${skill.description}`);
+	} finally {
+		await cleanup?.().catch(() => {});
+	}
+};
+const skillAddCommand = new Command("add").description("Install skills from a source (local path, GitHub, or URL)").argument("<source>", "Source to install skills from").option("-a, --agent <agents...>", "Target specific agents (use '*' for all)").option("-s, --skill <skills...>", "Install specific skills by name").option("-g, --global", "Install to ~/.agents/skills instead of the project").option("--copy", "Copy files instead of symlinking").option("-y, --yes", "Skip all prompts").option("-l, --list", "List available skills in the source without installing").action(async (source, options) => {
+	try {
+		if (options.list) {
+			await listSkillsInSource(source);
+			return;
+		}
+		const targetAgents = await resolveTargetAgentsForPrompt(parseSkillAgentList(options.agent), Boolean(options.yes));
+		const skillFilter = resolveSkillFilter(options.skill);
+		const mode = options.copy ? "copy" : "symlink";
+		logger.info(`Installing from ${pc.cyan(source)} to ${pc.cyan(formatAgentList(targetAgents))}`);
+		const result = await installSkillsFromSource({
+			source,
+			agents: targetAgents,
+			skills: skillFilter,
+			global: options.global,
+			mode,
+			cwd: process.cwd()
+		});
+		if (result.skills.length === 0) {
+			logger.warn("No SKILL.md files found in source");
+			return;
+		}
+		for (const record of result.installed) {
+			const fallbackSuffix = record.symlinkFailed ? pc.dim(" (copied: symlink fallback)") : "";
+			logger.success(`${pc.bold(record.skill)} → ${pc.cyan(record.agent)}${fallbackSuffix} ${pc.dim(record.path)}`);
+		}
+		for (const record of result.failed) logger.error(`${pc.bold(record.skill)} → ${pc.cyan(record.agent)}: ${record.error}`);
+		if (result.failed.length > 0) process.exitCode = 1;
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/skill/init.ts
+const renderTemplate = (skillName) => `---
+name: ${skillName}
+description: A brief description of what this skill does and when to use it.
+---
+
+# ${skillName}
+
+Describe what this skill does, when the agent should use it, and the instructions
+the agent should follow when activated.
+
+## When to use
+
+Describe the trigger conditions (e.g. "after finishing a feature", "when the user
+asks about X", "before committing React code").
+
+## Instructions
+
+1. First step
+2. Second step
+3. Additional steps as needed
+`;
+const skillInitCommand = new Command("init").description("Create a new SKILL.md in the current directory").argument("[name]", "Skill name (defaults to current directory name)").action(async (nameArg) => {
+	try {
+		const cwd = process.cwd();
+		const skillName = nameArg || basename(cwd);
+		const hasExplicitName = nameArg !== void 0;
+		const skillDir = hasExplicitName ? join(cwd, skillName) : cwd;
+		const skillFile = join(skillDir, "SKILL.md");
+		const displayPath = hasExplicitName ? `${skillName}/SKILL.md` : "SKILL.md";
+		if (existsSync(skillFile)) {
+			logger.warn(`Skill already exists at ${pc.cyan(displayPath)}`);
+			return;
+		}
+		if (hasExplicitName) await mkdir(skillDir, { recursive: true });
+		await writeFile(skillFile, renderTemplate(skillName), "utf-8");
+		logger.success(`Initialized skill ${pc.bold(skillName)}`);
+		console.log(`  ${pc.dim("Created:")} ${displayPath}`);
+		console.log();
+		console.log(pc.dim("Next steps:"));
+		console.log(`  1. Edit ${pc.cyan(displayPath)} to define your skill instructions`);
+		console.log(`  2. Update the ${pc.cyan("name")} and ${pc.cyan("description")} frontmatter`);
+		console.log(`  3. Install it locally with ${pc.cyan(`agent-install skill add ./${hasExplicitName ? skillName : "."}`)}`);
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/skill/list.ts
+const isUsableEntry = async (entry, fullPath) => {
+	if (entry.isDirectory()) return true;
+	if (!entry.isSymbolicLink()) return false;
+	try {
+		return (await stat(fullPath)).isDirectory();
+	} catch {
+		return false;
+	}
+};
+const scanSkillsInDir = async (baseDir, agentType) => {
+	const entries = await readdir(baseDir, { withFileTypes: true }).catch(() => []);
+	const results = [];
+	for (const entry of entries) {
+		const skillDir = join(baseDir, entry.name);
+		if (!await isUsableEntry(entry, skillDir)) continue;
+		const skills = await discoverSkills(skillDir);
+		for (const skill of skills) results.push({
+			skill: skill.name,
+			agent: agentType,
+			description: skill.description,
+			path: skill.path
+		});
+	}
+	return results;
+};
+const dirExists = (path) => {
+	try {
+		return existsSync(path);
+	} catch {
+		return false;
+	}
+};
+const getCanonicalDir = (isGlobal, cwd) => isGlobal ? join(homedir(), CANONICAL_SKILLS_DIR) : join(cwd, CANONICAL_SKILLS_DIR);
+const collectListEntries = async (options) => {
+	const { isGlobal, cwd, filter } = options;
+	const allEntries = [];
+	const visitedDirs = /* @__PURE__ */ new Set();
+	const visit = async (dir, agent) => {
+		if (visitedDirs.has(dir)) return;
+		visitedDirs.add(dir);
+		allEntries.push(...await scanSkillsInDir(dir, agent));
+	};
+	if (filter) {
+		for (const agentType of filter) await visit(getSkillAgentDir(agentType, {
+			global: isGlobal,
+			cwd
+		}), agentType);
+		return allEntries;
+	}
+	await visit(getCanonicalDir(isGlobal, cwd), "universal");
+	const installedAgents = new Set(await detectInstalledSkillAgents());
+	for (const agentType of getSkillAgentTypes()) {
+		if (agentType === "universal") continue;
+		if (isUniversalSkillAgent(agentType)) continue;
+		const baseDir = getSkillAgentDir(agentType, {
+			global: isGlobal,
+			cwd
+		});
+		if (!installedAgents.has(agentType) && !dirExists(baseDir)) continue;
+		await visit(baseDir, agentType);
+	}
+	return allEntries;
+};
+const skillListCommand = new Command("list").alias("ls").description("List installed skills").option("-g, --global", "List global skills instead of project skills").option("-a, --agent <agents...>", "Filter by specific agents").option("--json", "Output as JSON").action(async (options) => {
+	try {
+		const cwd = process.cwd();
+		const allEntries = await collectListEntries({
+			isGlobal: Boolean(options.global),
+			cwd,
+			filter: parseSkillAgentList(options.agent)
+		});
+		if (options.json) {
+			console.log(JSON.stringify(allEntries, null, 2));
+			return;
+		}
+		if (allEntries.length === 0) {
+			logger.warn("No installed skills found");
+			return;
+		}
+		const bySkill = /* @__PURE__ */ new Map();
+		for (const entry of allEntries) {
+			const existing = bySkill.get(entry.skill) ?? [];
+			existing.push(entry);
+			bySkill.set(entry.skill, existing);
+		}
+		const formatAgent = (agent) => agent === "universal" ? "canonical" : skillAgents[agent].displayName;
+		for (const [skillName, entries] of bySkill) {
+			const first = entries[0];
+			if (!first) continue;
+			const agentLabels = Array.from(new Set(entries.map((entry) => formatAgent(entry.agent))));
+			const description = first.description || basename(first.path);
+			console.log(`  ${pc.bold(skillName)} ${pc.dim(`[${agentLabels.join(", ")}]`)}\n    ${pc.dim(description)}`);
+		}
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/skill/remove.ts
+const skillRemoveCommand = new Command("remove").alias("rm").description("Remove installed skills").argument("[skills...]", "Skills to remove (omit for interactive selection)").option("-g, --global", "Remove from global scope").option("-a, --agent <agents...>", "Remove from specific agents (use '*' for all)").option("-y, --yes", "Skip confirmation prompts").action(async (skillArgs, options) => {
+	try {
+		const cwd = process.cwd();
+		const isGlobal = Boolean(options.global);
+		const agentFilter = parseSkillAgentList(options.agent) ?? getSkillAgentTypes();
+		let skillNames = skillArgs;
+		if (skillNames.length === 0) {
+			if (options.yes || !process.stdin.isTTY) {
+				logger.warn("No skill names provided");
+				return;
+			}
+			const response = await prompts({
+				type: "text",
+				name: "skill",
+				message: "Skill name to remove"
+			});
+			if (!response.skill) return;
+			skillNames = [response.skill];
+		}
+		const canonicalBase = isGlobal ? join(homedir(), CANONICAL_SKILLS_DIR) : join(cwd, CANONICAL_SKILLS_DIR);
+		for (const rawName of skillNames) {
+			const sanitized = sanitizeName(rawName);
+			await rm(join(canonicalBase, sanitized), {
+				recursive: true,
+				force: true
+			}).catch(() => {});
+			for (const agentType of agentFilter) {
+				if (agentType === "universal") continue;
+				await rm(join(getSkillAgentDir(agentType, {
+					global: isGlobal,
+					cwd
+				}), sanitized), {
+					recursive: true,
+					force: true
+				}).catch(() => {});
+			}
+			logger.success(`Removed ${pc.bold(rawName)}`);
+		}
+	} catch (error) {
+		logger.error(toErrorMessage(error));
+		process.exitCode = 1;
+	}
+});
+//#endregion
+//#region src/cli/commands/skill/index.ts
+const skillCommand = new Command("skill").description("Manage SKILL.md files").addCommand(skillAddCommand).addCommand(skillInitCommand).addCommand(skillListCommand).addCommand(skillRemoveCommand);
+//#endregion
+//#region src/cli.ts
+const VERSION = "0.0.5";
+process.on("SIGINT", () => process.exit(0));
+process.on("SIGTERM", () => process.exit(0));
+const program = new Command().name("agent-install").description("Install SKILL.md files, MCP servers, and AGENTS.md guidance for any coding agent").version(VERSION, "-v, --version", "display the version number");
+program.addCommand(skillCommand);
+program.addCommand(mcpCommand);
+program.addCommand(docCommand);
+const main = async () => {
+	await program.parseAsync();
+};
+main();
+//#endregion
+export {};

@@ -1,0 +1,14 @@
+"use client";
+import { AccordionRoot } from "@base-ui/react/accordion";
+//#region src/components/accordion/accordion.d.ts
+type AccordionProps<Value = any> = Omit<AccordionRoot.Props<Value>, "className" | "style">;
+/**
+ * Groups a set of `AccordionItem`s. Single-open by default; pass `multiple` to allow several panels
+ * open at once. Use `defaultValue` (uncontrolled) or `value` + `onValueChange` (controlled) to
+ * drive which items are expanded. Grafts Base UI's accordion behavior onto the styled `Accordion`
+ * frame.
+ */
+declare function Accordion$1<Value = any>(props: AccordionProps<Value>): import("react").JSX.Element;
+//#endregion
+export { Accordion$1 as Accordion, AccordionProps };
+//# sourceMappingURL=accordion.d.ts.map

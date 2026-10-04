@@ -1,0 +1,115 @@
+"use client";
+import { FieldControlContent } from "../../elements/field/field-control-content.js";
+import { FieldLabel } from "../../elements/field/field-label.js";
+import { FieldLabelGroup } from "../../elements/field/field-label-group.js";
+import { FieldLabelRequiredMarker } from "../../elements/field/field-label-required-marker.js";
+import { Field } from "../field/field.js";
+import { FieldDescription } from "../field/field-description.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import { Combobox } from "../combobox/combobox.js";
+import { ComboboxContent } from "../combobox/combobox-content.js";
+import { ComboboxEmpty } from "../combobox/combobox-empty.js";
+import { ComboboxItem } from "../combobox/combobox-item.js";
+import { ComboboxList } from "../combobox/combobox-list.js";
+import { ComboboxSearch } from "../combobox/combobox-search.js";
+import { ComboboxSelectAll } from "../combobox/combobox-select-all.js";
+import { ComboboxSeparator } from "../combobox/combobox-separator.js";
+import { ComboboxStickyList } from "../combobox/combobox-sticky-list.js";
+import { ComboboxTrigger } from "../combobox/combobox-trigger.js";
+import { useControllableState } from "../../hooks/use-controllable-state/index.js";
+import * as React from "react";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/combobox-field/combobox-field.tsx
+/**
+* Ready-to-use combobox field: a closed trigger, overlay search, checkbox rows, and helper/error
+* text.
+*/
+function ComboboxField({ variant, description, trailing, icon, disabled, empty, error, hint, items, label, size, name, placeholder, required, searchLabel = "Search", selectAllLabel = "Select all", value, defaultValue, onValueChange, isItemEqualToValue, ...comboboxProps }) {
+	const display = (item) => comboboxProps.itemToStringLabel ? comboboxProps.itemToStringLabel(item) : String(item);
+	const labelId = React.useId();
+	const triggerId = React.useId();
+	const [selected, setSelected] = useControllableState({
+		value: value === void 0 ? void 0 : value ?? [],
+		defaultValue: defaultValue ?? []
+	});
+	const selectedValues = selected ?? [];
+	const equals = isItemEqualToValue ?? Object.is;
+	const allSelected = items.length > 0 && items.every((item) => selectedValues.some((s) => equals(item, s)));
+	const someSelected = !allSelected && selectedValues.length > 0;
+	return /* @__PURE__ */ jsx(Field, {
+		name,
+		size,
+		disabled,
+		invalid: error != null || void 0,
+		children: /* @__PURE__ */ jsxs(Combobox, {
+			...comboboxProps,
+			multiple: true,
+			disabled,
+			items,
+			required,
+			value: selectedValues,
+			isItemEqualToValue,
+			onValueChange: (next, details) => {
+				setSelected(next);
+				onValueChange?.(next, details);
+			},
+			children: [
+				/* @__PURE__ */ jsxs(FieldLabelGroup, {
+					orientation: "vertical",
+					children: [/* @__PURE__ */ jsxs(FieldLabel, {
+						id: labelId,
+						size,
+						inset: false,
+						htmlFor: triggerId,
+						children: [label, required ? /* @__PURE__ */ jsx(FieldLabelRequiredMarker, { children: "*" }) : null]
+					}), description != null ? /* @__PURE__ */ jsx(FieldDescription, {
+						size,
+						children: description
+					}) : null]
+				}),
+				/* @__PURE__ */ jsxs(FieldControlContent, {
+					orientation: "vertical",
+					size,
+					children: [/* @__PURE__ */ jsx(ComboboxTrigger, {
+						id: triggerId,
+						size,
+						variant,
+						placeholder,
+						icon,
+						trailing
+					}), /* @__PURE__ */ jsx(FieldHelperText, {
+						size,
+						hint,
+						error
+					})]
+				}),
+				/* @__PURE__ */ jsxs(ComboboxContent, {
+					"aria-labelledby": labelId,
+					search: /* @__PURE__ */ jsxs(Fragment, { children: [/* @__PURE__ */ jsx(ComboboxSearch, {
+						"aria-label": searchLabel,
+						placeholder: searchLabel
+					}), /* @__PURE__ */ jsxs(ComboboxStickyList, { children: [/* @__PURE__ */ jsx(ComboboxSelectAll, {
+						label: selectAllLabel,
+						checked: allSelected,
+						indeterminate: someSelected,
+						disabled: disabled || items.length === 0,
+						onClick: () => {
+							const next = allSelected ? [] : [...items];
+							setSelected(next);
+							onValueChange?.(next);
+						}
+					}), /* @__PURE__ */ jsx(ComboboxSeparator, {})] })] }),
+					children: [/* @__PURE__ */ jsx(ComboboxEmpty, { children: empty }), /* @__PURE__ */ jsx(ComboboxList, { children: (item) => /* @__PURE__ */ jsx(ComboboxItem, {
+						value: item,
+						label: display(item),
+						selection: "checkbox"
+					}, display(item)) })]
+				})
+			]
+		})
+	});
+}
+//#endregion
+export { ComboboxField };
+
+//# sourceMappingURL=combobox-field.js.map

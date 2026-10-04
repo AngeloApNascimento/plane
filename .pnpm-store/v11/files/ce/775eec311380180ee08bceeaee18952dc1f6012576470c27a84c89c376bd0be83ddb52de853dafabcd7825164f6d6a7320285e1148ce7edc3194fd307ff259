@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-list.d.ts
+type NavigationMenuListProps = Omit<useRender.ComponentProps<"ul">, "className" | "style">;
+/**
+ * The styled horizontal row of top-level menu items. Base-UI-agnostic — graft the menu behavior in
+ * `components` via `<BaseNavigationMenu.List render={<NavigationMenuList />} />`.
+ */
+declare function NavigationMenuList({ render, ...props }: NavigationMenuListProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NavigationMenuList, NavigationMenuListProps };
+//# sourceMappingURL=navigation-menu-list.d.ts.map

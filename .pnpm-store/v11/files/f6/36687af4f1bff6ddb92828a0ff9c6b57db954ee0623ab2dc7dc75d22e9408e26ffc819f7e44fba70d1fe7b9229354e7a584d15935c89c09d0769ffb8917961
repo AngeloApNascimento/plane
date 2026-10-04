@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/toggle-open-outline.d.ts
+declare function ToggleOpenOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ToggleOpenOutline };
+//# sourceMappingURL=toggle-open-outline.d.ts.map

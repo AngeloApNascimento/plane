@@ -1,0 +1,20 @@
+"use client";
+import { navigationMenuListVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-list.tsx
+/**
+* The styled horizontal row of top-level menu items. Base-UI-agnostic — graft the menu behavior in
+* `components` via `<BaseNavigationMenu.List render={<NavigationMenuList />} />`.
+*/
+function NavigationMenuList({ render, ...props }) {
+	return useRender({
+		defaultTagName: "ul",
+		render,
+		props: mergeProps({ className: navigationMenuListVariants() }, props)
+	});
+}
+//#endregion
+export { NavigationMenuList };
+
+//# sourceMappingURL=navigation-menu-list.js.map

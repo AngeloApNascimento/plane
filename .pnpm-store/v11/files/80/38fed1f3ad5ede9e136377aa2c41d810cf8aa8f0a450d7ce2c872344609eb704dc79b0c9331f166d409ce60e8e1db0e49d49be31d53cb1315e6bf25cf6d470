@@ -1,0 +1,20 @@
+"use client";
+import { Input as Input$2 } from "../../elements/input/input.js";
+import { jsx } from "react/jsx-runtime";
+import { Input } from "@base-ui/react/input";
+//#region src/components/input/input.tsx
+/**
+* Single-line text field that automatically works inside `Field`. Base UI's `Input` control
+* behavior grafted onto the styled `elements` `Input` element (rule 1a) — behavior part outer,
+* styled part as the render target.
+*/
+function Input$1({ size, ...props }) {
+	return /* @__PURE__ */ jsx(Input, {
+		...props,
+		render: /* @__PURE__ */ jsx(Input$2, { size })
+	});
+}
+//#endregion
+export { Input$1 as Input };
+
+//# sourceMappingURL=input.js.map

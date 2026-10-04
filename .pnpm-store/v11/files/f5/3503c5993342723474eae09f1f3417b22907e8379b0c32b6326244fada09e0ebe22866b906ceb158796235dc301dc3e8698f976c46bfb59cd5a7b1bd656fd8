@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/pause-outline.tsx
+function PauseOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			d: "M4.5 3.5A.5.5 0 0 1 5 3h1a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5zm5 0A.5.5 0 0 1 10 3h1a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z",
+			clipRule: "evenodd"
+		})
+	});
+}
+//#endregion
+export { PauseOutline };
+
+//# sourceMappingURL=pause-outline.js.map

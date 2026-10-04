@@ -1,0 +1,20 @@
+"use client";
+import { toastTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-title.tsx
+/**
+* The accessible title that labels the toast. Base-UI-agnostic — graft in `components` via
+* `<BaseToast.Title render={<ToastTitle/>}>`.
+*/
+function ToastTitle({ render, ...props }) {
+	return useRender({
+		defaultTagName: "h2",
+		render,
+		props: mergeProps({ className: toastTitleVariants() }, props)
+	});
+}
+//#endregion
+export { ToastTitle };
+
+//# sourceMappingURL=toast-title.js.map

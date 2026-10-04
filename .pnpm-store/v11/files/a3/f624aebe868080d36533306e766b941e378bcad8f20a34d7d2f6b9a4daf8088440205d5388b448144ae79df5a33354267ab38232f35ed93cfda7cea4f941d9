@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/undo-outline.d.ts
+declare function UndoOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { UndoOutline };
+//# sourceMappingURL=undo-outline.d.ts.map

@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/fieldset/fieldset-body.d.ts
+type FieldsetBodyProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The body region of a `Fieldset`: stacks the group's contained fields with the consistent vertical
+ * gap the design spec calls for. Sits below the legend (and optional description).
+ */
+declare function FieldsetBody({ render, ...props }: FieldsetBodyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldsetBody, FieldsetBodyProps };
+//# sourceMappingURL=fieldset-body.d.ts.map

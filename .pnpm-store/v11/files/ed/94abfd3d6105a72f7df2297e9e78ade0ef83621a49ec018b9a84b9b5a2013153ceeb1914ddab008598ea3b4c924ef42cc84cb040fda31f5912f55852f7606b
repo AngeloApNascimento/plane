@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-select-layout.d.ts
+type TableSelectLayoutProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * Centres a selection checkbox inside an unpadded cell or header, filling it so the whole 44px box
+ * is the pointer target.
+ */
+declare function TableSelectLayout({ render, ...props }: TableSelectLayoutProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableSelectLayout, TableSelectLayoutProps };
+//# sourceMappingURL=table-select-layout.d.ts.map

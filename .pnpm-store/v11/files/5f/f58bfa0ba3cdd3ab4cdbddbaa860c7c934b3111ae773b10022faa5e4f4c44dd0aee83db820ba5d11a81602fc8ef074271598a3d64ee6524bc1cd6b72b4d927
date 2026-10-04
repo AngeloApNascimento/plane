@@ -1,0 +1,21 @@
+"use client";
+import { popoverTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/popover/popover-title.tsx
+/**
+* The panel's accessible heading — `text-body-sm-medium` per the compact text card. Wraps with
+* word-break instead of truncating. Diverges from the shared `internal/overlay-title` "md" step
+* (`semibold`); this family binds the lighter `medium` weight, so it keeps its own recipe.
+*/
+function PopoverTitle({ render, ...props }) {
+	return useRender({
+		defaultTagName: "h2",
+		render,
+		props: mergeProps({ className: popoverTitleVariants() }, props)
+	});
+}
+//#endregion
+export { PopoverTitle };
+
+//# sourceMappingURL=popover-title.js.map

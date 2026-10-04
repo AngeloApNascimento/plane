@@ -1,0 +1,15 @@
+"use client";
+import { ToastStatusIconProps as ToastStatusIconProps$1 } from "../../elements/toast/toast-status-icon.js";
+import "../../elements/toast/index.js";
+import * as React from "react";
+//#region src/components/toast/toast-status-icon.d.ts
+type ToastStatusIconProps = Omit<ToastStatusIconProps$1, "children">;
+/**
+ * The variant-colored status icon at a toast's inline-start. Picks a filled glyph from `variant`
+ * and renders it inside the elements `ToastStatusIcon` slot, so consumers choose a `variant` and
+ * never an icon.
+ */
+declare function ToastStatusIcon({ variant, ...props }: ToastStatusIconProps): React.JSX.Element;
+//#endregion
+export { ToastStatusIcon, ToastStatusIconProps };
+//# sourceMappingURL=toast-status-icon.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/convert-to-epic-outline.d.ts
+declare function ConvertToEpicOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ConvertToEpicOutline };
+//# sourceMappingURL=convert-to-epic-outline.d.ts.map

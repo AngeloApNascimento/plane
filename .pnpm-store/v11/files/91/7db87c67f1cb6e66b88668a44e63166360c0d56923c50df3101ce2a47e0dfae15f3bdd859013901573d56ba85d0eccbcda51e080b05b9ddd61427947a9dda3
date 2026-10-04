@@ -1,0 +1,49 @@
+"use client";
+import { Slider as Slider$2 } from "../../elements/slider/slider.js";
+import { SliderControl } from "../../elements/slider/slider-control.js";
+import { SliderHeader } from "../../elements/slider/slider-header.js";
+import { SliderIndicator } from "../../elements/slider/slider-indicator.js";
+import { SliderLabel } from "../../elements/slider/slider-label.js";
+import { SliderThumb } from "../../elements/slider/slider-thumb.js";
+import { SliderTrack } from "../../elements/slider/slider-track.js";
+import { SliderValue } from "../../elements/slider/slider-value.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Slider } from "@base-ui/react/slider";
+//#region src/components/slider/slider.tsx
+/**
+* The ready-made slider: a single-thumb control for picking a number within a range. Drive it with
+* `value`/`defaultValue` + `onValueChange`, and bound it with `min`/`max`/`step`. Pass `label`
+* (visible) or `aria-label` to name the thumb, and `format` (an `Intl.NumberFormatOptions`) to
+* format the readout.
+*
+* `size` sets the thumb and hit-area size (`sm` / `md` / `lg`). The track bar height and shape are
+* always the same per the design spec.
+*
+* Grafts Base UI `Slider` behavior onto the `elements/slider` styled parts (`Slider` root +
+* `SliderLabel` + `SliderValue` + `SliderControl` + `SliderTrack` + `SliderIndicator` +
+* `SliderThumb`). For multiple thumbs or fully custom layout, graft the `elements/slider` parts
+* directly.
+*/
+function Slider$1({ label, "aria-label": ariaLabel, size, ...props }) {
+	return /* @__PURE__ */ jsxs(Slider.Root, {
+		render: /* @__PURE__ */ jsx(Slider$2, {}),
+		...props,
+		children: [/* @__PURE__ */ jsxs(SliderHeader, { children: [label == null ? /* @__PURE__ */ jsx("span", {}) : /* @__PURE__ */ jsx(Slider.Label, {
+			render: /* @__PURE__ */ jsx(SliderLabel, {}),
+			children: label
+		}), /* @__PURE__ */ jsx(Slider.Value, { render: /* @__PURE__ */ jsx(SliderValue, {}) })] }), /* @__PURE__ */ jsx(Slider.Control, {
+			render: /* @__PURE__ */ jsx(SliderControl, { size }),
+			children: /* @__PURE__ */ jsxs(Slider.Track, {
+				render: /* @__PURE__ */ jsx(SliderTrack, {}),
+				children: [/* @__PURE__ */ jsx(Slider.Indicator, { render: /* @__PURE__ */ jsx(SliderIndicator, {}) }), /* @__PURE__ */ jsx(Slider.Thumb, {
+					render: /* @__PURE__ */ jsx(SliderThumb, { size }),
+					"aria-label": ariaLabel
+				})]
+			})
+		})]
+	});
+}
+//#endregion
+export { Slider$1 as Slider };
+
+//# sourceMappingURL=slider.js.map

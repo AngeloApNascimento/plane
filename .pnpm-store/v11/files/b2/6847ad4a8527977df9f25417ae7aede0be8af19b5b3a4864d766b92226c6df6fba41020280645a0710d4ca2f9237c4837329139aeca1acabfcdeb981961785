@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/project-features/epic-outline.d.ts
+declare function EpicOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { EpicOutline };
+//# sourceMappingURL=epic-outline.d.ts.map

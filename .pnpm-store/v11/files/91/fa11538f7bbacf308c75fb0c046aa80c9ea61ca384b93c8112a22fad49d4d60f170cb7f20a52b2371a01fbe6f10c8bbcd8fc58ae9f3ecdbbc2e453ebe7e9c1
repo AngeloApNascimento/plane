@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/overdue-outline.d.ts
+declare function OverdueOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { OverdueOutline };
+//# sourceMappingURL=overdue-outline.d.ts.map

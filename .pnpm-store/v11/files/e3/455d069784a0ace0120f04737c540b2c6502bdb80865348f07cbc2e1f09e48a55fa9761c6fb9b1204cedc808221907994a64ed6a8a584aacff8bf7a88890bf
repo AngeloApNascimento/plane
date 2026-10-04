@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/actions/tick-filled.tsx
+function TickFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M12.975 3.782a.626.626 0 0 1 .883.885L6.525 12a.625.625 0 0 1-.883 0L2.308 8.667a.626.626 0 0 1 .884-.885l2.891 2.892z"
+		})
+	});
+}
+//#endregion
+export { TickFilled };
+
+//# sourceMappingURL=tick-filled.js.map

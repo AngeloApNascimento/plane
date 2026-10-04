@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-header-icon.d.ts
+type DrawerHeaderIconProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * Decorative leading glyph beside the title inside `DrawerHeaderStart`. Sizes a bare svg/img child;
+ * interactive leading controls should be an `IconButton` instead. Bakes `aria-hidden`.
+ */
+declare function DrawerHeaderIcon({ render, ...props }: DrawerHeaderIconProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerHeaderIcon, DrawerHeaderIconProps };
+//# sourceMappingURL=drawer-header-icon.d.ts.map

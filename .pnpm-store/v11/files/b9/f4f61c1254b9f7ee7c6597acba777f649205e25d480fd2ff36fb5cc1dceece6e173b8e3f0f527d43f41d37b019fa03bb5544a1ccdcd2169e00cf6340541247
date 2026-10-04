@@ -1,0 +1,17 @@
+"use client";
+import { AlertDialogIconVariant } from "../../elements/alert-dialog/variants.js";
+import { AlertDialogIconProps as AlertDialogIconProps$1 } from "../../elements/alert-dialog/alert-dialog-icon.js";
+import * as React from "react";
+//#region src/components/alert-dialog/alert-dialog-icon.d.ts
+type AlertDialogIconProps = Omit<AlertDialogIconProps$1, "children">;
+/**
+ * The leading intent badge above the title. Soft tinted surface + outline status glyph selected
+ * from `variant` — callers never pass an icon (matches the Alert Dialog Figma family). Decorative
+ * (`aria-hidden`) — the title carries the accessible name.
+ *
+ * `variant` is required (`danger` | `warning` | `info` | `success`).
+ */
+declare function AlertDialogIcon({ variant, ...props }: AlertDialogIconProps): React.JSX.Element;
+//#endregion
+export { AlertDialogIcon, AlertDialogIconProps, type AlertDialogIconVariant };
+//# sourceMappingURL=alert-dialog-icon.d.ts.map

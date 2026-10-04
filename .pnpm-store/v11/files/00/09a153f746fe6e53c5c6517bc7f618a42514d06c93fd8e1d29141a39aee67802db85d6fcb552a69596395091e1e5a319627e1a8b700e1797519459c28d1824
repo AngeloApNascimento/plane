@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/corner-right-down-outline.d.ts
+declare function CornerRightDownOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CornerRightDownOutline };
+//# sourceMappingURL=corner-right-down-outline.d.ts.map

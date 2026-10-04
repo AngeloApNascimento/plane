@@ -1,0 +1,45 @@
+"use client";
+import { TextAreaResize, TextAreaSize, TextAreaSurface } from "../../elements/text-area/variants.js";
+import "../../elements/text-area/text-area.js";
+import "../../elements/text-area/text-area-group.js";
+import * as React from "react";
+import { Field } from "@base-ui/react/field";
+//#region src/components/text-area/text-area.d.ts
+type BaseFieldControlProps = Field.Control.Props;
+type NativeTextAreaProps = Omit<React.ComponentProps<"textarea">, keyof BaseFieldControlProps | "children" | "className" | "style">;
+type TextAreaProps = Omit<BaseFieldControlProps, "className" | "style" | "render" | "size"> & NativeTextAreaProps & {
+  /** Text size for the textarea value. */
+  size: TextAreaSize;
+  /** Control presentation for standalone fields or embedded composer surfaces. */
+  surface: TextAreaSurface;
+  /**
+   * Grow the control with its value, using the size min-height as the floor. Pair the `field`
+   * surface with `TextAreaGroup` `resize="none"` so the native drag handle does not fight
+   * content-driven height.
+   *
+   * @default false
+   */
+  autoResize?: boolean;
+  /**
+   * Maximum visible lines when `autoResize` is set. Further lines scroll inside the control.
+   * Unbounded when omitted.
+   */
+  maxRows?: number;
+  /** The default value of the textarea. Use when uncontrolled. */
+  defaultValue?: React.ComponentProps<"textarea">["defaultValue"];
+  /** The value of the textarea. Use when controlled. */
+  value?: React.ComponentProps<"textarea">["value"];
+};
+/**
+ * Multi-line text field that automatically works inside `Field`. Base UI's `Field.Control` behavior
+ * grafted onto the styled `elements` `TextArea` element (rule 1a) — behavior part outer, styled
+ * part as the render target. Base UI ships no textarea control, so `Field.Control` renders the
+ * styled `<textarea>` directly (this replaces the former `base/text-area` wrapper). Pair the
+ * `field` surface with `TextAreaGroup`, which owns the native `resize` handle. `autoResize` grows
+ * the control with its value; the ready-made `TextAreaField` turns the native handle off when it is
+ * set.
+ */
+declare function TextArea({ size, surface, autoResize, maxRows, ref, onInput, ...props }: TextAreaProps): React.JSX.Element;
+//#endregion
+export { TextArea, TextAreaProps, type TextAreaResize, type TextAreaSize, type TextAreaSurface };
+//# sourceMappingURL=text-area.d.ts.map

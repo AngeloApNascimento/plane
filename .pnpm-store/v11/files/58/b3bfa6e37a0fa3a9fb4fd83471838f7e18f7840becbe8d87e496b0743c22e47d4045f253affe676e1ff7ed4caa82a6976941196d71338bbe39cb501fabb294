@@ -1,0 +1,24 @@
+"use client";
+import * as React from "react";
+//#region src/components/suggestion-menu/suggestion-menu-item.d.ts
+type SuggestionMenuItemProps = Omit<React.ComponentPropsWithoutRef<"div">, "className" | "style" | "children" | "role" | "aria-selected"> & {
+  /** Leading glyph, e.g. `<Heading1 />`. Sized to 16px and tinted `icon-secondary`. */
+  icon?: React.ReactNode;
+  /** Row label. A node, so the matched part of a query can be emphasized. */
+  label: React.ReactNode;
+  /**
+   * Content pinned at the row's inline end, e.g. a plan badge. Non-interactive only: a press
+   * anywhere in the menu keeps focus in the input, so a button or link here would never take
+   * focus.
+   */
+  trailing?: React.ReactNode;
+};
+/**
+ * A suggestion row. `onClick` runs when the row is chosen — by a click, or by `Enter`/`Tab`
+ * forwarded through `SuggestionMenu`'s `actionsRef`. Pointer movement highlights the row, and a
+ * press never takes focus from the input.
+ */
+declare function SuggestionMenuItem({ icon, label, trailing, id, ...props }: SuggestionMenuItemProps): React.JSX.Element;
+//#endregion
+export { SuggestionMenuItem, SuggestionMenuItemProps };
+//# sourceMappingURL=suggestion-menu-item.d.ts.map

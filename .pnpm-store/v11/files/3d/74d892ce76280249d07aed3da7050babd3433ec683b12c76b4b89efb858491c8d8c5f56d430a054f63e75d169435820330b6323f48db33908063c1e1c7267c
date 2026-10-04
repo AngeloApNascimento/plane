@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/instagram.d.ts
+declare function Instagram(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Instagram };
+//# sourceMappingURL=instagram.d.ts.map

@@ -1,0 +1,19 @@
+"use client";
+import { PopoverTitle as PopoverTitle$1 } from "../../elements/popover/popover-title.js";
+import { jsx } from "react/jsx-runtime";
+import { Popover } from "@base-ui/react/popover";
+//#region src/components/popover/popover-title.tsx
+/**
+* The accessible title for the popover: Base UI's `Popover.Title` behavior (links to the popup via
+* `aria-labelledby`) grafted onto the family-owned title chrome (`text-body-sm-medium`).
+*/
+function PopoverTitle(props) {
+	return /* @__PURE__ */ jsx(Popover.Title, {
+		...props,
+		render: /* @__PURE__ */ jsx(PopoverTitle$1, {})
+	});
+}
+//#endregion
+export { PopoverTitle };
+
+//# sourceMappingURL=popover-title.js.map

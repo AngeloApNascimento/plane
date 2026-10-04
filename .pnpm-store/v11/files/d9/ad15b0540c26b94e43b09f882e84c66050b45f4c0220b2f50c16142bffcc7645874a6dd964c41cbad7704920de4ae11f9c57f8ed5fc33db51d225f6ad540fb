@@ -1,0 +1,78 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.removeImportSpecifier = exports.insertImportSpecifier = exports.hasImportSpecifier = exports.getImportSpecifierName = exports.getImportSpecifier = exports.hasDefaultImportSpecifier = exports.getDefaultImportSpecifierName = exports.removeDefaultImportSpecifier = exports.getDefaultImportSpecifier = exports.renameImportDeclaration = exports.removeImportDeclaration = exports.getImportDeclaration = exports.hasImportDeclaration = void 0;
+function hasImportDeclaration(j, source, sourcePath) {
+    return !!source
+        .find(j.ImportDeclaration)
+        .filter(path => path.node.source.value === sourcePath).length;
+}
+exports.hasImportDeclaration = hasImportDeclaration;
+function getImportDeclaration(j, source, sourcePath) {
+    return source
+        .find(j.ImportDeclaration)
+        .filter(path => path.node.source.value === sourcePath);
+}
+exports.getImportDeclaration = getImportDeclaration;
+function removeImportDeclaration(j, source, sourcePath) {
+    getImportDeclaration(j, source, sourcePath).remove();
+}
+exports.removeImportDeclaration = removeImportDeclaration;
+function renameImportDeclaration(j, source, sourcePath, newSourcePath) {
+    getImportDeclaration(j, source, sourcePath).forEach(importDeclaration => (importDeclaration.node.source = j.stringLiteral(newSourcePath)));
+}
+exports.renameImportDeclaration = renameImportDeclaration;
+function getDefaultImportSpecifier(j, source, sourcePath) {
+    return source
+        .find(j.ImportDeclaration)
+        .filter(path => path.node.source.value === sourcePath)
+        .find(j.ImportDefaultSpecifier);
+}
+exports.getDefaultImportSpecifier = getDefaultImportSpecifier;
+function removeDefaultImportSpecifier(j, source, sourcePath) {
+    return getDefaultImportSpecifier(j, source, sourcePath).remove();
+}
+exports.removeDefaultImportSpecifier = removeDefaultImportSpecifier;
+function getDefaultImportSpecifierName(j, source, sourcePath) {
+    const specifiers = getDefaultImportSpecifier(j, source, sourcePath);
+    if (!specifiers.length)
+        return null;
+    return specifiers.nodes()[0].local.name;
+}
+exports.getDefaultImportSpecifierName = getDefaultImportSpecifierName;
+function hasDefaultImportSpecifier(j, source, sourcePath) {
+    return !!getDefaultImportSpecifier(j, source, sourcePath).length;
+}
+exports.hasDefaultImportSpecifier = hasDefaultImportSpecifier;
+function getImportSpecifier(j, source, specifier, sourcePath) {
+    return source
+        .find(j.ImportDeclaration)
+        .filter(path => path.node.source.value === sourcePath)
+        .find(j.ImportSpecifier)
+        .filter(path => path.value.imported.name === specifier);
+}
+exports.getImportSpecifier = getImportSpecifier;
+function getImportSpecifierName(j, source, specifier, sourcePath) {
+    const specifiers = getImportSpecifier(j, source, specifier, sourcePath);
+    return specifiers.length > 0 ? specifiers.nodes()[0].local.name : null;
+}
+exports.getImportSpecifierName = getImportSpecifierName;
+function hasImportSpecifier(j, source, specifier, sourcePath) {
+    var _a;
+    return !!((_a = getImportSpecifier(j, source, specifier, sourcePath)) === null || _a === void 0 ? void 0 : _a.length);
+}
+exports.hasImportSpecifier = hasImportSpecifier;
+function insertImportSpecifier(j, source, specifier, sourcePath) {
+    const importDeclaration = getImportDeclaration(j, source, sourcePath);
+    if (!importDeclaration)
+        return;
+    if (specifier.type === 'ImportSpecifier' &&
+        hasImportSpecifier(j, source, specifier.imported.name, sourcePath)) {
+        return;
+    }
+    importDeclaration.get().value.specifiers.push(specifier);
+}
+exports.insertImportSpecifier = insertImportSpecifier;
+function removeImportSpecifier(j, source, specifier, sourcePath) {
+    getImportSpecifier(j, source, specifier, sourcePath).remove();
+}
+exports.removeImportSpecifier = removeImportSpecifier;

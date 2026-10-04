@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/verified-filled.d.ts
+declare function VerifiedFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { VerifiedFilled };
+//# sourceMappingURL=verified-filled.d.ts.map

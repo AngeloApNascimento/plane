@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-toggle-group.d.ts
+type ToolbarToggleGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * A set of `ToolbarToggle`s that share state. Renders a `<div>` by default and bakes in only the
+ * cluster layout, keeping `elements/toolbar` independent of the ToggleGroup primitive: a
+ * composition grafts shared-state behavior by hosting this element on Base UI's ToggleGroup —
+ * `<ToggleGroup render={<ToolbarToggleGroup />} />` (the styled node is the host).
+ */
+declare function ToolbarToggleGroup({ render, ...props }: ToolbarToggleGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToolbarToggleGroup, ToolbarToggleGroupProps };
+//# sourceMappingURL=toolbar-toggle-group.d.ts.map

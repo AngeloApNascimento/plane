@@ -1,0 +1,21 @@
+"use client";
+//#region src/internal/fit-side.ts
+/** Usable space on each vertical side of the trigger, after the offset and the gutter. */
+function usableSpace(args) {
+	const chrome = args.sideOffset + args.collisionPadding;
+	return {
+		top: args.trigger.top - args.boundary.top - chrome,
+		bottom: args.boundary.bottom - args.trigger.bottom - chrome
+	};
+}
+function resolveFitSide(args) {
+	const space = usableSpace(args);
+	const opposite = args.preferred === "bottom" ? "top" : "bottom";
+	if (space[args.preferred] >= args.floor) return args.preferred;
+	if (space[opposite] >= args.floor) return opposite;
+	return space[opposite] > space[args.preferred] ? opposite : args.preferred;
+}
+//#endregion
+export { resolveFitSide, usableSpace };
+
+//# sourceMappingURL=fit-side.js.map

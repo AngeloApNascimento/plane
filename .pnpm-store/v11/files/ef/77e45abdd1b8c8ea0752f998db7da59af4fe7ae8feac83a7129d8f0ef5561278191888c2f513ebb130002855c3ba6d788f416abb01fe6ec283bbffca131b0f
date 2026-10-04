@@ -1,0 +1,12 @@
+"use client";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-separator.d.ts
+type ContextMenuSeparatorProps = Omit<ContextMenu.Separator.Props, "className" | "style" | "render">;
+/**
+ * Ready-made divider between groups of items: Base UI's `ContextMenu.Separator` behavior (the
+ * `separator` role) grafted onto the styled thin rule.
+ */
+declare function ContextMenuSeparator(props: ContextMenuSeparatorProps): import("react").JSX.Element;
+//#endregion
+export { ContextMenuSeparator, ContextMenuSeparatorProps };
+//# sourceMappingURL=context-menu-separator.d.ts.map

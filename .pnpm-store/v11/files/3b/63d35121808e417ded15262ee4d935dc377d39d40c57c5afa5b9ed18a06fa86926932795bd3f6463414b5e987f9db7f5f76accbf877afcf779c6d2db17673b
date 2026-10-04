@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/shield-minus-filled.d.ts
+declare function ShieldMinusFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ShieldMinusFilled };
+//# sourceMappingURL=shield-minus-filled.d.ts.map

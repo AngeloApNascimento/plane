@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/initiative-states/initiative-draft.d.ts
+declare function InitiativeDraft(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { InitiativeDraft };
+//# sourceMappingURL=initiative-draft.d.ts.map

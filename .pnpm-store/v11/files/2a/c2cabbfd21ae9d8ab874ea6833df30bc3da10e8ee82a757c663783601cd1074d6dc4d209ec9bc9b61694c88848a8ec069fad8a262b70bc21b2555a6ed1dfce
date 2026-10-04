@@ -1,0 +1,37 @@
+"use client";
+import { FieldItemControlGroup } from "../../elements/field/field-item-control-group.js";
+import { Field } from "../field/field.js";
+import { FieldItem } from "../field/field-item.js";
+import { FieldItemContent } from "../field/field-item-content.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import { Switch } from "../switch/switch.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/switch-field/switch-field.tsx
+/** Ready-to-use switch field with label, description, and helper/error text. */
+function SwitchField({ label, description, hint, error, switchSize, size, name, disabled, ...controlProps }) {
+	return /* @__PURE__ */ jsxs(Field, {
+		name,
+		disabled,
+		invalid: error != null || void 0,
+		children: [/* @__PURE__ */ jsxs(FieldItem, {
+			disabled,
+			children: [/* @__PURE__ */ jsx(FieldItemControlGroup, { children: /* @__PURE__ */ jsx(Switch, {
+				size: switchSize,
+				disabled,
+				...controlProps
+			}) }), /* @__PURE__ */ jsx(FieldItemContent, {
+				size,
+				description,
+				children: label
+			})]
+		}), /* @__PURE__ */ jsx(FieldHelperText, {
+			size,
+			hint,
+			error
+		})]
+	});
+}
+//#endregion
+export { SwitchField };
+
+//# sourceMappingURL=switch-field.js.map

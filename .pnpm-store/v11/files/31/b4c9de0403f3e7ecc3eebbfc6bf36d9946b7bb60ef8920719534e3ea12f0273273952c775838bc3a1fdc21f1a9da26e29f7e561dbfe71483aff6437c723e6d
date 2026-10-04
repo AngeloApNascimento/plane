@@ -1,0 +1,5 @@
+"use client";
+import { WorkspaceAvatar } from "./workspace-avatar.js";
+import { WorkspaceAvatarFallback } from "./workspace-avatar-fallback.js";
+import { WorkspaceAvatarImage } from "./workspace-avatar-image.js";
+export { WorkspaceAvatar, WorkspaceAvatarFallback, WorkspaceAvatarImage };

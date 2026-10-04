@@ -1,0 +1,21 @@
+"use client";
+import { dialogTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-title.tsx
+/**
+* Styled dialog title chrome (`text-h5-medium`). Base-UI-agnostic — graft title behavior in
+* `components` via `<BaseDialog.Title render={<DialogTitle />} />`. Dialog-owned (diverges from
+* shared `OverlayTitle`).
+*/
+function DialogTitle({ render, ...props }) {
+	return useRender({
+		defaultTagName: "h2",
+		render,
+		props: mergeProps({ className: dialogTitleVariants() }, props)
+	});
+}
+//#endregion
+export { DialogTitle };
+
+//# sourceMappingURL=dialog-title.js.map

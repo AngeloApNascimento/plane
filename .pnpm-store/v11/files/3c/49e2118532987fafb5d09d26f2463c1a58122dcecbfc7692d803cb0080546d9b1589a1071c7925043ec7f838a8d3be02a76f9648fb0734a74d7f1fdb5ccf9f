@@ -1,0 +1,13 @@
+"use client";
+import { TableHeadVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-head.d.ts
+type TableHeadProps = Omit<useRender.ComponentProps<"th">, "className" | "style" | "align"> & TableHeadVariantProps;
+/**
+ * A header cell (`<th scope="col">`). Borders follow the `variant`. Holds a `TableHeadTitle` (or,
+ * when sortable, a `TableHeadSortTrigger`).
+ */
+declare function TableHead({ variant, pinned, align, render, ...props }: TableHeadProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableHead, TableHeadProps };
+//# sourceMappingURL=table-head.d.ts.map

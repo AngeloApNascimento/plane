@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/stop-circle-outline.d.ts
+declare function StopCircleOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { StopCircleOutline };
+//# sourceMappingURL=stop-circle-outline.d.ts.map

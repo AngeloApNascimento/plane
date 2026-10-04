@@ -1,0 +1,20 @@
+"use client";
+import { sliderThumbVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-thumb.tsx
+/**
+* The styled draggable thumb. Base-UI-agnostic — graft in `components` via `<BaseSlider.Thumb
+* render={<SliderThumb/>} />` (Base UI adds the nested range input).
+*/
+function SliderThumb({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: sliderThumbVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { SliderThumb };
+
+//# sourceMappingURL=slider-thumb.js.map

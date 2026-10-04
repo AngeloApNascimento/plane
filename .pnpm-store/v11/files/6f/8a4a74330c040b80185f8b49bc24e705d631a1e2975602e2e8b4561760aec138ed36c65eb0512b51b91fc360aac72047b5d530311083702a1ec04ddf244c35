@@ -1,0 +1,17 @@
+"use client";
+import { tableBodyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-body.tsx
+/** Body section (`<tbody>`). Holds the data `TableRow`s. */
+function TableBody({ render, ...props }) {
+	return useRender({
+		defaultTagName: "tbody",
+		render,
+		props: mergeProps({ className: tableBodyVariants() }, props)
+	});
+}
+//#endregion
+export { TableBody };
+
+//# sourceMappingURL=table-body.js.map

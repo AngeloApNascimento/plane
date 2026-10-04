@@ -1,0 +1,25 @@
+"use client";
+import { ToolbarMenuTriggerButton as ToolbarMenuTriggerButton$1 } from "../../elements/toolbar/toolbar-menu-trigger-button.js";
+import { ToolbarSizeContext } from "./toolbar-context.js";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar-menu-trigger-button.tsx
+/**
+* A toolbar menu-trigger button: grafts Base UI's `Toolbar.Button` (roving-focus item) behavior
+* onto the styled `ToolbarMenuTriggerButton`, taking its `size` from the surrounding `Toolbar`.
+*/
+function ToolbarMenuTriggerButton({ size, render, ...props }) {
+	const toolbarSize = React.useContext(ToolbarSizeContext);
+	return /* @__PURE__ */ jsx(Toolbar.Button, {
+		...props,
+		render: /* @__PURE__ */ jsx(ToolbarMenuTriggerButton$1, {
+			size: size ?? toolbarSize,
+			render
+		})
+	});
+}
+//#endregion
+export { ToolbarMenuTriggerButton };
+
+//# sourceMappingURL=toolbar-menu-trigger-button.js.map

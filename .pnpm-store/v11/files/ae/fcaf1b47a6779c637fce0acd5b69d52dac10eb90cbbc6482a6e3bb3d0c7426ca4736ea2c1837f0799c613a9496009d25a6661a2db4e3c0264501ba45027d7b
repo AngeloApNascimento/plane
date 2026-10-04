@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/boxes-outline.d.ts
+declare function BoxesOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BoxesOutline };
+//# sourceMappingURL=boxes-outline.d.ts.map

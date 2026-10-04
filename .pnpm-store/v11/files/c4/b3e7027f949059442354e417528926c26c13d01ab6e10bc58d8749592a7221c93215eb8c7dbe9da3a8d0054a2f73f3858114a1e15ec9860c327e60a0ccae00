@@ -1,0 +1,41 @@
+"use client";
+import { ComboboxItemVariant } from "../../elements/combobox/variants.js";
+import "../../elements/combobox/index.js";
+import * as React from "react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-item.d.ts
+type ComboboxItemProps = Omit<Combobox.Item.Props, "children" | "className" | "label" | "style"> & {
+  /**
+   * Row look. `neutral` is the standard text hierarchy, `accent` marks the primary action, and
+   * `danger` marks a destructive one.
+   *
+   * @default "neutral"
+   */
+  variant?: ComboboxItemVariant;
+  /**
+   * Selection marker. `check` is the trailing accent check used by single-select; `checkbox` is the
+   * leading checkbox box used by multi-select (the Figma dropdown row).
+   *
+   * @default "check"
+   */
+  selection?: "check" | "checkbox";
+  /**
+   * Leading element shown before the label, e.g. `<Icon icon={MapPin} tint="secondary" />`. On a
+   * `selection="checkbox"` row it follows the checkbox box.
+   */
+  icon?: React.ReactNode;
+  /** Option label. */
+  label: string;
+  /** Content pinned at the row's inline end, e.g. a count. */
+  trailing?: React.ReactElement;
+};
+/**
+ * The ready-made option row: Base UI's `Item` behavior grafted onto the shared menu-row chrome so
+ * the combobox list matches the dropdown panel. `selection="check"` reserves a TRAILING check
+ * gutter (kept mounted while unselected); `selection="checkbox"` shows the LEADING checkbox box
+ * used by multi-select.
+ */
+declare function ComboboxItem({ variant, selection, icon, label, trailing, ...props }: ComboboxItemProps): React.JSX.Element;
+//#endregion
+export { ComboboxItem, ComboboxItemProps, type ComboboxItemVariant };
+//# sourceMappingURL=combobox-item.d.ts.map

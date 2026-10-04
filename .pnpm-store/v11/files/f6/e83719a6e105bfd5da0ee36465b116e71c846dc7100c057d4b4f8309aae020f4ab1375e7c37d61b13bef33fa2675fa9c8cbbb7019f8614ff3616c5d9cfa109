@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/layouts/timeline-outline.d.ts
+declare function TimelineOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TimelineOutline };
+//# sourceMappingURL=timeline-outline.d.ts.map

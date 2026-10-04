@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/volume-max-filled.d.ts
+declare function VolumeMaxFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { VolumeMaxFilled };
+//# sourceMappingURL=volume-max-filled.d.ts.map

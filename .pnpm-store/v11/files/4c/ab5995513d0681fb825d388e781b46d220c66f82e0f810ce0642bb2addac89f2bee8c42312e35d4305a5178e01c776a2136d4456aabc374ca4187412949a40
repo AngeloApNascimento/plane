@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/folder-x-outline.d.ts
+declare function FolderXOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FolderXOutline };
+//# sourceMappingURL=folder-x-outline.d.ts.map

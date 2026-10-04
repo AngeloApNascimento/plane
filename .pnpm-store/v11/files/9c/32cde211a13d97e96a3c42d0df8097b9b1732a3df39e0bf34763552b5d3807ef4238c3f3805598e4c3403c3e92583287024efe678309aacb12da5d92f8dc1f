@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/italic-outline.d.ts
+declare function ItalicOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ItalicOutline };
+//# sourceMappingURL=italic-outline.d.ts.map

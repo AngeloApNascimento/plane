@@ -1,0 +1,24 @@
+
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/icons/properties/user-filled.tsx
+function UserFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsxs("g", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			clipRule: "evenodd",
+			children: [/* @__PURE__ */ jsx("path", { d: "M4.667 6.334a3.333 3.333 0 1 1 6.666 0 3.333 3.333 0 0 1-6.666 0" }), /* @__PURE__ */ jsx("path", { d: "M8 .667a7.333 7.333 0 1 0 0 14.667A7.333 7.333 0 0 0 8 .667M2 8a6 6 0 1 1 10.574 3.883A3.33 3.33 0 0 0 10 10.667H6a3.33 3.33 0 0 0-2.575 1.216A5.98 5.98 0 0 1 2 8" })]
+		})
+	});
+}
+//#endregion
+export { UserFilled };
+
+//# sourceMappingURL=user-filled.js.map

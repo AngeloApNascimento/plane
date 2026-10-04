@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/accordion-open-outline.d.ts
+declare function AccordionOpenOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AccordionOpenOutline };
+//# sourceMappingURL=accordion-open-outline.d.ts.map

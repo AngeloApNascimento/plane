@@ -1,0 +1,15 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/split-button/variants.d.ts
+declare const splitButtonVariants: (props?: ({
+  variant?: "primary" | "secondary" | null | undefined;
+  size?: "sm" | "md" | "lg" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type SplitButtonVariantConfig = VariantProps<typeof splitButtonVariants>;
+type SplitButtonVariant = NonNullable<SplitButtonVariantConfig["variant"]>;
+type SplitButtonSize = NonNullable<SplitButtonVariantConfig["size"]>;
+type SplitButtonVariantProps = StrictVariantProps<typeof splitButtonVariants>;
+//#endregion
+export { SplitButtonSize, SplitButtonVariant, SplitButtonVariantProps, splitButtonVariants };
+//# sourceMappingURL=variants.d.ts.map

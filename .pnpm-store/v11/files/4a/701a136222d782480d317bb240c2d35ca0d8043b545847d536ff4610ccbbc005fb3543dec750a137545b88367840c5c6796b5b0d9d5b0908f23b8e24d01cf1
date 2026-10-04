@@ -1,0 +1,20 @@
+"use client";
+import { alertDialogCloseGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-close-group.tsx
+/**
+* Positions the corner dismiss control at the popup's top-end. Pass an `IconButton` (components
+* tier) or the styled `AlertDialogClose` (elements showcase) as the child.
+*/
+function AlertDialogCloseGroup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: alertDialogCloseGroupVariants() }, props)
+	});
+}
+//#endregion
+export { AlertDialogCloseGroup };
+
+//# sourceMappingURL=alert-dialog-close-group.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/chrome.d.ts
+declare function Chrome(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Chrome };
+//# sourceMappingURL=chrome.d.ts.map

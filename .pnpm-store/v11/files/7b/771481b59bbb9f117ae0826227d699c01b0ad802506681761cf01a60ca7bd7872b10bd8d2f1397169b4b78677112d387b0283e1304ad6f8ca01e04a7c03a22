@@ -1,0 +1,15 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-trigger.d.ts
+type BreadcrumbTriggerProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & {
+  /** Adds a `group/trigger` marker so descendants can react to the open state. */
+  group?: boolean;
+};
+/**
+ * A crumb styled as a menu trigger — applies the interactive crumb chrome plus the open-state
+ * styling. Compose a `Menu.Trigger` through the `render` prop.
+ */
+declare function BreadcrumbTrigger({ group, render, ...props }: BreadcrumbTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BreadcrumbTrigger, BreadcrumbTriggerProps };
+//# sourceMappingURL=breadcrumb-trigger.d.ts.map

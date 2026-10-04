@@ -1,0 +1,22 @@
+"use client";
+import { toolbarToggleGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-toggle-group.tsx
+/**
+* A set of `ToolbarToggle`s that share state. Renders a `<div>` by default and bakes in only the
+* cluster layout, keeping `elements/toolbar` independent of the ToggleGroup primitive: a
+* composition grafts shared-state behavior by hosting this element on Base UI's ToggleGroup —
+* `<ToggleGroup render={<ToolbarToggleGroup />} />` (the styled node is the host).
+*/
+function ToolbarToggleGroup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: toolbarToggleGroupVariants() }, props)
+	});
+}
+//#endregion
+export { ToolbarToggleGroup };
+
+//# sourceMappingURL=toolbar-toggle-group.js.map

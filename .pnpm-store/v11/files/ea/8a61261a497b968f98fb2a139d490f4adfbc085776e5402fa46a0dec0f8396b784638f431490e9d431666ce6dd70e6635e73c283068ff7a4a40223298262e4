@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/parent-outline.d.ts
+declare function ParentOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ParentOutline };
+//# sourceMappingURL=parent-outline.d.ts.map

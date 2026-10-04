@@ -1,0 +1,19 @@
+"use client";
+import { OverlayDescription } from "../../internal/overlay-description.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/preview-card/preview-card-description.tsx
+/**
+* Supporting description text beneath the title — the shared `internal/overlay-description` recipe
+* at the preview card's `md` size (13px secondary text). The size is fixed here (a `components`
+* default, rule 13).
+*/
+function PreviewCardDescription(props) {
+	return /* @__PURE__ */ jsx(OverlayDescription, {
+		size: "md",
+		...props
+	});
+}
+//#endregion
+export { PreviewCardDescription };
+
+//# sourceMappingURL=preview-card-description.js.map

@@ -1,0 +1,34 @@
+"use client";
+import { SliderSize } from "../../elements/slider/variants.js";
+import "../../elements/slider/index.js";
+import { Slider } from "@base-ui/react/slider";
+//#region src/components/slider/slider.d.ts
+type SliderProps = Omit<Slider.Root.Props<number>, "className" | "style"> & {
+  /**
+   * Optional visible label rendered above the track (e.g. "Volume"). When omitted, provide an
+   * `aria-label` for the thumb so the control is still named for assistive tech.
+   */
+  label?: string;
+  /** Accessible name for the thumb. Required when there is no visible `label`. */
+  "aria-label"?: string;
+  /** Thumb and control size. `sm` = 12 px thumb, `md` = 16 px, `lg` = 20 px. */
+  size: SliderSize;
+};
+/**
+ * The ready-made slider: a single-thumb control for picking a number within a range. Drive it with
+ * `value`/`defaultValue` + `onValueChange`, and bound it with `min`/`max`/`step`. Pass `label`
+ * (visible) or `aria-label` to name the thumb, and `format` (an `Intl.NumberFormatOptions`) to
+ * format the readout.
+ *
+ * `size` sets the thumb and hit-area size (`sm` / `md` / `lg`). The track bar height and shape are
+ * always the same per the design spec.
+ *
+ * Grafts Base UI `Slider` behavior onto the `elements/slider` styled parts (`Slider` root +
+ * `SliderLabel` + `SliderValue` + `SliderControl` + `SliderTrack` + `SliderIndicator` +
+ * `SliderThumb`). For multiple thumbs or fully custom layout, graft the `elements/slider` parts
+ * directly.
+ */
+declare function Slider$1({ label, "aria-label": ariaLabel, size, ...props }: SliderProps): import("react").JSX.Element;
+//#endregion
+export { Slider$1 as Slider, SliderProps };
+//# sourceMappingURL=slider.d.ts.map

@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell-trigger-label.d.ts
+type TableCellTriggerLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** The truncating value text inside an editable `TableCellTrigger`. */
+declare function TableCellTriggerLabel({ render, ...props }: TableCellTriggerLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableCellTriggerLabel, TableCellTriggerLabelProps };
+//# sourceMappingURL=table-cell-trigger-label.d.ts.map

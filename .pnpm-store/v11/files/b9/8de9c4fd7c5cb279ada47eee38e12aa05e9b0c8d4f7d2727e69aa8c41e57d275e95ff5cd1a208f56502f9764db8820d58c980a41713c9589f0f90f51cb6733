@@ -1,0 +1,16 @@
+"use client";
+import { AlertDialog } from "@base-ui/react/alert-dialog";
+//#region src/components/alert-dialog/alert-dialog.d.ts
+type AlertDialogProps = Omit<AlertDialog.Root.Props, "className" | "style">;
+/**
+ * Modal confirmation root. Escape dismisses the topmost alert as a cancellation, matching Plane's
+ * existing behavior. Outside presses do not dismiss it. Consumers can veto a close through
+ * `onOpenChange` and `details.cancel()`, for example while a request is pending.
+ *
+ * Base UI owns focus trapping, nested dismissal, and focus restoration. Explicit close controls,
+ * `actionsRef.close()`, and controlled `open` state remain available.
+ */
+declare function AlertDialog$1(props: AlertDialogProps): import("react").JSX.Element;
+//#endregion
+export { AlertDialog$1 as AlertDialog, AlertDialogProps };
+//# sourceMappingURL=alert-dialog.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/layouts/grid-filled.d.ts
+declare function GridFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { GridFilled };
+//# sourceMappingURL=grid-filled.d.ts.map

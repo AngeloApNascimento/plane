@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/implemented-by-outline.d.ts
+declare function ImplementedByOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ImplementedByOutline };
+//# sourceMappingURL=implemented-by-outline.d.ts.map

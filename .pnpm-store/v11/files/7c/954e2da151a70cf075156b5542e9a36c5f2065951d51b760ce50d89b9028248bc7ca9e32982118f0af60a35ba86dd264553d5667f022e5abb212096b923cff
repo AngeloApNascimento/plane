@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-heading.d.ts
+type DialogHeadingProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The heading block: stacks the `DialogTitle` over an optional `DialogDescription` with a tight
+ * gap. Sit inside `DialogHeader` (optionally under `DialogProgression`). Keep supporting copy here
+ * — not in `DialogBody` — so title/description use the 6 px heading rhythm.
+ */
+declare function DialogHeading({ render, ...props }: DialogHeadingProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogHeading, DialogHeadingProps };
+//# sourceMappingURL=dialog-heading.d.ts.map

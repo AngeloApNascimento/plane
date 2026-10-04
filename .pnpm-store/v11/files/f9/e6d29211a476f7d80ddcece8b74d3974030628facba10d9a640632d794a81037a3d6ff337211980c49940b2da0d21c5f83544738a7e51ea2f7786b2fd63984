@@ -1,0 +1,20 @@
+"use client";
+import { toastContentVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-content.tsx
+/**
+* A container for the contents of a toast (title, description, actions). Base-UI-agnostic — graft
+* in `components` via `<BaseToast.Content render={<ToastContent/>}>`.
+*/
+function ToastContent({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: toastContentVariants() }, props)
+	});
+}
+//#endregion
+export { ToastContent };
+
+//# sourceMappingURL=toast-content.js.map

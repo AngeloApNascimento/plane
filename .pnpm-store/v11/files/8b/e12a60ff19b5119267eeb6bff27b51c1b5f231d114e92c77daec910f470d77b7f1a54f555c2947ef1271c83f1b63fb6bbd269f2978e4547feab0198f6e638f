@@ -1,0 +1,9 @@
+"use client";
+import { AccordionPanelContent } from "../../elements/accordion/accordion-panel-content.js";
+import { AccordionTriggerTitle } from "../../elements/accordion/accordion-trigger-title.js";
+import { Accordion } from "./accordion.js";
+import { AccordionHeader } from "./accordion-header.js";
+import { AccordionItem } from "./accordion-item.js";
+import { AccordionPanel } from "./accordion-panel.js";
+import { AccordionTrigger } from "./accordion-trigger.js";
+export { Accordion, AccordionHeader, AccordionItem, AccordionPanel, AccordionPanelContent, AccordionTrigger, AccordionTriggerTitle };

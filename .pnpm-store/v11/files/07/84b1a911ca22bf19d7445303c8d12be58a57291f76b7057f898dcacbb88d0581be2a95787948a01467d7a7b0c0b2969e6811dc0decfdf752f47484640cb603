@@ -1,0 +1,15 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-collection.tsx
+/**
+* Renders the filtered items of the nearest `ComboboxGroup` (or the root) through a function child
+* — the grouped counterpart of `ComboboxList`'s function child.
+*/
+function ComboboxCollection(props) {
+	return /* @__PURE__ */ jsx(Combobox.Collection, { ...props });
+}
+//#endregion
+export { ComboboxCollection };
+
+//# sourceMappingURL=combobox-collection.js.map

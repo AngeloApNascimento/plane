@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/mic-outline.d.ts
+declare function MicOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MicOutline };
+//# sourceMappingURL=mic-outline.d.ts.map

@@ -1,0 +1,12 @@
+"use client";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-empty.d.ts
+type ComboboxEmptyProps = Omit<Combobox.Empty.Props, "className" | "style">;
+/**
+ * The ready-made empty-state row: Base UI's `Empty` behavior grafted onto the styled
+ * `elements/combobox` row. Pass the — localizable — no-matches message as children.
+ */
+declare function ComboboxEmpty(props: ComboboxEmptyProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxEmpty, ComboboxEmptyProps };
+//# sourceMappingURL=combobox-empty.d.ts.map

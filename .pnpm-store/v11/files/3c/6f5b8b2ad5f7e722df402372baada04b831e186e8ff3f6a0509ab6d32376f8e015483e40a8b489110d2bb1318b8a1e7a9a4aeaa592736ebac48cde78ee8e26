@@ -1,0 +1,20 @@
+"use client";
+import { comboboxInputVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-input.tsx
+/**
+* The styled combobox text field. Base-UI-agnostic — graft the combobox behavior in `components`
+* via `<BaseCombobox.Input render={<ComboboxInput/>} />`.
+*/
+function ComboboxInput({ render, ...props }) {
+	return useRender({
+		defaultTagName: "input",
+		render,
+		props: mergeProps({ className: comboboxInputVariants() }, props)
+	});
+}
+//#endregion
+export { ComboboxInput };
+
+//# sourceMappingURL=combobox-input.js.map

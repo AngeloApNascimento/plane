@@ -1,0 +1,19 @@
+"use client";
+import * as React from "react";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-trigger.d.ts
+type NavigationMenuTriggerProps = Omit<NavigationMenu.Trigger.Props, "children" | "className" | "style"> & {
+  /** Replaces the default disclosure caret (a down chevron) in the trigger's `Icon` slot. */
+  icon?: React.ReactNode;
+  /** Visible trigger label. */
+  label: string;
+};
+/**
+ * The ready-made trigger row: grafts Base UI's `NavigationMenu.Trigger` behavior onto the styled
+ * trigger, wraps the label, and bakes the rotating disclosure caret (`NavigationMenuIcon` with a
+ * default chevron — defaults are a `components` concern, rule 2a). Override the glyph via `icon`.
+ */
+declare function NavigationMenuTrigger({ icon, label, ...props }: NavigationMenuTriggerProps): React.JSX.Element;
+//#endregion
+export { NavigationMenuTrigger, NavigationMenuTriggerProps };
+//# sourceMappingURL=navigation-menu-trigger.d.ts.map

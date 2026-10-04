@@ -1,0 +1,4 @@
+"use client";
+import { ButtonLabel } from "../../elements/button/button-label.js";
+import { Button } from "./button.js";
+export { Button, ButtonLabel };

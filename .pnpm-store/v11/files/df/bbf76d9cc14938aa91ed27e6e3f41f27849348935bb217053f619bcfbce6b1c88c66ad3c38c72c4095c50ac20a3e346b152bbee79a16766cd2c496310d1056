@@ -1,0 +1,24 @@
+"use client";
+import { toolbarVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar.tsx
+/**
+* The styled toolbar row — a single `<div>`. Base-UI-agnostic: graft the toolbar behavior in
+* `components` via `<BaseToolbar.Root render={<Toolbar/>} />`. The size-sharing behavior (so the
+* controls inside pick up the toolbar's `size`) is the ready-made `components/toolbar`.
+*/
+function Toolbar({ elevation, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: toolbarVariants({
+			size,
+			elevation
+		}) }, props)
+	});
+}
+//#endregion
+export { Toolbar };
+
+//# sourceMappingURL=toolbar.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/unlocked-outline.d.ts
+declare function UnlockedOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { UnlockedOutline };
+//# sourceMappingURL=unlocked-outline.d.ts.map

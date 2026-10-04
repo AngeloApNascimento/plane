@@ -1,0 +1,16 @@
+"use client";
+import { NavigationMenuLinkVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-link.d.ts
+type NavigationMenuLinkProps = Omit<useRender.ComponentProps<"a">, "className" | "style"> & NavigationMenuLinkVariantProps;
+/**
+ * A styled navigable link. `appearance="item"` is a top-level pill that shares its chrome with
+ * `NavigationMenuTrigger`; `appearance="card"` is a stacked entry inside `Content`, pairing a
+ * `NavigationMenuLinkTitle` with an optional `NavigationMenuLinkDescription`. Base-UI-agnostic —
+ * graft in `components` via `<BaseNavigationMenu.Link render={<NavigationMenuLink appearance="…"
+ * />} />`.
+ */
+declare function NavigationMenuLink({ appearance, render, ...props }: NavigationMenuLinkProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NavigationMenuLink, NavigationMenuLinkProps };
+//# sourceMappingURL=navigation-menu-link.d.ts.map

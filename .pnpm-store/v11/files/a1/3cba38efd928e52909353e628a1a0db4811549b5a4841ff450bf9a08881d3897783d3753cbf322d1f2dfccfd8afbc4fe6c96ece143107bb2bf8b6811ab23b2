@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/alert-octagon-outline.d.ts
+declare function AlertOctagonOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AlertOctagonOutline };
+//# sourceMappingURL=alert-octagon-outline.d.ts.map

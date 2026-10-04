@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/book-closed-filled.d.ts
+declare function BookClosedFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BookClosedFilled };
+//# sourceMappingURL=book-closed-filled.d.ts.map

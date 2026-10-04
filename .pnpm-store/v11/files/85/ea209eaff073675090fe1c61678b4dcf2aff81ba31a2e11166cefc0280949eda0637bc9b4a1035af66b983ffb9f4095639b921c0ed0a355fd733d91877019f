@@ -1,0 +1,35 @@
+"use client";
+import { fieldControlSurfaceVariants } from "../../internal/field-control-surface.js";
+import { controlSize } from "../../internal/control-group.js";
+import { itemIndicatorClass } from "../../internal/item-indicator.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/select/variants.ts
+const selectFieldVariants = cva("flex w-fit flex-col gap-1.5");
+const selectLabelVariants = cva("text-primary", { variants: { size: {
+	md: "text-body-xs-medium",
+	lg: "text-body-xs-medium",
+	xl: "text-body-sm-medium",
+	"2xl": "text-body-sm-medium"
+} } });
+const selectTriggerDefaultVariants = { variant: "secondary" };
+const selectTriggerVariants = cva(cx("group/control flex min-w-72 items-center justify-between text-primary outline-none", "data-disabled:cursor-not-allowed data-disabled:text-disabled data-disabled:ring-0"), {
+	variants: {
+		variant: {
+			secondary: cx(fieldControlSurfaceVariants({ focus: "visible" }), "data-popup-open:border-accent-strong data-popup-open:ring-2 data-popup-open:ring-accent-strong/20", "data-invalid:data-popup-open:border-danger-strong data-invalid:data-popup-open:ring-danger-strong/20", "hover:border-strong hover:bg-layer-2-hover", "data-disabled:border-subtle-1 data-disabled:bg-layer-2 data-disabled:hover:border-subtle-1 data-disabled:hover:bg-layer-2"),
+			ghost: cx("border border-transparent bg-layer-transparent", "focus-visible:bg-layer-transparent-active data-popup-open:bg-layer-transparent-active", "hover:bg-layer-transparent-hover", "data-disabled:border-transparent data-disabled:bg-transparent data-disabled:hover:bg-transparent")
+		},
+		size: {
+			md: cx(controlSize.md, "gap-(--control-gap-md) rounded-(--control-radius-md) px-(--field-inset-md)"),
+			lg: cx(controlSize.lg, "gap-(--control-gap-lg) rounded-(--control-radius-lg) px-(--field-inset-lg)"),
+			xl: cx(controlSize.xl, "gap-(--control-gap-xl) rounded-(--control-radius-xl) px-(--field-inset-xl)"),
+			"2xl": cx(controlSize["2xl"], "gap-(--control-gap-2xl) rounded-(--control-radius-2xl) px-(--field-inset-2xl)")
+		}
+	},
+	defaultVariants: selectTriggerDefaultVariants
+});
+const selectItemIndicatorVariants = cva(itemIndicatorClass);
+const selectValueVariants = cva("min-w-0 flex-1 truncate text-start data-placeholder:text-placeholder");
+//#endregion
+export { selectFieldVariants, selectItemIndicatorVariants, selectLabelVariants, selectTriggerDefaultVariants, selectTriggerVariants, selectValueVariants };
+
+//# sourceMappingURL=variants.js.map

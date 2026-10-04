@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/ai-filter-filled.d.ts
+declare function AiFilterFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AiFilterFilled };
+//# sourceMappingURL=ai-filter-filled.d.ts.map

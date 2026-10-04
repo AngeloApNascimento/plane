@@ -1,0 +1,18 @@
+"use client";
+import { BreadcrumbPage as BreadcrumbPage$1 } from "../../elements/breadcrumb/breadcrumb-page.js";
+import { jsxs } from "react/jsx-runtime";
+//#region src/components/breadcrumb/breadcrumb-page.tsx
+/**
+* The current page — the last, non-navigable crumb (`aria-current="page"`), laying out an optional
+* leading icon and the label.
+*/
+function BreadcrumbPage({ icon, label, ...props }) {
+	return /* @__PURE__ */ jsxs(BreadcrumbPage$1, {
+		...props,
+		children: [icon, label]
+	});
+}
+//#endregion
+export { BreadcrumbPage };
+
+//# sourceMappingURL=breadcrumb-page.js.map

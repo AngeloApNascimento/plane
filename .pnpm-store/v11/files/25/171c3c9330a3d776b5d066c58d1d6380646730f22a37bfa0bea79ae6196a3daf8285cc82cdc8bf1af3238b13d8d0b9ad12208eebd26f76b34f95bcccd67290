@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-indicator.d.ts
+type SliderIndicatorProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled filled portion of the track. Base-UI-agnostic — graft in `components` via
+ * `<BaseSlider.Indicator render={<SliderIndicator/>} />`.
+ */
+declare function SliderIndicator({ render, ...props }: SliderIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SliderIndicator, SliderIndicatorProps };
+//# sourceMappingURL=slider-indicator.d.ts.map

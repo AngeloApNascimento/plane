@@ -1,0 +1,43 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/drawer/variants.d.ts
+declare const drawerViewportDefaultVariants: {
+  readonly variant: "inline";
+};
+declare const drawerViewportVariants: (props?: ({
+  variant?: "inline" | "contained" | "overlay" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type DrawerViewportVariant = NonNullable<VariantProps<typeof drawerViewportVariants>["variant"]>;
+type DrawerViewportVariantProps = StrictVariantProps<typeof drawerViewportVariants, keyof typeof drawerViewportDefaultVariants>;
+declare const drawerPopupDefaultVariants: {
+  readonly size: "sm";
+  readonly variant: "inline";
+};
+declare const drawerPopupVariants: (props?: ({
+  variant?: "inline" | "contained" | "overlay" | null | undefined;
+  side?: "start" | "end" | null | undefined;
+  size?: "sm" | "md" | "lg" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type DrawerPopupVariantConfig = VariantProps<typeof drawerPopupVariants>;
+type DrawerPopupVariant = NonNullable<DrawerPopupVariantConfig["variant"]>;
+type DrawerPopupSide = NonNullable<DrawerPopupVariantConfig["side"]>;
+type DrawerPopupSize = NonNullable<DrawerPopupVariantConfig["size"]>;
+type DrawerPopupVariantProps = StrictVariantProps<typeof drawerPopupVariants, keyof typeof drawerPopupDefaultVariants>;
+declare const drawerContentDefaultVariants: {
+  readonly size: "sm";
+};
+declare const drawerContentVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type DrawerContentSize = NonNullable<VariantProps<typeof drawerContentVariants>["size"]>;
+type DrawerContentVariantProps = StrictVariantProps<typeof drawerContentVariants, keyof typeof drawerContentDefaultVariants>;
+declare const drawerHeaderActionsVariants: (props?: ({
+  side?: "start" | "end" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type DrawerHeaderActionsVariantConfig = VariantProps<typeof drawerHeaderActionsVariants>;
+type DrawerHeaderActionsSide = NonNullable<DrawerHeaderActionsVariantConfig["side"]>;
+type DrawerHeaderActionsVariantProps = StrictVariantProps<typeof drawerHeaderActionsVariants>;
+//#endregion
+export { DrawerContentSize, DrawerContentVariantProps, DrawerHeaderActionsSide, DrawerHeaderActionsVariantProps, DrawerPopupSide, DrawerPopupSize, DrawerPopupVariant, DrawerPopupVariantProps, DrawerViewportVariant, DrawerViewportVariantProps, drawerContentVariants, drawerHeaderActionsVariants, drawerPopupVariants, drawerViewportVariants };
+//# sourceMappingURL=variants.d.ts.map

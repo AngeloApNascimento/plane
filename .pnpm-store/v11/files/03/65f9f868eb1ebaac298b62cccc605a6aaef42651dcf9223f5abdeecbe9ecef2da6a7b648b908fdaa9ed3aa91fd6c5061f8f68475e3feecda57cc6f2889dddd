@@ -1,0 +1,27 @@
+"use client";
+import { Toggle as Toggle$2 } from "../../elements/toggle/toggle.js";
+import { ToggleLabel } from "../../elements/toggle/toggle-label.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Toggle } from "@base-ui/react/toggle";
+//#region src/components/toggle/toggle.tsx
+/**
+* The ready-made label toggle: grafts Base UI's `Toggle` behavior onto the styled `Toggle` button
+* (behavior outer, the styled button as the render target), with an optional leading node, the
+* `ToggleLabel`, and an optional trailing node. The selected look is the container's pressed
+* state.
+*/
+function Toggle$1({ size, startIcon, endIcon, label, ...toggleProps }) {
+	return /* @__PURE__ */ jsxs(Toggle, {
+		...toggleProps,
+		render: /* @__PURE__ */ jsx(Toggle$2, { size }),
+		children: [
+			startIcon,
+			/* @__PURE__ */ jsx(ToggleLabel, { children: label }),
+			endIcon
+		]
+	});
+}
+//#endregion
+export { Toggle$1 as Toggle };
+
+//# sourceMappingURL=toggle.js.map

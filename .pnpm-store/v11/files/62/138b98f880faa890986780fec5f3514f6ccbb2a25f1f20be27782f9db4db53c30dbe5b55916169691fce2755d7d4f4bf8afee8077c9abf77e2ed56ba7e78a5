@@ -1,0 +1,21 @@
+"use client";
+import { accordionPanelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/accordion/accordion-panel.tsx
+/**
+* The collapsible content region for an item. Animates open/closed using Base UI's
+* `--accordion-panel-height`. Base-UI-agnostic — graft in `components` via `<BaseAccordion.Panel
+* render={<AccordionPanel/>} />`.
+*/
+function AccordionPanel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: accordionPanelVariants() }, props)
+	});
+}
+//#endregion
+export { AccordionPanel };
+
+//# sourceMappingURL=accordion-panel.js.map

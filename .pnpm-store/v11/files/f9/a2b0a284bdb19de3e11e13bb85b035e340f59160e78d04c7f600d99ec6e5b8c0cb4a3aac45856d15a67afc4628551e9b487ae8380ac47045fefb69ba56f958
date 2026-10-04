@@ -1,0 +1,35 @@
+"use client";
+import { Fieldset as Fieldset$2 } from "../../elements/fieldset/fieldset.js";
+import { FieldsetBody } from "../../elements/fieldset/fieldset-body.js";
+import { FieldsetDescription } from "../../elements/fieldset/fieldset-description.js";
+import { FieldsetLegend } from "../../elements/fieldset/fieldset-legend.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Fieldset } from "@base-ui/react/fieldset";
+//#region src/components/fieldset/fieldset.tsx
+/**
+* The ready-made fieldset: groups a `legend` with its related controls for the 90% case. Grafts
+* Base UI's `Fieldset` behavior onto propel's styled parts — pass the legend text, `legendSize`,
+* and whether the group is `bordered`; everything else flows through to the underlying fieldset
+* root.
+*/
+function Fieldset$1({ bordered, description, legend, legendSize, children, ...props }) {
+	return /* @__PURE__ */ jsxs(Fieldset.Root, {
+		...props,
+		render: /* @__PURE__ */ jsx(Fieldset$2, { bordered }),
+		children: [
+			/* @__PURE__ */ jsx(Fieldset.Legend, {
+				render: /* @__PURE__ */ jsx(FieldsetLegend, { size: legendSize }),
+				children: legend
+			}),
+			description != null ? /* @__PURE__ */ jsx(FieldsetDescription, {
+				size: legendSize,
+				children: description
+			}) : null,
+			/* @__PURE__ */ jsx(FieldsetBody, { children })
+		]
+	});
+}
+//#endregion
+export { Fieldset$1 as Fieldset };
+
+//# sourceMappingURL=fieldset.js.map

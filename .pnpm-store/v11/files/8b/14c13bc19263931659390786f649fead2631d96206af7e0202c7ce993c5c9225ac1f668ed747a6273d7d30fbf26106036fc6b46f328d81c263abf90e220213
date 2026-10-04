@@ -1,0 +1,8 @@
+"use client";
+import { cva } from "class-variance-authority";
+//#region src/elements/text-area-field/variants.ts
+const textAreaFieldVariants = cva("flex flex-col gap-2");
+//#endregion
+export { textAreaFieldVariants };
+
+//# sourceMappingURL=variants.js.map

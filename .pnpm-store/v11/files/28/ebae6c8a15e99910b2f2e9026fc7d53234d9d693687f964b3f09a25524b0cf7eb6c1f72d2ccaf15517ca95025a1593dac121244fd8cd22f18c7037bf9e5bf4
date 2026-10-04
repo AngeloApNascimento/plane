@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/refresh-filled.d.ts
+declare function RefreshFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RefreshFilled };
+//# sourceMappingURL=refresh-filled.d.ts.map

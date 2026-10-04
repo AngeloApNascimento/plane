@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/ai-star-one-filled.d.ts
+declare function AiStarOneFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AiStarOneFilled };
+//# sourceMappingURL=ai-star-one-filled.d.ts.map

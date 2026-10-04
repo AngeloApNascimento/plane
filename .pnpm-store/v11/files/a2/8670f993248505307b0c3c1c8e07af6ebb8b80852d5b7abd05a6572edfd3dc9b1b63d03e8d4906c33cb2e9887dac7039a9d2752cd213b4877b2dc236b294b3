@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-viewport.d.ts
+type ToastViewportProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The fixed container that positions queued toasts and acts as the live region. Base-UI-agnostic —
+ * graft in `components` via `<BaseToast.Viewport render={<ToastViewport/>}>`.
+ */
+declare function ToastViewport({ render, ...props }: ToastViewportProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToastViewport, ToastViewportProps };
+//# sourceMappingURL=toast-viewport.d.ts.map

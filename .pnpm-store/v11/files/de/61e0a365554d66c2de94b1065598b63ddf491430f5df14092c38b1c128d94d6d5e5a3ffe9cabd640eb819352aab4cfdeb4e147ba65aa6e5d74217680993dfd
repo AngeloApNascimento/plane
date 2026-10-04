@@ -1,0 +1,13 @@
+"use client";
+import { InputSize, InputVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/input/input.d.ts
+type InputProps = Omit<useRender.ComponentProps<"input">, "className" | "style" | "size"> & InputVariantProps;
+/**
+ * The styled single-line text field. Base-UI-agnostic — graft the Base UI `Input` control behavior
+ * in `components` via `<BaseInput render={<Input/>} />`.
+ */
+declare function Input({ size, render, ...props }: InputProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Input, InputProps, type InputSize };
+//# sourceMappingURL=input.d.ts.map

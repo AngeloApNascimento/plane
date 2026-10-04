@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/actions/link-filled.tsx
+function LinkFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M3.316 7.086a.625.625 0 0 1 .884.884l-.944.943a2.709 2.709 0 0 0 3.83 3.83l.944-.942a.625.625 0 1 1 .884.884l-.944.942a3.958 3.958 0 0 1-5.597-5.598zM9.89 5.225a.626.626 0 0 1 .885.883l-4.667 4.667a.625.625 0 0 1-.884-.884zM8.03 2.372a3.958 3.958 0 0 1 5.598 5.598l-.943.943a.625.625 0 0 1-.884-.884l.943-.943a2.708 2.708 0 0 0-3.83-3.83l-.944.943a.625.625 0 0 1-.884-.884z"
+		})
+	});
+}
+//#endregion
+export { LinkFilled };
+
+//# sourceMappingURL=link-filled.js.map

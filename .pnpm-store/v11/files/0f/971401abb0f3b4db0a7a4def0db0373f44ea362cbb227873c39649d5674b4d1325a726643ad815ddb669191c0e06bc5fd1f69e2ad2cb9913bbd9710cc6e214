@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/pen-tool-outline.d.ts
+declare function PenToolOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PenToolOutline };
+//# sourceMappingURL=pen-tool-outline.d.ts.map

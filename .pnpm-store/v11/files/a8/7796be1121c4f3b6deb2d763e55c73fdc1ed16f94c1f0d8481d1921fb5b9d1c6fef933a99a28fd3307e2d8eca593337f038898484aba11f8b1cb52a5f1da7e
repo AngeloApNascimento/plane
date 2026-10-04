@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/sync-filled.d.ts
+declare function SyncFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { SyncFilled };
+//# sourceMappingURL=sync-filled.d.ts.map

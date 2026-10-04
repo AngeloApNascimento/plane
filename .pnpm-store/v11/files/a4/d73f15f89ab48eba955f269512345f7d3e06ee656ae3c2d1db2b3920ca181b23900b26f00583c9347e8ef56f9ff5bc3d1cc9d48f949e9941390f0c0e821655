@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-header-start.d.ts
+type DrawerHeaderStartProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The header's inline-start title cluster (Figma narrow header). Holds an optional
+ * `DrawerHeaderIcon` / `IconButton` plus `DrawerHeaderContent` (title + description).
+ */
+declare function DrawerHeaderStart({ render, ...props }: DrawerHeaderStartProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerHeaderStart, DrawerHeaderStartProps };
+//# sourceMappingURL=drawer-header-start.d.ts.map

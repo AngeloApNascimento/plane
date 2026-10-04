@@ -1,0 +1,23 @@
+"use client";
+import { checkboxIndeterminateIndicatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/checkbox/checkbox-indeterminate-indicator.tsx
+/**
+* The dash shown while a `Checkbox` is indeterminate. Graft in `components` via a second
+* `<BaseCheckbox.Indicator render={<CheckboxIndeterminateIndicator/>} />`; Base UI mounts it when
+* checked or indeterminate and its cva keeps it hidden unless `data-indeterminate` is present, so
+* only the dash (not the check) shows in the mixed state. Decorative — the box carries a11y.
+* Children — typically a lucide `Minus` — pass through.
+*/
+function CheckboxIndeterminateIndicator({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: checkboxIndeterminateIndicatorVariants() }, props)
+	});
+}
+//#endregion
+export { CheckboxIndeterminateIndicator };
+
+//# sourceMappingURL=checkbox-indeterminate-indicator.js.map

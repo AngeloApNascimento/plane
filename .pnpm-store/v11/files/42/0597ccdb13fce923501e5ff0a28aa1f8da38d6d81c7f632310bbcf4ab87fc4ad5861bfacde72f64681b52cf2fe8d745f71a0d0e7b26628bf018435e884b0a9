@@ -1,0 +1,17 @@
+"use client";
+import { fieldsetDescriptionVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/fieldset/fieldset-description.tsx
+/** Supporting text shown below the fieldset legend. */
+function FieldsetDescription({ render, size, ...props }) {
+	return useRender({
+		defaultTagName: "p",
+		render,
+		props: mergeProps({ className: fieldsetDescriptionVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { FieldsetDescription };
+
+//# sourceMappingURL=fieldset-description.js.map

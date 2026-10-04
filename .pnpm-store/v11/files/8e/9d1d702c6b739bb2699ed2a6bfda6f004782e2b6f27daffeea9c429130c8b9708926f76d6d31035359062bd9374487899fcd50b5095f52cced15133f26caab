@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-link-title.d.ts
+type NavigationMenuLinkTitleProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The primary line of a `appearance="card"` `NavigationMenuLink`: the navigable label. Pairs with
+ * an optional `NavigationMenuLinkDescription` below it.
+ */
+declare function NavigationMenuLinkTitle({ render, ...props }: NavigationMenuLinkTitleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NavigationMenuLinkTitle, NavigationMenuLinkTitleProps };
+//# sourceMappingURL=navigation-menu-link-title.d.ts.map

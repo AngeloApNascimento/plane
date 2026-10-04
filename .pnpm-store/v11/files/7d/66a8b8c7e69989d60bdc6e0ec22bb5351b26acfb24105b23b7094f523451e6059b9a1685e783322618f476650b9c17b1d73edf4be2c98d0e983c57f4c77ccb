@@ -1,0 +1,242 @@
+"use client";
+import { nodeSlotClass } from "../../internal/node-slot.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/dialog/variants.ts
+const dialogViewportVariants = cva("fixed inset-0 z-50 flex items-start justify-center px-4 py-20");
+const dialogPopupVariants = cva(cx("relative flex max-h-[calc(100dvh-10rem)] max-w-[calc(100vw-2rem)] flex-col overflow-clip rounded-xl border-sm border-subtle bg-surface-1 shadow-raised-300 outline-none", "origin-(--transform-origin) transition-[opacity,transform] duration-200 motion-reduce:transition-none", "data-starting-style:scale-95 data-starting-style:opacity-0", "data-ending-style:scale-95 data-ending-style:opacity-0"), {
+	variants: {
+		size: {
+			xs: "w-120",
+			sm: "w-144",
+			md: "w-168",
+			lg: "w-200",
+			xl: "w-250",
+			full: "h-[calc(100dvh-10rem)] w-[calc(100vw-10rem)]"
+		},
+		height: {
+			auto: "",
+			fixed: "h-175 min-h-0"
+		}
+	},
+	defaultVariants: {
+		size: "md",
+		height: "auto"
+	}
+});
+const dialogPanesVariants = cva("flex min-h-0 flex-1 items-stretch overflow-clip");
+const dialogChromeDefaultVariants = {
+	size: "md",
+	density: "comfortable"
+};
+const dialogGutterCompounds = [
+	{
+		density: "compact",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "xs",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "sm",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "md",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "lg",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "xl",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "full",
+		class: "p-12"
+	}
+];
+const dialogAsideGutterCompounds = [
+	{
+		density: "compact",
+		class: "p-4 pe-0"
+	},
+	{
+		density: "comfortable",
+		size: "xs",
+		class: "p-4 pe-0"
+	},
+	{
+		density: "comfortable",
+		size: "sm",
+		class: "p-4 pe-0"
+	},
+	{
+		density: "comfortable",
+		size: "md",
+		class: "p-4 pe-0"
+	},
+	{
+		density: "comfortable",
+		size: "lg",
+		class: "p-4 pe-0"
+	},
+	{
+		density: "comfortable",
+		size: "xl",
+		class: "p-4 pe-0"
+	},
+	{
+		density: "comfortable",
+		size: "full",
+		class: "p-12 pe-0"
+	}
+];
+const dialogToolbarGutterCompounds = [
+	{
+		density: "compact",
+		class: "ps-4 pe-10 pt-4 pb-2"
+	},
+	{
+		density: "comfortable",
+		size: "xs",
+		class: "ps-4 pe-10 pt-4 pb-2"
+	},
+	{
+		density: "comfortable",
+		size: "sm",
+		class: "ps-4 pe-10 pt-4 pb-2"
+	},
+	{
+		density: "comfortable",
+		size: "md",
+		class: "ps-4 pe-10 pt-4 pb-2"
+	},
+	{
+		density: "comfortable",
+		size: "lg",
+		class: "ps-4 pe-10 pt-4 pb-2"
+	},
+	{
+		density: "comfortable",
+		size: "xl",
+		class: "ps-4 pe-10 pt-4 pb-2"
+	},
+	{
+		density: "comfortable",
+		size: "full",
+		class: "ps-12 pe-12 pt-4.5 pb-2"
+	}
+];
+const dialogActionsGutterCompounds = [
+	{
+		density: "compact",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "xs",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "sm",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "md",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "lg",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "xl",
+		class: "p-4"
+	},
+	{
+		density: "comfortable",
+		size: "full",
+		class: "px-12 py-4.5"
+	}
+];
+const dialogSizeVariants = {
+	xs: "",
+	sm: "",
+	md: "",
+	lg: "",
+	xl: "",
+	full: ""
+};
+const dialogDensityVariants = {
+	comfortable: "",
+	compact: ""
+};
+const dialogAsideDefaultVariants = { ...dialogChromeDefaultVariants };
+const dialogAsideVariants = cva("flex min-h-0 w-70 shrink-0 flex-col self-stretch overflow-y-auto overscroll-contain border-e border-subtle [&>*:only-child]:h-auto [&>*:only-child]:min-h-0 [&>*:only-child]:flex-1", {
+	variants: {
+		size: dialogSizeVariants,
+		density: dialogDensityVariants
+	},
+	compoundVariants: dialogAsideGutterCompounds,
+	defaultVariants: dialogAsideDefaultVariants
+});
+const dialogMainDefaultVariants = {
+	...dialogChromeDefaultVariants,
+	inPanes: false
+};
+const dialogMainVariants = cva("flex min-h-0 min-w-0 flex-auto flex-col gap-4 overflow-clip", {
+	variants: {
+		size: dialogSizeVariants,
+		density: dialogDensityVariants,
+		inPanes: {
+			true: "min-h-0 [&>*:only-child]:h-auto [&>*:only-child]:min-h-0 [&>*:only-child]:flex-1",
+			false: ""
+		}
+	},
+	compoundVariants: dialogGutterCompounds,
+	defaultVariants: dialogMainDefaultVariants
+});
+const dialogHeaderVariants = cva("flex flex-col gap-4 pe-10");
+const dialogProgressionVariants = cva("flex h-5 items-center gap-1 text-caption-md-regular text-tertiary");
+const dialogHeadingVariants = cva("flex min-w-0 flex-col gap-1.5");
+const dialogTitleVariants = cva("text-h5-medium text-primary");
+const dialogDescriptionVariants = cva("text-body-xs-regular text-tertiary");
+const dialogBodyVariants = cva("min-h-0 flex-1 overflow-y-auto overscroll-contain");
+const dialogActionsDefaultVariants = { ...dialogChromeDefaultVariants };
+const dialogToolbarDefaultVariants = { ...dialogChromeDefaultVariants };
+const dialogToolbarVariants = cva("flex shrink-0 items-center justify-between gap-3 border-b border-subtle", {
+	variants: {
+		size: dialogSizeVariants,
+		density: dialogDensityVariants
+	},
+	compoundVariants: dialogToolbarGutterCompounds,
+	defaultVariants: dialogToolbarDefaultVariants
+});
+const dialogActionsVariants = cva("flex shrink-0 items-center justify-end gap-3 border-t border-subtle", {
+	variants: {
+		size: dialogSizeVariants,
+		density: dialogDensityVariants
+	},
+	compoundVariants: dialogActionsGutterCompounds,
+	defaultVariants: dialogActionsDefaultVariants
+});
+const dialogInfoVariants = cva("flex min-w-0 flex-1 items-center gap-1 text-caption-md-regular text-tertiary");
+const dialogInfoIconVariants = cva(cx(nodeSlotClass, "shrink-0 text-icon-tertiary [--node-size:var(--control-glyph-xs)]"));
+const dialogCloseGroupVariants = cva("absolute inset-e-4 top-4 z-10");
+//#endregion
+export { dialogActionsVariants, dialogAsideVariants, dialogBodyVariants, dialogCloseGroupVariants, dialogDescriptionVariants, dialogHeaderVariants, dialogHeadingVariants, dialogInfoIconVariants, dialogInfoVariants, dialogMainVariants, dialogPanesVariants, dialogPopupVariants, dialogProgressionVariants, dialogTitleVariants, dialogToolbarVariants, dialogViewportVariants };
+
+//# sourceMappingURL=variants.js.map

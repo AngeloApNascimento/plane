@@ -1,0 +1,20 @@
+"use client";
+import { dialogInfoVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-info.tsx
+/**
+* Optional footer helper at the inline-start of `DialogActions`. Compose a `DialogInfoIcon` and the
+* helper label as children. Flexes to push action buttons to the inline-end.
+*/
+function DialogInfo({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: dialogInfoVariants() }, props)
+	});
+}
+//#endregion
+export { DialogInfo };
+
+//# sourceMappingURL=dialog-info.js.map

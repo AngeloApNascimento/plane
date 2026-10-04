@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/key-outline.d.ts
+declare function KeyOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { KeyOutline };
+//# sourceMappingURL=key-outline.d.ts.map

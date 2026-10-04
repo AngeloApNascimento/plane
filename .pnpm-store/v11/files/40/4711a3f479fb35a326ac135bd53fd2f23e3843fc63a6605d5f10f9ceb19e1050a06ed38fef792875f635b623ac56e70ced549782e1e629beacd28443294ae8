@@ -1,0 +1,3 @@
+"use client";
+import { SwitchField, SwitchFieldProps } from "./switch-field.js";
+export { SwitchField, SwitchFieldProps };

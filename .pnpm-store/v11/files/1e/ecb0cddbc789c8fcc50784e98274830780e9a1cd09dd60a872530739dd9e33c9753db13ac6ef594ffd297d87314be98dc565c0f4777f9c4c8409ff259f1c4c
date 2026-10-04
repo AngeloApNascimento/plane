@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/arrows/accordion-open-outline.tsx
+function AccordionOpenOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M8.42 10.383a.484.484 0 0 1-.84 0L5.067 6.026a.484.484 0 0 1 .419-.726h5.03c.373 0 .606.404.42.726z"
+		})
+	});
+}
+//#endregion
+export { AccordionOpenOutline };
+
+//# sourceMappingURL=accordion-open-outline.js.map

@@ -1,0 +1,28 @@
+"use client";
+import { SkeletonItem } from "../../elements/skeleton/skeleton-item.js";
+import { TableCell } from "../../elements/table/table-cell.js";
+import { useTableVariant } from "./table-context.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/table/table-skeleton-cell.tsx
+/**
+* A placeholder data cell: a real `<td>` — same borders, same 44px row, same column — holding one
+* decorative bar, so the loading table has the geometry of the table it is standing in for.
+*
+* There is no `align`: `align` positions text inside the content region, and a bar is a block box
+* that `text-align` does not move. Size it with `inlineSize` instead. `SkeletonItem` bakes its own
+* `aria-hidden` — the `TableSkeletonBody` around it carries the accessible name.
+*/
+function TableSkeletonCell({ inlineSize, blockSize, ...props }) {
+	return /* @__PURE__ */ jsx(TableCell, {
+		variant: useTableVariant(),
+		...props,
+		children: /* @__PURE__ */ jsx(SkeletonItem, {
+			blockSize,
+			inlineSize
+		})
+	});
+}
+//#endregion
+export { TableSkeletonCell };
+
+//# sourceMappingURL=table-skeleton-cell.js.map

@@ -1,0 +1,12 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/toast/variants.d.ts
+declare const toastStatusIconVariants: (props?: ({
+  variant?: "danger" | "neutral" | "info" | "success" | "warning" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type ToastVariant = NonNullable<VariantProps<typeof toastStatusIconVariants>["variant"]>;
+type ToastStatusIconVariantProps = StrictVariantProps<typeof toastStatusIconVariants>;
+//#endregion
+export { ToastStatusIconVariantProps, ToastVariant, toastStatusIconVariants };
+//# sourceMappingURL=variants.d.ts.map

@@ -1,0 +1,27 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/pill/variants.d.ts
+declare const pillVariants: (props?: ({
+  size?: "sm" | "md" | "xs" | null | undefined;
+  variant?: "ghost" | "outline" | "soft" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type PillVariantProps = StrictVariantProps<typeof pillVariants>;
+type PillVariantConfig = VariantProps<typeof pillVariants>;
+type PillVariant = NonNullable<PillVariantConfig["variant"]>;
+declare const iconPillVariants: (props?: ({
+  size?: "sm" | "md" | "xs" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type IconPillVariantConfig = VariantProps<typeof iconPillVariants>;
+type IconPillSize = NonNullable<IconPillVariantConfig["size"]>;
+type IconPillVariantProps = StrictVariantProps<typeof iconPillVariants>;
+type PillSize = NonNullable<PillVariantConfig["size"]>;
+declare const pillGroupVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type PillGroupVariantConfig = VariantProps<typeof pillGroupVariants>;
+type PillGroupSize = NonNullable<PillGroupVariantConfig["size"]>;
+type PillGroupVariantProps = StrictVariantProps<typeof pillGroupVariants>;
+//#endregion
+export { IconPillSize, IconPillVariantProps, PillGroupSize, PillGroupVariantProps, PillSize, PillVariant, PillVariantProps, iconPillVariants, pillGroupVariants, pillVariants };
+//# sourceMappingURL=variants.d.ts.map

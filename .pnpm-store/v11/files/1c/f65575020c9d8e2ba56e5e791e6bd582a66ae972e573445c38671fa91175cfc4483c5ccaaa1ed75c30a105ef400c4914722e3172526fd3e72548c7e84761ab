@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/modal-peek-filled.d.ts
+declare function ModalPeekFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ModalPeekFilled };
+//# sourceMappingURL=modal-peek-filled.d.ts.map

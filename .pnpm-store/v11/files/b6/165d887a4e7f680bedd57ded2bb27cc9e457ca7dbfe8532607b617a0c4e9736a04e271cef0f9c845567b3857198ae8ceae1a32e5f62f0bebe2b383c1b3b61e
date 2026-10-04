@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/minus-filled.d.ts
+declare function MinusFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MinusFilled };
+//# sourceMappingURL=minus-filled.d.ts.map

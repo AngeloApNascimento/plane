@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-content.d.ts
+type ToastContentProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * A container for the contents of a toast (title, description, actions). Base-UI-agnostic — graft
+ * in `components` via `<BaseToast.Content render={<ToastContent/>}>`.
+ */
+declare function ToastContent({ render, ...props }: ToastContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToastContent, ToastContentProps };
+//# sourceMappingURL=toast-content.d.ts.map

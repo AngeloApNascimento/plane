@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/imports-outline.d.ts
+declare function ImportsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ImportsOutline };
+//# sourceMappingURL=imports-outline.d.ts.map

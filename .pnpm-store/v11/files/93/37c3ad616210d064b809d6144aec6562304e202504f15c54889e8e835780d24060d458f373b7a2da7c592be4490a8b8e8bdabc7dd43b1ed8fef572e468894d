@@ -1,0 +1,32 @@
+"use client";
+import { ListboxPopup } from "../../internal/listbox-popup.js";
+import { Positioner } from "../../internal/positioner.js";
+import { jsx } from "react/jsx-runtime";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-content.tsx
+/** The select list surface: Base UI portal + positioner + popup grafted onto Propel styling. */
+function SelectContent({ side = "bottom", sideOffset = 4, align = "start", alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, alignItemWithTrigger = false, ...props }) {
+	return /* @__PURE__ */ jsx(Select.Portal, { children: /* @__PURE__ */ jsx(Select.Positioner, {
+		side,
+		sideOffset,
+		align,
+		alignOffset,
+		collisionPadding,
+		collisionBoundary,
+		collisionAvoidance,
+		sticky,
+		positionMethod,
+		anchor,
+		disableAnchorTracking,
+		alignItemWithTrigger,
+		render: /* @__PURE__ */ jsx(Positioner, {}),
+		children: /* @__PURE__ */ jsx(Select.Popup, {
+			...props,
+			render: /* @__PURE__ */ jsx(ListboxPopup, {})
+		})
+	}) });
+}
+//#endregion
+export { SelectContent };
+
+//# sourceMappingURL=select-content.js.map

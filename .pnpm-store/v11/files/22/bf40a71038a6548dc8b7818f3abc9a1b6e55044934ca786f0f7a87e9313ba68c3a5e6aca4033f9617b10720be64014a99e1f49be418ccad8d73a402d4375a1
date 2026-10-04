@@ -1,0 +1,21 @@
+"use client";
+import { alertDialogCloseVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-close.tsx
+/**
+* Ghost dismiss button chrome for the corner close. Base-UI-agnostic — graft the close behavior in
+* `components` via `<BaseAlertDialog.Close render={<AlertDialogClose/>} />`, or compose an
+* `IconButton` with the behavior `AlertDialogClose` inside `AlertDialogCloseGroup`.
+*/
+function AlertDialogClose({ render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({ className: alertDialogCloseVariants() }, props)
+	});
+}
+//#endregion
+export { AlertDialogClose };
+
+//# sourceMappingURL=alert-dialog-close.js.map

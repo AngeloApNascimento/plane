@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/otp-field/otp-field.d.ts
+type OTPFieldProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled OTP field container — a horizontal row of character slots (and optional separators).
+ * Base-UI-agnostic; graft the field behavior in `components` via `<BaseOTPField.Root
+ * render={<OTPField/>} />`.
+ */
+declare function OTPField({ render, ...props }: OTPFieldProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { OTPField, OTPFieldProps };
+//# sourceMappingURL=otp-field.d.ts.map

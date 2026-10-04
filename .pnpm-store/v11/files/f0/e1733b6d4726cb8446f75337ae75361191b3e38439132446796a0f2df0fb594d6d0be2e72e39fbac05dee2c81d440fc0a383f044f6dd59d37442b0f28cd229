@@ -1,0 +1,19 @@
+"use client";
+import { PopupViewport } from "../../internal/popup-viewport.js";
+import { jsx } from "react/jsx-runtime";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-viewport.tsx
+/**
+* The content-morph container for animated menus — Base UI's `Menu.Viewport` grafted onto the
+* shared relative viewport, so swapping popup content (e.g. drill-in panels) can transition sizes.
+*/
+function MenuViewport(props) {
+	return /* @__PURE__ */ jsx(Menu.Viewport, {
+		...props,
+		render: /* @__PURE__ */ jsx(PopupViewport, {})
+	});
+}
+//#endregion
+export { MenuViewport };
+
+//# sourceMappingURL=menu-viewport.js.map

@@ -1,0 +1,20 @@
+"use client";
+import { fieldsetBodyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/fieldset/fieldset-body.tsx
+/**
+* The body region of a `Fieldset`: stacks the group's contained fields with the consistent vertical
+* gap the design spec calls for. Sits below the legend (and optional description).
+*/
+function FieldsetBody({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: fieldsetBodyVariants() }, props)
+	});
+}
+//#endregion
+export { FieldsetBody };
+
+//# sourceMappingURL=fieldset-body.js.map

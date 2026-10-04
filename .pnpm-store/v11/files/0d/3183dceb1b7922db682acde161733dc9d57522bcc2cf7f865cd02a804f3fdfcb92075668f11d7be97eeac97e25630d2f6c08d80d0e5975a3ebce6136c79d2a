@@ -1,0 +1,25 @@
+"use client";
+import { ToolbarToggleGroup as ToolbarToggleGroup$1 } from "../../elements/toolbar/toolbar-toggle-group.js";
+import { jsx } from "react/jsx-runtime";
+import { Toolbar } from "@base-ui/react/toolbar";
+import { ToggleGroup } from "@base-ui/react/toggle-group";
+//#region src/components/toolbar/toolbar-toggle-group.tsx
+/**
+* A cluster of `ToolbarToggle`s sharing one selection: grafts Base UI `Toolbar.Group` (toolbar
+* group semantics + group `disabled`) and `ToggleGroup` (value state) onto the styled toggle-group
+* container. Drive it with `value`/`defaultValue` + `onValueChange`. An `aria-label` is required.
+*/
+function ToolbarToggleGroup({ disabled, ...props }) {
+	return /* @__PURE__ */ jsx(Toolbar.Group, {
+		disabled,
+		render: /* @__PURE__ */ jsx(ToggleGroup, {
+			...props,
+			disabled,
+			render: /* @__PURE__ */ jsx(ToolbarToggleGroup$1, {})
+		})
+	});
+}
+//#endregion
+export { ToolbarToggleGroup };
+
+//# sourceMappingURL=toolbar-toggle-group.js.map

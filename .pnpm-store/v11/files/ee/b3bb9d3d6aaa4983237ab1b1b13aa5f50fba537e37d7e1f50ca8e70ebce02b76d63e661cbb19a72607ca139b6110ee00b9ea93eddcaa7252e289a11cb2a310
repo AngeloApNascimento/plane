@@ -1,0 +1,37 @@
+"use client";
+import { ComboboxCheckboxItemIndicator } from "../../elements/combobox/combobox-checkbox-item-indicator.js";
+import { ComboboxItem } from "../../elements/combobox/combobox-item.js";
+import { ComboboxItemContent } from "../../elements/combobox/combobox-item-content.js";
+import { ComboboxItemControl } from "../../elements/combobox/combobox-item-control.js";
+import { ComboboxItemTitle } from "../../elements/combobox/combobox-item-title.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Check, Minus } from "lucide-react";
+//#region src/components/combobox/combobox-select-all.tsx
+/**
+* Sticky "select every item" row for a multi-select combobox panel. Not a `ComboboxItem` — it is
+* not a list option — so compose it in `ComboboxContent`'s `search` slot above the scrolling list.
+*/
+function ComboboxSelectAll({ label = "Select all", checked, indeterminate = false, disabled, onClick }) {
+	return /* @__PURE__ */ jsxs(ComboboxItem, {
+		render: /* @__PURE__ */ jsx("button", {
+			type: "button",
+			disabled
+		}),
+		role: "checkbox",
+		"aria-checked": indeterminate ? "mixed" : checked,
+		"data-selected": checked ? "" : void 0,
+		"data-indeterminate": indeterminate ? "" : void 0,
+		"data-disabled": disabled ? "" : void 0,
+		onMouseDown: (event) => event.preventDefault(),
+		onClick,
+		children: [/* @__PURE__ */ jsx(ComboboxItemControl, { children: /* @__PURE__ */ jsx(ComboboxCheckboxItemIndicator, {
+			"data-selected": checked ? "" : void 0,
+			"data-indeterminate": indeterminate ? "" : void 0,
+			children: indeterminate ? /* @__PURE__ */ jsx(Minus, { "aria-hidden": true }) : /* @__PURE__ */ jsx(Check, { "aria-hidden": true })
+		}) }), /* @__PURE__ */ jsx(ComboboxItemContent, { children: /* @__PURE__ */ jsx(ComboboxItemTitle, { children: label }) })]
+	});
+}
+//#endregion
+export { ComboboxSelectAll };
+
+//# sourceMappingURL=combobox-select-all.js.map

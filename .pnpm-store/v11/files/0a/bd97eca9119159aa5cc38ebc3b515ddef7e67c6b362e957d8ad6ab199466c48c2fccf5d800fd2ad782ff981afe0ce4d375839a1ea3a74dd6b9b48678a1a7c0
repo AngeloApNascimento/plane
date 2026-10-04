@@ -1,0 +1,91 @@
+"use client";
+import { surfaceVariants } from "./surface.js";
+import { ScrollArea } from "../components/scroll-area/scroll-area.js";
+import * as React from "react";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { cva, cx } from "class-variance-authority";
+//#region src/internal/overlay-panel.tsx
+const popupWidthRule = cx("min-w-[min(max(var(--popup-width-min),var(--popup-held-width,0px)),var(--available-width,100vw))]", "max-w-[min(var(--popup-width-max),var(--available-width,100vw))]");
+/**
+* Hold an open panel's width: a panel that sizes to its content may grow while it is open (rows
+* arriving, a description appearing) but never shrinks until it closes. A searchable list would
+* otherwise reflow under the pointer as typing filters it down to its shortest rows — the one
+* reason the product code these panels replace pinned a fixed width on every picker. Filterable
+* lists in Base UI, Primer and Ant Design freeze their width the same way (to the anchor or a
+* preset); here the frozen width is the content's own.
+*
+* The widest width seen goes onto the element as `--popup-held-width`, which the width rule reads
+* as part of the floor, so it still yields to the ceiling and to `--available-width`. Keyed by
+* element: the popup mounts fresh each open, so the hold resets with it.
+*/
+/**
+* The sizings that hold their width. The deprecated aliases render as `auto`, so they must BEHAVE
+* as `auto` too — gating on the literal `"auto"` gave them the styling without the hold, and a
+* filtering list under `sizing="menu"` shrank from 263px to the 192px floor while `sizing="auto"`
+* held at 263px.
+*
+* An omitted `sizing` is deliberately excluded: it means content width with no floor, no ceiling
+* and no hold, so it must keep reflowing.
+*/
+const holdsWidth = (sizing) => sizing != null && sizing !== "anchor";
+function useHeldWidth(enabled) {
+	const [element, setElement] = React.useState(null);
+	React.useLayoutEffect(() => {
+		if (!enabled || element == null) return void 0;
+		let held = 0;
+		const hold = () => {
+			const width = element.offsetWidth;
+			if (width > held) {
+				held = width;
+				element.style.setProperty("--popup-held-width", `${width}px`);
+			}
+		};
+		hold();
+		const observer = new ResizeObserver(hold);
+		observer.observe(element);
+		return () => {
+			observer.disconnect();
+			element.style.removeProperty("--popup-held-width");
+		};
+	}, [enabled, element]);
+	return enabled ? setElement : void 0;
+}
+const overlayPanelVariants = cva(cx("flex max-h-(--available-height) flex-col overflow-hidden outline-none", "origin-(--transform-origin) transition-[transform,opacity] duration-150 ease-out", "starting:scale-95 starting:opacity-0", "data-starting-style:scale-95 data-starting-style:opacity-0", "data-ending-style:scale-95 data-ending-style:opacity-0", "has-[[role=menu][data-ending-style]]:scale-95 has-[[role=menu][data-ending-style]]:opacity-0", "has-[[role=dialog][data-ending-style]]:scale-95 has-[[role=dialog][data-ending-style]]:opacity-0"), { variants: { sizing: {
+	auto: cx(popupWidthRule, "max-h-[min(var(--available-height),24rem)]"),
+	anchor: cx("max-h-[min(var(--available-height),18rem)] min-w-(--anchor-width)", "max-w-[max(var(--anchor-width),var(--available-width,100vw))]"),
+	/** @deprecated Use `auto`. */
+	menu: cx(popupWidthRule, "max-h-[min(var(--available-height),24rem)]"),
+	/** @deprecated Use `auto`. */
+	sm: cx(popupWidthRule, "max-h-[min(var(--available-height),24rem)]"),
+	/** @deprecated Use `auto`. */
+	md: cx(popupWidthRule, "max-h-[min(var(--available-height),24rem)]"),
+	/** @deprecated Use `auto`. */
+	lg: cx(popupWidthRule, "max-h-[min(var(--available-height),24rem)]")
+} } });
+function OverlayPanel({ render, elevation, radius, sizing, header, footer, children, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		ref: useHeldWidth(holdsWidth(sizing)),
+		props: mergeProps({
+			className: cx(surfaceVariants({
+				elevation,
+				radius
+			}), overlayPanelVariants({ sizing })),
+			children: /* @__PURE__ */ jsxs(Fragment, { children: [
+				header,
+				/* @__PURE__ */ jsx(ScrollArea, {
+					orientation: "vertical",
+					children
+				}),
+				footer
+			] })
+		}, props)
+	});
+}
+//#endregion
+export { OverlayPanel, holdsWidth };
+
+//# sourceMappingURL=overlay-panel.js.map

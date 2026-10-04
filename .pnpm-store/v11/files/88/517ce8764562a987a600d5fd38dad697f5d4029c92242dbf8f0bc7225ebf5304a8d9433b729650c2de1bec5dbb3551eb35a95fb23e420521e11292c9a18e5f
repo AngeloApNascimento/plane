@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/logo-spinner/logo-spinner.d.ts
+/** Props for {@link LogoSpinner}. */
+type LogoSpinnerProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled box of the brand loading mark. Compose the `LogoSpinnerImage` pair (one per theme)
+ * inside it; the ready-made `components/logo-spinner` supplies both images, their asset URLs and
+ * the `img` role.
+ */
+declare function LogoSpinner({ render, ...props }: LogoSpinnerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { LogoSpinner, LogoSpinnerProps };
+//# sourceMappingURL=logo-spinner.d.ts.map

@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/git-commit-filled.tsx
+function GitCommitFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			d: "M11.267 7.334a3.334 3.334 0 0 0-6.534 0h-3.4a.667.667 0 0 0 0 1.333h3.4a3.335 3.335 0 0 0 6.534 0h3.4a.667.667 0 1 0 0-1.333z",
+			clipRule: "evenodd"
+		})
+	});
+}
+//#endregion
+export { GitCommitFilled };
+
+//# sourceMappingURL=git-commit-filled.js.map

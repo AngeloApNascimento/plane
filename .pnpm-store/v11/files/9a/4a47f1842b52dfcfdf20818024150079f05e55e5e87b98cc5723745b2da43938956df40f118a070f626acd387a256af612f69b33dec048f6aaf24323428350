@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/properties/toggle-off-filled.tsx
+function ToggleOffFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			d: "M5.333 3.333a4.667 4.667 0 1 0 0 9.333h5.334a4.667 4.667 0 1 0 0-9.333zM8 8a2.667 2.667 0 1 1-5.333 0A2.667 2.667 0 0 1 8 8",
+			clipRule: "evenodd"
+		})
+	});
+}
+//#endregion
+export { ToggleOffFilled };
+
+//# sourceMappingURL=toggle-off-filled.js.map

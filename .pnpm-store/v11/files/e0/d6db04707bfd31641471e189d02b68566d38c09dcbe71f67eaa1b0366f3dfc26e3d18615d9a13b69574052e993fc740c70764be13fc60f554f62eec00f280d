@@ -1,0 +1,14 @@
+"use client";
+import { BadgeSize, BadgeVariant, BadgeVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/badge/badge.d.ts
+type BadgeProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & BadgeVariantProps;
+/**
+ * The badge pill: the styled inline-flex container. Compose a `BadgeIcon` and `BadgeLabel` inside
+ * it (or use the ready-made `components/badge` composition). Sets the variant's text color and the
+ * size's `--node-size`, which its slot children inherit.
+ */
+declare function Badge({ variant, size, render, ...props }: BadgeProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Badge, BadgeProps, type BadgeSize, type BadgeVariant };
+//# sourceMappingURL=badge.d.ts.map

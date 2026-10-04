@@ -1,0 +1,16 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-indent.tsx
+/**
+* Wraps page content that should scale/shift inward as the drawer opens (the indent effect). Place
+* inside a `DrawerProvider`, around the `Drawer` root and your page. A behavior-only role (rules
+* 1a, 2), so it lives in `components`. Maps 1:1 to Base UI's `Drawer.Indent`.
+*/
+function DrawerIndent(props) {
+	return /* @__PURE__ */ jsx(Drawer.Indent, { ...props });
+}
+//#endregion
+export { DrawerIndent };
+
+//# sourceMappingURL=drawer-indent.js.map

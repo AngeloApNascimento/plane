@@ -1,0 +1,23 @@
+"use client";
+import { pillGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pill/pill-group.tsx
+/**
+* The styled connected frame around `Pill`s and `IconPill`s — overlapped borders that read as one
+* divider, outer corners rounded and inner ones flattened, and the hovered/focused/open segment
+* lifted so it owns the seam it shares. The segments keep their own chrome; the frame only owns how
+* they sit together. Base-UI-agnostic (there is no Base UI pill-group primitive); the `components`
+* ready-made adds the `group` role and shares one `size` with every segment via context.
+*/
+function PillGroup({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: pillGroupVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { PillGroup };
+
+//# sourceMappingURL=pill-group.js.map

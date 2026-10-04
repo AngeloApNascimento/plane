@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/preview-card/preview-card-property-group.d.ts
+type PreviewCardPropertyGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The row of property chips (status, priority, assignee, labels, …) shown beneath the description.
+ * A bare flex-wrap row — the chips are the consumer's own components (`Pill`, `Avatar`, `Badge`,
+ * …); this part only supplies the row layout. Never `aria-hidden`: its content is meaningful.
+ */
+declare function PreviewCardPropertyGroup({ render, ...props }: PreviewCardPropertyGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PreviewCardPropertyGroup, PreviewCardPropertyGroupProps };
+//# sourceMappingURL=preview-card-property-group.d.ts.map

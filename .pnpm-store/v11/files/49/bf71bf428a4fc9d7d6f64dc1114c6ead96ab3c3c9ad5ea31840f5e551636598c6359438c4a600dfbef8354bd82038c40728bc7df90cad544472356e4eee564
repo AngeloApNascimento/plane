@@ -1,0 +1,13 @@
+"use client";
+import * as React from "react";
+//#region src/components/suggestion-menu/suggestion-menu-context.ts
+const SuggestionMenuContext = React.createContext(null);
+function useSuggestionMenuContext() {
+	const context = React.useContext(SuggestionMenuContext);
+	if (!context) throw new Error("SuggestionMenuItem must be rendered inside a SuggestionMenu.");
+	return context;
+}
+//#endregion
+export { SuggestionMenuContext, useSuggestionMenuContext };
+
+//# sourceMappingURL=suggestion-menu-context.js.map

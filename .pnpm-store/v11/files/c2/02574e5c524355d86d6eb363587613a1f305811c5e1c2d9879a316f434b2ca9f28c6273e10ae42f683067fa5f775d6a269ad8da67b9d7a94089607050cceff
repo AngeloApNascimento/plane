@@ -1,0 +1,21 @@
+"use client";
+import { circularProgressTrackVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/circular-progress/circular-progress-track.tsx
+/**
+* The full subtle ring behind the arc (the circular analogue of `ProgressTrack`). Pass the geometry
+* (`cx` / `cy` / `r` / `strokeWidth`) as SVG attributes; the low-emphasis stroke color is baked
+* in.
+*/
+function CircularProgressTrack({ render, ...props }) {
+	return useRender({
+		defaultTagName: "circle",
+		render,
+		props: mergeProps({ className: circularProgressTrackVariants() }, props)
+	});
+}
+//#endregion
+export { CircularProgressTrack };
+
+//# sourceMappingURL=circular-progress-track.js.map

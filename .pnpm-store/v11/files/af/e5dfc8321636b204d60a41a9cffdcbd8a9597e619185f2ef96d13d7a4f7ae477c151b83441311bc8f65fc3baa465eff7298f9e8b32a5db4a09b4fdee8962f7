@@ -1,0 +1,89 @@
+"use client";
+import { OverlayPanelSizing } from "../../internal/overlay-panel.js";
+import * as React from "react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-content.shared.d.ts
+type ComboboxContentSizing = OverlayPanelSizing;
+/**
+ * The props both combobox surfaces share. `side`, `sideOffset`, `align` and `sizing` carry no
+ * `@default` here because the two surfaces pick different ones — `ComboboxContent` opens below the
+ * field and matches its width, `ComboboxSubmenuContent` opens beside its parent row and sizes
+ * itself `auto` — so each declares its own; otherwise the generated props table would advertise one
+ * surface's default on both. `render` is omitted because this surface always renders the styled
+ * `OverlayPanel`/`ComboboxPopup` pair as the popup's element, so a consumer-passed one would be
+ * overwritten and silently do nothing.
+ */
+type ComboboxSurfaceProps = Omit<Combobox.Popup.Props, "className" | "style" | "render"> & {
+  /** Which side of the anchor the list opens toward. */
+  side?: Combobox.Positioner.Props["side"];
+  /** Distance in px between the anchor and the list. */
+  sideOffset?: Combobox.Positioner.Props["sideOffset"];
+  /** Alignment of the list relative to the anchor along `side`. */
+  align?: Combobox.Positioner.Props["align"];
+  /**
+   * Additional offset in px along the align axis — slides the list along the anchor's edge without
+   * changing `align`.
+   *
+   * @default 0
+   */
+  alignOffset?: Combobox.Positioner.Props["alignOffset"];
+  /**
+   * Minimum gap in px between the list and the viewport edge it would otherwise touch.
+   *
+   * @default 5
+   */
+  collisionPadding?: Combobox.Positioner.Props["collisionPadding"];
+  /**
+   * The element or rect the list is confined to when avoiding collisions. Base UI's clipping
+   * ancestors when unset.
+   */
+  collisionBoundary?: Combobox.Positioner.Props["collisionBoundary"];
+  /**
+   * What to do when the list would overflow the boundary, set per axis: flip to the other side,
+   * shift along it, or stay put. Base UI flips the side and shifts the alignment when unset.
+   */
+  collisionAvoidance?: Combobox.Positioner.Props["collisionAvoidance"];
+  /**
+   * Keep the list on screen after the anchor scrolls out of view, instead of following it out.
+   *
+   * @default false
+   */
+  sticky?: Combobox.Positioner.Props["sticky"];
+  /**
+   * Which CSS `position` the positioner uses. `fixed` escapes overflow-clipping ancestors, e.g. an
+   * input inside a sticky header.
+   *
+   * @default "absolute"
+   */
+  positionMethod?: Combobox.Positioner.Props["positionMethod"];
+  /**
+   * Position against this element instead of the default anchor — an element, a ref, a virtual
+   * element, or a function returning one. Geometry only; the anchor keeps its role and
+   * interactions.
+   */
+  anchor?: Combobox.Positioner.Props["anchor"];
+  /**
+   * Stop tracking layout shifts of the anchor — position once, on open.
+   *
+   * @default false
+   */
+  disableAnchorTracking?: Combobox.Positioner.Props["disableAnchorTracking"];
+  /**
+   * How the popup takes its width. `anchor` matches the anchor's width, grows only with its content
+   * up to the room beside it, and caps the list at 288px tall. `auto` is the content's width
+   * instead — never narrower than 192px, never wider than 384px or the room beside the anchor, and
+   * held while open so a filtering list does not reflow; it caps the list at 384px tall.
+   */
+  sizing?: ComboboxContentSizing;
+  /**
+   * Sticky chrome pinned above the list, e.g. a `ComboboxSearch`. When the input lives in this
+   * slot, the overlay is a `role="dialog"` and needs a name — pass `aria-labelledby` pointing at
+   * the visible field label, or `aria-label`.
+   */
+  search?: React.ReactNode;
+  /** Sticky chrome pinned below the list. */
+  footer?: React.ReactNode;
+};
+//#endregion
+export { ComboboxContentSizing, ComboboxSurfaceProps };
+//# sourceMappingURL=combobox-content.shared.d.ts.map

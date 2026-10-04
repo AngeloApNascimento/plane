@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/full-screen-peek-filled.d.ts
+declare function FullScreenPeekFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FullScreenPeekFilled };
+//# sourceMappingURL=full-screen-peek-filled.d.ts.map

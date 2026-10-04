@@ -1,0 +1,76 @@
+"use client";
+import { AlertDialogActions } from "../../elements/alert-dialog/alert-dialog-actions.js";
+import { AlertDialogBody } from "../../elements/alert-dialog/alert-dialog-body.js";
+import { AlertDialogHeader } from "../../elements/alert-dialog/alert-dialog-header.js";
+import { AlertDialogIntro } from "../../elements/alert-dialog/alert-dialog-intro.js";
+import { AlertDialog } from "../alert-dialog/alert-dialog.js";
+import { AlertDialogClose } from "../alert-dialog/alert-dialog-close.js";
+import { AlertDialogContent } from "../alert-dialog/alert-dialog-content.js";
+import { AlertDialogDescription } from "../alert-dialog/alert-dialog-description.js";
+import { AlertDialogIcon } from "../alert-dialog/alert-dialog-icon.js";
+import { AlertDialogTitle } from "../alert-dialog/alert-dialog-title.js";
+import { Button } from "../button/button.js";
+import * as React from "react";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Dialog } from "@base-ui/react/dialog";
+//#region src/components/dialog/dialog.tsx
+/**
+* The dialog Root — Base UI's context/state provider (renders no element of its own). Modal by
+* default; pass `disablePointerDismissal` to keep it open on outside clicks. A behavior-only role,
+* so it lives in `components` (rules 1a, 2); the styled parts live in `elements/dialog` and are
+* grafted onto Base UI behavior here.
+*/
+function Dialog$1({ discard, open, defaultOpen, onOpenChange, actionsRef, children, ...props }) {
+	const [confirmOpen, setConfirmOpen] = React.useState(false);
+	const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen ?? false);
+	const actions = React.useRef(null);
+	React.useImperativeHandle(actionsRef, () => ({
+		close: () => actions.current?.close(),
+		unmount: () => actions.current?.unmount()
+	}), []);
+	const dialogOpen = open ?? uncontrolledOpen;
+	React.useEffect(() => {
+		if (!dialogOpen) setConfirmOpen(false);
+	}, [dialogOpen]);
+	const guard = discard ? /* @__PURE__ */ jsx(AlertDialog, {
+		open: confirmOpen,
+		onOpenChange: setConfirmOpen,
+		children: /* @__PURE__ */ jsxs(AlertDialogContent, { children: [/* @__PURE__ */ jsx(AlertDialogBody, { children: /* @__PURE__ */ jsxs(AlertDialogHeader, { children: [/* @__PURE__ */ jsx(AlertDialogIcon, { variant: "danger" }), /* @__PURE__ */ jsxs(AlertDialogIntro, { children: [/* @__PURE__ */ jsx(AlertDialogTitle, { children: discard.title ?? "Discard changes?" }), /* @__PURE__ */ jsx(AlertDialogDescription, { children: discard.description ?? "Your changes haven't been saved. Discarding them can't be undone." })] })] }) }), /* @__PURE__ */ jsxs(AlertDialogActions, { children: [/* @__PURE__ */ jsx(Button, {
+			stretch: "auto",
+			variant: "secondary",
+			size: "md",
+			render: /* @__PURE__ */ jsx(AlertDialogClose, {}),
+			label: discard.keepLabel ?? "Keep editing"
+		}), /* @__PURE__ */ jsx(Button, {
+			stretch: "auto",
+			variant: "danger",
+			size: "md",
+			label: discard.discardLabel ?? "Discard",
+			onClick: () => {
+				setConfirmOpen(false);
+				actions.current?.close();
+				discard.onDiscard?.();
+			}
+		})] })] })
+	}) : null;
+	return /* @__PURE__ */ jsx(Dialog.Root, {
+		...props,
+		open,
+		defaultOpen,
+		actionsRef: actions,
+		onOpenChange: (nextOpen, details) => {
+			if (!nextOpen && discard?.when && details.reason !== "imperative-action") {
+				details.cancel();
+				setConfirmOpen(true);
+				return;
+			}
+			setUncontrolledOpen(nextOpen);
+			onOpenChange?.(nextOpen, details);
+		},
+		children: typeof children === "function" ? ((payload) => /* @__PURE__ */ jsxs(Fragment, { children: [children(payload), guard] })) : /* @__PURE__ */ jsxs(Fragment, { children: [children, guard] })
+	});
+}
+//#endregion
+export { Dialog$1 as Dialog };
+
+//# sourceMappingURL=dialog.js.map

@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/accordion/accordion-trigger.d.ts
+type AccordionTriggerProps = Omit<useRender.ComponentProps<"button">, "className" | "style">;
+/**
+ * The clickable control that opens and closes its panel. Base-UI-agnostic — graft in `components`
+ * via `<BaseAccordion.Trigger render={<AccordionTrigger/>} />`, which wires `aria-expanded` and
+ * `aria-controls`.
+ */
+declare function AccordionTrigger({ render, ...props }: AccordionTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AccordionTrigger, AccordionTriggerProps };
+//# sourceMappingURL=accordion-trigger.d.ts.map

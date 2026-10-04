@@ -1,0 +1,62 @@
+"use client";
+import { CircularProgress as CircularProgress$1 } from "../../elements/circular-progress/circular-progress.js";
+import { CircularProgressIndicator } from "../../elements/circular-progress/circular-progress-indicator.js";
+import { CircularProgressSvg } from "../../elements/circular-progress/circular-progress-svg.js";
+import { CircularProgressTrack } from "../../elements/circular-progress/circular-progress-track.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Progress } from "@base-ui/react/progress";
+//#region src/components/circular-progress/circular-progress.tsx
+const RING_GEOMETRY = {
+	sm: {
+		box: 16,
+		radius: 6
+	},
+	md: {
+		box: 20,
+		radius: 8
+	}
+};
+const RING_STROKE = 2;
+/**
+* A small progress ring (no label — too small). Drive it with `value` (0–`max`); the arc and
+* `aria-valuenow` follow. Pass `indeterminate` to ignore `value` and spin a fixed quarter arc
+* instead. For a bar with an optional label, use `LinearProgress`. Composes the
+* `elements/circular-progress` primitives on Base UI `Progress`.
+*/
+function CircularProgress({ value, size, variant, indeterminate = false, ...props }) {
+	const { box, radius } = RING_GEOMETRY[size];
+	const circumference = 2 * Math.PI * radius;
+	const max = props.max ?? 100;
+	const min = props.min ?? 0;
+	const span = max - min;
+	const clampedValue = indeterminate ? null : Math.min(Math.max(value, min), max);
+	const dashOffset = circumference * (1 - (clampedValue == null ? .25 : span > 0 ? (clampedValue - min) / span : 0));
+	const center = box / 2;
+	return /* @__PURE__ */ jsx(Progress.Root, {
+		value: clampedValue,
+		...props,
+		render: /* @__PURE__ */ jsx(CircularProgress$1, { size }),
+		children: /* @__PURE__ */ jsxs(CircularProgressSvg, {
+			viewBox: `0 0 ${box} ${box}`,
+			children: [/* @__PURE__ */ jsx(CircularProgressTrack, {
+				cx: center,
+				cy: center,
+				r: radius,
+				strokeWidth: RING_STROKE
+			}), /* @__PURE__ */ jsx(CircularProgressIndicator, {
+				variant,
+				cx: center,
+				cy: center,
+				r: radius,
+				strokeWidth: RING_STROKE,
+				strokeLinecap: "round",
+				strokeDasharray: circumference,
+				strokeDashoffset: dashOffset
+			})]
+		})
+	});
+}
+//#endregion
+export { CircularProgress };
+
+//# sourceMappingURL=circular-progress.js.map

@@ -1,0 +1,17 @@
+"use client";
+import { avatarGroupOverflowVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/avatar-group/avatar-group-overflow.tsx
+/** Unclipped wrapper for the counter's tooltip trigger; behavior belongs to the ready-made. */
+function AvatarGroupOverflow({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: avatarGroupOverflowVariants() }, props)
+	});
+}
+//#endregion
+export { AvatarGroupOverflow };
+
+//# sourceMappingURL=avatar-group-overflow.js.map

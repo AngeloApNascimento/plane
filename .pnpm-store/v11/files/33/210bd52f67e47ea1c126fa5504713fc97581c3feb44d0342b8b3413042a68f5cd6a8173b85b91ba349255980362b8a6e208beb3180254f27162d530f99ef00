@@ -1,0 +1,14 @@
+"use client";
+import { BreadcrumbSeparatorProps as BreadcrumbSeparatorProps$1 } from "../../elements/breadcrumb/breadcrumb-separator.js";
+import "../../elements/breadcrumb/index.js";
+//#region src/components/breadcrumb/breadcrumb-separator.d.ts
+type BreadcrumbSeparatorProps = BreadcrumbSeparatorProps$1;
+/**
+ * The divider between crumbs. Defaults to a chevron — the ready-made breadcrumb owns the default
+ * glyph so the `elements` slot stays a pure single element. Pass `children` to use a different
+ * divider.
+ */
+declare function BreadcrumbSeparator({ children, ...props }: BreadcrumbSeparatorProps): import("react").JSX.Element;
+//#endregion
+export { BreadcrumbSeparator, BreadcrumbSeparatorProps };
+//# sourceMappingURL=breadcrumb-separator.d.ts.map

@@ -1,0 +1,27 @@
+"use client";
+import { ToolbarElevation, ToolbarSize } from "../../elements/toolbar/variants.js";
+import { ToolbarProps as ToolbarProps$1 } from "../../elements/toolbar/toolbar.js";
+import "../../elements/toolbar/index.js";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar.d.ts
+type ToolbarProps = Omit<Toolbar.Root.Props, "className" | "style" | "render" | "orientation"> & {
+  /**
+   * Control hit-target scale: `sm` (24px) or `md` (28px). Orthogonal to `elevation`. Shared with
+   * the controls inside via context. Figma's `density` maps here — `compact` → `sm`, `comfortable`
+   * → `md` (raised floaters use `sm`).
+   */
+  size: ToolbarSize;
+  /** Whether the toolbar draws its own surface (`raised`) or sits flush (`flat`). */
+  elevation: ToolbarElevation;
+  /** Custom render for the underlying styled toolbar. */
+  render?: ToolbarProps$1["render"];
+};
+/**
+ * The ready-made toolbar: grafts Base UI's `Toolbar.Root` behavior (the `toolbar` role + roving
+ * focus, plus `disabled` / `loopFocus`) onto the styled horizontal `elements/toolbar` row and
+ * shares its `size` with the controls inside via context (so each control packs to match).
+ */
+declare function Toolbar$1({ size, elevation, render, ...props }: ToolbarProps): import("react").JSX.Element;
+//#endregion
+export { Toolbar$1 as Toolbar, ToolbarProps };
+//# sourceMappingURL=toolbar.d.ts.map

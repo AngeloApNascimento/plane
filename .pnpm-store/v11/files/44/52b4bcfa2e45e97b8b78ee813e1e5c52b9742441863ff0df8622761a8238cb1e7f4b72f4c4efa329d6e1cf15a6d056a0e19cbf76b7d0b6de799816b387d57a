@@ -1,0 +1,25 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/mail-check-outline.tsx
+function MailCheckOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			stroke: "currentColor",
+			strokeLinecap: "round",
+			strokeLinejoin: "round",
+			strokeWidth: 1.25,
+			d: "M14.667 8.667V4a1.333 1.333 0 0 0-1.334-1.333H2.667A1.333 1.333 0 0 0 1.333 4v8c0 .734.6 1.334 1.334 1.334H8m6.667-8.667-5.98 3.8a1.29 1.29 0 0 1-1.374 0l-5.98-3.8m9.334 8L12 14l2.667-2.666"
+		})
+	});
+}
+//#endregion
+export { MailCheckOutline };
+
+//# sourceMappingURL=mail-check-outline.js.map

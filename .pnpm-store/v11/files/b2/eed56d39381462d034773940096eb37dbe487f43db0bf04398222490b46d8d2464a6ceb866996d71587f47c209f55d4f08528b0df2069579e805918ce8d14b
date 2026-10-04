@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-checkbox-item-indicator.d.ts
+type ContextMenuCheckboxItemIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled tick region of a checkbox menu row. Sizes its single child (the tick icon) to the
+ * row's `--node-size`. Base-UI-agnostic — graft in `components` via
+ * `<BaseContextMenu.CheckboxItemIndicator render={<ContextMenuCheckboxItemIndicator/>} />`.
+ */
+declare function ContextMenuCheckboxItemIndicator({ render, ...props }: ContextMenuCheckboxItemIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ContextMenuCheckboxItemIndicator, ContextMenuCheckboxItemIndicatorProps };
+//# sourceMappingURL=context-menu-checkbox-item-indicator.d.ts.map

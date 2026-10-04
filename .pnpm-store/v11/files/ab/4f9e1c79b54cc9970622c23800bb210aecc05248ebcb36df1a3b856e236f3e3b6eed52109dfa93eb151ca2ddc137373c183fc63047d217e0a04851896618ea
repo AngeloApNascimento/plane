@@ -1,0 +1,6 @@
+"use client";
+import { WorkspaceAvatarSize } from "./variants.js";
+import { WorkspaceAvatar, WorkspaceAvatarProps } from "./workspace-avatar.js";
+import { WorkspaceAvatarFallback, WorkspaceAvatarFallbackProps } from "./workspace-avatar-fallback.js";
+import { WorkspaceAvatarImage, WorkspaceAvatarImageProps } from "./workspace-avatar-image.js";
+export { WorkspaceAvatar, WorkspaceAvatarFallback, WorkspaceAvatarFallbackProps, WorkspaceAvatarImage, WorkspaceAvatarImageProps, WorkspaceAvatarProps, type WorkspaceAvatarSize };

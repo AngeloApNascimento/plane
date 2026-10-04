@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/relations-outline.d.ts
+declare function RelationsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RelationsOutline };
+//# sourceMappingURL=relations-outline.d.ts.map

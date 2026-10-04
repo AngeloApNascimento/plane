@@ -1,0 +1,23 @@
+"use client";
+import { numberFieldGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/number-field/number-field-group.tsx
+/**
+* The styled bordered group wrapping the decrement / input / increment controls. Base-UI-agnostic —
+* graft in `components` via `<BaseNumberField.Group render={<NumberFieldGroup/>} />`.
+*
+* @param size Visual size of the frame. Matches the field's outer height (`sm` 24 / `md` 28 / `lg`
+*   32). Pair steppers with `numberFieldStepperSize[size]`.
+*/
+function NumberFieldGroup({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: numberFieldGroupVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { NumberFieldGroup };
+
+//# sourceMappingURL=number-field-group.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/delete-outline.d.ts
+declare function DeleteArrowOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DeleteArrowOutline };
+//# sourceMappingURL=delete-outline.d.ts.map

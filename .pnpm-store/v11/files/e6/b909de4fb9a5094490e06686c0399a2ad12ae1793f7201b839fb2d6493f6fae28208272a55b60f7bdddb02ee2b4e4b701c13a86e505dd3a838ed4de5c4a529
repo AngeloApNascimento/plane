@@ -1,0 +1,18 @@
+"use client";
+import { BreadcrumbLink as BreadcrumbLink$1 } from "../../elements/breadcrumb/breadcrumb-link.js";
+import { jsxs } from "react/jsx-runtime";
+//#region src/components/breadcrumb/breadcrumb-link.tsx
+/**
+* A navigable crumb — an anchor styled as a hoverable pill, laying out an optional leading icon and
+* the label. Pass `render` to use a router link.
+*/
+function BreadcrumbLink({ icon, label, ...props }) {
+	return /* @__PURE__ */ jsxs(BreadcrumbLink$1, {
+		...props,
+		children: [icon, label]
+	});
+}
+//#endregion
+export { BreadcrumbLink };
+
+//# sourceMappingURL=breadcrumb-link.js.map

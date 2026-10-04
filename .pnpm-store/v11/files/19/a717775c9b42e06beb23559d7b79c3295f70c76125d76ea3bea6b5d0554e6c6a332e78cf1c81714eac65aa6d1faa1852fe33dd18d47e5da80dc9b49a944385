@@ -1,0 +1,21 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/avatar/variants.d.ts
+declare const avatarFallbackVariants: (props?: ({
+  variant?: "purple" | "indigo" | "emerald" | "crimson" | "orange" | "pink" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const avatarDefaultVariants: {
+  readonly size: "md";
+};
+declare const avatarVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "xs" | "2xs" | "3xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type AvatarVariantConfig = VariantProps<typeof avatarVariants>;
+type AvatarSize = NonNullable<AvatarVariantConfig["size"]>;
+type AvatarVariantProps = StrictVariantProps<typeof avatarVariants, keyof typeof avatarDefaultVariants>;
+type AvatarFallbackVariant = NonNullable<VariantProps<typeof avatarFallbackVariants>["variant"]>;
+type AvatarFallbackVariantProps = StrictVariantProps<typeof avatarFallbackVariants>;
+//#endregion
+export { AvatarFallbackVariant, AvatarFallbackVariantProps, AvatarSize, AvatarVariantProps, avatarFallbackVariants, avatarVariants };
+//# sourceMappingURL=variants.d.ts.map

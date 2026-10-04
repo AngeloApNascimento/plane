@@ -1,0 +1,18 @@
+"use client";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-trigger.d.ts
+type ContextMenuTriggerProps = Omit<ContextMenu.Trigger.Props, "className" | "style">;
+/**
+ * The behavior surface that opens the menu on right click or long press — Base UI applies no
+ * styling of its own, so give it a look by grafting it onto your own element via `render`:
+ *
+ * ```tsx
+ * <ContextMenuTrigger render={<MyCanvasArea />}>Right-click here</ContextMenuTrigger>;
+ * ```
+ *
+ * Maps 1:1 to `ContextMenu.Trigger`.
+ */
+declare function ContextMenuTrigger(props: ContextMenuTriggerProps): import("react").JSX.Element;
+//#endregion
+export { ContextMenuTrigger, ContextMenuTriggerProps };
+//# sourceMappingURL=context-menu-trigger.d.ts.map

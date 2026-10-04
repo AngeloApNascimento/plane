@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-item.d.ts
+type PaginationItemProps = Omit<useRender.ComponentProps<"li">, "className" | "style">;
+/** One slot in the pagination list, holding a page button, an arrow button, or the ellipsis. */
+declare function PaginationItem({ render, ...props }: PaginationItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationItem, PaginationItemProps };
+//# sourceMappingURL=pagination-item.d.ts.map

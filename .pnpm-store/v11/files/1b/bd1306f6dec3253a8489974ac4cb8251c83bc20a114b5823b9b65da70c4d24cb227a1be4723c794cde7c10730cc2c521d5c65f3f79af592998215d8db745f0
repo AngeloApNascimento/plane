@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-intro.d.ts
+type AlertDialogIntroProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * Groups the title and description with a 6px gap. Pass `AlertDialogTitle` and
+ * `AlertDialogDescription` as children.
+ */
+declare function AlertDialogIntro({ render, ...props }: AlertDialogIntroProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AlertDialogIntro, AlertDialogIntroProps };
+//# sourceMappingURL=alert-dialog-intro.d.ts.map

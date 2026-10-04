@@ -1,0 +1,32 @@
+"use client";
+import { AccordionTrigger as AccordionTrigger$1 } from "../../elements/accordion/accordion-trigger.js";
+import { AccordionTriggerTitle } from "../../elements/accordion/accordion-trigger-title.js";
+import { DisclosureIndicator } from "../../internal/disclosure-indicator.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Accordion } from "@base-ui/react/accordion";
+import { ChevronDown } from "lucide-react";
+//#region src/components/accordion/accordion-trigger.tsx
+/**
+* The ready-made accordion trigger: grafts Base UI's trigger behavior onto the styled
+* `AccordionTrigger`, composing an optional `icon`, the `AccordionTriggerTitle`, and the
+* `DisclosureIndicator` chevron that rotates when the panel opens.
+*/
+function AccordionTrigger({ icon, label, ...props }) {
+	return /* @__PURE__ */ jsxs(Accordion.Trigger, {
+		...props,
+		render: /* @__PURE__ */ jsx(AccordionTrigger$1, {}),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(AccordionTriggerTitle, { children: label }),
+			/* @__PURE__ */ jsx(DisclosureIndicator, {
+				motion: "disclose",
+				tint: "secondary",
+				children: /* @__PURE__ */ jsx(ChevronDown, {})
+			})
+		]
+	});
+}
+//#endregion
+export { AccordionTrigger };
+
+//# sourceMappingURL=accordion-trigger.js.map

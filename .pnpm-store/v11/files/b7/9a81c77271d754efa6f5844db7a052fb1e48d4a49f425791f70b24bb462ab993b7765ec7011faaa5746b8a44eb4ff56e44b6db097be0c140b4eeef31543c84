@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/time-entries-filled.d.ts
+declare function TimeEntriesFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TimeEntriesFilled };
+//# sourceMappingURL=time-entries-filled.d.ts.map

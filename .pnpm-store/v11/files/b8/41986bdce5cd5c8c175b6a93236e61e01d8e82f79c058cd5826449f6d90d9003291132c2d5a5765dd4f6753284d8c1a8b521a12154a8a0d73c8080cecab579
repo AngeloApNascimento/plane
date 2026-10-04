@@ -1,0 +1,24 @@
+"use client";
+import { ToolbarSize } from "../../elements/toolbar/variants.js";
+import { ToolbarInputProps as ToolbarInputProps$1 } from "../../elements/toolbar/toolbar-input.js";
+import "../../elements/toolbar/index.js";
+import * as React from "react";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar-input.d.ts
+type ToolbarInputProps = Omit<Toolbar.Input.Props, "className" | "style" | "render" | "aria-label" | "size"> & {
+  /** Size override; defaults to the surrounding `Toolbar`'s size. */
+  size?: ToolbarSize;
+  /** Accessible name for the field (placeholder is not a name). */
+  "aria-label": string;
+  /** Custom render for the underlying styled toolbar input. */
+  render?: ToolbarInputProps$1["render"];
+};
+/**
+ * An inline text input in the toolbar's roving tab order (e.g. a filter box) — Base UI's
+ * `Toolbar.Input` grafted onto the styled miniature field, its height tracking the toolbar's size.
+ * An `aria-label` is required.
+ */
+declare function ToolbarInput({ size, render, ...props }: ToolbarInputProps): React.JSX.Element;
+//#endregion
+export { ToolbarInput, ToolbarInputProps };
+//# sourceMappingURL=toolbar-input.d.ts.map

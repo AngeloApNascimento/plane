@@ -1,0 +1,17 @@
+"use client";
+import { alertDialogBackdropVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-backdrop.tsx
+/** Dims the viewport with the updated Figma 25% black scrim. */
+function AlertDialogBackdrop({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: alertDialogBackdropVariants() }, props)
+	});
+}
+//#endregion
+export { AlertDialogBackdrop };
+
+//# sourceMappingURL=alert-dialog-backdrop.js.map

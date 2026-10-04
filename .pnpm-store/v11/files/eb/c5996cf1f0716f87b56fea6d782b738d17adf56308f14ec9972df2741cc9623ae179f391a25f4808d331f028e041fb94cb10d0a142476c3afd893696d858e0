@@ -1,0 +1,29 @@
+"use client";
+import { nodeSlotClass } from "../../internal/node-slot.js";
+import { surfaceVariants } from "../../internal/surface.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/toast/variants.ts
+const toastViewportVariants = cva(cx("fixed inset-e-4 bottom-4 z-60 w-85 max-w-[calc(100vw-2rem)] rounded-lg", "h-[var(--toast-frontmost-height,0px)]", "focus-visible:outline-md focus-visible:outline-offset-2 focus-visible:outline-accent-strong"));
+const toastVariants = cva(cx(surfaceVariants({
+	elevation: "raised",
+	radius: "lg"
+}), "flex items-start gap-1.5 px-4 py-3", "[--gap:0.5rem] [--peek:0.5rem] [--scale:calc(max(0,1-(var(--toast-index,0)*0.1)))]", "[--height:var(--toast-frontmost-height,var(--toast-height,auto))] [--shrink:calc(1-var(--scale))]", "[--offset-y:calc(var(--toast-offset-y,0px)*-1+(var(--toast-index,0)*var(--gap)*-1)+var(--toast-swipe-movement-y,0px))]", "absolute inset-e-0 bottom-0 z-[calc(1000-var(--toast-index,0))] w-full origin-bottom select-none", "h-(--height) data-expanded:[height:var(--toast-height,auto)]", "[transform:translateX(var(--toast-swipe-movement-x,0px))_translateY(calc(var(--toast-swipe-movement-y,0px)-(var(--toast-index,0)*var(--peek))-(var(--shrink)*var(--height))))_scale(var(--scale))]", "data-expanded:[transform:translateX(var(--toast-swipe-movement-x,0px))_translateY(var(--offset-y))]", "data-starting-style:[transform:translateX(10%)_translateY(150%)]", "rtl:data-starting-style:[transform:translateX(-10%)_translateY(150%)]", "[&[data-ending-style]:not([data-limited]):not([data-swipe-direction])]:[transform:translateX(10%)_translateY(150%)]", "rtl:[&[data-ending-style]:not([data-limited]):not([data-swipe-direction])]:[transform:translateX(-10%)_translateY(150%)]", "data-ending-style:opacity-0 data-limited:opacity-0", "data-ending-style:data-[swipe-direction=up]:[transform:translateY(calc(var(--toast-swipe-movement-y,0px)-150%))]", "data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y,0px)+150%))]", "data-ending-style:data-[swipe-direction=left]:[transform:translateX(calc(var(--toast-swipe-movement-x,0px)-150%))_translateY(var(--offset-y))]", "data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x,0px)+150%))_translateY(var(--offset-y))]", "after:absolute after:inset-s-0 after:inset-e-0 after:top-full after:h-[calc(var(--gap)+1px)] after:content-['']", "[transition:transform_0.5s_cubic-bezier(0.22,1,0.36,1),opacity_0.5s,height_0.15s]", "motion-reduce:transition-none"));
+const toastContentVariants = cva(cx("flex min-w-0 flex-1 flex-col gap-3 transition-opacity select-text motion-reduce:transition-none", "data-behind:not-data-expanded:overflow-hidden", "data-behind:opacity-0 data-expanded:data-behind:opacity-100"));
+const toastTextGroupVariants = cva("flex flex-col gap-1");
+const toastTitleVariants = cva("text-body-sm-medium text-primary");
+const toastDescriptionVariants = cva("text-body-xs-regular text-tertiary");
+const toastActionsVariants = cva("flex w-full gap-1.5");
+const toastActionGroupVariants = cva("-ms-2 flex min-w-0 flex-1 items-center gap-1.5");
+const toastActionVariants = cva(cx("inline-flex h-6 min-w-10 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-md px-2", "text-body-xs-medium text-secondary outline-none", "bg-layer-transparent transition-colors hover:bg-layer-transparent-hover active:bg-layer-transparent-active", "focus-visible:ring-2 focus-visible:ring-accent-strong"));
+const toastCloseGroupVariants = cva("absolute inset-e-1 top-1");
+const toastStatusIconVariants = cva(cx(nodeSlotClass, "mt-0.5 size-4 [--node-size:var(--control-glyph-lg)]"), { variants: { variant: {
+	success: "text-icon-success-primary",
+	danger: "text-icon-danger-primary",
+	info: "text-icon-info-primary",
+	warning: "text-icon-warning-primary",
+	neutral: "text-icon-tertiary"
+} } });
+//#endregion
+export { toastActionGroupVariants, toastActionVariants, toastActionsVariants, toastCloseGroupVariants, toastContentVariants, toastDescriptionVariants, toastStatusIconVariants, toastTextGroupVariants, toastTitleVariants, toastVariants, toastViewportVariants };
+
+//# sourceMappingURL=variants.js.map

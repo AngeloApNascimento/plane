@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/inline-equation-outline.d.ts
+declare function InlineEquationOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { InlineEquationOutline };
+//# sourceMappingURL=inline-equation-outline.d.ts.map

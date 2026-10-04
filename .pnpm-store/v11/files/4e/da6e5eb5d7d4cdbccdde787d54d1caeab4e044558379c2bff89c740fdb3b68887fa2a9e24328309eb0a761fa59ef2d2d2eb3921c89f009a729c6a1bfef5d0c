@@ -1,0 +1,4 @@
+"use client";
+import { ShortcutSize } from "../../internal/shortcut.js";
+import { Shortcut, ShortcutProps } from "./shortcut.js";
+export { Shortcut, ShortcutProps, type ShortcutSize };

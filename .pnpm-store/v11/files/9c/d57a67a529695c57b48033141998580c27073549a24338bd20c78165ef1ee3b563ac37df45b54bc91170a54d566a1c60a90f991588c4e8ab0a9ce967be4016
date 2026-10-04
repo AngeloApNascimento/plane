@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/right-arrow-outline.d.ts
+declare function RightArrowOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RightArrowOutline };
+//# sourceMappingURL=right-arrow-outline.d.ts.map

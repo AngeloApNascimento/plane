@@ -1,0 +1,93 @@
+"use client";
+import { nodeSlotClass } from "../../internal/node-slot.js";
+import { overlayActionsClass, overlayCloseClass } from "../../internal/overlay-frame.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/drawer/variants.ts
+const drawerViewportDefaultVariants = { variant: "inline" };
+const drawerInlineHostVariants = cva("pointer-events-none absolute inset-0 z-50");
+const drawerInlinePortalVariants = cva("h-full min-h-0");
+const drawerViewportVariants = cva("pointer-events-none", {
+	variants: { variant: {
+		overlay: "fixed inset-0 z-50",
+		contained: "absolute inset-0 z-50",
+		inline: "absolute inset-0 z-50"
+	} },
+	defaultVariants: drawerViewportDefaultVariants
+});
+const drawerPopupVariants = cva(cx("pointer-events-auto flex flex-col outline-none", "bg-surface-1 transition-transform duration-200"), {
+	variants: {
+		variant: {
+			inline: "absolute z-50",
+			overlay: "fixed z-50",
+			contained: "absolute z-50"
+		},
+		side: {
+			end: "data-ending-style:translate-x-full data-starting-style:translate-x-full",
+			start: "data-ending-style:-translate-x-full data-starting-style:-translate-x-full"
+		},
+		size: {
+			sm: "w-[358px]",
+			md: "w-200",
+			lg: "w-256"
+		}
+	},
+	compoundVariants: [
+		{
+			variant: "inline",
+			side: "end",
+			class: "inset-y-0 inset-e-0 max-w-full border-s-sm border-subtle"
+		},
+		{
+			variant: "inline",
+			side: "start",
+			class: "inset-y-0 inset-s-0 max-w-full border-e-sm border-subtle"
+		},
+		{
+			variant: "overlay",
+			side: "end",
+			class: "inset-y-2 inset-e-2 max-w-[90vw] rounded-lg border-sm border-subtle shadow-direction-left"
+		},
+		{
+			variant: "overlay",
+			side: "start",
+			class: "inset-y-2 inset-s-2 max-w-[90vw] rounded-lg border-sm border-subtle shadow-direction-right"
+		},
+		{
+			variant: "contained",
+			side: "end",
+			class: "inset-y-2 inset-e-2 max-w-[calc(100%-1rem)] rounded-lg border-sm border-subtle shadow-direction-left"
+		},
+		{
+			variant: "contained",
+			side: "start",
+			class: "inset-y-2 inset-s-2 max-w-[calc(100%-1rem)] rounded-lg border-sm border-subtle shadow-direction-right"
+		}
+	],
+	defaultVariants: {
+		size: "sm",
+		variant: "inline"
+	}
+});
+const drawerContentVariants = cva("flex min-h-0 flex-1 flex-col gap-6", {
+	variants: { size: {
+		sm: "p-4",
+		md: "px-8 py-7",
+		lg: "px-8 py-7"
+	} },
+	defaultVariants: { size: "sm" }
+});
+const drawerHeaderVariants = cva("flex items-start justify-between gap-3");
+const drawerHeaderStartVariants = cva("flex min-w-0 flex-1 items-start gap-1");
+const drawerHeaderIconVariants = cva(cx(nodeSlotClass, "mt-0.5 size-5 text-icon-secondary [--node-size:var(--control-glyph-xs)]"));
+const drawerHeaderActionsVariants = cva("flex items-center gap-3", { variants: { side: {
+	start: "min-w-0",
+	end: "shrink-0"
+} } });
+const drawerHeaderContentVariants = cva("flex min-w-0 flex-1 flex-col gap-0.5");
+const drawerBodyVariants = cva("flex min-h-0 flex-1 flex-col gap-2 overflow-auto");
+const drawerFooterVariants = cva(cx(overlayActionsClass, "items-center"));
+const drawerCloseVariants = cva(cx(overlayCloseClass, "relative size-5 rounded-sm before:absolute before:-inset-0.5 before:-z-10 before:content-['']"));
+//#endregion
+export { drawerBodyVariants, drawerCloseVariants, drawerContentVariants, drawerFooterVariants, drawerHeaderActionsVariants, drawerHeaderContentVariants, drawerHeaderIconVariants, drawerHeaderStartVariants, drawerHeaderVariants, drawerInlineHostVariants, drawerInlinePortalVariants, drawerPopupVariants, drawerViewportVariants };
+
+//# sourceMappingURL=variants.js.map

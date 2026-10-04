@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list-item-button.d.ts
+type ListItemButtonProps = Omit<useRender.ComponentProps<"button">, "className" | "style">;
+/**
+ * The styled primary action of a list row — a `<button>`. Base-UI-agnostic — graft the roving
+ * `CompositeItem` behavior in `components` via `<CompositeItem tag="button"
+ * render={<ListItemButton/>} />`. Shares the row chrome with `ListItemLink`. Compose a leading
+ * `<Icon />`, `ListItemLabel`, and optional `ListItemCounter` / trailing icon inside.
+ */
+declare function ListItemButton({ render, ...props }: ListItemButtonProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ListItemButton, ListItemButtonProps };
+//# sourceMappingURL=list-item-button.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/edit-outline.d.ts
+declare function EditOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { EditOutline };
+//# sourceMappingURL=edit-outline.d.ts.map

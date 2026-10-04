@@ -1,0 +1,47 @@
+"use client";
+import { nodeSlotClass } from "./node-slot.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { cva, cx } from "class-variance-authority";
+const iconVariants = cva(nodeSlotClass, {
+	variants: {
+		tint: {
+			inherit: "",
+			danger: "text-danger-primary",
+			placeholder: cx("text-icon-placeholder transition-colors", "group-focus-within/control:text-icon-secondary", "group-has-[:disabled]/control:text-icon-disabled group-data-disabled/control:text-icon-disabled"),
+			muted: "text-icon-placeholder",
+			secondary: cx("text-icon-secondary", "group-has-[:disabled]/control:text-icon-disabled group-data-disabled/control:text-icon-disabled"),
+			tertiary: "text-icon-tertiary"
+		},
+		size: {
+			inherit: "",
+			xs: "[--node-size:var(--control-glyph-xs)]",
+			sm: "[--node-size:var(--control-glyph-sm)]",
+			md: "[--node-size:var(--control-glyph-md)]",
+			lg: "[--node-size:var(--control-glyph-lg)]",
+			xl: "[--node-size:var(--control-glyph-xl)]",
+			"2xl": "[--node-size:var(--control-glyph-2xl)]"
+		}
+	},
+	defaultVariants: {
+		tint: "inherit",
+		size: "inherit"
+	}
+});
+function Icon({ tint, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			"aria-hidden": true,
+			className: iconVariants({
+				tint,
+				size
+			})
+		}, props)
+	});
+}
+//#endregion
+export { Icon, iconVariants };
+
+//# sourceMappingURL=icon.js.map

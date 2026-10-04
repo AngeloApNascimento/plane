@@ -1,0 +1,28 @@
+"use client";
+import { Separator as Separator$2 } from "../../elements/separator/separator.js";
+import { jsx } from "react/jsx-runtime";
+import { Separator } from "@base-ui/react/separator";
+//#region src/components/separator/separator.tsx
+/**
+* A thin rule that visually divides content. Grafts Base UI's `Separator` behavior onto the styled
+* `elements` `Separator` `<div>` via `render`. Both adjustable axes from the design spec are
+* required: `orientation` (`"horizontal"` | `"vertical"`) and `decorative` (the "Role" axis —
+* semantic vs. visual-only). Spacing around the rule belongs to the surrounding layout, not the
+* separator.
+*/
+function Separator$1({ decorative, ...props }) {
+	const a11y = decorative ? {
+		role: "none",
+		"aria-orientation": void 0,
+		"aria-hidden": true
+	} : null;
+	return /* @__PURE__ */ jsx(Separator, {
+		...props,
+		...a11y,
+		render: /* @__PURE__ */ jsx(Separator$2, {})
+	});
+}
+//#endregion
+export { Separator$1 as Separator };
+
+//# sourceMappingURL=separator.js.map

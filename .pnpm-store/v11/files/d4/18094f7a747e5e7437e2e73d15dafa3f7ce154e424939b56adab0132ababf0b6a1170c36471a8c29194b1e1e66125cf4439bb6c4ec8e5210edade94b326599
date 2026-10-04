@@ -1,0 +1,13 @@
+"use client";
+import { ContextMenuItemLayout, ContextMenuItemVariant, ContextMenuItemVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-item.d.ts
+type ContextMenuItemProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & ContextMenuItemVariantProps;
+/**
+ * The styled interactive menu row. Base-UI-agnostic — graft the item behavior in `components` via
+ * `<BaseContextMenu.Item render={<ContextMenuItem/>} />`.
+ */
+declare function ContextMenuItem({ layout, variant, render, ...props }: ContextMenuItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ContextMenuItem, type ContextMenuItemLayout, ContextMenuItemProps, type ContextMenuItemVariant };
+//# sourceMappingURL=context-menu-item.d.ts.map

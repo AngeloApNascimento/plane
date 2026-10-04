@@ -1,0 +1,22 @@
+"use client";
+import { previewCardBodyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/preview-card/preview-card-body.tsx
+/**
+* The text content area of the card — typically holds a `PreviewCardTitle` and
+* `PreviewCardDescription` stacked in a column. Owns the padding so a full-bleed `PreviewCardImage`
+* can sit edge-to-edge above it; both the column layout and the padding are "always the same" per
+* the design spec.
+*/
+function PreviewCardBody({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: previewCardBodyVariants() }, props)
+	});
+}
+//#endregion
+export { PreviewCardBody };
+
+//# sourceMappingURL=preview-card-body.js.map

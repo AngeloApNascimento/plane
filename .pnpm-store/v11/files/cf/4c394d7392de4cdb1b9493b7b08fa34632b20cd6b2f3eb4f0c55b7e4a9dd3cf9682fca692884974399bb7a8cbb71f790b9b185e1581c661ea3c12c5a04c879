@@ -1,0 +1,23 @@
+"use client";
+import { fieldLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-label.tsx
+/**
+* The label naming a field's control. Base-UI-agnostic — graft the Base UI `Field.Label`
+* association in `components` via `<BaseField.Label render={<FieldLabel/>} />`.
+*/
+function FieldLabel({ size, inset, render, ...props }) {
+	return useRender({
+		defaultTagName: "label",
+		render,
+		props: mergeProps({ className: fieldLabelVariants({
+			size,
+			inset
+		}) }, props)
+	});
+}
+//#endregion
+export { FieldLabel };
+
+//# sourceMappingURL=field-label.js.map

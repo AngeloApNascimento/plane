@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/share-alt-outline.d.ts
+declare function ShareAltOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ShareAltOutline };
+//# sourceMappingURL=share-alt-outline.d.ts.map

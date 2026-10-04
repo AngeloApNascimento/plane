@@ -1,0 +1,35 @@
+"use client";
+import * as React from "react";
+import { Collapsible } from "@base-ui/react/collapsible";
+//#region src/components/list/list-section.d.ts
+type ListSectionProps = Omit<Collapsible.Root.Props, "className" | "style" | "render"> & {
+  /** The section heading shown in the toggle. */
+  label: string;
+  /** The section body — typically a `List` of rows. */
+  children: React.ReactNode;
+  /**
+   * Whether to show the rotating disclosure chevron at the heading's inline-end.
+   *
+   * @default true
+   */
+  indicator?: boolean;
+  /**
+   * Element to graft the styled frame onto instead of the default `div` — element form only, the
+   * callback form's `state` isn't wired through the styled frame.
+   */
+  render?: React.ReactElement;
+};
+/**
+ * A ready-made collapsible list section: a muted heading that toggles its body, with the disclosure
+ * chevron (points inline-end while collapsed, rotates down when open). Pass `label` for the heading
+ * and `children` for the body (typically a `List` of rows); forward `defaultOpen` (uncontrolled) or
+ * `open` + `onOpenChange` (controlled) to drive it. Set `indicator={false}` to omit the chevron.
+ *
+ * Children sit in `ListSectionPanelContent` (heading-to-row gap only) inside the height-animating
+ * panel — list rows own their own horizontal padding, so this does not wrap
+ * `CollapsiblePanelContent` (that part carries Collapsible's Figma panel inset + prose).
+ */
+declare function ListSection({ label, children, indicator, render, ...props }: ListSectionProps): React.JSX.Element;
+//#endregion
+export { ListSection, ListSectionProps };
+//# sourceMappingURL=list-section.d.ts.map

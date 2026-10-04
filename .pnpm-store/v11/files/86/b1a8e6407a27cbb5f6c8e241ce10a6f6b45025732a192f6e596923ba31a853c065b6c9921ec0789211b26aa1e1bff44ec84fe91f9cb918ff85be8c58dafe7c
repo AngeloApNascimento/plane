@@ -1,0 +1,23 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+//#region src/elements/circular-progress/variants.d.ts
+/**
+ * Circular ring root variants. `size` sets the diameter of the ring box. The arc and track circles
+ * fill the box; geometry (radius, dash) is passed to those parts as SVG attributes.
+ */
+declare const circularProgressVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+/**
+ * The toned arc proportional to the value, with rounded caps. `variant` drives the stroke color.
+ * The arc starts at 12 o'clock (`-rotate-90`, `origin-center` so the sweep stays clockwise in RTL).
+ * The dash offset (the value model) is passed as an SVG attribute.
+ */
+declare const circularProgressIndicatorVariants: (props?: ({
+  variant?: "danger" | "brand" | "success" | "warning" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type CircularProgressVariantProps = StrictVariantProps<typeof circularProgressVariants>;
+type CircularProgressIndicatorVariantProps = StrictVariantProps<typeof circularProgressIndicatorVariants>;
+//#endregion
+export { CircularProgressIndicatorVariantProps, CircularProgressVariantProps, circularProgressIndicatorVariants, circularProgressVariants };
+//# sourceMappingURL=variants.d.ts.map

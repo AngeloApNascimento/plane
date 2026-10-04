@@ -1,0 +1,3 @@
+"use client";
+import { IconButton } from "./icon-button.js";
+export { IconButton };

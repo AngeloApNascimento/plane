@@ -1,0 +1,23 @@
+"use client";
+import { breadcrumbTriggerVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-trigger.tsx
+/**
+* A crumb styled as a menu trigger — applies the interactive crumb chrome plus the open-state
+* styling. Compose a `Menu.Trigger` through the `render` prop.
+*/
+function BreadcrumbTrigger({ group = false, render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({
+			...render == null ? { type: "button" } : null,
+			className: breadcrumbTriggerVariants({ group })
+		}, props)
+	});
+}
+//#endregion
+export { BreadcrumbTrigger };
+
+//# sourceMappingURL=breadcrumb-trigger.js.map

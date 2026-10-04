@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/arrows/arrow-narrow-left-filled.tsx
+function ArrowNarrowLeftFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M6.558 3.558a.626.626 0 0 1 .884.885L4.51 7.375h9.157a.625.625 0 0 1 0 1.25H4.51l2.932 2.933a.626.626 0 0 1-.884.885l-4-4a.626.626 0 0 1 0-.885z"
+		})
+	});
+}
+//#endregion
+export { ArrowNarrowLeftFilled };
+
+//# sourceMappingURL=arrow-narrow-left-filled.js.map

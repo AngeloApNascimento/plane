@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-popup.d.ts
+type NavigationMenuPopupProps = Omit<useRender.ComponentProps<"nav">, "className" | "style">;
+/**
+ * The styled anchored surface that houses the active item's `Content`. Base-UI-agnostic — graft in
+ * `components` via `<BaseNavigationMenu.Popup render={<NavigationMenuPopup />} />`.
+ */
+declare function NavigationMenuPopup({ render, ...props }: NavigationMenuPopupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NavigationMenuPopup, NavigationMenuPopupProps };
+//# sourceMappingURL=navigation-menu-popup.d.ts.map

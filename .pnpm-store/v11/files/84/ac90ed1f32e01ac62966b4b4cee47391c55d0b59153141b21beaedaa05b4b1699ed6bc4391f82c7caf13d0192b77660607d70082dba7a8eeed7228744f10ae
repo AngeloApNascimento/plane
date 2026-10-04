@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-arrow-button.d.ts
+type PaginationArrowButtonProps = Omit<useRender.ComponentProps<"button">, "className" | "style">;
+/**
+ * A styled prev/next arrow button. Applies `paginationArrowButtonVariants()`; pass the
+ * (directional, RTL-mirrored) arrow icon as `children` and wire `aria-label`/`disabled`/`onClick`
+ * through props.
+ */
+declare function PaginationArrowButton({ render, ...props }: PaginationArrowButtonProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationArrowButton, PaginationArrowButtonProps };
+//# sourceMappingURL=pagination-arrow-button.d.ts.map

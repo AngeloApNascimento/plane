@@ -1,0 +1,20 @@
+"use client";
+import { avatarFallbackClass, avatarImageClass, avatarVariantClasses } from "../../internal/avatar-shared.js";
+import { cva } from "class-variance-authority";
+//#region src/elements/workspace-avatar/variants.ts
+const workspaceAvatarVariants = cva("relative inline-flex shrink-0 items-center justify-center overflow-clip border-subtle bg-layer-1", { variants: { size: {
+	"2xs": "size-4 rounded-sm border-sm text-caption-2xs-regular [--node-size:0.875rem]",
+	xs: "size-5 rounded-sm border-sm text-caption-2xs-regular [--node-size:0.875rem]",
+	sm: "size-6 rounded-sm border-sm text-caption-sm-regular [--node-size:1rem]",
+	md: "size-7 rounded-md border-sm text-body-xs-regular [--node-size:1.25rem]",
+	lg: "size-8 rounded-md border-sm text-body-md-regular [--node-size:1.5rem]",
+	xl: "size-10 rounded-md border-lg text-h5-regular [--node-size:1.5rem]",
+	"2xl": "size-14 rounded-lg border-lg text-h3-regular [--node-size:2rem]",
+	"3xl": "size-16 rounded-lg border-lg text-h2-regular [--node-size:2rem]"
+} } });
+const workspaceAvatarImageVariants = cva(avatarImageClass);
+const workspaceAvatarFallbackVariants = cva(avatarFallbackClass, { variants: { variant: avatarVariantClasses } });
+//#endregion
+export { workspaceAvatarFallbackVariants, workspaceAvatarImageVariants, workspaceAvatarVariants };
+
+//# sourceMappingURL=variants.js.map

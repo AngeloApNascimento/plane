@@ -1,0 +1,25 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/actions/minimize-filled.tsx
+function MinimizeFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			stroke: "currentColor",
+			strokeLinecap: "round",
+			strokeLinejoin: "round",
+			strokeWidth: 1.25,
+			d: "M2 5.333h.133c1.12 0 1.68 0 2.108-.218a2 2 0 0 0 .874-.874c.218-.428.218-.988.218-2.108V2M2 10.667h.133c1.12 0 1.68 0 2.108.218a2 2 0 0 1 .874.874c.218.428.218.988.218 2.108V14m5.334-12v.133c0 1.12 0 1.68.218 2.108a2 2 0 0 0 .874.874c.428.218.988.218 2.108.218H14M10.667 14v-.133c0-1.12 0-1.68.218-2.108a2 2 0 0 1 .874-.874c.428-.218.988-.218 2.108-.218H14"
+		})
+	});
+}
+//#endregion
+export { MinimizeFilled };
+
+//# sourceMappingURL=minimize-filled.js.map

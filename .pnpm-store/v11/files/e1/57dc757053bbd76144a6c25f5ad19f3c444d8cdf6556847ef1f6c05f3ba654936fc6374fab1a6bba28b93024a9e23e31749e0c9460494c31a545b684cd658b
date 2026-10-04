@@ -1,0 +1,26 @@
+"use client";
+import { skeletonFrameProps } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/skeleton/skeleton.tsx
+/**
+* The styled loading-region frame — pulse, layout, and optional exact geometry. Base-UI-agnostic;
+* the `status` role and required name are wired in `components`. Exact lengths are applied as
+* `--skeleton-block-size` / `--skeleton-inline-size` so `style` is never exposed.
+*/
+function Skeleton({ layout = "stack", stretch = "full", blockSize, inlineSize, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps(skeletonFrameProps({
+			layout,
+			stretch,
+			blockSize,
+			inlineSize
+		}), props)
+	});
+}
+//#endregion
+export { Skeleton };
+
+//# sourceMappingURL=skeleton.js.map

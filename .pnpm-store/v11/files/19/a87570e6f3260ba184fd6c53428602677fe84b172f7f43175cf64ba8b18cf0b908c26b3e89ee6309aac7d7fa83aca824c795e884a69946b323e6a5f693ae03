@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/accordion/accordion-trigger-title.d.ts
+type AccordionTriggerTitleProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The trigger's label. Grows to fill the trigger row so a trailing `DisclosureIndicator` sits at
+ * the inline-end edge.
+ */
+declare function AccordionTriggerTitle({ render, ...props }: AccordionTriggerTitleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AccordionTriggerTitle, AccordionTriggerTitleProps };
+//# sourceMappingURL=accordion-trigger-title.d.ts.map

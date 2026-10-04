@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/git-branch-filled.tsx
+function GitBranchFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			d: "M4.667 2a.667.667 0 1 0-1.334 0v7.417A2.668 2.668 0 1 0 6.59 12.64 6.67 6.67 0 0 0 12.64 6.59a2.668 2.668 0 1 0-1.338-.015 5.33 5.33 0 0 1-4.728 4.728 2.67 2.67 0 0 0-1.907-1.885z",
+			clipRule: "evenodd"
+		})
+	});
+}
+//#endregion
+export { GitBranchFilled };
+
+//# sourceMappingURL=git-branch-filled.js.map

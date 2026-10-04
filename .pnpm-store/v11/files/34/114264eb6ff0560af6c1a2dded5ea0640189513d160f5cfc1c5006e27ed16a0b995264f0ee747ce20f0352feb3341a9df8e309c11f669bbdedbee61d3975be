@@ -1,0 +1,17 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+//#region src/internal/solid-icons/solid-icon.tsx
+function SolidIcon(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		viewBox: "0 0 24 24",
+		fill: "currentColor",
+		fillRule: "evenodd",
+		clipRule: "evenodd",
+		xmlns: "http://www.w3.org/2000/svg",
+		...props
+	});
+}
+//#endregion
+export { SolidIcon };
+
+//# sourceMappingURL=solid-icon.js.map

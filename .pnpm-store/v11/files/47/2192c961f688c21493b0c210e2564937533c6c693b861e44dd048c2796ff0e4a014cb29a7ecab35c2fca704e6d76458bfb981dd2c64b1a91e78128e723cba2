@@ -1,0 +1,16 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-body.d.ts
+type DialogBodyProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The scrollable main slot inside `DialogMain`. Grows to fill available space and scrolls
+ * vertically when content exceeds the popup's max-height. Pass form fields, lists, or other slot
+ * content — keep `DialogDescription` in `DialogHeading`.
+ *
+ * When the body can overflow, pass `tabIndex={0}` so the scroll region is keyboard-reachable (axe
+ * `scrollable-region-focusable`).
+ */
+declare function DialogBody({ render, ...props }: DialogBodyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogBody, DialogBodyProps };
+//# sourceMappingURL=dialog-body.d.ts.map

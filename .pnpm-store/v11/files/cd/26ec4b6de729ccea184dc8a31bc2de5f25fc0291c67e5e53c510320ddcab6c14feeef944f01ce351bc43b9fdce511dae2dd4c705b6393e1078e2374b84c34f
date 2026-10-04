@@ -1,0 +1,6 @@
+"use client";
+import { FieldsetBody } from "../../elements/fieldset/fieldset-body.js";
+import { FieldsetDescription } from "../../elements/fieldset/fieldset-description.js";
+import { FieldsetLegend } from "../../elements/fieldset/fieldset-legend.js";
+import { Fieldset } from "./fieldset.js";
+export { Fieldset, FieldsetBody, FieldsetDescription, FieldsetLegend };

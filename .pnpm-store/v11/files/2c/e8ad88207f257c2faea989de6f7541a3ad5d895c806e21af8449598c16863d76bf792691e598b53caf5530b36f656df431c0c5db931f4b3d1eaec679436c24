@@ -1,0 +1,19 @@
+"use client";
+import { ListboxStatus } from "../../internal/listbox-status.js";
+import { jsx } from "react/jsx-runtime";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-status.tsx
+/**
+* A polite live region inside the popup for async hints ("Searching…", "12 results") — Base UI's
+* `Status` behavior grafted onto the shared muted listbox hint styling.
+*/
+function ComboboxStatus(props) {
+	return /* @__PURE__ */ jsx(Combobox.Status, {
+		...props,
+		render: /* @__PURE__ */ jsx(ListboxStatus, {})
+	});
+}
+//#endregion
+export { ComboboxStatus };
+
+//# sourceMappingURL=combobox-status.js.map

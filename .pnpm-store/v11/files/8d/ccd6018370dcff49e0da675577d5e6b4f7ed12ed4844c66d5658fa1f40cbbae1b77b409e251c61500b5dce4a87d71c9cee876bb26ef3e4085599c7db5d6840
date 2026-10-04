@@ -1,0 +1,24 @@
+"use client";
+import { fieldItemVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-item.tsx
+/**
+* Groups one checkbox or radio option with its label and optional description. Base-UI-agnostic —
+* graft the Base UI `Field.Item` behavior in `components` via `<BaseField.Item
+* render={<FieldItem/>} />`.
+*/
+function FieldItem({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({
+			className: fieldItemVariants(),
+			"data-slot": "field-item"
+		}, props)
+	});
+}
+//#endregion
+export { FieldItem };
+
+//# sourceMappingURL=field-item.js.map

@@ -1,0 +1,19 @@
+"use client";
+import { TableCellTriggerLayout, TableCellTriggerVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell-trigger.d.ts
+type TableCellTriggerProps = Omit<useRender.ComponentProps<"button">, "className" | "style" | "type"> & TableCellTriggerVariantProps;
+/**
+ * The full-cell `<button>` inside an editable/action cell — a single styled element. Base-UI-
+ * agnostic: the ready-made `components/table` grafts the Base UI Menu trigger onto it via `render`
+ * (`<BaseMenu.Trigger render={<TableCellTrigger/>} />`, behavior part outer). Carries a
+ * `cell-trigger` group so its indicator can dim while disabled.
+ *
+ * `selected` is a visual tint only (open-menu / active chrome) — not an ARIA selected state.
+ *
+ * @default false
+ */
+declare function TableCellTrigger({ layout, selected, render, ...props }: TableCellTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableCellTrigger, type TableCellTriggerLayout, TableCellTriggerProps };
+//# sourceMappingURL=table-cell-trigger.d.ts.map

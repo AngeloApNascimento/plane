@@ -1,0 +1,20 @@
+"use client";
+import { ContextMenuContentSurface } from "./context-menu-content.shared.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/context-menu/context-menu-content.tsx
+/**
+* The root context-menu surface: Base UI's portal and positioner wrapped around an elevated,
+* scrollable `OverlayPanel` holding the flat `role="menu"` popup. Anchors to the pointer and sizes
+* itself like a dropdown. Rows (`ContextMenuItem`, `ContextMenuSeparator`, …) are its children. A
+* submenu's own surface is `ContextMenuSubmenuContent`, not this part.
+*/
+function ContextMenuContent({ sizing = "auto", ...props }) {
+	return /* @__PURE__ */ jsx(ContextMenuContentSurface, {
+		sizing,
+		...props
+	});
+}
+//#endregion
+export { ContextMenuContent };
+
+//# sourceMappingURL=context-menu-content.js.map

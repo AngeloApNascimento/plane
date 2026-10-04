@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-radio-item-indicator.d.ts
+type ContextMenuRadioItemIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled selection region of a radio menu row. Sizes its single child (the selection icon) to
+ * the row's `--node-size`. Base-UI-agnostic — graft in `components` via
+ * `<BaseContextMenu.RadioItemIndicator render={<ContextMenuRadioItemIndicator/>} />`.
+ */
+declare function ContextMenuRadioItemIndicator({ render, ...props }: ContextMenuRadioItemIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ContextMenuRadioItemIndicator, ContextMenuRadioItemIndicatorProps };
+//# sourceMappingURL=context-menu-radio-item-indicator.d.ts.map

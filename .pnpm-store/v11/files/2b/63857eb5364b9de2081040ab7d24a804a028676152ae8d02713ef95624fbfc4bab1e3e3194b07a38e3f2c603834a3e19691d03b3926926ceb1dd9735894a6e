@@ -1,0 +1,13 @@
+"use client";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-control.d.ts
+type FieldControlProps = Omit<Field.Control.Props, "className" | "style">;
+/**
+ * Base UI's `Field.Control` — registers the form control with the surrounding `Field` (name,
+ * validation, `data-invalid` propagation). Graft a styled control via `render`: `<FieldControl
+ * render={<Input size="lg" />} />`.
+ */
+declare function FieldControl(props: FieldControlProps): import("react").JSX.Element;
+//#endregion
+export { FieldControl, FieldControlProps };
+//# sourceMappingURL=field-control.d.ts.map

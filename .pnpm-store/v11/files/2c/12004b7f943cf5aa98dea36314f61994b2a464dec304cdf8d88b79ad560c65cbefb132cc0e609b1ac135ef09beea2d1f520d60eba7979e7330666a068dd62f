@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination.d.ts
+type PaginationProps = Omit<useRender.ComponentProps<"nav">, "className" | "style">;
+/**
+ * The pagination landmark: a `<nav>` wrapping the optional per-page region, range label, and the
+ * page-control list.
+ */
+declare function Pagination({ render, ...props }: PaginationProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Pagination, PaginationProps };
+//# sourceMappingURL=pagination.d.ts.map

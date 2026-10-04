@@ -1,0 +1,25 @@
+"use client";
+import { dialogAsideVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-aside.tsx
+/**
+* A fixed-width (280 px) start-side column inside `DialogPanes`, beside `DialogMain`. Stretches to
+* the panes' height so its end seam is the full popup. Scrolls on its own. Holds navigation for the
+* dialog's content — a step list, a section list — supplied by the consumer. Pass `tabIndex={0}`
+* when its content can overflow.
+*/
+function DialogAside({ size, density, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: dialogAsideVariants({
+			size,
+			density
+		}) }, props)
+	});
+}
+//#endregion
+export { DialogAside };
+
+//# sourceMappingURL=dialog-aside.js.map

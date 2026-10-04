@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/variable-outline.d.ts
+declare function VariableOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { VariableOutline };
+//# sourceMappingURL=variable-outline.d.ts.map

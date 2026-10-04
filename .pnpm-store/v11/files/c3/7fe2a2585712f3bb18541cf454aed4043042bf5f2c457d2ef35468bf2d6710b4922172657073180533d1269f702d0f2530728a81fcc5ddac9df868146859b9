@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/layouts/board-layout-filled.d.ts
+declare function BoardLayoutFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BoardLayoutFilled };
+//# sourceMappingURL=board-layout-filled.d.ts.map

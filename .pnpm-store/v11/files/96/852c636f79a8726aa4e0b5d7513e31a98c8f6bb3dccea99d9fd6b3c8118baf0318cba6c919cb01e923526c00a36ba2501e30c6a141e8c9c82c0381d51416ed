@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/duplicate-of-outline.d.ts
+declare function DuplicateOfOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DuplicateOfOutline };
+//# sourceMappingURL=duplicate-of-outline.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/open-pr-filled.d.ts
+declare function OpenPrFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { OpenPrFilled };
+//# sourceMappingURL=open-pr-filled.d.ts.map

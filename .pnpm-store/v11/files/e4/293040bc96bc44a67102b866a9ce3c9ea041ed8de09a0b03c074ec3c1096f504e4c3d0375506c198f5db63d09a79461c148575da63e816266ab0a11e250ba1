@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/release-tag-outline.d.ts
+declare function ReleaseTagOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ReleaseTagOutline };
+//# sourceMappingURL=release-tag-outline.d.ts.map

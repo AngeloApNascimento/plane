@@ -1,0 +1,31 @@
+"use client";
+import { DayPickerProps } from "react-day-picker";
+//#region src/components/calendar/calendar.d.ts
+/**
+ * Props for {@link Calendar}. Forwards react-day-picker's `DayPickerProps` (`mode`, `selected`,
+ * `onSelect`, `disabled`, `month`, `defaultMonth`, …). `className`/`style`/`classNames` are dropped
+ * because styling is owned by propel tokens (the `elements/calendar` `calendarClassNames` contract,
+ * grafted below). `numberOfMonths`/`captionLayout`/`showWeekNumber` are dropped because
+ * `calendarClassNames` does not style those layout modes — they would render with
+ * react-day-picker's unstyled default classes (we never load its stylesheet), so we omit them
+ * rather than accept a prop that silently breaks the layout. Add the `classNames` keys + stories
+ * first if a mode is needed.
+ */
+type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
+type CalendarProps = DistributiveOmit<DayPickerProps, "className" | "style" | "classNames" | "numberOfMonths" | "captionLayout" | "showWeekNumber">;
+/**
+ * The month grid: react-day-picker's `DayPicker` behavior grafted onto propel's `elements/calendar`
+ * `calendarClassNames` styled contract, finished with propel's lucide nav chevrons. Supports
+ * `single` and `range` selection via the `mode` prop and is fully keyboard- and
+ * screen-reader-accessible (react-day-picker owns the grid semantics). Pass `selected`/`onSelect`
+ * to control the selection. The grid draws no surface of its own — no border, shadow, fill, radius
+ * or padding — so the host owns the chrome: put it in a `rich` `PopoverContent` for a date picker,
+ * or in a dialog or card, and it takes that surface's single border and gutters. The chevron icons
+ * carry no className — react-day-picker passes `classNames.chevron` (16px, RTL-mirrored) through to
+ * them; a caller's own `components.Chevron` still wins. Weeks start Monday (`weekStartsOn={1}`, per
+ * spec); pass `weekStartsOn` to override.
+ */
+declare function Calendar(props: CalendarProps): import("react").JSX.Element;
+//#endregion
+export { Calendar, CalendarProps };
+//# sourceMappingURL=calendar.d.ts.map

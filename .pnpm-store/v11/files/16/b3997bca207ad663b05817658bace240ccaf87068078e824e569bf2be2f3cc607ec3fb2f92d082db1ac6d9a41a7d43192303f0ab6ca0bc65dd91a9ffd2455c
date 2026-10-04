@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-description.d.ts
+type AlertDialogDescriptionProps = Omit<useRender.ComponentProps<"p">, "className" | "style">;
+/**
+ * Supporting copy under the alert dialog title. Base-UI-agnostic — graft the description behavior
+ * in `components` via `<BaseAlertDialog.Description render={<AlertDialogDescription />} />`.
+ */
+declare function AlertDialogDescription({ render, ...props }: AlertDialogDescriptionProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AlertDialogDescription, AlertDialogDescriptionProps };
+//# sourceMappingURL=alert-dialog-description.d.ts.map

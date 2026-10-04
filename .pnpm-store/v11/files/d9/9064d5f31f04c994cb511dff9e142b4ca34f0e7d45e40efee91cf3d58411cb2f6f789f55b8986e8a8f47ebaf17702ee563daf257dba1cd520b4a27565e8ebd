@@ -1,0 +1,20 @@
+"use client";
+import { ToolbarSeparator as ToolbarSeparator$1 } from "../../elements/toolbar/toolbar-separator.js";
+import { jsx } from "react/jsx-runtime";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar-separator.tsx
+/**
+* A thin vertical rule that visually divides one cluster of controls from the next: grafts Base
+* UI's `Toolbar.Separator` behavior (the `separator` role) onto the styled rule.
+*/
+function ToolbarSeparator({ render, ...props }) {
+	return /* @__PURE__ */ jsx(Toolbar.Separator, {
+		...props,
+		orientation: "vertical",
+		render: /* @__PURE__ */ jsx(ToolbarSeparator$1, { render })
+	});
+}
+//#endregion
+export { ToolbarSeparator };
+
+//# sourceMappingURL=toolbar-separator.js.map

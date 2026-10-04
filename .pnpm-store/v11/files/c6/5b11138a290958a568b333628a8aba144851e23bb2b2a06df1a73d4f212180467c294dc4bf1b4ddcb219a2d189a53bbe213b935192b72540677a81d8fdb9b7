@@ -1,0 +1,17 @@
+"use client";
+import { WorkspaceAvatarSize, WorkspaceAvatarVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/workspace-avatar/workspace-avatar.d.ts
+/** Props for {@link WorkspaceAvatar}; a styled `<span>` plus a `size`. */
+type WorkspaceAvatarProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & WorkspaceAvatarVariantProps;
+/**
+ * The styled workspace avatar root — a single `<span>` that holds a `WorkspaceAvatarImage` and/or
+ * `WorkspaceAvatarFallback`. Base-UI-agnostic — graft the `Avatar.Root` behavior in `components`
+ * via `<BaseAvatar.Root render={<WorkspaceAvatar/>} />`. The rounded-square shape distinguishes a
+ * workspace from a (circular) person avatar. For the ready-made image+initials avatar, use the
+ * `WorkspaceAvatar` from `@makeplane/propel/components/workspace-avatar`.
+ */
+declare function WorkspaceAvatar({ size, render, ...props }: WorkspaceAvatarProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { WorkspaceAvatar, WorkspaceAvatarProps, type WorkspaceAvatarSize };
+//# sourceMappingURL=workspace-avatar.d.ts.map

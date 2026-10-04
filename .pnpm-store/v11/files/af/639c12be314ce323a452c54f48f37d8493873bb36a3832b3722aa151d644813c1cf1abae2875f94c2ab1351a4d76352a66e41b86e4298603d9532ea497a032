@@ -1,0 +1,13 @@
+"use client";
+import { BannerDescriptionVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/banner/banner-description.d.ts
+type BannerDescriptionProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & BannerDescriptionVariantProps;
+/**
+ * The banner's supporting message, stacked below the `BannerTitle` inside the `BannerBody`. One
+ * step smaller than the title: 13/20 in `md`, 12/18 in `sm`.
+ */
+declare function BannerDescription({ size, render, ...props }: BannerDescriptionProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BannerDescription, BannerDescriptionProps };
+//# sourceMappingURL=banner-description.d.ts.map

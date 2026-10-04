@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-label-required-marker.d.ts
+type FieldLabelRequiredMarkerProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The required marker slot shown after a `FieldLabel`'s text. Decorative (the control's `required`
+ * attribute carries the semantics), so it is `aria-hidden`. Bakes no glyph: pass the marker (e.g.
+ * an asterisk) as `children`.
+ */
+declare function FieldLabelRequiredMarker({ render, ...props }: FieldLabelRequiredMarkerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldLabelRequiredMarker, FieldLabelRequiredMarkerProps };
+//# sourceMappingURL=field-label-required-marker.d.ts.map

@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-info.d.ts
+type DialogInfoProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * Optional footer helper at the inline-start of `DialogActions`. Compose a `DialogInfoIcon` and the
+ * helper label as children. Flexes to push action buttons to the inline-end.
+ */
+declare function DialogInfo({ render, ...props }: DialogInfoProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogInfo, DialogInfoProps };
+//# sourceMappingURL=dialog-info.d.ts.map

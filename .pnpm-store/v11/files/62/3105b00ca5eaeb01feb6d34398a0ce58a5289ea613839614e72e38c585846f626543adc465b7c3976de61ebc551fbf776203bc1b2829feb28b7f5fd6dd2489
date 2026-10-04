@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/picture-in-picture-filled.d.ts
+declare function PictureInPictureFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PictureInPictureFilled };
+//# sourceMappingURL=picture-in-picture-filled.d.ts.map

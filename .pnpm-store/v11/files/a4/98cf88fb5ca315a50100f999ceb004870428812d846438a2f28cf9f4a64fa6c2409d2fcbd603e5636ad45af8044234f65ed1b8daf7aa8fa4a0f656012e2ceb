@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/user-plus-outline.d.ts
+declare function UserPlusOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { UserPlusOutline };
+//# sourceMappingURL=user-plus-outline.d.ts.map

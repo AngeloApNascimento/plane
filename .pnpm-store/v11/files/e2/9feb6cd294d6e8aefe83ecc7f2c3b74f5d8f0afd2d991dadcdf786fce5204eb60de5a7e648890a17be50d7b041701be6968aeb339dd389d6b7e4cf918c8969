@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/read-only-filled.d.ts
+declare function ReadOnlyFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ReadOnlyFilled };
+//# sourceMappingURL=read-only-filled.d.ts.map

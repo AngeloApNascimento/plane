@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/align-center-outline.d.ts
+declare function AlignCenterOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AlignCenterOutline };
+//# sourceMappingURL=align-center-outline.d.ts.map

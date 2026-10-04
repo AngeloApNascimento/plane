@@ -1,0 +1,5 @@
+"use client";
+import { AvatarSize } from "../../elements/avatar/variants.js";
+import "../../elements/avatar/index.js";
+import { Avatar, AvatarProps } from "./avatar.js";
+export { Avatar, AvatarProps, type AvatarSize };

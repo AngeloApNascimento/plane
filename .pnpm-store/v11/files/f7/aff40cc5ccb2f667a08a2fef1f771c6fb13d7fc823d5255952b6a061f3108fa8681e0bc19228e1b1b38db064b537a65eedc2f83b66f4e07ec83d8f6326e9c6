@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-progression.d.ts
+type DialogProgressionProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * Optional step row at the top of `DialogHeader`: compose a back `IconButton` (size `xs`, variant
+ * `ghost`) and the step label as children. Caption-md tertiary chrome is baked in. Laid out in
+ * normal flow (not Figma's absolute hang into the gutter) — the glyph sits on the Main padding
+ * edge; consumers supply the back handler.
+ */
+declare function DialogProgression({ render, ...props }: DialogProgressionProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogProgression, DialogProgressionProps };
+//# sourceMappingURL=dialog-progression.d.ts.map

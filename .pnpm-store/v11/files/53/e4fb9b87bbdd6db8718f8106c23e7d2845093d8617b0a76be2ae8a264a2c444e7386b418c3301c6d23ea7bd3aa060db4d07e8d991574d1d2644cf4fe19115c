@@ -1,0 +1,23 @@
+"use client";
+import { contextMenuItemVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-item.tsx
+/**
+* The styled interactive menu row. Base-UI-agnostic — graft the item behavior in `components` via
+* `<BaseContextMenu.Item render={<ContextMenuItem/>} />`.
+*/
+function ContextMenuItem({ layout, variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: contextMenuItemVariants({
+			layout,
+			variant
+		}) }, props)
+	});
+}
+//#endregion
+export { ContextMenuItem };
+
+//# sourceMappingURL=context-menu-item.js.map

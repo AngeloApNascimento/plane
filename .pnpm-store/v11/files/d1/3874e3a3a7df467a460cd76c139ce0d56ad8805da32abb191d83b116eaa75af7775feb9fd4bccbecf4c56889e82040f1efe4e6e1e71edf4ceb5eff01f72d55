@@ -1,0 +1,45 @@
+"use client";
+import { LinearProgress as LinearProgress$1 } from "../../elements/linear-progress/linear-progress.js";
+import { LinearProgressIndicator } from "../../elements/linear-progress/linear-progress-indicator.js";
+import { LinearProgressLabel } from "../../elements/linear-progress/linear-progress-label.js";
+import { LinearProgressTrack } from "../../elements/linear-progress/linear-progress-track.js";
+import { LinearProgressValue } from "../../elements/linear-progress/linear-progress-value.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Progress } from "@base-ui/react/progress";
+//#region src/components/linear-progress/linear-progress.tsx
+/**
+* A horizontal progress bar with an optional trailing `%` label. Drive it with `value` (0–`max`);
+* the fill and `aria-valuenow` follow. Pass `indeterminate` to ignore `value` and show an animated
+* fill instead (the trailing `%` hides by default in that mode). For a ring, use
+* `CircularProgress`. Grafts Base UI `Progress` (which owns `progressbar`) onto the
+* `elements/linear-progress` styled parts.
+*/
+function LinearProgress({ value, size, variant, showValue, indeterminate = false, label, ...props }) {
+	const max = props.max ?? 100;
+	const min = props.min ?? 0;
+	const clampedValue = indeterminate ? null : Math.min(Math.max(value, min), max);
+	const showTrailingValue = showValue ?? !indeterminate;
+	return /* @__PURE__ */ jsxs(Progress.Root, {
+		value: clampedValue,
+		...props,
+		render: /* @__PURE__ */ jsx(LinearProgress$1, {}),
+		children: [
+			label != null ? /* @__PURE__ */ jsx(Progress.Label, {
+				render: /* @__PURE__ */ jsx(LinearProgressLabel, {}),
+				children: label
+			}) : null,
+			/* @__PURE__ */ jsx(Progress.Track, {
+				render: /* @__PURE__ */ jsx(LinearProgressTrack, { size }),
+				children: /* @__PURE__ */ jsx(Progress.Indicator, { render: /* @__PURE__ */ jsx(LinearProgressIndicator, { variant }) })
+			}),
+			showTrailingValue ? /* @__PURE__ */ jsx(Progress.Value, {
+				render: /* @__PURE__ */ jsx(LinearProgressValue, {}),
+				children: (_, currentValue) => currentValue == null ? "" : `${Math.round(currentValue)}%`
+			}) : null
+		]
+	});
+}
+//#endregion
+export { LinearProgress };
+
+//# sourceMappingURL=linear-progress.js.map

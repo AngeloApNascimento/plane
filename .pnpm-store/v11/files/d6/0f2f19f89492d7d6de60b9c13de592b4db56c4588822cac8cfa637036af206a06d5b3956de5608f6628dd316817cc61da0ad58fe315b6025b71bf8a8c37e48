@@ -1,0 +1,16 @@
+"use client";
+import { ComboboxSeparator as ComboboxSeparator$1 } from "../../elements/combobox/combobox-separator.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/combobox/combobox-separator.tsx
+/**
+* A thin divider between groups of items in a combobox list — the same chrome as `MenuSeparator`.
+* Base UI's combobox has no Separator primitive, so this is the styled element composed into the
+* list.
+*/
+function ComboboxSeparator(props) {
+	return /* @__PURE__ */ jsx(ComboboxSeparator$1, { ...props });
+}
+//#endregion
+export { ComboboxSeparator };
+
+//# sourceMappingURL=combobox-separator.js.map

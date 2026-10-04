@@ -1,0 +1,12 @@
+"use client";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/toolbar/toolbar-menu-trigger.d.ts
+type ToolbarMenuTriggerProps = Omit<Menu.Trigger.Props, "children" | "className" | "style"> & {
+  /** Visible menu-trigger label. */
+  label: string;
+};
+/** The trigger that opens a `ToolbarMenu`: a label plus a disclosure chevron. */
+declare function ToolbarMenuTrigger({ render, label, ...props }: ToolbarMenuTriggerProps): import("react").JSX.Element;
+//#endregion
+export { ToolbarMenuTrigger, ToolbarMenuTriggerProps };
+//# sourceMappingURL=toolbar-menu-trigger.d.ts.map

@@ -1,0 +1,17 @@
+"use client";
+import { menuItemTitleRowVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-item-title-row.tsx
+/** The baseline-aligned line holding a `MenuItemTitle` and any inline `MenuItemSecondaryText`. */
+function MenuItemTitleRow({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: menuItemTitleRowVariants() }, props)
+	});
+}
+//#endregion
+export { MenuItemTitleRow };
+
+//# sourceMappingURL=menu-item-title-row.js.map

@@ -1,0 +1,27 @@
+"use client";
+import { ComboboxContentSurface } from "./combobox-content.shared.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/combobox/combobox-content.tsx
+/**
+* The combobox list surface: Base UI portal + positioner, with `Combobox.Popup` grafted onto the
+* same elevated `OverlayPanel` `MenuContent` uses. Search/footer therefore live _inside_ the dialog
+* (unlike Menu, where they must sit outside `role="menu"`). The inner `ComboboxPopup` is
+* padding-only; sticky chrome stays pinned outside the scroll area.
+*
+* When the input is in the panel (`ComboboxSearch` in `search`), the overlay is a dialog — name it
+* with `aria-labelledby` on the visible field label, or `aria-label`. Filter-in-field compositions
+* (`ComboboxInputGroup` / `ComboboxChips`) keep `role="presentation"` and need no dialog name.
+*/
+function ComboboxContent({ side = "bottom", sideOffset = 4, align = "start", sizing = "anchor", ...props }) {
+	return /* @__PURE__ */ jsx(ComboboxContentSurface, {
+		side,
+		sideOffset,
+		align,
+		sizing,
+		...props
+	});
+}
+//#endregion
+export { ComboboxContent };
+
+//# sourceMappingURL=combobox-content.js.map

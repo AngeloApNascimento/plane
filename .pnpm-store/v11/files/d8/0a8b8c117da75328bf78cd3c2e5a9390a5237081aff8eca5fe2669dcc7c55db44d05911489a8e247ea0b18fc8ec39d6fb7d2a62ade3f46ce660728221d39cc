@@ -1,0 +1,38 @@
+"use client";
+import { SelectTrigger as SelectTrigger$1 } from "../../elements/select/select-trigger.js";
+import { SelectValue } from "../../elements/select/select-value.js";
+import { Icon } from "../../internal/icon.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-trigger.tsx
+/**
+* The ready-made select trigger: grafts Base UI's `Select.Trigger` behavior onto the styled trigger
+* and bakes its anatomy — an optional leading icon, the selected value (Base UI's `Select.Value`
+* grafted onto `SelectValue`), and the owned chevron indicator. Children are baked, so the prop is
+* omitted.
+*/
+function SelectTrigger({ size, variant, placeholder, icon, ...props }) {
+	return /* @__PURE__ */ jsxs(Select.Trigger, {
+		...props,
+		render: /* @__PURE__ */ jsx(SelectTrigger$1, {
+			size,
+			variant
+		}),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(Select.Value, {
+				render: /* @__PURE__ */ jsx(SelectValue, {}),
+				placeholder
+			}),
+			/* @__PURE__ */ jsx(Icon, {
+				tint: "secondary",
+				children: /* @__PURE__ */ jsx(ChevronDown, { "aria-hidden": true })
+			})
+		]
+	});
+}
+//#endregion
+export { SelectTrigger };
+
+//# sourceMappingURL=select-trigger.js.map

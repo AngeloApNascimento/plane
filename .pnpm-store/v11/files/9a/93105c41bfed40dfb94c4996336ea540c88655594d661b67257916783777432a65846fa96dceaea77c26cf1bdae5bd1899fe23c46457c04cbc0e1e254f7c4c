@@ -1,0 +1,16 @@
+"use client";
+import { ComboboxSubmenuTriggerVariant, ComboboxSubmenuTriggerVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-submenu-trigger.d.ts
+type ComboboxSubmenuTriggerProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & ComboboxSubmenuTriggerVariantProps;
+/**
+ * The styled row that opens a nested combobox. Base-UI-agnostic — the behavior is grafted in
+ * `components` via `<BaseCombobox.Item render={<ComboboxSubmenuTrigger />} />`, because the row
+ * belongs to the PARENT list (it must stay highlightable and filterable there) while the nested
+ * list is a combobox of its own. Same menu-row chrome as `ComboboxItem`, plus the `data-popup-open`
+ * highlight that keeps the row lit while its nested list sits open beside it.
+ */
+declare function ComboboxSubmenuTrigger({ variant, render, ...props }: ComboboxSubmenuTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxSubmenuTrigger, ComboboxSubmenuTriggerProps, type ComboboxSubmenuTriggerVariant };
+//# sourceMappingURL=combobox-submenu-trigger.d.ts.map

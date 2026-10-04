@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/book-closed-outline.d.ts
+declare function BookClosedOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BookClosedOutline };
+//# sourceMappingURL=book-closed-outline.d.ts.map

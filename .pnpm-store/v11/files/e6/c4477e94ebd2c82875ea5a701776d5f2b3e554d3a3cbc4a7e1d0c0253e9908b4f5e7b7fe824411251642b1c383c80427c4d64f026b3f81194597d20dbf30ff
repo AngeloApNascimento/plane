@@ -1,0 +1,20 @@
+"use client";
+import { comboboxItemTrailingVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-item-trailing.tsx
+/**
+* The slot at a row's inline-end for arbitrary trailing content (a count, an icon). Sizes any icon
+* child to the row's `--node-size`.
+*/
+function ComboboxItemTrailing({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: comboboxItemTrailingVariants() }, props)
+	});
+}
+//#endregion
+export { ComboboxItemTrailing };
+
+//# sourceMappingURL=combobox-item-trailing.js.map

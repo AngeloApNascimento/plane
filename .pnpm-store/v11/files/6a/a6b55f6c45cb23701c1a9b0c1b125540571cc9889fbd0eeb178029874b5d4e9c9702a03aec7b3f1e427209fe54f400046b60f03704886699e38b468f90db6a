@@ -1,0 +1,20 @@
+"use client";
+import { selectFieldVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/select/select-field.tsx
+/**
+* The field region that stacks a `SelectLabel` over a `SelectTrigger` as a column. Layout-only — it
+* owns the gap between the label and the trigger so neither part carries raw spacing.
+*/
+function SelectField({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: selectFieldVariants() }, props)
+	});
+}
+//#endregion
+export { SelectField };
+
+//# sourceMappingURL=select-field.js.map

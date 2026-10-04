@@ -1,0 +1,20 @@
+"use client";
+import { BreadcrumbSeparator as BreadcrumbSeparator$1 } from "../../elements/breadcrumb/breadcrumb-separator.js";
+import { jsx } from "react/jsx-runtime";
+import { ChevronRight } from "lucide-react";
+//#region src/components/breadcrumb/breadcrumb-separator.tsx
+/**
+* The divider between crumbs. Defaults to a chevron — the ready-made breadcrumb owns the default
+* glyph so the `elements` slot stays a pure single element. Pass `children` to use a different
+* divider.
+*/
+function BreadcrumbSeparator({ children, ...props }) {
+	return /* @__PURE__ */ jsx(BreadcrumbSeparator$1, {
+		...props,
+		children: children ?? /* @__PURE__ */ jsx(ChevronRight, { "aria-hidden": true })
+	});
+}
+//#endregion
+export { BreadcrumbSeparator };
+
+//# sourceMappingURL=breadcrumb-separator.js.map

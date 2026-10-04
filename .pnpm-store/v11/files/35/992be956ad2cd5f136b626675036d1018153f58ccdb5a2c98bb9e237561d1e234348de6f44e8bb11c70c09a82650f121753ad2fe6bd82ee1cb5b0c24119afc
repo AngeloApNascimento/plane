@@ -1,0 +1,14 @@
+"use client";
+import { LinearProgressTrackVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress-track.d.ts
+type LinearProgressTrackProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & LinearProgressTrackVariantProps;
+/**
+ * The styled track (the pill the fill sits inside). `size` drives the thickness (`sm` 5px / `md`
+ * 8px). Base-UI-agnostic — graft in `components` via `<BaseProgress.Track
+ * render={<LinearProgressTrack/>} />`.
+ */
+declare function LinearProgressTrack({ size, render, ...props }: LinearProgressTrackProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { LinearProgressTrack, LinearProgressTrackProps };
+//# sourceMappingURL=linear-progress-track.d.ts.map

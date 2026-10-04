@@ -1,0 +1,24 @@
+"use client";
+import { FieldItemControlGroup } from "../../elements/field/field-item-control-group.js";
+import { FieldItem } from "../field/field-item.js";
+import { FieldItemContent } from "../field/field-item-content.js";
+import { useFieldOptionSize } from "../../internal/field-option-size.js";
+import { Radio } from "../radio/radio.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/radio-group-field/radio-group-field-option.tsx
+/** A radio option row for use inside `RadioGroupField` or a custom `RadioGroup`. */
+function RadioGroupFieldOption({ label, description, size: sizeProp, ...props }) {
+	const size = useFieldOptionSize(sizeProp);
+	return /* @__PURE__ */ jsxs(FieldItem, {
+		disabled: props.disabled,
+		children: [/* @__PURE__ */ jsx(FieldItemControlGroup, { children: /* @__PURE__ */ jsx(Radio, { ...props }) }), /* @__PURE__ */ jsx(FieldItemContent, {
+			size,
+			description,
+			children: label
+		})]
+	});
+}
+//#endregion
+export { RadioGroupFieldOption };
+
+//# sourceMappingURL=radio-group-field-option.js.map

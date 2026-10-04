@@ -1,0 +1,20 @@
+"use client";
+import { TabsIndicator as TabsIndicator$1 } from "../../elements/tabs/tabs-indicator.js";
+import { jsx } from "react/jsx-runtime";
+import { Tabs } from "@base-ui/react/tabs";
+//#region src/components/tabs/tabs-indicator.tsx
+/**
+* The ready-made active-tab underline: grafts the Base UI `Tabs.Indicator` behavior (which tracks
+* the active tab via the `--active-tab-*` CSS vars) onto the styled `elements/tabs` indicator. The
+* built-in `TabsList` renders it for the `underline` variant; surfaced for custom lists.
+*/
+function TabsIndicator(props) {
+	return /* @__PURE__ */ jsx(Tabs.Indicator, {
+		render: /* @__PURE__ */ jsx(TabsIndicator$1, {}),
+		...props
+	});
+}
+//#endregion
+export { TabsIndicator };
+
+//# sourceMappingURL=tabs-indicator.js.map

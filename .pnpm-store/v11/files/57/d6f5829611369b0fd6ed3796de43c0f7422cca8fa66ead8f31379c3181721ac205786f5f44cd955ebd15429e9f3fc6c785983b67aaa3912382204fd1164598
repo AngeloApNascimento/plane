@@ -1,0 +1,22 @@
+"use client";
+import { MenuContentSurface } from "./menu-content.shared.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/menu/menu-submenu-content.tsx
+/**
+* The floating surface for a submenu — the same elevated, scrollable panel as `MenuContent`, but
+* anchored beside its parent row instead of below a trigger. Place it inside a `MenuSubmenu`,
+* alongside the `MenuSubmenuTrigger` that opens it.
+*/
+function MenuSubmenuContent({ side = "right", sideOffset = 4, align = "start", sizing = "auto", ...props }) {
+	return /* @__PURE__ */ jsx(MenuContentSurface, {
+		side,
+		sideOffset,
+		align,
+		sizing,
+		...props
+	});
+}
+//#endregion
+export { MenuSubmenuContent };
+
+//# sourceMappingURL=menu-submenu-content.js.map

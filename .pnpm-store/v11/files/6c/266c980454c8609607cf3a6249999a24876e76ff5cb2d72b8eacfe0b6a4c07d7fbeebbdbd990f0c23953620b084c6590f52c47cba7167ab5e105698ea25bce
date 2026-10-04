@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/sub-brands/bridge.d.ts
+declare function Bridge(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Bridge };
+//# sourceMappingURL=bridge.d.ts.map

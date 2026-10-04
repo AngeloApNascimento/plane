@@ -1,0 +1,83 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+//#region src/elements/combobox/variants.d.ts
+declare const comboboxInputGroupDefaultVariants: {
+  readonly variant: "neutral";
+};
+declare const comboboxInputGroupVariants: (props?: ({
+  variant?: "ghost" | "neutral" | null | undefined;
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const comboboxInputGroupClearVariants: (props?: import("class-variance-authority/types").ClassProp | undefined) => string;
+type ComboboxInputGroupClearVariantProps = StrictVariantProps<typeof comboboxInputGroupClearVariants>;
+declare const comboboxTriggerDefaultVariants: {
+  readonly variant: "neutral";
+};
+/**
+ * The closed-field trigger: a focusable button (not a filter input). Same geometry as
+ * `ComboboxInputGroup`, but `focus-visible` keys off this element — it IS the control, like
+ * `SelectTrigger`.
+ */
+declare const comboboxTriggerVariants: (props?: ({
+  variant?: "ghost" | "neutral" | null | undefined;
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const comboboxChipsDefaultVariants: {
+  readonly variant: "neutral";
+};
+declare const comboboxChipsVariants: (props?: ({
+  variant?: "ghost" | "neutral" | null | undefined;
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+  layout?: "wrap" | "collapse" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const comboboxChipVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | "xs" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const comboboxChipOverflowVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | "xs" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+/** Popup: shared raised/flat list surface (see `internal/menu-row-parts`). */
+declare const comboboxPopupVariants: (props?: ({
+  elevation?: "flat" | "raised" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const comboboxItemDefaultVariants: {
+  readonly variant: "neutral";
+};
+/** Option row: the shared menu-row chrome so the combobox list matches the dropdown panel. */
+declare const comboboxItemVariants: (props?: ({
+  variant?: "danger" | "neutral" | "accent" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const comboboxSubmenuTriggerDefaultVariants: {
+  readonly variant: "neutral";
+};
+/**
+ * Submenu-trigger row: the same menu-row chrome as `comboboxItemVariants`, plus the
+ * `data-popup-open` highlight that keeps the row lit while its nested list is open beside it. The
+ * look palette is `menuSubmenuRowVariantClasses` rather than the option row's own, so an
+ * accent/danger submenu row holds its text colour while open (shared with `MenuSubmenuTrigger`).
+ */
+declare const comboboxSubmenuTriggerVariants: (props?: ({
+  variant?: "danger" | "neutral" | "accent" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type ComboboxInputGroupVariantProps = StrictVariantProps<typeof comboboxInputGroupVariants, keyof typeof comboboxInputGroupDefaultVariants>;
+type ComboboxTriggerVariantProps = StrictVariantProps<typeof comboboxTriggerVariants, keyof typeof comboboxTriggerDefaultVariants>;
+type ComboboxChipsVariantProps = StrictVariantProps<typeof comboboxChipsVariants, keyof typeof comboboxChipsDefaultVariants>;
+type ComboboxChipVariantProps = StrictVariantProps<typeof comboboxChipVariants>;
+type ComboboxChipOverflowVariantProps = StrictVariantProps<typeof comboboxChipOverflowVariants>;
+type ComboboxItemVariantProps = StrictVariantProps<typeof comboboxItemVariants, keyof typeof comboboxItemDefaultVariants>;
+type ComboboxSubmenuTriggerVariantProps = StrictVariantProps<typeof comboboxSubmenuTriggerVariants, keyof typeof comboboxSubmenuTriggerDefaultVariants>;
+type ComboboxPopupVariantProps = StrictVariantProps<typeof comboboxPopupVariants>;
+type ComboboxInputGroupVariantConfig = ComboboxInputGroupVariantProps;
+type ComboboxSize = ComboboxInputGroupVariantConfig["size"];
+type ComboboxVariant = NonNullable<ComboboxInputGroupVariantConfig["variant"]>;
+type ComboboxChipSize = NonNullable<ComboboxChipVariantProps["size"]>;
+type ComboboxChipOverflowSize = NonNullable<ComboboxChipOverflowVariantProps["size"]>;
+type ComboboxItemVariantConfig = ComboboxItemVariantProps;
+type ComboboxItemVariant = NonNullable<ComboboxItemVariantConfig["variant"]>;
+type ComboboxSubmenuTriggerVariantConfig = ComboboxSubmenuTriggerVariantProps;
+type ComboboxSubmenuTriggerVariant = NonNullable<ComboboxSubmenuTriggerVariantConfig["variant"]>;
+type ComboboxPopupVariantConfig = ComboboxPopupVariantProps;
+type ComboboxPopupElevation = NonNullable<ComboboxPopupVariantConfig["elevation"]>;
+//#endregion
+export { ComboboxChipOverflowSize, ComboboxChipOverflowVariantProps, ComboboxChipSize, ComboboxChipVariantProps, ComboboxChipsVariantProps, ComboboxInputGroupClearVariantProps, ComboboxInputGroupVariantProps, ComboboxItemVariant, ComboboxItemVariantProps, ComboboxPopupElevation, ComboboxPopupVariantProps, ComboboxSize, ComboboxSubmenuTriggerVariant, ComboboxSubmenuTriggerVariantProps, ComboboxTriggerVariantProps, ComboboxVariant, comboboxChipOverflowVariants, comboboxChipVariants, comboboxChipsVariants, comboboxInputGroupClearVariants, comboboxInputGroupVariants, comboboxItemVariants, comboboxPopupVariants, comboboxSubmenuTriggerVariants, comboboxTriggerVariants };
+//# sourceMappingURL=variants.d.ts.map

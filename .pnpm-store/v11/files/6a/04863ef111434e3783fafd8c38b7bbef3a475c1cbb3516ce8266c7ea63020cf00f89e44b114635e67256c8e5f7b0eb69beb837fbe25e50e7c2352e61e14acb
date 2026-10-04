@@ -1,0 +1,15 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-group.tsx
+/**
+* Groups related options under a `ComboboxGroupLabel`. Pass the group's `items` so the nested
+* `ComboboxCollection` renders (and filters) just this group's options.
+*/
+function ComboboxGroup(props) {
+	return /* @__PURE__ */ jsx(Combobox.Group, { ...props });
+}
+//#endregion
+export { ComboboxGroup };
+
+//# sourceMappingURL=combobox-group.js.map

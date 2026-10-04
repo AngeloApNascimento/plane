@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/actions/selected-filter-outline.tsx
+function SelectedFilterOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("g", {
+			fill: "currentColor",
+			children: /* @__PURE__ */ jsx("path", { d: "M15.3 4.32a2.65 2.65 0 1 1-5.3 0 2.65 2.65 0 0 1 5.3 0M10 13.003a.667.667 0 1 1 0 1.334H6a.667.667 0 0 1 0-1.334zm2-4.666a.667.667 0 1 1 0 1.333H4a.667.667 0 1 1 0-1.333zM8 3.67a.667.667 0 0 1 0 1.333H1.333a.667.667 0 0 1 0-1.333z" })
+		})
+	});
+}
+//#endregion
+export { SelectedFilterOutline };
+
+//# sourceMappingURL=selected-filter-outline.js.map

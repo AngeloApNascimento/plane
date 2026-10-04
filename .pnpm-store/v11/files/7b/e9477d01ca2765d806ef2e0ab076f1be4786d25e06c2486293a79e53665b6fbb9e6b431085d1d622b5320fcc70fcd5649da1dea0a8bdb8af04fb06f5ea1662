@@ -1,0 +1,16 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/slider/variants.d.ts
+declare const sliderControlVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const sliderThumbVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type SliderSize = NonNullable<VariantProps<typeof sliderControlVariants>["size"]>;
+type SliderControlVariantProps = StrictVariantProps<typeof sliderControlVariants>;
+type SliderThumbVariantProps = StrictVariantProps<typeof sliderThumbVariants>;
+//#endregion
+export { SliderControlVariantProps, SliderSize, SliderThumbVariantProps, sliderControlVariants, sliderThumbVariants };
+//# sourceMappingURL=variants.d.ts.map

@@ -1,0 +1,13 @@
+"use client";
+import { ComboboxTriggerVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-trigger.d.ts
+type ComboboxTriggerProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & ComboboxTriggerVariantProps;
+/**
+ * The styled closed-field trigger button (value + chevron). Base-UI-agnostic — graft in
+ * `components` via `<BaseCombobox.Trigger render={<ComboboxTrigger />} />`.
+ */
+declare function ComboboxTrigger({ size, variant, render, ...props }: ComboboxTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxTrigger, ComboboxTriggerProps };
+//# sourceMappingURL=combobox-trigger.d.ts.map

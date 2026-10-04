@@ -1,0 +1,34 @@
+"use client";
+import { Tabs as Tabs$2 } from "../../elements/tabs/tabs.js";
+import { TabsAppearanceContext, TabsLayoutContext, TabsStretchContext } from "./tabs-context.js";
+import { jsx } from "react/jsx-runtime";
+import { Tabs } from "@base-ui/react/tabs";
+//#region src/components/tabs/tabs.tsx
+/**
+* The ready-made tab set: grafts the Base UI `Tabs.Root` behavior onto the styled `elements/tabs`
+* root and shares its `variant`/`stretch` with the `TabsList`/`Tab`s and its `layout` with the
+* `TabsPanel`s inside via context, so you don't repeat them.
+*/
+function Tabs$1({ variant, layout = "content", stretch = "auto", ...props }) {
+	return /* @__PURE__ */ jsx(TabsAppearanceContext.Provider, {
+		value: variant,
+		children: /* @__PURE__ */ jsx(TabsStretchContext.Provider, {
+			value: stretch,
+			children: /* @__PURE__ */ jsx(TabsLayoutContext.Provider, {
+				value: layout,
+				children: /* @__PURE__ */ jsx(Tabs.Root, {
+					...props,
+					render: /* @__PURE__ */ jsx(Tabs$2, {
+						variant,
+						layout,
+						stretch
+					})
+				})
+			})
+		})
+	});
+}
+//#endregion
+export { Tabs$1 as Tabs };
+
+//# sourceMappingURL=tabs.js.map

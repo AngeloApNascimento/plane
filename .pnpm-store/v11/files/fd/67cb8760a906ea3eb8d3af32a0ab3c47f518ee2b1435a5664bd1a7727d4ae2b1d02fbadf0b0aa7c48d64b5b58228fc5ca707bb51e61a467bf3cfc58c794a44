@@ -1,0 +1,22 @@
+"use client";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { cva } from "class-variance-authority";
+const shortcutVariants = cva("shrink-0 text-tertiary", {
+	variants: { size: {
+		sm: "text-caption-sm-regular",
+		md: "text-caption-md-regular"
+	} },
+	defaultVariants: { size: "md" }
+});
+function Shortcut({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: shortcutVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { Shortcut, shortcutVariants };
+
+//# sourceMappingURL=shortcut.js.map

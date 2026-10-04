@@ -1,0 +1,21 @@
+"use client";
+import { fieldLabelGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-label-group.tsx
+/**
+* The label/description column of a field: a single styled `<div>` (stacked, gapped). `orientation`
+* matches the field's layout. The ready-made `components/field` `FieldLabelGroup` fills it with a
+* `FieldLabel` and/or `FieldDescription`.
+*/
+function FieldLabelGroup({ orientation, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: fieldLabelGroupVariants({ orientation }) }, props)
+	});
+}
+//#endregion
+export { FieldLabelGroup };
+
+//# sourceMappingURL=field-label-group.js.map

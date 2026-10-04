@@ -1,0 +1,8 @@
+"use client";
+import { TabsListScrollArea } from "../../elements/tabs/tabs-list-scroll-area.js";
+import { Tab } from "./tab.js";
+import { Tabs } from "./tabs.js";
+import { TabsIndicator } from "./tabs-indicator.js";
+import { TabsList } from "./tabs-list.js";
+import { TabsPanel } from "./tabs-panel.js";
+export { Tab, Tabs, TabsIndicator, TabsList, TabsListScrollArea, TabsPanel };

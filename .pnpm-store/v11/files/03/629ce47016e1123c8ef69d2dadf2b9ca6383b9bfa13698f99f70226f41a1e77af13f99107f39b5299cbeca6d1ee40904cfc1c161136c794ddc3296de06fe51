@@ -1,0 +1,21 @@
+"use client";
+import { fieldItemControlGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-item-control-group.tsx
+/**
+* The control slot of a choice option row (checkbox/radio/switch): a 20px-tall box matching the
+* label's first line box, so the wrapped control centers on that line even when the label wraps or
+* a description follows.
+*/
+function FieldItemControlGroup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: fieldItemControlGroupVariants() }, props)
+	});
+}
+//#endregion
+export { FieldItemControlGroup };
+
+//# sourceMappingURL=field-item-control-group.js.map

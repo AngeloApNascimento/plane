@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/2-columns-filled.d.ts
+declare function Icon2ColumnsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Icon2ColumnsFilled };
+//# sourceMappingURL=2-columns-filled.d.ts.map

@@ -1,0 +1,26 @@
+"use client";
+import { alertDialogBodyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-body.tsx
+/**
+* The padded content region of the alert dialog popup (20px top and sides, 12px bottom). Stacks the
+* header (icon + intro) and any optional body content (form fields, extra copy) with a 16px gap.
+* Caps height so tall content scrolls while the actions footer stays pinned.
+*
+* Not focusable by default, so the dialog's initial focus lands on the first action button rather
+* than on a region nothing can be done with (Dialog pattern). When the body can overflow, pass
+* `tabIndex={0}` so the scroll region is keyboard-reachable (WCAG 2.1.1); pair it with
+* `initialFocus` on `AlertDialogContent` if focus should still start on an action.
+*/
+function AlertDialogBody({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: alertDialogBodyVariants() }, props)
+	});
+}
+//#endregion
+export { AlertDialogBody };
+
+//# sourceMappingURL=alert-dialog-body.js.map

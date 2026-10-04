@@ -1,0 +1,19 @@
+"use client";
+import { SwitchSize, SwitchVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/switch/switch.d.ts
+type SwitchProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & SwitchVariantProps;
+/**
+ * The styled switch track. It carries the size axis (`size`) and publishes the thumb's
+ * diameter/travel as CSS variables. Base-UI-agnostic — graft the switch behavior in `components`
+ * via `<BaseSwitch.Root render={<Switch size="md" />}>` (it supplies `role="switch"` and full
+ * keyboard/form support). Render a `SwitchThumb` as its child; the thumb sizes itself from this
+ * track's `size`.
+ *
+ * On/off, `disabled`, and `readOnly` are control state from the primitive, not variants. Only the
+ * size axis (`size`) is a visual variant.
+ */
+declare function Switch({ size, render, ...props }: SwitchProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Switch, SwitchProps, type SwitchSize };
+//# sourceMappingURL=switch.d.ts.map

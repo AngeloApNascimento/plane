@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-item-label.d.ts
+type ToolbarItemLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The text label of a toolbar item (e.g. "Comment" on a button, "Text" on a menu trigger). Its own
+ * styled `<span>` so the control holds no raw typography. Base-UI-agnostic.
+ */
+declare function ToolbarItemLabel({ render, ...props }: ToolbarItemLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToolbarItemLabel, ToolbarItemLabelProps };
+//# sourceMappingURL=toolbar-item-label.d.ts.map

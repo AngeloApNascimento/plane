@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/group-filled.d.ts
+declare function GroupFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { GroupFilled };
+//# sourceMappingURL=group-filled.d.ts.map

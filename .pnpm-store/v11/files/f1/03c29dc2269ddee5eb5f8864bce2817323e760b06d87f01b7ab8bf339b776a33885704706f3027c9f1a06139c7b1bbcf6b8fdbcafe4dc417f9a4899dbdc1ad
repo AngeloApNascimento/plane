@@ -1,0 +1,44 @@
+"use client";
+import { Tab as Tab$1 } from "../../elements/tabs/tab.js";
+import { TabUnderlineBar } from "../../elements/tabs/tab-underline-bar.js";
+import { TabUnderlineBarTrack } from "../../elements/tabs/tab-underline-bar-track.js";
+import { TabUnderlineLabel } from "../../elements/tabs/tab-underline-label.js";
+import { TabsAppearanceContext, TabsStretchContext } from "./tabs-context.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Tabs } from "@base-ui/react/tabs";
+//#region src/components/tabs/tab.tsx
+/**
+* The ready-made tab button: grafts the Base UI `Tabs.Tab` behavior onto the styled `elements/tabs`
+* tab (taking the set's `variant`/`stretch` from context, so you don't pass them) and lays out an
+* optional `icon` with the label. The `underline` variant additionally renders the sliding bar
+* track beneath the label. A consumer `render` target is composed through the styled tab,
+* preserving Propel's classes; render callbacks receive the original Base UI tab state.
+*/
+function Tab({ icon, label, render, ...props }) {
+	const variant = React.useContext(TabsAppearanceContext);
+	const stretch = React.useContext(TabsStretchContext);
+	const composedRender = typeof render === "function" ? ((renderProps, state) => /* @__PURE__ */ jsx(Tab$1, {
+		variant,
+		stretch,
+		render: render(renderProps, state)
+	})) : /* @__PURE__ */ jsx(Tab$1, {
+		variant,
+		stretch,
+		render
+	});
+	if (variant === "underline") return /* @__PURE__ */ jsxs(Tabs.Tab, {
+		render: composedRender,
+		...props,
+		children: [/* @__PURE__ */ jsxs(TabUnderlineLabel, { children: [icon, label] }), /* @__PURE__ */ jsx(TabUnderlineBarTrack, { children: /* @__PURE__ */ jsx(TabUnderlineBar, {}) })]
+	});
+	return /* @__PURE__ */ jsxs(Tabs.Tab, {
+		render: composedRender,
+		...props,
+		children: [icon, label]
+	});
+}
+//#endregion
+export { Tab };
+
+//# sourceMappingURL=tab.js.map

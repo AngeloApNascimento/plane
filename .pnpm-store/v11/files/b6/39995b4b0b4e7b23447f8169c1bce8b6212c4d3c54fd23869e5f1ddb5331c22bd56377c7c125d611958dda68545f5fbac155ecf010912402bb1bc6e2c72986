@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/select/select-item-indicator.d.ts
+type SelectItemIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The selection checkmark slot inside an item. Renders whatever svg you pass as `children` (sized
+ * to 1rem). Base-UI-agnostic — graft the visibility behavior in `components` via
+ * `<BaseSelect.ItemIndicator render={<SelectItemIndicator/>} />`.
+ */
+declare function SelectItemIndicator({ render, ...props }: SelectItemIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SelectItemIndicator, SelectItemIndicatorProps };
+//# sourceMappingURL=select-item-indicator.d.ts.map

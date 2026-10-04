@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/inbox-outline.d.ts
+declare function InboxOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { InboxOutline };
+//# sourceMappingURL=inbox-outline.d.ts.map

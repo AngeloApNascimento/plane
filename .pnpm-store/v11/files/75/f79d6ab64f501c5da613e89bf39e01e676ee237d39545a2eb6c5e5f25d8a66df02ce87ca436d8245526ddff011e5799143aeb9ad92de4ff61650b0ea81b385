@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/volume-x-filled.d.ts
+declare function VolumeXFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { VolumeXFilled };
+//# sourceMappingURL=volume-x-filled.d.ts.map

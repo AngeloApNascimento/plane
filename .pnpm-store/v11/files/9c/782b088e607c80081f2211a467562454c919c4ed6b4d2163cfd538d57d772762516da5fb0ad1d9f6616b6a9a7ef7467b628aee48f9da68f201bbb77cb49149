@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast.d.ts
+type ToastProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled floating-card surface of a single toast. Base-UI-agnostic — graft the toast
+ * swipe/dismiss behavior in `components` via `<BaseToast.Root render={<Toast/>}>`.
+ */
+declare function Toast({ render, ...props }: ToastProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Toast, ToastProps };
+//# sourceMappingURL=toast.d.ts.map

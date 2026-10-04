@@ -1,0 +1,43 @@
+"use client";
+import { ContextMenuItem as ContextMenuItem$1 } from "../../elements/context-menu/context-menu-item.js";
+import { ContextMenuItemContent } from "../../elements/context-menu/context-menu-item-content.js";
+import { ContextMenuItemDescription } from "../../elements/context-menu/context-menu-item-description.js";
+import { ContextMenuItemIndicator } from "../../elements/context-menu/context-menu-item-indicator.js";
+import { ContextMenuItemLabel } from "../../elements/context-menu/context-menu-item-label.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Check } from "lucide-react";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-item.tsx
+/**
+* The ready-made menu row: grafts Base UI's `Item` behavior onto the styled `ContextMenuItem` and
+* composes its region parts — an optional leading icon, the label and an optional description, the
+* single-select check, and optional trailing content.
+*/
+function ContextMenuItem({ variant, icon, description, trailing, selected, label, ...props }) {
+	const layout = description != null ? "stacked" : "single";
+	const selectionProps = selected === void 0 ? void 0 : {
+		role: "menuitemradio",
+		"aria-checked": selected
+	};
+	return /* @__PURE__ */ jsxs(ContextMenu.Item, {
+		...selectionProps,
+		...props,
+		render: /* @__PURE__ */ jsx(ContextMenuItem$1, {
+			layout,
+			variant
+		}),
+		children: [
+			icon,
+			description != null ? /* @__PURE__ */ jsxs(ContextMenuItemContent, { children: [/* @__PURE__ */ jsx(ContextMenuItemLabel, { children: label }), /* @__PURE__ */ jsx(ContextMenuItemDescription, { children: description })] }) : /* @__PURE__ */ jsx(ContextMenuItemLabel, { children: label }),
+			selected !== void 0 ? /* @__PURE__ */ jsx(ContextMenuItemIndicator, {
+				"data-selected": selected ? "" : void 0,
+				children: /* @__PURE__ */ jsx(Check, {})
+			}) : null,
+			trailing
+		]
+	});
+}
+//#endregion
+export { ContextMenuItem };
+
+//# sourceMappingURL=context-menu-item.js.map

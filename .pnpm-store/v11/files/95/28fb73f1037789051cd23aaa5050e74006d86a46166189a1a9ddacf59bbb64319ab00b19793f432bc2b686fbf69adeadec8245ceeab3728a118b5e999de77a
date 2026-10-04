@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/avatar-group/avatar-group-overflow.d.ts
+type AvatarGroupOverflowProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** Unclipped wrapper for the counter's tooltip trigger; behavior belongs to the ready-made. */
+declare function AvatarGroupOverflow({ render, ...props }: AvatarGroupOverflowProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AvatarGroupOverflow, AvatarGroupOverflowProps };
+//# sourceMappingURL=avatar-group-overflow.d.ts.map

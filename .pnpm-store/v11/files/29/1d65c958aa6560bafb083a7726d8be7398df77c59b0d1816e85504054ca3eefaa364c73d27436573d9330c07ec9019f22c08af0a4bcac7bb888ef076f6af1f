@@ -1,0 +1,22 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer.tsx
+/**
+* The drawer Root that holds open state and gesture configuration. Uncontrolled by default; pass
+* `defaultOpen` (uncontrolled) or `open` + `onOpenChange` (controlled).
+*
+* A behavior-only role that renders no element of its own (rules 1a, 2), so it lives in
+* `components`; the styled parts live in `elements/drawer` and are grafted onto Base UI behavior
+* here.
+*/
+function Drawer$1({ modal = false, ...props }) {
+	return /* @__PURE__ */ jsx(Drawer.Root, {
+		modal,
+		...props
+	});
+}
+//#endregion
+export { Drawer$1 as Drawer };
+
+//# sourceMappingURL=drawer.js.map

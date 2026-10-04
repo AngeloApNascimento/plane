@@ -1,0 +1,31 @@
+"use client";
+import { ListboxPopup } from "../../internal/listbox-popup.js";
+import { Positioner } from "../../internal/positioner.js";
+import { jsx } from "react/jsx-runtime";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-content.tsx
+/** The autocomplete list surface: Base UI portal + positioner + popup grafted onto Propel styling. */
+function AutocompleteContent({ side = "bottom", sideOffset = 4, align = "start", alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, ...props }) {
+	return /* @__PURE__ */ jsx(Autocomplete.Portal, { children: /* @__PURE__ */ jsx(Autocomplete.Positioner, {
+		side,
+		sideOffset,
+		align,
+		alignOffset,
+		collisionPadding,
+		collisionBoundary,
+		collisionAvoidance,
+		sticky,
+		positionMethod,
+		anchor,
+		disableAnchorTracking,
+		render: /* @__PURE__ */ jsx(Positioner, {}),
+		children: /* @__PURE__ */ jsx(Autocomplete.Popup, {
+			...props,
+			render: /* @__PURE__ */ jsx(ListboxPopup, {})
+		})
+	}) });
+}
+//#endregion
+export { AutocompleteContent };
+
+//# sourceMappingURL=autocomplete-content.js.map

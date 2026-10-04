@@ -1,0 +1,4 @@
+"use client";
+import { IconSize, IconTint } from "../../internal/icon.js";
+import { Icon, IconGlyph, IconProps, IconSource } from "./icon.js";
+export { Icon, IconGlyph, IconProps, type IconSize, IconSource, type IconTint };

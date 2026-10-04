@@ -1,0 +1,66 @@
+"use client";
+import { MenuSearch as MenuSearch$1 } from "../../elements/menu/menu-search.js";
+import { MenuSearchInput } from "../../elements/menu/menu-search-input.js";
+import { Icon } from "../../internal/icon.js";
+import { MenuSearchResetContext } from "./menu-context.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Search } from "lucide-react";
+//#region src/components/menu/menu-search.tsx
+const MENU_ITEM_SELECTOR = "[role=\"menuitem\"]:not([data-disabled]):not([aria-disabled=\"true\"]), [role=\"menuitemcheckbox\"]:not([data-disabled]):not([aria-disabled=\"true\"]), [role=\"menuitemradio\"]:not([data-disabled]):not([aria-disabled=\"true\"])";
+/** The `role="menu"` popup this field filters: the nearest ancestor that contains one. */
+function menuPopupFrom(input) {
+	for (let node = input.parentElement; node; node = node.parentElement) {
+		const menu = node.querySelector("[role=\"menu\"]");
+		if (menu) return menu;
+	}
+	return null;
+}
+/**
+* A sticky search field pinned above a `MenuContent` popup, via its `search` prop. The menu focuses
+* it on open (it sits outside the `role="menu"` popup — a menu may not own a textbox — so the
+* hand-off is programmatic, not Tab). Text-editing keys stay in the field, which keeps the menu's
+* type-ahead from stealing them; Escape closes the menu, and ArrowDown/ArrowUp move focus into the
+* list — first row down, last row up.
+*/
+function MenuSearch({ value, defaultValue = "", onValueChange, resetOnClose = true, placeholder, onKeyDown, ...props }) {
+	const [internal, setInternal] = React.useState(defaultValue);
+	const controlled = value !== void 0;
+	const searchResetRef = React.useContext(MenuSearchResetContext);
+	const onValueChangeRef = React.useRef(onValueChange);
+	onValueChangeRef.current = onValueChange;
+	React.useLayoutEffect(() => {
+		if (!searchResetRef) return;
+		searchResetRef.current = resetOnClose ? () => onValueChangeRef.current?.("") : null;
+	}, [resetOnClose, searchResetRef]);
+	return /* @__PURE__ */ jsxs(MenuSearch$1, { children: [/* @__PURE__ */ jsx(Icon, {
+		tint: "tertiary",
+		size: "md",
+		children: /* @__PURE__ */ jsx(Search, {})
+	}), /* @__PURE__ */ jsx(MenuSearchInput, {
+		type: "text",
+		value: controlled ? value : internal,
+		onChange: (event) => {
+			if (!controlled) setInternal(event.target.value);
+			onValueChange?.(event.target.value);
+		},
+		onKeyDown: (event) => {
+			onKeyDown?.(event);
+			if (event.defaultPrevented) return;
+			if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+				event.preventDefault();
+				event.stopPropagation();
+				const items = menuPopupFrom(event.currentTarget)?.querySelectorAll(MENU_ITEM_SELECTOR);
+				if (items?.length) items[event.key === "ArrowDown" ? 0 : items.length - 1].focus();
+				return;
+			}
+			if (event.key !== "Escape" && event.key !== "Tab") event.stopPropagation();
+		},
+		placeholder,
+		...props
+	})] });
+}
+//#endregion
+export { MenuSearch };
+
+//# sourceMappingURL=menu-search.js.map

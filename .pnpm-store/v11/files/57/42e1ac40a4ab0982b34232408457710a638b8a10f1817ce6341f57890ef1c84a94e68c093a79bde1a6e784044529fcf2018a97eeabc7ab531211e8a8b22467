@@ -1,0 +1,11 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+//#region src/elements/input-field/variants.d.ts
+declare const inputFieldVariants: (props?: ({
+  orientation?: "vertical" | "horizontal" | null | undefined;
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type InputFieldVariantProps = StrictVariantProps<typeof inputFieldVariants>;
+//#endregion
+export { InputFieldVariantProps, inputFieldVariants };
+//# sourceMappingURL=variants.d.ts.map

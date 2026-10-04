@@ -1,0 +1,19 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+//#region src/internal/link-chrome.ts
+const linkChromeVariants = cva(cx("group inline-flex cursor-pointer items-center gap-1 rounded-xs transition-colors outline-none", "focus-visible:ring-2 focus-visible:ring-accent-strong focus-visible:ring-offset-1", "aria-disabled:cursor-not-allowed aria-disabled:text-disabled"), { variants: {
+	variant: {
+		primary: "text-link-primary hover:text-link-primary-hover",
+		secondary: "text-tertiary hover:text-primary"
+	},
+	size: {
+		xs: "text-caption-md-regular [--node-size:var(--control-glyph-xs)]",
+		sm: "text-body-xs-regular [--node-size:var(--control-glyph-sm)]",
+		md: "text-body-xs-regular [--node-size:var(--control-glyph-md)]",
+		lg: "text-body-sm-regular [--node-size:var(--control-glyph-lg)]"
+	}
+} });
+//#endregion
+export { linkChromeVariants };
+
+//# sourceMappingURL=link-chrome.js.map

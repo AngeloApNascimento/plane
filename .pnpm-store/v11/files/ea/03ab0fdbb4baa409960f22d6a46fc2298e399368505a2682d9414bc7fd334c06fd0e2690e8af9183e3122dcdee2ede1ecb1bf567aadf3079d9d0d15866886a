@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/button/button-label.d.ts
+type ButtonLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The button's text label. Loading mutes with the root chrome (`aria-busy` / disabled palette) —
+ * label and spinner share the same weight (Figma).
+ */
+declare function ButtonLabel({ render, ...props }: ButtonLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ButtonLabel, ButtonLabelProps };
+//# sourceMappingURL=button-label.d.ts.map

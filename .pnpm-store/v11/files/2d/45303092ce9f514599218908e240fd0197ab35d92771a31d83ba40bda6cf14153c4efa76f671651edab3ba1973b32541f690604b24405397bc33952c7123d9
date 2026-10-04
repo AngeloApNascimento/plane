@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/palette-outline.d.ts
+declare function PaletteOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PaletteOutline };
+//# sourceMappingURL=palette-outline.d.ts.map

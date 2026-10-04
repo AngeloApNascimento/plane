@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/milestone-states/milestone-not-started.d.ts
+declare function MilestoneNotStarted(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MilestoneNotStarted };
+//# sourceMappingURL=milestone-not-started.d.ts.map

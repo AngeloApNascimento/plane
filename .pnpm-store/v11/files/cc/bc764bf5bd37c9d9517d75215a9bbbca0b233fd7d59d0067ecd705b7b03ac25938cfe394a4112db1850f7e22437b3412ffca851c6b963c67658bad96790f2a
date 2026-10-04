@@ -1,0 +1,48 @@
+"use client";
+import { DialogPopup } from "../../elements/dialog/dialog-popup.js";
+import { DialogViewport } from "../../elements/dialog/dialog-viewport.js";
+import { DialogDensityContext, DialogPanesContext, DialogSizeContext } from "./dialog-context.js";
+import { Backdrop } from "../../internal/backdrop.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Dialog } from "@base-ui/react/dialog";
+//#region src/components/dialog/dialog-content.tsx
+/**
+* Convenience that composes the dialog overlay boilerplate — portal, shared `Backdrop`, the
+* top-anchored `DialogViewport`, and the `DialogPopup` — so a consumer only writes the trigger and
+* the popup body. Each Base UI behavior part grafts onto its styled element via `render`.
+*
+* Nested dialogs keep their own dim: Base UI omits a nested Backdrop unless `forceRender` is set,
+* which would leave a child modal sitting on the parent with no extra overlay. Closed
+* force-rendered backdrops set `pointer-events: none` so they cannot steal clicks from the parent
+* while unmounting. `DialogPanesContext` is reset here so a nested dialog does not inherit pane
+* fill from a parent `DialogPanes` through the portal.
+*/
+function DialogContent({ size = "md", height = "auto", density = "comfortable", ...props }) {
+	return /* @__PURE__ */ jsxs(Dialog.Portal, { children: [/* @__PURE__ */ jsx(Dialog.Backdrop, {
+		forceRender: true,
+		style: (state) => state.open ? void 0 : { pointerEvents: "none" },
+		render: /* @__PURE__ */ jsx(Backdrop, {})
+	}), /* @__PURE__ */ jsx(Dialog.Viewport, {
+		render: /* @__PURE__ */ jsx(DialogViewport, {}),
+		children: /* @__PURE__ */ jsx(DialogSizeContext.Provider, {
+			value: size,
+			children: /* @__PURE__ */ jsx(DialogDensityContext.Provider, {
+				value: density,
+				children: /* @__PURE__ */ jsx(DialogPanesContext.Provider, {
+					value: false,
+					children: /* @__PURE__ */ jsx(Dialog.Popup, {
+						...props,
+						render: /* @__PURE__ */ jsx(DialogPopup, {
+							size,
+							height
+						})
+					})
+				})
+			})
+		})
+	})] });
+}
+//#endregion
+export { DialogContent };
+
+//# sourceMappingURL=dialog-content.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/layouts/table-layout-outline.d.ts
+declare function TableLayoutOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TableLayoutOutline };
+//# sourceMappingURL=table-layout-outline.d.ts.map

@@ -1,0 +1,8 @@
+"use client";
+import { optionGroupVariants } from "../../internal/option-group.js";
+//#region src/elements/checkbox-group/variants.ts
+const checkboxGroupVariants = optionGroupVariants;
+//#endregion
+export { checkboxGroupVariants };
+
+//# sourceMappingURL=variants.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/triage-filled.d.ts
+declare function TriageFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TriageFilled };
+//# sourceMappingURL=triage-filled.d.ts.map

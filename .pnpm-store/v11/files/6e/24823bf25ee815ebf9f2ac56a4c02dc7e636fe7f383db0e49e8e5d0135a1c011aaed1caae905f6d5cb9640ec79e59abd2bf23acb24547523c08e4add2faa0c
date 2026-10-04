@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-item-control-group.d.ts
+type FieldItemControlGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The control slot of a choice option row (checkbox/radio/switch): a 20px-tall box matching the
+ * label's first line box, so the wrapped control centers on that line even when the label wraps or
+ * a description follows.
+ */
+declare function FieldItemControlGroup({ render, ...props }: FieldItemControlGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldItemControlGroup, FieldItemControlGroupProps };
+//# sourceMappingURL=field-item-control-group.d.ts.map

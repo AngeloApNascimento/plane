@@ -1,0 +1,28 @@
+"use client";
+import { DialogActionsSize, DialogActionsVariantProps, DialogDensity } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-actions.d.ts
+type DialogActionsProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & Omit<DialogActionsVariantProps, "size" | "density"> & {
+  /**
+   * Gutter tier, matching the popup `size` it sits in: 16 px at every rung, 48 × 18 px at `full`.
+   *
+   * @default "md"
+   */
+  size?: DialogActionsSize;
+  /**
+   * Compactness. `comfortable` (default) lets `size` pick the gutter; `compact` keeps 16 px at
+   * every size, including `full`.
+   *
+   * @default "comfortable"
+   */
+  density?: DialogDensity;
+};
+/**
+ * The footer of the dialog popup. Top border separates it from `DialogMain`. Compose an optional
+ * `DialogInfo` (flexes to the inline-start) followed by action buttons (ghost / secondary /
+ * primary) with a 12 px gap.
+ */
+declare function DialogActions({ size, density, render, ...props }: DialogActionsProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogActions, DialogActionsProps, type DialogActionsSize, type DialogDensity };
+//# sourceMappingURL=dialog-actions.d.ts.map

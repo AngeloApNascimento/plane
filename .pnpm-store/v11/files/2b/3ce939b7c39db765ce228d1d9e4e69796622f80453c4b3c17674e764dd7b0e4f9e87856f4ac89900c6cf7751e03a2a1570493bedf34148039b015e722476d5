@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/banner/banner-actions.d.ts
+type BannerActionsProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/** The trailing actions group, placed after the message at the banner's inline-end. */
+declare function BannerActions({ render, ...props }: BannerActionsProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BannerActions, BannerActionsProps };
+//# sourceMappingURL=banner-actions.d.ts.map

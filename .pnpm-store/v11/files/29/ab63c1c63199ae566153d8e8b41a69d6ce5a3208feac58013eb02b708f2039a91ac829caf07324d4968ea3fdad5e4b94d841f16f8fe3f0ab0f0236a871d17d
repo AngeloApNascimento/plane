@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/formatting-and-editors/bulleted-list-outline.tsx
+function BulletedListOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M2.708 12a.04.04 0 0 0-.041-.042.04.04 0 0 0-.042.042c0 .023.02.041.042.041s.04-.018.041-.041M14 11.375a.625.625 0 1 1 0 1.25H6a.625.625 0 0 1 0-1.25zM2.708 8a.04.04 0 0 0-.041-.042.04.04 0 0 0-.042.042c0 .023.02.041.042.041s.04-.018.041-.041M14 7.375a.625.625 0 1 1 0 1.25H6a.625.625 0 0 1 0-1.25zM2.708 4a.04.04 0 0 0-.041-.042.04.04 0 0 0-.042.042c0 .023.02.041.042.041s.04-.018.041-.041M14 3.375a.625.625 0 1 1 0 1.25H6a.625.625 0 0 1 0-1.25zM3.958 12a1.291 1.291 0 1 1-2.582 0 1.291 1.291 0 0 1 2.582 0m0-4a1.291 1.291 0 1 1-2.582 0 1.291 1.291 0 0 1 2.582 0m0-4a1.291 1.291 0 1 1-2.582 0 1.291 1.291 0 0 1 2.582 0"
+		})
+	});
+}
+//#endregion
+export { BulletedListOutline };
+
+//# sourceMappingURL=bulleted-list-outline.js.map

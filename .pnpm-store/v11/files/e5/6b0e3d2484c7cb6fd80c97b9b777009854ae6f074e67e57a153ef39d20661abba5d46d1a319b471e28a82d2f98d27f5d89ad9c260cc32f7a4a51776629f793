@@ -1,0 +1,29 @@
+"use client";
+import { previewCardTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/preview-card/preview-card-title.tsx
+/**
+* The card's primary heading — `text-body-sm-medium` per the design spec. Truncates to a single
+* line instead of wrapping (Figma titles are nowrap on the 296px card). Diverges from the shared
+* `internal/overlay-title` "md" step (`semibold`) — that step has no current consumer (this family
+* used to adopt it) and is lighter `medium` here per Figma, so it keeps its own recipe (rule 4a:
+* divergent styling stays per-family). When `children` is a string, bakes a native `title` so hover
+* recovers the full text past the truncation; pass `title` explicitly to override (or `title=""` to
+* suppress).
+*/
+function PreviewCardTitle({ render, children, title, ...props }) {
+	return useRender({
+		defaultTagName: "h2",
+		render,
+		props: mergeProps({
+			className: previewCardTitleVariants(),
+			children,
+			title: title !== void 0 ? title : typeof children === "string" ? children : void 0
+		}, props)
+	});
+}
+//#endregion
+export { PreviewCardTitle };
+
+//# sourceMappingURL=preview-card-title.js.map

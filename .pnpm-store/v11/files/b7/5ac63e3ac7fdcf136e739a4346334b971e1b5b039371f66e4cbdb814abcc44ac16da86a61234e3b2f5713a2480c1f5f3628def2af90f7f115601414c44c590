@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/release-tag-filled.d.ts
+declare function ReleaseTagFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ReleaseTagFilled };
+//# sourceMappingURL=release-tag-filled.d.ts.map

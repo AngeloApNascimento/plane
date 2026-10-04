@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/suggestion-menu/suggestion-menu-group.d.ts
+type SuggestionMenuGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/** A section of rows. Consecutive sections are divided by a hairline; the last draws none. */
+declare function SuggestionMenuGroup({ render, ...props }: SuggestionMenuGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SuggestionMenuGroup, SuggestionMenuGroupProps };
+//# sourceMappingURL=suggestion-menu-group.d.ts.map

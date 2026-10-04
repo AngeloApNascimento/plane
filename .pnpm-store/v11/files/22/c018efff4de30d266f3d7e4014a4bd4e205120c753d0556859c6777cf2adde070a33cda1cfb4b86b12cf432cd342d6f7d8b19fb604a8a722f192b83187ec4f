@@ -1,0 +1,29 @@
+"use client";
+import { controlGroupClass } from "../../internal/control-group.js";
+import { controlInputClass } from "../../internal/control-input.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/number-field/variants.ts
+const numberFieldVariants = cva("flex min-w-0 flex-col gap-1.5");
+const numberFieldGroupVariants = cva(cx(controlGroupClass, "w-fit items-center p-px shadow-raised-100 focus-within:shadow-none", "has-[:disabled]:shadow-none data-disabled:shadow-none"), { variants: { size: {
+	sm: "h-(--control-height-sm) rounded-(--control-radius-sm)",
+	md: "h-(--control-height-md) rounded-(--control-radius-md)",
+	lg: "h-(--control-height-lg) rounded-(--control-radius-lg)"
+} } });
+const numberFieldInputVariants = cva(cx(controlInputClass, "field-sizing-content h-full px-1 text-center"), { variants: { size: {
+	sm: "min-w-9 text-body-xs-medium",
+	md: "min-w-10 text-body-xs-medium",
+	lg: "min-w-10 text-body-sm-medium"
+} } });
+/**
+* IconButton `size` that keeps steppers flush inside a field of the given `size` (Figma: field sm →
+* button xs, md → sm, lg → md).
+*/
+const numberFieldStepperSize = {
+	sm: "xs",
+	md: "sm",
+	lg: "md"
+};
+//#endregion
+export { numberFieldGroupVariants, numberFieldInputVariants, numberFieldStepperSize, numberFieldVariants };
+
+//# sourceMappingURL=variants.js.map

@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-search-input.d.ts
+type ComboboxSearchInputProps = Omit<useRender.ComponentProps<"input">, "className" | "style">;
+/**
+ * The styled borderless text field inside `ComboboxSearch`. Base-UI-agnostic — graft the combobox
+ * input behavior in `components` via `<BaseCombobox.Input render={<ComboboxSearchInput />} />`.
+ */
+declare function ComboboxSearchInput({ render, ...props }: ComboboxSearchInputProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxSearchInput, ComboboxSearchInputProps };
+//# sourceMappingURL=combobox-search-input.d.ts.map

@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/formatting-and-editors/italic-outline.tsx
+function ItalicOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M12.666 2.042a.625.625 0 1 1 0 1.25h-2.233L6.9 12.709h2.432a.625.625 0 1 1 0 1.25h-6a.625.625 0 0 1 0-1.25h2.233l3.532-9.417H6.666a.625.625 0 0 1 0-1.25z"
+		})
+	});
+}
+//#endregion
+export { ItalicOutline };
+
+//# sourceMappingURL=italic-outline.js.map

@@ -1,0 +1,5 @@
+"use client";
+import { TextAreaResize, TextAreaSize, TextAreaSurface } from "./variants.js";
+import { TextArea, TextAreaProps } from "./text-area.js";
+import { TextAreaGroup, TextAreaGroupProps } from "./text-area-group.js";
+export { TextArea, TextAreaGroup, TextAreaGroupProps, TextAreaProps, type TextAreaResize, type TextAreaSize, type TextAreaSurface };

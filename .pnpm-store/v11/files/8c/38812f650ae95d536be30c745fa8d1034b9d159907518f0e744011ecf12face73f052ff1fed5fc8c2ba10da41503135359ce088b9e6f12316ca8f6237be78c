@@ -1,0 +1,15 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/select/select-value.d.ts
+type SelectValueProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled selected-value display inside a trigger — single-line, shrinks and truncates instead
+ * of wrapping. When `children` is a string, bakes a native `title` so hover recovers the full text
+ * past the truncation point; pass `title` explicitly to override (or `title=""` to suppress).
+ * Base-UI-agnostic — graft the value behavior in `components` via `<BaseSelect.Value
+ * render={<SelectValue/>} />`.
+ */
+declare function SelectValue({ render, children, title, ...props }: SelectValueProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SelectValue, SelectValueProps };
+//# sourceMappingURL=select-value.d.ts.map

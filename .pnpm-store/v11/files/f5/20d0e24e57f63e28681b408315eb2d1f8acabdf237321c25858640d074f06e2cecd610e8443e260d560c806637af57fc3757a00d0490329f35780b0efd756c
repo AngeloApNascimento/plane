@@ -1,0 +1,23 @@
+"use client";
+import { suggestionMenuItemIconVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/suggestion-menu/suggestion-menu-item-icon.tsx
+/**
+* The row's leading glyph slot. Sizes its child to 16px and tints it `icon-secondary`. Decorative:
+* renders with `aria-hidden`.
+*/
+function SuggestionMenuItemIcon({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			className: suggestionMenuItemIconVariants(),
+			"aria-hidden": true
+		}, props)
+	});
+}
+//#endregion
+export { SuggestionMenuItemIcon };
+
+//# sourceMappingURL=suggestion-menu-item-icon.js.map

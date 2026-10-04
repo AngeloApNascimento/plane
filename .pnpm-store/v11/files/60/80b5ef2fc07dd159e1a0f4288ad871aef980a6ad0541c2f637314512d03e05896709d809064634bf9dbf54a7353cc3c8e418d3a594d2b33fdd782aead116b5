@@ -1,0 +1,4 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import { AutocompleteField, AutocompleteFieldProps } from "./autocomplete-field.js";
+export { AutocompleteField, AutocompleteFieldProps, type FieldSize };

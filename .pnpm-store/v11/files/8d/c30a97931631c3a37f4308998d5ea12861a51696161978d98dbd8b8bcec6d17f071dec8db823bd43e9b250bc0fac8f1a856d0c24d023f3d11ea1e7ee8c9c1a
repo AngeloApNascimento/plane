@@ -1,0 +1,49 @@
+"use client";
+import { TableHead as TableHead$1 } from "../../elements/table/table-head.js";
+import { TableHeadSortIndicator } from "../../elements/table/table-head-sort-indicator.js";
+import { TableHeadSortTrigger } from "../../elements/table/table-head-sort-trigger.js";
+import { TableHeadTitle } from "../../elements/table/table-head-title.js";
+import { useTableVariant } from "./table-context.js";
+import "react";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown, ChevronUp, ChevronsUpDown } from "lucide-react";
+//#region src/components/table/table-head.tsx
+const sortGlyph = {
+	asc: ChevronUp,
+	desc: ChevronDown,
+	none: ChevronsUpDown
+};
+/** Only active directions expose `aria-sort` (APG); unsorted sortable headers omit the attribute. */
+const ariaSort = {
+	asc: "ascending",
+	desc: "descending"
+};
+/**
+* A ready-made header cell: a plain title, arbitrary `children`, or (when sortable) either of those
+* inside a sort-cycling button with a chevron.
+*/
+function TableHead({ label, children, visuallyHidden = false, sortable = false, sort = "none", onSort, ...props }) {
+	const tableVariant = useTableVariant();
+	const hasSortControl = sortable && onSort != null;
+	const SortGlyph = sortGlyph[sort];
+	const content = children != null ? /* @__PURE__ */ jsxs(Fragment, { children: [label != null ? /* @__PURE__ */ jsx(TableHeadTitle, {
+		visibility: "hidden",
+		children: label
+	}) : null, children] }) : /* @__PURE__ */ jsx(TableHeadTitle, {
+		visibility: visuallyHidden ? "hidden" : "visible",
+		children: label
+	});
+	return /* @__PURE__ */ jsx(TableHead$1, {
+		variant: tableVariant,
+		"aria-sort": hasSortControl ? ariaSort[sort] : void 0,
+		...props,
+		children: hasSortControl ? /* @__PURE__ */ jsxs(TableHeadSortTrigger, {
+			onClick: onSort,
+			children: [content, /* @__PURE__ */ jsx(TableHeadSortIndicator, { children: /* @__PURE__ */ jsx(SortGlyph, {}) })]
+		}) : content
+	});
+}
+//#endregion
+export { TableHead };
+
+//# sourceMappingURL=table-head.js.map

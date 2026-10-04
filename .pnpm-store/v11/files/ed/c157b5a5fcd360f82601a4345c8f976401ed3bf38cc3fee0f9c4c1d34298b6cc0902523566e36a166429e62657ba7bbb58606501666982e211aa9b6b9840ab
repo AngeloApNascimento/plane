@@ -1,0 +1,32 @@
+"use client";
+import { FieldItem as FieldItem$1 } from "../../elements/field/field-item.js";
+import { jsx } from "react/jsx-runtime";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-item.tsx
+const ALREADY_HANDLED_SELECTOR = "a[href], label, button, input, select, textarea, [role], [tabindex]";
+function handleRowClick(event) {
+	if (!(event.target instanceof Element)) return;
+	const alreadyHandled = event.target.closest(ALREADY_HANDLED_SELECTOR);
+	if (alreadyHandled != null && alreadyHandled !== event.currentTarget && event.currentTarget.contains(alreadyHandled)) return;
+	const selection = globalThis.getSelection?.();
+	if (selection != null && !selection.isCollapsed && selection.rangeCount > 0) {
+		const range = selection.getRangeAt(0);
+		if (event.currentTarget.contains(range.commonAncestorContainer)) return;
+	}
+	event.currentTarget.querySelector("input")?.click();
+}
+/**
+* Groups one checkbox or radio option with its label and optional description: Base UI's
+* `Field.Item` behavior grafted onto the styled `FieldItem` element (rule 1a).
+*/
+function FieldItem(props) {
+	return /* @__PURE__ */ jsx(Field.Item, {
+		...mergeProps({ onClick: handleRowClick }, props),
+		render: /* @__PURE__ */ jsx(FieldItem$1, {})
+	});
+}
+//#endregion
+export { FieldItem };
+
+//# sourceMappingURL=field-item.js.map

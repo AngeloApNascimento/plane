@@ -1,0 +1,28 @@
+"use client";
+import { Toolbar as Toolbar$2 } from "../../elements/toolbar/toolbar.js";
+import { ToolbarSizeContext } from "./toolbar-context.js";
+import { jsx } from "react/jsx-runtime";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar.tsx
+/**
+* The ready-made toolbar: grafts Base UI's `Toolbar.Root` behavior (the `toolbar` role + roving
+* focus, plus `disabled` / `loopFocus`) onto the styled horizontal `elements/toolbar` row and
+* shares its `size` with the controls inside via context (so each control packs to match).
+*/
+function Toolbar$1({ size, elevation, render, ...props }) {
+	return /* @__PURE__ */ jsx(ToolbarSizeContext.Provider, {
+		value: size,
+		children: /* @__PURE__ */ jsx(Toolbar.Root, {
+			...props,
+			render: /* @__PURE__ */ jsx(Toolbar$2, {
+				size,
+				elevation,
+				render
+			})
+		})
+	});
+}
+//#endregion
+export { Toolbar$1 as Toolbar };
+
+//# sourceMappingURL=toolbar.js.map

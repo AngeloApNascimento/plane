@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-item-title.d.ts
+type ComboboxItemTitleProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** A row's primary label. Truncates rather than wrapping. */
+declare function ComboboxItemTitle({ render, ...props }: ComboboxItemTitleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxItemTitle, ComboboxItemTitleProps };
+//# sourceMappingURL=combobox-item-title.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/priority-low.d.ts
+declare function PriorityLow(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PriorityLow };
+//# sourceMappingURL=priority-low.d.ts.map

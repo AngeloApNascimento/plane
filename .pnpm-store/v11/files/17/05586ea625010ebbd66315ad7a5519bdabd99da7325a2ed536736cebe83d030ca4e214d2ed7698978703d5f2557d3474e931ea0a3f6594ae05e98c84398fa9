@@ -1,0 +1,20 @@
+"use client";
+import { paginationListVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-list.tsx
+/**
+* The ordered list of page controls: the previous button, page numbers and ellipses, and the next
+* button.
+*/
+function PaginationList({ render, ...props }) {
+	return useRender({
+		defaultTagName: "ul",
+		render,
+		props: mergeProps({ className: paginationListVariants() }, props)
+	});
+}
+//#endregion
+export { PaginationList };
+
+//# sourceMappingURL=pagination-list.js.map

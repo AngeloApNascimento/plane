@@ -1,0 +1,14 @@
+"use client";
+import { BannerBodyVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/banner/banner-body.d.ts
+type BannerBodyProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & BannerBodyVariantProps;
+/**
+ * The message column between the icon and the trailing controls. Grows to fill the row and stacks a
+ * `BannerTitle` above a `BannerDescription`. Carries the variant foreground color (inherited by
+ * both) and the size-specific regular text weight.
+ */
+declare function BannerBody({ placement, size, variant, render, ...props }: BannerBodyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BannerBody, BannerBodyProps };
+//# sourceMappingURL=banner-body.d.ts.map

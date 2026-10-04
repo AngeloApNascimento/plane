@@ -34,6 +34,13 @@ export default defineConfig(() => ({
     dedupe: ["react", "react-dom"],
   },
   server: {
-    host: "127.0.0.1",
+    host: true,
+    allowedHosts: true,
+    proxy: {
+      "/api": "http://api:8000",
+      "/auth": "http://api:8000",
+      "/static": "http://api:8000",
+      "/uploads": "http://plane-minio:9000",
+    },
   },
 }));

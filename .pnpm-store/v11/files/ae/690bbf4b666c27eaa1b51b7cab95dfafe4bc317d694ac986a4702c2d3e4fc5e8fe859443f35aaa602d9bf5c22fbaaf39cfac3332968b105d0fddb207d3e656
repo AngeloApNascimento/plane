@@ -1,0 +1,6 @@
+import core from 'jscodeshift';
+interface MotionCallback<T = any> {
+    (j: core.JSCodeshift, source: core.Collection<T>): void;
+}
+export declare function applyMotions(j: core.JSCodeshift, source: ReturnType<typeof j>, motions: MotionCallback[]): void;
+export {};

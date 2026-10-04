@@ -1,0 +1,86 @@
+"use client";
+import { nodeSlotClass } from "../../internal/node-slot.js";
+import { menuCheckboxItemIndicatorClass, menuItemContentClass, menuItemDescriptionClass, menuItemIndicatorClass, menuListPopupVariants, menuRadioItemCheckClass, menuRadioItemIndicatorClass, menuRowBaseClass, menuRowHighlightClass, menuRowPopupOpenHighlightClass, menuRowSingleClass, menuRowStackedHeightClass, menuRowVariantClasses, menuSeparatorClass, menuSubmenuRowVariantClasses } from "../../internal/menu-row-parts.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/context-menu/variants.ts
+/** Popup: shared raised/flat list surface (see `internal/menu-row-parts`). */
+const contextMenuPopupVariants = menuListPopupVariants;
+const contextMenuRowDefaultVariants = { variant: "neutral" };
+const contextMenuItemDefaultVariants = {
+	...contextMenuRowDefaultVariants,
+	layout: "single"
+};
+const contextMenuRowVariantClasses = {
+	neutral: menuRowVariantClasses.neutral,
+	danger: menuRowVariantClasses.danger
+};
+const contextMenuSubmenuRowVariantClasses = {
+	neutral: menuSubmenuRowVariantClasses.neutral,
+	danger: menuSubmenuRowVariantClasses.danger
+};
+/**
+* Item rows: shared menu-row chrome (`internal/menu-row-parts`) fixed to the single-line pairing. A
+* context menu and a dropdown are the same list opened two ways — row measure comes from the shared
+* base; this family only narrows the look axis to `neutral` | `danger`.
+*/
+const contextMenuItemVariants = cva(cx(menuRowBaseClass, menuRowHighlightClass), {
+	variants: {
+		/**
+		* How the row arranges its text. `single` is a one-line, vertically centered row; `stacked`
+		* grows to fit a description beneath the label and top-aligns the row's leading content.
+		*/
+		layout: {
+			single: menuRowSingleClass,
+			stacked: cx(menuRowStackedHeightClass, "cursor-default")
+		},
+		/** Row look. `neutral` is the standard text hierarchy and `danger` marks a destructive action. */
+		variant: contextMenuRowVariantClasses
+	},
+	defaultVariants: contextMenuItemDefaultVariants
+});
+/**
+* Submenu trigger row: shared single-line chrome plus popup-open highlight. `group/item` (from the
+* shared base) lets the trailing caret react to the trigger's disabled state.
+*/
+const contextMenuSubmenuTriggerVariants = cva(cx(menuRowBaseClass, menuRowSingleClass, menuRowHighlightClass, menuRowPopupOpenHighlightClass), {
+	variants: { 
+	/** Row look. `neutral` is the standard text hierarchy and `danger` marks a destructive action. */
+variant: contextMenuSubmenuRowVariantClasses },
+	defaultVariants: contextMenuRowDefaultVariants
+});
+/** The growing label region of an item row; fills the row so trailing regions sit at the inline-end. */
+const contextMenuItemLabelVariants = cva("min-w-0 flex-1 truncate");
+/**
+* The text column of a stacked row: grows to fill the row and stacks a `ContextMenuItemLabel` over
+* a `ContextMenuItemDescription`.
+*/
+const contextMenuItemContentVariants = cva(menuItemContentClass);
+/** A muted second line beneath the label — shared with Menu's description. */
+const contextMenuItemDescriptionVariants = cva(menuItemDescriptionClass);
+/** A trailing slot for arbitrary content. Sizes an icon child to `--node-size`; adds no tint. */
+const contextMenuItemTrailingVariants = cva(nodeSlotClass);
+/**
+* Trailing single-select check gutter — shared `menuItemIndicatorClass` (Figma: icon, then label,
+* then check).
+*/
+const contextMenuItemIndicatorVariants = cva(menuItemIndicatorClass);
+/**
+* The tick region of a checkbox row. Kept mounted for a stable gutter; Base UI marks it
+* `data-unchecked` while off, which hides the glyph (its own contract — the shared item-indicator
+* recipe keys off `data-selected`, which checkbox/radio indicators never receive).
+*/
+const contextMenuCheckboxItemIndicatorVariants = cva(menuCheckboxItemIndicatorClass);
+/**
+* RadioItem indicator, TICK form (the default) — the trailing check marking the current row of a
+* single-select group. The ring variant is reserved for a popup that mixes multi-select and
+* single-select groups.
+*/
+const contextMenuRadioItemCheckVariants = cva(menuRadioItemCheckClass);
+/** The ring region of a radio row — shared with Menu's radio indicator. */
+const contextMenuRadioItemIndicatorVariants = cva(menuRadioItemIndicatorClass);
+/** Separator: a thin divider spanning the popup padding. */
+const contextMenuSeparatorVariants = cva(menuSeparatorClass);
+//#endregion
+export { contextMenuCheckboxItemIndicatorVariants, contextMenuItemContentVariants, contextMenuItemDescriptionVariants, contextMenuItemIndicatorVariants, contextMenuItemLabelVariants, contextMenuItemTrailingVariants, contextMenuItemVariants, contextMenuPopupVariants, contextMenuRadioItemCheckVariants, contextMenuRadioItemIndicatorVariants, contextMenuSeparatorVariants, contextMenuSubmenuTriggerVariants };
+
+//# sourceMappingURL=variants.js.map

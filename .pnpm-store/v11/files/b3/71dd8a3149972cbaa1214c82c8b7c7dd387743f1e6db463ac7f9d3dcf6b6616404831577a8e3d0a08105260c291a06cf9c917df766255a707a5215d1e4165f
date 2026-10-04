@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/arrow-collapse-filled.d.ts
+declare function ArrowCollapseFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ArrowCollapseFilled };
+//# sourceMappingURL=arrow-collapse-filled.d.ts.map

@@ -1,0 +1,23 @@
+"use client";
+import { StrictVariantProps } from "./variant-props.js";
+import { useRender } from "@base-ui/react/use-render";
+import { VariantProps } from "class-variance-authority";
+//#region src/internal/overlay-description.d.ts
+/**
+ * The shared overlay description text, grafted onto any Base UI `*.Description` behavior in
+ * `components` (`<BaseDrawer.Description render={<OverlayDescription size="md" />}>`). Renders the
+ * secondary supporting copy under an overlay's title. Byte-identical across adopting families, so
+ * it lives here rather than being copied per family (rule 4a). Dialog diverged to family-owned
+ * `dialogDescriptionVariants` (body-xs tertiary). Alert Dialog uses a family-local description
+ * (`text-body-sm-regular text-secondary`) rather than this shared recipe.
+ *
+ * Adopted by: `popover`, `preview-card`, `drawer` (`size="md"` → `body-xs`).
+ */
+declare const overlayDescriptionVariants: (props?: ({
+  size?: "md" | "lg" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type OverlayDescriptionVariantProps = StrictVariantProps<typeof overlayDescriptionVariants>;
+type OverlayDescriptionProps = Omit<useRender.ComponentProps<"p">, "className" | "style"> & OverlayDescriptionVariantProps;
+//#endregion
+export { OverlayDescriptionProps, OverlayDescriptionVariantProps, overlayDescriptionVariants };
+//# sourceMappingURL=overlay-description.d.ts.map

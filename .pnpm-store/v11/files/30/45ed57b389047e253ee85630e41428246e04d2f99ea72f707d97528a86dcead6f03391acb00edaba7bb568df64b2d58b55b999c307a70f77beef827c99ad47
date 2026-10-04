@@ -1,0 +1,37 @@
+"use client";
+import * as React from "react";
+//#region src/components/menu/menu-search.d.ts
+type MenuSearchProps = Omit<React.ComponentPropsWithoutRef<"input">, "className" | "style" | "onChange" | "value" | "defaultValue" | "type"> & {
+  /** Current search text. Omit it to let the field manage its own state (see `defaultValue`). */
+  value?: string;
+  /** Initial search text when the field manages its own state. @default "" */
+  defaultValue?: string;
+  /**
+   * Called with the new text on each keystroke — and with `""` when the menu closes (see
+   * `resetOnClose`).
+   */
+  onValueChange?: (value: string) => void;
+  /**
+   * Clear the query when the menu closes. The field's own state resets with the popup unmount; this
+   * also calls `onValueChange("")` on close so a consumer-held query — which outlives the popup —
+   * is cleared too and the list is unfiltered on reopen. Turn it off to keep a _controlled_ query
+   * across opens on purpose; an uncontrolled field (`defaultValue`) resets with the popup either
+   * way, so all the flag changes there is whether `onValueChange("")` fires.
+   *
+   * @default true
+   */
+  resetOnClose?: boolean;
+  /** Placeholder text. */
+  placeholder?: string;
+};
+/**
+ * A sticky search field pinned above a `MenuContent` popup, via its `search` prop. The menu focuses
+ * it on open (it sits outside the `role="menu"` popup — a menu may not own a textbox — so the
+ * hand-off is programmatic, not Tab). Text-editing keys stay in the field, which keeps the menu's
+ * type-ahead from stealing them; Escape closes the menu, and ArrowDown/ArrowUp move focus into the
+ * list — first row down, last row up.
+ */
+declare function MenuSearch({ value, defaultValue, onValueChange, resetOnClose, placeholder, onKeyDown, ...props }: MenuSearchProps): React.JSX.Element;
+//#endregion
+export { MenuSearch, MenuSearchProps };
+//# sourceMappingURL=menu-search.d.ts.map

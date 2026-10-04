@@ -1,0 +1,19 @@
+"use client";
+import { SkeletonItem as SkeletonItem$1 } from "../../elements/skeleton/skeleton-item.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/skeleton/skeleton-item.tsx
+/**
+* One decorative placeholder bone. `variant="bar"` (default) is a rounded-md block;
+* `variant="circle"` is a disc. Full width unless `inlineSize` narrows it. Bakes `aria-hidden` —
+* the enclosing `Skeleton` names the loading region.
+*/
+function SkeletonItem(props) {
+	return /* @__PURE__ */ jsx(SkeletonItem$1, {
+		"aria-hidden": true,
+		...props
+	});
+}
+//#endregion
+export { SkeletonItem };
+
+//# sourceMappingURL=skeleton-item.js.map

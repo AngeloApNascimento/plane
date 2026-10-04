@@ -1,0 +1,13 @@
+"use client";
+import { MenuPopupElevation, MenuPopupVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-popup.d.ts
+type MenuPopupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & MenuPopupVariantProps;
+/**
+ * The styled menu surface that contains the items. Base-UI-agnostic — graft the menu behavior in
+ * `components` via `<BaseMenu.Popup render={<MenuPopup elevation="…" />} />`.
+ */
+declare function MenuPopup({ elevation, render, ...props }: MenuPopupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuPopup, type MenuPopupElevation, MenuPopupProps };
+//# sourceMappingURL=menu-popup.d.ts.map

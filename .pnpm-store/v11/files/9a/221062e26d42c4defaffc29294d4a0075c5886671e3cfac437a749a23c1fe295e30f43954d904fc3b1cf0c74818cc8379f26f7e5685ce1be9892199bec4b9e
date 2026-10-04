@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/automations-outline.d.ts
+declare function AutomationsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AutomationsOutline };
+//# sourceMappingURL=automations-outline.d.ts.map

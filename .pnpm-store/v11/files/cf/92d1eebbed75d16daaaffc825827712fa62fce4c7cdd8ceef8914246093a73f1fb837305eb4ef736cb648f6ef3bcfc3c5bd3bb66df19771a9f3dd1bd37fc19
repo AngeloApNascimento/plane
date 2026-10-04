@@ -1,0 +1,52 @@
+"use client";
+import { MenuItemVariant } from "../../elements/menu/variants.js";
+import "../../elements/menu/index.js";
+import * as React from "react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-item.d.ts
+type MenuItemProps = Omit<Menu.Item.Props, "children" | "className" | "label" | "style" | "render"> & {
+  /**
+   * Element the row renders as, when a `<div>` is not the right one — e.g. `render={<a href=… />}`
+   * for a row that navigates. The row's own styling and menu behavior still apply. Narrower than
+   * Base UI's `render`: the styled row is the graft target, so a state-aware render function has no
+   * row state to receive.
+   */
+  render?: React.ReactElement;
+  /**
+   * Row look. `neutral` is the standard text hierarchy, `accent` marks the primary action, and
+   * `danger` marks a destructive one.
+   *
+   * @default "neutral"
+   */
+  variant?: MenuItemVariant;
+  /** Leading element before the label, e.g. `<Icon icon={Settings} tint="secondary" />`. */
+  icon?: React.ReactNode;
+  /** Primary row label. */
+  label: string;
+  /** Muted secondary line under the label. */
+  description?: string;
+  /** Muted text shown inline after the label. */
+  secondaryText?: string;
+  /** Content pinned at the row's inline end, e.g. `<Shortcut keys="⌘ K" />` or a count `<Badge />`. */
+  trailing?: React.ReactElement;
+  /**
+   * Single-select selected state. Pass it on **every** row of a single-select list (`true` or
+   * `false`) so each row reserves the trailing check gutter and its labels stay a common width;
+   * omit it entirely on plain action rows, which then render no gutter.
+   *
+   * Passing it also makes the row a `menuitemradio` with `aria-checked`, so the current value is
+   * announced rather than left to the check glyph. That is why the boolean must be real on every
+   * row of the set: a mix of `selected` and omitted rows produces a mix of `menuitemradio` and
+   * `menuitem`, which reads as one radio in a list of commands.
+   */
+  selected?: boolean;
+};
+/**
+ * The ready-made selectable menu row: grafts Base UI's `Menu.Item` behavior onto the styled
+ * `MenuItem` and lays out an optional leading icon, the label, a secondary line, the single-select
+ * check, and trailing content.
+ */
+declare function MenuItem({ variant, icon, description, secondaryText, trailing, selected, label, render, ...props }: MenuItemProps): React.JSX.Element;
+//#endregion
+export { MenuItem, MenuItemProps };
+//# sourceMappingURL=menu-item.d.ts.map

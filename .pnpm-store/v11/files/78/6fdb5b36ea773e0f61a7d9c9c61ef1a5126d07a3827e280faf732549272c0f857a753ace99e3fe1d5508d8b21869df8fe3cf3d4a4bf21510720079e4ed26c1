@@ -1,0 +1,23 @@
+"use client";
+import { IconToggle as IconToggle$1 } from "../../elements/toggle/icon-toggle.js";
+import { jsx } from "react/jsx-runtime";
+import { Toggle } from "@base-ui/react/toggle";
+//#region src/components/toggle/icon-toggle.tsx
+/**
+* The ready-made icon-only toggle: grafts Base UI's `Toggle` behavior onto the styled `IconToggle`
+* button (behavior outer, the styled button as the render target).
+*/
+function IconToggle({ variant, size, icon, ...toggleProps }) {
+	return /* @__PURE__ */ jsx(Toggle, {
+		...toggleProps,
+		render: /* @__PURE__ */ jsx(IconToggle$1, {
+			variant,
+			size
+		}),
+		children: icon
+	});
+}
+//#endregion
+export { IconToggle };
+
+//# sourceMappingURL=icon-toggle.js.map

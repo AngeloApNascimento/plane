@@ -1,0 +1,13 @@
+"use client";
+import { SliderControlVariantProps, SliderSize } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-control.d.ts
+type SliderControlProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & SliderControlVariantProps;
+/**
+ * The styled control row that holds the track. Base-UI-agnostic — graft in `components` via
+ * `<BaseSlider.Control render={<SliderControl/>} />`.
+ */
+declare function SliderControl({ size, render, ...props }: SliderControlProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SliderControl, SliderControlProps, type SliderSize };
+//# sourceMappingURL=slider-control.d.ts.map

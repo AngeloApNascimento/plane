@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/charts/bar-outline.d.ts
+declare function BarOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BarOutline };
+//# sourceMappingURL=bar-outline.d.ts.map

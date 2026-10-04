@@ -1,0 +1,5 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import { ComboboxVariant } from "../../elements/combobox/variants.js";
+import { ComboboxField, ComboboxFieldProps } from "./combobox-field.js";
+export { ComboboxField, ComboboxFieldProps, type ComboboxVariant, type FieldSize };

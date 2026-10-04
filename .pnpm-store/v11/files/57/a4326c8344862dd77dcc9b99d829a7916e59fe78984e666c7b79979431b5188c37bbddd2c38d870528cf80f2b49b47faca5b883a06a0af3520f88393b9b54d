@@ -1,0 +1,15 @@
+"use client";
+import { disclosureTriggerClass, disclosureTriggerTitleClass } from "../../internal/disclosure-trigger.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/accordion/variants.ts
+const accordionVariants = cva("flex w-full flex-col");
+const accordionItemVariants = cva("border-b border-subtle");
+const accordionHeaderVariants = cva("flex");
+const accordionTriggerVariants = cva(cx(disclosureTriggerClass, "flex-1 bg-layer-transparent p-3 [--node-size:var(--control-glyph-lg)] hover:bg-layer-transparent-hover"));
+const accordionPanelVariants = cva(cx("h-(--accordion-panel-height) overflow-hidden", "text-body-sm-regular text-secondary", "transition-[height] duration-200 ease-out", "data-ending-style:h-0 data-starting-style:h-0"));
+const accordionTriggerTitleVariants = cva(disclosureTriggerTitleClass);
+const accordionPanelContentVariants = cva("px-3 pt-1.5 pb-3");
+//#endregion
+export { accordionHeaderVariants, accordionItemVariants, accordionPanelContentVariants, accordionPanelVariants, accordionTriggerTitleVariants, accordionTriggerVariants, accordionVariants };
+
+//# sourceMappingURL=variants.js.map

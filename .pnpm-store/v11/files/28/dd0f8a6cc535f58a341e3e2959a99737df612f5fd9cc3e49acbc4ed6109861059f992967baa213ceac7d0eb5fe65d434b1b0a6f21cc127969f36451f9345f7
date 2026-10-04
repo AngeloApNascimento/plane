@@ -1,0 +1,15 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/autocomplete/variants.d.ts
+declare const autocompleteInputGroupVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type AutocompleteInputGroupVariantConfig = VariantProps<typeof autocompleteInputGroupVariants>;
+type AutocompleteSize = NonNullable<AutocompleteInputGroupVariantConfig["size"]>;
+type AutocompleteInputGroupVariantProps = StrictVariantProps<typeof autocompleteInputGroupVariants>;
+declare const autocompleteInputGroupClearVariants: (props?: import("class-variance-authority/types").ClassProp | undefined) => string;
+type AutocompleteInputGroupClearVariantProps = StrictVariantProps<typeof autocompleteInputGroupClearVariants>;
+//#endregion
+export { AutocompleteInputGroupClearVariantProps, AutocompleteInputGroupVariantProps, AutocompleteSize, autocompleteInputGroupClearVariants, autocompleteInputGroupVariants };
+//# sourceMappingURL=variants.d.ts.map

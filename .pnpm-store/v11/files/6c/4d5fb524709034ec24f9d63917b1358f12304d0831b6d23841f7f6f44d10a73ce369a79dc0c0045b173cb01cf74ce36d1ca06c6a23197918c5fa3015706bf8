@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/project-features/milestones-filled.d.ts
+declare function MilestonesFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MilestonesFilled };
+//# sourceMappingURL=milestones-filled.d.ts.map

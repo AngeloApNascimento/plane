@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-close-group.d.ts
+type ToastCloseGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The positioned slot that pins the dismiss button to the toast's inline-end corner. Holds only the
+ * 4px corner offset against the `relative` toast popup; the button's chrome comes from the composed
+ * `IconButton`.
+ */
+declare function ToastCloseGroup({ render, ...props }: ToastCloseGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToastCloseGroup, ToastCloseGroupProps };
+//# sourceMappingURL=toast-close-group.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/move-horizontal-outline.d.ts
+declare function MoveHorizontalOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MoveHorizontalOutline };
+//# sourceMappingURL=move-horizontal-outline.d.ts.map

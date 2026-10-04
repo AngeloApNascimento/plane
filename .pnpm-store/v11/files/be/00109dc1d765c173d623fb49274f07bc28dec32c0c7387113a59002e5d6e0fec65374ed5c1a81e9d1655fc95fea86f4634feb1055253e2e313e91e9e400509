@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/toggle-off-outline.d.ts
+declare function ToggleOffOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ToggleOffOutline };
+//# sourceMappingURL=toggle-off-outline.d.ts.map

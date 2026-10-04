@@ -1,0 +1,21 @@
+"use client";
+import { numberFieldVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/number-field/number-field.tsx
+/**
+* The styled number field frame — stacks the label, group, and messages. Base-UI-agnostic — graft
+* the number field behavior in `components` via `<BaseNumberField.Root render={<NumberField/>}
+* />`.
+*/
+function NumberField({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: numberFieldVariants() }, props)
+	});
+}
+//#endregion
+export { NumberField };
+
+//# sourceMappingURL=number-field.js.map

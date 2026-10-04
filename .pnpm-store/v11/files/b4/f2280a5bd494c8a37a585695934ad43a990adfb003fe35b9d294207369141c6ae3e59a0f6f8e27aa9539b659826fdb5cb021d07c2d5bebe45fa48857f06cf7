@@ -1,0 +1,28 @@
+"use client";
+import { ToolbarButton as ToolbarButton$1 } from "../../elements/toolbar/toolbar-button.js";
+import { ToolbarItemLabel } from "../../elements/toolbar/toolbar-item-label.js";
+import { ToolbarSizeContext } from "./toolbar-context.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar-button.tsx
+/**
+* A toolbar action button: grafts Base UI's `Toolbar.Button` (roving-focus item) behavior onto the
+* styled `ToolbarButton`, taking its `size` from the surrounding `Toolbar` via context.
+*/
+function ToolbarButton({ size, icon, label, render, ...props }) {
+	const toolbarSize = React.useContext(ToolbarSizeContext);
+	return /* @__PURE__ */ jsxs(Toolbar.Button, {
+		...props,
+		render: /* @__PURE__ */ jsx(ToolbarButton$1, {
+			size: size ?? toolbarSize,
+			labeled: !!label,
+			render
+		}),
+		children: [icon, label && /* @__PURE__ */ jsx(ToolbarItemLabel, { children: label })]
+	});
+}
+//#endregion
+export { ToolbarButton };
+
+//# sourceMappingURL=toolbar-button.js.map

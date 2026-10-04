@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/suggestion-menu/suggestion-menu-item-trailing.d.ts
+type SuggestionMenuItemTrailingProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** The slot at the row's inline-end, e.g. a plan badge. Sizes an icon child; keeps its own color. */
+declare function SuggestionMenuItemTrailing({ render, ...props }: SuggestionMenuItemTrailingProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SuggestionMenuItemTrailing, SuggestionMenuItemTrailingProps };
+//# sourceMappingURL=suggestion-menu-item-trailing.d.ts.map

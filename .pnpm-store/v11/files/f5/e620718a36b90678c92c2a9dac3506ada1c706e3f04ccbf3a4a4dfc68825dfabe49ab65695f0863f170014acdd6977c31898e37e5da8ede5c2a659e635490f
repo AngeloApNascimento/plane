@@ -1,0 +1,16 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-swipe-area.tsx
+/**
+* An off-screen edge hit area that lets users swipe the closed drawer open from the screen edge.
+* Optional; render it as a sibling of the trigger. A behavior-only role (rules 1a, 2), so it lives
+* in `components`. Maps 1:1 to Base UI's `Drawer.SwipeArea`.
+*/
+function DrawerSwipeArea(props) {
+	return /* @__PURE__ */ jsx(Drawer.SwipeArea, { ...props });
+}
+//#endregion
+export { DrawerSwipeArea };
+
+//# sourceMappingURL=drawer-swipe-area.js.map

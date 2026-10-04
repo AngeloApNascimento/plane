@@ -1,0 +1,40 @@
+"use client";
+import { MenuItemVariant } from "../../elements/menu/variants.js";
+import "../../elements/menu/index.js";
+import * as React from "react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-radio-item.d.ts
+type MenuRadioItemProps = Omit<Menu.RadioItem.Props, "children" | "className" | "label" | "style" | "render"> & {
+  /**
+   * Row look. `neutral` is the standard text hierarchy, `accent` marks the primary action, and
+   * `danger` marks a destructive one.
+   *
+   * @default "neutral"
+   */
+  variant?: MenuItemVariant;
+  /**
+   * Leading element, e.g. `<Icon icon={Settings} tint="secondary" />`. With the group's
+   * `marker="radio"` it sits after the ring; with the default tick it leads the row.
+   */
+  icon?: React.ReactNode;
+  /** Primary row label. */
+  label: string;
+  /** Content pinned at the row's inline end, e.g. `<Shortcut keys="⌘ K" />` or a count `<Badge />`. */
+  trailing?: React.ReactElement;
+};
+/**
+ * The ready-made single-select menu row: grafts Base UI's `Menu.RadioItem` behavior onto the styled
+ * `MenuRadioItem` and marks the current row the way its `MenuRadioGroup`'s `marker` says. `check`
+ * (the default): a kept-mounted trailing tick (`Menu.RadioItemIndicator` grafted onto
+ * `MenuRadioItemCheck`) that shows on the selected row, the same mark every other single-select row
+ * in the library uses. `radio`: a leading ring (`MenuRadioItemIndicator` in a `MenuItemControl`
+ * gutter) drawn on every row with only its inner dot hiding, for a popup that also holds a checkbox
+ * group and needs the two kinds of choice told apart. `keepMounted` is load-bearing either way: the
+ * indicator holds its slot and carries `data-checked` / `data-unchecked` for the styling to key
+ * off. Wrap rows in a `MenuRadioGroup` carrying `value`/`onValueChange`; both the selected state
+ * and the marker come from context.
+ */
+declare function MenuRadioItem({ variant, icon, label, trailing, ...props }: MenuRadioItemProps): React.JSX.Element;
+//#endregion
+export { MenuRadioItem, MenuRadioItemProps };
+//# sourceMappingURL=menu-radio-item.d.ts.map

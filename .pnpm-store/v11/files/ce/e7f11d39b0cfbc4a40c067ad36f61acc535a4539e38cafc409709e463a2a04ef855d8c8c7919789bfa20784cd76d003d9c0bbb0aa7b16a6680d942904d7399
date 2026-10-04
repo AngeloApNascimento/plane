@@ -1,0 +1,21 @@
+"use client";
+import { formBodyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/form/form-body.tsx
+/**
+* The field-stacking region of a form. Fields stack with a consistent gap (always the same); the
+* `layout` axis selects single-column (`"single"`) or a wrapping multi-column (`"multi"`)
+* arrangement.
+*/
+function FormBody({ layout, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: formBodyVariants({ layout }) }, props)
+	});
+}
+//#endregion
+export { FormBody };
+
+//# sourceMappingURL=form-body.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/trigger-outline.d.ts
+declare function TriggerOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TriggerOutline };
+//# sourceMappingURL=trigger-outline.d.ts.map

@@ -1,0 +1,57 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/list/variants.d.ts
+/**
+ * A row wrapper. It owns the chrome (hover + selected fill + focus ring) and the layout, but is not
+ * itself the focusable target — that's the `ListItemLink`/`ListItemButton` it wraps. Selected and
+ * focus are read off descendants via `:has`, so the whole row reacts to its primary's state. The
+ * full-row ring keys off the primary only (`[data-list-item-primary]:focus-visible`) — sibling
+ * controls (disclosure, menus, etc.) keep their own focus chrome instead of lighting the whole
+ * row.
+ *
+ * Height is fixed at 32px (`h-8`, the ladder's `lg` step) for both density values — Figma's Nav
+ * item keeps a single row height and only ramps type. That is intentional off-ladder reuse of
+ * `comfortable`/`compact` (text density, not control height); see `size-scale.ts`.
+ */
+declare const listItemDefaultVariants: {
+  readonly level: 1;
+  readonly density: "comfortable";
+};
+declare const listItemVariants: (props?: ({
+  level?: 1 | 2 | 3 | 4 | 5 | null | undefined;
+  density?: "comfortable" | "compact" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type ListItemVariantConfig = VariantProps<typeof listItemVariants>;
+type ListItemLevel = NonNullable<ListItemVariantConfig["level"]>;
+type ListItemDensity = NonNullable<ListItemVariantConfig["density"]>;
+type ListItemVariantProps = StrictVariantProps<typeof listItemVariants, keyof typeof listItemDefaultVariants>;
+/** The row label — fills the remaining width and truncates. */
+declare const listItemLabelVariants: (props?: import("class-variance-authority/types").ClassProp | undefined) => string;
+type ListItemLabelVariantProps = StrictVariantProps<typeof listItemLabelVariants>;
+/**
+ * A static section heading — a small, muted label that names a group of rows. The non-interactive
+ * sibling of `listSectionTrigger`: no button affordance (no hover/focus/cursor), it just titles a
+ * static section in a settings-style sidebar.
+ */
+declare const listSectionHeadingVariants: (props?: import("class-variance-authority/types").ClassProp | undefined) => string;
+type ListSectionHeadingVariantProps = StrictVariantProps<typeof listSectionHeadingVariants>;
+/**
+ * The vertical gap between a `ListSection` heading and its first row. `ListSection` mounts rows
+ * directly in the Collapsible panel (not `CollapsiblePanelContent` — that carries horizontal inset
+ * + prose that would double-pad rows and mis-style list text), so this is the only source of that
+ * spacing.
+ */
+declare const listSectionPanelContentVariants: (props?: import("class-variance-authority/types").ClassProp | undefined) => string;
+type ListSectionPanelContentVariantProps = StrictVariantProps<typeof listSectionPanelContentVariants>;
+/**
+ * A collapsible section's header — a small, muted heading that toggles the section, with the
+ * chevron pushed to the inline-end edge of the row. Styled `ListSectionTrigger` (grafted as
+ * `BaseCollapsible.Trigger`'s render target); carries the `group` so a `DisclosureIndicator` inside
+ * rotates off its `data-panel-open`.
+ */
+declare const listSectionTriggerVariants: (props?: import("class-variance-authority/types").ClassProp | undefined) => string;
+type ListSectionTriggerVariantProps = StrictVariantProps<typeof listSectionTriggerVariants>;
+//#endregion
+export { ListItemDensity, ListItemLabelVariantProps, ListItemLevel, ListItemVariantProps, ListSectionHeadingVariantProps, ListSectionPanelContentVariantProps, ListSectionTriggerVariantProps, listItemLabelVariants, listItemVariants, listSectionHeadingVariants, listSectionPanelContentVariants, listSectionTriggerVariants };
+//# sourceMappingURL=variants.d.ts.map

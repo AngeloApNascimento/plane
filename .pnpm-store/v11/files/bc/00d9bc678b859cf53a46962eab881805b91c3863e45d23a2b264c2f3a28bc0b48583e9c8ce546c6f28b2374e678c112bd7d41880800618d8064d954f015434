@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/suggestion-menu/suggestion-menu-item-icon.d.ts
+type SuggestionMenuItemIconProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The row's leading glyph slot. Sizes its child to 16px and tints it `icon-secondary`. Decorative:
+ * renders with `aria-hidden`.
+ */
+declare function SuggestionMenuItemIcon({ render, ...props }: SuggestionMenuItemIconProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SuggestionMenuItemIcon, SuggestionMenuItemIconProps };
+//# sourceMappingURL=suggestion-menu-item-icon.d.ts.map

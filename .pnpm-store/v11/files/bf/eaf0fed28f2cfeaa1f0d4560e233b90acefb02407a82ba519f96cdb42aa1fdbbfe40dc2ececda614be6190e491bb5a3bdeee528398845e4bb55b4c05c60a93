@@ -1,0 +1,12 @@
+"use client";
+import { optionGroupVariants } from "../../internal/option-group.js";
+import { radioCircleVariants, radioDotClass } from "../../internal/radio-circle.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/radio/variants.ts
+const radioVariants = cva(cx(radioCircleVariants(), "bg-layer-1"));
+const radioIndicatorVariants = cva(radioDotClass);
+const radioGroupVariants = optionGroupVariants;
+//#endregion
+export { radioGroupVariants, radioIndicatorVariants, radioVariants };
+
+//# sourceMappingURL=variants.js.map

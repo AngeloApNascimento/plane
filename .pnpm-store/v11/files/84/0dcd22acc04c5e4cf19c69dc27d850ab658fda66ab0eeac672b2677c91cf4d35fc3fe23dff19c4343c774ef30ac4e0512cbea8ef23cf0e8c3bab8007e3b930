@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/new-chat-filled.d.ts
+declare function NewChatFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { NewChatFilled };
+//# sourceMappingURL=new-chat-filled.d.ts.map

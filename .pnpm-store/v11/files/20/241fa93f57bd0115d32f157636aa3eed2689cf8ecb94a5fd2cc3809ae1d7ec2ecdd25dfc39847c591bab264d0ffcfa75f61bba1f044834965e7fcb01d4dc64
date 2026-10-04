@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/ai-star-three-outline.d.ts
+declare function AiStarThreeOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AiStarThreeOutline };
+//# sourceMappingURL=ai-star-three-outline.d.ts.map

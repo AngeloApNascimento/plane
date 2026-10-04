@@ -1,0 +1,8 @@
+"use client";
+import { ScrollArea, ScrollAreaProps } from "./scroll-area.js";
+import { ScrollAreaCorner, ScrollAreaCornerProps } from "./scroll-area-corner.js";
+import { ScrollAreaScrollbarSize, ScrollAreaScrollbarVisibility } from "./variants.js";
+import { ScrollAreaScrollbar, ScrollAreaScrollbarProps } from "./scroll-area-scrollbar.js";
+import { ScrollAreaThumb, ScrollAreaThumbProps } from "./scroll-area-thumb.js";
+import { ScrollAreaViewport, ScrollAreaViewportProps } from "./scroll-area-viewport.js";
+export { ScrollArea, ScrollAreaCorner, ScrollAreaCornerProps, ScrollAreaProps, ScrollAreaScrollbar, ScrollAreaScrollbarProps, type ScrollAreaScrollbarSize, type ScrollAreaScrollbarVisibility, ScrollAreaThumb, ScrollAreaThumbProps, ScrollAreaViewport, ScrollAreaViewportProps };

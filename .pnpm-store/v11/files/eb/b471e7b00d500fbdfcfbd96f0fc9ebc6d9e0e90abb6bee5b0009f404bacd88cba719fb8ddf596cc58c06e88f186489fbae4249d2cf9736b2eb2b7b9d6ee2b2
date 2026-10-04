@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/arrows/chevron-up-outline.tsx
+function ChevronUpOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M7.656 5.478a.626.626 0 0 1 .786.08l4 4a.626.626 0 0 1-.884.885L8 6.885l-3.558 3.558a.626.626 0 0 1-.884-.885l4-4z"
+		})
+	});
+}
+//#endregion
+export { ChevronUpOutline };
+
+//# sourceMappingURL=chevron-up-outline.js.map

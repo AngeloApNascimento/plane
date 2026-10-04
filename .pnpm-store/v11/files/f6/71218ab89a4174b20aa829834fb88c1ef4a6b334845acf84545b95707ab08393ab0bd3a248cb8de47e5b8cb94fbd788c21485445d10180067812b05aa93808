@@ -1,0 +1,12 @@
+"use client";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-status.d.ts
+type ComboboxStatusProps = Omit<Combobox.Status.Props, "className" | "style" | "render">;
+/**
+ * A polite live region inside the popup for async hints ("Searching…", "12 results") — Base UI's
+ * `Status` behavior grafted onto the shared muted listbox hint styling.
+ */
+declare function ComboboxStatus(props: ComboboxStatusProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxStatus, ComboboxStatusProps };
+//# sourceMappingURL=combobox-status.d.ts.map

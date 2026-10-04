@@ -1,0 +1,3 @@
+"use client";
+import { LinearProgress } from "./linear-progress.js";
+export { LinearProgress };

@@ -1,0 +1,13 @@
+"use client";
+import { TableCellContentVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell-content.d.ts
+type TableCellContentProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & TableCellContentVariantProps;
+/**
+ * The growing text region inside a `TableCellLayout`. Truncates instead of overflowing, and carries
+ * the column's `align` — the cell's layout is a flex row, so `text-align` has to land here.
+ */
+declare function TableCellContent({ align, render, ...props }: TableCellContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableCellContent, TableCellContentProps };
+//# sourceMappingURL=table-cell-content.d.ts.map

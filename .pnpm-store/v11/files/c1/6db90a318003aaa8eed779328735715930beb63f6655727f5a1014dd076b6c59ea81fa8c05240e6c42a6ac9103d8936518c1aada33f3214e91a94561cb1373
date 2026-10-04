@@ -1,0 +1,15 @@
+"use client";
+import { TextAreaSize, TextAreaSurface, TextAreaVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/text-area/text-area.d.ts
+type TextAreaProps = Omit<useRender.ComponentProps<"textarea">, "className" | "style"> & TextAreaVariantProps;
+/**
+ * The styled multi-line textarea leaf. Base-UI-agnostic — graft the Base UI `Field.Control`
+ * behavior in `components` via `<BaseField.Control render={<TextArea/>} />`. Compose the `field`
+ * surface inside a `TextAreaGroup` frame (the group owns `resize`). Pair `autoResize` with
+ * `resize="none"` on that frame so the native drag handle does not fight content-driven height.
+ */
+declare function TextArea({ size, surface, autoResize, render, ...props }: TextAreaProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TextArea, TextAreaProps, type TextAreaSize, type TextAreaSurface };
+//# sourceMappingURL=text-area.d.ts.map

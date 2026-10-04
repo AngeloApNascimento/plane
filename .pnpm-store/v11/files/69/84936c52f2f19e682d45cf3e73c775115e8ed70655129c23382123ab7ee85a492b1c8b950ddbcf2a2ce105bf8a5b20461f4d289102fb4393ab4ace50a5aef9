@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/link-page-outline.d.ts
+declare function LinkPageOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { LinkPageOutline };
+//# sourceMappingURL=link-page-outline.d.ts.map

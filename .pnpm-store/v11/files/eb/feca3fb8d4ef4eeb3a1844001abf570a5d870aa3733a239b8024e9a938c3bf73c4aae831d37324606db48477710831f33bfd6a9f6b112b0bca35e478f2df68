@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-inline-host.d.ts
+type DrawerInlineHostProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * Absolute-fill portal host for inline drawers when no `container` is passed. The parent must be
+ * positioned (`relative`). Used by `DrawerPanel` for `variant="inline"`.
+ */
+declare function DrawerInlineHost({ render, ...props }: DrawerInlineHostProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerInlineHost, DrawerInlineHostProps };
+//# sourceMappingURL=drawer-inline-host.d.ts.map

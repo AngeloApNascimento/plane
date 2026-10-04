@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/copy-as-prompt-outline.d.ts
+declare function CopyAsPromptOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CopyAsPromptOutline };
+//# sourceMappingURL=copy-as-prompt-outline.d.ts.map

@@ -1,0 +1,41 @@
+"use client";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { cva, cx } from "class-variance-authority";
+//#region src/internal/listbox-item.tsx
+/**
+* The shared listbox option row, grafted onto any Base UI `*.Item` behavior in `components`
+* (`<BaseAutocomplete.Item render={<ListboxItem layout="plain" size="lg" />} value={…} />`).
+* Highlight/disabled states, a size axis for height + text size, and a `layout` axis for the row's
+* arrangement.
+*
+* Shared chrome across the `autocomplete` and `select` families, so it lives here rather than being
+* copied per family (rule 4a). `autocomplete` and `combobox` were once fixed at a single 32px row;
+* the shared `size` axis now spans the ladder's `md`–`2xl` rungs.
+*/
+const listboxItemVariants = cva(cx("cursor-default items-center rounded-sm px-2 text-primary outline-none", "data-highlighted:bg-layer-transparent-hover data-highlighted:text-primary", "data-disabled:cursor-not-allowed data-disabled:text-disabled"), { variants: {
+	layout: {
+		indicator: "grid grid-cols-[1fr_1rem]",
+		plain: "flex"
+	},
+	size: {
+		md: "min-h-(--control-height-md) gap-(--control-gap-md) text-body-xs-regular [--node-size:var(--control-glyph-md)]",
+		lg: "min-h-(--control-height-lg) gap-(--control-gap-lg) text-body-sm-regular [--node-size:var(--control-glyph-lg)]",
+		xl: "min-h-(--control-height-xl) gap-(--control-gap-xl) text-body-sm-regular [--node-size:var(--control-glyph-xl)]",
+		"2xl": "min-h-(--control-height-2xl) gap-(--control-gap-2xl) text-body-md-regular [--node-size:var(--control-glyph-2xl)]"
+	}
+} });
+function ListboxItem({ layout, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: listboxItemVariants({
+			layout,
+			size
+		}) }, props)
+	});
+}
+//#endregion
+export { ListboxItem, listboxItemVariants };
+
+//# sourceMappingURL=listbox-item.js.map

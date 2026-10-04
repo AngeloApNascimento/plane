@@ -1,0 +1,63 @@
+"use client";
+import { nodeSlotClass } from "./node-slot.js";
+import * as React from "react";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { cva, cx } from "class-variance-authority";
+//#region src/internal/spinner.tsx
+/**
+* The shared pending-state glyph slot (rule 4a): an `aria-hidden` `<span>` sizing its single svg
+* child (pass a `LoaderCircle`) to the inherited `--node-size`. Replaces the byte-identical
+* Button/IconButton/Pill spinner parts.
+*
+* Glyph choice — decided with the designers (2026-07): the loading glyph is lucide's circular
+* `LoaderCircle`, NOT the radial ("spokes") spinner shown in Figma. Figma's radial spinner is not a
+* lucide icon, and we only ship lucide glyphs here, so we intentionally diverge from the design and
+* use the circular one. Do not hand-roll a custom radial SVG to match Figma — keep passing
+* `LoaderCircle`.
+*
+* Two animations run on mount: the `--animate-spinner-reveal` one-shot grows the slot from zero
+* width and fades it in (so a control entering its loading state widens smoothly instead of
+* snapping), while the perpetual `spin` rotates the glyph. They live on separate elements because
+* an element has a single `animation` slot: the reveal owns the span, the spin owns the svg child.
+* `overflow-hidden` clips the glyph while the slot is still expanding.
+*
+* Exit mirrors it: render the spinner unconditionally with `active={loading}` and, when `active`
+* turns false, it stays mounted playing `--animate-spinner-conceal` (narrowing back to zero width)
+* and unmounts on that animation's end — so the control settles back smoothly instead of snapping.
+* Controls whose box doesn't resize with the spinner (icon-only) just mount it conditionally.
+*
+* The unmount has a timeout fallback so the spinner can never get stuck occupying width: if the
+* conceal animation never reports back (interrupted/cancelled, `prefers-reduced-motion`, disabled
+* animations, or test environments without CSS animations, where `animationend` never fires), the
+* spinner unmounts once the conceal duration has elapsed.
+*/
+const spinnerVariants = cva(cx(nodeSlotClass, "overflow-hidden [&>svg]:animate-spin"));
+const SPINNER_CONCEAL_TIMEOUT_MS = 250;
+function Spinner({ active = true, render, ...props }) {
+	const [mounted, setMounted] = React.useState(active);
+	if (active && !mounted) setMounted(true);
+	React.useEffect(() => {
+		if (active || !mounted) return;
+		const id = window.setTimeout(() => setMounted(false), SPINNER_CONCEAL_TIMEOUT_MS);
+		return () => window.clearTimeout(id);
+	}, [active, mounted]);
+	const finishExit = (event) => {
+		if (!active && event.target === event.currentTarget) setMounted(false);
+	};
+	const element = useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			"aria-hidden": true,
+			className: cx(spinnerVariants(), active ? "animate-spinner-reveal motion-reduce:animate-none" : "animate-spinner-conceal motion-reduce:animate-none"),
+			...active ? void 0 : { "data-ending-style": "" },
+			onAnimationEnd: finishExit
+		}, props)
+	});
+	return mounted ? element : null;
+}
+//#endregion
+export { Spinner, spinnerVariants };
+
+//# sourceMappingURL=spinner.js.map

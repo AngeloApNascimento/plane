@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/project-features/overview-filled.d.ts
+declare function OverviewFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { OverviewFilled };
+//# sourceMappingURL=overview-filled.d.ts.map

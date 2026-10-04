@@ -1,0 +1,61 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/dialog/variants.d.ts
+declare const dialogPopupDefaultVariants: {
+  readonly size: "md";
+  readonly height: "auto";
+};
+declare const dialogPopupVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | "xl" | "xs" | "full" | null | undefined;
+  height?: "auto" | "fixed" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const dialogAsideDefaultVariants: {
+  readonly size: "md";
+  readonly density: "comfortable";
+};
+declare const dialogAsideVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | "xl" | "xs" | "full" | null | undefined;
+  density?: "comfortable" | "compact" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const dialogMainDefaultVariants: {
+  readonly inPanes: false;
+  readonly size: "md";
+  readonly density: "comfortable";
+};
+declare const dialogMainVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | "xl" | "xs" | "full" | null | undefined;
+  density?: "comfortable" | "compact" | null | undefined;
+  inPanes?: boolean | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const dialogActionsDefaultVariants: {
+  readonly size: "md";
+  readonly density: "comfortable";
+};
+declare const dialogToolbarDefaultVariants: {
+  readonly size: "md";
+  readonly density: "comfortable";
+};
+declare const dialogToolbarVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | "xl" | "xs" | "full" | null | undefined;
+  density?: "comfortable" | "compact" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const dialogActionsVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | "xl" | "xs" | "full" | null | undefined;
+  density?: "comfortable" | "compact" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type DialogPopupSize = NonNullable<VariantProps<typeof dialogPopupVariants>["size"]>;
+type DialogPopupHeight = NonNullable<VariantProps<typeof dialogPopupVariants>["height"]>;
+type DialogPopupVariantProps = StrictVariantProps<typeof dialogPopupVariants, keyof typeof dialogPopupDefaultVariants>;
+type DialogDensity = NonNullable<VariantProps<typeof dialogMainVariants>["density"]>;
+type DialogAsideSize = NonNullable<VariantProps<typeof dialogAsideVariants>["size"]>;
+type DialogAsideVariantProps = StrictVariantProps<typeof dialogAsideVariants, keyof typeof dialogAsideDefaultVariants>;
+type DialogMainSize = NonNullable<VariantProps<typeof dialogMainVariants>["size"]>;
+type DialogMainVariantProps = StrictVariantProps<typeof dialogMainVariants, keyof typeof dialogMainDefaultVariants>;
+type DialogToolbarSize = NonNullable<VariantProps<typeof dialogToolbarVariants>["size"]>;
+type DialogToolbarVariantProps = StrictVariantProps<typeof dialogToolbarVariants, keyof typeof dialogToolbarDefaultVariants>;
+type DialogActionsSize = NonNullable<VariantProps<typeof dialogActionsVariants>["size"]>;
+type DialogActionsVariantProps = StrictVariantProps<typeof dialogActionsVariants, keyof typeof dialogActionsDefaultVariants>;
+//#endregion
+export { DialogActionsSize, DialogActionsVariantProps, DialogAsideSize, DialogAsideVariantProps, DialogDensity, DialogMainSize, DialogMainVariantProps, DialogPopupHeight, DialogPopupSize, DialogPopupVariantProps, DialogToolbarSize, DialogToolbarVariantProps, dialogActionsVariants, dialogAsideVariants, dialogMainVariants, dialogPopupVariants, dialogToolbarVariants };
+//# sourceMappingURL=variants.d.ts.map

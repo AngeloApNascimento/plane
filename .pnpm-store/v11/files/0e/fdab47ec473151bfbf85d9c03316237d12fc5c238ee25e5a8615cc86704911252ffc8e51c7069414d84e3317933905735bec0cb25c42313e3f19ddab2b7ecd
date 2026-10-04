@@ -1,0 +1,20 @@
+"use client";
+import { scrollAreaThumbVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/scroll-area/scroll-area-thumb.tsx
+/**
+* The styled draggable scrollbar thumb. Base-UI-agnostic — graft in `components` via
+* `<BaseScrollArea.Thumb render={<ScrollAreaThumb/>} />`.
+*/
+function ScrollAreaThumb({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: scrollAreaThumbVariants() }, props)
+	});
+}
+//#endregion
+export { ScrollAreaThumb };
+
+//# sourceMappingURL=scroll-area-thumb.js.map

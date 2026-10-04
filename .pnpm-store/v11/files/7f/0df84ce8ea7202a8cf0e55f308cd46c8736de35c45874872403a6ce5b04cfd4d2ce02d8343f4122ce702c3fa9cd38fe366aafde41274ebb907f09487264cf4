@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-range.d.ts
+type PaginationRangeProps = Omit<useRender.ComponentProps<"p">, "className" | "style">;
+/**
+ * The optional range label shown before the controls (Figma `1-50 of 250`): tertiary, nowrap. The
+ * current range inside it is emphasized via `PaginationRangeCurrent`.
+ */
+declare function PaginationRange({ render, ...props }: PaginationRangeProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationRange, PaginationRangeProps };
+//# sourceMappingURL=pagination-range.d.ts.map

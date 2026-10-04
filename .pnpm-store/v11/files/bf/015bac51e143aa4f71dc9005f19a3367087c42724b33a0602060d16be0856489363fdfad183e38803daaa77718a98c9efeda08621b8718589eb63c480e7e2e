@@ -1,0 +1,13 @@
+"use client";
+import { ContextMenuItemVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-link-item.d.ts
+type ContextMenuLinkItemProps = Omit<useRender.ComponentProps<"a">, "className" | "style"> & ContextMenuItemVariantProps;
+/**
+ * The styled navigational `<a>` menu row. Base-UI-agnostic — graft the link-item behavior in
+ * `components` via `<BaseContextMenu.LinkItem render={<ContextMenuLinkItem/>} />`.
+ */
+declare function ContextMenuLinkItem({ variant, render, ...props }: ContextMenuLinkItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ContextMenuLinkItem, ContextMenuLinkItemProps };
+//# sourceMappingURL=context-menu-link-item.d.ts.map

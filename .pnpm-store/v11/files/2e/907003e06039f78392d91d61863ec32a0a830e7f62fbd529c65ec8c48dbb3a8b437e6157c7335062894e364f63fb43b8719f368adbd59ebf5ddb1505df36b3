@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/repeat-outline.d.ts
+declare function RepeatOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RepeatOutline };
+//# sourceMappingURL=repeat-outline.d.ts.map

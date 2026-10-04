@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/divider-filled.d.ts
+declare function DividerFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DividerFilled };
+//# sourceMappingURL=divider-filled.d.ts.map

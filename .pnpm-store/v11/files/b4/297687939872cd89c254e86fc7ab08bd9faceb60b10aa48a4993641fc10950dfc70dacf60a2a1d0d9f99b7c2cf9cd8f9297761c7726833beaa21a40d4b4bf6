@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/charts/pie-filled.d.ts
+declare function PieFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PieFilled };
+//# sourceMappingURL=pie-filled.d.ts.map

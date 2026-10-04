@@ -1,0 +1,16 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-submenu.tsx
+/**
+* Groups all parts of a nested submenu — its `ContextMenuSubmenuTrigger` row and the
+* `ContextMenuSubmenuContent` that opens beside it. Holds the submenu's own open state and renders
+* no element of its own.
+*/
+function ContextMenuSubmenu(props) {
+	return /* @__PURE__ */ jsx(ContextMenu.SubmenuRoot, { ...props });
+}
+//#endregion
+export { ContextMenuSubmenu };
+
+//# sourceMappingURL=context-menu-submenu.js.map

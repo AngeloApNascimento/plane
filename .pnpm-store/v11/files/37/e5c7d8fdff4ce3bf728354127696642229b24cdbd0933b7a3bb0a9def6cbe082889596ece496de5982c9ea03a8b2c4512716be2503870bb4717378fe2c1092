@@ -1,0 +1,14 @@
+"use client";
+import * as React from "react";
+import { Tabs } from "@base-ui/react/tabs";
+//#region src/components/tabs/tabs-panel.d.ts
+type TabsPanelProps = Omit<Tabs.Panel.Props, "className" | "render" | "style">;
+/**
+ * The ready-made tab panel: grafts the Base UI `Tabs.Panel` behavior (shown when the `Tab` of the
+ * matching `value` is active) onto the styled `elements/tabs` panel and applies the set's height
+ * layout from context.
+ */
+declare function TabsPanel(props: TabsPanelProps): React.JSX.Element;
+//#endregion
+export { TabsPanel, TabsPanelProps };
+//# sourceMappingURL=tabs-panel.d.ts.map

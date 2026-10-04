@@ -1,0 +1,21 @@
+"use client";
+import { previewCardPropertyGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/preview-card/preview-card-property-group.tsx
+/**
+* The row of property chips (status, priority, assignee, labels, …) shown beneath the description.
+* A bare flex-wrap row — the chips are the consumer's own components (`Pill`, `Avatar`, `Badge`,
+* …); this part only supplies the row layout. Never `aria-hidden`: its content is meaningful.
+*/
+function PreviewCardPropertyGroup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: previewCardPropertyGroupVariants() }, props)
+	});
+}
+//#endregion
+export { PreviewCardPropertyGroup };
+
+//# sourceMappingURL=preview-card-property-group.js.map

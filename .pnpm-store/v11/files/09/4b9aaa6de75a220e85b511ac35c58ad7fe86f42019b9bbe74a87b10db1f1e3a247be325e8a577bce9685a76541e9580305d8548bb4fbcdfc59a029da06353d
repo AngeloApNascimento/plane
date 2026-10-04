@@ -1,0 +1,18 @@
+"use client";
+import { StrictVariantProps } from "./variant-props.js";
+import { useRender } from "@base-ui/react/use-render";
+import { VariantProps } from "class-variance-authority";
+//#region src/internal/shortcut.d.ts
+declare const shortcutDefaultVariants: {
+  readonly size: "md";
+};
+declare const shortcutVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type ShortcutVariantConfig = VariantProps<typeof shortcutVariants>;
+type ShortcutSize = NonNullable<ShortcutVariantConfig["size"]>;
+type ShortcutVariantProps = StrictVariantProps<typeof shortcutVariants, keyof typeof shortcutDefaultVariants>;
+type ShortcutProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & ShortcutVariantProps;
+//#endregion
+export { ShortcutProps, ShortcutSize, ShortcutVariantProps, shortcutVariants };
+//# sourceMappingURL=shortcut.d.ts.map

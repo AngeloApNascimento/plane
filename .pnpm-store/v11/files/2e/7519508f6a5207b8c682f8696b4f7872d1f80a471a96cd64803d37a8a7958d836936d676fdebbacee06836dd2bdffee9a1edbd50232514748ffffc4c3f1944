@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-header.d.ts
+type SliderHeaderProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The row above the control that holds the `SliderLabel` (inline-start) and the `SliderValue`
+ * readout (inline-end). Keeps the label/value layout out of the root, which only stacks the header
+ * over the control. Omit it when neither a label nor a value readout is shown.
+ */
+declare function SliderHeader({ render, ...props }: SliderHeaderProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SliderHeader, SliderHeaderProps };
+//# sourceMappingURL=slider-header.d.ts.map

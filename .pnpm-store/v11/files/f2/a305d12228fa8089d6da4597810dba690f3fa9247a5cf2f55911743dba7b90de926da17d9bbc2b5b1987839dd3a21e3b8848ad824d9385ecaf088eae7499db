@@ -1,0 +1,17 @@
+"use client";
+import { tableHeaderVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-header.tsx
+/** Header section (`<thead>`). Holds a single `TableRow` of `TableHead` cells. */
+function TableHeader({ render, ...props }) {
+	return useRender({
+		defaultTagName: "thead",
+		render,
+		props: mergeProps({ className: tableHeaderVariants() }, props)
+	});
+}
+//#endregion
+export { TableHeader };
+
+//# sourceMappingURL=table-header.js.map

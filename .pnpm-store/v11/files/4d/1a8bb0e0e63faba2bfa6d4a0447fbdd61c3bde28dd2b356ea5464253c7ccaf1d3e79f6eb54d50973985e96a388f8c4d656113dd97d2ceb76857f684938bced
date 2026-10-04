@@ -1,0 +1,23 @@
+"use client";
+import { navigationMenuLinkVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-link.tsx
+/**
+* A styled navigable link. `appearance="item"` is a top-level pill that shares its chrome with
+* `NavigationMenuTrigger`; `appearance="card"` is a stacked entry inside `Content`, pairing a
+* `NavigationMenuLinkTitle` with an optional `NavigationMenuLinkDescription`. Base-UI-agnostic —
+* graft in `components` via `<BaseNavigationMenu.Link render={<NavigationMenuLink appearance="…"
+* />} />`.
+*/
+function NavigationMenuLink({ appearance, render, ...props }) {
+	return useRender({
+		defaultTagName: "a",
+		render,
+		props: mergeProps({ className: navigationMenuLinkVariants({ appearance }) }, props)
+	});
+}
+//#endregion
+export { NavigationMenuLink };
+
+//# sourceMappingURL=navigation-menu-link.js.map

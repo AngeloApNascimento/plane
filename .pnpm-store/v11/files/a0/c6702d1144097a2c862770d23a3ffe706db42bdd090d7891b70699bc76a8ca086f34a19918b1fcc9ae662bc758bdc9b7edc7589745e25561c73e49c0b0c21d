@@ -1,0 +1,15 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { cx } from "class-variance-authority";
+//#region src/internal/node-slot.tsx
+const nodeSlotClass = cx("inline-flex shrink-0 items-center justify-center", "[&>img]:size-(--node-size) [&>svg]:size-(--node-size)");
+function NodeSlot(props) {
+	return /* @__PURE__ */ jsx("span", {
+		className: nodeSlotClass,
+		...props
+	});
+}
+//#endregion
+export { NodeSlot, nodeSlotClass };
+
+//# sourceMappingURL=node-slot.js.map

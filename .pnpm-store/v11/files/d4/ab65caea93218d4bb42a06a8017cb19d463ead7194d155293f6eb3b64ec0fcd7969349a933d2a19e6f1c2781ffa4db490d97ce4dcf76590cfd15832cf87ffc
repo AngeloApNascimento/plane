@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/implements-filled.d.ts
+declare function ImplementsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ImplementsFilled };
+//# sourceMappingURL=implements-filled.d.ts.map

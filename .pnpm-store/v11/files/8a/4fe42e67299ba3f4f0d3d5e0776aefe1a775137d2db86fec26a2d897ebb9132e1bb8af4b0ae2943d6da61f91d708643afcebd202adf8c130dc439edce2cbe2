@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-item-content.d.ts
+type MenuItemContentProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The text column of a row. Grows to fill the row so trailing nodes/indicators sit at the
+ * inline-end, and stacks a `MenuItemTitleRow` over an optional `MenuItemDescription`.
+ */
+declare function MenuItemContent({ render, ...props }: MenuItemContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuItemContent, MenuItemContentProps };
+//# sourceMappingURL=menu-item-content.d.ts.map

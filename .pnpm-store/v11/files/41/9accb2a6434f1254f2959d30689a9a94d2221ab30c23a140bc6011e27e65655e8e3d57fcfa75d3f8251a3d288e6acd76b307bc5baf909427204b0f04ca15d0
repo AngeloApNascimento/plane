@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/filter-filled.d.ts
+declare function FilterFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FilterFilled };
+//# sourceMappingURL=filter-filled.d.ts.map

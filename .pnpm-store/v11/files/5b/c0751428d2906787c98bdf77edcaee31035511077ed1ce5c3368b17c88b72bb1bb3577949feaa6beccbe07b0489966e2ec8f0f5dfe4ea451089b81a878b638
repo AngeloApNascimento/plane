@@ -1,0 +1,14 @@
+"use client";
+import { FieldLabelGroupVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-label-group.d.ts
+type FieldLabelGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & FieldLabelGroupVariantProps;
+/**
+ * The label/description column of a field: a single styled `<div>` (stacked, gapped). `orientation`
+ * matches the field's layout. The ready-made `components/field` `FieldLabelGroup` fills it with a
+ * `FieldLabel` and/or `FieldDescription`.
+ */
+declare function FieldLabelGroup({ orientation, render, ...props }: FieldLabelGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldLabelGroup, FieldLabelGroupProps };
+//# sourceMappingURL=field-label-group.d.ts.map

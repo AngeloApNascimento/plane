@@ -1,0 +1,14 @@
+"use client";
+import { ToolbarInputVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-input.d.ts
+type ToolbarInputProps = Omit<useRender.ComponentProps<"input">, "className" | "style" | "size"> & ToolbarInputVariantProps;
+/**
+ * The styled inline text input for a toolbar (a miniature field on the shared control surface,
+ * size-matched to the items). Base-UI-agnostic — graft in `components` via `<BaseToolbar.Input
+ * render={<ToolbarInput size=… />} />`.
+ */
+declare function ToolbarInput({ size, render, ...props }: ToolbarInputProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToolbarInput, ToolbarInputProps };
+//# sourceMappingURL=toolbar-input.d.ts.map

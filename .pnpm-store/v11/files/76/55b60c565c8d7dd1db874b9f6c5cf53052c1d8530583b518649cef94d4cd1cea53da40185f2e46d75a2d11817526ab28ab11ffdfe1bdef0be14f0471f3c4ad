@@ -1,0 +1,19 @@
+"use client";
+import { FieldDescription as FieldDescription$1 } from "../../elements/field/field-description.js";
+import { jsx } from "react/jsx-runtime";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-description.tsx
+/**
+* Supporting / helper text for a field: Base UI's `Field.Description` (auto-associated as the
+* control's accessible description) grafted onto the styled `FieldDescription` element (rule 1a).
+*/
+function FieldDescription({ size, ...props }) {
+	return /* @__PURE__ */ jsx(Field.Description, {
+		...props,
+		render: /* @__PURE__ */ jsx(FieldDescription$1, { size })
+	});
+}
+//#endregion
+export { FieldDescription };
+
+//# sourceMappingURL=field-description.js.map

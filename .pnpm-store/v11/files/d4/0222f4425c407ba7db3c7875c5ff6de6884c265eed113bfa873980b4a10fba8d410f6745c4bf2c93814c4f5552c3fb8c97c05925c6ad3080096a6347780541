@@ -1,0 +1,28 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/text-area/variants.d.ts
+declare const textAreaGroupDefaultVariants: {
+  readonly resize: "vertical";
+};
+declare const textAreaGroupVariants: (props?: ({
+  resize?: "none" | "vertical" | "both" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TextAreaGroupVariantProps = StrictVariantProps<typeof textAreaGroupVariants, keyof typeof textAreaGroupDefaultVariants>;
+type TextAreaGroupVariantConfig = VariantProps<typeof textAreaGroupVariants>;
+type TextAreaResize = NonNullable<TextAreaGroupVariantConfig["resize"]>;
+declare const textAreaDefaultVariants: {
+  readonly autoResize: false;
+};
+declare const textAreaVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+  surface?: "field" | "embedded" | "inline" | null | undefined;
+  autoResize?: boolean | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TextAreaVariantConfig = VariantProps<typeof textAreaVariants>;
+type TextAreaSize = NonNullable<TextAreaVariantConfig["size"]>;
+type TextAreaSurface = NonNullable<TextAreaVariantConfig["surface"]>;
+type TextAreaVariantProps = StrictVariantProps<typeof textAreaVariants, keyof typeof textAreaDefaultVariants>;
+//#endregion
+export { TextAreaGroupVariantProps, TextAreaResize, TextAreaSize, TextAreaSurface, TextAreaVariantProps, textAreaGroupVariants, textAreaVariants };
+//# sourceMappingURL=variants.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/project-features/sub-work-items-outline.d.ts
+declare function SubWorkItemsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { SubWorkItemsOutline };
+//# sourceMappingURL=sub-work-items-outline.d.ts.map

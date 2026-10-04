@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/youtube.d.ts
+declare function Youtube(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Youtube };
+//# sourceMappingURL=youtube.d.ts.map

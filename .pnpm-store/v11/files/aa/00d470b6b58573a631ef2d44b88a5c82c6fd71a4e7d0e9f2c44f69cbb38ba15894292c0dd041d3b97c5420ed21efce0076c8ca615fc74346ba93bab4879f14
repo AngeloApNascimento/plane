@@ -1,0 +1,7 @@
+"use client";
+import { InputSize } from "../../elements/input/variants.js";
+import { InputProps } from "../../elements/input/input.js";
+import { Input } from "./input.js";
+import { InputGroup, InputGroupProps } from "../../elements/input/input-group.js";
+import "../../elements/input/index.js";
+export { Input, InputGroup, type InputGroupProps, type InputProps, type InputSize };

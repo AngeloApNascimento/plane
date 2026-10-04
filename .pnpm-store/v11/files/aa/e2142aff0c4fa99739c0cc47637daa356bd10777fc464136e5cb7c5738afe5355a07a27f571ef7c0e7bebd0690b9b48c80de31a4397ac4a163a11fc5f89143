@@ -1,0 +1,28 @@
+"use client";
+import { setTriggerClickPolicy } from "./popover-context.js";
+import "react";
+import { jsx } from "react/jsx-runtime";
+import { Popover } from "@base-ui/react/popover";
+//#region src/components/popover/popover-trigger.tsx
+/**
+* The element that opens the popover. Renders a `<button>` by default; pass `render` to project the
+* trigger onto any control (`Button`, `IconButton`, a custom element). The panel anchors to
+* whichever trigger opened it.
+*
+* Interaction: click only (default), click + hover (`openOnHover`), or hover only (`openOnHover`
+* and `openOnClick={false}`).
+*/
+function PopoverTrigger({ openOnClick = true, ref, ...props }) {
+	return /* @__PURE__ */ jsx(Popover.Trigger, {
+		...props,
+		ref: (node) => {
+			setTriggerClickPolicy(node, openOnClick);
+			if (typeof ref === "function") ref(node);
+			else if (ref) ref.current = node;
+		}
+	});
+}
+//#endregion
+export { PopoverTrigger };
+
+//# sourceMappingURL=popover-trigger.js.map

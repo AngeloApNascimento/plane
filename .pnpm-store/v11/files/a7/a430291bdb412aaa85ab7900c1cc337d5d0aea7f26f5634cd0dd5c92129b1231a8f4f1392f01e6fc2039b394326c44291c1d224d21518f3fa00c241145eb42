@@ -1,0 +1,15 @@
+"use client";
+//#region src/components/popover/popover-context.ts
+const clickDisabledTriggers = /* @__PURE__ */ new WeakSet();
+function setTriggerClickPolicy(node, openOnClick) {
+	if (!node) return;
+	if (openOnClick) clickDisabledTriggers.delete(node);
+	else clickDisabledTriggers.add(node);
+}
+function isClickDisabledTrigger(trigger) {
+	return trigger != null && clickDisabledTriggers.has(trigger);
+}
+//#endregion
+export { isClickDisabledTrigger, setTriggerClickPolicy };
+
+//# sourceMappingURL=popover-context.js.map

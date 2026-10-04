@@ -1,0 +1,25 @@
+"use client";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { cva } from "class-variance-authority";
+//#region src/internal/listbox-group-label.tsx
+/**
+* The muted heading naming a group of listbox options, grafted onto a Base UI `GroupLabel` in
+* `components` (`<BaseCombobox.GroupLabel render={<ListboxGroupLabel/>} />`). Matches the menu
+* group label's type treatment so grouped pickers and menus read the same. `text-caption-md-medium`
+* (not a bare 12px + `font-medium` pair) so the row picks up the preset's `1.2` line-height — the
+* bare utility fell back to the browser's normal (~1.5×) line-height, rendering the heading taller
+* than the Figma "caption/md" spec.
+*/
+const listboxGroupLabelVariants = cva("px-2 py-1.5 text-caption-md-medium text-tertiary");
+function ListboxGroupLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: listboxGroupLabelVariants() }, props)
+	});
+}
+//#endregion
+export { ListboxGroupLabel, listboxGroupLabelVariants };
+
+//# sourceMappingURL=listbox-group-label.js.map

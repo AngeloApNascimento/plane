@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/git-pull-request-filled.tsx
+function GitPullRequestFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("g", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			clipRule: "evenodd",
+			children: /* @__PURE__ */ jsx("path", { d: "M4.667 6.582a2.668 2.668 0 1 0-1.334 0V14a.667.667 0 0 0 1.334 0zM9.333 12c0-1.243.85-2.287 2-2.583V5.333a.667.667 0 0 0-.666-.667h-2a.667.667 0 0 1 0-1.333h2a2 2 0 0 1 2 2v4.084A2.668 2.668 0 1 1 9.333 12" })
+		})
+	});
+}
+//#endregion
+export { GitPullRequestFilled };
+
+//# sourceMappingURL=git-pull-request-filled.js.map

@@ -1,0 +1,17 @@
+"use client";
+import { suggestionMenuItemTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/suggestion-menu/suggestion-menu-item-title.tsx
+/** The row label. Grows to fill the row and truncates. */
+function SuggestionMenuItemTitle({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: suggestionMenuItemTitleVariants() }, props)
+	});
+}
+//#endregion
+export { SuggestionMenuItemTitle };
+
+//# sourceMappingURL=suggestion-menu-item-title.js.map

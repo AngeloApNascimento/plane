@@ -1,0 +1,46 @@
+"use client";
+import { ComboboxContentSurface } from "./combobox-content.shared.js";
+import { useComboboxSubmenuContext } from "./combobox-submenu-context.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/combobox/combobox-submenu-content.tsx
+/**
+* The floating surface for a nested combobox — the same elevated, scrollable panel as
+* `ComboboxContent`, but anchored beside its parent row instead of below the field. Place it inside
+* a `ComboboxSubmenu`, which supplies both the row it anchors to and the nested root it belongs
+* to.
+*
+* It has no `anchor` prop: the parent row is the anchor, and overriding it would leave the row
+* highlighted next to a panel somewhere else.
+*
+* Same naming contract as `ComboboxContent`: a nested list with its own `ComboboxSearch` is a
+* `role="dialog"` and must be named — pass `aria-label` (the parent row's label reads well) or
+* `aria-labelledby`. Name its `ComboboxList` too, since that list, not the row, is what a screen
+* reader lands in when the nested combobox opens.
+*/
+function ComboboxSubmenuContent({ side = "right", sideOffset = 4, align = "start", sizing = "auto", onPointerEnter, onPointerLeave, onKeyDown, ...props }) {
+	const submenu = useComboboxSubmenuContext("ComboboxSubmenuContent");
+	return /* @__PURE__ */ jsx(ComboboxContentSurface, {
+		side,
+		sideOffset,
+		align,
+		sizing,
+		anchor: submenu.triggerRef,
+		onPointerEnter: (event) => {
+			onPointerEnter?.(event);
+			submenu.cancelScheduled();
+		},
+		onPointerLeave: (event) => {
+			onPointerLeave?.(event);
+			submenu.scheduleClose();
+		},
+		onKeyDown: (event) => {
+			onKeyDown?.(event);
+			if (event.key === "Escape" && !submenu.closeParentOnEsc) event.stopPropagation();
+		},
+		...props
+	});
+}
+//#endregion
+export { ComboboxSubmenuContent };
+
+//# sourceMappingURL=combobox-submenu-content.js.map

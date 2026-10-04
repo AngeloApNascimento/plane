@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-item.d.ts
+type BreadcrumbItemProps = Omit<useRender.ComponentProps<"li">, "className" | "style">;
+/** One step in the trail: a list item holding a link, page, or menu crumb. */
+declare function BreadcrumbItem({ render, ...props }: BreadcrumbItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BreadcrumbItem, BreadcrumbItemProps };
+//# sourceMappingURL=breadcrumb-item.d.ts.map

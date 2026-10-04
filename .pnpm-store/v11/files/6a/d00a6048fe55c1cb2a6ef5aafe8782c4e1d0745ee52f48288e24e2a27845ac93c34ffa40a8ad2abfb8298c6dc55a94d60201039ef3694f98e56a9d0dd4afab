@@ -1,0 +1,8 @@
+"use client";
+import { OTPFieldInputSize } from "../../elements/otp-field/variants.js";
+import { OTPFieldInput, OTPFieldInputProps } from "../../elements/otp-field/otp-field-input.js";
+import { OTPFieldLabel, OTPFieldLabelProps } from "../../elements/otp-field/otp-field-label.js";
+import { OTPFieldSeparator, OTPFieldSeparatorProps } from "../../elements/otp-field/otp-field-separator.js";
+import "../../elements/otp-field/index.js";
+import { OTPField, OTPFieldProps } from "./otp-field.js";
+export { OTPField, OTPFieldInput, type OTPFieldInputProps, type OTPFieldInputSize, OTPFieldLabel, type OTPFieldLabelProps, OTPFieldProps, OTPFieldSeparator, type OTPFieldSeparatorProps };

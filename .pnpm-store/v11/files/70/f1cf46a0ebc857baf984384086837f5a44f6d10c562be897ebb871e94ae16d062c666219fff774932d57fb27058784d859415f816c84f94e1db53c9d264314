@@ -1,0 +1,37 @@
+/**
+ * Node.js implementation of `ChildProcessSpawner`.
+ *
+ * @since 4.0.0
+ */
+import type * as Arr from "effect/Array";
+import * as FileSystem from "effect/FileSystem";
+import * as Layer from "effect/Layer";
+import * as Path from "effect/Path";
+import * as ChildProcess from "effect/unstable/process/ChildProcess";
+import { ChildProcessSpawner } from "effect/unstable/process/ChildProcessSpawner";
+/**
+ * Layer providing the `NodeChildProcessSpawner` implementation.
+ *
+ * @category layers
+ * @since 4.0.0
+ */
+export declare const layer: Layer.Layer<ChildProcessSpawner, never, FileSystem.FileSystem | Path.Path>;
+/**
+ * Result of flattening a pipeline of commands.
+ *
+ * @category models
+ * @since 4.0.0
+ */
+export interface FlattenedPipeline {
+    readonly commands: Arr.NonEmptyReadonlyArray<ChildProcess.StandardCommand>;
+    readonly pipeOptions: ReadonlyArray<ChildProcess.PipeOptions>;
+}
+/**
+ * Flattens a `Command` into an array of `StandardCommand`s along with pipe
+ * options for each connection.
+ *
+ * @category utils
+ * @since 4.0.0
+ */
+export declare const flattenCommand: (command: ChildProcess.Command) => FlattenedPipeline;
+//# sourceMappingURL=NodeChildProcessSpawner.d.ts.map

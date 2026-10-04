@@ -1,0 +1,72 @@
+"use client";
+import { ListboxPopupProps } from "../../internal/listbox-popup.js";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-content.d.ts
+type SelectContentProps = ListboxPopupProps & {
+  /** Which side of the trigger the list opens toward. @default "bottom" */
+  side?: Select.Positioner.Props["side"];
+  /** Distance in px between the trigger and the list. @default 4 */
+  sideOffset?: Select.Positioner.Props["sideOffset"];
+  /** Alignment of the list relative to the trigger along `side`. @default "start" */
+  align?: Select.Positioner.Props["align"];
+  /**
+   * Additional offset in px along the align axis — slides the list along the trigger's edge without
+   * changing `align`.
+   *
+   * @default 0
+   */
+  alignOffset?: Select.Positioner.Props["alignOffset"];
+  /**
+   * Minimum gap in px between the list and the viewport edge it would otherwise touch.
+   *
+   * @default 5
+   */
+  collisionPadding?: Select.Positioner.Props["collisionPadding"];
+  /**
+   * The element or rect the list is confined to when avoiding collisions. Base UI's clipping
+   * ancestors when unset.
+   */
+  collisionBoundary?: Select.Positioner.Props["collisionBoundary"];
+  /**
+   * What to do when the list would overflow the boundary, set per axis: flip to the other side,
+   * shift along it, or stay put. Base UI flips the side and shifts the alignment when unset.
+   */
+  collisionAvoidance?: Select.Positioner.Props["collisionAvoidance"];
+  /**
+   * Keep the list on screen after the trigger scrolls out of view, instead of following it out.
+   *
+   * @default false
+   */
+  sticky?: Select.Positioner.Props["sticky"];
+  /**
+   * Which CSS `position` the positioner uses. `fixed` escapes overflow-clipping ancestors, e.g. a
+   * trigger inside a sticky header.
+   *
+   * @default "absolute"
+   */
+  positionMethod?: Select.Positioner.Props["positionMethod"];
+  /**
+   * Position against this element instead of the trigger — an element, a ref, a virtual element, or
+   * a function returning one. Geometry only; the trigger keeps its role and interactions.
+   */
+  anchor?: Select.Positioner.Props["anchor"];
+  /**
+   * Stop tracking layout shifts of the anchor — position once, on open.
+   *
+   * @default false
+   */
+  disableAnchorTracking?: Select.Positioner.Props["disableAnchorTracking"];
+  /**
+   * Overlap the popup onto the trigger so the selected item's text lines up with the trigger's
+   * value (native `<select>`-style). Figma's spec opens the list flush below the trigger instead,
+   * so this defaults off — enable per-instance for the native-alignment look.
+   *
+   * @default false
+   */
+  alignItemWithTrigger?: Select.Positioner.Props["alignItemWithTrigger"];
+};
+/** The select list surface: Base UI portal + positioner + popup grafted onto Propel styling. */
+declare function SelectContent({ side, sideOffset, align, alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, alignItemWithTrigger, ...props }: SelectContentProps): import("react").JSX.Element;
+//#endregion
+export { SelectContent, SelectContentProps };
+//# sourceMappingURL=select-content.d.ts.map

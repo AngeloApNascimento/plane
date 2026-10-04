@@ -1,0 +1,17 @@
+"use client";
+import { menuFooterVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-footer.tsx
+/** A non-interactive footer pinned below a menu popup list (sticky chrome outside `role="menu"`). */
+function MenuFooter({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: menuFooterVariants() }, props)
+	});
+}
+//#endregion
+export { MenuFooter };
+
+//# sourceMappingURL=menu-footer.js.map

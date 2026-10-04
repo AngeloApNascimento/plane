@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-head-sort-indicator.d.ts
+type TableHeadSortIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The sort chevron at the trailing edge of a `TableHeadSortTrigger`. Sizes its single glyph child
+ * to the trigger's `--node-size`; the caller passes the direction glyph. Decorative (sort state is
+ * on the `<th>` via `aria-sort` when active), so it is `aria-hidden`.
+ */
+declare function TableHeadSortIndicator({ render, ...props }: TableHeadSortIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableHeadSortIndicator, TableHeadSortIndicatorProps };
+//# sourceMappingURL=table-head-sort-indicator.d.ts.map

@@ -1,0 +1,13 @@
+"use client";
+import { FormProps } from "@base-ui/react/form";
+//#region src/components/form/form.d.ts
+type FormProps$1<FormValues extends Record<string, unknown> = Record<string, unknown>> = Omit<FormProps<FormValues>, "className" | "style">;
+/**
+ * Native form element with Base UI consolidated error handling. Lays out its regions (`FormBody`,
+ * `FormActions`) with a consistent vertical rhythm; field spacing and the actions-bar treatment
+ * live on those parts. Grafts Base UI's form behavior onto the styled `Form` `<form>` frame.
+ */
+declare function Form$1<FormValues extends Record<string, unknown> = Record<string, unknown>>(props: FormProps$1<FormValues>): import("react").JSX.Element;
+//#endregion
+export { Form$1 as Form, FormProps$1 as FormProps };
+//# sourceMappingURL=form.d.ts.map

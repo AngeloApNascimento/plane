@@ -1,0 +1,15 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/badge/variants.d.ts
+declare const badgeVariants: (props?: ({
+  size?: "sm" | "md" | "xs" | null | undefined;
+  variant?: "danger" | "neutral" | "grey" | "brand" | "info" | "purple" | "indigo" | "success" | "emerald" | "warning" | "yellow" | "crimson" | "orange" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type BadgeVariantConfig = VariantProps<typeof badgeVariants>;
+type BadgeSize = NonNullable<BadgeVariantConfig["size"]>;
+type BadgeVariant = NonNullable<BadgeVariantConfig["variant"]>;
+type BadgeVariantProps = StrictVariantProps<typeof badgeVariants>;
+//#endregion
+export { BadgeSize, BadgeVariant, BadgeVariantProps, badgeVariants };
+//# sourceMappingURL=variants.d.ts.map

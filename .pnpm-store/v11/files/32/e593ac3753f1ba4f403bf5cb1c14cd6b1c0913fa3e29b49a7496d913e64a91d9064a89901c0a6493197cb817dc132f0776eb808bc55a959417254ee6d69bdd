@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-footer.d.ts
+type MenuFooterProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/** A non-interactive footer pinned below a menu popup list (sticky chrome outside `role="menu"`). */
+declare function MenuFooter({ render, ...props }: MenuFooterProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuFooter, MenuFooterProps };
+//# sourceMappingURL=menu-footer.d.ts.map

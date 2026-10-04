@@ -1,0 +1,50 @@
+"use client";
+import { ScrollArea as ScrollArea$2 } from "../../elements/scroll-area/scroll-area.js";
+import { ScrollAreaCorner } from "../../elements/scroll-area/scroll-area-corner.js";
+import { ScrollAreaScrollbar } from "../../elements/scroll-area/scroll-area-scrollbar.js";
+import { ScrollAreaThumb } from "../../elements/scroll-area/scroll-area-thumb.js";
+import { ScrollAreaViewport } from "../../elements/scroll-area/scroll-area-viewport.js";
+import "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ScrollArea } from "@base-ui/react/scroll-area";
+//#region src/components/scroll-area/scroll-area.tsx
+/**
+* A scroll container with propel's overlay scrollbar, built on Base UI `ScrollArea`. Use it to wrap
+* any overflowing content (menus, panels, long lists). Place it as a child of a height-constrained
+* flex column: it grows to fill the column and its viewport scrolls when the content overflows.
+*/
+function ScrollArea$1({ orientation, visibility = "auto", size = "sm", children, ...props }) {
+	const showVertical = orientation !== "horizontal";
+	const showHorizontal = orientation !== "vertical";
+	return /* @__PURE__ */ jsxs(ScrollArea.Root, {
+		...props,
+		render: /* @__PURE__ */ jsx(ScrollArea$2, {}),
+		children: [
+			/* @__PURE__ */ jsx(ScrollArea.Viewport, {
+				render: /* @__PURE__ */ jsx(ScrollAreaViewport, {}),
+				children
+			}),
+			showVertical ? /* @__PURE__ */ jsx(ScrollArea.Scrollbar, {
+				orientation: "vertical",
+				render: /* @__PURE__ */ jsx(ScrollAreaScrollbar, {
+					visibility,
+					size
+				}),
+				children: /* @__PURE__ */ jsx(ScrollArea.Thumb, { render: /* @__PURE__ */ jsx(ScrollAreaThumb, {}) })
+			}) : null,
+			showHorizontal ? /* @__PURE__ */ jsx(ScrollArea.Scrollbar, {
+				orientation: "horizontal",
+				render: /* @__PURE__ */ jsx(ScrollAreaScrollbar, {
+					visibility,
+					size
+				}),
+				children: /* @__PURE__ */ jsx(ScrollArea.Thumb, { render: /* @__PURE__ */ jsx(ScrollAreaThumb, {}) })
+			}) : null,
+			orientation === "both" ? /* @__PURE__ */ jsx(ScrollArea.Corner, { render: /* @__PURE__ */ jsx(ScrollAreaCorner, {}) }) : null
+		]
+	});
+}
+//#endregion
+export { ScrollArea$1 as ScrollArea };
+
+//# sourceMappingURL=scroll-area.js.map

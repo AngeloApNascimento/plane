@@ -1,0 +1,20 @@
+"use client";
+import { navigationMenuPopupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-popup.tsx
+/**
+* The styled anchored surface that houses the active item's `Content`. Base-UI-agnostic — graft in
+* `components` via `<BaseNavigationMenu.Popup render={<NavigationMenuPopup />} />`.
+*/
+function NavigationMenuPopup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "nav",
+		render,
+		props: mergeProps({ className: navigationMenuPopupVariants() }, props)
+	});
+}
+//#endregion
+export { NavigationMenuPopup };
+
+//# sourceMappingURL=navigation-menu-popup.js.map

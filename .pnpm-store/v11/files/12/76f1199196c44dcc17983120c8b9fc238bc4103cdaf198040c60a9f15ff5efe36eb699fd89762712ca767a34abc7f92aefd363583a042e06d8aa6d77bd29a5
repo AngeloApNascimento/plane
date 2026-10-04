@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/plus-square-outline.d.ts
+declare function PlusSquareOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PlusSquareOutline };
+//# sourceMappingURL=plus-square-outline.d.ts.map

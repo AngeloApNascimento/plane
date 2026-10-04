@@ -1,0 +1,20 @@
+"use client";
+import { contextMenuSeparatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-separator.tsx
+/**
+* The styled thin divider between groups of items. Base-UI-agnostic — graft in `components` via
+* `<BaseContextMenu.Separator render={<ContextMenuSeparator/>} />`.
+*/
+function ContextMenuSeparator({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: contextMenuSeparatorVariants() }, props)
+	});
+}
+//#endregion
+export { ContextMenuSeparator };
+
+//# sourceMappingURL=context-menu-separator.js.map

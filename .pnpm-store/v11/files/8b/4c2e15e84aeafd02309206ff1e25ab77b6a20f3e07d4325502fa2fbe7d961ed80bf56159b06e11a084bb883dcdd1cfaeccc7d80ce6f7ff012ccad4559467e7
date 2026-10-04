@@ -1,0 +1,20 @@
+"use client";
+import { avatarImageVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/avatar/avatar-image.tsx
+/**
+* The styled avatar image. Base-UI-agnostic — graft the Base UI `Avatar.Image` load-status behavior
+* in `components` via `<BaseAvatar.Image render={<AvatarImage/>} />`.
+*/
+function AvatarImage({ render, ...props }) {
+	return useRender({
+		defaultTagName: "img",
+		render,
+		props: mergeProps({ className: avatarImageVariants() }, props)
+	});
+}
+//#endregion
+export { AvatarImage };
+
+//# sourceMappingURL=avatar-image.js.map

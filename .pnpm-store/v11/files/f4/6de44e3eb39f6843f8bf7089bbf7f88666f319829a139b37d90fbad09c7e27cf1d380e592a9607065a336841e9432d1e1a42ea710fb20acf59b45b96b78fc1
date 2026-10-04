@@ -1,0 +1,12 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { NumberField } from "@base-ui/react/number-field";
+//#region src/components/number-field/number-field-scrub-area.tsx
+/** Drag-to-change scrubbing over the field's label region — Base UI behavior, no chrome. */
+function NumberFieldScrubArea(props) {
+	return /* @__PURE__ */ jsx(NumberField.ScrubArea, { ...props });
+}
+//#endregion
+export { NumberFieldScrubArea };
+
+//# sourceMappingURL=number-field-scrub-area.js.map

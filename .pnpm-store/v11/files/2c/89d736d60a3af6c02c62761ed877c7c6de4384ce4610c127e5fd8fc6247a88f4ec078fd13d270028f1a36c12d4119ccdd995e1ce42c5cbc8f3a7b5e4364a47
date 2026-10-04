@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-description.d.ts
+type DialogDescriptionProps = Omit<useRender.ComponentProps<"p">, "className" | "style">;
+/**
+ * Styled dialog description chrome (`text-body-xs-regular` tertiary). Base-UI-agnostic — graft
+ * description behavior in `components` via `<BaseDialog.Description render={<DialogDescription />}
+ * />`. Dialog-owned (diverges from shared `OverlayDescription`).
+ */
+declare function DialogDescription({ render, ...props }: DialogDescriptionProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogDescription, DialogDescriptionProps };
+//# sourceMappingURL=dialog-description.d.ts.map

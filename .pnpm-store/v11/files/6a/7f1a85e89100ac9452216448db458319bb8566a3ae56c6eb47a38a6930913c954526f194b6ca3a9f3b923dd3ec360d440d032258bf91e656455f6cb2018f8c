@@ -1,0 +1,51 @@
+"use client";
+import { FieldControlContent } from "../../elements/field/field-control-content.js";
+import { TextAreaGroup } from "../../elements/text-area/text-area-group.js";
+import { TextAreaField as TextAreaField$1 } from "../../elements/text-area-field/text-area-field.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import { FieldLabelGroup } from "../field/field-label-group.js";
+import { TextArea } from "../text-area/text-area.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Field } from "@base-ui/react/field";
+//#region src/components/text-area-field/text-area-field.tsx
+/**
+* Multi-line text field built on Base UI `Field`, rendering the control as a `<textarea>`. Vertical
+* layout only. `autoResize` grows the control with its value and disables the native resize
+* handle.
+*/
+function TextAreaField({ size, name, label, required, description, hint, error, disabled, resize, autoResize = false, ...controlProps }) {
+	return /* @__PURE__ */ jsxs(Field.Root, {
+		name,
+		disabled,
+		invalid: error != null || void 0,
+		render: /* @__PURE__ */ jsx(TextAreaField$1, {}),
+		children: [/* @__PURE__ */ jsx(FieldLabelGroup, {
+			size,
+			required,
+			label,
+			description,
+			orientation: "vertical"
+		}), /* @__PURE__ */ jsxs(FieldControlContent, {
+			orientation: "vertical",
+			size,
+			children: [/* @__PURE__ */ jsx(TextAreaGroup, {
+				resize: autoResize ? "none" : resize,
+				children: /* @__PURE__ */ jsx(TextArea, {
+					"aria-required": required || void 0,
+					size,
+					surface: "field",
+					autoResize,
+					...controlProps
+				})
+			}), /* @__PURE__ */ jsx(FieldHelperText, {
+				size,
+				hint,
+				error
+			})]
+		})]
+	});
+}
+//#endregion
+export { TextAreaField };
+
+//# sourceMappingURL=text-area-field.js.map

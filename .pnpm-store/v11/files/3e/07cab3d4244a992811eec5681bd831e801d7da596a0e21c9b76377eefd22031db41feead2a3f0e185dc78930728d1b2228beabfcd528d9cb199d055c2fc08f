@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-list.d.ts
+type BreadcrumbListProps = Omit<useRender.ComponentProps<"ol">, "className" | "style">;
+/** The ordered list of crumbs inside a `Breadcrumb` landmark. */
+declare function BreadcrumbList({ render, ...props }: BreadcrumbListProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BreadcrumbList, BreadcrumbListProps };
+//# sourceMappingURL=breadcrumb-list.d.ts.map

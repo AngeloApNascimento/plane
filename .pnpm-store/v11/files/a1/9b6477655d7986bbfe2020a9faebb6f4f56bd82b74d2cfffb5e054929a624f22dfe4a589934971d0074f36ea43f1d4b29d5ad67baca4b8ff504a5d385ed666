@@ -1,0 +1,12 @@
+"use client";
+import { SliderSize } from "../../elements/slider/variants.js";
+import { SliderControl, SliderControlProps } from "../../elements/slider/slider-control.js";
+import { SliderHeader, SliderHeaderProps } from "../../elements/slider/slider-header.js";
+import { SliderIndicator, SliderIndicatorProps } from "../../elements/slider/slider-indicator.js";
+import { SliderLabel, SliderLabelProps } from "../../elements/slider/slider-label.js";
+import { SliderThumb, SliderThumbProps } from "../../elements/slider/slider-thumb.js";
+import { SliderTrack, SliderTrackProps } from "../../elements/slider/slider-track.js";
+import { SliderValue, SliderValueProps } from "../../elements/slider/slider-value.js";
+import "../../elements/slider/index.js";
+import { Slider, SliderProps } from "./slider.js";
+export { Slider, SliderControl, type SliderControlProps, SliderHeader, type SliderHeaderProps, SliderIndicator, type SliderIndicatorProps, SliderLabel, type SliderLabelProps, SliderProps, type SliderSize, SliderThumb, type SliderThumbProps, SliderTrack, type SliderTrackProps, SliderValue, type SliderValueProps };

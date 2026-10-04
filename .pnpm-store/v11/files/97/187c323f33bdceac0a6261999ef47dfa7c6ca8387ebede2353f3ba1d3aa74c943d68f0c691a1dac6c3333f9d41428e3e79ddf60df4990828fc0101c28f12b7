@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/h1-outline.d.ts
+declare function H1Outline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { H1Outline };
+//# sourceMappingURL=h1-outline.d.ts.map

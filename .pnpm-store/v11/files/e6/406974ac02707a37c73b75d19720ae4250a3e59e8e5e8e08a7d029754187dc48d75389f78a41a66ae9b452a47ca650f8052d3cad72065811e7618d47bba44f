@@ -1,0 +1,31 @@
+"use client";
+import { TableRow } from "../../elements/table/table-row.js";
+import { TableSkeletonBody as TableSkeletonBody$1 } from "../../elements/table/table-skeleton-body.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/table/table-skeleton-body.tsx
+/**
+* The loading `<tbody>`: takes one row of cells and repeats it, inside a pulsing, non-interactive
+* body marked `role="status"` and `aria-busy`.
+*
+* Swap it for `TableBody` once the data arrives. What carries over is the table's structure — the
+* same `<thead>`, the same cell chrome, the same 44px row — so the placeholder reads as the table
+* it stands in for rather than as a generic block.
+*
+* It does NOT freeze the column widths. A `<table>` lays out automatically by default, so the
+* columns are sized by whatever is in them, and swapping bars for text re-sizes them: in a 800px
+* example an email column measured 272px under the skeleton and 498px once loaded. A consumer that
+* needs the columns to hold still has to take the layout out of the content's hands —
+* `render={<table className="table-fixed" />}` on `Table`, with widths on the headers.
+*/
+function TableSkeletonBody({ children, rows = 5, ...props }) {
+	return /* @__PURE__ */ jsx(TableSkeletonBody$1, {
+		role: "status",
+		"aria-busy": true,
+		...props,
+		children: Array.from({ length: rows }, (_unused, index) => /* @__PURE__ */ jsx(TableRow, { children }, index))
+	});
+}
+//#endregion
+export { TableSkeletonBody };
+
+//# sourceMappingURL=table-skeleton-body.js.map

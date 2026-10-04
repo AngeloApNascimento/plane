@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/evermuse.d.ts
+declare function Evermuse(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Evermuse };
+//# sourceMappingURL=evermuse.d.ts.map

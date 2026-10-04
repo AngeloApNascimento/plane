@@ -1,0 +1,13 @@
+"use client";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-item.d.ts
+type NavigationMenuItemProps = Omit<NavigationMenu.Item.Props, "className" | "style">;
+/**
+ * An individual navigation menu item — Base UI's unstyled `<li>` that scopes a
+ * `NavigationMenuTrigger` to its `NavigationMenuContent`. A structural role with no propel styling,
+ * so it lives in `components` as a passthrough (rules 1a, 2).
+ */
+declare function NavigationMenuItem(props: NavigationMenuItemProps): import("react").JSX.Element;
+//#endregion
+export { NavigationMenuItem, NavigationMenuItemProps };
+//# sourceMappingURL=navigation-menu-item.d.ts.map

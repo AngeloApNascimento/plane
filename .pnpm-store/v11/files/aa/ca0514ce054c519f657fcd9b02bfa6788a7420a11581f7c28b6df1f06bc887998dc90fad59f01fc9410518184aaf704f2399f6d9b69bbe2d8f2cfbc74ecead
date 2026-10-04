@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/down-right-filled.d.ts
+declare function DownRightFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DownRightFilled };
+//# sourceMappingURL=down-right-filled.d.ts.map

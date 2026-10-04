@@ -1,0 +1,106 @@
+"use client";
+import { ToastVariant } from "../../elements/toast/variants.js";
+import "../../elements/toast/index.js";
+import * as React from "react";
+import { Toast, ToastManagerAddOptions, ToastManagerPromiseOptions, ToastManagerUpdateOptions } from "@base-ui/react/toast";
+//#region src/components/toast/toast.d.ts
+/**
+ * A single action rendered inside a toast. The toast is a portaled, auto-dismissing surface with no
+ * `className`/`style` escape hatch, so an action is declared as data (label + handler, or label +
+ * `href`) rather than arbitrary markup — keeping the styling on-token and the API closed.
+ */
+type ToastAction = {
+  /** Visible button text — also its accessible name. */
+  label: string;
+  /** Invoked on click (and Enter/Space on the button form, since it's a real `<button>`). */
+  onClick?: React.MouseEventHandler<HTMLElement>;
+  /**
+   * Renders the action as a link to this URL instead of a button. Still data — no markup crosses
+   * the boundary — so the action keeps its on-token styling and the API stays closed. Prefer it
+   * over an `onClick` that calls `window.open`: a link supports middle-click, cmd/ctrl-click,
+   * right-click → "Copy link address" and the browser's status-bar URL preview, and assistive tech
+   * announces it as a link rather than a button. `onClick` still fires if both are given.
+   *
+   * It renders a plain `<a>`, so in a client-routed app a same-tab `href` is a full page load, not
+   * a route transition. Use `href` for external or new-tab targets, and keep an `onClick` for
+   * in-app navigation that should stay client-side.
+   */
+  href?: string;
+  /**
+   * Only meaningful alongside `href`.
+   *
+   * @default "_self" — `"_blank"` also sets `rel="noopener noreferrer"`.
+   */
+  target?: "_self" | "_blank";
+};
+/**
+ * Custom data carried on every toast queued through this component. `add({ ... data: { variant }
+ * })` selects the status icon + color; `variant` is required so the caller always chooses the
+ * intent explicitly. Action buttons are optional and map directly to Figma's toast
+ * `button`/`button2` booleans (node 1146-61689): `actions` is the left cluster of 1–2 buttons,
+ * `primaryAction` is the right-aligned button shown on the success treatment.
+ */
+type ToastData = {
+  /** Semantic intent — drives the status icon and its color. */
+  variant: ToastVariant;
+  /**
+   * Completion (0–100) of a long-running task the toast is reporting. When set, a thin `Progress`
+   * bar with a `%` label renders between the description and the action row (Figma node
+   * 1146-61689). Omit it for a plain toast.
+   */
+  progress?: number;
+  /**
+   * Left-aligned action cluster (Figma's `button` / `button2`). One or two buttons; extras beyond
+   * two are ignored to stay faithful to the design.
+   */
+  actions?: ToastAction[];
+  /**
+   * Optional right-aligned action, rendered whenever it's provided (the component doesn't restrict
+   * it by variant). In Figma it appears on the success treatment. Like `actions`, it renders as a
+   * button, or as a link when it carries an `href`.
+   */
+  primaryAction?: ToastAction;
+};
+declare function createToastManager<Data extends ToastData = ToastData>(): {
+  add: <T extends Data = Data>(options: ToastManagerAddOptions<T>) => string;
+  update: <T extends Data = Data>(id: string, options: ToastManagerUpdateOptions<T>) => void;
+  promise: <Value, T extends Data = Data>(promise: Promise<Value>, options: ToastManagerPromiseOptions<Value, T>) => Promise<Value>;
+  ' subscribe': (listener: (data: import("@base-ui/react").ToastManagerEvent) => void) => () => void;
+  close: (id?: string) => void;
+};
+/**
+ * Toast manager hook with Propel variant defaults (`priority` / `timeout` from `data.variant`).
+ * Prefer this (or {@link useToast}) over Base UI's raw hook so `danger`/`warning` stay assertive.
+ */
+declare function useToastManager<Data extends ToastData = ToastData>(): {
+  add: <T extends Data = Data>(options: ToastManagerAddOptions<T>) => string;
+  update: <T extends Data = Data>(id: string, options: ToastManagerUpdateOptions<T>) => void;
+  promise: <Value, T extends Data = Data>(promiseValue: Promise<Value>, options: ToastManagerPromiseOptions<Value, T>) => Promise<Value>;
+  toasts: import("@base-ui/react").ToastObject<Data>[];
+  close: (toastId?: string) => void;
+};
+/** Alias of {@link useToastManager} — the documented entry point for queuing toasts. */
+declare function useToast<Data extends ToastData = ToastData>(): {
+  add: <T extends Data = Data>(options: ToastManagerAddOptions<T>) => string;
+  update: <T extends Data = Data>(id: string, options: ToastManagerUpdateOptions<T>) => void;
+  promise: <Value, T extends Data = Data>(promiseValue: Promise<Value>, options: ToastManagerPromiseOptions<Value, T>) => Promise<Value>;
+  toasts: import("@base-ui/react").ToastObject<Data>[];
+  close: (toastId?: string) => void;
+};
+type ToastProps = Omit<Toast.Root.Props, "className" | "style"> & {
+  /**
+   * The close control (e.g. an `IconButton`), rendered as the toast's close button. It carries its
+   * own — localizable — `aria-label`; the toast bakes no label or glyph.
+   */
+  close: React.ReactElement;
+};
+/**
+ * A single styled toast: status icon (auto-selected from `toast.data.variant`), title, description,
+ * optional action buttons (from `toast.data.actions` / `primaryAction`), and a close button.
+ * Rendered automatically by `ToastProvider` for each queued toast — you normally don't render this
+ * directly.
+ */
+declare function Toast$1({ toast, close, ...props }: ToastProps): React.JSX.Element;
+//#endregion
+export { Toast$1 as Toast, ToastAction, ToastData, ToastProps, type ToastVariant, createToastManager, useToast, useToastManager };
+//# sourceMappingURL=toast.d.ts.map

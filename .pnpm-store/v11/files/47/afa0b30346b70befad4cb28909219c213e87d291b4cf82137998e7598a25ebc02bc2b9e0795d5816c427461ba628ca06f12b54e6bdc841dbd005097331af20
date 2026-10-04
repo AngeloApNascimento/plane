@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/archive-filled.d.ts
+declare function ArchiveFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ArchiveFilled };
+//# sourceMappingURL=archive-filled.d.ts.map

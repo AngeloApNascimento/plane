@@ -1,0 +1,24 @@
+"use client";
+import { listItemVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list-item.tsx
+/**
+* A row wrapper. Holds a primary `ListItemLink` (or `ListItemButton`) plus optional actions or a
+* count as siblings, and carries the row chrome. `level` indents nested rows; `density` sets the
+* label/counter text scale. Renders a `<div>` by default.
+*/
+function ListItem({ render, level, density, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: listItemVariants({
+			level,
+			density
+		}) }, props)
+	});
+}
+//#endregion
+export { ListItem };
+
+//# sourceMappingURL=list-item.js.map

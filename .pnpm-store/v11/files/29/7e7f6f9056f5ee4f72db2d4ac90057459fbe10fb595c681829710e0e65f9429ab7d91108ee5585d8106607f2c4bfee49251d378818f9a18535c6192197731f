@@ -1,0 +1,20 @@
+"use client";
+import { navigationMenuLinkDescriptionVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-link-description.tsx
+/**
+* The optional secondary line of a `appearance="card"` `NavigationMenuLink`: a muted description
+* shown below the `NavigationMenuLinkTitle`.
+*/
+function NavigationMenuLinkDescription({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: navigationMenuLinkDescriptionVariants() }, props)
+	});
+}
+//#endregion
+export { NavigationMenuLinkDescription };
+
+//# sourceMappingURL=navigation-menu-link-description.js.map

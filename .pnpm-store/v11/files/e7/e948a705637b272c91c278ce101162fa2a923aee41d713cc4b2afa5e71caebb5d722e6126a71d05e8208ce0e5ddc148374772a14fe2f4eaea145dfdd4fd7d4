@@ -1,0 +1,17 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-provider.tsx
+/**
+* Optional context wrapper that coordinates indent effects across sibling drawers. Wrap `Drawer`
+* (and any `DrawerIndent`/`DrawerIndentBackground`) in it when you need the page to shift as the
+* drawer opens. A behavior-only provider role (rules 1a, 2), so it lives in `components`. Maps 1:1
+* to Base UI's `Drawer.Provider`.
+*/
+function DrawerProvider(props) {
+	return /* @__PURE__ */ jsx(Drawer.Provider, { ...props });
+}
+//#endregion
+export { DrawerProvider };
+
+//# sourceMappingURL=drawer-provider.js.map

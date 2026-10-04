@@ -1,0 +1,5 @@
+"use client";
+import { Switch as Switch$1 } from "../../elements/switch/switch.js";
+import { SwitchThumb } from "../../elements/switch/switch-thumb.js";
+import { Switch } from "./switch.js";
+export { Switch, SwitchThumb, Switch$1 as SwitchTrack };

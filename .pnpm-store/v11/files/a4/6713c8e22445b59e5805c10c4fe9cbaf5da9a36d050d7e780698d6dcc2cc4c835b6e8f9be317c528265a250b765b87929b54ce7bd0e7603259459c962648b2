@@ -1,0 +1,15 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-list.tsx
+/**
+* The container for autocomplete items — a passthrough of Base UI's `Autocomplete.List` (it carries
+* no propel styling of its own), so the whole anatomy composes from one entry.
+*/
+function AutocompleteList(props) {
+	return /* @__PURE__ */ jsx(Autocomplete.List, { ...props });
+}
+//#endregion
+export { AutocompleteList };
+
+//# sourceMappingURL=autocomplete-list.js.map

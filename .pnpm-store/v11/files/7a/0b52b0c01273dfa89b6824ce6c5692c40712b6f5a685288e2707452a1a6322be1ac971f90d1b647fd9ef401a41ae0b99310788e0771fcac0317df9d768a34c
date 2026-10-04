@@ -1,0 +1,31 @@
+"use client";
+import { ComboboxChipSize } from "../../elements/combobox/variants.js";
+import "../../elements/combobox/index.js";
+import * as React from "react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-chip.d.ts
+type ComboboxChipProps = Omit<Combobox.Chip.Props, "children" | "className" | "style"> & {
+  /** Chip height, text and glyph size. Inherited from the enclosing `ComboboxChips` when omitted. */
+  size?: ComboboxChipSize;
+  /** Leading element before the label — an `<Icon icon={...} />`, an assignee `Avatar`, or similar. */
+  startContent?: React.ReactNode;
+  /** Trailing element after the label, before the remove control, e.g. a status `<Icon .../>`. */
+  endContent?: React.ReactNode;
+  /** The chip's label. Also sets the chip's own accessible name. */
+  label: string;
+  /**
+   * The remove control, grafted onto Base UI's `ChipRemove` behavior. It carries its own —
+   * localizable — `aria-label`; the chip bakes no label or glyph.
+   */
+  remove: React.ReactElement;
+};
+/**
+ * Ready-made chip: Base UI's chip behavior (arrow-key focus, Backspace/Delete removal) grafted onto
+ * the styled tag, laying out an optional leading/trailing node around the label plus the
+ * consumer-provided `remove` control. Base UI derives which selected value a chip represents from
+ * its position among its siblings — pass one per value from `ComboboxChips`' `children`.
+ */
+declare function ComboboxChip({ startContent, endContent, label, remove, size, ...props }: ComboboxChipProps): React.JSX.Element;
+//#endregion
+export { ComboboxChip, ComboboxChipProps };
+//# sourceMappingURL=combobox-chip.d.ts.map

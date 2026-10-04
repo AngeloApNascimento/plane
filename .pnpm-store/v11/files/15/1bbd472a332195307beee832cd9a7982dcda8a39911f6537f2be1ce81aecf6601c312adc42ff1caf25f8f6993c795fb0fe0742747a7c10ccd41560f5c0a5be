@@ -1,0 +1,20 @@
+"use client";
+import { tableCellLayoutVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell-layout.tsx
+/**
+* The inline layout inside a plain `TableCell`: a leading node slot, a growing `TableCellContent`,
+* and a trailing node slot (the shared internal `NodeSlot`). Sets the slot `--node-size`.
+*/
+function TableCellLayout({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: tableCellLayoutVariants() }, props)
+	});
+}
+//#endregion
+export { TableCellLayout };
+
+//# sourceMappingURL=table-cell-layout.js.map

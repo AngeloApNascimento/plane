@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/customers-outline.d.ts
+declare function CustomersOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CustomersOutline };
+//# sourceMappingURL=customers-outline.d.ts.map

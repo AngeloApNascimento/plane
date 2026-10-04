@@ -1,0 +1,21 @@
+"use client";
+import { alertDialogViewportVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-viewport.tsx
+/**
+* The full-screen container: centered on desktop, bottom-aligned below 640px with 16px gutters.
+* Base-UI-agnostic — graft the viewport behavior in `components` via `<BaseAlertDialog.Viewport
+* render={<AlertDialogViewport/>} />`.
+*/
+function AlertDialogViewport({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: alertDialogViewportVariants() }, props)
+	});
+}
+//#endregion
+export { AlertDialogViewport };
+
+//# sourceMappingURL=alert-dialog-viewport.js.map

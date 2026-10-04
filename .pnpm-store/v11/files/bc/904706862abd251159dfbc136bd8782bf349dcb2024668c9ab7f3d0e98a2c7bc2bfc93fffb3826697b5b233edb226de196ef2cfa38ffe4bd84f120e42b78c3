@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/project-features/workflows-filled.d.ts
+declare function WorkflowsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { WorkflowsFilled };
+//# sourceMappingURL=workflows-filled.d.ts.map

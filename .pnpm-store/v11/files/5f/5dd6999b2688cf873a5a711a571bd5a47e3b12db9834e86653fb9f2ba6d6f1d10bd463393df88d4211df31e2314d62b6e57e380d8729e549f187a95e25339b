@@ -1,0 +1,47 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/collapsible/variants.d.ts
+declare const collapsibleHeaderDefaultVariants: {
+  readonly placement: "inline";
+};
+declare const collapsibleHeaderVariants: (props?: ({
+  placement?: "inline" | "sidebar" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const collapsibleTriggerDefaultVariants: {
+  readonly placement: "inline";
+};
+declare const collapsibleTriggerVariants: (props?: ({
+  placement?: "inline" | "sidebar" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const collapsibleTriggerTrailingDefaultVariants: {
+  readonly placement: "inline";
+};
+declare const collapsibleTriggerTrailingVariants: (props?: ({
+  placement?: "inline" | "sidebar" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const collapsibleTriggerTitleDefaultVariants: {
+  readonly placement: "inline";
+};
+declare const collapsibleTriggerTitleVariants: (props?: ({
+  placement?: "inline" | "sidebar" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const collapsiblePanelContentDefaultVariants: {
+  readonly placement: "inline";
+};
+declare const collapsiblePanelContentVariants: (props?: ({
+  placement?: "inline" | "sidebar" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type CollapsibleHeaderPlacement = NonNullable<VariantProps<typeof collapsibleHeaderVariants>["placement"]>;
+type CollapsibleHeaderVariantProps = StrictVariantProps<typeof collapsibleHeaderVariants, keyof typeof collapsibleHeaderDefaultVariants>;
+type CollapsibleTriggerPlacement = NonNullable<VariantProps<typeof collapsibleTriggerVariants>["placement"]>;
+type CollapsibleTriggerVariantProps = StrictVariantProps<typeof collapsibleTriggerVariants, keyof typeof collapsibleTriggerDefaultVariants>;
+type CollapsibleTriggerTrailingPlacement = NonNullable<VariantProps<typeof collapsibleTriggerTrailingVariants>["placement"]>;
+type CollapsibleTriggerTrailingVariantProps = StrictVariantProps<typeof collapsibleTriggerTrailingVariants, keyof typeof collapsibleTriggerTrailingDefaultVariants>;
+type CollapsibleTriggerTitlePlacement = NonNullable<VariantProps<typeof collapsibleTriggerTitleVariants>["placement"]>;
+type CollapsibleTriggerTitleVariantProps = StrictVariantProps<typeof collapsibleTriggerTitleVariants, keyof typeof collapsibleTriggerTitleDefaultVariants>;
+type CollapsiblePanelContentPlacement = NonNullable<VariantProps<typeof collapsiblePanelContentVariants>["placement"]>;
+type CollapsiblePanelContentVariantProps = StrictVariantProps<typeof collapsiblePanelContentVariants, keyof typeof collapsiblePanelContentDefaultVariants>;
+//#endregion
+export { CollapsibleHeaderPlacement, CollapsibleHeaderVariantProps, CollapsiblePanelContentPlacement, CollapsiblePanelContentVariantProps, CollapsibleTriggerPlacement, CollapsibleTriggerTitlePlacement, CollapsibleTriggerTitleVariantProps, CollapsibleTriggerTrailingPlacement, CollapsibleTriggerTrailingVariantProps, CollapsibleTriggerVariantProps, collapsibleHeaderVariants, collapsiblePanelContentVariants, collapsibleTriggerTitleVariants, collapsibleTriggerTrailingVariants, collapsibleTriggerVariants };
+//# sourceMappingURL=variants.d.ts.map

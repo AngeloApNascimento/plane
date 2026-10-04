@@ -1,0 +1,21 @@
+"use client";
+import { FieldItemContent as FieldItemContent$1 } from "../../elements/field/field-item-content.js";
+import { FieldDescription } from "./field-description.js";
+import { FieldLabel } from "./field-label.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/field/field-item-content.tsx
+/** The label + description column for a single choice option (checkbox/radio/switch row). */
+function FieldItemContent({ children, description, size }) {
+	return /* @__PURE__ */ jsxs(FieldItemContent$1, { children: [/* @__PURE__ */ jsx(FieldLabel, {
+		size,
+		inset: false,
+		children
+	}), description != null ? /* @__PURE__ */ jsx(FieldDescription, {
+		size,
+		children: description
+	}) : null] });
+}
+//#endregion
+export { FieldItemContent };
+
+//# sourceMappingURL=field-item-content.js.map

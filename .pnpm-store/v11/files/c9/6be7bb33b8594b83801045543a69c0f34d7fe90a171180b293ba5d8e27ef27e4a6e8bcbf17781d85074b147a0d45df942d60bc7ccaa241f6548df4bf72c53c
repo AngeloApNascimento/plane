@@ -1,0 +1,26 @@
+"use client";
+import { LogoSpinnerProps as LogoSpinnerProps$1 } from "../../elements/logo-spinner/logo-spinner.js";
+import { LogoSpinnerSize } from "../../elements/logo-spinner/variants.js";
+import "../../elements/logo-spinner/index.js";
+//#region src/components/logo-spinner/logo-spinner.d.ts
+type LogoSpinnerProps = Omit<LogoSpinnerProps$1, "children"> & {
+  /** Mark height: `sm` 24px, `md` 44px, `fluid` 24px stepping to 44px at the 640px breakpoint. */
+  size: LogoSpinnerSize;
+  /** Alternative text (required) — what the app is waiting on, e.g. "Loading Plane". */
+  alt: string;
+};
+/**
+ * The animated Plane mark, for the moments a whole screen is waiting — app boot, a splash screen, a
+ * full-page route transition. For pending state inside a control or a section, use
+ * `CircularProgress` (or a control's own loading state) instead: this is brand furniture, not a
+ * status glyph.
+ *
+ * Both themes' artwork is rendered and CSS shows the one matching the active `data-theme`, so a
+ * theme flip costs no JS and no second request. Under `prefers-reduced-motion: reduce` the same CSS
+ * paints a still of the fully drawn mark instead of the animation. Only the visible image is in the
+ * accessibility tree (the other three are `display: none`), so `alt` is announced once.
+ */
+declare function LogoSpinner({ size, alt, ...props }: LogoSpinnerProps): import("react").JSX.Element;
+//#endregion
+export { LogoSpinner, LogoSpinnerProps, type LogoSpinnerSize };
+//# sourceMappingURL=logo-spinner.d.ts.map

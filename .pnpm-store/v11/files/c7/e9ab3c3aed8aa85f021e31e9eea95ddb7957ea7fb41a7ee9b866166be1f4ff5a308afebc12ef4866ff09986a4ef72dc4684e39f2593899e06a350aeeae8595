@@ -1,0 +1,22 @@
+"use client";
+import { listboxEmptyClass } from "./listbox-empty.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { cva } from "class-variance-authority";
+//#region src/internal/listbox-status.tsx
+/**
+* The muted status hint inside a listbox popup ("Searching…", "12 results"), sharing the Empty
+* region's type treatment and its collapse-when-childless behavior.
+*/
+const listboxStatusVariants = cva(listboxEmptyClass);
+function ListboxStatus({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: listboxStatusVariants() }, props)
+	});
+}
+//#endregion
+export { ListboxStatus, listboxStatusVariants };
+
+//# sourceMappingURL=listbox-status.js.map

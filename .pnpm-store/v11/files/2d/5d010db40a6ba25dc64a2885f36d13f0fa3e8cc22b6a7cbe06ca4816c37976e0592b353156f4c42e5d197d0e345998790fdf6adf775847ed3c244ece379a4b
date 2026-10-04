@@ -1,0 +1,30 @@
+"use client";
+import { PillGroup as PillGroup$1 } from "../../elements/pill/pill-group.js";
+import { PillGroupContext } from "./pill-group-context.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/pill/pill-group.tsx
+/**
+* The ready-made connected pill group: a `group`-role frame that shares `size` with every `Pill`
+* and `IconPill` inside it via context (a segment's own `size` still wins). There is no Base UI
+* group primitive — the segments are independent Base UI `Button`s, each free to open its own
+* picker; the frame contributes only the shared chrome, the shared rung, and the role. Name the
+* group for assistive tech via `aria-label`.
+*
+* Built for a compound control whose parts read as one value — a filter condition (`Parent type ·
+* is · Task · ✕`), a property row. For several independent actions that merely share chrome, reach
+* for `ButtonGroup`.
+*/
+function PillGroup({ size, ...props }) {
+	return /* @__PURE__ */ jsx(PillGroupContext.Provider, {
+		value: size,
+		children: /* @__PURE__ */ jsx(PillGroup$1, {
+			size,
+			role: "group",
+			...props
+		})
+	});
+}
+//#endregion
+export { PillGroup };
+
+//# sourceMappingURL=pill-group.js.map

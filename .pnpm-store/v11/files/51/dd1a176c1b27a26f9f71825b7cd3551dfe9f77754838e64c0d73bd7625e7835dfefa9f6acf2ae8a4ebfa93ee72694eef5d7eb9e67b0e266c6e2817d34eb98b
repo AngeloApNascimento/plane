@@ -1,0 +1,20 @@
+"use client";
+import { toastVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast.tsx
+/**
+* The styled floating-card surface of a single toast. Base-UI-agnostic — graft the toast
+* swipe/dismiss behavior in `components` via `<BaseToast.Root render={<Toast/>}>`.
+*/
+function Toast({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: toastVariants() }, props)
+	});
+}
+//#endregion
+export { Toast };
+
+//# sourceMappingURL=toast.js.map

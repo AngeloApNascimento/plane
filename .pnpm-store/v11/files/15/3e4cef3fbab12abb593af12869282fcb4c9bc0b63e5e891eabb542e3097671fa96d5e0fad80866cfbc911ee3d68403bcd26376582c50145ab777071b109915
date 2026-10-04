@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/preview-card/preview-card-meta.d.ts
+type PreviewCardMetaProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The muted footer caption closing out the card's text content (a source domain, a relative
+ * timestamp, …).
+ */
+declare function PreviewCardMeta({ render, ...props }: PreviewCardMetaProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PreviewCardMeta, PreviewCardMetaProps };
+//# sourceMappingURL=preview-card-meta.d.ts.map

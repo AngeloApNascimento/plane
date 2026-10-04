@@ -1,0 +1,45 @@
+"use client";
+import { ContextMenuItemLabel } from "../../elements/context-menu/context-menu-item-label.js";
+import { ContextMenuRadioItem as ContextMenuRadioItem$1 } from "../../elements/context-menu/context-menu-radio-item.js";
+import { ContextMenuRadioItemCheck } from "../../elements/context-menu/context-menu-radio-item-check.js";
+import { ContextMenuRadioItemIndicator } from "../../elements/context-menu/context-menu-radio-item-indicator.js";
+import { useMenuRadioMarker } from "../../internal/menu-radio-marker.js";
+import { RadioDot } from "../../internal/radio-dot.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Check } from "lucide-react";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-radio-item.tsx
+/**
+* The ready-made single-select context-menu row: grafts Base UI's `RadioItem` behavior onto the
+* styled row and marks the current row the way its `ContextMenuRadioGroup`'s `marker` says. `check`
+* (the default): a kept-mounted trailing tick on the selected row. `radio`: a leading ring drawn on
+* every row with only its inner dot hiding, for a popup that also holds a checkbox group. Wrap rows
+* in a `ContextMenuRadioGroup` carrying `value`/`onValueChange`; both the selected state and the
+* marker come from context.
+*/
+function ContextMenuRadioItem({ variant, icon, trailing, label, ...props }) {
+	const marker = useMenuRadioMarker();
+	return /* @__PURE__ */ jsxs(ContextMenu.RadioItem, {
+		...props,
+		render: /* @__PURE__ */ jsx(ContextMenuRadioItem$1, { variant }),
+		children: [
+			marker === "radio" ? /* @__PURE__ */ jsx(ContextMenu.RadioItemIndicator, {
+				keepMounted: true,
+				render: /* @__PURE__ */ jsx(ContextMenuRadioItemIndicator, {}),
+				children: /* @__PURE__ */ jsx(RadioDot, { "aria-hidden": true })
+			}) : null,
+			icon,
+			/* @__PURE__ */ jsx(ContextMenuItemLabel, { children: label }),
+			marker === "check" ? /* @__PURE__ */ jsx(ContextMenu.RadioItemIndicator, {
+				keepMounted: true,
+				render: /* @__PURE__ */ jsx(ContextMenuRadioItemCheck, {}),
+				children: /* @__PURE__ */ jsx(Check, { "aria-hidden": true })
+			}) : null,
+			trailing
+		]
+	});
+}
+//#endregion
+export { ContextMenuRadioItem };
+
+//# sourceMappingURL=context-menu-radio-item.js.map

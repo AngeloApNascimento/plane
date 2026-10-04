@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/scroll-area/scroll-area-thumb.d.ts
+type ScrollAreaThumbProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled draggable scrollbar thumb. Base-UI-agnostic — graft in `components` via
+ * `<BaseScrollArea.Thumb render={<ScrollAreaThumb/>} />`.
+ */
+declare function ScrollAreaThumb({ render, ...props }: ScrollAreaThumbProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ScrollAreaThumb, ScrollAreaThumbProps };
+//# sourceMappingURL=scroll-area-thumb.d.ts.map

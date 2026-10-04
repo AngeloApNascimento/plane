@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/initiative-outline.d.ts
+declare function InitiativeOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { InitiativeOutline };
+//# sourceMappingURL=initiative-outline.d.ts.map

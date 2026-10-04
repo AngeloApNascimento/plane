@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-backdrop.d.ts
+type AlertDialogBackdropProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/** Dims the viewport with the updated Figma 25% black scrim. */
+declare function AlertDialogBackdrop({ render, ...props }: AlertDialogBackdropProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AlertDialogBackdrop, AlertDialogBackdropProps };
+//# sourceMappingURL=alert-dialog-backdrop.d.ts.map

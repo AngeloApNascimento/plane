@@ -1,0 +1,26 @@
+"use client";
+import { TableAlign } from "../../elements/table/variants.js";
+import { TableCellProps as TableCellProps$1 } from "../../elements/table/table-cell.js";
+import "../../elements/table/index.js";
+import * as React from "react";
+//#region src/components/table/table-cell.d.ts
+type TableCellProps = Omit<TableCellProps$1, "children" | "variant"> & {
+  /** Leading element beside the cell text, e.g. `<Icon icon={...} />` or an `Avatar`. */
+  startIcon?: React.ReactNode;
+  /** Trailing element beside the cell text, e.g. `<Icon icon={...} />` or an `Avatar`. */
+  endIcon?: React.ReactNode;
+  /** Cell content. */
+  children?: React.ReactNode;
+  /**
+   * Column alignment. Pair it with the same `align` on this column's `TableHead`. It moves the text
+   * inside the growing content region, so the leading and trailing slots keep their edges.
+   *
+   * @default "start"
+   */
+  align?: TableAlign;
+};
+/** A ready-made data cell: optional leading/trailing slots around a truncating content region. */
+declare function TableCell({ startIcon, endIcon, children, align, ...props }: TableCellProps): React.JSX.Element;
+//#endregion
+export { TableCell, TableCellProps };
+//# sourceMappingURL=table-cell.d.ts.map

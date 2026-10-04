@@ -1,0 +1,15 @@
+"use client";
+import { CollapsiblePanelContentPlacement, CollapsiblePanelContentVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/collapsible/collapsible-panel-content.d.ts
+type CollapsiblePanelContentProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & CollapsiblePanelContentVariantProps;
+/**
+ * The padded inner content of a `CollapsiblePanel`: Figma inset (`px-3 pt-1.5 pb-3`) and body prose
+ * (`text-body-xs-regular text-secondary`). Lives here rather than on the panel so height animation
+ * measures cleanly and List consumers that mount rows directly in the panel do not inherit
+ * Collapsible typography.
+ */
+declare function CollapsiblePanelContent({ placement, render, ...props }: CollapsiblePanelContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { CollapsiblePanelContent, type CollapsiblePanelContentPlacement, CollapsiblePanelContentProps };
+//# sourceMappingURL=collapsible-panel-content.d.ts.map

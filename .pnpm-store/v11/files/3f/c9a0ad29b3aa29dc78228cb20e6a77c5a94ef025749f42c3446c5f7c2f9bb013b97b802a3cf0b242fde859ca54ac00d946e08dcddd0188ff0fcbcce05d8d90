@@ -1,0 +1,15 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+const popoverPopupVariants = cva(cx("flex max-h-(--available-height) flex-col border-sm border-subtle-1 bg-layer-2 shadow-overlay-200 outline-none", "origin-(--transform-origin) transition-[opacity,transform] duration-150 motion-reduce:transition-none", "data-starting-style:scale-95 data-starting-style:opacity-0", "data-ending-style:scale-95 data-ending-style:opacity-0"), {
+	variants: { variant: {
+		rich: "w-max max-w-[calc(100vw-2rem)] min-w-80 gap-2 rounded-xl p-4",
+		text: "w-74 gap-1 rounded-lg px-3 py-2 break-words"
+	} },
+	defaultVariants: { variant: "rich" }
+});
+const popoverBodyVariants = cva("min-h-0 flex-1 overflow-y-auto overscroll-contain");
+const popoverTitleVariants = cva("w-full text-body-sm-medium break-words text-primary");
+//#endregion
+export { popoverBodyVariants, popoverPopupVariants, popoverTitleVariants };
+
+//# sourceMappingURL=variants.js.map

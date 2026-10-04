@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/initiative-states/initiative-in-progress.d.ts
+declare function InitiativeInProgress(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { InitiativeInProgress };
+//# sourceMappingURL=initiative-in-progress.d.ts.map

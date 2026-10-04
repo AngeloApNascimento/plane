@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/square-stack-outline.d.ts
+declare function SquareStackOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { SquareStackOutline };
+//# sourceMappingURL=square-stack-outline.d.ts.map

@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/suggestion-menu/suggestion-menu-label.d.ts
+type SuggestionMenuLabelProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/** A section heading, shown above the section's rows. */
+declare function SuggestionMenuLabel({ render, ...props }: SuggestionMenuLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SuggestionMenuLabel, SuggestionMenuLabelProps };
+//# sourceMappingURL=suggestion-menu-label.d.ts.map

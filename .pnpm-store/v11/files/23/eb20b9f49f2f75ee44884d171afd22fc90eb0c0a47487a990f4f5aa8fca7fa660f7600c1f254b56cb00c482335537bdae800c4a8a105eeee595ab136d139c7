@@ -1,0 +1,7 @@
+"use client";
+import { SwitchSize } from "../../elements/switch/variants.js";
+import { Switch as Switch$1 } from "../../elements/switch/switch.js";
+import { SwitchThumb, SwitchThumbProps } from "../../elements/switch/switch-thumb.js";
+import "../../elements/switch/index.js";
+import { Switch, SwitchProps } from "./switch.js";
+export { Switch, SwitchProps, type SwitchSize, SwitchThumb, type SwitchThumbProps, Switch$1 as SwitchTrack };

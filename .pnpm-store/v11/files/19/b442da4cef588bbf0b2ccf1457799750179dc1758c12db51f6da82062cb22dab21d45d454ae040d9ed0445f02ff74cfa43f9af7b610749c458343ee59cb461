@@ -1,0 +1,25 @@
+"use client";
+import { tabsVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tabs.tsx
+/**
+* Root of a tab set — a single styled `<div>`. Groups a `TabsList` of `Tab`s with their
+* `TabsPanel`s. Base-UI-agnostic: the ready-made `components/tabs` grafts the Base UI `Tabs.Root`
+* behavior (`<BaseTabs.Root render={<Tabs/>}/>`) and shares the set's axes via context.
+*/
+function Tabs({ variant, layout, stretch, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: tabsVariants({
+			variant,
+			layout,
+			stretch
+		}) }, props)
+	});
+}
+//#endregion
+export { Tabs };
+
+//# sourceMappingURL=tabs.js.map

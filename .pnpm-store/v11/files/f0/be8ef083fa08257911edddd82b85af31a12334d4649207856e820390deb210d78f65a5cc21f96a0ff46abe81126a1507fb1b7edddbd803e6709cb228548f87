@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/otp-field/otp-field-label.d.ts
+type OTPFieldLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The visually-hidden accessible name for the field's first slot. Base UI ignores `aria-label` on
+ * the first input and names it from `aria-labelledby` instead, so render this with an `id` and
+ * point the first `OTPFieldInput`'s `aria-labelledby` at it. Without it the slot inputs fail axe's
+ * "Form elements must have labels". Hidden via `sr-only`, so it stays available to assistive tech.
+ */
+declare function OTPFieldLabel({ render, ...props }: OTPFieldLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { OTPFieldLabel, OTPFieldLabelProps };
+//# sourceMappingURL=otp-field-label.d.ts.map

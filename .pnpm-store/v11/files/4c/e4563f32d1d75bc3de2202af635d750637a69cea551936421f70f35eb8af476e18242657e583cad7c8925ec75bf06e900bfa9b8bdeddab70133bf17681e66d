@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/git-branch-filled.d.ts
+declare function GitBranchFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { GitBranchFilled };
+//# sourceMappingURL=git-branch-filled.d.ts.map

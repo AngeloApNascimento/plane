@@ -1,0 +1,21 @@
+"use client";
+import { toolbarMenuTriggerButtonVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-menu-trigger-button.tsx
+/**
+* The styled chrome for a toolbar menu trigger: a `<button>` that pairs a text label slot with a
+* disclosure indicator, with size-aware sizing. Base-UI-agnostic: graft the trigger behavior in
+* `components` via `<BaseToolbar.Button render={<ToolbarMenuTriggerButton/>} />`.
+*/
+function ToolbarMenuTriggerButton({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({ className: toolbarMenuTriggerButtonVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { ToolbarMenuTriggerButton };
+
+//# sourceMappingURL=toolbar-menu-trigger-button.js.map

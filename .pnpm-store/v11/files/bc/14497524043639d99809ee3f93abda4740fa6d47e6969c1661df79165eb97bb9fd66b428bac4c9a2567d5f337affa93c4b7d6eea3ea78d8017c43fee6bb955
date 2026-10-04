@@ -1,0 +1,3 @@
+"use client";
+import { IconSplitButton, IconSplitButtonProps } from "./icon-split-button.js";
+export { IconSplitButton, IconSplitButtonProps };

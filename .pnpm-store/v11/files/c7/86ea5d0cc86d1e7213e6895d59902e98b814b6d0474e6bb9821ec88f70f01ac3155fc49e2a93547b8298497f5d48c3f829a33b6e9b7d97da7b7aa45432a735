@@ -1,0 +1,15 @@
+"use client";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-item-indicator.d.ts
+type ComboboxItemIndicatorProps = Omit<Combobox.ItemIndicator.Props, "className" | "style">;
+/**
+ * Ready-made combobox item indicator: Base UI's selection behavior grafted onto the styled marker,
+ * with a default check when no children are given (defaults are a `components` concern). Composed
+ * at the row's inline-end. Mounted on every row by default, so a selection change never
+ * re-truncates a label and the reserved column holds while unselected (the styled marker hides its
+ * glyph off `data-selected`).
+ */
+declare function ComboboxItemIndicator({ children, ...props }: ComboboxItemIndicatorProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxItemIndicator, ComboboxItemIndicatorProps };
+//# sourceMappingURL=combobox-item-indicator.d.ts.map

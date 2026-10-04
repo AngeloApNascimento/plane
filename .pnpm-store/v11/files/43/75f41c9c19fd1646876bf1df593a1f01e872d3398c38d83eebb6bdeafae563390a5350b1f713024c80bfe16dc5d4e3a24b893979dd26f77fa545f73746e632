@@ -1,0 +1,20 @@
+"use client";
+import { otpFieldInputVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/otp-field/otp-field-input.tsx
+/**
+* A single styled OTP character cell. Base-UI-agnostic; graft the slot behavior in `components` via
+* `<BaseOTPField.Input render={<OTPFieldInput/>} />`.
+*/
+function OTPFieldInput({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "input",
+		render,
+		props: mergeProps({ className: otpFieldInputVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { OTPFieldInput };
+
+//# sourceMappingURL=otp-field-input.js.map

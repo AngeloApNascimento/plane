@@ -1,0 +1,20 @@
+"use client";
+import { paginationPerPageVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-per-page.tsx
+/**
+* The per-page region: the selector pill (`PaginationPerPageTrigger`) followed by the trailing
+* `PaginationPerPageLabel`.
+*/
+function PaginationPerPage({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: paginationPerPageVariants() }, props)
+	});
+}
+//#endregion
+export { PaginationPerPage };
+
+//# sourceMappingURL=pagination-per-page.js.map

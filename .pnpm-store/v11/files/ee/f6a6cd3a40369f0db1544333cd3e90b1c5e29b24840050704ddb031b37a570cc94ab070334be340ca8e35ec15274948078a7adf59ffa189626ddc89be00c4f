@@ -1,0 +1,13 @@
+"use client";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-content.d.ts
+type NavigationMenuContentProps = Omit<NavigationMenu.Content.Props, "className" | "style">;
+/**
+ * An item's content container — Base UI's unstyled `<div>` that is moved into the popup's viewport
+ * while the item is active. A structural role with no propel styling, so it lives in `components`
+ * as a passthrough (rules 1a, 2); put a `NavigationMenuContentList` of links inside.
+ */
+declare function NavigationMenuContent(props: NavigationMenuContentProps): import("react").JSX.Element;
+//#endregion
+export { NavigationMenuContent, NavigationMenuContentProps };
+//# sourceMappingURL=navigation-menu-content.d.ts.map

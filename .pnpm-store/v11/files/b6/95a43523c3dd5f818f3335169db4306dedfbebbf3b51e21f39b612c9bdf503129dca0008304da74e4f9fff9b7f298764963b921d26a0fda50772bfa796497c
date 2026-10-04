@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/arrow-narrow-left-outline.d.ts
+declare function ArrowNarrowLeftOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ArrowNarrowLeftOutline };
+//# sourceMappingURL=arrow-narrow-left-outline.d.ts.map

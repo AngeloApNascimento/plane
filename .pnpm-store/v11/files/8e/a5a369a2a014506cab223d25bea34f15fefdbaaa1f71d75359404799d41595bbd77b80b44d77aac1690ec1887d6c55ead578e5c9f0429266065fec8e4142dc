@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/dollar-filled.d.ts
+declare function DollarFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DollarFilled };
+//# sourceMappingURL=dollar-filled.d.ts.map

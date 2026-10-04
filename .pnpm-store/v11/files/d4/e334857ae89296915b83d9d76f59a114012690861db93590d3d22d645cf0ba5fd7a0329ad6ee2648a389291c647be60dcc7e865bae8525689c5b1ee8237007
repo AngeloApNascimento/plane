@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/docker.d.ts
+declare function Docker(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Docker };
+//# sourceMappingURL=docker.d.ts.map

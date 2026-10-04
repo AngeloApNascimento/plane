@@ -1,0 +1,33 @@
+"use client";
+import { IconButton as IconButton$1 } from "../../elements/icon-button/icon-button.js";
+import { Spinner } from "../../internal/spinner.js";
+import { jsx } from "react/jsx-runtime";
+import { LoaderCircle } from "lucide-react";
+import { Button } from "@base-ui/react/button";
+//#region src/components/icon-button/icon-button.tsx
+/**
+* The ready-made icon-only button: grafts Base UI's `Button` behavior onto the square `IconButton`
+* box, filling it with the provided icon element and swapping in a spinner while `loading`. It can
+* render as `<a>` via `nativeButton={false}` + `render={<a href=… />}` when needed. An `aria-label`
+* is REQUIRED for the accessible name.
+*/
+function IconButton({ render, nativeButton, icon, loading = false, disabled, type = "button", variant, size, ...props }) {
+	return /* @__PURE__ */ jsx(Button, {
+		...props,
+		type,
+		nativeButton,
+		render: /* @__PURE__ */ jsx(IconButton$1, {
+			variant,
+			size,
+			render
+		}),
+		disabled: disabled || loading,
+		focusableWhenDisabled: loading ? true : void 0,
+		"aria-busy": loading ? true : void 0,
+		children: loading ? /* @__PURE__ */ jsx(Spinner, { children: /* @__PURE__ */ jsx(LoaderCircle, {}) }) : icon
+	});
+}
+//#endregion
+export { IconButton };
+
+//# sourceMappingURL=icon-button.js.map

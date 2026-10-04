@@ -1,0 +1,31 @@
+"use client";
+//#region src/components/combobox/combobox-select-all.d.ts
+type ComboboxSelectAllProps = {
+  /**
+   * Visible row label.
+   *
+   * @default "Select all"
+   */
+  label?: string;
+  /** Whether every item is currently selected. */
+  checked: boolean;
+  /**
+   * Whether only some (not all) items are currently selected — shows a dash instead of a check.
+   * Takes precedence over `checked` for both the glyph and `aria-checked="mixed"`.
+   *
+   * @default false
+   */
+  indeterminate?: boolean;
+  /** Disables the row. */
+  disabled?: boolean;
+  /** Called when the row is activated. */
+  onClick: () => void;
+};
+/**
+ * Sticky "select every item" row for a multi-select combobox panel. Not a `ComboboxItem` — it is
+ * not a list option — so compose it in `ComboboxContent`'s `search` slot above the scrolling list.
+ */
+declare function ComboboxSelectAll({ label, checked, indeterminate, disabled, onClick }: ComboboxSelectAllProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxSelectAll, ComboboxSelectAllProps };
+//# sourceMappingURL=combobox-select-all.d.ts.map

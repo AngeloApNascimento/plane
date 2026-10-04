@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/appearance-filled.d.ts
+declare function AppearanceFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AppearanceFilled };
+//# sourceMappingURL=appearance-filled.d.ts.map

@@ -1,0 +1,30 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.insertCommentToStartOfFile = exports.insertCommentBefore = void 0;
+function clean(value) {
+    return value
+        .replace(/[ \t]{2,}/g, ' ')
+        .replace(/^[ \t]*/gm, '')
+        .trim();
+}
+function insertCommentBefore(j, path, message, prefix = ` TODO: (@hypermod)`) {
+    const content = `${prefix} ${clean(message)} `;
+    path.forEach(path => {
+        // @ts-ignore
+        path.value.comments = path.value.comments || [];
+        // @ts-ignore
+        const exists = path.value.comments.find(
+        // @ts-ignore
+        comment => comment.value === content);
+        // avoiding duplicates of the same comment
+        if (exists)
+            return;
+        // @ts-ignore
+        path.value.comments.push(j.commentBlock(content));
+    });
+}
+exports.insertCommentBefore = insertCommentBefore;
+function insertCommentToStartOfFile(j, path, message) {
+    insertCommentBefore(j, path.find(j.Program), message);
+}
+exports.insertCommentToStartOfFile = insertCommentToStartOfFile;

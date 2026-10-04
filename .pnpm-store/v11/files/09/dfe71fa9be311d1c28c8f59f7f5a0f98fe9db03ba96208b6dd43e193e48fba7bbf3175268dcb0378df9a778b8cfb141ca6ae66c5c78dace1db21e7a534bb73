@@ -1,0 +1,22 @@
+"use client";
+import { comboboxChipVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-chip.tsx
+/**
+* One selected value in the multiselect frame, shown as a removable tag: its label plus a remove
+* control (an `IconButton` grafted onto Base UI's `ChipRemove` by the `components` ready-made).
+* Arrow keys move focus across chips (Base UI's behavior), so it carries the standard focus ring.
+* Base-UI-agnostic — graft in `components` via `<BaseCombobox.Chip render={<ComboboxChip/>} />`.
+*/
+function ComboboxChip({ render, size, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: comboboxChipVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { ComboboxChip };
+
+//# sourceMappingURL=combobox-chip.js.map

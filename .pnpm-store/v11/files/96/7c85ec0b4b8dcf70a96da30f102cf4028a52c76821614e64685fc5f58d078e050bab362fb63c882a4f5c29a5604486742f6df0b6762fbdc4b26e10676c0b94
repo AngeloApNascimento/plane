@@ -1,0 +1,13 @@
+"use client";
+import { MenuSubmenuTriggerVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-submenu-trigger.d.ts
+type MenuSubmenuTriggerProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & MenuSubmenuTriggerVariantProps;
+/**
+ * The styled row that opens a submenu. Base-UI-agnostic — graft the submenu-trigger behavior in
+ * `components` via `<BaseMenu.SubmenuTrigger render={<MenuSubmenuTrigger />} />`.
+ */
+declare function MenuSubmenuTrigger({ variant, render, ...props }: MenuSubmenuTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuSubmenuTrigger, MenuSubmenuTriggerProps };
+//# sourceMappingURL=menu-submenu-trigger.d.ts.map

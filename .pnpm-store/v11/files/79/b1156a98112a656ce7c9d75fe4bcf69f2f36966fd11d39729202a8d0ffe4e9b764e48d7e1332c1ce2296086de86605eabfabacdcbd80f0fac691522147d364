@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/build-filled.d.ts
+declare function BuildFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BuildFilled };
+//# sourceMappingURL=build-filled.d.ts.map

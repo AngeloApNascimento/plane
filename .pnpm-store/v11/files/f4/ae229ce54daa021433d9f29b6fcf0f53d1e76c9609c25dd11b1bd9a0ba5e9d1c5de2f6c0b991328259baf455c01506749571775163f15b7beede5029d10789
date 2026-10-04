@@ -1,0 +1,54 @@
+"use client";
+import { DrawerViewport } from "../../elements/drawer/drawer-viewport.js";
+import { DrawerInlineHost } from "../../elements/drawer/drawer-inline-host.js";
+import { DrawerInlinePortal } from "../../elements/drawer/drawer-inline-portal.js";
+import { DrawerPopup } from "../../elements/drawer/drawer-popup.js";
+import { DrawerContent } from "../../elements/drawer/drawer-content.js";
+import { DrawerBackdrop } from "./drawer-backdrop.js";
+import * as React from "react";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-panel.tsx
+/**
+* Convenience that composes drawer portal/viewport/popup boilerplate. Defaults to `inline` + `sm`
+* (flush absolute column in a relative parent). `overlay` portals to `document.body`; `contained`
+* requires a parent `container`. `backdrop` is overlay-only.
+*/
+function DrawerPanel(props) {
+	const { variant = "inline", container, side, size = "sm", children, backdrop: backdropProp, ...popupProps } = props;
+	const backdrop = variant === "overlay" && Boolean(backdropProp);
+	const [inlineHost, setInlineHost] = React.useState(null);
+	const panel = /* @__PURE__ */ jsxs(Fragment, { children: [backdrop ? /* @__PURE__ */ jsx(DrawerBackdrop, {}) : null, /* @__PURE__ */ jsx(Drawer.Viewport, {
+		render: /* @__PURE__ */ jsx(DrawerViewport, { variant }),
+		children: /* @__PURE__ */ jsx(Drawer.Popup, {
+			...popupProps,
+			render: /* @__PURE__ */ jsx(DrawerPopup, {
+				variant,
+				side,
+				size
+			}),
+			children: /* @__PURE__ */ jsx(Drawer.Content, {
+				render: /* @__PURE__ */ jsx(DrawerContent, { size }),
+				children
+			})
+		})
+	})] });
+	if (variant === "inline" && container == null) return /* @__PURE__ */ jsxs(Fragment, { children: [/* @__PURE__ */ jsx(DrawerInlineHost, { ref: setInlineHost }), inlineHost ? /* @__PURE__ */ jsx(Drawer.Portal, {
+		container: inlineHost,
+		render: /* @__PURE__ */ jsx(DrawerInlinePortal, {}),
+		children: panel
+	}) : null] });
+	if (variant === "inline") return /* @__PURE__ */ jsx(Drawer.Portal, {
+		container,
+		render: /* @__PURE__ */ jsx(DrawerInlinePortal, {}),
+		children: panel
+	});
+	return /* @__PURE__ */ jsx(Drawer.Portal, {
+		container,
+		children: panel
+	});
+}
+//#endregion
+export { DrawerPanel };
+
+//# sourceMappingURL=drawer-panel.js.map

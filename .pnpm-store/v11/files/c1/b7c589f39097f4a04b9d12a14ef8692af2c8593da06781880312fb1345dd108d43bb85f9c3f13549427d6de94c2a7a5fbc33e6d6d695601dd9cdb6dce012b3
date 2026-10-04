@@ -1,0 +1,5 @@
+"use client";
+import { SwitchSize } from "./variants.js";
+import { Switch, SwitchProps } from "./switch.js";
+import { SwitchThumb, SwitchThumbProps } from "./switch-thumb.js";
+export { Switch, SwitchProps, type SwitchSize, SwitchThumb, SwitchThumbProps };

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/table-outline.d.ts
+declare function TableEditorOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TableEditorOutline };
+//# sourceMappingURL=table-outline.d.ts.map

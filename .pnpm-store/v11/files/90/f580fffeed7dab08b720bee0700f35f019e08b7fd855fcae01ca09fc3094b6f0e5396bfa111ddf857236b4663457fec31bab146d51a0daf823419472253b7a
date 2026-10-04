@@ -1,0 +1,12 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/switch/variants.d.ts
+declare const switchVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type SwitchSize = NonNullable<VariantProps<typeof switchVariants>["size"]>;
+type SwitchVariantProps = StrictVariantProps<typeof switchVariants>;
+//#endregion
+export { SwitchSize, SwitchVariantProps, switchVariants };
+//# sourceMappingURL=variants.d.ts.map

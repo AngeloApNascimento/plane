@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-item-content.d.ts
+type ContextMenuItemContentProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The text column of a stacked row. Grows to fill the row so trailing regions sit at the
+ * inline-end, and stacks a `ContextMenuItemLabel` over a `ContextMenuItemDescription`.
+ * Base-UI-agnostic.
+ */
+declare function ContextMenuItemContent({ render, ...props }: ContextMenuItemContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ContextMenuItemContent, ContextMenuItemContentProps };
+//# sourceMappingURL=context-menu-item-content.d.ts.map

@@ -1,0 +1,23 @@
+"use client";
+import { ListboxItemSize } from "../../internal/listbox-item.js";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-item.d.ts
+type SelectItemProps = Omit<Select.Item.Props, "children" | "className" | "label" | "render" | "style"> & {
+  /** Visual size of the row: controls its height and text size. Required. */
+  size: ListboxItemSize;
+  /** Option label. */
+  label: string;
+};
+/**
+ * The ready-made select option row: grafts Base UI's `Select.Item` behavior onto the shared listbox
+ * row and bakes the selection marker — Base UI's `Select.ItemIndicator` grafted onto the styled
+ * `SelectItemIndicator` with a check glyph, at the row's inline-END (a single-select check trails
+ * its label; only a multi-select checkbox leads). The marker is `keepMounted` because the
+ * `layout="indicator"` row places children positionally: it must occupy the trailing column even
+ * while unselected (the styled marker hides its glyph off `data-selected`). The `label` prop
+ * becomes the item's text via Base UI's `Select.ItemText`.
+ */
+declare function SelectItem({ label, size, ...props }: SelectItemProps): import("react").JSX.Element;
+//#endregion
+export { SelectItem, SelectItemProps };
+//# sourceMappingURL=select-item.d.ts.map

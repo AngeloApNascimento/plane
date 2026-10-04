@@ -1,0 +1,21 @@
+"use client";
+import { contextMenuItemTrailingVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-item-trailing.tsx
+/**
+* The slot at a row's inline-end for arbitrary trailing content (a shortcut, a count, a chevron).
+* Sizes any icon child to the row's `--node-size`; unlike an indicator it adds no tint, so passed
+* content keeps its own color.
+*/
+function ContextMenuItemTrailing({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: contextMenuItemTrailingVariants() }, props)
+	});
+}
+//#endregion
+export { ContextMenuItemTrailing };
+
+//# sourceMappingURL=context-menu-item-trailing.js.map

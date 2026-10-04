@@ -1,0 +1,40 @@
+"use client";
+import { calendarClassNames } from "../../elements/calendar/variants.js";
+import { jsx } from "react/jsx-runtime";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DayPicker } from "react-day-picker";
+//#region src/components/calendar/calendar.tsx
+const renderChevron = ({ orientation, className }) => orientation === "left" ? /* @__PURE__ */ jsx(ChevronLeft, {
+	"aria-hidden": true,
+	className
+}) : /* @__PURE__ */ jsx(ChevronRight, {
+	"aria-hidden": true,
+	className
+});
+/**
+* The month grid: react-day-picker's `DayPicker` behavior grafted onto propel's `elements/calendar`
+* `calendarClassNames` styled contract, finished with propel's lucide nav chevrons. Supports
+* `single` and `range` selection via the `mode` prop and is fully keyboard- and
+* screen-reader-accessible (react-day-picker owns the grid semantics). Pass `selected`/`onSelect`
+* to control the selection. The grid draws no surface of its own — no border, shadow, fill, radius
+* or padding — so the host owns the chrome: put it in a `rich` `PopoverContent` for a date picker,
+* or in a dialog or card, and it takes that surface's single border and gutters. The chevron icons
+* carry no className — react-day-picker passes `classNames.chevron` (16px, RTL-mirrored) through to
+* them; a caller's own `components.Chevron` still wins. Weeks start Monday (`weekStartsOn={1}`, per
+* spec); pass `weekStartsOn` to override.
+*/
+function Calendar(props) {
+	return /* @__PURE__ */ jsx(DayPicker, {
+		weekStartsOn: 1,
+		classNames: calendarClassNames,
+		...props,
+		components: {
+			Chevron: renderChevron,
+			...props.components
+		}
+	});
+}
+//#endregion
+export { Calendar };
+
+//# sourceMappingURL=calendar.js.map

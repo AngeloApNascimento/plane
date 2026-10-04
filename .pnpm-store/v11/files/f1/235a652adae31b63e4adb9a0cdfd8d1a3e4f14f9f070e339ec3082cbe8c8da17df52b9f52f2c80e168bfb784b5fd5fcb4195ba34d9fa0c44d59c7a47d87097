@@ -1,0 +1,27 @@
+"use client";
+import { swatchVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/swatch/swatch.tsx
+/**
+* A filled 8px colour disc centred in the inherited `--node-size` box, so it sits exactly where an
+* icon would: the leading node of a label pill, or a `MenuItem`'s `icon` slot. Decorative
+* (`aria-hidden`) — the adjacent label carries the name. `fill` is the one styling input a consumer
+* supplies, because the colour is data rather than a token; the part applies it itself as
+* `--swatch-fill`, so no `style` prop is exposed.
+*/
+function Swatch({ fill, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			"aria-hidden": true,
+			className: swatchVariants(),
+			style: { "--swatch-fill": fill }
+		}, props)
+	});
+}
+//#endregion
+export { Swatch };
+
+//# sourceMappingURL=swatch.js.map

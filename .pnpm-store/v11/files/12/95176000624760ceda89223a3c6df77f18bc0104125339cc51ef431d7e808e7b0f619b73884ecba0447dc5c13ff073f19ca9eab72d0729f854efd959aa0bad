@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/toggle-on-filled.d.ts
+declare function ToggleOnFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ToggleOnFilled };
+//# sourceMappingURL=toggle-on-filled.d.ts.map

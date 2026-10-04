@@ -1,0 +1,35 @@
+"use client";
+import { ComboboxSize, ComboboxVariant } from "../../elements/combobox/variants.js";
+import "../../elements/combobox/index.js";
+import * as React from "react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-trigger.d.ts
+type ComboboxTriggerProps = Omit<Combobox.Trigger.Props, "children" | "className" | "style" | "render"> & {
+  /**
+   * Frame look. `neutral` is the bordered field surface; `ghost` is borderless. Invalid on ghost
+   * has no trigger chrome — the danger cue is the helper text below.
+   *
+   * @default "neutral"
+   */
+  variant?: ComboboxVariant;
+  /** Visual size of the trigger: height, text, and glyph sizing. Required. */
+  size: ComboboxSize;
+  /** Shown in the trigger while nothing is selected — Base UI's `Combobox.Value` placeholder. */
+  placeholder?: React.ReactNode;
+  /** Decorative leading element at the inline-start, e.g. `<Icon icon={Plus} tint="placeholder" />`. */
+  icon?: React.ReactNode;
+  /**
+   * Decorative trailing glyph. Omit it to show a chevron (the Figma end node). This is not a nested
+   * popup-trigger control — the frame itself is the `Trigger`.
+   */
+  trailing?: React.ReactNode;
+};
+/**
+ * The ready-made closed-field trigger: grafts Base UI's `Trigger` onto the styled frame and shows
+ * the selected value (or `placeholder`) plus a trailing chevron. Use this instead of
+ * `ComboboxInputGroup` when the filter input lives in the panel (`ComboboxSearch`).
+ */
+declare function ComboboxTrigger({ size, variant, placeholder, icon, trailing, ...props }: ComboboxTriggerProps): React.JSX.Element;
+//#endregion
+export { ComboboxTrigger, ComboboxTriggerProps };
+//# sourceMappingURL=combobox-trigger.d.ts.map

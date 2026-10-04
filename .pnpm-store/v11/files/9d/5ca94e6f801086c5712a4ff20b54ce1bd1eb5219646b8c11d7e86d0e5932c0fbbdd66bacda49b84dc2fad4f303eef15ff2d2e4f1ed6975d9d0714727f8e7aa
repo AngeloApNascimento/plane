@@ -1,0 +1,22 @@
+"use client";
+import { AccordionPanel as AccordionPanel$1 } from "../../elements/accordion/accordion-panel.js";
+import { AccordionPanelContent } from "../../elements/accordion/accordion-panel-content.js";
+import { jsx } from "react/jsx-runtime";
+import { Accordion } from "@base-ui/react/accordion";
+//#region src/components/accordion/accordion-panel.tsx
+/**
+* The ready-made accordion panel: grafts Base UI's panel behavior onto the styled `AccordionPanel`,
+* composing the `AccordionPanelContent` padding wrapper so content is inset from the trigger's
+* edges.
+*/
+function AccordionPanel({ children, ...props }) {
+	return /* @__PURE__ */ jsx(Accordion.Panel, {
+		...props,
+		render: /* @__PURE__ */ jsx(AccordionPanel$1, {}),
+		children: /* @__PURE__ */ jsx(AccordionPanelContent, { children })
+	});
+}
+//#endregion
+export { AccordionPanel };
+
+//# sourceMappingURL=accordion-panel.js.map

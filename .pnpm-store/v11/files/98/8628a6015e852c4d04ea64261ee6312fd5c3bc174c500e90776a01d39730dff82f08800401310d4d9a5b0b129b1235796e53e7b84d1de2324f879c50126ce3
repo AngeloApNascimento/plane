@@ -1,0 +1,34 @@
+"use client";
+import { SelectItemIndicator } from "../../elements/select/select-item-indicator.js";
+import { ListboxItem } from "../../internal/listbox-item.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Check } from "lucide-react";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-item.tsx
+/**
+* The ready-made select option row: grafts Base UI's `Select.Item` behavior onto the shared listbox
+* row and bakes the selection marker — Base UI's `Select.ItemIndicator` grafted onto the styled
+* `SelectItemIndicator` with a check glyph, at the row's inline-END (a single-select check trails
+* its label; only a multi-select checkbox leads). The marker is `keepMounted` because the
+* `layout="indicator"` row places children positionally: it must occupy the trailing column even
+* while unselected (the styled marker hides its glyph off `data-selected`). The `label` prop
+* becomes the item's text via Base UI's `Select.ItemText`.
+*/
+function SelectItem({ label, size, ...props }) {
+	return /* @__PURE__ */ jsxs(Select.Item, {
+		...props,
+		render: /* @__PURE__ */ jsx(ListboxItem, {
+			layout: "indicator",
+			size
+		}),
+		children: [/* @__PURE__ */ jsx(Select.ItemText, { children: label }), /* @__PURE__ */ jsx(Select.ItemIndicator, {
+			keepMounted: true,
+			render: /* @__PURE__ */ jsx(SelectItemIndicator, {}),
+			children: /* @__PURE__ */ jsx(Check, { "aria-hidden": true })
+		})]
+	});
+}
+//#endregion
+export { SelectItem };
+
+//# sourceMappingURL=select-item.js.map

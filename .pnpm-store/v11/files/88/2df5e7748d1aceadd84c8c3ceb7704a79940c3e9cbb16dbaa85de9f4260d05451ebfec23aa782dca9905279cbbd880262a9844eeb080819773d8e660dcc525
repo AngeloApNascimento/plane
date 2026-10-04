@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider.d.ts
+type SliderProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled slider root: stacks the (optional) header row over the control. Base-UI-agnostic —
+ * graft the slider behavior in `components` via `<BaseSlider.Root render={<Slider/>} />`.
+ */
+declare function Slider({ render, ...props }: SliderProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Slider, SliderProps };
+//# sourceMappingURL=slider.d.ts.map

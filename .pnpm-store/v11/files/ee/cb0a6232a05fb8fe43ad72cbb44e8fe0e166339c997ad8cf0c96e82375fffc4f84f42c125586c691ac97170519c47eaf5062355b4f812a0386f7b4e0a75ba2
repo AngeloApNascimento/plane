@@ -1,0 +1,29 @@
+"use client";
+import { bannerIconVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/banner/banner-icon.tsx
+/**
+* The leading icon slot at the banner's inline-start (the Figma intent icon). Sizes its single
+* child to the banner's node size and tints it per `variant`, so callers pass a bare icon.
+* Decorative (the message carries the meaning), so it is `aria-hidden`.
+*/
+function BannerIcon({ placement, variant, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			"aria-hidden": true,
+			"data-slot": "banner-icon",
+			className: bannerIconVariants({
+				placement,
+				variant,
+				size
+			})
+		}, props)
+	});
+}
+//#endregion
+export { BannerIcon };
+
+//# sourceMappingURL=banner-icon.js.map

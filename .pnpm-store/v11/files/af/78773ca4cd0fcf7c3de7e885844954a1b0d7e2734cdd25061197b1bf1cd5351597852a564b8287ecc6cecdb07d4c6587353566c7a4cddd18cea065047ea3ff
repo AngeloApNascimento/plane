@@ -1,0 +1,9 @@
+"use client";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-row.d.ts
+type AutocompleteRowProps = Omit<Autocomplete.Row.Props, "className" | "style">;
+/** A grid row wrapper for multi-column listbox layouts (pass `cols` on the root's `grid`). */
+declare function AutocompleteRow(props: AutocompleteRowProps): import("react").JSX.Element;
+//#endregion
+export { AutocompleteRow, AutocompleteRowProps };
+//# sourceMappingURL=autocomplete-row.d.ts.map

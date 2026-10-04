@@ -1,0 +1,21 @@
+"use client";
+import { menuCheckboxItemVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-checkbox-item.tsx
+/**
+* A styled toggleable multi-select menu row. Base-UI-agnostic — graft the checkbox-item behavior in
+* `components` via `<BaseMenu.CheckboxItem render={<MenuCheckboxItem />} />` (Base UI applies
+* `role="menuitemcheckbox"` and the checked state).
+*/
+function MenuCheckboxItem({ variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: menuCheckboxItemVariants({ variant }) }, props)
+	});
+}
+//#endregion
+export { MenuCheckboxItem };
+
+//# sourceMappingURL=menu-checkbox-item.js.map

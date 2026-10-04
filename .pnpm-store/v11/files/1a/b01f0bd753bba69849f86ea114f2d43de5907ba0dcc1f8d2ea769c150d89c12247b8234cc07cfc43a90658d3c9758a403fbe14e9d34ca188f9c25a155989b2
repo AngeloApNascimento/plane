@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-item-control.d.ts
+type ComboboxItemControlProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** The leading control slot of a checkbox row, holding its visual toggle. */
+declare function ComboboxItemControl({ render, ...props }: ComboboxItemControlProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxItemControl, ComboboxItemControlProps };
+//# sourceMappingURL=combobox-item-control.d.ts.map

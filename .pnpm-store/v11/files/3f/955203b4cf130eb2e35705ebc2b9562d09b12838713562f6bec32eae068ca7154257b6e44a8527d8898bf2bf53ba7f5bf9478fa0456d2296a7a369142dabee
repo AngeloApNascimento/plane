@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/closed-pr-filled.d.ts
+declare function ClosedPrFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ClosedPrFilled };
+//# sourceMappingURL=closed-pr-filled.d.ts.map

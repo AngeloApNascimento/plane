@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/dropdown-filled.d.ts
+declare function DropdownFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DropdownFilled };
+//# sourceMappingURL=dropdown-filled.d.ts.map

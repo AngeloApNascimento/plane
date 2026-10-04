@@ -1,0 +1,23 @@
+"use client";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+import { cva } from "class-variance-authority";
+//#region src/internal/popup-viewport.tsx
+/**
+* The shared popup viewport surface, grafted onto any Base UI `*.Viewport` behavior in `components`
+* (`<BaseMenu.Viewport render={<PopupViewport />}>`). A `relative` content wrapper inside the popup
+* that morphs/clips during submenu or size transitions. Byte-identical across every overlay family
+* (menu, popover, tooltip), so it lives here rather than being copied per family (rule 4a).
+*/
+const popupViewportVariants = cva("relative");
+function PopupViewport({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: popupViewportVariants() }, props)
+	});
+}
+//#endregion
+export { PopupViewport, popupViewportVariants };
+
+//# sourceMappingURL=popup-viewport.js.map

@@ -1,0 +1,81 @@
+"use client";
+import { AutocompleteEmpty } from "../../elements/autocomplete/autocomplete-empty.js";
+import { AutocompleteInput } from "../../elements/autocomplete/autocomplete-input.js";
+import { AutocompleteInputGroup } from "../../elements/autocomplete/autocomplete-input-group.js";
+import { AutocompleteInputGroupClear } from "../../elements/autocomplete/autocomplete-input-group-clear.js";
+import { Autocomplete as Autocomplete$1 } from "../autocomplete/autocomplete.js";
+import { ListboxPopup } from "../../internal/listbox-popup.js";
+import { Positioner } from "../../internal/positioner.js";
+import { ListboxItem } from "../../internal/listbox-item.js";
+import { Field } from "../field/field.js";
+import { FieldDescription } from "../field/field-description.js";
+import { FieldLabel } from "../field/field-label.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete-field/autocomplete-field.tsx
+/** Ready-to-use autocomplete field with label, input, popup items, and helper/error text. */
+function AutocompleteField({ description, clear, trigger, disabled, empty, error, hint, items, label, size, name, placeholder, ...autocompleteProps }) {
+	const display = (item) => autocompleteProps.itemToStringValue ? autocompleteProps.itemToStringValue(item) : String(item);
+	return /* @__PURE__ */ jsx(Field, {
+		name,
+		disabled,
+		invalid: error != null || void 0,
+		children: /* @__PURE__ */ jsxs(Autocomplete$1, {
+			disabled,
+			items,
+			...autocompleteProps,
+			children: [
+				/* @__PURE__ */ jsx(FieldLabel, {
+					size,
+					inset: false,
+					children: label
+				}),
+				/* @__PURE__ */ jsxs(Autocomplete.InputGroup, {
+					render: /* @__PURE__ */ jsx(AutocompleteInputGroup, { size }),
+					children: [
+						/* @__PURE__ */ jsx(Autocomplete.Input, {
+							render: /* @__PURE__ */ jsx(AutocompleteInput, {}),
+							placeholder
+						}),
+						/* @__PURE__ */ jsx(AutocompleteInputGroupClear, { children: /* @__PURE__ */ jsx(Autocomplete.Clear, {
+							render: clear,
+							keepMounted: true
+						}) }),
+						/* @__PURE__ */ jsx(Autocomplete.Trigger, { render: trigger })
+					]
+				}),
+				error == null && description != null ? /* @__PURE__ */ jsx(FieldDescription, {
+					size,
+					children: description
+				}) : null,
+				/* @__PURE__ */ jsx(Autocomplete.Portal, { children: /* @__PURE__ */ jsx(Autocomplete.Positioner, {
+					render: /* @__PURE__ */ jsx(Positioner, {}),
+					children: /* @__PURE__ */ jsxs(Autocomplete.Popup, {
+						render: /* @__PURE__ */ jsx(ListboxPopup, {}),
+						children: [/* @__PURE__ */ jsx(Autocomplete.Empty, {
+							render: /* @__PURE__ */ jsx(AutocompleteEmpty, {}),
+							children: empty
+						}), /* @__PURE__ */ jsx(Autocomplete.List, { children: (item) => /* @__PURE__ */ jsx(Autocomplete.Item, {
+							value: item,
+							render: /* @__PURE__ */ jsx(ListboxItem, {
+								layout: "plain",
+								size
+							}),
+							children: display(item)
+						}, display(item)) })]
+					})
+				}) }),
+				/* @__PURE__ */ jsx(FieldHelperText, {
+					size,
+					hint,
+					error
+				})
+			]
+		})
+	});
+}
+//#endregion
+export { AutocompleteField };
+
+//# sourceMappingURL=autocomplete-field.js.map

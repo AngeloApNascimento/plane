@@ -1,0 +1,43 @@
+"use client";
+import { ScrollAreaScrollbar } from "../../elements/scroll-area/scroll-area-scrollbar.js";
+import { ScrollAreaThumb } from "../../elements/scroll-area/scroll-area-thumb.js";
+import { TabsList as TabsList$1 } from "../../elements/tabs/tabs-list.js";
+import { TabsListScrollArea } from "../../elements/tabs/tabs-list-scroll-area.js";
+import { TabsAppearanceContext, TabsStretchContext } from "./tabs-context.js";
+import { TabsIndicator } from "./tabs-indicator.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ScrollArea } from "@base-ui/react/scroll-area";
+import { Tabs } from "@base-ui/react/tabs";
+//#region src/components/tabs/tabs-list.tsx
+/**
+* The ready-made tab strip: grafts the Base UI `ScrollArea.Root` onto the styled
+* `TabsListScrollArea` frame, then grafts the Base UI `Tabs.List` behavior onto the styled
+* `TabsList` (taking the set's `variant`/`stretch` from context) rendered as the scroll viewport,
+* plus a horizontal scrollbar so a long row of tabs scrolls, and renders the active-tab underline
+* `TabsIndicator` for the `underline` variant.
+*/
+function TabsList({ children, activateOnFocus = false, ...props }) {
+	const variant = React.useContext(TabsAppearanceContext);
+	const stretch = React.useContext(TabsStretchContext);
+	return /* @__PURE__ */ jsxs(ScrollArea.Root, {
+		render: /* @__PURE__ */ jsx(TabsListScrollArea, { stretch }),
+		children: [/* @__PURE__ */ jsxs(Tabs.List, {
+			render: /* @__PURE__ */ jsx(ScrollArea.Viewport, { render: /* @__PURE__ */ jsx(TabsList$1, {
+				variant,
+				stretch
+			}) }),
+			activateOnFocus,
+			...props,
+			children: [children, variant === "underline" ? /* @__PURE__ */ jsx(TabsIndicator, {}) : null]
+		}), /* @__PURE__ */ jsx(ScrollArea.Scrollbar, {
+			orientation: "horizontal",
+			render: /* @__PURE__ */ jsx(ScrollAreaScrollbar, {}),
+			children: /* @__PURE__ */ jsx(ScrollArea.Thumb, { render: /* @__PURE__ */ jsx(ScrollAreaThumb, {}) })
+		})]
+	});
+}
+//#endregion
+export { TabsList };
+
+//# sourceMappingURL=tabs-list.js.map

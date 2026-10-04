@@ -1,0 +1,23 @@
+"use client";
+import { tableHeadSortTriggerVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-head-sort-trigger.tsx
+/**
+* The sort control inside a sortable `TableHead`: a `<button>` wrapping the `TableHeadTitle` and a
+* trailing `TableHeadSortIndicator`. Clicking it cycles the column's sort order.
+*/
+function TableHeadSortTrigger({ render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({
+			type: "button",
+			className: tableHeadSortTriggerVariants()
+		}, props)
+	});
+}
+//#endregion
+export { TableHeadSortTrigger };
+
+//# sourceMappingURL=table-head-sort-trigger.js.map

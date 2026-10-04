@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/more-horizontal-filled.d.ts
+declare function MoreHorizontalFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MoreHorizontalFilled };
+//# sourceMappingURL=more-horizontal-filled.d.ts.map

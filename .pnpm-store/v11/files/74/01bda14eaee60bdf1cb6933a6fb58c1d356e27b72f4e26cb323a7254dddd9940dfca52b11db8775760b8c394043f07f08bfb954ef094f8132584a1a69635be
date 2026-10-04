@@ -1,0 +1,21 @@
+"use client";
+import { contextMenuRadioItemCheckVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-radio-item-check.tsx
+/**
+* The styled selection region of a radio menu row. Sizes its single child (the selection icon) to
+* the row's `--node-size`. Base-UI-agnostic — graft in `components` via
+* `<BaseContextMenu.RadioItemIndicator render={<ContextMenuRadioItemCheck/>} />`.
+*/
+function ContextMenuRadioItemCheck({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: contextMenuRadioItemCheckVariants() }, props)
+	});
+}
+//#endregion
+export { ContextMenuRadioItemCheck };
+
+//# sourceMappingURL=context-menu-radio-item-check.js.map

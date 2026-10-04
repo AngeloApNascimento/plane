@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/collapsible/collapsible-panel.d.ts
+type CollapsiblePanelProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The height-animating collapsible panel (geometry + open/close transition only). Body prose and
+ * padding live on `CollapsiblePanelContent`. Base-UI-agnostic — graft in `components` via
+ * `<BaseCollapsible.Panel render={<CollapsiblePanel/>} />`.
+ */
+declare function CollapsiblePanel({ render, ...props }: CollapsiblePanelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { CollapsiblePanel, CollapsiblePanelProps };
+//# sourceMappingURL=collapsible-panel.d.ts.map

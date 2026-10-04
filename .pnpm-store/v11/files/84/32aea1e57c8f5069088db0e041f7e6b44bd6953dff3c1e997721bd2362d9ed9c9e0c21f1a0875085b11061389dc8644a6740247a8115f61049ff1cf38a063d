@@ -1,0 +1,89 @@
+"use client";
+import { PopoverPopupVariant } from "../../elements/popover/variants.js";
+import "../../elements/popover/index.js";
+import { Popover } from "@base-ui/react/popover";
+//#region src/components/popover/popover-content.d.ts
+type PopoverContentProps = Omit<Popover.Popup.Props, "className" | "style"> & {
+  /**
+   * Panel look. `rich` is the padded content panel for forms and arbitrary children; `text` is the
+   * compact 296px title + description card.
+   *
+   * @default "rich"
+   */
+  variant?: PopoverPopupVariant;
+  /**
+   * Which side of the trigger the panel opens toward.
+   *
+   * @default "bottom"
+   */
+  side?: Popover.Positioner.Props["side"];
+  /**
+   * Alignment of the panel relative to the trigger along `side`.
+   *
+   * @default "start"
+   */
+  align?: Popover.Positioner.Props["align"];
+  /**
+   * Distance in px between the trigger and the panel.
+   *
+   * @default 4
+   */
+  sideOffset?: Popover.Positioner.Props["sideOffset"];
+  /**
+   * Additional offset in px along the align axis — slides the panel along the trigger's edge
+   * without changing `align`.
+   *
+   * @default 0
+   */
+  alignOffset?: Popover.Positioner.Props["alignOffset"];
+  /**
+   * Minimum gap in px between the panel and the viewport edge it would otherwise touch.
+   *
+   * @default 5
+   */
+  collisionPadding?: Popover.Positioner.Props["collisionPadding"];
+  /**
+   * The element or rect the panel is confined to when avoiding collisions. Base UI's clipping
+   * ancestors when unset.
+   */
+  collisionBoundary?: Popover.Positioner.Props["collisionBoundary"];
+  /**
+   * What to do when the panel would overflow the boundary, set per axis: flip to the other side,
+   * shift along it, or stay put. Base UI flips the side and shifts the alignment when unset.
+   */
+  collisionAvoidance?: Popover.Positioner.Props["collisionAvoidance"];
+  /**
+   * Keep the panel on screen after the trigger scrolls out of view, instead of following it out.
+   *
+   * @default false
+   */
+  sticky?: Popover.Positioner.Props["sticky"];
+  /**
+   * Which CSS `position` the positioner uses. `fixed` escapes overflow-clipping ancestors, e.g. a
+   * trigger inside a sticky header. Unset, Base UI uses `absolute`.
+   *
+   * @default "absolute"
+   */
+  positionMethod?: Popover.Positioner.Props["positionMethod"];
+  /**
+   * Position against this element instead of the trigger — an element, a ref, a virtual element, or
+   * a function returning one. Geometry only; the trigger keeps its role and interactions.
+   */
+  anchor?: Popover.Positioner.Props["anchor"];
+  /**
+   * Stop tracking layout shifts of the anchor — position once, on open.
+   *
+   * @default false
+   */
+  disableAnchorTracking?: Popover.Positioner.Props["disableAnchorTracking"];
+};
+/**
+ * A trigger-anchored content panel. Composes the popover portal + positioner + styled popup so a
+ * consumer only writes the trigger and the panel body. Pass any trigger through `PopoverTrigger`'s
+ * `render`; pass `variant="text"` for the compact title + description card. Put tall `rich` content
+ * in `PopoverBody` so it scrolls under the available-height cap.
+ */
+declare function PopoverContent({ variant, side, align, sideOffset, alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, ...props }: PopoverContentProps): import("react").JSX.Element;
+//#endregion
+export { PopoverContent, PopoverContentProps, type PopoverPopupVariant };
+//# sourceMappingURL=popover-content.d.ts.map

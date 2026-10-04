@@ -1,0 +1,4 @@
+"use client";
+import { CheckboxGroupFieldOption } from "./checkbox-group-field-option.js";
+import { CheckboxGroupField } from "./checkbox-group-field.js";
+export { CheckboxGroupField, CheckboxGroupFieldOption };

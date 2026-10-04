@@ -1,0 +1,17 @@
+"use client";
+import { listItemCounterVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list-item-counter.tsx
+/** The row's trailing count chip (e.g. an unread count). */
+function ListItemCounter({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: listItemCounterVariants() }, props)
+	});
+}
+//#endregion
+export { ListItemCounter };
+
+//# sourceMappingURL=list-item-counter.js.map

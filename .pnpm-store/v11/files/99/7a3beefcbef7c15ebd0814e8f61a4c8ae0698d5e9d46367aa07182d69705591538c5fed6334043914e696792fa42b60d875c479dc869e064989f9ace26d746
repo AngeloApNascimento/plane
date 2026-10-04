@@ -1,0 +1,71 @@
+"use client";
+import { FieldControlContent } from "../../elements/field/field-control-content.js";
+import { FieldLabelGroup } from "../../elements/field/field-label-group.js";
+import { Field } from "../field/field.js";
+import { FieldDescription } from "../field/field-description.js";
+import { FieldLabel } from "../field/field-label.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import { Select as Select$1 } from "../select/select.js";
+import { SelectContent } from "../select/select-content.js";
+import { SelectItem } from "../select/select-item.js";
+import { SelectList } from "../select/select-list.js";
+import { SelectTrigger } from "../select/select-trigger.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select-field/select-field.tsx
+/** Ready-to-use select field with label, trigger, popup options, and helper/error text. */
+function SelectField({ description, disabled, error, hint, icon, label, required, size, variant, name, options, ...selectProps }) {
+	return /* @__PURE__ */ jsx(Field, {
+		name,
+		size,
+		disabled,
+		invalid: error != null || void 0,
+		children: /* @__PURE__ */ jsxs(Select$1, {
+			disabled,
+			items: options,
+			required,
+			...selectProps,
+			children: [/* @__PURE__ */ jsxs(FieldLabelGroup, {
+				orientation: "vertical",
+				children: [/* @__PURE__ */ jsx(Select.Label, {
+					render: /* @__PURE__ */ jsx(FieldLabel, {
+						size,
+						inset: false,
+						required
+					}),
+					children: label
+				}), description != null ? /* @__PURE__ */ jsx(FieldDescription, {
+					size,
+					children: description
+				}) : null]
+			}), /* @__PURE__ */ jsxs(FieldControlContent, {
+				orientation: "vertical",
+				size,
+				children: [
+					/* @__PURE__ */ jsx(SelectTrigger, {
+						size,
+						variant,
+						icon
+					}),
+					/* @__PURE__ */ jsx(SelectContent, {
+						alignItemWithTrigger: false,
+						children: /* @__PURE__ */ jsx(SelectList, { children: options.map((option) => /* @__PURE__ */ jsx(SelectItem, {
+							value: option.value,
+							size: "lg",
+							label: option.label
+						}, option.value)) })
+					}),
+					/* @__PURE__ */ jsx(FieldHelperText, {
+						size,
+						hint,
+						error
+					})
+				]
+			})]
+		})
+	});
+}
+//#endregion
+export { SelectField };
+
+//# sourceMappingURL=select-field.js.map

@@ -1,0 +1,62 @@
+"use client";
+import * as React from "react";
+import { Dialog } from "@base-ui/react/dialog";
+//#region src/components/dialog/dialog.d.ts
+type DialogDiscard = {
+  /**
+   * Whether a close request must be confirmed right now — typically "the form has unsaved edits".
+   * While `false`, the dialog closes as usual.
+   */
+  when: boolean;
+  /**
+   * Called after the person confirms, once the dialog has been asked to close. Reset draft state
+   * here.
+   */
+  onDiscard?: () => void;
+  /**
+   * Alert title.
+   *
+   * @default "Discard changes?"
+   */
+  title?: React.ReactNode;
+  /**
+   * Alert description.
+   *
+   * @default "Your changes haven't been saved. Discarding them can't be undone."
+   */
+  description?: React.ReactNode;
+  /**
+   * Label of the destructive action that closes the dialog.
+   *
+   * @default "Discard"
+   */
+  discardLabel?: string;
+  /**
+   * Label of the action that dismisses the alert and returns to the dialog.
+   *
+   * @default "Keep editing"
+   */
+  keepLabel?: string;
+};
+/** The imperative actions exposed through `actionsRef`: `close()` and `unmount()`. */
+type DialogImperativeActions = Dialog.Root.Actions;
+type DialogProps = Omit<Dialog.Root.Props, "className" | "style"> & {
+  /**
+   * Ask before a dismissal while `when` is true: Escape, an outside press, and any `DialogClose`
+   * raise an `AlertDialog` instead of closing. "Discard" then closes the dialog and calls
+   * `onDiscard`; "Keep editing" returns to it. Closing from your own handler (Save, Post) is not a
+   * dismissal and is never intercepted: set controlled `open` to `false`, or call
+   * `actionsRef.current.close()`. Either of those while the alert is showing closes both.
+   */
+  discard?: DialogDiscard;
+};
+/**
+ * The dialog Root — Base UI's context/state provider (renders no element of its own). Modal by
+ * default; pass `disablePointerDismissal` to keep it open on outside clicks. A behavior-only role,
+ * so it lives in `components` (rules 1a, 2); the styled parts live in `elements/dialog` and are
+ * grafted onto Base UI behavior here.
+ */
+declare function Dialog$1({ discard, open, defaultOpen, onOpenChange, actionsRef, children, ...props }: DialogProps): React.JSX.Element;
+//#endregion
+export { Dialog$1 as Dialog, DialogDiscard, DialogImperativeActions, DialogProps };
+//# sourceMappingURL=dialog.d.ts.map

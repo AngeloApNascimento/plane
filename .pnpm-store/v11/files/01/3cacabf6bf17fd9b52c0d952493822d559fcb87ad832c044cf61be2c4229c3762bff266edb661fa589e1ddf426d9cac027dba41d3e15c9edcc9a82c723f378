@@ -1,0 +1,17 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu.tsx
+/**
+* The navigation menu Root — Base UI's context/state provider. It renders Base UI's unstyled
+* `<nav>` container (a `<div>` when nested) and carries no propel styling, so it is a behavior-only
+* role and lives in `components` (rules 1a, 2); the styled parts live in `elements/navigation-menu`
+* and are grafted onto Base UI behavior here.
+*/
+function NavigationMenu$1(props) {
+	return /* @__PURE__ */ jsx(NavigationMenu.Root, { ...props });
+}
+//#endregion
+export { NavigationMenu$1 as NavigationMenu };
+
+//# sourceMappingURL=navigation-menu.js.map

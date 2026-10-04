@@ -1,0 +1,74 @@
+"use client";
+import { AvatarGroup as AvatarGroup$1 } from "../../elements/avatar-group/avatar-group.js";
+import { AvatarGroupCounter } from "../../elements/avatar-group/avatar-group-counter.js";
+import { AvatarGroupOverflow } from "../../elements/avatar-group/avatar-group-overflow.js";
+import { Tooltip } from "../tooltip/tooltip.js";
+import { AvatarGroupContext } from "../avatar/avatar-group-context.js";
+import { TooltipProvider } from "../tooltip/tooltip-provider.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/avatar-group/avatar-group.tsx
+function flattenAvatarChildren(children, parentKey = "") {
+	return React.Children.toArray(children).flatMap((child, index) => {
+		if (!React.isValidElement(child)) return [child];
+		const key = JSON.stringify([parentKey, child.key ?? index]);
+		if (child.type === React.Fragment) return flattenAvatarChildren(child.props.children, key);
+		return [React.cloneElement(child, { key })];
+	});
+}
+function getMemberCounts(childCount, max, total) {
+	const memberCount = total != null && Number.isFinite(total) ? Math.max(0, Math.floor(total)) : childCount;
+	const cap = max != null && Number.isFinite(max) ? Math.max(0, Math.floor(max)) : void 0;
+	const visibleCount = Math.min(childCount, memberCount, cap == null || memberCount <= cap + 1 ? memberCount : cap);
+	return {
+		visibleCount,
+		hiddenCount: memberCount - visibleCount
+	};
+}
+/**
+* The ready-made overlapping avatar stack: shares `size` with every `Avatar` inside via context (an
+* avatar's own `size` still wins), composed around the styled `elements/avatar-group` container.
+* Members retain their standalone ring inside the group. A `TooltipProvider` wraps the stack so
+* member `tooltip`s share open/close timing when sweeping across faces.
+*/
+function AvatarGroup({ size, max = 2, total, label, "aria-label": ariaLabel, overflowLabel, overflowTooltip, children, ...props }) {
+	const summaryLabel = label ?? ariaLabel;
+	const items = flattenAvatarChildren(children);
+	const { visibleCount, hiddenCount } = getMemberCounts(items.length, max, total);
+	const hasOverflowTooltip = hiddenCount > 0 && !!overflowTooltip?.trim();
+	const counterLabel = overflowLabel ?? `${hiddenCount} more`;
+	const faces = items.slice(0, visibleCount);
+	const counter = hiddenCount > 0 ? /* @__PURE__ */ jsxs(AvatarGroupCounter, {
+		size,
+		role: hasOverflowTooltip || summaryLabel ? void 0 : "img",
+		"aria-label": hasOverflowTooltip || summaryLabel ? void 0 : counterLabel,
+		"aria-hidden": hasOverflowTooltip || !!summaryLabel || void 0,
+		children: ["+", Math.min(hiddenCount, 9)]
+	}) : null;
+	return /* @__PURE__ */ jsx(AvatarGroupContext.Provider, {
+		value: size,
+		children: /* @__PURE__ */ jsx(TooltipProvider, { children: /* @__PURE__ */ jsxs(AvatarGroup$1, {
+			role: summaryLabel ? hasOverflowTooltip ? "group" : "img" : void 0,
+			"aria-label": summaryLabel,
+			...props,
+			children: [summaryLabel && hasOverflowTooltip ? /* @__PURE__ */ jsx(AvatarGroup$1, {
+				render: /* @__PURE__ */ jsx("span", {}),
+				"aria-hidden": "true",
+				children: faces
+			}) : faces, hasOverflowTooltip ? /* @__PURE__ */ jsx(Tooltip, {
+				label: overflowTooltip ?? "",
+				layout: "stacked",
+				children: /* @__PURE__ */ jsx(AvatarGroupOverflow, {
+					role: "img",
+					tabIndex: 0,
+					"aria-label": counterLabel,
+					children: counter
+				})
+			}) : counter]
+		}) })
+	});
+}
+//#endregion
+export { AvatarGroup };
+
+//# sourceMappingURL=avatar-group.js.map

@@ -1,0 +1,20 @@
+"use client";
+import { textAreaFieldVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/text-area-field/text-area-field.tsx
+/**
+* The layout frame for a text area field (label above the control). Base-UI-agnostic — graft
+* `Field.Root` in `components` via `<BaseField.Root render={<TextAreaField/>} />`.
+*/
+function TextAreaField({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: textAreaFieldVariants() }, props)
+	});
+}
+//#endregion
+export { TextAreaField };
+
+//# sourceMappingURL=text-area-field.js.map

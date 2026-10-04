@@ -1,0 +1,24 @@
+"use client";
+import { ButtonGroup as ButtonGroup$1 } from "../../elements/button-group/button-group.js";
+import { ButtonGroupContext } from "./button-group-context.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/button-group/button-group.tsx
+/**
+* The ready-made connected button group: a `group`-role container that shares `size` with every
+* `ButtonGroupButton` inside via context (an item's own `size` still wins). There is no Base UI
+* button-group primitive — the items are independent Base UI `Button`s; the group contributes only
+* the shared chrome and the `group` role. Name the group for assistive tech via `aria-label`.
+*/
+function ButtonGroup({ size, ...props }) {
+	return /* @__PURE__ */ jsx(ButtonGroupContext.Provider, {
+		value: size,
+		children: /* @__PURE__ */ jsx(ButtonGroup$1, {
+			role: "group",
+			...props
+		})
+	});
+}
+//#endregion
+export { ButtonGroup };
+
+//# sourceMappingURL=button-group.js.map

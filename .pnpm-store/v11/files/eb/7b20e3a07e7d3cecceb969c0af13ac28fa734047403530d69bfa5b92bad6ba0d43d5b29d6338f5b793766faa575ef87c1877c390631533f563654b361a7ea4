@@ -1,0 +1,20 @@
+"use client";
+import { alertDialogDescriptionVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-description.tsx
+/**
+* Supporting copy under the alert dialog title. Base-UI-agnostic — graft the description behavior
+* in `components` via `<BaseAlertDialog.Description render={<AlertDialogDescription />} />`.
+*/
+function AlertDialogDescription({ render, ...props }) {
+	return useRender({
+		defaultTagName: "p",
+		render,
+		props: mergeProps({ className: alertDialogDescriptionVariants() }, props)
+	});
+}
+//#endregion
+export { AlertDialogDescription };
+
+//# sourceMappingURL=alert-dialog-description.js.map

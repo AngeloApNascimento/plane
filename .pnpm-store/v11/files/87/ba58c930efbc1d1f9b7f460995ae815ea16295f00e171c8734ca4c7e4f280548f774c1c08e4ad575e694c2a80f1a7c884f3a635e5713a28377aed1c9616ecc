@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/catchup-filled.d.ts
+declare function CatchupFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CatchupFilled };
+//# sourceMappingURL=catchup-filled.d.ts.map

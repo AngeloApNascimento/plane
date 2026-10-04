@@ -1,0 +1,19 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import * as React from "react";
+//#region src/components/field/field-helper-text.d.ts
+/**
+ * The error-or-hint line beneath a field: shows the `FieldError` when there is an error, otherwise
+ * the `FieldDescription` hint. With no explicit `error`, the `FieldError` renders unmatched so Base
+ * UI's own error channel stays open — validity messages and external `Form` `errors` for this field
+ * display (and clear) automatically. A components-tier composition of the two elements parts;
+ * shared by the ready-made field types so the error-XOR-hint rule lives in one place.
+ */
+declare function FieldHelperText({ size, hint, error }: {
+  size: FieldSize;
+  hint?: React.ReactNode;
+  error?: React.ReactNode;
+}): React.JSX.Element;
+//#endregion
+export { FieldHelperText };
+//# sourceMappingURL=field-helper-text.d.ts.map

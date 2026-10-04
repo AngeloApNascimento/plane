@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/bulleted-list-outline.d.ts
+declare function BulletedListOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BulletedListOutline };
+//# sourceMappingURL=bulleted-list-outline.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/github.d.ts
+declare function Github(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Github };
+//# sourceMappingURL=github.d.ts.map

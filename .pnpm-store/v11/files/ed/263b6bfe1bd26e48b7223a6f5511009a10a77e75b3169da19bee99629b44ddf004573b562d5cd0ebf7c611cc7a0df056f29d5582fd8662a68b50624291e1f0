@@ -1,0 +1,13 @@
+"use client";
+import { Dialog } from "@base-ui/react/dialog";
+//#region src/components/dialog/dialog-description.d.ts
+type DialogDescriptionProps = Omit<Dialog.Description.Props, "className" | "style">;
+/**
+ * The supporting description for the dialog: Base UI's `Dialog.Description` behavior (links to the
+ * popup via `aria-describedby`) grafted onto the dialog-owned description chrome (`text-body-xs`
+ * tertiary).
+ */
+declare function DialogDescription(props: DialogDescriptionProps): import("react").JSX.Element;
+//#endregion
+export { DialogDescription, DialogDescriptionProps };
+//# sourceMappingURL=dialog-description.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/workgraph-outline.d.ts
+declare function WorkgraphOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { WorkgraphOutline };
+//# sourceMappingURL=workgraph-outline.d.ts.map

@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-action-group.d.ts
+type AlertDialogActionGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/** Keeps related footer actions together in a split footer. */
+declare function AlertDialogActionGroup({ render, ...props }: AlertDialogActionGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AlertDialogActionGroup, AlertDialogActionGroupProps };
+//# sourceMappingURL=alert-dialog-action-group.d.ts.map

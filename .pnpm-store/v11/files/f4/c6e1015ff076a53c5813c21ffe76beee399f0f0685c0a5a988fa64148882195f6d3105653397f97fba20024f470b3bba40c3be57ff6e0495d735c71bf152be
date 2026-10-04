@@ -1,0 +1,21 @@
+"use client";
+import { avatarGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/avatar-group/avatar-group.tsx
+/**
+* The overlapping avatar stack — the styled container only (a single `<div>` with the Figma -6px
+* overlap). Compose `Avatar`s inside it. The shared-`size` behavior is the ready-made
+* `components/avatar-group`, which wraps this in the `AvatarGroupContext` provider.
+*/
+function AvatarGroup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: avatarGroupVariants() }, props)
+	});
+}
+//#endregion
+export { AvatarGroup };
+
+//# sourceMappingURL=avatar-group.js.map

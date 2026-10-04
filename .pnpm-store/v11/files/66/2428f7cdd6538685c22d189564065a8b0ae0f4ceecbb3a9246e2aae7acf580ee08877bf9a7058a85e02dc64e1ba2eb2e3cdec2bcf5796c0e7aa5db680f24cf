@@ -1,0 +1,28 @@
+"use client";
+import { splitButtonVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/split-button/split-button.tsx
+/**
+* The styled frame around a split button's two segments — the main action button and the
+* menu-opening icon button. Both variants flatten the segments' facing corners and keep their outer
+* `rounded-md`; what differs is the seam. Primary holds the two pills 1px apart, secondary
+* collapses the shared border so they read as one connected outline with a divider. Neutral only —
+* there is no danger/error split button. The segments keep their own control chrome.
+* Base-UI-agnostic (there is no Base UI split-button primitive); the `components` ready-made
+* composes `Button` + `MenuTrigger`-grafted `IconButton` inside it.
+*/
+function SplitButton({ variant, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: splitButtonVariants({
+			variant,
+			size
+		}) }, props)
+	});
+}
+//#endregion
+export { SplitButton };
+
+//# sourceMappingURL=split-button.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/loading-filled.d.ts
+declare function LoadingFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { LoadingFilled };
+//# sourceMappingURL=loading-filled.d.ts.map

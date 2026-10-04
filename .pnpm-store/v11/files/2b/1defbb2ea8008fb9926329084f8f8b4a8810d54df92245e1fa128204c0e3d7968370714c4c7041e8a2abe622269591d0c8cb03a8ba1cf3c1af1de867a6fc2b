@@ -1,0 +1,13 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/checkbox/variants.d.ts
+declare const checkboxLabelVariants: (props?: ({
+  stretch?: "auto" | "full" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type CheckboxLabelVariantConfig = VariantProps<typeof checkboxLabelVariants>;
+type CheckboxLabelStretch = NonNullable<CheckboxLabelVariantConfig["stretch"]>;
+type CheckboxLabelVariantProps = StrictVariantProps<typeof checkboxLabelVariants>;
+//#endregion
+export { CheckboxLabelStretch, CheckboxLabelVariantProps, checkboxLabelVariants };
+//# sourceMappingURL=variants.d.ts.map

@@ -1,0 +1,57 @@
+"use client";
+import { TableAlign } from "../../elements/table/variants.js";
+import { TableHeadProps as TableHeadProps$1 } from "../../elements/table/table-head.js";
+import "../../elements/table/index.js";
+import * as React from "react";
+//#region src/components/table/table-head.d.ts
+/** Sort direction of a sortable `TableHead`. `none` shows the neutral affordance. */
+type TableHeadSort = "asc" | "desc" | "none";
+type TableHeadProps = Omit<TableHeadProps$1, "aria-sort" | "variant" | "children"> & {
+  /**
+   * Header label. Rendered in a truncating title region.
+   *
+   * Omit it only when `children` supplies the header's own content — a sort/filter menu, a
+   * select-all checkbox, a tooltip trigger. Pass `label` as well in that case if the content has no
+   * accessible text of its own: `children` replace the title region, so the label is kept as
+   * screen-reader-only text beside them rather than shown.
+   */
+  label?: string;
+  /**
+   * Header content, when a plain label is not enough. Replaces the title region; a sortable header
+   * still wraps it in the sort control. The cell's own chrome — background, borders, padding,
+   * stickiness, alignment — is unaffected.
+   */
+  children?: React.ReactNode;
+  /**
+   * Visually hide the label while keeping it available to assistive tech.
+   *
+   * @default false
+   */
+  visuallyHidden?: boolean;
+  /**
+   * Enable sorting on this header. Renders a sort trigger when `onSort` is also provided. Sets
+   * `aria-sort` for `asc` / `desc` only (omitted while unsorted).
+   *
+   * @default false
+   */
+  sortable?: boolean;
+  /** Current sort state for a sortable header. @default "none" */
+  sort?: TableHeadSort;
+  /**
+   * Click handler for the sort control; required (with `sortable`) for the header to be
+   * interactive.
+   */
+  onSort?: () => void;
+} & ({
+  label: string;
+} | {
+  children: Exclude<React.ReactNode, null | undefined | boolean>;
+});
+/**
+ * A ready-made header cell: a plain title, arbitrary `children`, or (when sortable) either of those
+ * inside a sort-cycling button with a chevron.
+ */
+declare function TableHead({ label, children, visuallyHidden, sortable, sort, onSort, ...props }: TableHeadProps): React.JSX.Element;
+//#endregion
+export { type TableAlign, TableHead, TableHeadProps, TableHeadSort };
+//# sourceMappingURL=table-head.d.ts.map

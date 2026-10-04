@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/volume-x-outline.d.ts
+declare function VolumeXOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { VolumeXOutline };
+//# sourceMappingURL=volume-x-outline.d.ts.map

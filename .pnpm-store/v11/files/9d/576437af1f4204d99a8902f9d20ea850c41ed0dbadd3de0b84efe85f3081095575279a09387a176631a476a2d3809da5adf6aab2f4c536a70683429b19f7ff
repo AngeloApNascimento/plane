@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/deactivated-user-outline.d.ts
+declare function DeactivatedUserOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DeactivatedUserOutline };
+//# sourceMappingURL=deactivated-user-outline.d.ts.map

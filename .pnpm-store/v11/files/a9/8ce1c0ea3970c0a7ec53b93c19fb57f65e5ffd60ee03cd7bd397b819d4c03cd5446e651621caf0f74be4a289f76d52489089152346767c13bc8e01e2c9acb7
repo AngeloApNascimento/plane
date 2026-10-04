@@ -1,0 +1,9 @@
+"use client";
+import { NumberField } from "@base-ui/react/number-field";
+//#region src/components/number-field/number-field-scrub-area.d.ts
+type NumberFieldScrubAreaProps = Omit<NumberField.ScrubArea.Props, "className" | "style">;
+/** Drag-to-change scrubbing over the field's label region — Base UI behavior, no chrome. */
+declare function NumberFieldScrubArea(props: NumberFieldScrubAreaProps): import("react").JSX.Element;
+//#endregion
+export { NumberFieldScrubArea, NumberFieldScrubAreaProps };
+//# sourceMappingURL=number-field-scrub-area.d.ts.map

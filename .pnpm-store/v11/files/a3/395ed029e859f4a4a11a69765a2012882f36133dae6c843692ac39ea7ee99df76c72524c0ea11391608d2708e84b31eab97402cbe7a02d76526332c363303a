@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/upgrade-filled.tsx
+function UpgradeFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			d: "M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1M5.005 7.55 7.55 5.005a.636.636 0 0 1 .9 0l2.545 2.545a.636.636 0 0 1-.9.9L8.637 6.99v3.556a.636.636 0 0 1-1.272 0V6.99L5.904 8.45a.636.636 0 0 1-.9-.9",
+			clipRule: "evenodd"
+		})
+	});
+}
+//#endregion
+export { UpgradeFilled };
+
+//# sourceMappingURL=upgrade-filled.js.map

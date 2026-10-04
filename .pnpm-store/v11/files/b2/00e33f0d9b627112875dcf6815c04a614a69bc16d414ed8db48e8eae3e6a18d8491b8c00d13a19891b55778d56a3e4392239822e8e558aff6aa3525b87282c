@@ -1,0 +1,10 @@
+"use client";
+import { Tab, TabProps } from "./tab.js";
+import { TabsAppearance, TabsLayout, TabsStretch } from "../../elements/tabs/variants.js";
+import { TabsListScrollArea, TabsListScrollAreaProps } from "../../elements/tabs/tabs-list-scroll-area.js";
+import "../../elements/tabs/index.js";
+import { Tabs, TabsProps } from "./tabs.js";
+import { TabsIndicator, TabsIndicatorProps } from "./tabs-indicator.js";
+import { TabsList, TabsListProps } from "./tabs-list.js";
+import { TabsPanel, TabsPanelProps } from "./tabs-panel.js";
+export { Tab, TabProps, Tabs, type TabsAppearance, TabsIndicator, TabsIndicatorProps, type TabsLayout, TabsList, TabsListProps, TabsListScrollArea, type TabsListScrollAreaProps, TabsPanel, TabsPanelProps, TabsProps, type TabsStretch };

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/upload-outline.d.ts
+declare function UploadOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { UploadOutline };
+//# sourceMappingURL=upload-outline.d.ts.map

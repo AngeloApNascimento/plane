@@ -1,0 +1,13 @@
+"use client";
+import { FieldDescriptionVariantProps } from "../../elements/field/variants.js";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-description.d.ts
+type FieldDescriptionProps = Omit<Field.Description.Props, "className" | "style"> & FieldDescriptionVariantProps;
+/**
+ * Supporting / helper text for a field: Base UI's `Field.Description` (auto-associated as the
+ * control's accessible description) grafted onto the styled `FieldDescription` element (rule 1a).
+ */
+declare function FieldDescription({ size, ...props }: FieldDescriptionProps): import("react").JSX.Element;
+//#endregion
+export { FieldDescription, FieldDescriptionProps };
+//# sourceMappingURL=field-description.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/double-chevron-right-filled.d.ts
+declare function DoubleChevronRightFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DoubleChevronRightFilled };
+//# sourceMappingURL=double-chevron-right-filled.d.ts.map

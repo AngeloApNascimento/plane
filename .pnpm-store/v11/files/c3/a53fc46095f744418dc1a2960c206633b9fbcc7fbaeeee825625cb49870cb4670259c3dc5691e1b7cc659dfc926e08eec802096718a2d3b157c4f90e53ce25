@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/volume-max-outline.d.ts
+declare function VolumeMaxOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { VolumeMaxOutline };
+//# sourceMappingURL=volume-max-outline.d.ts.map

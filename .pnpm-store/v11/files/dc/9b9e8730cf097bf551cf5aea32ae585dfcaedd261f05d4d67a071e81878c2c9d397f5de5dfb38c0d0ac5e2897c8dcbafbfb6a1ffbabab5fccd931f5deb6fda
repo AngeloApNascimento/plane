@@ -1,0 +1,186 @@
+"use client";
+import { Toast as Toast$2 } from "../../elements/toast/toast.js";
+import { ToastContent } from "../../elements/toast/toast-content.js";
+import { ToastTextGroup } from "../../elements/toast/toast-text-group.js";
+import { ToastTitle } from "../../elements/toast/toast-title.js";
+import { ToastDescription } from "../../elements/toast/toast-description.js";
+import { ToastActions } from "../../elements/toast/toast-actions.js";
+import { ToastActionGroup } from "../../elements/toast/toast-action-group.js";
+import { ToastActionButton } from "../../elements/toast/toast-action-button.js";
+import { ToastAction } from "../../elements/toast/toast-action.js";
+import { ToastCloseGroup } from "../../elements/toast/toast-close-group.js";
+import { LinearProgress } from "../linear-progress/linear-progress.js";
+import { createToastManager as createToastManager$1, useToastManager as useToastManager$1 } from "./manager.js";
+import { ToastStatusIcon } from "./toast-status-icon.js";
+import { useCallback, useMemo, useRef } from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Toast } from "@base-ui/react/toast";
+//#region src/components/toast/toast.tsx
+function toastPriority(variant) {
+	return variant === "danger" || variant === "warning" ? "high" : "low";
+}
+function toastTimeout(variant) {
+	return variant === "danger" || variant === "warning" ? 8e3 : void 0;
+}
+function relFor(target) {
+	return target === "_blank" ? "noopener noreferrer" : void 0;
+}
+function withVariantDefaults(options, prev) {
+	const variant = options.data?.variant;
+	if (variant === void 0) return options;
+	const derivedPriority = toastPriority(variant);
+	const derivedTimeout = toastTimeout(variant);
+	if (prev === void 0) return {
+		priority: derivedPriority,
+		timeout: derivedTimeout,
+		...options
+	};
+	let next = options;
+	if (!Object.hasOwn(options, "priority") && toastPriority(prev.variant) !== derivedPriority) next = {
+		priority: derivedPriority,
+		...next
+	};
+	if (!Object.hasOwn(options, "timeout") && toastTimeout(prev.variant) !== derivedTimeout) next = {
+		timeout: derivedTimeout,
+		...next
+	};
+	return next;
+}
+function rememberVariant(map, id, options, prev) {
+	const variant = options.data?.variant ?? prev?.variant;
+	if (variant !== void 0) map.set(id, { variant });
+}
+function wrapPromiseOutcome(outcome) {
+	if (typeof outcome === "function") return (arg) => {
+		const resolved = outcome(arg);
+		return typeof resolved === "string" ? resolved : withVariantDefaults(resolved);
+	};
+	return typeof outcome === "string" ? outcome : withVariantDefaults(outcome);
+}
+function withPromiseDefaults(options) {
+	return {
+		...options,
+		loading: typeof options.loading === "string" ? options.loading : withVariantDefaults(options.loading),
+		success: wrapPromiseOutcome(options.success),
+		error: wrapPromiseOutcome(options.error)
+	};
+}
+function createToastManager() {
+	const manager = createToastManager$1();
+	const variantsById = /* @__PURE__ */ new Map();
+	return {
+		...manager,
+		add: (options) => {
+			const resolved = withVariantDefaults(options);
+			const id = manager.add(resolved);
+			rememberVariant(variantsById, id, resolved);
+			return id;
+		},
+		update: (id, options) => {
+			const prev = variantsById.get(id);
+			const resolved = withVariantDefaults(options, prev);
+			manager.update(id, resolved);
+			rememberVariant(variantsById, id, resolved, prev);
+		},
+		promise: (promise, options) => manager.promise(promise, withPromiseDefaults(options))
+	};
+}
+/**
+* Toast manager hook with Propel variant defaults (`priority` / `timeout` from `data.variant`).
+* Prefer this (or {@link useToast}) over Base UI's raw hook so `danger`/`warning` stay assertive.
+*/
+function useToastManager() {
+	const manager = useToastManager$1();
+	const variantsByIdRef = useRef(/* @__PURE__ */ new Map());
+	const add = useCallback((options) => {
+		const resolved = withVariantDefaults(options);
+		const id = manager.add(resolved);
+		rememberVariant(variantsByIdRef.current, id, resolved);
+		return id;
+	}, [manager.add]);
+	const update = useCallback((id, options) => {
+		const prev = variantsByIdRef.current.get(id);
+		const resolved = withVariantDefaults(options, prev);
+		manager.update(id, resolved);
+		rememberVariant(variantsByIdRef.current, id, resolved, prev);
+	}, [manager.update]);
+	const promise = useCallback((promiseValue, options) => manager.promise(promiseValue, withPromiseDefaults(options)), [manager.promise]);
+	return useMemo(() => ({
+		...manager,
+		add,
+		update,
+		promise
+	}), [
+		manager,
+		add,
+		update,
+		promise
+	]);
+}
+/** Alias of {@link useToastManager} — the documented entry point for queuing toasts. */
+function useToast() {
+	return useToastManager();
+}
+/**
+* A single styled toast: status icon (auto-selected from `toast.data.variant`), title, description,
+* optional action buttons (from `toast.data.actions` / `primaryAction`), and a close button.
+* Rendered automatically by `ToastProvider` for each queued toast — you normally don't render this
+* directly.
+*/
+function Toast$1({ toast, close, ...props }) {
+	const data = toast.data;
+	if (data?.variant == null) throw new Error("propel Toast requires a `variant` in the toast's data payload, e.g. toast.add({ title, data: { variant: \"info\" } }).");
+	const leftActions = (data.actions ?? []).slice(0, 2);
+	const primaryAction = data.primaryAction;
+	const hasActionRow = leftActions.length > 0 || primaryAction != null;
+	return /* @__PURE__ */ jsxs(Toast.Root, {
+		toast,
+		...props,
+		render: /* @__PURE__ */ jsx(Toast$2, {}),
+		children: [
+			/* @__PURE__ */ jsx(ToastStatusIcon, { variant: data.variant }),
+			/* @__PURE__ */ jsxs(Toast.Content, {
+				render: /* @__PURE__ */ jsx(ToastContent, {}),
+				children: [
+					/* @__PURE__ */ jsxs(ToastTextGroup, { children: [/* @__PURE__ */ jsx(Toast.Title, { render: /* @__PURE__ */ jsx(ToastTitle, {}) }), /* @__PURE__ */ jsx(Toast.Description, { render: /* @__PURE__ */ jsx(ToastDescription, {}) })] }),
+					data.progress != null ? /* @__PURE__ */ jsx(LinearProgress, {
+						value: data.progress,
+						size: "sm",
+						variant: "brand",
+						"aria-label": typeof toast.title === "string" && toast.title ? toast.title : "Progress"
+					}) : null,
+					hasActionRow ? /* @__PURE__ */ jsxs(ToastActions, { children: [/* @__PURE__ */ jsx(ToastActionGroup, { children: leftActions.map((action, index) => action.href != null ? /* @__PURE__ */ jsx(ToastActionButton, {
+						onClick: action.onClick,
+						type: void 0,
+						render: /* @__PURE__ */ jsx("a", {
+							href: action.href,
+							target: action.target,
+							rel: relFor(action.target)
+						}),
+						children: action.label
+					}, index) : /* @__PURE__ */ jsx(ToastActionButton, {
+						onClick: action.onClick,
+						children: action.label
+					}, index)) }), primaryAction == null ? null : primaryAction.href != null ? /* @__PURE__ */ jsx(ToastAction, {
+						render: /* @__PURE__ */ jsx("a", {
+							href: primaryAction.href,
+							target: primaryAction.target,
+							rel: relFor(primaryAction.target)
+						}),
+						onClick: primaryAction.onClick,
+						children: primaryAction.label
+					}) : /* @__PURE__ */ jsx(Toast.Action, {
+						render: /* @__PURE__ */ jsx(ToastAction, {}),
+						onClick: primaryAction.onClick,
+						children: primaryAction.label
+					})] }) : null
+				]
+			}),
+			/* @__PURE__ */ jsx(ToastCloseGroup, { children: /* @__PURE__ */ jsx(Toast.Close, { render: close }) })
+		]
+	});
+}
+//#endregion
+export { Toast$1 as Toast, createToastManager, useToast, useToastManager };
+
+//# sourceMappingURL=toast.js.map

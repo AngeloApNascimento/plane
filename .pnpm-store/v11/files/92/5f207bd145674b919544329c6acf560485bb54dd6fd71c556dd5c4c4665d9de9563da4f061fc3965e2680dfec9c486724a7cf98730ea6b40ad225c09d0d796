@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/tabs-outline.d.ts
+declare function TabsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TabsOutline };
+//# sourceMappingURL=tabs-outline.d.ts.map

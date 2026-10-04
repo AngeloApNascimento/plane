@@ -1,0 +1,63 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/pill/variants.ts
+const pillBase = "inline-flex shrink-0 items-center justify-center rounded-md border-sm align-middle outline-none transition-colors focus-visible:ring-2 focus-visible:ring-accent-strong";
+const pillVariants = cva([
+	cx(pillBase, "gap-1"),
+	"max-w-[150px] cursor-pointer text-secondary",
+	"data-placeholder:not-disabled:not-aria-busy:text-placeholder"
+], { variants: {
+	size: {
+		xs: "relative h-(--control-height-xs) px-1.5 text-caption-md-regular [--node-size:var(--control-glyph-xs)] before:absolute before:-inset-0.5 before:-z-10 before:content-['']",
+		sm: "h-(--control-height-sm) px-(--control-padding-x-sm) text-caption-md-regular [--node-size:var(--control-glyph-sm)]",
+		md: "h-(--control-height-md) px-2 text-body-xs-regular [--node-size:var(--control-glyph-md)]"
+	},
+	variant: {
+		outline: [
+			"border-subtle-1 bg-layer-2",
+			"hover:border-strong hover:bg-layer-2-hover",
+			"active:border-strong active:bg-layer-2-active active:text-primary",
+			"data-popup-open:border-strong data-popup-open:bg-layer-2-active data-popup-open:text-primary",
+			"disabled:cursor-not-allowed disabled:border-subtle-1 disabled:bg-layer-transparent disabled:text-disabled",
+			"aria-busy:cursor-default aria-busy:border-subtle-1 aria-busy:bg-layer-transparent aria-busy:text-disabled"
+		],
+		soft: [
+			"border-transparent bg-layer-3",
+			"hover:bg-layer-3-hover",
+			"active:bg-layer-3-active active:text-primary",
+			"data-popup-open:bg-layer-3-active data-popup-open:text-primary",
+			"disabled:cursor-not-allowed disabled:bg-layer-transparent disabled:text-disabled",
+			"aria-busy:cursor-default aria-busy:bg-layer-transparent aria-busy:text-disabled"
+		],
+		ghost: [
+			"border-transparent bg-layer-transparent",
+			"hover:bg-layer-transparent-hover",
+			"active:bg-layer-transparent-active active:text-primary",
+			"data-popup-open:bg-layer-transparent-active data-popup-open:text-primary",
+			"disabled:cursor-not-allowed disabled:bg-layer-transparent disabled:text-disabled",
+			"aria-busy:cursor-default aria-busy:bg-layer-transparent aria-busy:text-disabled"
+		]
+	}
+} });
+const iconPillVariants = cva([
+	pillBase,
+	"cursor-pointer border-subtle-1 bg-layer-2 text-icon-secondary",
+	"hover:border-strong hover:bg-layer-2-hover",
+	"active:border-strong active:bg-layer-2-active",
+	"data-popup-open:border-strong data-popup-open:bg-layer-2-active",
+	"disabled:cursor-not-allowed disabled:border-subtle-1 disabled:bg-layer-transparent disabled:text-icon-disabled",
+	"aria-busy:cursor-default aria-busy:border-subtle-1 aria-busy:bg-layer-transparent aria-busy:text-icon-disabled"
+], { variants: { size: {
+	xs: "relative size-(--control-height-xs) [--node-size:var(--control-glyph-xs)] before:absolute before:-inset-0.5 before:-z-10 before:content-['']",
+	sm: "size-(--control-height-sm) [--node-size:var(--control-glyph-sm)]",
+	md: "size-(--control-height-md) [--node-size:var(--control-glyph-md)]"
+} } });
+const pillLabelVariants = cva("min-w-0 truncate");
+const pillGroupVariants = cva(cx("isolate inline-flex items-center rounded-md bg-layer-2 align-middle", "[&>*:not(span)~*]:rounded-s-none", "[&>*:has(~*:not(span))]:rounded-e-none", "[&>*:not(span)~*]:-ms-px", "[&>*:focus-visible]:z-10 [&>*:hover]:z-10 [&>*[data-popup-open]]:z-10"), { variants: { size: {
+	sm: "",
+	md: ""
+} } });
+//#endregion
+export { iconPillVariants, pillGroupVariants, pillLabelVariants, pillVariants };
+
+//# sourceMappingURL=variants.js.map

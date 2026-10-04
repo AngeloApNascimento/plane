@@ -1,0 +1,23 @@
+"use client";
+import { comboboxInputGroupClearVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-input-group-clear.tsx
+/**
+* Gutter that reserves the clear control's own footprint, keeping it in layout (invisible, not
+* unmounted) whenever Base UI's `Clear` has no value to clear.
+*/
+function ComboboxInputGroupClear({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			"data-slot": "clear",
+			className: comboboxInputGroupClearVariants()
+		}, props)
+	});
+}
+//#endregion
+export { ComboboxInputGroupClear };
+
+//# sourceMappingURL=combobox-input-group-clear.js.map

@@ -1,0 +1,36 @@
+"use client";
+import { IconPill as IconPill$1 } from "../../elements/pill/icon-pill.js";
+import { Spinner } from "../../internal/spinner.js";
+import { useIconPillSize } from "./pill-group-context.js";
+import { jsx } from "react/jsx-runtime";
+import { LoaderCircle } from "lucide-react";
+import { Button } from "@base-ui/react/button";
+//#region src/components/pill/icon-pill.tsx
+/**
+* The ready-made icon-only pill: grafts Base UI's `Button` behavior onto the square `IconPill`
+* container (behavior outer, the styled button as the render target), filling it with the icon (or
+* a spinner while `loading`). `loading` disables the button while keeping it focusable
+* (`aria-busy`). An `aria-label` is required for the accessible name. A consumer `render`
+* (`render={<MenuTrigger />}`) is threaded onto the styled element, so the trigger behavior and its
+* `data-popup-open` land on the real `<button>` and the pill wears its open look.
+*/
+function IconPill({ size, loading = false, disabled, icon, render, nativeButton, ...props }) {
+	const resolvedSize = useIconPillSize(size);
+	return /* @__PURE__ */ jsx(Button, {
+		...props,
+		nativeButton,
+		render: /* @__PURE__ */ jsx(IconPill$1, {
+			size: resolvedSize,
+			render,
+			...nativeButton === false ? { type: void 0 } : void 0
+		}),
+		disabled: disabled || loading,
+		focusableWhenDisabled: loading ? true : void 0,
+		"aria-busy": loading ? true : void 0,
+		children: loading ? /* @__PURE__ */ jsx(Spinner, { children: /* @__PURE__ */ jsx(LoaderCircle, {}) }) : icon
+	});
+}
+//#endregion
+export { IconPill };
+
+//# sourceMappingURL=icon-pill.js.map

@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/accordion/accordion.d.ts
+type AccordionProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled accordion frame that groups a set of `AccordionItem`s. Base-UI-agnostic — graft the
+ * accordion behavior in `components` via `<BaseAccordion.Root render={<Accordion/>} />`.
+ */
+declare function Accordion({ render, ...props }: AccordionProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Accordion, AccordionProps };
+//# sourceMappingURL=accordion.d.ts.map

@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-close-group.d.ts
+type AlertDialogCloseGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * Positions the corner dismiss control at the popup's top-end. Pass an `IconButton` (components
+ * tier) or the styled `AlertDialogClose` (elements showcase) as the child.
+ */
+declare function AlertDialogCloseGroup({ render, ...props }: AlertDialogCloseGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AlertDialogCloseGroup, AlertDialogCloseGroupProps };
+//# sourceMappingURL=alert-dialog-close-group.d.ts.map

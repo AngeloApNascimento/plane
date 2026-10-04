@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/command-outline.d.ts
+declare function CommandOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CommandOutline };
+//# sourceMappingURL=command-outline.d.ts.map

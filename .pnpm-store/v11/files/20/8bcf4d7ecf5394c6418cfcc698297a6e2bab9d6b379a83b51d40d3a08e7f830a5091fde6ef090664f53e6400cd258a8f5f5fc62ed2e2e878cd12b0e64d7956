@@ -1,0 +1,13 @@
+"use client";
+import { Dialog } from "@base-ui/react/dialog";
+//#region src/components/dialog/create-handle.ts
+/**
+* Base UI's detached-handle API, flattened to the family name: create a handle outside the React
+* tree, pass it to the root's `handle` prop, and drive the surface imperatively
+* (`handle.open(payload)`) — e.g. one dialog shared by many launch points.
+*/
+const createDialogHandle = Dialog.createHandle;
+//#endregion
+export { createDialogHandle };
+
+//# sourceMappingURL=create-handle.js.map

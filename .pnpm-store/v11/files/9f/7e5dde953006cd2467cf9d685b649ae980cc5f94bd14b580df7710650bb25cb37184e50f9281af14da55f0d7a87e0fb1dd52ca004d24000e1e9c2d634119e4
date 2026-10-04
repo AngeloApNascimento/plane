@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-link.d.ts
+type BreadcrumbLinkProps = Omit<useRender.ComponentProps<"a">, "className" | "style">;
+/** A navigable crumb — an anchor styled as a hoverable pill. Pass `render` to use a router link. */
+declare function BreadcrumbLink({ render, ...props }: BreadcrumbLinkProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BreadcrumbLink, BreadcrumbLinkProps };
+//# sourceMappingURL=breadcrumb-link.d.ts.map

@@ -1,0 +1,16 @@
+"use client";
+import { MenuRadioMarkerContext } from "../../internal/menu-radio-marker.js";
+import { jsx } from "react/jsx-runtime";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-radio-group.tsx
+/** Wraps `ContextMenuRadioItem`s sharing one `value` — Base UI's radio-group state, no chrome. */
+function ContextMenuRadioGroup({ marker = "check", ...props }) {
+	return /* @__PURE__ */ jsx(MenuRadioMarkerContext.Provider, {
+		value: marker,
+		children: /* @__PURE__ */ jsx(ContextMenu.RadioGroup, { ...props })
+	});
+}
+//#endregion
+export { ContextMenuRadioGroup };
+
+//# sourceMappingURL=context-menu-radio-group.js.map

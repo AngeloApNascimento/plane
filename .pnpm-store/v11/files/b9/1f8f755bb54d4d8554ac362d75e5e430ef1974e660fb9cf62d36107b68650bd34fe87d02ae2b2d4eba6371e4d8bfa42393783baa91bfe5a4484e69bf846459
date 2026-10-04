@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-panes.d.ts
+type DialogPanesProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The side-by-side row of a two-pane dialog: `DialogAside` on the start side, `DialogMain` filling
+ * the rest. Sits between optional `DialogToolbar` and `DialogActions` in the popup, at any `size`.
+ * Fills the popup's height when the popup pins it (`size="full"` or `height="fixed"`).
+ */
+declare function DialogPanes({ render, ...props }: DialogPanesProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogPanes, DialogPanesProps };
+//# sourceMappingURL=dialog-panes.d.ts.map

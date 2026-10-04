@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-label-meta.d.ts
+type MenuLabelMetaProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** Trailing metadata pinned at the inline-end of a `MenuLabel`. */
+declare function MenuLabelMeta({ render, ...props }: MenuLabelMetaProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuLabelMeta, MenuLabelMetaProps };
+//# sourceMappingURL=menu-label-meta.d.ts.map

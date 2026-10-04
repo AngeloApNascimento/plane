@@ -1,0 +1,24 @@
+"use client";
+import { checkboxIndicatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/checkbox/checkbox-indicator.tsx
+/**
+* The CHECK mark shown inside a checked `Checkbox`. Graft in `components` via
+* `<BaseCheckbox.Indicator render={<CheckboxIndicator/>} />` — Base UI mounts it only while checked
+* or indeterminate (no `keepMounted`), so the box is empty when unchecked; its cva hides it when
+* `data-indeterminate` is present, so the check disappears in the mixed state (the dash takes
+* over). Decorative — the box carries the a11y state. Children — typically a lucide `Check` — pass
+* through.
+*/
+function CheckboxIndicator({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: checkboxIndicatorVariants() }, props)
+	});
+}
+//#endregion
+export { CheckboxIndicator };
+
+//# sourceMappingURL=checkbox-indicator.js.map

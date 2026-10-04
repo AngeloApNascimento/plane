@@ -1,0 +1,33 @@
+"use client";
+import { CompositeItem } from "../../base/composite/composite-item.js";
+import { ListItemButton as ListItemButton$1 } from "../../elements/list/list-item-button.js";
+import { ListItemCounter } from "../../elements/list/list-item-counter.js";
+import { ListItemLabel } from "../../elements/list/list-item-label.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/list/list-item-button.tsx
+/**
+* A list row's primary action — a `<button>` that is also a roving `Composite` item. Base UI's
+* `CompositeItem` roving behavior grafted onto the styled `elements` `ListItemButton` element (rule
+* 1a). Pass `startIcon` for the leading visual, `label` for the visible row text, `count` for a
+* trailing count chip, and `endIcon` for a trailing visual. A row's expand/collapse control
+* (`ListItemDisclosureTrigger`) is a separate sibling, never a child — a button can't nest inside
+* this `<button>`.
+*/
+function ListItemButton({ startIcon, label, count, endIcon, ...props }) {
+	const showCount = count != null && count !== 0 && count !== "";
+	return /* @__PURE__ */ jsxs(CompositeItem, {
+		tag: "button",
+		...props,
+		render: /* @__PURE__ */ jsx(ListItemButton$1, {}),
+		children: [
+			startIcon,
+			/* @__PURE__ */ jsx(ListItemLabel, { children: label }),
+			showCount ? /* @__PURE__ */ jsx(ListItemCounter, { children: count }) : null,
+			endIcon
+		]
+	});
+}
+//#endregion
+export { ListItemButton };
+
+//# sourceMappingURL=list-item-button.js.map

@@ -1,0 +1,9 @@
+"use client";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-group.d.ts
+type ContextMenuGroupProps = Omit<ContextMenu.Group.Props, "className" | "style">;
+/** Groups related rows; provide `aria-label`/`aria-labelledby` when the group needs a name. */
+declare function ContextMenuGroup(props: ContextMenuGroupProps): import("react").JSX.Element;
+//#endregion
+export { ContextMenuGroup, ContextMenuGroupProps };
+//# sourceMappingURL=context-menu-group.d.ts.map

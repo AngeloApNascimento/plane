@@ -1,0 +1,25 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import { CheckboxProps } from "../checkbox/checkbox.js";
+import "../checkbox/index.js";
+import * as React from "react";
+//#region src/components/checkbox-field/checkbox-field.d.ts
+/** Bare checkbox control props for a field row — no chip `label` / `icon` (Field owns labeling). */
+type CheckboxFieldControlProps = Omit<CheckboxProps, "children" | "label" | "icon">;
+type CheckboxFieldProps = Omit<CheckboxFieldControlProps, "aria-label"> & {
+  /** Helper text shown below the control. Replaced by `error` when an error is set. */
+  hint?: React.ReactNode;
+  /** Error text shown below the control. */
+  error?: React.ReactNode;
+  /** Visible field label. */
+  label: string;
+  /** Label and helper text size. */
+  size: FieldSize;
+  /** Optional supporting text announced as the checkbox description. */
+  description?: React.ReactNode;
+};
+/** Ready-to-use single checkbox field with label, description, and helper/error text. */
+declare function CheckboxField({ label, description, hint, error, size, name, disabled, ...controlProps }: CheckboxFieldProps): React.JSX.Element;
+//#endregion
+export { CheckboxField, CheckboxFieldProps, type FieldSize };
+//# sourceMappingURL=checkbox-field.d.ts.map

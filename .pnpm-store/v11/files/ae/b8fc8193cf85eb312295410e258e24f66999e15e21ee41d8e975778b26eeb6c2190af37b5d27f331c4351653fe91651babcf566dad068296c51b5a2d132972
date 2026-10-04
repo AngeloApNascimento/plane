@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/created-at-filled.d.ts
+declare function CreatedAtFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CreatedAtFilled };
+//# sourceMappingURL=created-at-filled.d.ts.map

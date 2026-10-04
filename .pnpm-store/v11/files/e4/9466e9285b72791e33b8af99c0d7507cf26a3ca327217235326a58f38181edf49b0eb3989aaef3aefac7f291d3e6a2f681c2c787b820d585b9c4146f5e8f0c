@@ -1,0 +1,35 @@
+"use client";
+import { NavigationMenuPopup } from "../../elements/navigation-menu/navigation-menu-popup.js";
+import { Positioner } from "../../internal/positioner.js";
+import { jsx } from "react/jsx-runtime";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-panel.tsx
+/**
+* The navigation menu surface: Base UI portal + positioner + popup grafted onto Propel styling.
+* Named `Panel` to avoid clashing with Base UI's atomic per-item `NavigationMenu.Content`. The
+* viewport and per-item content remain children.
+*/
+function NavigationMenuPanel({ side = "bottom", sideOffset = 4, align = "start", alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, ...props }) {
+	return /* @__PURE__ */ jsx(NavigationMenu.Portal, { children: /* @__PURE__ */ jsx(NavigationMenu.Positioner, {
+		side,
+		sideOffset,
+		align,
+		alignOffset,
+		collisionPadding,
+		collisionBoundary,
+		collisionAvoidance,
+		sticky,
+		positionMethod,
+		anchor,
+		disableAnchorTracking,
+		render: /* @__PURE__ */ jsx(Positioner, {}),
+		children: /* @__PURE__ */ jsx(NavigationMenu.Popup, {
+			...props,
+			render: /* @__PURE__ */ jsx(NavigationMenuPopup, {})
+		})
+	}) });
+}
+//#endregion
+export { NavigationMenuPanel };
+
+//# sourceMappingURL=navigation-menu-panel.js.map

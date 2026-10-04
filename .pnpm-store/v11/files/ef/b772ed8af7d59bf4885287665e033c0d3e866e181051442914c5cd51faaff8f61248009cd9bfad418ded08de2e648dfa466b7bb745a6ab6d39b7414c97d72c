@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-empty.d.ts
+type ComboboxEmptyProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled empty-state row. Graft in `components` via `<BaseCombobox.Empty
+ * render={<ComboboxEmpty/>} />`.
+ */
+declare function ComboboxEmpty({ render, ...props }: ComboboxEmptyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxEmpty, ComboboxEmptyProps };
+//# sourceMappingURL=combobox-empty.d.ts.map

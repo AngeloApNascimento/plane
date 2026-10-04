@@ -1,0 +1,115 @@
+"use client";
+import { MenuTriggerElementContext } from "./menu-context.js";
+import { resolveFitSide } from "../../internal/fit-side.js";
+import { MenuContentSurface } from "./menu-content.shared.js";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/menu/menu-content.tsx
+/** Numeric top/bottom the fit measurement can use, from the looser Base UI prop types. */
+function verticalPadding(padding) {
+	if (typeof padding === "number") return {
+		top: padding,
+		bottom: padding
+	};
+	if (padding && typeof padding === "object") return {
+		top: padding.top ?? 0,
+		bottom: padding.bottom ?? 0
+	};
+	return {
+		top: 5,
+		bottom: 5
+	};
+}
+/** The boundary's vertical extent: an element's rect, a given rect, or the visual viewport. */
+function boundaryExtent(boundary) {
+	const first = Array.isArray(boundary) ? boundary[0] : boundary;
+	if (first instanceof Element) {
+		const rect = first.getBoundingClientRect();
+		return {
+			top: rect.top,
+			bottom: rect.bottom
+		};
+	}
+	if (first && typeof first === "object" && "y" in first && "height" in first) return {
+		top: first.y,
+		bottom: first.y + first.height
+	};
+	const viewport = window.visualViewport;
+	return viewport ? {
+		top: viewport.offsetTop,
+		bottom: viewport.offsetTop + viewport.height
+	} : {
+		top: 0,
+		bottom: window.innerHeight
+	};
+}
+/**
+* The menu surface: Base UI's portal and positioner wrapped around an elevated, scrollable panel
+* holding the `role="menu"` popup. Optional `search` and `footer` chrome stays pinned outside the
+* scroll area. Rows (`MenuItem`, `MenuGroup`, `MenuSeparator`, …) are its children.
+*/
+function MenuContent({ side = "bottom", sideOffset = 6, align = "start", collisionPadding = 8, sizing = "auto", heightBehavior = "fit", collisionBoundary, collisionAvoidance, ...props }) {
+	const triggerElement = React.useContext(MenuTriggerElementContext);
+	const fitting = heightBehavior === "fit" && (side === "bottom" || side === "top");
+	const preferred = side === "top" ? "top" : "bottom";
+	const [fitSide, setFitSide] = React.useState(preferred);
+	const [hasTrigger, setHasTrigger] = React.useState(false);
+	React.useLayoutEffect(() => {
+		if (!fitting) return void 0;
+		const trigger = triggerElement?.current;
+		setHasTrigger(trigger != null);
+		if (!trigger) return void 0;
+		const resolve = () => {
+			const rect = trigger.getBoundingClientRect();
+			const padding = verticalPadding(collisionPadding);
+			const offset = typeof sideOffset === "number" ? sideOffset : 6;
+			const extent = boundaryExtent(collisionBoundary);
+			setFitSide(resolveFitSide({
+				trigger: {
+					top: rect.top,
+					bottom: rect.bottom
+				},
+				boundary: extent,
+				preferred,
+				sideOffset: offset,
+				collisionPadding: Math.max(padding.top, padding.bottom),
+				floor: 178
+			}));
+		};
+		const sync = () => {
+			if (trigger.getAttribute("aria-expanded") === "true") resolve();
+		};
+		sync();
+		const observer = new MutationObserver(sync);
+		observer.observe(trigger, {
+			attributes: true,
+			attributeFilter: ["aria-expanded"]
+		});
+		return () => observer.disconnect();
+	}, [
+		fitting,
+		triggerElement,
+		preferred,
+		sideOffset,
+		collisionPadding,
+		collisionBoundary
+	]);
+	const fitActive = fitting && hasTrigger;
+	return /* @__PURE__ */ jsx(MenuContentSurface, {
+		side: fitActive ? fitSide : side,
+		sideOffset,
+		align,
+		collisionPadding,
+		collisionBoundary,
+		collisionAvoidance: collisionAvoidance ?? (fitActive ? {
+			side: "none",
+			align: "shift"
+		} : void 0),
+		sizing,
+		...props
+	});
+}
+//#endregion
+export { MenuContent };
+
+//# sourceMappingURL=menu-content.js.map

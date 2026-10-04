@@ -1,0 +1,15 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-group.tsx
+/**
+* Groups related menu items with their `MenuLabel` heading — Base UI's `Menu.Group` passthrough. A
+* structural role with no propel styling of its own, so it lives in `components` (rules 1a, 2).
+*/
+function MenuGroup(props) {
+	return /* @__PURE__ */ jsx(Menu.Group, { ...props });
+}
+//#endregion
+export { MenuGroup };
+
+//# sourceMappingURL=menu-group.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/rank-filled.d.ts
+declare function RankFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RankFilled };
+//# sourceMappingURL=rank-filled.d.ts.map

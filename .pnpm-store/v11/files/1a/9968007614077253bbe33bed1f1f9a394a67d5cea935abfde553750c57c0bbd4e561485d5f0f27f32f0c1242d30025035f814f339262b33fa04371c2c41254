@@ -1,0 +1,40 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/logo-spinner/variants.d.ts
+declare const logoSpinnerImageDefaultVariants: {
+  readonly motion: "animated";
+};
+/**
+ * One theme's brand mark, in one motion mode. `size` sets its height — `sm` 24px, `md` 44px,
+ * `fluid` 24px stepping to 44px at the 640px breakpoint — and the width follows the artwork's
+ * aspect ratio (`object-contain`, as the apps' own splash CSS did).
+ *
+ * `theme` is which theme's asset this is, and it is a real second axis rather than a look choice:
+ * the mark is a raster pair, so the light/dark swap has to happen in CSS (`light` shows unless a
+ * `dark` theme is active, mirroring the apps' `html[data-theme*="dark"]` rules). Doing it in CSS —
+ * rather than picking one `src` from a theme hook — is what keeps the swap free of JS, of a
+ * hydration flash, and of a second network request when the theme flips.
+ *
+ * `motion` is the third axis, for the same reason in the other direction: a GIF cannot be paused
+ * from CSS, so a viewer who asked for reduced motion gets a still of the fully drawn mark instead.
+ * `animated` paints under `prefers-reduced-motion: no-preference`, `still` under `reduce`, and the
+ * four theme × motion combinations are exclusive — exactly one image paints — so `alt` is announced
+ * once whatever the theme and the motion preference.
+ *
+ * Deliberately OFF the size ladder (`internal/size-scale`), like CircularProgress's ring diameters:
+ * these are the product's two splash heights (24px inline, 44px full page), not control rungs.
+ */
+declare const logoSpinnerImageVariants: (props?: ({
+  size?: "sm" | "md" | "fluid" | null | undefined;
+  theme?: "light" | "dark" | null | undefined;
+  motion?: "animated" | "still" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type LogoSpinnerImageVariantConfig = VariantProps<typeof logoSpinnerImageVariants>;
+type LogoSpinnerSize = NonNullable<LogoSpinnerImageVariantConfig["size"]>;
+type LogoSpinnerTheme = NonNullable<LogoSpinnerImageVariantConfig["theme"]>;
+type LogoSpinnerMotion = NonNullable<LogoSpinnerImageVariantConfig["motion"]>;
+type LogoSpinnerImageVariantProps = StrictVariantProps<typeof logoSpinnerImageVariants, keyof typeof logoSpinnerImageDefaultVariants>;
+//#endregion
+export { LogoSpinnerImageVariantProps, LogoSpinnerMotion, LogoSpinnerSize, LogoSpinnerTheme, logoSpinnerImageVariants };
+//# sourceMappingURL=variants.d.ts.map

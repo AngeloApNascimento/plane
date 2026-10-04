@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/four-columns-filled.d.ts
+declare function FourColumnsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FourColumnsFilled };
+//# sourceMappingURL=four-columns-filled.d.ts.map

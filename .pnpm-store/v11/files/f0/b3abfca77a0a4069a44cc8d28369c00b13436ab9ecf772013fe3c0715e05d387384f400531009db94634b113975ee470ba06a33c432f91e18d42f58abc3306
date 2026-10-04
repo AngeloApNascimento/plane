@@ -1,0 +1,17 @@
+"use client";
+import { tableCellTriggerLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell-trigger-label.tsx
+/** The truncating value text inside an editable `TableCellTrigger`. */
+function TableCellTriggerLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: tableCellTriggerLabelVariants() }, props)
+	});
+}
+//#endregion
+export { TableCellTriggerLabel };
+
+//# sourceMappingURL=table-cell-trigger-label.js.map

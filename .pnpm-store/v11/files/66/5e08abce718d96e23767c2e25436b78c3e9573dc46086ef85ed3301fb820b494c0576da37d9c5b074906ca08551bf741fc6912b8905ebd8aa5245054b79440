@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/actions/more-vertical-outline.tsx
+function MoreVerticalOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("g", {
+			fill: "currentColor",
+			children: /* @__PURE__ */ jsx("path", { d: "M7.708 8.083a.04.04 0 0 0-.041-.042.04.04 0 0 0-.042.042c0 .023.02.041.042.041s.04-.018.041-.041m1.25 0a1.291 1.291 0 1 1-2.582 0 1.291 1.291 0 0 1 2.582 0M7.708 3.417a.04.04 0 0 0-.041-.042.04.04 0 0 0-.042.042c0 .023.02.041.042.041s.04-.018.041-.041m1.25 0a1.291 1.291 0 1 1-2.582 0 1.291 1.291 0 0 1 2.582 0M7.708 12.75a.04.04 0 0 0-.041-.042.04.04 0 0 0-.042.042c0 .023.02.041.042.041s.04-.018.041-.041m1.25 0a1.291 1.291 0 1 1-2.582 0 1.291 1.291 0 0 1 2.582 0" })
+		})
+	});
+}
+//#endregion
+export { MoreVerticalOutline };
+
+//# sourceMappingURL=more-vertical-outline.js.map

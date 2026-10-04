@@ -1,0 +1,12 @@
+"use client";
+import { AlertDialog } from "@base-ui/react/alert-dialog";
+//#region src/components/alert-dialog/alert-dialog-title.d.ts
+type AlertDialogTitleProps = Omit<AlertDialog.Title.Props, "className" | "style">;
+/**
+ * The accessible title for the alert dialog. Base UI links it to the popup via `aria-labelledby`;
+ * the styled `elements` title supplies the h6/semibold look.
+ */
+declare function AlertDialogTitle(props: AlertDialogTitleProps): import("react").JSX.Element;
+//#endregion
+export { AlertDialogTitle, AlertDialogTitleProps };
+//# sourceMappingURL=alert-dialog-title.d.ts.map

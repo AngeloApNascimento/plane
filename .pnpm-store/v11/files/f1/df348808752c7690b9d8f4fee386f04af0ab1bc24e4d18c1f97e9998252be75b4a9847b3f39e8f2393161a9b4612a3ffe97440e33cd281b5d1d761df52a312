@@ -1,0 +1,13 @@
+"use client";
+import { Accordion } from "@base-ui/react/accordion";
+//#region src/components/accordion/accordion-panel.d.ts
+type AccordionPanelProps = Omit<Accordion.Panel.Props, "className" | "style">;
+/**
+ * The ready-made accordion panel: grafts Base UI's panel behavior onto the styled `AccordionPanel`,
+ * composing the `AccordionPanelContent` padding wrapper so content is inset from the trigger's
+ * edges.
+ */
+declare function AccordionPanel({ children, ...props }: AccordionPanelProps): import("react").JSX.Element;
+//#endregion
+export { AccordionPanel, AccordionPanelProps };
+//# sourceMappingURL=accordion-panel.d.ts.map

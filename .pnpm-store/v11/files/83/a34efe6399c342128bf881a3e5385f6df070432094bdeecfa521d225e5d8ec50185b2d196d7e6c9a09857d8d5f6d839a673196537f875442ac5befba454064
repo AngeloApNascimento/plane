@@ -1,0 +1,17 @@
+"use client";
+import { listItemLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list-item-label.tsx
+/** The row's label — fills the remaining width and truncates. Renders a `<span>` by default. */
+function ListItemLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: listItemLabelVariants() }, props)
+	});
+}
+//#endregion
+export { ListItemLabel };
+
+//# sourceMappingURL=list-item-label.js.map

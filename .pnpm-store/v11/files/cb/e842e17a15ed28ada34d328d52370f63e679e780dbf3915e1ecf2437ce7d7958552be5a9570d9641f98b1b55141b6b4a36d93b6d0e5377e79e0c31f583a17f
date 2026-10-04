@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/agent-alt-outline.d.ts
+declare function AgentAltOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AgentAltOutline };
+//# sourceMappingURL=agent-alt-outline.d.ts.map

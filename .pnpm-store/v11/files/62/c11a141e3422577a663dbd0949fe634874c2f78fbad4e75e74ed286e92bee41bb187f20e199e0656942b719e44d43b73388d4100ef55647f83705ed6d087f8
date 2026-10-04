@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/initiative-states/initiative-planned.d.ts
+declare function InitiativePlanned(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { InitiativePlanned };
+//# sourceMappingURL=initiative-planned.d.ts.map

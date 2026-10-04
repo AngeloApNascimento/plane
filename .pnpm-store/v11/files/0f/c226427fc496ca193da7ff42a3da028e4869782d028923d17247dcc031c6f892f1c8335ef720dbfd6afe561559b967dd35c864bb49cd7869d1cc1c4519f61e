@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/hide-outline.d.ts
+declare function HideOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { HideOutline };
+//# sourceMappingURL=hide-outline.d.ts.map

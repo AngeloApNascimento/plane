@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-item-indicator.d.ts
+type ComboboxItemIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled selection-marker slot inside an item. Base-UI-agnostic — graft in `components` via
+ * `<BaseCombobox.ItemIndicator render={<ComboboxItemIndicator/>} />`.
+ */
+declare function ComboboxItemIndicator({ render, ...props }: ComboboxItemIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxItemIndicator, ComboboxItemIndicatorProps };
+//# sourceMappingURL=combobox-item-indicator.d.ts.map

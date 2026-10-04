@@ -1,0 +1,21 @@
+"use client";
+import { formActionsVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/form/form-actions.tsx
+/**
+* The actions bar at the bottom of a form (submit plus any secondary actions). Its position is
+* always the same; the `layout` axis selects right-aligned inline buttons (`"inline"`) or
+* full-width stretched buttons (`"stretch"`).
+*/
+function FormActions({ layout, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: formActionsVariants({ layout }) }, props)
+	});
+}
+//#endregion
+export { FormActions };
+
+//# sourceMappingURL=form-actions.js.map

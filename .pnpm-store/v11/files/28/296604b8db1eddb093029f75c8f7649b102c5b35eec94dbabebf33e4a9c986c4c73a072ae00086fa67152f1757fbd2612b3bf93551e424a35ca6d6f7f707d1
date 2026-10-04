@@ -1,0 +1,22 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/select/variants.d.ts
+declare const selectLabelVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const selectTriggerDefaultVariants: {
+  readonly variant: "secondary";
+};
+declare const selectTriggerVariants: (props?: ({
+  variant?: "secondary" | "ghost" | null | undefined;
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type SelectTriggerSize = NonNullable<VariantProps<typeof selectTriggerVariants>["size"]>;
+type SelectTriggerVariant = NonNullable<VariantProps<typeof selectTriggerVariants>["variant"]>;
+type SelectTriggerVariantProps = StrictVariantProps<typeof selectTriggerVariants, keyof typeof selectTriggerDefaultVariants>;
+type SelectLabelSize = NonNullable<VariantProps<typeof selectLabelVariants>["size"]>;
+type SelectLabelVariantProps = StrictVariantProps<typeof selectLabelVariants>;
+//#endregion
+export { SelectLabelSize, SelectLabelVariantProps, SelectTriggerSize, SelectTriggerVariant, SelectTriggerVariantProps, selectLabelVariants, selectTriggerDefaultVariants, selectTriggerVariants };
+//# sourceMappingURL=variants.d.ts.map

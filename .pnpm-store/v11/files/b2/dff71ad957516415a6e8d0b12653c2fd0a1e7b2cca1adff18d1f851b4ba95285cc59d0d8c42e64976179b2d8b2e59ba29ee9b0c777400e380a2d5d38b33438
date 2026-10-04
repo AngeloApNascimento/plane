@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/select/select-field.d.ts
+type SelectFieldProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The field region that stacks a `SelectLabel` over a `SelectTrigger` as a column. Layout-only — it
+ * owns the gap between the label and the trigger so neither part carries raw spacing.
+ */
+declare function SelectField({ render, ...props }: SelectFieldProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SelectField, SelectFieldProps };
+//# sourceMappingURL=select-field.d.ts.map

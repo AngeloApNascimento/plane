@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/preview-card/preview-card-body.d.ts
+type PreviewCardBodyProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The text content area of the card — typically holds a `PreviewCardTitle` and
+ * `PreviewCardDescription` stacked in a column. Owns the padding so a full-bleed `PreviewCardImage`
+ * can sit edge-to-edge above it; both the column layout and the padding are "always the same" per
+ * the design spec.
+ */
+declare function PreviewCardBody({ render, ...props }: PreviewCardBodyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PreviewCardBody, PreviewCardBodyProps };
+//# sourceMappingURL=preview-card-body.d.ts.map

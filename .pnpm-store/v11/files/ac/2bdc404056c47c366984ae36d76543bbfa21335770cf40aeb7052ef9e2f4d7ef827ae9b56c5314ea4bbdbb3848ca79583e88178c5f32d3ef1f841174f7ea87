@@ -1,0 +1,20 @@
+"use client";
+import { autocompleteInputVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/autocomplete/autocomplete-input.tsx
+/**
+* The styled autocomplete text field. Base-UI-agnostic — graft the combobox behavior in
+* `components` via `<BaseAutocomplete.Input render={<AutocompleteInput/>} />`.
+*/
+function AutocompleteInput({ render, ...props }) {
+	return useRender({
+		defaultTagName: "input",
+		render,
+		props: mergeProps({ className: autocompleteInputVariants() }, props)
+	});
+}
+//#endregion
+export { AutocompleteInput };
+
+//# sourceMappingURL=autocomplete-input.js.map

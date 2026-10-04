@@ -1,0 +1,20 @@
+"use client";
+import { OverlayDescription } from "../../internal/overlay-description.js";
+import { jsx } from "react/jsx-runtime";
+import { Popover } from "@base-ui/react/popover";
+//#region src/components/popover/popover-description.tsx
+/**
+* Supporting text for the popover: Base UI's `Popover.Description` behavior (wired as the popup's
+* `aria-describedby` target) grafted onto the shared `internal/OverlayDescription` at `md` (body-xs
+* secondary).
+*/
+function PopoverDescription(props) {
+	return /* @__PURE__ */ jsx(Popover.Description, {
+		...props,
+		render: /* @__PURE__ */ jsx(OverlayDescription, { size: "md" })
+	});
+}
+//#endregion
+export { PopoverDescription };
+
+//# sourceMappingURL=popover-description.js.map

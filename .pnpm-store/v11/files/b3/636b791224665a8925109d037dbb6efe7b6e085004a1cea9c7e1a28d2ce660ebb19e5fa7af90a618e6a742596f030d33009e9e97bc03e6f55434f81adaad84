@@ -1,0 +1,36 @@
+"use client";
+import { PopoverPopup } from "../../elements/popover/popover-popup.js";
+import { Positioner } from "../../internal/positioner.js";
+import { jsx } from "react/jsx-runtime";
+import { Popover } from "@base-ui/react/popover";
+//#region src/components/popover/popover-content.tsx
+/**
+* A trigger-anchored content panel. Composes the popover portal + positioner + styled popup so a
+* consumer only writes the trigger and the panel body. Pass any trigger through `PopoverTrigger`'s
+* `render`; pass `variant="text"` for the compact title + description card. Put tall `rich` content
+* in `PopoverBody` so it scrolls under the available-height cap.
+*/
+function PopoverContent({ variant, side = "bottom", align = "start", sideOffset = 4, alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, ...props }) {
+	return /* @__PURE__ */ jsx(Popover.Portal, { children: /* @__PURE__ */ jsx(Popover.Positioner, {
+		side,
+		sideOffset,
+		align,
+		alignOffset,
+		collisionPadding,
+		collisionBoundary,
+		collisionAvoidance,
+		sticky,
+		positionMethod,
+		anchor,
+		disableAnchorTracking,
+		render: /* @__PURE__ */ jsx(Positioner, {}),
+		children: /* @__PURE__ */ jsx(Popover.Popup, {
+			...props,
+			render: /* @__PURE__ */ jsx(PopoverPopup, { variant })
+		})
+	}) });
+}
+//#endregion
+export { PopoverContent };
+
+//# sourceMappingURL=popover-content.js.map

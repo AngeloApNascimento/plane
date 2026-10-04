@@ -1,0 +1,4 @@
+"use client";
+import { LogoSpinnerSize } from "../../elements/logo-spinner/variants.js";
+import { LogoSpinner, LogoSpinnerProps } from "./logo-spinner.js";
+export { LogoSpinner, LogoSpinnerProps, type LogoSpinnerSize };

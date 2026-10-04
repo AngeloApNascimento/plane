@@ -1,0 +1,13 @@
+"use client";
+import { AutocompleteInputGroupClearVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/autocomplete/autocomplete-input-group-clear.d.ts
+type AutocompleteInputGroupClearProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & AutocompleteInputGroupClearVariantProps;
+/**
+ * Gutter that reserves the clear control's own footprint, keeping it in layout (invisible, not
+ * unmounted) whenever Base UI's `Clear` has no value to clear.
+ */
+declare function AutocompleteInputGroupClear({ render, ...props }: AutocompleteInputGroupClearProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AutocompleteInputGroupClear, AutocompleteInputGroupClearProps };
+//# sourceMappingURL=autocomplete-input-group-clear.d.ts.map

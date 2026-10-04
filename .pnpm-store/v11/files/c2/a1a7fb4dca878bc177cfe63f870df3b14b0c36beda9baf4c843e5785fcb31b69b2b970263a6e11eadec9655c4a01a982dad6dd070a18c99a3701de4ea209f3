@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/chevron-right-outline.d.ts
+declare function ChevronRightOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ChevronRightOutline };
+//# sourceMappingURL=chevron-right-outline.d.ts.map

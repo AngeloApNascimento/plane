@@ -1,0 +1,20 @@
+"use client";
+import { OverlayDescription } from "../../internal/overlay-description.js";
+import { jsx } from "react/jsx-runtime";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-description.tsx
+/**
+* Supporting text for the drawer: Base UI's `Drawer.Description` behavior (wired as the popup's
+* `aria-describedby` target) grafted onto the shared `internal/OverlayDescription` at `size="md"`
+* (body-xs per Figma; rule 4a).
+*/
+function DrawerDescription(props) {
+	return /* @__PURE__ */ jsx(Drawer.Description, {
+		...props,
+		render: /* @__PURE__ */ jsx(OverlayDescription, { size: "md" })
+	});
+}
+//#endregion
+export { DrawerDescription };
+
+//# sourceMappingURL=drawer-description.js.map

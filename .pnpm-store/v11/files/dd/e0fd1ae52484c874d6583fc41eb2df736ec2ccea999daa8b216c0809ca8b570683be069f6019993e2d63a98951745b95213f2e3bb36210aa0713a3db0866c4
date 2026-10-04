@@ -1,0 +1,39 @@
+"use client";
+import { nodeSlotClass } from "../../internal/node-slot.js";
+import { fieldControlSurfaceVariants } from "../../internal/field-control-surface.js";
+import { controlSize } from "../../internal/control-group.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/otp-field/variants.ts
+/** Root: a horizontal row of character slots (and optional separators). */
+const otpFieldVariants = cva("flex items-center gap-2");
+/**
+* Input: a single character cell with the shared field-control surface.
+*
+* Size — controls the box size (lg/xl/2xl); required, no default. The error look isn't a prop: the
+* cell rests at the `subtle-1` border and recolors to `danger` off Base UI's `data-invalid` (set on
+* the digit when the field is wrapped in a `Field.Root invalid`), including the danger focus ring —
+* so there's no hand-rolled danger ring here. Disabled steps the border back to lighter `subtle` so
+* it stays distinct from rest, matching the other field-control surfaces.
+*/
+const otpFieldInputVariants = cva(cx(fieldControlSurfaceVariants({ focus: "self" }), "text-center text-primary outline-none", "hover:border-strong hover:bg-layer-2-hover focus:bg-layer-2", "data-disabled:cursor-not-allowed data-disabled:border-subtle data-disabled:bg-surface-1 data-disabled:text-disabled data-disabled:hover:border-subtle data-disabled:hover:bg-surface-1"), { variants: { size: {
+	lg: cx(controlSize.lg, "w-(--control-height-lg) rounded-(--control-radius-lg)"),
+	xl: cx(controlSize.xl, "w-(--control-height-xl) rounded-(--control-radius-xl)"),
+	"2xl": cx(controlSize["2xl"], "w-(--control-height-2xl) rounded-(--control-radius-2xl)")
+} } });
+/**
+* Separator: the divider between groups of slots (e.g. `123-456`). A node-slot: it sizes its single
+* child (an icon, per the Figma spec's minus glyph) to a fixed 16px box, matching the digit cells'
+* height rhythm regardless of `size`.
+*/
+const otpFieldSeparatorVariants = cva(cx(nodeSlotClass, "size-4 text-tertiary [--node-size:1rem]"));
+/**
+* Label: the visually-hidden accessible name backing the first slot. Base UI ignores `aria-label`
+* on the first input and names it from `aria-labelledby` instead, so the field needs a real
+* (hidden) label element. Its `sr-only` styling lives here so neither the components tier nor a
+* direct composition carries a raw `className`.
+*/
+const otpFieldLabelVariants = cva("sr-only");
+//#endregion
+export { otpFieldInputVariants, otpFieldLabelVariants, otpFieldSeparatorVariants, otpFieldVariants };
+
+//# sourceMappingURL=variants.js.map

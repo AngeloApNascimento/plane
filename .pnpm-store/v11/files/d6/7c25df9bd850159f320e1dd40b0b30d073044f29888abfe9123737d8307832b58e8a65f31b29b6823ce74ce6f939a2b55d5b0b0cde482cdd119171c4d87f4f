@@ -1,0 +1,60 @@
+"use client";
+import { ComboboxChipOverflow } from "../../elements/combobox/combobox-chip-overflow.js";
+import { ComboboxChips as ComboboxChips$1 } from "../../elements/combobox/combobox-chips.js";
+import { ComboboxInput } from "../../elements/combobox/combobox-input.js";
+import { Icon } from "../../internal/icon.js";
+import { ComboboxChipSizeContext } from "./combobox-chip-size-context.js";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-chips.tsx
+const CHIP_SIZE = {
+	md: "xs",
+	lg: "sm",
+	xl: "md",
+	"2xl": "lg"
+};
+/**
+* The ready-made multiselect input frame — it replaces `ComboboxInputGroup` in the `multiple`
+* anatomy. Grafts Base UI's `Chips` behavior onto the styled `elements/combobox` frame, owning only
+* the frame, the selected-values loop, and `maxVisible` overflow ahead of the inline input — each
+* chip's template is the consumer's `children`, mirroring `ComboboxList`. Without `maxVisible` the
+* chips wrap onto new rows; with it the frame collapses to one row of the first `maxVisible` chips
+* plus an overflow count (`+N more` by default; pass `overflowLabel` to localize). Arrow keys move
+* focus across chips; Backspace removes.
+*/
+function ComboboxChips({ size, variant, placeholder, maxVisible, overflowLabel = (hiddenCount) => `+${hiddenCount} more`, trigger, children }) {
+	const layout = maxVisible != null ? "collapse" : "wrap";
+	return /* @__PURE__ */ jsx(ComboboxChipSizeContext.Provider, {
+		value: CHIP_SIZE[size],
+		children: /* @__PURE__ */ jsxs(Combobox.Chips, {
+			render: /* @__PURE__ */ jsx(ComboboxChips$1, {
+				size,
+				variant,
+				layout
+			}),
+			children: [/* @__PURE__ */ jsx(Combobox.Value, { children: (values) => {
+				const visible = maxVisible != null ? values.slice(0, maxVisible) : values;
+				const hiddenCount = values.length - visible.length;
+				return /* @__PURE__ */ jsxs(Fragment, { children: [
+					visible.map(children),
+					hiddenCount > 0 ? /* @__PURE__ */ jsx(ComboboxChipOverflow, {
+						size: CHIP_SIZE[size],
+						children: overflowLabel(hiddenCount)
+					}) : null,
+					/* @__PURE__ */ jsx(Combobox.Input, {
+						render: /* @__PURE__ */ jsx(ComboboxInput, {}),
+						placeholder
+					})
+				] });
+			} }), trigger != null ? /* @__PURE__ */ jsx(Combobox.Trigger, { render: trigger }) : /* @__PURE__ */ jsx(Icon, {
+				tint: "secondary",
+				children: /* @__PURE__ */ jsx(ChevronDown, { "aria-hidden": true })
+			})]
+		})
+	});
+}
+//#endregion
+export { ComboboxChips };
+
+//# sourceMappingURL=combobox-chips.js.map

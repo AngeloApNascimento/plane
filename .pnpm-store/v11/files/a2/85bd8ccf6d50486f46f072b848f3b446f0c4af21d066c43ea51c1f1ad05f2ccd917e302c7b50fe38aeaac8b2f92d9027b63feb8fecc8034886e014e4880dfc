@@ -1,0 +1,13 @@
+"use client";
+import { ContextMenuPopupElevation, ContextMenuPopupVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-popup.d.ts
+type ContextMenuPopupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & ContextMenuPopupVariantProps;
+/**
+ * The styled menu surface that contains the items. Base-UI-agnostic — graft the popup behavior in
+ * `components` via `<BaseContextMenu.Popup render={<ContextMenuPopup elevation="…" />} />`.
+ */
+declare function ContextMenuPopup({ elevation, render, ...props }: ContextMenuPopupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ContextMenuPopup, type ContextMenuPopupElevation, ContextMenuPopupProps };
+//# sourceMappingURL=context-menu-popup.d.ts.map

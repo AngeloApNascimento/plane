@@ -1,0 +1,15 @@
+"use client";
+import { CircularProgressVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/circular-progress/circular-progress.d.ts
+type CircularProgressProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & CircularProgressVariantProps;
+/**
+ * The styled circular ring box that sizes the ring (`size` `sm` 16px / `md` 20px). Base-UI-agnostic
+ * — graft the progress behavior (the `progressbar` role + `aria-valuenow`) in `components` via
+ * `<BaseProgress.Root render={<CircularProgress/>} />`. Compose a `CircularProgressSvg` (holding
+ * `CircularProgressTrack` + `CircularProgressIndicator`) inside it.
+ */
+declare function CircularProgress({ size, render, ...props }: CircularProgressProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { CircularProgress, CircularProgressProps };
+//# sourceMappingURL=circular-progress.d.ts.map

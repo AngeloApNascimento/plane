@@ -1,0 +1,14 @@
+"use client";
+import { ToggleVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toggle/toggle.d.ts
+type ToggleProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & ToggleVariantProps;
+/**
+ * The styled label toggle button (optional start/end icons + truncated label). Base-UI-agnostic —
+ * graft the `Toggle` behavior in `components` via `<BaseToggle render={<Toggle size=… />} />`. Only
+ * `size` is a visual axis; pressed/disabled are control state Base UI reflects as `data-*`.
+ */
+declare function Toggle({ size, render, ...props }: ToggleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Toggle, ToggleProps };
+//# sourceMappingURL=toggle.d.ts.map

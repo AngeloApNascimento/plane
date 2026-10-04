@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-item-description.d.ts
+type ContextMenuItemDescriptionProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** A muted second line beneath the label, holding the item's description. Base-UI-agnostic. */
+declare function ContextMenuItemDescription({ render, ...props }: ContextMenuItemDescriptionProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ContextMenuItemDescription, ContextMenuItemDescriptionProps };
+//# sourceMappingURL=context-menu-item-description.d.ts.map

@@ -1,0 +1,24 @@
+"use client";
+import { ToolbarItemLabel } from "../../elements/toolbar/toolbar-item-label.js";
+import { DisclosureIndicator } from "../../internal/disclosure-indicator.js";
+import { ToolbarMenuTriggerButton } from "./toolbar-menu-trigger-button.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/toolbar/toolbar-menu-trigger.tsx
+/** The trigger that opens a `ToolbarMenu`: a label plus a disclosure chevron. */
+function ToolbarMenuTrigger({ render, label, ...props }) {
+	return /* @__PURE__ */ jsxs(ToolbarMenuTriggerButton, {
+		render: /* @__PURE__ */ jsx(Menu.Trigger, { render }),
+		...props,
+		children: [/* @__PURE__ */ jsx(ToolbarItemLabel, { children: label }), /* @__PURE__ */ jsx(DisclosureIndicator, {
+			motion: "flip",
+			tint: "secondary",
+			children: /* @__PURE__ */ jsx(ChevronDown, {})
+		})]
+	});
+}
+//#endregion
+export { ToolbarMenuTrigger };
+
+//# sourceMappingURL=toolbar-menu-trigger.js.map

@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-track.d.ts
+type SliderTrackProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled track bar the thumb travels along. Base-UI-agnostic — graft in `components` via
+ * `<BaseSlider.Track render={<SliderTrack/>} />`.
+ */
+declare function SliderTrack({ render, ...props }: SliderTrackProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SliderTrack, SliderTrackProps };
+//# sourceMappingURL=slider-track.d.ts.map

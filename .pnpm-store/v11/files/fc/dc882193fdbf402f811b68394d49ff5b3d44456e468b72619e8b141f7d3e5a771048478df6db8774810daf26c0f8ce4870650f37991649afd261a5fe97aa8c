@@ -1,0 +1,21 @@
+"use client";
+import { drawerHeaderVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-header.tsx
+/**
+* The drawer's top region (the Figma header). Compose a start cluster (`DrawerHeaderStart` or
+* `DrawerHeaderActions side="start"`) and an end cluster (`DrawerHeaderActions side="end"`) for the
+* title/icon sockets.
+*/
+function DrawerHeader({ render, ...props }) {
+	return useRender({
+		defaultTagName: "header",
+		render,
+		props: mergeProps({ className: drawerHeaderVariants() }, props)
+	});
+}
+//#endregion
+export { DrawerHeader };
+
+//# sourceMappingURL=drawer-header.js.map

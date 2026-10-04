@@ -1,0 +1,36 @@
+"use client";
+import { TablePinned } from "../../elements/table/variants.js";
+import { TableCellProps } from "../../elements/table/table-cell.js";
+import "../../elements/table/index.js";
+//#region src/components/table/table-select-cell.d.ts
+type TableSelectCellProps = Omit<TableCellProps, "padding" | "pinned" | "children" | "variant"> & {
+  /** Whether this row is selected. */
+  checked: boolean;
+  /** Called when the box is toggled. */
+  onCheckedChange?: (checked: boolean) => void;
+  /**
+   * Which inline edge this cell pins to while the table scrolls sideways. Pin the matching
+   * `TableSelectHead` the same way — nothing derives it.
+   *
+   * @default "none"
+   */
+  pinned?: TablePinned;
+  /** Disables the box, e.g. a row that cannot be acted on. */
+  disabled?: boolean;
+  /**
+   * Accessible name for the box. Required, because a bare checkbox has no visible text: name it
+   * after the row it selects, e.g. `"Select Astra Nova"`.
+   */
+  "aria-label": string;
+};
+/**
+ * The row-selection cell (`<td>`): a checkbox centred in an unpadded cell, so the whole 44px cell
+ * is the pointer target.
+ *
+ * The checkbox is the semantic source of truth — its own checked state is what assistive tech
+ * announces. Pair it with `selected` on the `TableRow` for the row tint, which is decoration.
+ */
+declare function TableSelectCell({ checked, onCheckedChange, pinned, disabled, "aria-label": ariaLabel, ...props }: TableSelectCellProps): import("react").JSX.Element;
+//#endregion
+export { TableSelectCell, TableSelectCellProps };
+//# sourceMappingURL=table-select-cell.d.ts.map

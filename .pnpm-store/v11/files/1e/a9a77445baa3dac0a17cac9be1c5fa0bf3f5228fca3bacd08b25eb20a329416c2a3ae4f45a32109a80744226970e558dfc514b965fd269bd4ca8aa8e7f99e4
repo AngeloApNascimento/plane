@@ -1,0 +1,43 @@
+"use client";
+import { Button as Button$2 } from "../../elements/button/button.js";
+import { ButtonLabel } from "../../elements/button/button-label.js";
+import { Spinner } from "../../internal/spinner.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { LoaderCircle } from "lucide-react";
+import { Button } from "@base-ui/react/button";
+//#region src/components/button/button.tsx
+/**
+* The ready-made `Button`: grafts Base UI's `Button` behavior onto the styled `Button` element and
+* lays out an optional `icon` beside the label (`iconPosition`), swapping it for the `loading`
+* spinner in the same slot. Content — the label, icon, and `loading` state — is not a variant.
+*/
+function Button$1(props) {
+	const { variant, size, stretch, icon, iconPosition = "start", loading = false, disabled, type = "button", label, render, nativeButton, ...extraProps } = props;
+	const iconSlot = icon != null && loading ? /* @__PURE__ */ jsx(Spinner, { children: /* @__PURE__ */ jsx(LoaderCircle, {}) }) : icon ?? /* @__PURE__ */ jsx(Spinner, {
+		active: loading,
+		children: /* @__PURE__ */ jsx(LoaderCircle, {})
+	});
+	return /* @__PURE__ */ jsxs(Button, {
+		...extraProps,
+		type,
+		nativeButton,
+		render: /* @__PURE__ */ jsx(Button$2, {
+			variant,
+			size,
+			stretch,
+			render
+		}),
+		disabled: disabled || loading,
+		focusableWhenDisabled: loading ? true : void 0,
+		"aria-busy": loading ? true : void 0,
+		children: [
+			iconPosition === "start" ? iconSlot : null,
+			/* @__PURE__ */ jsx(ButtonLabel, { children: label }),
+			iconPosition === "end" ? iconSlot : null
+		]
+	});
+}
+//#endregion
+export { Button$1 as Button };
+
+//# sourceMappingURL=button.js.map

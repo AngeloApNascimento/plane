@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/unlocked-filled.d.ts
+declare function UnlockedFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { UnlockedFilled };
+//# sourceMappingURL=unlocked-filled.d.ts.map

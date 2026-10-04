@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-popup.d.ts
+type AlertDialogPopupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The 600px card that holds the alert content, constrained to the viewport on small screens.
+ * Base-UI-agnostic — graft the popup behavior in `components` via `<BaseAlertDialog.Popup
+ * render={<AlertDialogPopup/>} />`.
+ */
+declare function AlertDialogPopup({ render, ...props }: AlertDialogPopupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AlertDialogPopup, AlertDialogPopupProps };
+//# sourceMappingURL=alert-dialog-popup.d.ts.map

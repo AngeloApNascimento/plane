@@ -1,0 +1,36 @@
+"use client";
+import { ContextMenuPopup } from "../../elements/context-menu/context-menu-popup.js";
+import { Positioner } from "../../internal/positioner.js";
+import { OverlayPanel } from "../../internal/overlay-panel.js";
+import { jsx } from "react/jsx-runtime";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-content.shared.tsx
+function ContextMenuContentSurface({ side, sideOffset, align, alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, sizing, ...props }) {
+	return /* @__PURE__ */ jsx(ContextMenu.Portal, { children: /* @__PURE__ */ jsx(ContextMenu.Positioner, {
+		side,
+		sideOffset,
+		align,
+		alignOffset,
+		collisionPadding,
+		collisionBoundary,
+		collisionAvoidance,
+		sticky,
+		positionMethod,
+		anchor,
+		disableAnchorTracking,
+		render: /* @__PURE__ */ jsx(Positioner, {}),
+		children: /* @__PURE__ */ jsx(OverlayPanel, {
+			elevation: "overlay",
+			radius: "lg",
+			sizing,
+			children: /* @__PURE__ */ jsx(ContextMenu.Popup, {
+				...props,
+				render: /* @__PURE__ */ jsx(ContextMenuPopup, { elevation: "flat" })
+			})
+		})
+	}) });
+}
+//#endregion
+export { ContextMenuContentSurface };
+
+//# sourceMappingURL=context-menu-content.shared.js.map

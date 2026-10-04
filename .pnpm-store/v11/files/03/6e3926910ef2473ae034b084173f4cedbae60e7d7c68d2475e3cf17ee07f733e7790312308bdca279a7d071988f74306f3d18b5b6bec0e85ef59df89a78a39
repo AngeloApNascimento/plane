@@ -1,0 +1,20 @@
+"use client";
+import { ToolbarGroup as ToolbarGroup$1 } from "../../elements/toolbar/toolbar-group.js";
+import { jsx } from "react/jsx-runtime";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar-group.tsx
+/**
+* Groups related controls: grafts Base UI's `Toolbar.Group` behavior (the `group` role + group
+* `disabled`) onto the styled `ToolbarGroup` cluster. The group shares the toolbar row's `gap-2`
+* per Figma, so it is a semantic grouping — pair it with `ToolbarSeparator`s to make it visible.
+*/
+function ToolbarGroup({ render, ...props }) {
+	return /* @__PURE__ */ jsx(Toolbar.Group, {
+		...props,
+		render: /* @__PURE__ */ jsx(ToolbarGroup$1, { render })
+	});
+}
+//#endregion
+export { ToolbarGroup };
+
+//# sourceMappingURL=toolbar-group.js.map

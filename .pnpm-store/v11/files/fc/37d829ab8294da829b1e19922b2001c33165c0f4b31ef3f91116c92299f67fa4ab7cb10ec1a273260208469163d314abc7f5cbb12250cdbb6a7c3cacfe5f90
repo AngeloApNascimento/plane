@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/h2-filled.d.ts
+declare function H2Filled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { H2Filled };
+//# sourceMappingURL=h2-filled.d.ts.map

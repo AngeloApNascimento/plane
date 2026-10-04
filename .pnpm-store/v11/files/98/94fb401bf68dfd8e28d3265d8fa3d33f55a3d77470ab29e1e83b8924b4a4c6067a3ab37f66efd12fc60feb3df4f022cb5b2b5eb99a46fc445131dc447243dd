@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/new-tab-filled.d.ts
+declare function NewTabFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { NewTabFilled };
+//# sourceMappingURL=new-tab-filled.d.ts.map

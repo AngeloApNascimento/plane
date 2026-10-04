@@ -1,0 +1,16 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-indent-background.tsx
+/**
+* Renders behind the indented page content so the area revealed by the indent effect has a backdrop
+* color. Used alongside `DrawerIndent` inside a `DrawerProvider`. A behavior-only role (rules 1a,
+* 2), so it lives in `components`. Maps 1:1 to Base UI's `Drawer.IndentBackground`.
+*/
+function DrawerIndentBackground(props) {
+	return /* @__PURE__ */ jsx(Drawer.IndentBackground, { ...props });
+}
+//#endregion
+export { DrawerIndentBackground };
+
+//# sourceMappingURL=drawer-indent-background.js.map

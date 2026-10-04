@@ -1,0 +1,14 @@
+"use client";
+import { FormActionsVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/form/form-actions.d.ts
+type FormActionsProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & FormActionsVariantProps;
+/**
+ * The actions bar at the bottom of a form (submit plus any secondary actions). Its position is
+ * always the same; the `layout` axis selects right-aligned inline buttons (`"inline"`) or
+ * full-width stretched buttons (`"stretch"`).
+ */
+declare function FormActions({ layout, render, ...props }: FormActionsProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FormActions, FormActionsProps };
+//# sourceMappingURL=form-actions.d.ts.map

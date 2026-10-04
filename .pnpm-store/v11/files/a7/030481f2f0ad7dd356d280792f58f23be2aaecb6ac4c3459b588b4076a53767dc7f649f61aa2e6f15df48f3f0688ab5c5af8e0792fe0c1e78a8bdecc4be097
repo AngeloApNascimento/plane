@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-footer.d.ts
+type DrawerFooterProps = Omit<useRender.ComponentProps<"footer">, "className" | "style">;
+/** The drawer's footer actions region (the Figma footer). Lays its actions at the inline-end. */
+declare function DrawerFooter({ render, ...props }: DrawerFooterProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerFooter, DrawerFooterProps };
+//# sourceMappingURL=drawer-footer.d.ts.map

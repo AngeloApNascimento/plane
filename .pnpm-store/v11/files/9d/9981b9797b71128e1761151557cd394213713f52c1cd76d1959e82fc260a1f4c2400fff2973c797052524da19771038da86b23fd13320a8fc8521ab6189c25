@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/auto-reminder-outline.d.ts
+declare function AutoReminderOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AutoReminderOutline };
+//# sourceMappingURL=auto-reminder-outline.d.ts.map

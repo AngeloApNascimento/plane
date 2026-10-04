@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/sort-ascending-filled.d.ts
+declare function SortAscendingFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { SortAscendingFilled };
+//# sourceMappingURL=sort-ascending-filled.d.ts.map

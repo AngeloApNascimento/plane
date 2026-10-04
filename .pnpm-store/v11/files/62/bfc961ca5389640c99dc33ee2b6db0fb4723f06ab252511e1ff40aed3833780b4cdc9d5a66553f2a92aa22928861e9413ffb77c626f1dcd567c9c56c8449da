@@ -1,0 +1,21 @@
+"use client";
+import { collapsibleTriggerTrailingVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/collapsible/collapsible-trigger-trailing.tsx
+/**
+* Inline-end slot for a header action, sibling of `CollapsibleTrigger` — never nested inside it
+* (the trigger is a button). Typical content is an `IconButton`. End padding matches the panel
+* inset so the control lines up with the body.
+*/
+function CollapsibleTriggerTrailing({ placement, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: collapsibleTriggerTrailingVariants({ placement }) }, props)
+	});
+}
+//#endregion
+export { CollapsibleTriggerTrailing };
+
+//# sourceMappingURL=collapsible-trigger-trailing.js.map

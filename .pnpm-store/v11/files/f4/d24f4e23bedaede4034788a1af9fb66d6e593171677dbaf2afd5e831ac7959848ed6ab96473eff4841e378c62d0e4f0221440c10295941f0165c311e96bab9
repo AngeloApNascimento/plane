@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/blocking-outline.d.ts
+declare function BlockingOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BlockingOutline };
+//# sourceMappingURL=blocking-outline.d.ts.map

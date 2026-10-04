@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/unsync-filled.d.ts
+declare function UnsyncFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { UnsyncFilled };
+//# sourceMappingURL=unsync-filled.d.ts.map

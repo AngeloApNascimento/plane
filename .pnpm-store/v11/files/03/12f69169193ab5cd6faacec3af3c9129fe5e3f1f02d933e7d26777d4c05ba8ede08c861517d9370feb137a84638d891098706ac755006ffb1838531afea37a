@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/assignee-filled.d.ts
+declare function AssigneeFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AssigneeFilled };
+//# sourceMappingURL=assignee-filled.d.ts.map

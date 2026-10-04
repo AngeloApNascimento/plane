@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/monitor-outline.d.ts
+declare function MonitorOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MonitorOutline };
+//# sourceMappingURL=monitor-outline.d.ts.map

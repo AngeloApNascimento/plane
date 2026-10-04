@@ -1,0 +1,5 @@
+"use client";
+import { SuggestionMenu } from "./suggestion-menu.js";
+import { SuggestionMenuGroup } from "./suggestion-menu-group.js";
+import { SuggestionMenuItem } from "./suggestion-menu-item.js";
+export { SuggestionMenu, SuggestionMenuGroup, SuggestionMenuItem };

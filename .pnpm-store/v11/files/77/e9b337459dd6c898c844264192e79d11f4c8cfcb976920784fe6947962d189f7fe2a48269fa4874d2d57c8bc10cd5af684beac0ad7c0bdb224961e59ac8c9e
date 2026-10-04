@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress.d.ts
+type LinearProgressProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled linear-progress frame — the flex row that groups the track and its label/value.
+ * Base-UI-agnostic; graft the `progressbar` value model in `components` via `<BaseProgress.Root
+ * render={<LinearProgress/>} />`.
+ */
+declare function LinearProgress({ render, ...props }: LinearProgressProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { LinearProgress, LinearProgressProps };
+//# sourceMappingURL=linear-progress.d.ts.map

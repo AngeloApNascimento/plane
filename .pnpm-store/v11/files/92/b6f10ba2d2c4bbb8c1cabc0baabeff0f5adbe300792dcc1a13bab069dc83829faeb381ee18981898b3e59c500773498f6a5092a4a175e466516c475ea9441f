@@ -1,0 +1,12 @@
+"use client";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-group.d.ts
+type AutocompleteGroupProps = Omit<Autocomplete.Group.Props, "className" | "style">;
+/**
+ * Groups related suggestions under an `AutocompleteGroupLabel`. Pass the group's `items` so the
+ * nested `AutocompleteCollection` renders (and filters) just this group's options.
+ */
+declare function AutocompleteGroup(props: AutocompleteGroupProps): import("react").JSX.Element;
+//#endregion
+export { AutocompleteGroup, AutocompleteGroupProps };
+//# sourceMappingURL=autocomplete-group.d.ts.map

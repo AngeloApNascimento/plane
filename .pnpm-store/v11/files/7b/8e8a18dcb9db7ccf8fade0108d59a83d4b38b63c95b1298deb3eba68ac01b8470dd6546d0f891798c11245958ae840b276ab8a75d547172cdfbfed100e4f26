@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list.d.ts
+type ListProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled vertical list frame. Base-UI-agnostic — graft the roving-tabindex `Composite` behavior
+ * in `components` via `<Composite render={<List/>} />`. Compose `ListItem` rows inside.
+ */
+declare function List({ render, ...props }: ListProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { List, ListProps };
+//# sourceMappingURL=list.d.ts.map

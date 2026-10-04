@@ -1,0 +1,14 @@
+"use client";
+import { TabsListVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tabs-list.d.ts
+type TabsListProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & TabsListVariantProps;
+/**
+ * The row of tabs — a single styled `<div>`. Base-UI-agnostic: the ready-made `components/tabs`
+ * grafts the Base UI `Tabs.List` behavior (`<BaseTabs.List render={<TabsList/>}/>`) and adds the
+ * horizontal scroller and the underline `TabsIndicator`.
+ */
+declare function TabsList({ variant, stretch, render, ...props }: TabsListProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TabsList, TabsListProps };
+//# sourceMappingURL=tabs-list.d.ts.map

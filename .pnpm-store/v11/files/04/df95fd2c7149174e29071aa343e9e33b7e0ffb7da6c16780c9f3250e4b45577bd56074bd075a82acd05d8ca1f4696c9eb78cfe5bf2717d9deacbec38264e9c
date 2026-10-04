@@ -1,0 +1,21 @@
+"use client";
+import { accordionTriggerVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/accordion/accordion-trigger.tsx
+/**
+* The clickable control that opens and closes its panel. Base-UI-agnostic — graft in `components`
+* via `<BaseAccordion.Trigger render={<AccordionTrigger/>} />`, which wires `aria-expanded` and
+* `aria-controls`.
+*/
+function AccordionTrigger({ render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({ className: accordionTriggerVariants() }, props)
+	});
+}
+//#endregion
+export { AccordionTrigger };
+
+//# sourceMappingURL=accordion-trigger.js.map

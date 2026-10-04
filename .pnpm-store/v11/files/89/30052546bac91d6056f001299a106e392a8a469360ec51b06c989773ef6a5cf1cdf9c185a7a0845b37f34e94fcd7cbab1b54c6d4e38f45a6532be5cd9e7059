@@ -1,0 +1,100 @@
+
+import { WorkItemBacklog } from "../icons/work-item-states/work-item-backlog.js";
+import { WorkItemCancelled } from "../icons/work-item-states/work-item-cancelled.js";
+import { WorkItemDone } from "../icons/work-item-states/work-item-done.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/state-icons/index.tsx
+const dimensions = {
+	xs: 10,
+	sm: 12,
+	md: 14,
+	lg: 16,
+	xl: 18
+};
+const staticGroups = {
+	backlog: WorkItemBacklog,
+	completed: WorkItemDone,
+	cancelled: WorkItemCancelled
+};
+/** Convert the Plane EE percentage convention to a bounded fraction. */
+function progressFraction(percentage = 100) {
+	if (!Number.isFinite(percentage)) return 1;
+	return Math.max(0, Math.min(1, percentage <= 1 ? percentage : percentage / 100));
+}
+function ProgressGlyph({ percentage, started, color, width = "1em", height = "1em", ...props }) {
+	const fraction = progressFraction(percentage);
+	const circumference = 12 * Math.PI;
+	const remainingTicks = Array.from({ length: 15 }, (_, index) => index).filter((index) => index / 15 >= fraction);
+	return /* @__PURE__ */ jsxs("svg", {
+		viewBox: "0 0 16 16",
+		width,
+		height,
+		fill: "none",
+		"aria-hidden": "true",
+		color: color ?? `var(--txt-icon-states-${started ? "started" : "unstarted"}, currentColor)`,
+		...props,
+		children: [
+			remainingTicks.map((index) => /* @__PURE__ */ jsx("line", {
+				x1: "8",
+				y1: "1.5",
+				x2: "8",
+				y2: "2.25",
+				stroke: "currentColor",
+				strokeWidth: "1.21",
+				strokeLinecap: "round",
+				transform: `rotate(${index * 24} 8 8)`
+			}, index)),
+			started && /* @__PURE__ */ jsx("circle", {
+				cx: "8",
+				cy: "8",
+				r: "3",
+				stroke: "currentColor",
+				strokeWidth: "1.5"
+			}),
+			fraction > 0 && /* @__PURE__ */ jsx("circle", {
+				cx: "8",
+				cy: "8",
+				r: "6",
+				stroke: "currentColor",
+				strokeWidth: "1.5",
+				strokeLinecap: "round",
+				strokeDasharray: circumference,
+				strokeDashoffset: circumference * (1 - fraction),
+				transform: "rotate(-90 8 8)"
+			})
+		]
+	});
+}
+/** Todo glyph with continuous progress and the unstarted semantic color. */
+function UnstartedGroupIcon(props) {
+	return /* @__PURE__ */ jsx(ProgressGlyph, {
+		...props,
+		started: false
+	});
+}
+/** In-progress glyph with an inner ring and continuous outer progress. */
+function StartedGroupIcon(props) {
+	return /* @__PURE__ */ jsx(ProgressGlyph, {
+		...props,
+		started: true
+	});
+}
+/** Select a workflow glyph using Plane EE group names, sizing, and percentage conventions. */
+function StateGroupIcon({ stateGroup, size = "sm", percentage, ...props }) {
+	const dimension = dimensions[size];
+	if (stateGroup === "started" || stateGroup === "unstarted") return /* @__PURE__ */ jsx(stateGroup === "started" ? StartedGroupIcon : UnstartedGroupIcon, {
+		width: dimension,
+		height: dimension,
+		percentage,
+		...props
+	});
+	return /* @__PURE__ */ jsx(staticGroups[stateGroup] ?? UnstartedGroupIcon, {
+		width: dimension,
+		height: dimension,
+		...props
+	});
+}
+//#endregion
+export { StartedGroupIcon, StateGroupIcon, UnstartedGroupIcon };
+
+//# sourceMappingURL=index.js.map

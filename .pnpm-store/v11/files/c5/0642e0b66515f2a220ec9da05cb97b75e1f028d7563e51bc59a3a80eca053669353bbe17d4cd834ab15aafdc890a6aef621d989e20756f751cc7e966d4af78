@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/ms-excel.d.ts
+declare function MsExcel(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MsExcel };
+//# sourceMappingURL=ms-excel.d.ts.map

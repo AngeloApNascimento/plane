@@ -1,0 +1,53 @@
+"use client";
+import { MenuItemContent } from "../../elements/menu/menu-item-content.js";
+import { MenuItemControl } from "../../elements/menu/menu-item-control.js";
+import { MenuItemTitle } from "../../elements/menu/menu-item-title.js";
+import { MenuItemTitleRow } from "../../elements/menu/menu-item-title-row.js";
+import { MenuItemTrailing } from "../../elements/menu/menu-item-trailing.js";
+import { MenuRadioItem as MenuRadioItem$1 } from "../../elements/menu/menu-radio-item.js";
+import { MenuRadioItemCheck } from "../../elements/menu/menu-radio-item-check.js";
+import { MenuRadioItemIndicator } from "../../elements/menu/menu-radio-item-indicator.js";
+import { useMenuRadioMarker } from "../../internal/menu-radio-marker.js";
+import { RadioDot } from "../../internal/radio-dot.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Check } from "lucide-react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-radio-item.tsx
+/**
+* The ready-made single-select menu row: grafts Base UI's `Menu.RadioItem` behavior onto the styled
+* `MenuRadioItem` and marks the current row the way its `MenuRadioGroup`'s `marker` says. `check`
+* (the default): a kept-mounted trailing tick (`Menu.RadioItemIndicator` grafted onto
+* `MenuRadioItemCheck`) that shows on the selected row, the same mark every other single-select row
+* in the library uses. `radio`: a leading ring (`MenuRadioItemIndicator` in a `MenuItemControl`
+* gutter) drawn on every row with only its inner dot hiding, for a popup that also holds a checkbox
+* group and needs the two kinds of choice told apart. `keepMounted` is load-bearing either way: the
+* indicator holds its slot and carries `data-checked` / `data-unchecked` for the styling to key
+* off. Wrap rows in a `MenuRadioGroup` carrying `value`/`onValueChange`; both the selected state
+* and the marker come from context.
+*/
+function MenuRadioItem({ variant, icon, label, trailing, ...props }) {
+	const marker = useMenuRadioMarker();
+	return /* @__PURE__ */ jsxs(Menu.RadioItem, {
+		...props,
+		render: /* @__PURE__ */ jsx(MenuRadioItem$1, { variant }),
+		children: [
+			marker === "radio" ? /* @__PURE__ */ jsx(MenuItemControl, { children: /* @__PURE__ */ jsx(Menu.RadioItemIndicator, {
+				keepMounted: true,
+				render: /* @__PURE__ */ jsx(MenuRadioItemIndicator, {}),
+				children: /* @__PURE__ */ jsx(RadioDot, { "aria-hidden": true })
+			}) }) : null,
+			icon,
+			/* @__PURE__ */ jsx(MenuItemContent, { children: /* @__PURE__ */ jsx(MenuItemTitleRow, { children: /* @__PURE__ */ jsx(MenuItemTitle, { children: label }) }) }),
+			marker === "check" ? /* @__PURE__ */ jsx(Menu.RadioItemIndicator, {
+				keepMounted: true,
+				render: /* @__PURE__ */ jsx(MenuRadioItemCheck, {}),
+				children: /* @__PURE__ */ jsx(Check, { "aria-hidden": true })
+			}) : null,
+			trailing != null ? /* @__PURE__ */ jsx(MenuItemTrailing, { children: trailing }) : null
+		]
+	});
+}
+//#endregion
+export { MenuRadioItem };
+
+//# sourceMappingURL=menu-radio-item.js.map

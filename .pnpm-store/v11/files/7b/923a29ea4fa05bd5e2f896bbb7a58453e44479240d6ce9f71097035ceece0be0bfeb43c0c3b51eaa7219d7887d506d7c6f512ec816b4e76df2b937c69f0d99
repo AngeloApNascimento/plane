@@ -1,0 +1,16 @@
+"use client";
+import { FieldLabelVariantProps, FieldSize } from "../../elements/field/variants.js";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-label.d.ts
+type FieldLabelProps = Omit<Field.Label.Props, "className" | "style"> & FieldLabelVariantProps & {
+  required?: boolean;
+};
+/**
+ * The ready-made field label: Base UI's `Field.Label` (auto-associated with the control) grafted
+ * onto the styled `FieldLabel` element (rule 1a), plus a `FieldLabelRequiredMarker` when
+ * `required`.
+ */
+declare function FieldLabel({ size, inset, required, children, ...props }: FieldLabelProps): import("react").JSX.Element;
+//#endregion
+export { FieldLabel, FieldLabelProps, type FieldSize };
+//# sourceMappingURL=field-label.d.ts.map

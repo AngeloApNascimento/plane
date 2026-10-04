@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/new-tab-outline.d.ts
+declare function NewTabOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { NewTabOutline };
+//# sourceMappingURL=new-tab-outline.d.ts.map

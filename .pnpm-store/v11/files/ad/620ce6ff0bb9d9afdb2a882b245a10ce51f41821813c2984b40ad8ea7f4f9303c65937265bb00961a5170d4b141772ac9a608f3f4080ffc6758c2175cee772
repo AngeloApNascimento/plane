@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/actions/sort-descending-outline.tsx
+function SortDescendingOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M4.042 2.667a.625.625 0 0 1 1.25 0v9.157l1.6-1.6a.625.625 0 0 1 .883.885l-2.667 2.666a.625.625 0 0 1-.883 0L1.558 11.11a.626.626 0 0 1 .884-.884l1.6 1.6zM14 7.375a.625.625 0 0 1 0 1.25H7.333a.625.625 0 0 1 0-1.25zm-2-2.666a.625.625 0 0 1 0 1.25H7.333a.626.626 0 0 1 0-1.25zm-2-2.667a.625.625 0 0 1 0 1.25H7.333a.625.625 0 0 1 0-1.25z"
+		})
+	});
+}
+//#endregion
+export { SortDescendingOutline };
+
+//# sourceMappingURL=sort-descending-outline.js.map

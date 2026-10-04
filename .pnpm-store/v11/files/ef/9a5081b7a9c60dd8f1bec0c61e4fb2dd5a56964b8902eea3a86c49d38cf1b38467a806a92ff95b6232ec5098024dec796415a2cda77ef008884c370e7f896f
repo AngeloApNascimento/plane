@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-page-button.d.ts
+type PaginationPageButtonProps = Omit<useRender.ComponentProps<"button">, "className" | "style">;
+/**
+ * A styled page-number button. The current page is marked `aria-current="page"`, which the cva keys
+ * the pressed/selected fill off of; pass the page number (or a loading spinner) as `children` and
+ * wire `aria-current`/`onClick` through props.
+ */
+declare function PaginationPageButton({ render, ...props }: PaginationPageButtonProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationPageButton, PaginationPageButtonProps };
+//# sourceMappingURL=pagination-page-button.d.ts.map

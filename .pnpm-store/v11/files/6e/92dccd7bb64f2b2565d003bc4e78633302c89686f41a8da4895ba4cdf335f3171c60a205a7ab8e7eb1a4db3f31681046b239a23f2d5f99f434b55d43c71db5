@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/arrows/arrow-block-up-filled.tsx
+function ArrowBlockUpFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			d: "M7.529 1.528c.26-.26.682-.26.943 0l4.666 4.667a.667.667 0 0 1-.471 1.138h-2v6.149c0 .08 0 .174-.007.258a1 1 0 0 1-.102.38 1 1 0 0 1-.437.437 1 1 0 0 1-.381.103 3 3 0 0 1-.258.006H6.518c-.08 0-.174 0-.258-.006a1 1 0 0 1-.38-.103 1 1 0 0 1-.438-.437 1 1 0 0 1-.102-.38c-.007-.084-.007-.179-.007-.258V7.333h-2a.667.667 0 0 1-.471-1.138z",
+			clipRule: "evenodd"
+		})
+	});
+}
+//#endregion
+export { ArrowBlockUpFilled };
+
+//# sourceMappingURL=arrow-block-up-filled.js.map

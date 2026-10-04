@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/auto-close-filled.d.ts
+declare function AutoCloseFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AutoCloseFilled };
+//# sourceMappingURL=auto-close-filled.d.ts.map

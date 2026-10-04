@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress-value.d.ts
+type LinearProgressValueProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled percentage readout — a neutral number (the semantic variant lives on the fill, not on
+ * the number). Base-UI-agnostic — graft in `components` via `<BaseProgress.Value
+ * render={<LinearProgressValue/>} />`.
+ */
+declare function LinearProgressValue({ render, ...props }: LinearProgressValueProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { LinearProgressValue, LinearProgressValueProps };
+//# sourceMappingURL=linear-progress-value.d.ts.map

@@ -1,0 +1,24 @@
+"use client";
+import { toastStatusIconVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-status-icon.tsx
+/**
+* The variant-colored status-icon slot at a toast's inline-start. A single styled `<span>` that
+* sizes and colors its bare `<svg>` glyph child (passed as `children`); the variant→glyph mapping
+* is a `components` concern (see `components/toast`).
+*/
+function ToastStatusIcon({ variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			"aria-hidden": true,
+			className: toastStatusIconVariants({ variant })
+		}, props)
+	});
+}
+//#endregion
+export { ToastStatusIcon };
+
+//# sourceMappingURL=toast-status-icon.js.map

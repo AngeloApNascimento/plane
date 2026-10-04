@@ -1,0 +1,15 @@
+"use client";
+import { AnchorButtonSize, AnchorButtonVariant, AnchorButtonVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/anchor-button/anchor-button.d.ts
+type AnchorButtonProps = Omit<useRender.ComponentProps<"a">, "className" | "style"> & AnchorButtonVariantProps;
+/**
+ * The styled intrinsic anchor for the inline text-link look. Selects link palette (`variant`) and
+ * text size (`size`). Use `render` to project its props onto a router or framework link. For a
+ * navigation link wearing button chrome, use `Button`'s render path. Does not accept `className` or
+ * `style`.
+ */
+declare function AnchorButton({ variant, size, render, ...props }: AnchorButtonProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AnchorButton, AnchorButtonProps, type AnchorButtonSize, type AnchorButtonVariant };
+//# sourceMappingURL=anchor-button.d.ts.map

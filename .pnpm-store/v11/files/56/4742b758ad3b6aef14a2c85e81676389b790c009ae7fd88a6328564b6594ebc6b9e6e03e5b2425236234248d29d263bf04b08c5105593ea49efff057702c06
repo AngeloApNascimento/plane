@@ -1,0 +1,18 @@
+"use client";
+import { LogoSpinnerImageVariantProps, LogoSpinnerMotion, LogoSpinnerSize, LogoSpinnerTheme } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/logo-spinner/logo-spinner-image.d.ts
+/** Props for {@link LogoSpinnerImage}. */
+type LogoSpinnerImageProps = Omit<useRender.ComponentProps<"img">, "className" | "style" | "height" | "width"> & LogoSpinnerImageVariantProps;
+/**
+ * One theme's brand mark in one motion mode (`size` `sm` 24px / `md` 44px / `fluid` 24px stepping
+ * to 44px, `theme` `light` / `dark`, `motion` `animated` (default) / `still`). Pass the asset as
+ * `src`; the ready-made `components/logo-spinner` resolves the GIF pair and the still pair that
+ * ship with the package. All four images are rendered and CSS paints the one matching the active
+ * `data-theme` and the viewer's motion preference, so no JS runs on a theme flip and a
+ * reduced-motion viewer sees the fully drawn mark instead of the animation.
+ */
+declare function LogoSpinnerImage({ size, theme, motion, render, ...props }: LogoSpinnerImageProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { LogoSpinnerImage, LogoSpinnerImageProps, type LogoSpinnerMotion, type LogoSpinnerSize, type LogoSpinnerTheme };
+//# sourceMappingURL=logo-spinner-image.d.ts.map

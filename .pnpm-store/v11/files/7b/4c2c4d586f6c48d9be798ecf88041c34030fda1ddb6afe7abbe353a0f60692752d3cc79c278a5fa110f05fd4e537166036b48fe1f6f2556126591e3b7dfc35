@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/align-right-outline.d.ts
+declare function AlignRightOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AlignRightOutline };
+//# sourceMappingURL=align-right-outline.d.ts.map

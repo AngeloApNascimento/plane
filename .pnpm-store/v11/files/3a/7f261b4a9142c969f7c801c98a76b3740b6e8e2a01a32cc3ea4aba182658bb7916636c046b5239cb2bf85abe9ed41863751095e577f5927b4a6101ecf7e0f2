@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/members-outline.d.ts
+declare function MembersOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MembersOutline };
+//# sourceMappingURL=members-outline.d.ts.map

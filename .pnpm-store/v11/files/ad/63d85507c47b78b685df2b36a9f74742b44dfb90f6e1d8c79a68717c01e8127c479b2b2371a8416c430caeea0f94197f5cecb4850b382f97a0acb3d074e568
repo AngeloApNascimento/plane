@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/tick-outline.d.ts
+declare function TickOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TickOutline };
+//# sourceMappingURL=tick-outline.d.ts.map

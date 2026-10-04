@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-item-control.d.ts
+type MenuItemControlProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** The leading control slot of a checkbox/radio row, holding its visual toggle. */
+declare function MenuItemControl({ render, ...props }: MenuItemControlProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuItemControl, MenuItemControlProps };
+//# sourceMappingURL=menu-item-control.d.ts.map

@@ -1,0 +1,20 @@
+"use client";
+import { menuPopupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-popup.tsx
+/**
+* The styled menu surface that contains the items. Base-UI-agnostic — graft the menu behavior in
+* `components` via `<BaseMenu.Popup render={<MenuPopup elevation="…" />} />`.
+*/
+function MenuPopup({ elevation, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: menuPopupVariants({ elevation }) }, props)
+	});
+}
+//#endregion
+export { MenuPopup };
+
+//# sourceMappingURL=menu-popup.js.map

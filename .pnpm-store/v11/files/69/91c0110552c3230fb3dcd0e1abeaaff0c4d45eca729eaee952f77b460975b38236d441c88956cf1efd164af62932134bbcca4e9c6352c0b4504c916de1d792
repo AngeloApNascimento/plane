@@ -1,0 +1,17 @@
+"use client";
+import { ListboxItemSize } from "../../internal/listbox-item.js";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-item.d.ts
+type AutocompleteItemProps = Omit<Autocomplete.Item.Props, "className" | "style" | "render"> & {
+  /** Visual size of the row: height and text size. Required. */
+  size: ListboxItemSize;
+};
+/**
+ * The ready-made autocomplete option row: grafts Base UI's `Autocomplete.Item` behavior onto the
+ * shared listbox row (`layout="plain"` — autocomplete rows carry no selection marker). Children
+ * flow through as the row's content.
+ */
+declare function AutocompleteItem({ size, ...props }: AutocompleteItemProps): import("react").JSX.Element;
+//#endregion
+export { AutocompleteItem, AutocompleteItemProps };
+//# sourceMappingURL=autocomplete-item.d.ts.map

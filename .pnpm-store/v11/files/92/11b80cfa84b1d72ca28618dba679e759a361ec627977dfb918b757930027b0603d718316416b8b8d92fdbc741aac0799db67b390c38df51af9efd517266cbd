@@ -1,0 +1,29 @@
+"use client";
+import { PopoverRoot } from "@base-ui/react/popover";
+//#region src/components/popover/popover.d.ts
+type PopoverProps<Payload = unknown> = Omit<PopoverRoot.Props<Payload>, "open" | "defaultOpen" | "onOpenChange" | "modal" | "children"> & {
+  /** Whether the popover is open. Controlled; pair with `onOpenChange`. */
+  open?: boolean;
+  /** Whether the popover is open on mount. Uncontrolled. @default false */
+  defaultOpen?: boolean;
+  /** Called with the next open state when the popover opens or closes. */
+  onOpenChange?: PopoverRoot.Props<Payload>["onOpenChange"];
+  /**
+   * How the rest of the page behaves while open. Off by default so the page stays interactive.
+   * `true` locks page scroll and outside pointers; `"trap-focus"` keeps focus in the panel without
+   * locking the page. Focus trapping in either mode needs `PopoverClose` inside the popup so touch
+   * screen readers can leave. There is no backdrop — the panel does not dim the page.
+   *
+   * @default false
+   */
+  modal?: PopoverRoot.Props<Payload>["modal"];
+  /**
+   * The popover's trigger and panel (`PopoverTrigger`, `PopoverContent`) and any title,
+   * description, or close parts composed inside.
+   */
+  children?: PopoverRoot.Props<Payload>["children"];
+};
+declare function Popover$1<Payload = unknown>({ onOpenChange, ...props }: PopoverProps<Payload>): import("react").JSX.Element;
+//#endregion
+export { Popover$1 as Popover, PopoverProps };
+//# sourceMappingURL=popover.d.ts.map

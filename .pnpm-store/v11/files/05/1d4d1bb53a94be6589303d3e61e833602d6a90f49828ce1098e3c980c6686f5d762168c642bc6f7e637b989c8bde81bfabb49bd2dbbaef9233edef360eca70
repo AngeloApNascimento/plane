@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-search.d.ts
+type ComboboxSearchProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/** The sticky search row pinned above a combobox popup list (a search icon + `ComboboxSearchInput`). */
+declare function ComboboxSearch({ render, ...props }: ComboboxSearchProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxSearch, ComboboxSearchProps };
+//# sourceMappingURL=combobox-search.d.ts.map

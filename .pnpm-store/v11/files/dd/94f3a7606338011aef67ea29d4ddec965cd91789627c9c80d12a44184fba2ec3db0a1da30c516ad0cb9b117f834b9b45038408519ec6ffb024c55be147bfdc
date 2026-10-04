@@ -1,0 +1,38 @@
+"use client";
+import { MenuOpenContext, MenuTriggerElementContext } from "./menu-context.js";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu.tsx
+/**
+* The menu Root — Base UI's context/state provider (renders no element of its own). A behavior-only
+* role, so it lives in `components` (rules 1a, 2); the styled parts live in `elements/menu` and are
+* grafted onto Base UI behavior here.
+*/
+function Menu$1({ open, defaultOpen, onOpenChange, ...props }) {
+	const triggerElement = React.useRef(null);
+	const [isOpen, setIsOpen] = React.useState(() => open ?? defaultOpen ?? false);
+	React.useEffect(() => {
+		if (open !== void 0) setIsOpen(open);
+	}, [open]);
+	const handleOpenChange = React.useCallback((nextOpen, eventDetails) => {
+		setIsOpen(nextOpen);
+		onOpenChange?.(nextOpen, eventDetails);
+	}, [onOpenChange]);
+	return /* @__PURE__ */ jsx(MenuTriggerElementContext.Provider, {
+		value: triggerElement,
+		children: /* @__PURE__ */ jsx(MenuOpenContext.Provider, {
+			value: isOpen,
+			children: /* @__PURE__ */ jsx(Menu.Root, {
+				...props,
+				open,
+				defaultOpen,
+				onOpenChange: handleOpenChange
+			})
+		})
+	});
+}
+//#endregion
+export { Menu$1 as Menu };
+
+//# sourceMappingURL=menu.js.map

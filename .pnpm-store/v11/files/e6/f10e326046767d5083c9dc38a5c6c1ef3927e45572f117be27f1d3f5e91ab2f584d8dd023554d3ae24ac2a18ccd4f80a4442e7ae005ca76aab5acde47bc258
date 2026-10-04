@@ -1,0 +1,13 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import * as React from "react";
+//#region src/components/field/field-item-content.d.ts
+/** The label + description column for a single choice option (checkbox/radio/switch row). */
+declare function FieldItemContent({ children, description, size }: {
+  children: React.ReactNode;
+  description?: React.ReactNode;
+  size: FieldSize;
+}): React.JSX.Element;
+//#endregion
+export { FieldItemContent };
+//# sourceMappingURL=field-item-content.d.ts.map

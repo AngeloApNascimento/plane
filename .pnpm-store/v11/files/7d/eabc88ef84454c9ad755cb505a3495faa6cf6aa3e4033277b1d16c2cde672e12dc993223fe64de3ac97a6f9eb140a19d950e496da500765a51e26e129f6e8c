@@ -1,0 +1,15 @@
+"use client";
+import { DrawerPopupSide, DrawerPopupSize, DrawerPopupVariant, DrawerPopupVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-popup.d.ts
+type DrawerPopupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & DrawerPopupVariantProps;
+/**
+ * The styled sliding panel. `variant` chooses chrome/placement: `inline` flush absolute column,
+ * `overlay` / `contained` floating card. Anchored to `side`; slides via Base UI
+ * `data-starting-style` / `data-ending-style`. `size` sets width (`sm` 358 / `md` 800 / `lg` 1024).
+ * Base-UI-agnostic — graft via `<BaseDrawer.Popup render={<DrawerPopup … />} />`.
+ */
+declare function DrawerPopup({ side, size, variant, render, ...props }: DrawerPopupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerPopup, DrawerPopupProps, type DrawerPopupSide, type DrawerPopupSize, type DrawerPopupVariant };
+//# sourceMappingURL=drawer-popup.d.ts.map

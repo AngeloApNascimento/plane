@@ -1,0 +1,22 @@
+
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/icons/workspace-features/cycles-outline.tsx
+function CyclesOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsxs("g", {
+			fill: "currentColor",
+			children: [/* @__PURE__ */ jsx("path", { d: "M14.041 8A6.042 6.042 0 1 0 1.958 8 6.042 6.042 0 0 0 14.04 8m1.25 0A7.291 7.291 0 0 1 .708 8a7.292 7.292 0 0 1 14.583 0" }), /* @__PURE__ */ jsx("path", { d: "M8 12.334a4.333 4.333 0 1 0 0-8.667z" })]
+		})
+	});
+}
+//#endregion
+export { CyclesOutline };
+
+//# sourceMappingURL=cycles-outline.js.map

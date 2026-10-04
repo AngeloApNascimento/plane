@@ -1,0 +1,107 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+const fieldVariants = cva("flex flex-col", {
+	variants: { size: {
+		md: "gap-1.5",
+		lg: "gap-1.5",
+		xl: "gap-2",
+		"2xl": "gap-2"
+	} },
+	defaultVariants: { size: "lg" }
+});
+const fieldLabelVariants = cva(cx("inline-flex items-center gap-0", "text-primary"), {
+	variants: {
+		size: {
+			md: "text-body-xs-medium",
+			lg: "text-body-xs-medium",
+			xl: "text-body-sm-medium",
+			"2xl": "text-body-sm-medium"
+		},
+		inset: {
+			true: "",
+			false: ""
+		}
+	},
+	compoundVariants: [
+		{
+			size: "md",
+			inset: true,
+			class: "pt-1"
+		},
+		{
+			size: "lg",
+			inset: true,
+			class: "pt-[7px]"
+		},
+		{
+			size: "xl",
+			inset: true,
+			class: "pt-[9px]"
+		},
+		{
+			size: "2xl",
+			inset: true,
+			class: "pt-[13px]"
+		}
+	]
+});
+const fieldLabelRequiredMarkerVariants = cva("text-body-sm-regular text-danger-primary");
+const fieldItemContentVariants = cva("flex min-w-0 flex-col gap-1 leading-5");
+const fieldItemControlGroupVariants = cva("flex h-5 shrink-0 items-center");
+const fieldDescriptionVariants = cva("text-tertiary", { variants: { size: {
+	md: "text-body-2xs-regular",
+	lg: "text-body-2xs-regular",
+	xl: "text-body-xs-regular",
+	"2xl": "text-body-xs-regular"
+} } });
+const fieldErrorVariants = cva("text-danger-primary", { variants: { size: {
+	md: "text-body-2xs-regular",
+	lg: "text-body-2xs-regular",
+	xl: "text-body-xs-regular",
+	"2xl": "text-body-xs-regular"
+} } });
+const fieldControlContentVariants = cva("flex flex-col", {
+	variants: {
+		orientation: {
+			vertical: "w-full",
+			horizontal: "min-w-0 flex-1 gap-2"
+		},
+		size: {
+			md: "",
+			lg: "",
+			xl: "",
+			"2xl": ""
+		}
+	},
+	compoundVariants: [
+		{
+			orientation: "vertical",
+			size: "md",
+			class: "gap-1.5"
+		},
+		{
+			orientation: "vertical",
+			size: "lg",
+			class: "gap-1.5"
+		},
+		{
+			orientation: "vertical",
+			size: "xl",
+			class: "gap-2"
+		},
+		{
+			orientation: "vertical",
+			size: "2xl",
+			class: "gap-2"
+		}
+	]
+});
+const fieldItemVariants = cva(cx("flex min-w-0 items-start gap-2 rounded-sm px-2 py-1 text-primary transition-colors", "data-disabled:cursor-not-allowed data-disabled:opacity-60", "not-data-disabled:hover:bg-layer-transparent-hover"));
+const fieldLabelGroupVariants = cva("flex flex-col gap-0.5", { variants: { orientation: {
+	vertical: "w-full",
+	horizontal: "min-w-0 flex-1"
+} } });
+//#endregion
+export { fieldControlContentVariants, fieldDescriptionVariants, fieldErrorVariants, fieldItemContentVariants, fieldItemControlGroupVariants, fieldItemVariants, fieldLabelGroupVariants, fieldLabelRequiredMarkerVariants, fieldLabelVariants, fieldVariants };
+
+//# sourceMappingURL=variants.js.map

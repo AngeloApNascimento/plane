@@ -1,0 +1,39 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { InputSize } from "../input/variants.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/field/variants.d.ts
+declare const fieldDefaultVariants: {
+  readonly size: "lg";
+};
+declare const fieldVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type FieldVariantProps = StrictVariantProps<typeof fieldVariants, keyof typeof fieldDefaultVariants>;
+declare const fieldLabelVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+  inset?: boolean | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type FieldLabelVariantConfig = VariantProps<typeof fieldLabelVariants>;
+type FieldSize = NonNullable<FieldLabelVariantConfig["size"]>;
+type FieldLabelVariantProps = StrictVariantProps<typeof fieldLabelVariants>;
+declare const fieldDescriptionVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type FieldDescriptionVariantProps = StrictVariantProps<typeof fieldDescriptionVariants>;
+declare const fieldErrorVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type FieldErrorVariantProps = StrictVariantProps<typeof fieldErrorVariants>;
+declare const fieldControlContentVariants: (props?: ({
+  orientation?: "vertical" | "horizontal" | null | undefined;
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type FieldControlContentVariantProps = StrictVariantProps<typeof fieldControlContentVariants>;
+declare const fieldLabelGroupVariants: (props?: ({
+  orientation?: "vertical" | "horizontal" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type FieldLabelGroupVariantProps = StrictVariantProps<typeof fieldLabelGroupVariants>;
+//#endregion
+export { FieldControlContentVariantProps, FieldDescriptionVariantProps, FieldErrorVariantProps, FieldLabelGroupVariantProps, FieldLabelVariantProps, FieldSize, FieldVariantProps, type InputSize, fieldControlContentVariants, fieldDescriptionVariants, fieldErrorVariants, fieldLabelGroupVariants, fieldLabelVariants, fieldVariants };
+//# sourceMappingURL=variants.d.ts.map

@@ -1,0 +1,69 @@
+"use client";
+import { cva } from "class-variance-authority";
+//#region src/elements/logo-spinner/variants.ts
+/** The box that centres the brand loading mark in whatever space it is given. */
+const logoSpinnerVariants = cva("flex items-center justify-center");
+/**
+* One theme's brand mark, in one motion mode. `size` sets its height — `sm` 24px, `md` 44px,
+* `fluid` 24px stepping to 44px at the 640px breakpoint — and the width follows the artwork's
+* aspect ratio (`object-contain`, as the apps' own splash CSS did).
+*
+* `theme` is which theme's asset this is, and it is a real second axis rather than a look choice:
+* the mark is a raster pair, so the light/dark swap has to happen in CSS (`light` shows unless a
+* `dark` theme is active, mirroring the apps' `html[data-theme*="dark"]` rules). Doing it in CSS —
+* rather than picking one `src` from a theme hook — is what keeps the swap free of JS, of a
+* hydration flash, and of a second network request when the theme flips.
+*
+* `motion` is the third axis, for the same reason in the other direction: a GIF cannot be paused
+* from CSS, so a viewer who asked for reduced motion gets a still of the fully drawn mark instead.
+* `animated` paints under `prefers-reduced-motion: no-preference`, `still` under `reduce`, and the
+* four theme × motion combinations are exclusive — exactly one image paints — so `alt` is announced
+* once whatever the theme and the motion preference.
+*
+* Deliberately OFF the size ladder (`internal/size-scale`), like CircularProgress's ring diameters:
+* these are the product's two splash heights (24px inline, 44px full page), not control rungs.
+*/
+const logoSpinnerImageVariants = cva("aspect-[79/44] w-auto shrink-0 object-contain", {
+	variants: {
+		size: {
+			sm: "h-6",
+			md: "h-11",
+			fluid: "h-6 sm:h-11"
+		},
+		theme: {
+			light: "",
+			dark: ""
+		},
+		motion: {
+			animated: "",
+			still: ""
+		}
+	},
+	compoundVariants: [
+		{
+			theme: "light",
+			motion: "animated",
+			class: "hidden motion-safe:block motion-safe:dark:hidden"
+		},
+		{
+			theme: "dark",
+			motion: "animated",
+			class: "hidden motion-safe:dark:block"
+		},
+		{
+			theme: "light",
+			motion: "still",
+			class: "hidden motion-reduce:block motion-reduce:dark:hidden"
+		},
+		{
+			theme: "dark",
+			motion: "still",
+			class: "hidden motion-reduce:dark:block"
+		}
+	],
+	defaultVariants: { motion: "animated" }
+});
+//#endregion
+export { logoSpinnerImageVariants, logoSpinnerVariants };
+
+//# sourceMappingURL=variants.js.map

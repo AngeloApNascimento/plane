@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/cloud-filled.tsx
+function CloudFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M8 2.667a4.67 4.67 0 0 0-4.5 3.429 3.668 3.668 0 0 0 .833 7.238h7.334a3.667 3.667 0 0 0 .834-7.238A4.67 4.67 0 0 0 8 2.667"
+		})
+	});
+}
+//#endregion
+export { CloudFilled };
+
+//# sourceMappingURL=cloud-filled.js.map

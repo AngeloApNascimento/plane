@@ -1,0 +1,223 @@
+# Base44 development compose — runs Plane from cloned source with live reload.
+# Usage: docker compose -f docker-compose.base44.yml up -d --build
+#
+# Architecture (single-origin):
+#   - The web Vite dev server (port 3000) proxies /api, /auth, /static to the
+#     Django API and /uploads to MinIO, so the browser sees one origin.
+#   - admin (3001), space (3002), and live (3100) run in the same container
+#     via `pnpm dev` (turbo) and are exposed on their own host ports.
+#   - API, worker, beat, and migrator run from apps/api/Dockerfile.dev with the
+#     source bind-mounted at /code.
+
+x-api-env: &api-env
+  WEB_URL: "https://3000-${BASE44_PUBLIC_HOST_SUFFIX}"
+  APP_BASE_URL: "https://3000-${BASE44_PUBLIC_HOST_SUFFIX}"
+  ADMIN_BASE_URL: "https://3001-${BASE44_PUBLIC_HOST_SUFFIX}"
+  SPACE_BASE_URL: "https://3002-${BASE44_PUBLIC_HOST_SUFFIX}"
+  LIVE_BASE_URL: "https://3100-${BASE44_PUBLIC_HOST_SUFFIX}"
+  CORS_ALLOWED_ORIGINS: "https://3000-${BASE44_PUBLIC_HOST_SUFFIX},https://3001-${BASE44_PUBLIC_HOST_SUFFIX},https://3002-${BASE44_PUBLIC_HOST_SUFFIX}"
+
+services:
+  # ────────────────────── Infrastructure ──────────────────────
+
+  plane-db:
+    image: postgres:15.7-alpine
+    restart: on-failure
+    command: postgres -c "max_connections=1000"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: plane
+      POSTGRES_PASSWORD: plane
+      POSTGRES_DB: plane
+      PGDATA: /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U plane -d plane"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  plane-redis:
+    image: valkey/valkey:7.2.11-alpine
+    restart: on-failure
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  plane-mq:
+    image: rabbitmq:3.13.6-management-alpine
+    restart: on-failure
+    environment:
+      RABBITMQ_DEFAULT_USER: plane
+      RABBITMQ_DEFAULT_PASS: plane
+      RABBITMQ_DEFAULT_VHOST: plane
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  plane-minio:
+    image: docker.io/pgsty/minio:RELEASE.2026-08-04T00-00-00Z
+    restart: on-failure
+    entrypoint: >
+      /bin/sh -c "
+      mkdir -p /export/uploads &&
+      minio server /export --console-address ':9090' &
+      sleep 3 &&
+      mc alias set local http://localhost:9000 access-key secret-key &&
+      mc mb local/uploads -p || true &&
+      tail -f /dev/null
+      "
+    volumes:
+      - uploads:/export
+    environment:
+      MINIO_ROOT_USER: access-key
+      MINIO_ROOT_PASSWORD: secret-key
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # ────────────────────── Django API ──────────────────────
+
+  migrator:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile.dev
+    restart: "no"
+    volumes:
+      - ./apps/api:/code
+    env_file:
+      - ./apps/api/.env
+      - /run/base44/app.env
+    environment:
+      <<: *api-env
+    command: ./bin/docker-entrypoint-migrator.sh --settings=plane.settings.local
+    depends_on:
+      plane-db:
+        condition: service_healthy
+      plane-redis:
+        condition: service_healthy
+
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile.dev
+    restart: on-failure
+    volumes:
+      - ./apps/api:/code
+    env_file:
+      - ./apps/api/.env
+      - /run/base44/app.env
+    environment:
+      <<: *api-env
+    command: ./bin/docker-entrypoint-api-local.sh
+    depends_on:
+      plane-db:
+        condition: service_healthy
+      plane-redis:
+        condition: service_healthy
+      plane-mq:
+        condition: service_healthy
+      plane-minio:
+        condition: service_healthy
+      migrator:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/')\" || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 60s
+
+  worker:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile.dev
+    restart: on-failure
+    volumes:
+      - ./apps/api:/code
+    env_file:
+      - ./apps/api/.env
+      - /run/base44/app.env
+    environment:
+      <<: *api-env
+    command: ./bin/docker-entrypoint-worker.sh
+    depends_on:
+      plane-db:
+        condition: service_healthy
+      plane-redis:
+        condition: service_healthy
+      plane-mq:
+        condition: service_healthy
+      migrator:
+        condition: service_completed_successfully
+
+  beat-worker:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile.dev
+    restart: on-failure
+    volumes:
+      - ./apps/api:/code
+    env_file:
+      - ./apps/api/.env
+      - /run/base44/app.env
+    environment:
+      <<: *api-env
+    command: ./bin/docker-entrypoint-beat.sh
+    depends_on:
+      plane-db:
+        condition: service_healthy
+      plane-redis:
+        condition: service_healthy
+      plane-mq:
+        condition: service_healthy
+      migrator:
+        condition: service_completed_successfully
+
+  # ────────────────────── Frontend (all apps) ──────────────────────
+
+  web:
+    image: node:22-slim
+    restart: on-failure
+    working_dir: /app
+    volumes:
+      - .:/app
+      - pnpm_store:/root/.local/share/pnpm/store
+    env_file:
+      - /run/base44/app.env
+    environment:
+      - __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS
+      - LIVE_BASE_URL=https://3100-${BASE44_PUBLIC_HOST_SUFFIX}
+      - WEB_BASE_URL=https://3000-${BASE44_PUBLIC_HOST_SUFFIX}
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "3002:3002"
+      - "3100:3100"
+    command: ["sh", "-ec", "corepack enable pnpm && pnpm install --frozen-lockfile && exec pnpm dev"]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://localhost:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+      start_period: 300s
+
+volumes:
+  pgdata:
+  redisdata:
+  uploads:
+  rabbitmq_data:
+  pnpm_store:

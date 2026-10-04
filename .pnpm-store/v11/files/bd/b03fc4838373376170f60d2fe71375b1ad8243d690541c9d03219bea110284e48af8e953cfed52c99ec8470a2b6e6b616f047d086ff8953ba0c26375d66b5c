@@ -1,0 +1,22 @@
+"use client";
+import { tableScrollAreaVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-scroll-area.tsx
+/**
+* The rounded, hairline-bordered scroll frame around a `Table` — a single styled `<div>`. It bakes
+* no scroll behavior: Base-UI-agnostic — the ready-made `components/table` grafts the Base UI
+* `ScrollArea.Root` onto it via `<BaseScrollArea.Root render={<TableScrollArea/>} />` (behavior
+* part outer), alongside the `TableScrollAreaViewport`, the `<table>`, and the scrollbars.
+*/
+function TableScrollArea({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: tableScrollAreaVariants() }, props)
+	});
+}
+//#endregion
+export { TableScrollArea };
+
+//# sourceMappingURL=table-scroll-area.js.map

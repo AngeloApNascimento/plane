@@ -1,0 +1,17 @@
+"use client";
+import { tableHeadTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-head-title.tsx
+/** The column title inside a `TableHead`. Truncates instead of overflowing the cell. */
+function TableHeadTitle({ visibility, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: tableHeadTitleVariants({ visibility }) }, props)
+	});
+}
+//#endregion
+export { TableHeadTitle };
+
+//# sourceMappingURL=table-head-title.js.map

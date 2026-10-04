@@ -1,0 +1,13 @@
+"use client";
+import { FieldErrorVariantProps } from "../../elements/field/variants.js";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-error.d.ts
+type FieldErrorProps = Omit<Field.Error.Props, "className" | "style"> & FieldErrorVariantProps;
+/**
+ * Error text for a field: Base UI's `Field.Error` (shown per the control's validity / `match`)
+ * grafted onto the styled `FieldError` element (rule 1a).
+ */
+declare function FieldError({ size, ...props }: FieldErrorProps): import("react").JSX.Element;
+//#endregion
+export { FieldError, FieldErrorProps };
+//# sourceMappingURL=field-error.d.ts.map

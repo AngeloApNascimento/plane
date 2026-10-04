@@ -1,0 +1,16 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu.tsx
+/**
+* Root of the context menu: holds the open state and the pointer position the menu anchors to, and
+* renders no element of its own. Wrap a `ContextMenuTrigger` and a `ContextMenuContent` in it; the
+* menu opens on right click or long press anywhere inside the trigger.
+*/
+function ContextMenu$1(props) {
+	return /* @__PURE__ */ jsx(ContextMenu.Root, { ...props });
+}
+//#endregion
+export { ContextMenu$1 as ContextMenu };
+
+//# sourceMappingURL=context-menu.js.map

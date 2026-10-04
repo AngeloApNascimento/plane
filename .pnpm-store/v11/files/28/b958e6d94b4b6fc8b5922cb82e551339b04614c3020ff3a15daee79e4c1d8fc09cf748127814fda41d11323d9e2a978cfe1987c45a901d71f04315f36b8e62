@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/file-spreadsheet-outline.d.ts
+declare function FileSpreadsheetOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FileSpreadsheetOutline };
+//# sourceMappingURL=file-spreadsheet-outline.d.ts.map

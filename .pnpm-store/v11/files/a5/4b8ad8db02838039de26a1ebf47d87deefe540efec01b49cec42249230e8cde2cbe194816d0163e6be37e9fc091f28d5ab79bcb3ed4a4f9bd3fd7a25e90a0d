@@ -1,0 +1,13 @@
+"use client";
+import { FieldsetLegendVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/fieldset/fieldset-legend.d.ts
+type FieldsetLegendProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & FieldsetLegendVariantProps;
+/**
+ * The styled label for a `Fieldset`. Base-UI-agnostic — graft the legend behavior in `components`
+ * via `<BaseFieldset.Legend render={<FieldsetLegend/>} />`.
+ */
+declare function FieldsetLegend({ size, render, ...props }: FieldsetLegendProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldsetLegend, FieldsetLegendProps };
+//# sourceMappingURL=fieldset-legend.d.ts.map

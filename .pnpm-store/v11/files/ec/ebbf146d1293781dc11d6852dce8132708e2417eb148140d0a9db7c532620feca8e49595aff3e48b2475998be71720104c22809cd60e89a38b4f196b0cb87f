@@ -1,0 +1,21 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import { CheckboxProps } from "../checkbox/checkbox.js";
+import "../checkbox/index.js";
+import * as React from "react";
+//#region src/components/checkbox-group-field/checkbox-group-field-option.d.ts
+/** Bare checkbox control props for a field row — no chip `label` / `icon` (Field owns labeling). */
+type CheckboxFieldControlProps = Omit<CheckboxProps, "children" | "label" | "icon">;
+type CheckboxGroupFieldOptionProps = Omit<CheckboxFieldControlProps, "aria-label"> & {
+  /** Visible option label. */
+  label: string;
+  /** Optional supporting text announced as the checkbox description. */
+  description?: React.ReactNode;
+  /** Label and description size. Inherited from `CheckboxGroupField` when omitted. */
+  size?: FieldSize;
+};
+/** A checkbox option row for use inside `CheckboxGroupField` or a custom `CheckboxGroup`. */
+declare function CheckboxGroupFieldOption({ label, description, size: sizeProp, ...props }: CheckboxGroupFieldOptionProps): React.JSX.Element;
+//#endregion
+export { CheckboxGroupFieldOption, CheckboxGroupFieldOptionProps };
+//# sourceMappingURL=checkbox-group-field-option.d.ts.map

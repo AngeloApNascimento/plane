@@ -1,0 +1,19 @@
+"use client";
+import { DialogTitle as DialogTitle$1 } from "../../elements/dialog/dialog-title.js";
+import { jsx } from "react/jsx-runtime";
+import { Dialog } from "@base-ui/react/dialog";
+//#region src/components/dialog/dialog-title.tsx
+/**
+* The accessible title for the dialog: Base UI's `Dialog.Title` behavior (links to the popup via
+* `aria-labelledby`) grafted onto the dialog-owned title chrome (`text-h5-medium`).
+*/
+function DialogTitle(props) {
+	return /* @__PURE__ */ jsx(Dialog.Title, {
+		...props,
+		render: /* @__PURE__ */ jsx(DialogTitle$1, {})
+	});
+}
+//#endregion
+export { DialogTitle };
+
+//# sourceMappingURL=dialog-title.js.map

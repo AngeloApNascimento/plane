@@ -1,0 +1,16 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select.tsx
+/**
+* The select Root — Base UI's context/state provider (renders no element of its own). A
+* behavior-only role, so it lives in `components` (rules 1a, 2); the styled parts live in
+* `elements/select` and are grafted onto Base UI behavior here.
+*/
+function Select$1(props) {
+	return /* @__PURE__ */ jsx(Select.Root, { ...props });
+}
+//#endregion
+export { Select$1 as Select };
+
+//# sourceMappingURL=select.js.map

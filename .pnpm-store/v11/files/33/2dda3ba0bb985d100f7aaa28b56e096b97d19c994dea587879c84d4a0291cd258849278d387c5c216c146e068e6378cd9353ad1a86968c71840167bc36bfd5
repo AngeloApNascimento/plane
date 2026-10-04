@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/projects-outline.d.ts
+declare function ProjectsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ProjectsOutline };
+//# sourceMappingURL=projects-outline.d.ts.map

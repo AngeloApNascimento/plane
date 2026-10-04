@@ -1,0 +1,23 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/placeholder/placeholder.tsx
+function Placeholder(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			fillOpacity: .5,
+			d: "M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"
+		})
+	});
+}
+//#endregion
+export { Placeholder };
+
+//# sourceMappingURL=placeholder.js.map

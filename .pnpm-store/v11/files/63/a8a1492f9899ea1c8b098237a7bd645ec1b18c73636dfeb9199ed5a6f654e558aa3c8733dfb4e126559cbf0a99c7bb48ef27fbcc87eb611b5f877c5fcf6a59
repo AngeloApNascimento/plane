@@ -1,0 +1,23 @@
+"use client";
+import { dialogInfoIconVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-info-icon.tsx
+/**
+* Decorative 14 px icon slot inside `DialogInfo`. Bakes `aria-hidden` and sizes its child via the
+* shared node-slot. Pass a lucide glyph (or `<Icon icon={…} />`) as children.
+*/
+function DialogInfoIcon({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			className: dialogInfoIconVariants(),
+			"aria-hidden": true
+		}, props)
+	});
+}
+//#endregion
+export { DialogInfoIcon };
+
+//# sourceMappingURL=dialog-info-icon.js.map

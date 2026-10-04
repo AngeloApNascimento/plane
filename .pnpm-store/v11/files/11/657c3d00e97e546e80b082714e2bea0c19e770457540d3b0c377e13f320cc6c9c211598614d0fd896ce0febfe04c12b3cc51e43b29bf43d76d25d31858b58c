@@ -1,0 +1,25 @@
+"use client";
+import { menuRadioItemCheckVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-radio-item-check.tsx
+/**
+* The styled TRAILING CHECK of a radio item — the default marker for a single-select group inside a
+* menu, identical to the check every other single-select row uses. Drawn on every row so the gutter
+* column holds; the glyph hides on `data-unchecked`. Base-UI-agnostic — graft in `components` via
+* `<BaseMenu.RadioItemIndicator keepMounted render={<MenuRadioItemCheck />} />`.
+*
+* The ring form (`MenuRadioItemIndicator`) is reserved for a popup that mixes a multi-select group
+* with a single-select one, where the two need telling apart.
+*/
+function MenuRadioItemCheck({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: menuRadioItemCheckVariants() }, props)
+	});
+}
+//#endregion
+export { MenuRadioItemCheck };
+
+//# sourceMappingURL=menu-radio-item-check.js.map

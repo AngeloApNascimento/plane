@@ -1,0 +1,3 @@
+"use client";
+import { AnchorButton } from "./anchor-button.js";
+export { AnchorButton };

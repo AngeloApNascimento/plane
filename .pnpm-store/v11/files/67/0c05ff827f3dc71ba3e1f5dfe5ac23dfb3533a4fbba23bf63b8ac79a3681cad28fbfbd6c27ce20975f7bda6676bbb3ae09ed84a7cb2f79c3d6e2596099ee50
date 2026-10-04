@@ -1,0 +1,36 @@
+"use client";
+import { ContextMenuItemLabel } from "../../elements/context-menu/context-menu-item-label.js";
+import { ContextMenuItemTrailing } from "../../elements/context-menu/context-menu-item-trailing.js";
+import { ContextMenuLinkItem as ContextMenuLinkItem$1 } from "../../elements/context-menu/context-menu-link-item.js";
+import { resolveExternalLinkProps } from "../../internal/external-link.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-link-item.tsx
+/**
+* The ready-made navigational menu row: grafts Base UI's `LinkItem` behavior onto the styled
+* `ContextMenuLinkItem` and composes its region parts — a leading icon, the label, and optional
+* trailing content.
+*/
+function ContextMenuLinkItem({ variant, icon, trailing, label, external = false, ...props }) {
+	const { target, rel, end } = resolveExternalLinkProps({
+		external,
+		target: props.target,
+		rel: props.rel,
+		trailing
+	});
+	return /* @__PURE__ */ jsxs(ContextMenu.LinkItem, {
+		...props,
+		target,
+		rel,
+		render: /* @__PURE__ */ jsx(ContextMenuLinkItem$1, { variant }),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(ContextMenuItemLabel, { children: label }),
+			end != null ? /* @__PURE__ */ jsx(ContextMenuItemTrailing, { children: end }) : null
+		]
+	});
+}
+//#endregion
+export { ContextMenuLinkItem };
+
+//# sourceMappingURL=context-menu-link-item.js.map

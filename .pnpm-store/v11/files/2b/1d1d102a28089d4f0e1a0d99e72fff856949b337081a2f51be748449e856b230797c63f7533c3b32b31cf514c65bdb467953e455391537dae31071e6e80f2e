@@ -1,0 +1,13 @@
+"use client";
+import { FieldLabelVariantProps, FieldSize } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-label.d.ts
+type FieldLabelProps = Omit<useRender.ComponentProps<"label">, "className" | "style"> & FieldLabelVariantProps;
+/**
+ * The label naming a field's control. Base-UI-agnostic — graft the Base UI `Field.Label`
+ * association in `components` via `<BaseField.Label render={<FieldLabel/>} />`.
+ */
+declare function FieldLabel({ size, inset, render, ...props }: FieldLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldLabel, FieldLabelProps, type FieldSize };
+//# sourceMappingURL=field-label.d.ts.map

@@ -1,0 +1,19 @@
+"use client";
+import { NavigationMenuList as NavigationMenuList$1 } from "../../elements/navigation-menu/navigation-menu-list.js";
+import { jsx } from "react/jsx-runtime";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-list.tsx
+/**
+* The ready-made top-level row: grafts Base UI's `NavigationMenu.List` behavior (roving focus,
+* open-state tracking) onto the styled `elements` list. Holds `NavigationMenuItem` children.
+*/
+function NavigationMenuList(props) {
+	return /* @__PURE__ */ jsx(NavigationMenu.List, {
+		...props,
+		render: /* @__PURE__ */ jsx(NavigationMenuList$1, {})
+	});
+}
+//#endregion
+export { NavigationMenuList };
+
+//# sourceMappingURL=navigation-menu-list.js.map

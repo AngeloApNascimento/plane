@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-header-content.d.ts
+type DrawerHeaderContentProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The stacked title + description inside a `DrawerHeader`. Groups them at the header's inline-start
+ * so a corner close can sit opposite at the inline-end; a long title wraps instead of pushing the
+ * close off the row.
+ */
+declare function DrawerHeaderContent({ render, ...props }: DrawerHeaderContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerHeaderContent, DrawerHeaderContentProps };
+//# sourceMappingURL=drawer-header-content.d.ts.map

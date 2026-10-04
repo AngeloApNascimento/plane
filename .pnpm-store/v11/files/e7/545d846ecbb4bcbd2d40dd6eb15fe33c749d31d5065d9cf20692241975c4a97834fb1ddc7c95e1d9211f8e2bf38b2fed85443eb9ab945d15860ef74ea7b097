@@ -1,0 +1,20 @@
+"use client";
+import { alertDialogIntroVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-intro.tsx
+/**
+* Groups the title and description with a 6px gap. Pass `AlertDialogTitle` and
+* `AlertDialogDescription` as children.
+*/
+function AlertDialogIntro({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: alertDialogIntroVariants() }, props)
+	});
+}
+//#endregion
+export { AlertDialogIntro };
+
+//# sourceMappingURL=alert-dialog-intro.js.map

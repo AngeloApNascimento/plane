@@ -1,0 +1,5 @@
+"use client";
+import { CheckboxGroupDensity } from "../../elements/checkbox-group/variants.js";
+import "../../elements/checkbox-group/index.js";
+import { CheckboxGroup, CheckboxGroupProps } from "./checkbox-group.js";
+export { CheckboxGroup, type CheckboxGroupDensity, CheckboxGroupProps };

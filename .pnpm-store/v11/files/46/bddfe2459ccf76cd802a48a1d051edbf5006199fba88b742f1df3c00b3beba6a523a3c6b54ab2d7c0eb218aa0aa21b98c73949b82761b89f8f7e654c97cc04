@@ -1,0 +1,15 @@
+"use client";
+import { NumberFieldInputVariantProps, NumberFieldSize, NumberFieldStepperSize, numberFieldStepperSize } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/number-field/number-field-input.d.ts
+type NumberFieldInputProps = Omit<useRender.ComponentProps<"input">, "className" | "style" | "size"> & NumberFieldInputVariantProps;
+/**
+ * The styled numeric input. Base-UI-agnostic — graft the number field behavior in `components` via
+ * `<BaseNumberField.Input render={<NumberFieldInput/>} />`.
+ *
+ * @param size Visual size of the value cell (type + min-width). Match the wrapping group's `size`.
+ */
+declare function NumberFieldInput({ size, render, ...props }: NumberFieldInputProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NumberFieldInput, NumberFieldInputProps, type NumberFieldStepperSize, numberFieldStepperSize };
+//# sourceMappingURL=number-field-input.d.ts.map

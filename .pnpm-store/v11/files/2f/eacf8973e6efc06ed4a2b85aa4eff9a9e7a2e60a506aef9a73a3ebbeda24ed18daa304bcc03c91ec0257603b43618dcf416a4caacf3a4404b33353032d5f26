@@ -1,0 +1,29 @@
+"use client";
+import { Icon as Icon$1 } from "../../internal/icon.js";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/icon/icon.tsx
+/**
+* Public decorative icon slot. Pass the element this creates into components with icon slots
+* (`startIcon`, `endIcon`, or `icon`) so those components render it directly.
+*/
+function Icon({ icon: Glyph, ...props }) {
+	const icon = isIconGlyph(Glyph) ? React.createElement(Glyph, {
+		"aria-hidden": true,
+		focusable: false
+	}) : Glyph;
+	return /* @__PURE__ */ jsx(Icon$1, {
+		...props,
+		children: icon
+	});
+}
+function isIconGlyph(icon) {
+	if (typeof icon === "function") return true;
+	if (typeof icon !== "object" || icon == null || React.isValidElement(icon)) return false;
+	const reactType = icon.$$typeof;
+	return reactType === Symbol.for("react.forward_ref") || reactType === Symbol.for("react.memo");
+}
+//#endregion
+export { Icon };
+
+//# sourceMappingURL=icon.js.map

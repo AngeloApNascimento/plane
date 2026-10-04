@@ -1,0 +1,33 @@
+"use client";
+import { ContextMenuCheckboxItem as ContextMenuCheckboxItem$1 } from "../../elements/context-menu/context-menu-checkbox-item.js";
+import { ContextMenuCheckboxItemIndicator } from "../../elements/context-menu/context-menu-checkbox-item-indicator.js";
+import { ContextMenuItemLabel } from "../../elements/context-menu/context-menu-item-label.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Check } from "lucide-react";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-checkbox-item.tsx
+/**
+* The ready-made toggleable context-menu row: grafts Base UI's `CheckboxItem` behavior onto the
+* styled row and bakes a kept-mounted tick indicator, so `checked` / `defaultChecked` /
+* `onCheckedChange` forward straight to Base UI and the tick reads state from context.
+*/
+function ContextMenuCheckboxItem({ variant, icon, trailing, label, ...props }) {
+	return /* @__PURE__ */ jsxs(ContextMenu.CheckboxItem, {
+		...props,
+		render: /* @__PURE__ */ jsx(ContextMenuCheckboxItem$1, { variant }),
+		children: [
+			/* @__PURE__ */ jsx(ContextMenu.CheckboxItemIndicator, {
+				keepMounted: true,
+				render: /* @__PURE__ */ jsx(ContextMenuCheckboxItemIndicator, {}),
+				children: /* @__PURE__ */ jsx(Check, { "aria-hidden": true })
+			}),
+			icon,
+			/* @__PURE__ */ jsx(ContextMenuItemLabel, { children: label }),
+			trailing
+		]
+	});
+}
+//#endregion
+export { ContextMenuCheckboxItem };
+
+//# sourceMappingURL=context-menu-checkbox-item.js.map

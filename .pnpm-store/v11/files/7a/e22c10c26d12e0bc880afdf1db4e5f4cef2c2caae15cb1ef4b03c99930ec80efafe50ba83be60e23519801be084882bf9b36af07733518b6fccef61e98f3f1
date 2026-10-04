@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/toggle-list-alt-filled.d.ts
+declare function ToggleListAltFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ToggleListAltFilled };
+//# sourceMappingURL=toggle-list-alt-filled.d.ts.map

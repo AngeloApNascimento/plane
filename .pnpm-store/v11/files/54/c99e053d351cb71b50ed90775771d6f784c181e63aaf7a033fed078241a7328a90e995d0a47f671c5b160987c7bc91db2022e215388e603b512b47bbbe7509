@@ -1,0 +1,20 @@
+"use client";
+import { accordionVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/accordion/accordion.tsx
+/**
+* The styled accordion frame that groups a set of `AccordionItem`s. Base-UI-agnostic — graft the
+* accordion behavior in `components` via `<BaseAccordion.Root render={<Accordion/>} />`.
+*/
+function Accordion({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: accordionVariants() }, props)
+	});
+}
+//#endregion
+export { Accordion };
+
+//# sourceMappingURL=accordion.js.map

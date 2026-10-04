@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/git-commit-outline.d.ts
+declare function GitCommitOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { GitCommitOutline };
+//# sourceMappingURL=git-commit-outline.d.ts.map

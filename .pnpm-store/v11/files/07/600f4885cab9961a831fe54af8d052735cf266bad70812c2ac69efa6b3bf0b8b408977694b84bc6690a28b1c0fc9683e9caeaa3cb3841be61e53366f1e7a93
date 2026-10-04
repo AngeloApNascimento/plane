@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/glm-z-ai.d.ts
+declare function GlmZAi(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { GlmZAi };
+//# sourceMappingURL=glm-z-ai.d.ts.map

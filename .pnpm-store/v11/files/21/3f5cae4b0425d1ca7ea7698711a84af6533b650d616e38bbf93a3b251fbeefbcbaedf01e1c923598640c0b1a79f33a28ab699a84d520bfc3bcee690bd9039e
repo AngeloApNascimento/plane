@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/display-as-filled.d.ts
+declare function DisplayAsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DisplayAsFilled };
+//# sourceMappingURL=display-as-filled.d.ts.map

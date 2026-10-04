@@ -1,0 +1,64 @@
+"use client";
+import { ListboxPopupProps } from "../../internal/listbox-popup.js";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-content.d.ts
+type AutocompleteContentProps = ListboxPopupProps & {
+  /** Which side of the input the list opens toward. @default "bottom" */
+  side?: Autocomplete.Positioner.Props["side"];
+  /** Distance in px between the input and the list. @default 4 */
+  sideOffset?: Autocomplete.Positioner.Props["sideOffset"];
+  /** Alignment of the list relative to the input along `side`. @default "start" */
+  align?: Autocomplete.Positioner.Props["align"];
+  /**
+   * Additional offset in px along the align axis — slides the list along the input's edge without
+   * changing `align`.
+   *
+   * @default 0
+   */
+  alignOffset?: Autocomplete.Positioner.Props["alignOffset"];
+  /**
+   * Minimum gap in px between the list and the viewport edge it would otherwise touch.
+   *
+   * @default 5
+   */
+  collisionPadding?: Autocomplete.Positioner.Props["collisionPadding"];
+  /**
+   * The element or rect the list is confined to when avoiding collisions. Base UI's clipping
+   * ancestors when unset.
+   */
+  collisionBoundary?: Autocomplete.Positioner.Props["collisionBoundary"];
+  /**
+   * What to do when the list would overflow the boundary, set per axis: flip to the other side,
+   * shift along it, or stay put. Base UI flips the side and shifts the alignment when unset.
+   */
+  collisionAvoidance?: Autocomplete.Positioner.Props["collisionAvoidance"];
+  /**
+   * Keep the list on screen after the input scrolls out of view, instead of following it out.
+   *
+   * @default false
+   */
+  sticky?: Autocomplete.Positioner.Props["sticky"];
+  /**
+   * Which CSS `position` the positioner uses. `fixed` escapes overflow-clipping ancestors, e.g. an
+   * input inside a sticky header.
+   *
+   * @default "absolute"
+   */
+  positionMethod?: Autocomplete.Positioner.Props["positionMethod"];
+  /**
+   * Position against this element instead of the input — an element, a ref, a virtual element, or a
+   * function returning one. Geometry only; the input keeps its role and interactions.
+   */
+  anchor?: Autocomplete.Positioner.Props["anchor"];
+  /**
+   * Stop tracking layout shifts of the anchor — position once, on open.
+   *
+   * @default false
+   */
+  disableAnchorTracking?: Autocomplete.Positioner.Props["disableAnchorTracking"];
+};
+/** The autocomplete list surface: Base UI portal + positioner + popup grafted onto Propel styling. */
+declare function AutocompleteContent({ side, sideOffset, align, alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, ...props }: AutocompleteContentProps): import("react").JSX.Element;
+//#endregion
+export { AutocompleteContent, AutocompleteContentProps };
+//# sourceMappingURL=autocomplete-content.d.ts.map

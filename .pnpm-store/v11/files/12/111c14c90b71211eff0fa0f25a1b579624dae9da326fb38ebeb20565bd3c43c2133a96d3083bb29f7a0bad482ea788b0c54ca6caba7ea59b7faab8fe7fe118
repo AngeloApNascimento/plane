@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-separator.d.ts
+type ComboboxSeparatorProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * A styled thin divider between groups of items. Base UI's combobox has no Separator primitive, so
+ * this is a styled element composed into the list — same chrome as the dropdown menu divider.
+ */
+declare function ComboboxSeparator({ render, ...props }: ComboboxSeparatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxSeparator, ComboboxSeparatorProps };
+//# sourceMappingURL=combobox-separator.d.ts.map

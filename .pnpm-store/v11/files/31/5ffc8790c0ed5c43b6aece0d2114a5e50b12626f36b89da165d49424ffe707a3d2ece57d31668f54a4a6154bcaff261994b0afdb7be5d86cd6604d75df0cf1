@@ -1,0 +1,22 @@
+
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/merge-outline.tsx
+function MergeOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsxs("g", {
+			fill: "currentColor",
+			children: [/* @__PURE__ */ jsx("path", { d: "M9.775 6.2a3.575 3.575 0 1 0-7.15 0 3.575 3.575 0 0 0 7.15 0m1.25 0a4.826 4.826 0 1 1-9.65 0 4.826 4.826 0 0 1 9.65 0" }), /* @__PURE__ */ jsx("path", { d: "M13.375 9.8a3.576 3.576 0 1 0-7.15 0 3.576 3.576 0 0 0 7.15 0m1.25 0a4.826 4.826 0 1 1-9.651 0 4.826 4.826 0 0 1 9.651 0" })]
+		})
+	});
+}
+//#endregion
+export { MergeOutline };
+
+//# sourceMappingURL=merge-outline.js.map

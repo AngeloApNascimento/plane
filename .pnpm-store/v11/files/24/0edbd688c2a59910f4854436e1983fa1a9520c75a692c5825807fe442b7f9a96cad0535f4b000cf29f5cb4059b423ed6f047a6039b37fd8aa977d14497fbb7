@@ -1,0 +1,23 @@
+"use client";
+import "./variant-props.js";
+import { useRender } from "@base-ui/react/use-render";
+import { VariantProps } from "class-variance-authority";
+//#region src/internal/listbox-item.d.ts
+/**
+ * The shared listbox option row, grafted onto any Base UI `*.Item` behavior in `components`
+ * (`<BaseAutocomplete.Item render={<ListboxItem layout="plain" size="lg" />} value={…} />`).
+ * Highlight/disabled states, a size axis for height + text size, and a `layout` axis for the row's
+ * arrangement.
+ *
+ * Shared chrome across the `autocomplete` and `select` families, so it lives here rather than being
+ * copied per family (rule 4a). `autocomplete` and `combobox` were once fixed at a single 32px row;
+ * the shared `size` axis now spans the ladder's `md`–`2xl` rungs.
+ */
+declare const listboxItemVariants: (props?: ({
+  layout?: "indicator" | "plain" | null | undefined;
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type ListboxItemSize = NonNullable<VariantProps<typeof listboxItemVariants>["size"]>;
+//#endregion
+export { ListboxItemSize, listboxItemVariants };
+//# sourceMappingURL=listbox-item.d.ts.map

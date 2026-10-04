@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/sort-ascending-outline.d.ts
+declare function SortAscendingOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { SortAscendingOutline };
+//# sourceMappingURL=sort-ascending-outline.d.ts.map

@@ -1,0 +1,15 @@
+"use client";
+import { BannerPlacement, BannerSize, BannerVariant, BannerVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/banner/banner.d.ts
+type BannerProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & BannerVariantProps;
+/**
+ * The banner strip/card. Lays out its parts (`BannerIcon`, `BannerBody`, `BannerActions`, and an
+ * optional dismiss `IconButton`) in a row. The `role`/`aria-live` come from the variant so
+ * assistive tech announces problems assertively and advisories politely; consumers can override via
+ * spread.
+ */
+declare function Banner({ placement, size, variant, render, ...props }: BannerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Banner, type BannerPlacement, BannerProps, type BannerSize, type BannerVariant };
+//# sourceMappingURL=banner.d.ts.map

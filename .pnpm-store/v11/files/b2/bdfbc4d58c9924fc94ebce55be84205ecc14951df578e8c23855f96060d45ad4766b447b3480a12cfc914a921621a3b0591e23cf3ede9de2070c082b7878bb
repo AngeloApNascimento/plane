@@ -1,0 +1,27 @@
+"use client";
+import { NavigationMenuIcon } from "../../elements/navigation-menu/navigation-menu-icon.js";
+import { NavigationMenuTrigger as NavigationMenuTrigger$1 } from "../../elements/navigation-menu/navigation-menu-trigger.js";
+import { NavigationMenuTriggerLabel } from "../../elements/navigation-menu/navigation-menu-trigger-label.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-trigger.tsx
+/**
+* The ready-made trigger row: grafts Base UI's `NavigationMenu.Trigger` behavior onto the styled
+* trigger, wraps the label, and bakes the rotating disclosure caret (`NavigationMenuIcon` with a
+* default chevron — defaults are a `components` concern, rule 2a). Override the glyph via `icon`.
+*/
+function NavigationMenuTrigger({ icon, label, ...props }) {
+	return /* @__PURE__ */ jsxs(NavigationMenu.Trigger, {
+		...props,
+		render: /* @__PURE__ */ jsx(NavigationMenuTrigger$1, {}),
+		children: [/* @__PURE__ */ jsx(NavigationMenuTriggerLabel, { children: label }), /* @__PURE__ */ jsx(NavigationMenu.Icon, {
+			render: /* @__PURE__ */ jsx(NavigationMenuIcon, {}),
+			children: icon ?? /* @__PURE__ */ jsx(ChevronDown, { "aria-hidden": true })
+		})]
+	});
+}
+//#endregion
+export { NavigationMenuTrigger };
+
+//# sourceMappingURL=navigation-menu-trigger.js.map

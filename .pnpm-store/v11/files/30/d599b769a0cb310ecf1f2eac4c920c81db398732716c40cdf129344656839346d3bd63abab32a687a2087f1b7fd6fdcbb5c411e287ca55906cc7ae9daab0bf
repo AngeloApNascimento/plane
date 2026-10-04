@@ -1,0 +1,21 @@
+"use client";
+import { tabsPanelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tabs-panel.tsx
+/**
+* Content shown when the `Tab` of the matching `value` is active — a single styled `<div>`.
+* Base-UI-agnostic: the ready-made `components/tabs` grafts the Base UI `Tabs.Panel` behavior via
+* `<BaseTabs.Panel render={<TabsPanel/>}/>`.
+*/
+function TabsPanel({ layout, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: tabsPanelVariants({ layout }) }, props)
+	});
+}
+//#endregion
+export { TabsPanel };
+
+//# sourceMappingURL=tabs-panel.js.map

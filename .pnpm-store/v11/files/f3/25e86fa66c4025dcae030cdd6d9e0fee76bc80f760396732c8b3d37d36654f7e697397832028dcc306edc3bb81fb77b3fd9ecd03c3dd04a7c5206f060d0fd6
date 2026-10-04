@@ -1,0 +1,13 @@
+"use client";
+import { LinearProgressIndicatorVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress-indicator.d.ts
+type LinearProgressIndicatorProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & LinearProgressIndicatorVariantProps;
+/**
+ * The styled fill bar. `variant` drives the fill color. Base-UI-agnostic — graft in `components`
+ * via `<BaseProgress.Indicator render={<LinearProgressIndicator/>} />`.
+ */
+declare function LinearProgressIndicator({ variant, render, ...props }: LinearProgressIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { LinearProgressIndicator, LinearProgressIndicatorProps };
+//# sourceMappingURL=linear-progress-indicator.d.ts.map

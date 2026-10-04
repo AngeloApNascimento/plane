@@ -1,0 +1,74 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/table/variants.d.ts
+declare const tableRowDefaultVariants: {
+  readonly selected: false;
+  readonly interactive: false;
+  readonly section: false;
+};
+declare const tableRowVariants: (props?: ({
+  selected?: boolean | null | undefined;
+  interactive?: boolean | null | undefined;
+  section?: boolean | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TableRowVariantProps = StrictVariantProps<typeof tableRowVariants, keyof typeof tableRowDefaultVariants>;
+declare const tableHeadDefaultVariants: {
+  readonly pinned: "none";
+  readonly align: "start";
+};
+declare const tableHeadVariants: (props?: ({
+  variant?: "table" | "spreadsheet" | null | undefined;
+  pinned?: "none" | "start" | "end" | null | undefined;
+  align?: "center" | "start" | "end" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const tableCellDefaultVariants: {
+  readonly pinned: "none";
+  readonly padding: "cell";
+};
+declare const tableCellVariants: (props?: ({
+  variant?: "table" | "spreadsheet" | null | undefined;
+  pinned?: "none" | "start" | "end" | null | undefined;
+  padding?: "cell" | "trigger" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TableCellVariantConfig = VariantProps<typeof tableCellVariants>;
+/** The two table looks: `table` (row dividers only) and `spreadsheet` (full grid). */
+type TableVariant = "table" | "spreadsheet";
+/** Which inline edge a header/cell pins to (or `none`) while the table scrolls sideways. */
+type TablePinned = "none" | "start" | "end";
+/** A cell's inner spacing: `cell` pads the content; `trigger` drops it for a full-cell trigger. */
+type TableCellPadding = NonNullable<TableCellVariantConfig["padding"]>;
+/** Column alignment, shared by a header and its cells. */
+type TableAlign = "start" | "center" | "end";
+type TableCellVariantProps = StrictVariantProps<typeof tableCellVariants, keyof typeof tableCellDefaultVariants>;
+type TableHeadVariantProps = StrictVariantProps<typeof tableHeadVariants, keyof typeof tableHeadDefaultVariants>;
+declare const tableCellContentDefaultVariants: {
+  readonly align: "start";
+};
+declare const tableCellContentVariants: (props?: ({
+  align?: "center" | "start" | "end" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TableCellContentVariantProps = StrictVariantProps<typeof tableCellContentVariants, keyof typeof tableCellContentDefaultVariants>;
+declare const tableHeadTitleDefaultVariants: {
+  readonly visibility: "visible";
+};
+declare const tableHeadTitleVariants: (props?: ({
+  visibility?: "hidden" | "visible" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TableHeadTitleVariantConfig = VariantProps<typeof tableHeadTitleVariants>;
+type TableHeadTitleVisibility = NonNullable<TableHeadTitleVariantConfig["visibility"]>;
+type TableHeadTitleVariantProps = StrictVariantProps<typeof tableHeadTitleVariants, keyof typeof tableHeadTitleDefaultVariants>;
+declare const tableCellTriggerDefaultVariants: {
+  readonly selected: false;
+};
+declare const tableCellTriggerVariants: (props?: ({
+  layout?: "action" | "editable" | null | undefined;
+  selected?: boolean | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TableCellTriggerVariantConfig = VariantProps<typeof tableCellTriggerVariants>;
+/** `editable` lays out a value + trailing chevron; `action` centers an icon. */
+type TableCellTriggerLayout = NonNullable<TableCellTriggerVariantConfig["layout"]>;
+type TableCellTriggerVariantProps = StrictVariantProps<typeof tableCellTriggerVariants, keyof typeof tableCellTriggerDefaultVariants>;
+//#endregion
+export { TableAlign, TableCellContentVariantProps, TableCellPadding, TableCellTriggerLayout, TableCellTriggerVariantProps, TableCellVariantProps, TableHeadTitleVariantProps, TableHeadTitleVisibility, TableHeadVariantProps, TablePinned, TableRowVariantProps, TableVariant, tableCellContentVariants, tableCellTriggerVariants, tableCellVariants, tableHeadTitleVariants, tableHeadVariants, tableRowVariants };
+//# sourceMappingURL=variants.d.ts.map

@@ -1,0 +1,19 @@
+"use client";
+import { AccordionHeader as AccordionHeader$1 } from "../../elements/accordion/accordion-header.js";
+import { jsx } from "react/jsx-runtime";
+import { Accordion } from "@base-ui/react/accordion";
+//#region src/components/accordion/accordion-header.tsx
+/**
+* The heading wrapper for an accordion trigger. Grafts Base UI's header behavior onto the styled
+* `AccordionHeader`.
+*/
+function AccordionHeader(props) {
+	return /* @__PURE__ */ jsx(Accordion.Header, {
+		...props,
+		render: /* @__PURE__ */ jsx(AccordionHeader$1, {})
+	});
+}
+//#endregion
+export { AccordionHeader };
+
+//# sourceMappingURL=accordion-header.js.map

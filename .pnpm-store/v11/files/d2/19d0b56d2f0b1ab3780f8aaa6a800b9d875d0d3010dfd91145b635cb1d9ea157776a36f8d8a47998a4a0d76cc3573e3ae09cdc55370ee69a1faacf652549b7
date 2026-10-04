@@ -1,0 +1,20 @@
+"use client";
+import { drawerBodyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-body.tsx
+/**
+* The drawer's main content region (the Figma body). Grows to fill the space between the header and
+* footer and scrolls its own overflow.
+*/
+function DrawerBody({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: drawerBodyVariants() }, props)
+	});
+}
+//#endregion
+export { DrawerBody };
+
+//# sourceMappingURL=drawer-body.js.map

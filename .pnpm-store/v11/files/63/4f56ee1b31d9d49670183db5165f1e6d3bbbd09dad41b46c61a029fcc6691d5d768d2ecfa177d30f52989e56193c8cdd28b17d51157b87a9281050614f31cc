@@ -1,0 +1,40 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/tabs/variants.d.ts
+type TabsAppearance = NonNullable<VariantProps<typeof tabsVariants>["variant"]>;
+type TabsStretch = NonNullable<VariantProps<typeof tabsVariants>["stretch"]>;
+type TabsLayout = NonNullable<VariantProps<typeof tabsVariants>["layout"]>;
+declare const tabsDefaultVariants: {
+  readonly layout: "content";
+  readonly stretch: "auto";
+};
+declare const tabsVariants: (props?: ({
+  variant?: "contained" | "underline" | null | undefined;
+  stretch?: "auto" | "full" | null | undefined;
+  layout?: "content" | "fill" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TabsVariantProps = StrictVariantProps<typeof tabsVariants, keyof typeof tabsDefaultVariants>;
+declare const tabsListVariants: (props?: ({
+  variant?: "contained" | "underline" | null | undefined;
+  stretch?: "auto" | "full" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TabsListVariantProps = StrictVariantProps<typeof tabsListVariants>;
+declare const tabsListScrollAreaVariants: (props?: ({
+  stretch?: "auto" | "full" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TabsListScrollAreaVariantProps = StrictVariantProps<typeof tabsListScrollAreaVariants>;
+declare const tabVariants: (props?: ({
+  variant?: "contained" | "underline" | null | undefined;
+  stretch?: "auto" | "full" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TabVariantProps = StrictVariantProps<typeof tabVariants>;
+declare const tabsPanelVariants: (props?: ({
+  layout?: "content" | "fill" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TabsPanelVariantConfig = VariantProps<typeof tabsPanelVariants>;
+type TabsPanelLayout = NonNullable<TabsPanelVariantConfig["layout"]>;
+type TabsPanelVariantProps = StrictVariantProps<typeof tabsPanelVariants>;
+//#endregion
+export { TabVariantProps, TabsAppearance, TabsLayout, TabsListScrollAreaVariantProps, TabsListVariantProps, TabsPanelLayout, TabsPanelVariantProps, TabsStretch, TabsVariantProps, tabVariants, tabsListScrollAreaVariants, tabsListVariants, tabsPanelVariants, tabsVariants };
+//# sourceMappingURL=variants.d.ts.map

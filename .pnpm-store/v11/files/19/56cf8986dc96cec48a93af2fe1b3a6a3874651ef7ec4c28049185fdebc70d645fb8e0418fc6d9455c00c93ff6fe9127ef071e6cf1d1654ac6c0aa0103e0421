@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-item-indicator.d.ts
+type MenuItemIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The single-select check slot shown at a row's inline-end, after the label and before any
+ * `trailing` node (Figma: icon, then label, then check). A multi-select checkbox uses
+ * `MenuItemControl` at the inline-start instead. Decorative (the row carries the selected state),
+ * so it is `aria-hidden`. Renders and sizes its single child; pass the glyph as `children`.
+ */
+declare function MenuItemIndicator({ render, ...props }: MenuItemIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuItemIndicator, MenuItemIndicatorProps };
+//# sourceMappingURL=menu-item-indicator.d.ts.map

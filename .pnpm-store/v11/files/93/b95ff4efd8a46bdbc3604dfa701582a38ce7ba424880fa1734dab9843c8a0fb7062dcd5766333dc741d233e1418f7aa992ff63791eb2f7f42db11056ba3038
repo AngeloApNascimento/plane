@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tab-underline-label.d.ts
+type TabUnderlineLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The label row of an `underline`-variant tab: a rounded, padded box that tints and fills on
+ * hover/active and draws the keyboard focus ring, all via the tab's `group/tab` state. Sits inside
+ * a `Tab`; owns the styled `<span>` so consumers never touch the underline cva directly.
+ */
+declare function TabUnderlineLabel({ render, ...props }: TabUnderlineLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TabUnderlineLabel, TabUnderlineLabelProps };
+//# sourceMappingURL=tab-underline-label.d.ts.map

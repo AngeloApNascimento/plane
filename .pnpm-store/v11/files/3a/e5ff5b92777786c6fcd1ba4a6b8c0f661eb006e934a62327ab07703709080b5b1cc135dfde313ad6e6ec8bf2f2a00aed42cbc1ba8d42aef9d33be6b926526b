@@ -1,0 +1,17 @@
+"use client";
+import { breadcrumbItemVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-item.tsx
+/** One step in the trail: a list item holding a link, page, or menu crumb. */
+function BreadcrumbItem({ render, ...props }) {
+	return useRender({
+		defaultTagName: "li",
+		render,
+		props: mergeProps({ className: breadcrumbItemVariants() }, props)
+	});
+}
+//#endregion
+export { BreadcrumbItem };
+
+//# sourceMappingURL=breadcrumb-item.js.map

@@ -1,0 +1,24 @@
+"use client";
+import { ToastViewport } from "../../elements/toast/toast-viewport.js";
+import { ToastList } from "./toast-list.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Toast } from "@base-ui/react/toast";
+//#region src/components/toast/toast-provider.tsx
+/**
+* Wraps the app and renders the toast viewport. Mount it once near the root, then queue toasts with
+* `useToast().add({ title, description, data: { variant } })`. Composes the atomic `elements/toast`
+* parts (Provider + Portal + Viewport) and the manager-driven {@link ToastList}.
+*/
+function ToastProvider({ children, close, ...props }) {
+	return /* @__PURE__ */ jsxs(Toast.Provider, {
+		...props,
+		children: [children, /* @__PURE__ */ jsx(Toast.Portal, { children: /* @__PURE__ */ jsx(Toast.Viewport, {
+			render: /* @__PURE__ */ jsx(ToastViewport, {}),
+			children: /* @__PURE__ */ jsx(ToastList, { close })
+		}) })]
+	});
+}
+//#endregion
+export { ToastProvider };
+
+//# sourceMappingURL=toast-provider.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/charts/area-filled.d.ts
+declare function AreaFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AreaFilled };
+//# sourceMappingURL=area-filled.d.ts.map

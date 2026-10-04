@@ -1,0 +1,14 @@
+"use client";
+import { CollapsibleHeaderPlacement, CollapsibleHeaderVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/collapsible/collapsible-header.d.ts
+type CollapsibleHeaderProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & CollapsibleHeaderVariantProps;
+/**
+ * The header row around the disclosure trigger. Holds the trigger (which packs the label cluster)
+ * and an optional `CollapsibleTriggerTrailing` sibling at the inline-end. Layout-only — Base UI
+ * Collapsible has no Header part, so this is not a behavior graft.
+ */
+declare function CollapsibleHeader({ placement, render, ...props }: CollapsibleHeaderProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { CollapsibleHeader, type CollapsibleHeaderPlacement, CollapsibleHeaderProps };
+//# sourceMappingURL=collapsible-header.d.ts.map

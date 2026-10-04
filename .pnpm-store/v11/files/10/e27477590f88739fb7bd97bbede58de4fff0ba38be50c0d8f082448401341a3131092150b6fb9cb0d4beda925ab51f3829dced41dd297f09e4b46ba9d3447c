@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/linkedin.d.ts
+declare function Linkedin(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Linkedin };
+//# sourceMappingURL=linkedin.d.ts.map

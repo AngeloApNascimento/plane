@@ -1,0 +1,46 @@
+"use client";
+import { ScrollAreaCorner } from "../../elements/scroll-area/scroll-area-corner.js";
+import { ScrollAreaScrollbar } from "../../elements/scroll-area/scroll-area-scrollbar.js";
+import { ScrollAreaThumb } from "../../elements/scroll-area/scroll-area-thumb.js";
+import { Table as Table$1 } from "../../elements/table/table.js";
+import { TableScrollArea } from "../../elements/table/table-scroll-area.js";
+import { TableScrollAreaViewport } from "../../elements/table/table-scroll-area-viewport.js";
+import { TableVariantContext } from "./table-context.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ScrollArea } from "@base-ui/react/scroll-area";
+//#region src/components/table/table.tsx
+/**
+* The ready-made table: the styled `<table>` wrapped in a rounded, hairline-bordered scroll frame,
+* sharing its layout `variant` with the cells/heads via context. The Base UI `ScrollArea` behavior
+* grafts onto the styled `TableScrollArea` frame + viewport (and the overlay scrollbars) via
+* `render`, behavior part outer.
+*/
+function Table({ variant, ...props }) {
+	return /* @__PURE__ */ jsx(TableVariantContext.Provider, {
+		value: variant,
+		children: /* @__PURE__ */ jsxs(ScrollArea.Root, {
+			render: /* @__PURE__ */ jsx(TableScrollArea, {}),
+			children: [
+				/* @__PURE__ */ jsx(ScrollArea.Viewport, {
+					render: /* @__PURE__ */ jsx(TableScrollAreaViewport, {}),
+					children: /* @__PURE__ */ jsx(Table$1, { ...props })
+				}),
+				/* @__PURE__ */ jsx(ScrollArea.Scrollbar, {
+					orientation: "vertical",
+					render: /* @__PURE__ */ jsx(ScrollAreaScrollbar, {}),
+					children: /* @__PURE__ */ jsx(ScrollArea.Thumb, { render: /* @__PURE__ */ jsx(ScrollAreaThumb, {}) })
+				}),
+				/* @__PURE__ */ jsx(ScrollArea.Scrollbar, {
+					orientation: "horizontal",
+					render: /* @__PURE__ */ jsx(ScrollAreaScrollbar, {}),
+					children: /* @__PURE__ */ jsx(ScrollArea.Thumb, { render: /* @__PURE__ */ jsx(ScrollAreaThumb, {}) })
+				}),
+				/* @__PURE__ */ jsx(ScrollArea.Corner, { render: /* @__PURE__ */ jsx(ScrollAreaCorner, {}) })
+			]
+		})
+	});
+}
+//#endregion
+export { Table };
+
+//# sourceMappingURL=table.js.map

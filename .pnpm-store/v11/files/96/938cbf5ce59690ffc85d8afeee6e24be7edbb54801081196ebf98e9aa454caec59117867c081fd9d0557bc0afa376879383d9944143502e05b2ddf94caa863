@@ -1,0 +1,12 @@
+"use client";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-empty.d.ts
+type AutocompleteEmptyProps = Omit<Autocomplete.Empty.Props, "className" | "style" | "render">;
+/**
+ * The ready-made empty state: grafts Base UI's `Autocomplete.Empty` visibility behavior onto the
+ * styled empty-state row. Pass the — localizable — no-matches message as children.
+ */
+declare function AutocompleteEmpty(props: AutocompleteEmptyProps): import("react").JSX.Element;
+//#endregion
+export { AutocompleteEmpty, AutocompleteEmptyProps };
+//# sourceMappingURL=autocomplete-empty.d.ts.map

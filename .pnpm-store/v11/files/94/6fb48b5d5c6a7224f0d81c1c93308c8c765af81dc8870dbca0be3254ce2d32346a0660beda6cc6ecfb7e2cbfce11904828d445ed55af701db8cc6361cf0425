@@ -1,0 +1,17 @@
+"use client";
+import { menuLabelMetaVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-label-meta.tsx
+/** Trailing metadata pinned at the inline-end of a `MenuLabel`. */
+function MenuLabelMeta({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: menuLabelMetaVariants() }, props)
+	});
+}
+//#endregion
+export { MenuLabelMeta };
+
+//# sourceMappingURL=menu-label-meta.js.map

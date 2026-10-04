@@ -1,0 +1,3 @@
+"use client";
+import { ExpandableSearch } from "./expandable-search.js";
+export { ExpandableSearch };

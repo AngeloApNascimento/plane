@@ -1,0 +1,16 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox.tsx
+/**
+* The combobox Root — Base UI's context/state provider (renders no element of its own). A
+* behavior-only role, so it lives in `components` (rules 1a, 2); the styled parts live in
+* `elements/combobox` and are grafted onto Base UI behavior here.
+*/
+function Combobox$1(props) {
+	return /* @__PURE__ */ jsx(Combobox.Root, { ...props });
+}
+//#endregion
+export { Combobox$1 as Combobox };
+
+//# sourceMappingURL=combobox.js.map

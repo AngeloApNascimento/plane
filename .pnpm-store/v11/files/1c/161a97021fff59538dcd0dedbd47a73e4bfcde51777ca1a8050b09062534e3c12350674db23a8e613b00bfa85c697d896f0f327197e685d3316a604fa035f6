@@ -1,0 +1,25 @@
+"use client";
+import { Radio as Radio$2 } from "../../elements/radio/radio.js";
+import { RadioIndicator } from "../../elements/radio/radio-indicator.js";
+import { jsx } from "react/jsx-runtime";
+import { Radio } from "@base-ui/react/radio";
+//#region src/components/radio/radio.tsx
+/**
+* The ready-made radio option: grafts Base UI's `Radio` behavior onto the styled `Radio` ring and
+* `RadioIndicator` dot. The 16px ring and 8px inner dot follow Figma node 1838-11057; the selected
+* and disabled states come from the primitive. Use `disabled` for a non-editable (read-only)
+* option. Must be rendered inside a `RadioGroup`.
+*
+* @param value - The unique value this option contributes to its `RadioGroup`.
+*/
+function Radio$1(props) {
+	return /* @__PURE__ */ jsx(Radio.Root, {
+		render: /* @__PURE__ */ jsx(Radio$2, {}),
+		...props,
+		children: /* @__PURE__ */ jsx(Radio.Indicator, { render: /* @__PURE__ */ jsx(RadioIndicator, {}) })
+	});
+}
+//#endregion
+export { Radio$1 as Radio };
+
+//# sourceMappingURL=radio.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/scope-filled.d.ts
+declare function ScopeFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ScopeFilled };
+//# sourceMappingURL=scope-filled.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/warning-circle-filled.d.ts
+declare function WarningCircleFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { WarningCircleFilled };
+//# sourceMappingURL=warning-circle-filled.d.ts.map

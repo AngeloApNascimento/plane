@@ -1,0 +1,20 @@
+"use client";
+import { drawerHeaderStartVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-header-start.tsx
+/**
+* The header's inline-start title cluster (Figma narrow header). Holds an optional
+* `DrawerHeaderIcon` / `IconButton` plus `DrawerHeaderContent` (title + description).
+*/
+function DrawerHeaderStart({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: drawerHeaderStartVariants() }, props)
+	});
+}
+//#endregion
+export { DrawerHeaderStart };
+
+//# sourceMappingURL=drawer-header-start.js.map

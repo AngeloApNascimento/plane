@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/formatting-and-editors/underline-filled.tsx
+function UnderlineFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("g", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			clipRule: "evenodd",
+			children: /* @__PURE__ */ jsx("path", { d: "M2 14c0-.368.298-.667.667-.667h10.666a.667.667 0 0 1 0 1.334H2.667A.667.667 0 0 1 2 14M4 2c.368 0 .667.298.667.667v4.666a3.333 3.333 0 1 0 6.666 0V2.667a.667.667 0 0 1 1.334 0v4.666a4.667 4.667 0 0 1-9.334 0V2.667C3.333 2.298 3.632 2 4 2" })
+		})
+	});
+}
+//#endregion
+export { UnderlineFilled };
+
+//# sourceMappingURL=underline-filled.js.map

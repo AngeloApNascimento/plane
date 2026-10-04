@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/star-outline.d.ts
+declare function StarOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { StarOutline };
+//# sourceMappingURL=star-outline.d.ts.map

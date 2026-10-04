@@ -1,0 +1,13 @@
+"use client";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-title.d.ts
+type DrawerTitleProps = Omit<Drawer.Title.Props, "className" | "style">;
+/**
+ * The accessible heading for the drawer: Base UI's `Drawer.Title` behavior (wired as the popup's
+ * `aria-labelledby` target) grafted onto the shared `internal/OverlayTitle` at `size="xl"` (body-md
+ * semibold per Figma; rule 4a).
+ */
+declare function DrawerTitle(props: DrawerTitleProps): import("react").JSX.Element;
+//#endregion
+export { DrawerTitle, DrawerTitleProps };
+//# sourceMappingURL=drawer-title.d.ts.map

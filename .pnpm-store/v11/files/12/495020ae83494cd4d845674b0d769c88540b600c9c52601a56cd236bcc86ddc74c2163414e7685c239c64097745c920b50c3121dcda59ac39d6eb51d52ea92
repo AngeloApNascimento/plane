@@ -1,0 +1,57 @@
+"use client";
+import { ComboboxItemContent } from "../../elements/combobox/combobox-item-content.js";
+import { ComboboxItemTitle } from "../../elements/combobox/combobox-item-title.js";
+import { ComboboxItemTrailing } from "../../elements/combobox/combobox-item-trailing.js";
+import { ComboboxSubmenuTrigger as ComboboxSubmenuTrigger$1 } from "../../elements/combobox/combobox-submenu-trigger.js";
+import { DisclosureIndicator } from "../../internal/disclosure-indicator.js";
+import { useComboboxSubmenuContext } from "./combobox-submenu-context.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-submenu-trigger.tsx
+/**
+* The parent row that opens a nested combobox. It is an option of the PARENT list — Base UI's
+* `Combobox.Item` behavior, so it keeps that list's highlight, arrow-key navigation and filtering —
+* but it carries **no value**: the pointer and `Enter` paths both suppress Base UI's own selection
+* (`preventBaseUIHandler`) and open the nested list instead. Only the nested list's items select.
+*
+* Pass it to `ComboboxSubmenu`'s `trigger` prop rather than rendering it as a child, so it resolves
+* against the parent combobox's context instead of the nested root's.
+*
+* It still registers with the parent list as an item, so a parent that derives its options from the
+* DOM rather than an `items` prop counts this row among them. Give such a parent an explicit
+* `items` list when that matters (a `ComboboxSelectAll`, for instance, should not count it).
+*/
+function ComboboxSubmenuTrigger({ variant, icon, label, trailing, ...props }) {
+	const submenu = useComboboxSubmenuContext("ComboboxSubmenuTrigger");
+	return /* @__PURE__ */ jsxs(Combobox.Item, {
+		...props,
+		ref: submenu.triggerRef,
+		"aria-selected": void 0,
+		"data-popup-open": submenu.open ? "" : void 0,
+		onClick: (event) => {
+			event.preventBaseUIHandler();
+			submenu.setOpen(true);
+		},
+		onMouseUp: (event) => {
+			event.preventBaseUIHandler();
+		},
+		onPointerEnter: submenu.scheduleOpen,
+		onPointerLeave: submenu.scheduleClose,
+		render: /* @__PURE__ */ jsx(ComboboxSubmenuTrigger$1, { variant }),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(ComboboxItemContent, { children: /* @__PURE__ */ jsx(ComboboxItemTitle, { children: label }) }),
+			trailing != null ? /* @__PURE__ */ jsx(ComboboxItemTrailing, { children: trailing }) : null,
+			/* @__PURE__ */ jsx(DisclosureIndicator, {
+				motion: "pointEnd",
+				tint: "tertiary",
+				children: /* @__PURE__ */ jsx(ChevronDown, {})
+			})
+		]
+	});
+}
+//#endregion
+export { ComboboxSubmenuTrigger };
+
+//# sourceMappingURL=combobox-submenu-trigger.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/ai-summary-outline.d.ts
+declare function AiSummaryOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AiSummaryOutline };
+//# sourceMappingURL=ai-summary-outline.d.ts.map

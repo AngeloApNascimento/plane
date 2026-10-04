@@ -1,0 +1,27 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Popover } from "@base-ui/react/popover";
+//#region src/components/popover/popover-close.tsx
+/**
+* The behavior that closes the popover when activated. Use as the `render` target of a `Button` or
+* `IconButton` so the styled primitive's look wins via render-composition:
+*
+* ```tsx
+* <Button
+*   variant="secondary"
+*   size="sm"
+*   stretch="auto"
+*   label="Cancel"
+*   render={<PopoverClose />}
+* />;
+* ```
+*
+* Maps 1:1 to `Popover.Close`.
+*/
+function PopoverClose(props) {
+	return /* @__PURE__ */ jsx(Popover.Close, { ...props });
+}
+//#endregion
+export { PopoverClose };
+
+//# sourceMappingURL=popover-close.js.map

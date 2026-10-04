@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/switch/switch-thumb.d.ts
+type SwitchThumbProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled switch knob. Rendered inside a `Switch` track; it slides between the off/on gutters
+ * when the track is checked. Its diameter and travel come from the parent `Switch`'s `size`
+ * (published as CSS variables on the track), so the thumb takes no size prop of its own.
+ * Base-UI-agnostic — graft `<BaseSwitch.Thumb render={<SwitchThumb />} />` in `components`.
+ */
+declare function SwitchThumb({ render, ...props }: SwitchThumbProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SwitchThumb, SwitchThumbProps };
+//# sourceMappingURL=switch-thumb.d.ts.map

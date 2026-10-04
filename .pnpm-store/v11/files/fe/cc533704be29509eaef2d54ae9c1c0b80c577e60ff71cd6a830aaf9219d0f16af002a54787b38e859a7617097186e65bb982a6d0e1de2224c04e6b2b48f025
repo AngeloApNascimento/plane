@@ -1,0 +1,19 @@
+"use client";
+import { Shortcut as Shortcut$1 } from "../../internal/shortcut.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/shortcut/shortcut.tsx
+/**
+* Public shortcut text slot. It is a visual hint by default; put the canonical `aria-keyshortcuts`
+* value on the actionable item or trigger.
+*/
+function Shortcut({ keys, "aria-hidden": ariaHidden = true, ...props }) {
+	return /* @__PURE__ */ jsx(Shortcut$1, {
+		"aria-hidden": ariaHidden,
+		...props,
+		children: keys
+	});
+}
+//#endregion
+export { Shortcut };
+
+//# sourceMappingURL=shortcut.js.map

@@ -1,0 +1,17 @@
+"use client";
+import { inputGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/input/input-group.tsx
+/** The bordered group that frames the input control and its inline slots. */
+function InputGroup({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: inputGroupVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { InputGroup };
+
+//# sourceMappingURL=input-group.js.map

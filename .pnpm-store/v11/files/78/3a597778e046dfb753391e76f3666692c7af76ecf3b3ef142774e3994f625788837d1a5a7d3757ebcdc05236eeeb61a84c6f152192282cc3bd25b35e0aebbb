@@ -1,0 +1,14 @@
+"use client";
+import { ListSectionPanelContentVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list-section-panel-content.d.ts
+type ListSectionPanelContentProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & ListSectionPanelContentVariantProps;
+/**
+ * Wraps a `ListSection`'s rows in the Collapsible panel, restoring the heading-to-first-row gap
+ * without the horizontal inset/prose `CollapsiblePanelContent` carries (rows own their own
+ * padding).
+ */
+declare function ListSectionPanelContent({ render, ...props }: ListSectionPanelContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ListSectionPanelContent, ListSectionPanelContentProps };
+//# sourceMappingURL=list-section-panel-content.d.ts.map

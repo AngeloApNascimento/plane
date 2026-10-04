@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/upgrade-alt-filled.tsx
+function UpgradeAltFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			d: "M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1m.442 4.158a.626.626 0 0 0-.786-.08l-.098.08-2.4 2.4a.626.626 0 0 0 .884.884L7.375 7.11V10.4a.625.625 0 0 0 1.25 0V7.11l1.333 1.332a.625.625 0 0 0 .884-.884z",
+			clipRule: "evenodd"
+		})
+	});
+}
+//#endregion
+export { UpgradeAltFilled };
+
+//# sourceMappingURL=upgrade-alt-filled.js.map

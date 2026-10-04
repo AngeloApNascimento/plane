@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/relations-filled.d.ts
+declare function RelationsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RelationsFilled };
+//# sourceMappingURL=relations-filled.d.ts.map

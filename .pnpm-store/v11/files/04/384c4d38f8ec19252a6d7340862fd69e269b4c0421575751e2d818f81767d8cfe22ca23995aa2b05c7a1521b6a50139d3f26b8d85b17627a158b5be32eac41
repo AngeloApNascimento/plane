@@ -1,0 +1,22 @@
+"use client";
+import { BreadcrumbPageProps as BreadcrumbPageProps$1 } from "../../elements/breadcrumb/breadcrumb-page.js";
+import "../../elements/breadcrumb/index.js";
+import * as React from "react";
+//#region src/components/breadcrumb/breadcrumb-page.d.ts
+type BreadcrumbPageProps = Omit<BreadcrumbPageProps$1, "children"> & {
+  /**
+   * Leading icon before the label, e.g. `<Icon icon={FileText} tint="secondary" />`. Renders 16×16
+   * — the crumb sets `--node-size`, so the `<Icon>` needs no `size`.
+   */
+  icon?: React.ReactNode;
+  /** The current-page label. */
+  label: string;
+};
+/**
+ * The current page — the last, non-navigable crumb (`aria-current="page"`), laying out an optional
+ * leading icon and the label.
+ */
+declare function BreadcrumbPage({ icon, label, ...props }: BreadcrumbPageProps): React.JSX.Element;
+//#endregion
+export { BreadcrumbPage, BreadcrumbPageProps };
+//# sourceMappingURL=breadcrumb-page.d.ts.map

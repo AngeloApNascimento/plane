@@ -1,0 +1,22 @@
+"use client";
+import { Skeleton as Skeleton$1 } from "../../elements/skeleton/skeleton.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/skeleton/skeleton.tsx
+/**
+* A pulse-animated loading region that groups placeholder bones. Grafts `role="status"` onto the
+* styled `elements` `Skeleton` and requires an `aria-label` so the region is never unnamed. Compose
+* `SkeletonItem` children for the bones.
+*
+* `layout` and `stretch` own the region's flex axis and inline size. Exact geometry uses
+* `blockSize` / `inlineSize` (not `height` / `width`).
+*/
+function Skeleton(props) {
+	return /* @__PURE__ */ jsx(Skeleton$1, {
+		role: "status",
+		...props
+	});
+}
+//#endregion
+export { Skeleton };
+
+//# sourceMappingURL=skeleton.js.map

@@ -1,0 +1,24 @@
+"use client";
+import { navigationMenuIconVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-icon.tsx
+/**
+* The styled disclosure caret rendered inside a `NavigationMenuTrigger`; rotates while the popup is
+* open, reading the parent trigger's `group-data-popup-open` state. Base-UI-agnostic — graft in
+* `components` via `<BaseNavigationMenu.Icon render={<NavigationMenuIcon />} />`.
+*/
+function NavigationMenuIcon({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			"aria-hidden": true,
+			className: navigationMenuIconVariants()
+		}, props)
+	});
+}
+//#endregion
+export { NavigationMenuIcon };
+
+//# sourceMappingURL=navigation-menu-icon.js.map

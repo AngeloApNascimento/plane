@@ -1,0 +1,19 @@
+"use client";
+import { TextAreaGroupVariantProps, TextAreaResize } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/text-area/text-area-group.d.ts
+type TextAreaGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & TextAreaGroupVariantProps;
+/**
+ * The bordered frame that wraps a `field`-surface `TextArea` leaf. Owns the border, radius,
+ * focus/error border treatments, and the native `resize` handle so growth carries the chrome with
+ * the content. Children should be that single leaf only — the field surface is `min-w-full`, so a
+ * sibling inside the frame overflows. Put attach/submit controls outside the group, or use the
+ * `embedded` / `inline` surfaces (no group) for composer rows. Pair `autoResize` on the leaf with
+ * `resize="none"` so the native drag handle does not fight content-driven height.
+ *
+ * @default resize = "vertical"
+ */
+declare function TextAreaGroup({ resize, render, ...props }: TextAreaGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TextAreaGroup, TextAreaGroupProps, type TextAreaResize };
+//# sourceMappingURL=text-area-group.d.ts.map

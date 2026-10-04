@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/serif-filled.d.ts
+declare function SerifFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { SerifFilled };
+//# sourceMappingURL=serif-filled.d.ts.map

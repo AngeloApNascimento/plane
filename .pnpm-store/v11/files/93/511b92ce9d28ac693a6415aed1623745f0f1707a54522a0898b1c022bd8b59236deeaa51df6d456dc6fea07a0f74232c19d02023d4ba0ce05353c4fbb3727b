@@ -1,0 +1,61 @@
+"use client";
+import { getAvatarInitials, getFirstAvatarInitial } from "../../internal/avatar-shared.js";
+import { Avatar as Avatar$2, getAvatarVariant, getAvatarVariantSeed } from "../../elements/avatar/avatar.js";
+import { AvatarFallback } from "../../elements/avatar/avatar-fallback.js";
+import { AvatarImage } from "../../elements/avatar/avatar-image.js";
+import { Icon } from "../../internal/icon.js";
+import { Tooltip } from "../tooltip/tooltip.js";
+import { AvatarGroupContext } from "./avatar-group-context.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { User } from "lucide-react";
+import { Avatar } from "@base-ui/react/avatar";
+//#region src/components/avatar/avatar.tsx
+/**
+* The ready-made avatar: an image that falls back to initials (or an anonymous person icon),
+* composed from the `elements/avatar` parts (`Avatar` root + `AvatarImage` + `AvatarFallback`).
+* Pass `src` for the photo and `fallback` for initials; the initials color is chosen automatically
+* and is not a consumer prop.
+*/
+function Avatar$1({ size, src, alt, fallback, delay, tooltip, tabIndex, ...props }) {
+	const groupSize = React.useContext(AvatarGroupContext);
+	const effectiveSize = size ?? groupSize;
+	const derivedInitials = React.useMemo(() => getAvatarInitials(alt), [alt]);
+	const resolvedFallback = fallback ?? derivedInitials;
+	const displayFallback = effectiveSize === "2xs" && typeof resolvedFallback === "string" ? getFirstAvatarInitial(resolvedFallback) : resolvedFallback;
+	const hasInitials = resolvedFallback != null;
+	const resolvedVariant = getAvatarVariant(getAvatarVariantSeed(alt, resolvedFallback));
+	const tooltipLabel = tooltip === true ? alt : typeof tooltip === "string" ? tooltip || void 0 : void 0;
+	const accessibleName = alt ?? tooltipLabel;
+	const a11y = accessibleName != null ? {
+		role: "img",
+		"aria-label": accessibleName
+	} : { "aria-hidden": true };
+	const avatar = /* @__PURE__ */ jsxs(Avatar.Root, {
+		...props,
+		render: /* @__PURE__ */ jsx(Avatar$2, { size: effectiveSize }),
+		...a11y,
+		tabIndex,
+		children: [src ? /* @__PURE__ */ jsx(Avatar.Image, {
+			render: /* @__PURE__ */ jsx(AvatarImage, {}),
+			src,
+			alt: ""
+		}) : null, hasInitials ? /* @__PURE__ */ jsx(Avatar.Fallback, {
+			delay,
+			render: /* @__PURE__ */ jsx(AvatarFallback, { variant: resolvedVariant }),
+			children: displayFallback
+		}) : /* @__PURE__ */ jsx(Avatar.Fallback, {
+			delay,
+			render: /* @__PURE__ */ jsx(Icon, { tint: "muted" }),
+			children: /* @__PURE__ */ jsx(User, {})
+		})]
+	});
+	return tooltipLabel ? /* @__PURE__ */ jsx(Tooltip, {
+		label: tooltipLabel,
+		children: avatar
+	}) : avatar;
+}
+//#endregion
+export { Avatar$1 as Avatar };
+
+//# sourceMappingURL=avatar.js.map

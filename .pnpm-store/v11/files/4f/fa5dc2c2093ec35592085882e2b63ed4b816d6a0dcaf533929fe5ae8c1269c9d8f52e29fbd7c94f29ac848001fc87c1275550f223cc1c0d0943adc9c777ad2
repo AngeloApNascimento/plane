@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/discord.d.ts
+declare function Discord(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Discord };
+//# sourceMappingURL=discord.d.ts.map

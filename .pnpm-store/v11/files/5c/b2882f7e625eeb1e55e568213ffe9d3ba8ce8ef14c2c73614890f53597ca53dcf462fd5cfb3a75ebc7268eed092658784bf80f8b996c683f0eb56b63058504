@@ -1,0 +1,47 @@
+"use client";
+import { FieldsetLegend } from "../../elements/fieldset/fieldset-legend.js";
+import { Field } from "../field/field.js";
+import { FieldDescription } from "../field/field-description.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import { CheckboxGroup } from "../checkbox-group/checkbox-group.js";
+import { FieldOptionSizeProvider } from "../../internal/field-option-size.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Fieldset } from "@base-ui/react/fieldset";
+//#region src/components/checkbox-group-field/checkbox-group-field.tsx
+/** Ready-to-use checkbox group field with legend, description, and helper/error text. */
+function CheckboxGroupField({ children, density, description, disabled, error, hint, label, size, name, ...groupProps }) {
+	return /* @__PURE__ */ jsxs(Field, {
+		name,
+		disabled,
+		invalid: error != null || void 0,
+		children: [/* @__PURE__ */ jsxs(Fieldset.Root, {
+			render: /* @__PURE__ */ jsx(CheckboxGroup, {
+				density,
+				disabled,
+				...groupProps
+			}),
+			children: [
+				/* @__PURE__ */ jsx(Fieldset.Legend, {
+					render: /* @__PURE__ */ jsx(FieldsetLegend, { size }),
+					children: label
+				}),
+				description != null ? /* @__PURE__ */ jsx(FieldDescription, {
+					size,
+					children: description
+				}) : null,
+				/* @__PURE__ */ jsx(FieldOptionSizeProvider, {
+					size,
+					children
+				})
+			]
+		}), /* @__PURE__ */ jsx(FieldHelperText, {
+			size,
+			hint,
+			error
+		})]
+	});
+}
+//#endregion
+export { CheckboxGroupField };
+
+//# sourceMappingURL=checkbox-group-field.js.map

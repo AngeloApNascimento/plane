@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/recurring-work-items-outline.d.ts
+declare function RecurringWorkItemsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RecurringWorkItemsOutline };
+//# sourceMappingURL=recurring-work-items-outline.d.ts.map

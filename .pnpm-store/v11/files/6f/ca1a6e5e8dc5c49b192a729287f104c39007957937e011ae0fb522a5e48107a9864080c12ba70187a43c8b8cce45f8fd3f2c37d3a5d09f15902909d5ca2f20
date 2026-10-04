@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/activity-outline.d.ts
+declare function ActivityOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ActivityOutline };
+//# sourceMappingURL=activity-outline.d.ts.map

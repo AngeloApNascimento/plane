@@ -1,0 +1,22 @@
+"use client";
+import { BreadcrumbLinkProps as BreadcrumbLinkProps$1 } from "../../elements/breadcrumb/breadcrumb-link.js";
+import "../../elements/breadcrumb/index.js";
+import * as React from "react";
+//#region src/components/breadcrumb/breadcrumb-link.d.ts
+type BreadcrumbLinkProps = Omit<BreadcrumbLinkProps$1, "children"> & {
+  /**
+   * Leading icon before the label, e.g. `<Icon icon={Layers} tint="secondary" />`. Renders 16×16 —
+   * the crumb sets `--node-size`, so the `<Icon>` needs no `size`.
+   */
+  icon?: React.ReactNode;
+  /** The crumb label. */
+  label: string;
+};
+/**
+ * A navigable crumb — an anchor styled as a hoverable pill, laying out an optional leading icon and
+ * the label. Pass `render` to use a router link.
+ */
+declare function BreadcrumbLink({ icon, label, ...props }: BreadcrumbLinkProps): React.JSX.Element;
+//#endregion
+export { BreadcrumbLink, BreadcrumbLinkProps };
+//# sourceMappingURL=breadcrumb-link.d.ts.map

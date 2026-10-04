@@ -1,0 +1,20 @@
+"use client";
+import { NavigationMenuViewport as NavigationMenuViewport$1 } from "../../elements/navigation-menu/navigation-menu-viewport.js";
+import { jsx } from "react/jsx-runtime";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-viewport.tsx
+/**
+* The ready-made morph container: grafts Base UI's `NavigationMenu.Viewport` behavior onto the
+* styled viewport, which resizes between items' content via Base UI's
+* `--popup-width`/`--popup-height`. Nest it inside `NavigationMenuPanel`.
+*/
+function NavigationMenuViewport(props) {
+	return /* @__PURE__ */ jsx(NavigationMenu.Viewport, {
+		...props,
+		render: /* @__PURE__ */ jsx(NavigationMenuViewport$1, {})
+	});
+}
+//#endregion
+export { NavigationMenuViewport };
+
+//# sourceMappingURL=navigation-menu-viewport.js.map

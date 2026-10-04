@@ -1,0 +1,21 @@
+"use client";
+import { nodeSlotClass } from "../../internal/node-slot.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/pagination/variants.ts
+const paginationVariants = cva("flex items-center gap-4");
+const paginationListVariants = cva("flex items-center gap-1.5");
+const paginationItemVariants = cva("flex items-center");
+const slotBase = cx("inline-flex h-6 w-auto min-w-6 shrink-0 items-center justify-center px-1", "text-body-xs-regular text-primary outline-none");
+const paginationPageButtonVariants = cva(cx(slotBase, "cursor-pointer rounded-sm bg-layer-transparent", "hover:bg-layer-transparent-hover", "focus-visible:ring-2 focus-visible:ring-accent-strong", "disabled:cursor-not-allowed disabled:text-disabled", "aria-[current=page]:bg-layer-transparent-active aria-[current=page]:disabled:text-primary"));
+const paginationArrowButtonVariants = cva(cx("inline-flex h-6 w-auto min-w-6 shrink-0 items-center justify-center px-1 outline-none", "cursor-pointer rounded-(--control-radius-sm) bg-layer-transparent text-icon-secondary", "hover:bg-layer-transparent-hover", "focus-visible:ring-2 focus-visible:ring-accent-strong", "disabled:cursor-not-allowed disabled:text-icon-disabled", "[--node-size:var(--control-glyph-sm)] [&>svg]:size-(--node-size) [&>svg]:shrink-0 rtl:[&>svg]:-scale-x-100"));
+const paginationEllipsisVariants = cva(cx(slotBase, "text-icon-placeholder [--node-size:var(--control-glyph-sm)]", nodeSlotClass));
+const paginationSpinnerVariants = cva(cx(nodeSlotClass, "animate-spin text-icon-placeholder [--node-size:var(--control-glyph-sm)]"));
+const paginationPerPageVariants = cva("flex min-w-0 flex-1 items-center gap-2");
+const paginationPerPageTriggerVariants = cva(cx("group inline-flex h-6 min-w-10 cursor-pointer items-center justify-center gap-1 rounded-md px-2", "[--node-size:var(--control-glyph-sm)]", "bg-layer-3 text-body-xs-medium text-secondary outline-none", "hover:bg-layer-3-hover", "focus-visible:ring-2 focus-visible:ring-accent-strong"));
+const paginationPerPageLabelVariants = cva("text-body-xs-regular whitespace-nowrap text-tertiary");
+const paginationRangeVariants = cva("text-caption-md-regular whitespace-nowrap text-tertiary");
+const paginationRangeCurrentVariants = cva("text-primary");
+//#endregion
+export { paginationArrowButtonVariants, paginationEllipsisVariants, paginationItemVariants, paginationListVariants, paginationPageButtonVariants, paginationPerPageLabelVariants, paginationPerPageTriggerVariants, paginationPerPageVariants, paginationRangeCurrentVariants, paginationRangeVariants, paginationSpinnerVariants, paginationVariants };
+
+//# sourceMappingURL=variants.js.map

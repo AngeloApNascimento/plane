@@ -1,0 +1,20 @@
+"use client";
+import { navigationMenuLinkTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-link-title.tsx
+/**
+* The primary line of a `appearance="card"` `NavigationMenuLink`: the navigable label. Pairs with
+* an optional `NavigationMenuLinkDescription` below it.
+*/
+function NavigationMenuLinkTitle({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: navigationMenuLinkTitleVariants() }, props)
+	});
+}
+//#endregion
+export { NavigationMenuLinkTitle };
+
+//# sourceMappingURL=navigation-menu-link-title.js.map

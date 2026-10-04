@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/close-circle-outline.d.ts
+declare function CloseCircleOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CloseCircleOutline };
+//# sourceMappingURL=close-circle-outline.d.ts.map

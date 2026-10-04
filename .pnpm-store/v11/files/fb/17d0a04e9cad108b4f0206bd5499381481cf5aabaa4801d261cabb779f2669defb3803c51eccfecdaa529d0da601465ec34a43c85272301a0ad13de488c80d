@@ -1,0 +1,13 @@
+"use client";
+import { AutocompleteInputGroupVariantProps, AutocompleteSize } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/autocomplete/autocomplete-input-group.d.ts
+type AutocompleteInputGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & AutocompleteInputGroupVariantProps;
+/**
+ * The styled bordered frame around the input + its adornments. Base-UI-agnostic — graft in
+ * `components` via `<BaseAutocomplete.InputGroup render={<AutocompleteInputGroup/>} />`.
+ */
+declare function AutocompleteInputGroup({ size, render, ...props }: AutocompleteInputGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AutocompleteInputGroup, AutocompleteInputGroupProps, type AutocompleteSize };
+//# sourceMappingURL=autocomplete-input-group.d.ts.map

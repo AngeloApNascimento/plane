@@ -1,0 +1,12 @@
+"use client";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-group-label.d.ts
+type AutocompleteGroupLabelProps = Omit<Autocomplete.GroupLabel.Props, "className" | "style" | "render">;
+/**
+ * The muted heading naming an `AutocompleteGroup` — Base UI's `GroupLabel` behavior grafted onto
+ * the shared styled listbox heading.
+ */
+declare function AutocompleteGroupLabel(props: AutocompleteGroupLabelProps): import("react").JSX.Element;
+//#endregion
+export { AutocompleteGroupLabel, AutocompleteGroupLabelProps };
+//# sourceMappingURL=autocomplete-group-label.d.ts.map

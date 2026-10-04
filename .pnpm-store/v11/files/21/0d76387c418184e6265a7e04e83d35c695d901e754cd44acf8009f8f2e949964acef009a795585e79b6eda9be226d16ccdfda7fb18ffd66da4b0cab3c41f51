@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-header.d.ts
+type AlertDialogHeaderProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * Groups the leading `AlertDialogIcon` badge above the `AlertDialogIntro` (title + description).
+ * Lives inside `AlertDialogBody`. Pass icon and intro as children.
+ */
+declare function AlertDialogHeader({ render, ...props }: AlertDialogHeaderProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AlertDialogHeader, AlertDialogHeaderProps };
+//# sourceMappingURL=alert-dialog-header.d.ts.map

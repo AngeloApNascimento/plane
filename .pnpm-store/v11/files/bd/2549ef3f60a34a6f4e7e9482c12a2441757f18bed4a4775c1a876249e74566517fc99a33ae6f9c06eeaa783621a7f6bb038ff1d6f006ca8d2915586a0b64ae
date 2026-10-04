@@ -1,0 +1,20 @@
+"use client";
+import { sliderControlVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-control.tsx
+/**
+* The styled control row that holds the track. Base-UI-agnostic — graft in `components` via
+* `<BaseSlider.Control render={<SliderControl/>} />`.
+*/
+function SliderControl({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: sliderControlVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { SliderControl };
+
+//# sourceMappingURL=slider-control.js.map

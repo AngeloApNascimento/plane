@@ -1,0 +1,12 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { NumberField } from "@base-ui/react/number-field";
+//#region src/components/number-field/number-field-scrub-area-cursor.tsx
+/** The virtual cursor shown while scrubbing; pass your cursor svg as children. */
+function NumberFieldScrubAreaCursor(props) {
+	return /* @__PURE__ */ jsx(NumberField.ScrubAreaCursor, { ...props });
+}
+//#endregion
+export { NumberFieldScrubAreaCursor };
+
+//# sourceMappingURL=number-field-scrub-area-cursor.js.map

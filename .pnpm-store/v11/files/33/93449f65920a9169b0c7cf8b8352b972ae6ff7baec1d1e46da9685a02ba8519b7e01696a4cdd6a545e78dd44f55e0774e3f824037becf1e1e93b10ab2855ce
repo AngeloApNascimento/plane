@@ -1,0 +1,19 @@
+"use client";
+import { ListboxGroupLabel } from "../../internal/listbox-group-label.js";
+import { jsx } from "react/jsx-runtime";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-group-label.tsx
+/**
+* The muted heading naming a `ComboboxGroup` — Base UI's `GroupLabel` behavior (labels the group
+* for assistive tech) grafted onto the shared styled listbox heading.
+*/
+function ComboboxGroupLabel(props) {
+	return /* @__PURE__ */ jsx(Combobox.GroupLabel, {
+		...props,
+		render: /* @__PURE__ */ jsx(ListboxGroupLabel, {})
+	});
+}
+//#endregion
+export { ComboboxGroupLabel };
+
+//# sourceMappingURL=combobox-group-label.js.map

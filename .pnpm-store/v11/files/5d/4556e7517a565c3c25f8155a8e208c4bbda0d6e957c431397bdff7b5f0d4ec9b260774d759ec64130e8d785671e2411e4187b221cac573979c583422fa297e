@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/bitbucket.d.ts
+declare function Bitbucket(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Bitbucket };
+//# sourceMappingURL=bitbucket.d.ts.map

@@ -1,0 +1,13 @@
+"use client";
+import { PreviewCard } from "@base-ui/react/preview-card";
+//#region src/components/preview-card/create-handle.d.ts
+/**
+ * Base UI's detached-handle API, flattened to the family name: create a handle outside the React
+ * tree, pass it to the root's `handle` prop, and drive the surface imperatively
+ * (`handle.open(payload)`) — e.g. one previewcard shared by many launch points.
+ */
+declare const createPreviewCardHandle: typeof PreviewCard.createHandle;
+type PreviewCardHandle = ReturnType<typeof createPreviewCardHandle>;
+//#endregion
+export { PreviewCardHandle, createPreviewCardHandle };
+//# sourceMappingURL=create-handle.d.ts.map

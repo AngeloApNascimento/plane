@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/music-outline.d.ts
+declare function MusicOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MusicOutline };
+//# sourceMappingURL=music-outline.d.ts.map

@@ -1,0 +1,10 @@
+"use client";
+import { TableHeadTitleVariantProps, TableHeadTitleVisibility } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-head-title.d.ts
+type TableHeadTitleProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & TableHeadTitleVariantProps;
+/** The column title inside a `TableHead`. Truncates instead of overflowing the cell. */
+declare function TableHeadTitle({ visibility, render, ...props }: TableHeadTitleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableHeadTitle, TableHeadTitleProps, type TableHeadTitleVisibility };
+//# sourceMappingURL=table-head-title.d.ts.map

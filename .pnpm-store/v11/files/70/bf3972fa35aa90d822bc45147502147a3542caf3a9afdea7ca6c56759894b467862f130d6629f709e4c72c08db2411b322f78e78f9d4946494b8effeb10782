@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/views-filled.d.ts
+declare function ViewsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ViewsFilled };
+//# sourceMappingURL=views-filled.d.ts.map

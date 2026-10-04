@@ -1,0 +1,39 @@
+"use client";
+import { ComboboxCheckboxItemIndicator } from "../../elements/combobox/combobox-checkbox-item-indicator.js";
+import { ComboboxItem as ComboboxItem$1 } from "../../elements/combobox/combobox-item.js";
+import { ComboboxItemContent } from "../../elements/combobox/combobox-item-content.js";
+import { ComboboxItemControl } from "../../elements/combobox/combobox-item-control.js";
+import { ComboboxItemTitle } from "../../elements/combobox/combobox-item-title.js";
+import { ComboboxItemTrailing } from "../../elements/combobox/combobox-item-trailing.js";
+import { ComboboxItemIndicator } from "./combobox-item-indicator.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Check } from "lucide-react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-item.tsx
+/**
+* The ready-made option row: Base UI's `Item` behavior grafted onto the shared menu-row chrome so
+* the combobox list matches the dropdown panel. `selection="check"` reserves a TRAILING check
+* gutter (kept mounted while unselected); `selection="checkbox"` shows the LEADING checkbox box
+* used by multi-select.
+*/
+function ComboboxItem({ variant, selection = "check", icon, label, trailing, ...props }) {
+	return /* @__PURE__ */ jsxs(Combobox.Item, {
+		...props,
+		render: /* @__PURE__ */ jsx(ComboboxItem$1, { variant }),
+		children: [
+			selection === "checkbox" ? /* @__PURE__ */ jsx(ComboboxItemControl, { children: /* @__PURE__ */ jsx(Combobox.ItemIndicator, {
+				keepMounted: true,
+				render: /* @__PURE__ */ jsx(ComboboxCheckboxItemIndicator, {}),
+				children: /* @__PURE__ */ jsx(Check, { "aria-hidden": true })
+			}) }) : null,
+			icon,
+			/* @__PURE__ */ jsx(ComboboxItemContent, { children: /* @__PURE__ */ jsx(ComboboxItemTitle, { children: label }) }),
+			selection === "check" ? /* @__PURE__ */ jsx(ComboboxItemIndicator, {}) : null,
+			trailing != null ? /* @__PURE__ */ jsx(ComboboxItemTrailing, { children: trailing }) : null
+		]
+	});
+}
+//#endregion
+export { ComboboxItem };
+
+//# sourceMappingURL=combobox-item.js.map

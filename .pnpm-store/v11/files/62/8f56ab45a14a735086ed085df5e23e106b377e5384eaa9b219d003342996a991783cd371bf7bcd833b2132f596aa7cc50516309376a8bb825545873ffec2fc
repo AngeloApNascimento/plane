@@ -1,0 +1,17 @@
+"use client";
+import { ToolbarSeparatorProps as ToolbarSeparatorProps$1 } from "../../elements/toolbar/toolbar-separator.js";
+import "../../elements/toolbar/index.js";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar-separator.d.ts
+type ToolbarSeparatorProps = Omit<Toolbar.Separator.Props, "className" | "style" | "render" | "orientation"> & {
+  /** Custom render for the underlying styled toolbar separator. */
+  render?: ToolbarSeparatorProps$1["render"];
+};
+/**
+ * A thin vertical rule that visually divides one cluster of controls from the next: grafts Base
+ * UI's `Toolbar.Separator` behavior (the `separator` role) onto the styled rule.
+ */
+declare function ToolbarSeparator({ render, ...props }: ToolbarSeparatorProps): import("react").JSX.Element;
+//#endregion
+export { ToolbarSeparator, ToolbarSeparatorProps };
+//# sourceMappingURL=toolbar-separator.d.ts.map

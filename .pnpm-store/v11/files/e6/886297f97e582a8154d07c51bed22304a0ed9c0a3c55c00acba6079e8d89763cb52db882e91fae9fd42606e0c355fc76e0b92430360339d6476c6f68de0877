@@ -1,0 +1,4 @@
+"use client";
+import { Composite } from "./composite.js";
+import { CompositeItem } from "./composite-item.js";
+export { Composite, CompositeItem };

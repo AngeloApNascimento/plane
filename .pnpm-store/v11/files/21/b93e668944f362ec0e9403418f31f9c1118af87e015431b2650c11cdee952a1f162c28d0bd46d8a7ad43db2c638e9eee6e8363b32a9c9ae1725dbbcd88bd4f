@@ -1,0 +1,30 @@
+"use client";
+import { pillVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pill/pill.tsx
+/**
+* The pill-shaped button container: a styled `<button>` with no baked content. Compose a
+* `PillLabel` and optional leading/trailing `Icon`, `Swatch` or avatar stack (or `Spinner` while
+* busy) inside it. Base-UI-agnostic — graft the Base UI `Button` behavior in `components` via
+* `<BaseButton render={<Pill/>} />`; an open picker shows through Base UI's `data-popup-open` when
+* a `Menu`/`Popover` trigger is grafted the same way.
+*/
+function Pill({ size, variant, placeholder = false, render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({
+			className: pillVariants({
+				size,
+				variant
+			}),
+			type: "button",
+			"data-placeholder": placeholder ? "" : void 0
+		}, props)
+	});
+}
+//#endregion
+export { Pill };
+
+//# sourceMappingURL=pill.js.map

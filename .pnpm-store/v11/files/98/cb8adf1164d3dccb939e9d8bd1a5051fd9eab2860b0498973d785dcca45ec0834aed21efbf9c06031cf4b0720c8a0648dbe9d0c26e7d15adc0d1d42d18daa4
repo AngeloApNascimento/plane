@@ -1,0 +1,26 @@
+"use client";
+import { drawerPopupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-popup.tsx
+/**
+* The styled sliding panel. `variant` chooses chrome/placement: `inline` flush absolute column,
+* `overlay` / `contained` floating card. Anchored to `side`; slides via Base UI
+* `data-starting-style` / `data-ending-style`. `size` sets width (`sm` 358 / `md` 800 / `lg` 1024).
+* Base-UI-agnostic — graft via `<BaseDrawer.Popup render={<DrawerPopup … />} />`.
+*/
+function DrawerPopup({ side, size = "sm", variant = "inline", render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: drawerPopupVariants({
+			side,
+			size,
+			variant
+		}) }, props)
+	});
+}
+//#endregion
+export { DrawerPopup };
+
+//# sourceMappingURL=drawer-popup.js.map

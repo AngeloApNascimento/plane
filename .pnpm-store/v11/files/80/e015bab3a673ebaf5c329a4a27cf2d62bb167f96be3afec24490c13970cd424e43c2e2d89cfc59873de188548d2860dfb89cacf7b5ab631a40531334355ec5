@@ -1,0 +1,25 @@
+"use client";
+import { nodeSlotClass } from "./node-slot.js";
+import { cx } from "class-variance-authority";
+//#region src/internal/item-indicator.ts
+/**
+* The shared selected-check slot chrome (rule 4a): an accent-tinted node slot that hides its glyph
+* while the row is unselected (`data-selected` comes from the Base UI `ItemIndicator` graft, which
+* passes `keepMounted` so the gutter column holds). Side-agnostic on its own; every family composes
+* it at the row's inline-END, the single-select half of the Figma split that keeps the multi-select
+* checkbox leading. Composed by the select/combobox/menu/context-menu item indicators — before this
+* each re-spelled it, and combobox had drifted to an untinted check.
+*/
+const itemIndicatorBaseClass = cx(nodeSlotClass, "text-icon-accent-primary [--node-size:1rem]");
+const itemIndicatorClass = cx(itemIndicatorBaseClass, "not-data-selected:invisible");
+/**
+* The same slot keyed off `data-unchecked` instead of `data-selected` — for a Base UI
+* `RadioItemIndicator`, which stamps `data-checked` / `data-unchecked` on itself rather than the
+* `data-selected` an `ItemIndicator` graft carries. Same chrome, different state attribute; the
+* geometry stays in `itemIndicatorBaseClass` so the two never drift.
+*/
+const itemIndicatorUncheckedClass = cx(itemIndicatorBaseClass, "data-unchecked:invisible");
+//#endregion
+export { itemIndicatorClass, itemIndicatorUncheckedClass };
+
+//# sourceMappingURL=item-indicator.js.map

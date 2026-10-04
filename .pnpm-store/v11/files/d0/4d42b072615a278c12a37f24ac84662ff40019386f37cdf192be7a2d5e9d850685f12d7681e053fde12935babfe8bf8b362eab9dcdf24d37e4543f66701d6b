@@ -1,0 +1,22 @@
+"use client";
+import { nodeSlotClass } from "../../internal/node-slot.js";
+import { popupSurfaceClass } from "../../internal/popup-surface.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/navigation-menu/variants.ts
+const navigationMenuListVariants = cva("flex items-center gap-1");
+const navigationMenuTriggerVariants = cva(cx("group inline-flex h-8 cursor-pointer items-center gap-1 rounded-md px-3 text-body-sm-medium text-secondary outline-none", "hover:bg-layer-transparent-hover data-popup-open:bg-layer-transparent-selected", "focus-visible:ring-2 focus-visible:ring-accent-strong"));
+const navigationMenuTriggerLabelVariants = cva("min-w-0 truncate");
+const navigationMenuLinkVariants = cva(cx("cursor-pointer rounded-md text-body-sm-medium text-secondary outline-none", "hover:bg-layer-transparent-hover data-popup-open:bg-layer-transparent-selected", "focus-visible:ring-2 focus-visible:ring-accent-strong"), { variants: { appearance: {
+	item: "inline-flex h-8 items-center gap-1 px-3",
+	card: "flex flex-col gap-0.5 px-3 py-2 text-start"
+} } });
+const navigationMenuLinkTitleVariants = cva("block truncate text-body-sm-medium text-primary");
+const navigationMenuLinkDescriptionVariants = cva("block text-caption-md-regular text-tertiary");
+const navigationMenuContentListVariants = cva("flex w-72 flex-col gap-1");
+const navigationMenuIconVariants = cva(cx(nodeSlotClass, "[--node-size:var(--control-glyph-lg)]", "text-icon-secondary transition-transform group-data-popup-open:rotate-180"));
+const navigationMenuPopupVariants = cva(cx(popupSurfaceClass, "p-2"));
+const navigationMenuViewportVariants = cva("relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) transition-[width,height] duration-150");
+//#endregion
+export { navigationMenuContentListVariants, navigationMenuIconVariants, navigationMenuLinkDescriptionVariants, navigationMenuLinkTitleVariants, navigationMenuLinkVariants, navigationMenuListVariants, navigationMenuPopupVariants, navigationMenuTriggerLabelVariants, navigationMenuTriggerVariants, navigationMenuViewportVariants };
+
+//# sourceMappingURL=variants.js.map

@@ -1,0 +1,30 @@
+"use client";
+import { CircularProgressProps as CircularProgressProps$1 } from "../../elements/circular-progress/circular-progress.js";
+import { CircularProgressIndicatorProps } from "../../elements/circular-progress/circular-progress-indicator.js";
+import "../../elements/circular-progress/index.js";
+import { Progress } from "@base-ui/react/progress";
+//#region src/components/circular-progress/circular-progress.d.ts
+type CircularProgressSize = NonNullable<CircularProgressProps$1["size"]>;
+type CircularProgressVariant = NonNullable<CircularProgressIndicatorProps["variant"]>;
+type CircularProgressProps = Omit<Progress.Root.Props, "className" | "style" | "value" | "render"> & {
+  /** Completion from 0 to `max` (default 100). Ignored while `indeterminate`. */
+  value: number;
+  /** Diameter: `sm` 16px / `md` 20px. */
+  size: CircularProgressSize;
+  /** Arc color: `brand` accent, `success`/`warning`/`danger` outcome. */
+  variant: CircularProgressVariant;
+  /** Accessible name (required). */
+  "aria-label": string;
+  /** Spin a fixed quarter arc; `value` is ignored and `aria-valuenow` unset. @default false */
+  indeterminate?: boolean;
+};
+/**
+ * A small progress ring (no label — too small). Drive it with `value` (0–`max`); the arc and
+ * `aria-valuenow` follow. Pass `indeterminate` to ignore `value` and spin a fixed quarter arc
+ * instead. For a bar with an optional label, use `LinearProgress`. Composes the
+ * `elements/circular-progress` primitives on Base UI `Progress`.
+ */
+declare function CircularProgress({ value, size, variant, indeterminate, ...props }: CircularProgressProps): import("react").JSX.Element;
+//#endregion
+export { CircularProgress, CircularProgressProps, CircularProgressSize, CircularProgressVariant };
+//# sourceMappingURL=circular-progress.d.ts.map

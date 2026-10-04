@@ -1,0 +1,10 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+//#region src/elements/expandable-search/variants.d.ts
+declare const expandableSearchTriggerVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type ExpandableSearchTriggerVariantProps = StrictVariantProps<typeof expandableSearchTriggerVariants>;
+//#endregion
+export { ExpandableSearchTriggerVariantProps, expandableSearchTriggerVariants };
+//# sourceMappingURL=variants.d.ts.map

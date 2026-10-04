@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/play-circle-filled.d.ts
+declare function PlayCircleFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PlayCircleFilled };
+//# sourceMappingURL=play-circle-filled.d.ts.map

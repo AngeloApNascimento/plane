@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/sub-brands/wiki.d.ts
+declare function Wiki(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Wiki };
+//# sourceMappingURL=wiki.d.ts.map

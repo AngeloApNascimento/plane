@@ -1,0 +1,36 @@
+"use client";
+import { FieldItemControlGroup } from "../../elements/field/field-item-control-group.js";
+import { Field } from "../field/field.js";
+import { FieldItem } from "../field/field-item.js";
+import { FieldItemContent } from "../field/field-item-content.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import { Checkbox } from "../checkbox/checkbox.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/checkbox-field/checkbox-field.tsx
+/** Ready-to-use single checkbox field with label, description, and helper/error text. */
+function CheckboxField({ label, description, hint, error, size, name, disabled, ...controlProps }) {
+	return /* @__PURE__ */ jsxs(Field, {
+		name,
+		disabled,
+		invalid: error != null || void 0,
+		children: [/* @__PURE__ */ jsxs(FieldItem, {
+			disabled,
+			children: [/* @__PURE__ */ jsx(FieldItemControlGroup, { children: /* @__PURE__ */ jsx(Checkbox, {
+				disabled,
+				...controlProps
+			}) }), /* @__PURE__ */ jsx(FieldItemContent, {
+				size,
+				description,
+				children: label
+			})]
+		}), /* @__PURE__ */ jsx(FieldHelperText, {
+			size,
+			hint,
+			error
+		})]
+	});
+}
+//#endregion
+export { CheckboxField };
+
+//# sourceMappingURL=checkbox-field.js.map

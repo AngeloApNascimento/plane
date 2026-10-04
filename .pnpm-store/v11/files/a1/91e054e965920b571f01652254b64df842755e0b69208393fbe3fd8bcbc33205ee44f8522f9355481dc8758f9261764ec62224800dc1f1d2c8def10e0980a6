@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-info-icon.d.ts
+type DialogInfoIconProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * Decorative 14 px icon slot inside `DialogInfo`. Bakes `aria-hidden` and sizes its child via the
+ * shared node-slot. Pass a lucide glyph (or `<Icon icon={…} />`) as children.
+ */
+declare function DialogInfoIcon({ render, ...props }: DialogInfoIconProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogInfoIcon, DialogInfoIconProps };
+//# sourceMappingURL=dialog-info-icon.d.ts.map

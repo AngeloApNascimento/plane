@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/add-time-tracking-outline.d.ts
+declare function AddTimeTrackingOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AddTimeTrackingOutline };
+//# sourceMappingURL=add-time-tracking-outline.d.ts.map

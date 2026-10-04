@@ -1,0 +1,21 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { AlertDialog } from "@base-ui/react/alert-dialog";
+//#region src/components/alert-dialog/alert-dialog-close.tsx
+/**
+* The behavior that closes the alert dialog when activated. Use as the `render` target of a
+* `Button` so the styled primitive's look wins via render-composition:
+*
+* ```tsx
+* <Button variant="secondary" size="lg" label="Cancel" render={<AlertDialogClose />} />;
+* ```
+*
+* Maps 1:1 to `AlertDialog.Close`.
+*/
+function AlertDialogClose(props) {
+	return /* @__PURE__ */ jsx(AlertDialog.Close, { ...props });
+}
+//#endregion
+export { AlertDialogClose };
+
+//# sourceMappingURL=alert-dialog-close.js.map

@@ -1,0 +1,33 @@
+"use client";
+import { CompositeItem } from "../../base/composite/composite-item.js";
+import { ListItemLink as ListItemLink$1 } from "../../elements/list/list-item-link.js";
+import { ListItemCounter } from "../../elements/list/list-item-counter.js";
+import { ListItemLabel } from "../../elements/list/list-item-label.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/list/list-item-link.tsx
+/**
+* A list row's primary navigation target — an `<a>` that is also a roving `Composite` item. Base
+* UI's `CompositeItem` roving behavior grafted onto the styled `elements` `ListItemLink` element
+* (rule 1a). Mark the current page with `aria-current="page"`. Pass `startIcon` for the leading
+* visual, `label` for the visible row text, `count` for a trailing count chip, and `endIcon` for a
+* trailing visual. A row's expand/collapse control (`ListItemDisclosureTrigger`) is a separate
+* sibling, never a child — a button can't nest inside this `<a>`.
+*/
+function ListItemLink({ startIcon, label, count, endIcon, ...props }) {
+	const showCount = count != null && count !== 0 && count !== "";
+	return /* @__PURE__ */ jsxs(CompositeItem, {
+		tag: "a",
+		...props,
+		render: /* @__PURE__ */ jsx(ListItemLink$1, {}),
+		children: [
+			startIcon,
+			/* @__PURE__ */ jsx(ListItemLabel, { children: label }),
+			showCount ? /* @__PURE__ */ jsx(ListItemCounter, { children: count }) : null,
+			endIcon
+		]
+	});
+}
+//#endregion
+export { ListItemLink };
+
+//# sourceMappingURL=list-item-link.js.map

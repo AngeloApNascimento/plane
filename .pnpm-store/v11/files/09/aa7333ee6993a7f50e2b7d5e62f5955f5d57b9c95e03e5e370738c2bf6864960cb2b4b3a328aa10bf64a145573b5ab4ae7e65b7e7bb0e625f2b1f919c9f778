@@ -1,0 +1,16 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/button-group/variants.d.ts
+declare const buttonGroupButtonDefaultVariants: {
+  readonly size: "sm";
+};
+declare const buttonGroupButtonVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type ButtonGroupButtonVariantConfig = VariantProps<typeof buttonGroupButtonVariants>;
+type ButtonGroupButtonSize = NonNullable<ButtonGroupButtonVariantConfig["size"]>;
+type ButtonGroupButtonVariantProps = StrictVariantProps<typeof buttonGroupButtonVariants, keyof typeof buttonGroupButtonDefaultVariants>;
+//#endregion
+export { ButtonGroupButtonSize, ButtonGroupButtonVariantProps, buttonGroupButtonVariants };
+//# sourceMappingURL=variants.d.ts.map

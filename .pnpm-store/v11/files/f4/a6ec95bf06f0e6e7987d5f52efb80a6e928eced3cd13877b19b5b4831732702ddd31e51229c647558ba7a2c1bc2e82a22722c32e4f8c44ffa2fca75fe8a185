@@ -1,0 +1,12 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/checkbox-group/variants.d.ts
+declare const checkboxGroupVariants: (props?: ({
+  density?: "comfortable" | "compact" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type CheckboxGroupDensity = NonNullable<VariantProps<typeof checkboxGroupVariants>["density"]>;
+type CheckboxGroupVariantProps = StrictVariantProps<typeof checkboxGroupVariants>;
+//#endregion
+export { CheckboxGroupDensity, CheckboxGroupVariantProps, checkboxGroupVariants };
+//# sourceMappingURL=variants.d.ts.map

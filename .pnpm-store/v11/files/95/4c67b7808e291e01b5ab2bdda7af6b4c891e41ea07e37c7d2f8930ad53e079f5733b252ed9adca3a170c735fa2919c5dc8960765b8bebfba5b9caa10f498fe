@@ -1,0 +1,33 @@
+"use client";
+import { MenuItemVariant } from "../../elements/menu/variants.js";
+import "../../elements/menu/index.js";
+import * as React from "react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-submenu-trigger.d.ts
+type MenuSubmenuTriggerProps = Omit<Menu.SubmenuTrigger.Props, "children" | "className" | "label" | "style" | "render"> & {
+  /**
+   * Row look. `neutral` is the standard text hierarchy, `accent` marks the primary action, and
+   * `danger` marks a destructive one.
+   *
+   * @default "neutral"
+   */
+  variant?: MenuItemVariant;
+  /** Leading element before the label, e.g. `<Icon icon={Folder} tint="secondary" />`. */
+  icon?: React.ReactNode;
+  /** Primary row label. */
+  label: string;
+  /**
+   * Content pinned before the submenu chevron, e.g. `<Shortcut keys="⌘ K" />` or a count `<Badge
+   * />`.
+   */
+  trailing?: React.ReactElement;
+};
+/**
+ * The ready-made submenu trigger row: grafts Base UI's `Menu.SubmenuTrigger` behavior onto the
+ * styled `MenuSubmenuTrigger` and lays out an optional leading icon, label, end content, and the
+ * submenu chevron indicator.
+ */
+declare function MenuSubmenuTrigger({ variant, icon, trailing, label, ...props }: MenuSubmenuTriggerProps): React.JSX.Element;
+//#endregion
+export { MenuSubmenuTrigger, MenuSubmenuTriggerProps };
+//# sourceMappingURL=menu-submenu-trigger.d.ts.map

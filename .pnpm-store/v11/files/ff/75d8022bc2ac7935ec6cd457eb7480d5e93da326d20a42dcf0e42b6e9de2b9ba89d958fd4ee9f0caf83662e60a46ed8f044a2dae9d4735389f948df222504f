@@ -1,0 +1,127 @@
+"use client";
+import { TextArea as TextArea$1 } from "../../elements/text-area/text-area.js";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+import { Field } from "@base-ui/react/field";
+//#region src/components/text-area/text-area.tsx
+function assignRef(ref, node) {
+	if (typeof ref === "function") ref(node);
+	else if (ref != null) ref.current = node;
+}
+function lineHeightPx(computed) {
+	const parsed = parseFloat(computed.lineHeight);
+	return Number.isFinite(parsed) ? parsed : parseFloat(computed.fontSize) * 1.2;
+}
+function borderYPx(computed) {
+	return parseFloat(computed.borderTopWidth) + parseFloat(computed.borderBottomWidth);
+}
+function paddingYPx(computed) {
+	return parseFloat(computed.paddingTop) + parseFloat(computed.paddingBottom);
+}
+const TEXT_AREA_DEFAULT_MIN_HEIGHT_REM = {
+	md: 3.75,
+	lg: 4.75,
+	xl: 6.375,
+	"2xl": 5.625
+};
+function defaultMinHeightPx(element, size) {
+	const rootPx = parseFloat(getComputedStyle(element.ownerDocument.documentElement).fontSize);
+	return TEXT_AREA_DEFAULT_MIN_HEIGHT_REM[size] * (Number.isFinite(rootPx) ? rootPx : 16);
+}
+/** Match content height, honoring the size `min-height` as the floor and `maxRows` as the cap. */
+function syncTextAreaHeight(element, maxRows, size, surface) {
+	const previousOverflowY = element.style.overflowY;
+	element.style.minHeight = "";
+	const computed = getComputedStyle(element);
+	const borderY = borderYPx(computed);
+	const computedMinHeight = parseFloat(computed.minHeight);
+	const minHeight = surface === "field" ? computedMinHeight > 0 ? computedMinHeight : defaultMinHeightPx(element, size) : 0;
+	element.style.minHeight = minHeight > 0 ? `${minHeight}px` : "";
+	element.style.overflowY = "hidden";
+	element.style.height = "auto";
+	let next = element.scrollHeight + borderY;
+	if (minHeight > 0) next = Math.max(next, minHeight);
+	if (maxRows != null) {
+		const maxHeight = lineHeightPx(computed) * maxRows + paddingYPx(computed) + borderY;
+		next = Math.min(next, Math.max(maxHeight, minHeight));
+	}
+	element.style.height = `${next}px`;
+	element.style.overflowY = previousOverflowY;
+}
+function useTextAreaAutoResize(elementRef, enabled, maxRows, value, size, surface) {
+	const sync = React.useCallback(() => {
+		const element = elementRef.current;
+		if (element == null) return;
+		if (!enabled) {
+			element.style.height = "";
+			element.style.minHeight = "";
+			return;
+		}
+		syncTextAreaHeight(element, maxRows, size, surface);
+	}, [
+		elementRef,
+		enabled,
+		maxRows,
+		size,
+		surface
+	]);
+	React.useLayoutEffect(() => {
+		sync();
+	}, [sync, value]);
+	React.useLayoutEffect(() => {
+		const element = elementRef.current;
+		if (element == null || !enabled) return;
+		const observer = new ResizeObserver(() => {
+			sync();
+		});
+		observer.observe(element);
+		const form = element.form;
+		const onReset = () => {
+			requestAnimationFrame(sync);
+		};
+		form?.addEventListener("reset", onReset);
+		return () => {
+			observer.disconnect();
+			form?.removeEventListener("reset", onReset);
+		};
+	}, [
+		elementRef,
+		enabled,
+		sync
+	]);
+	return sync;
+}
+/**
+* Multi-line text field that automatically works inside `Field`. Base UI's `Field.Control` behavior
+* grafted onto the styled `elements` `TextArea` element (rule 1a) — behavior part outer, styled
+* part as the render target. Base UI ships no textarea control, so `Field.Control` renders the
+* styled `<textarea>` directly (this replaces the former `base/text-area` wrapper). Pair the
+* `field` surface with `TextAreaGroup`, which owns the native `resize` handle. `autoResize` grows
+* the control with its value; the ready-made `TextAreaField` turns the native handle off when it is
+* set.
+*/
+function TextArea({ size, surface, autoResize = false, maxRows, ref, onInput, ...props }) {
+	const textareaRef = React.useRef(null);
+	const syncHeight = useTextAreaAutoResize(textareaRef, autoResize, maxRows, props.value, size, surface);
+	const setRef = React.useCallback((node) => {
+		textareaRef.current = node instanceof HTMLTextAreaElement ? node : null;
+		assignRef(ref, node);
+	}, [ref]);
+	return /* @__PURE__ */ jsx(Field.Control, {
+		...props,
+		onInput: (event) => {
+			onInput?.(event);
+			syncHeight();
+		},
+		ref: setRef,
+		render: /* @__PURE__ */ jsx(TextArea$1, {
+			size,
+			surface,
+			autoResize
+		})
+	});
+}
+//#endregion
+export { TextArea };
+
+//# sourceMappingURL=text-area.js.map

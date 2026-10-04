@@ -1,0 +1,7 @@
+import { FileInfo } from 'jscodeshift';
+type Parser = 'babel' | 'babylon' | 'flow' | 'ts' | 'tsx';
+interface Options {
+    parser?: Parser;
+}
+export declare function applyTransform(transform: any, input: string | FileInfo, options?: Options): Promise<any>;
+export {};

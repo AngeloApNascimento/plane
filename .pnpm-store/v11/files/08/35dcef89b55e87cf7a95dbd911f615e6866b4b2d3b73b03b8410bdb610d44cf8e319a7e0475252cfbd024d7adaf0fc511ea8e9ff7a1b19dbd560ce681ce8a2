@@ -1,0 +1,5 @@
+"use client";
+import { BadgeSize, BadgeVariant } from "./variants.js";
+import { Badge, BadgeProps } from "./badge.js";
+import { BadgeLabel, BadgeLabelProps } from "./badge-label.js";
+export { Badge, BadgeLabel, BadgeLabelProps, BadgeProps, type BadgeSize, type BadgeVariant };

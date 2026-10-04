@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/disc-outline.d.ts
+declare function DiscOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DiscOutline };
+//# sourceMappingURL=disc-outline.d.ts.map

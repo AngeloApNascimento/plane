@@ -1,0 +1,3 @@
+"use client";
+import { Swatch } from "./swatch.js";
+export { Swatch };

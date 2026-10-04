@@ -1,0 +1,22 @@
+"use client";
+import { radioGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/radio/radio-group.tsx
+/**
+* The styled radio group frame. It carries the row-spacing axis (`density`). Base-UI-agnostic —
+* graft the group behavior in `components` via `<BaseRadioGroup render={<RadioGroup
+* density="comfortable" />}>` (single-select state + roving focus). Renders a `radiogroup` once
+* grafted.
+*/
+function RadioGroup({ density, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: radioGroupVariants({ density }) }, props)
+	});
+}
+//#endregion
+export { RadioGroup };
+
+//# sourceMappingURL=radio-group.js.map

@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-separator.d.ts
+type ToolbarSeparatorProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled thin vertical rule that divides one cluster of controls from the next.
+ * Base-UI-agnostic: graft the separator behavior in `components` via `<BaseToolbar.Separator
+ * render={<ToolbarSeparator/>} />`.
+ */
+declare function ToolbarSeparator({ render, ...props }: ToolbarSeparatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToolbarSeparator, ToolbarSeparatorProps };
+//# sourceMappingURL=toolbar-separator.d.ts.map

@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/anchor-button/anchor-button-label.d.ts
+type AnchorButtonLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** The text label inside an `AnchorButton`. Owns the underline so flanking icons stay un-underlined. */
+declare function AnchorButtonLabel({ render, ...props }: AnchorButtonLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AnchorButtonLabel, AnchorButtonLabelProps };
+//# sourceMappingURL=anchor-button-label.d.ts.map

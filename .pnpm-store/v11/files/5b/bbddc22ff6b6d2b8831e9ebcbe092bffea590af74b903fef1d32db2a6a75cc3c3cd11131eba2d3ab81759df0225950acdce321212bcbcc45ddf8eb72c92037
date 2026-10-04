@@ -1,0 +1,22 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { ArrowUpRight } from "lucide-react";
+//#region src/internal/external-link.tsx
+/**
+* Resolves the three things a menu link-item's `external` flag sets together: `target="_blank"`,
+* `rel="noreferrer noopener"`, and a trailing arrow — shared by `MenuLinkItem` and
+* `ContextMenuLinkItem` so the `rel` security default lives in one place. The caller's own
+* `target`/ `rel` wins over `external`'s default; a supplied `trailing` wins over the arrow, since
+* it owns the end slot.
+*/
+function resolveExternalLinkProps({ external, target, rel, trailing }) {
+	return {
+		target: target ?? (external ? "_blank" : void 0),
+		rel: rel ?? (external ? "noreferrer noopener" : void 0),
+		end: trailing ?? (external ? /* @__PURE__ */ jsx(ArrowUpRight, { "aria-hidden": true }) : void 0)
+	};
+}
+//#endregion
+export { resolveExternalLinkProps };
+
+//# sourceMappingURL=external-link.js.map

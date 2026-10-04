@@ -1,0 +1,10 @@
+"use client";
+import { Collapsible, CollapsibleProps } from "./collapsible.js";
+import { CollapsibleHeaderPlacement, CollapsiblePanelContentPlacement, CollapsibleTriggerPlacement, CollapsibleTriggerTitlePlacement, CollapsibleTriggerTrailingPlacement } from "./variants.js";
+import { CollapsibleHeader, CollapsibleHeaderProps } from "./collapsible-header.js";
+import { CollapsiblePanel, CollapsiblePanelProps } from "./collapsible-panel.js";
+import { CollapsiblePanelContent, CollapsiblePanelContentProps } from "./collapsible-panel-content.js";
+import { CollapsibleTrigger, CollapsibleTriggerProps } from "./collapsible-trigger.js";
+import { CollapsibleTriggerTitle, CollapsibleTriggerTitleProps } from "./collapsible-trigger-title.js";
+import { CollapsibleTriggerTrailing, CollapsibleTriggerTrailingProps } from "./collapsible-trigger-trailing.js";
+export { Collapsible, CollapsibleHeader, type CollapsibleHeaderPlacement, CollapsibleHeaderProps, CollapsiblePanel, CollapsiblePanelContent, type CollapsiblePanelContentPlacement, CollapsiblePanelContentProps, CollapsiblePanelProps, CollapsibleProps, CollapsibleTrigger, type CollapsibleTriggerPlacement, CollapsibleTriggerProps, CollapsibleTriggerTitle, type CollapsibleTriggerTitlePlacement, CollapsibleTriggerTitleProps, CollapsibleTriggerTrailing, type CollapsibleTriggerTrailingPlacement, CollapsibleTriggerTrailingProps };

@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-value.d.ts
+type SliderValueProps = Omit<useRender.ComponentProps<"output">, "className" | "style">;
+/**
+ * The styled value readout. Base-UI-agnostic — graft in `components` via `<BaseSlider.Value
+ * render={<SliderValue/>} />`.
+ */
+declare function SliderValue({ render, ...props }: SliderValueProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SliderValue, SliderValueProps };
+//# sourceMappingURL=slider-value.d.ts.map

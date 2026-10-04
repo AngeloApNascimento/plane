@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-per-page-trigger.d.ts
+type PaginationPerPageTriggerProps = Omit<useRender.ComponentProps<"button">, "className" | "style">;
+/**
+ * The per-page selector pill, styled as a `layer-3` Menu trigger. Compose a `Menu.Trigger` through
+ * the `render` prop; pass the visible size and the shared `DisclosureIndicator` chevron as
+ * children.
+ */
+declare function PaginationPerPageTrigger({ render, ...props }: PaginationPerPageTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationPerPageTrigger, PaginationPerPageTriggerProps };
+//# sourceMappingURL=pagination-per-page-trigger.d.ts.map

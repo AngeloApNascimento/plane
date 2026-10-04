@@ -1,0 +1,21 @@
+"use client";
+import { logoSpinnerVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/logo-spinner/logo-spinner.tsx
+/**
+* The styled box of the brand loading mark. Compose the `LogoSpinnerImage` pair (one per theme)
+* inside it; the ready-made `components/logo-spinner` supplies both images, their asset URLs and
+* the `img` role.
+*/
+function LogoSpinner({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: logoSpinnerVariants() }, props)
+	});
+}
+//#endregion
+export { LogoSpinner };
+
+//# sourceMappingURL=logo-spinner.js.map

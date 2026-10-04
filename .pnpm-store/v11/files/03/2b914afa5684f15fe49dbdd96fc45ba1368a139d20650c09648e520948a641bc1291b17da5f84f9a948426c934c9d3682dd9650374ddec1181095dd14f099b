@@ -1,0 +1,21 @@
+"use client";
+import { comboboxChipOverflowVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-chip-overflow.tsx
+/**
+* The "+N more" count shown after the visible chips when the multiselect frame collapses (its
+* `layout="collapse"` and the selection exceeds the ready-made's `maxVisible`). A muted,
+* non-interactive caption — the hidden values stay managed from the popup. Base-UI-agnostic.
+*/
+function ComboboxChipOverflow({ render, size, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: comboboxChipOverflowVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { ComboboxChipOverflow };
+
+//# sourceMappingURL=combobox-chip-overflow.js.map

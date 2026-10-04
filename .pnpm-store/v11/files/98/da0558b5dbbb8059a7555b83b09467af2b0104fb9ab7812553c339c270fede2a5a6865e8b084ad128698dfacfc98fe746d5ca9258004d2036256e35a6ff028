@@ -1,0 +1,12 @@
+"use client";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-collection.d.ts
+type ComboboxCollectionProps = Combobox.Collection.Props;
+/**
+ * Renders the filtered items of the nearest `ComboboxGroup` (or the root) through a function child
+ * — the grouped counterpart of `ComboboxList`'s function child.
+ */
+declare function ComboboxCollection(props: ComboboxCollectionProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxCollection, ComboboxCollectionProps };
+//# sourceMappingURL=combobox-collection.d.ts.map

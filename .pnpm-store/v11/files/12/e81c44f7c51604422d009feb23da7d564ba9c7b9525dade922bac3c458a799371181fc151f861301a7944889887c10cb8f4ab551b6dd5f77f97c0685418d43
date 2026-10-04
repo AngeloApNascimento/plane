@@ -1,0 +1,17 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { DirectionProvider } from "@base-ui/react/direction-provider";
+//#region src/components/direction-provider/direction-provider.tsx
+/**
+* Base UI's reading-direction context, re-exported so RTL apps compose entirely from propel. Wrap
+* the app (or a subtree) with `direction="rtl"` so portaled surfaces — popups, tooltips, menus —
+* position and mirror correctly; pair it with `dir="rtl"` on `<html>` for the CSS logical
+* properties.
+*/
+function DirectionProvider$1(props) {
+	return /* @__PURE__ */ jsx(DirectionProvider, { ...props });
+}
+//#endregion
+export { DirectionProvider$1 as DirectionProvider };
+
+//# sourceMappingURL=direction-provider.js.map

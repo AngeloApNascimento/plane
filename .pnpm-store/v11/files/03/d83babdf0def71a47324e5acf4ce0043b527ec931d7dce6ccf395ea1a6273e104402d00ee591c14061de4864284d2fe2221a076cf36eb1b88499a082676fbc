@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/minimize-outline.d.ts
+declare function MinimizeOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MinimizeOutline };
+//# sourceMappingURL=minimize-outline.d.ts.map

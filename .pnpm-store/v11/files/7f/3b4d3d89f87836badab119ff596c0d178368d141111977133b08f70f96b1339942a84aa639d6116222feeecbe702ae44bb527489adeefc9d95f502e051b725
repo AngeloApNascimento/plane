@@ -1,0 +1,14 @@
+"use client";
+import { ComboboxChipOverflowSize, ComboboxChipOverflowVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-chip-overflow.d.ts
+type ComboboxChipOverflowProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & ComboboxChipOverflowVariantProps;
+/**
+ * The "+N more" count shown after the visible chips when the multiselect frame collapses (its
+ * `layout="collapse"` and the selection exceeds the ready-made's `maxVisible`). A muted,
+ * non-interactive caption — the hidden values stay managed from the popup. Base-UI-agnostic.
+ */
+declare function ComboboxChipOverflow({ render, size, ...props }: ComboboxChipOverflowProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxChipOverflow, ComboboxChipOverflowProps, type ComboboxChipOverflowSize };
+//# sourceMappingURL=combobox-chip-overflow.d.ts.map

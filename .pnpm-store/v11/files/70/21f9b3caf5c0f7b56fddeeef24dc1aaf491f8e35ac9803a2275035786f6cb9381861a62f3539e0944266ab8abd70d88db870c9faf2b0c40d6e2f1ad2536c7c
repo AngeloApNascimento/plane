@@ -1,0 +1,375 @@
+const require_chunk = require("./chunk-CZWwpsFl.cjs");
+let node_fs = require("node:fs");
+let node_os = require("node:os");
+let node_path = require("node:path");
+let node_fs_promises = require("node:fs/promises");
+//#region src/agents-md/known-files.ts
+const agentsMdFiles = {
+	universal: {
+		agent: "universal",
+		displayName: "AGENTS.md (universal)",
+		filename: "AGENTS.md",
+		fileExtension: "md",
+		supportsMultipleFiles: false
+	},
+	"claude-code": {
+		agent: "claude-code",
+		displayName: "Claude Code (CLAUDE.md)",
+		filename: "CLAUDE.md",
+		fileExtension: "md",
+		supportsMultipleFiles: false,
+		aliasOf: "AGENTS.md"
+	},
+	cursor: {
+		agent: "cursor",
+		displayName: "Cursor Rules (.cursor/rules)",
+		filename: "cursor.mdc",
+		supplementaryFilenames: [".cursorrules"],
+		subdirectory: ".cursor/rules",
+		fileExtension: "mdc",
+		supportsMultipleFiles: true
+	},
+	codex: {
+		agent: "codex",
+		displayName: "Codex (AGENTS.md)",
+		filename: "AGENTS.md",
+		fileExtension: "md",
+		supportsMultipleFiles: false,
+		aliasOf: "AGENTS.md"
+	},
+	"gemini-cli": {
+		agent: "gemini-cli",
+		displayName: "Gemini CLI (GEMINI.md)",
+		filename: "GEMINI.md",
+		fileExtension: "md",
+		supportsMultipleFiles: false,
+		aliasOf: "AGENTS.md"
+	},
+	windsurf: {
+		agent: "windsurf",
+		displayName: "Windsurf (.windsurfrules)",
+		filename: ".windsurfrules",
+		fileExtension: "txt",
+		supportsMultipleFiles: false
+	},
+	opencode: {
+		agent: "opencode",
+		displayName: "OpenCode (AGENTS.md)",
+		filename: "AGENTS.md",
+		fileExtension: "md",
+		supportsMultipleFiles: false,
+		aliasOf: "AGENTS.md"
+	},
+	aider: {
+		agent: "aider",
+		displayName: "Aider (.aider.conf.yml points at AGENTS.md)",
+		filename: "AGENTS.md",
+		fileExtension: "md",
+		supportsMultipleFiles: false,
+		aliasOf: "AGENTS.md"
+	}
+};
+const getAgentsMdDescriptor = (agent) => agentsMdFiles[agent];
+const listAgentsMdDescriptors = () => Object.values(agentsMdFiles);
+//#endregion
+//#region src/agents-md/sections.ts
+const HEADING_LINE_REGEX = /^(#{1,6})\s+(.+?)\s*$/;
+const FENCE_LINE_REGEX = /^(\s{0,3})(`{3,}|~{3,})(.*)$/;
+const computeLineStarts = (content) => {
+	const lineStarts = [0];
+	for (let index = 0; index < content.length; index += 1) if (content.charCodeAt(index) === 10) lineStarts.push(index + 1);
+	return lineStarts;
+};
+const parseSections = (content) => {
+	const lines = content.split(/\r?\n/);
+	const lineStarts = computeLineStarts(content);
+	const sections = [];
+	let activeFence = null;
+	for (let lineIndex = 0; lineIndex < lines.length; lineIndex += 1) {
+		const line = lines[lineIndex];
+		const fenceMatch = line.match(FENCE_LINE_REGEX);
+		if (fenceMatch) {
+			const fenceToken = fenceMatch[2];
+			if (activeFence === null) activeFence = fenceToken[0];
+			else if (fenceToken[0] === activeFence && fenceToken.length >= activeFence.length) activeFence = null;
+			continue;
+		}
+		if (activeFence !== null) continue;
+		const headingMatch = line.match(HEADING_LINE_REGEX);
+		if (!headingMatch) continue;
+		sections.push({
+			heading: headingMatch[2].trim(),
+			level: headingMatch[1].length,
+			start: lineStarts[lineIndex],
+			headingLength: headingMatch[0].length
+		});
+	}
+	return sections.map((section, sectionIndex) => {
+		const nextSection = sections[sectionIndex + 1];
+		const end = nextSection ? nextSection.start : content.length;
+		const body = content.slice(section.start + section.headingLength, end).replace(/^\r?\n+/, "").trimEnd();
+		return {
+			heading: section.heading,
+			level: section.level,
+			body,
+			start: section.start,
+			end
+		};
+	});
+};
+const normalizeHeading = (heading) => heading.trim().toLowerCase();
+const findSection = (sections, heading) => {
+	const target = normalizeHeading(heading);
+	return sections.find((section) => normalizeHeading(section.heading) === target);
+};
+const renderSection = (heading, body, level = 2) => {
+	return `${"#".repeat(level)} ${heading}\n\n${body.replace(/^\r?\n+/, "").replace(/\r?\n+$/, "")}\n`;
+};
+//#endregion
+//#region src/agents-md/resolve-file-path.ts
+const resolveAgentsMdFilePath = (options) => {
+	const cwd = options.cwd ?? process.cwd();
+	if (options.file) return (0, node_path.isAbsolute)(options.file) ? options.file : (0, node_path.join)(cwd, options.file);
+	const descriptor = getAgentsMdDescriptor(options.agent ?? "universal");
+	return (0, node_path.join)(descriptor.subdirectory ? (0, node_path.join)(cwd, descriptor.subdirectory) : cwd, descriptor.filename);
+};
+//#endregion
+//#region src/agents-md/read-write.ts
+const ensureParentDir = (filePath) => {
+	const parent = (0, node_path.dirname)(filePath);
+	if (!(0, node_fs.existsSync)(parent)) (0, node_fs.mkdirSync)(parent, { recursive: true });
+};
+const readAgentsMd = (options = {}) => {
+	const filePath = resolveAgentsMdFilePath(options);
+	const content = (0, node_fs.existsSync)(filePath) ? (0, node_fs.readFileSync)(filePath, "utf-8") : "";
+	return {
+		path: filePath,
+		content,
+		sections: parseSections(content)
+	};
+};
+const writeAgentsMd = (options) => {
+	const filePath = resolveAgentsMdFilePath(options);
+	ensureParentDir(filePath);
+	(0, node_fs.writeFileSync)(filePath, options.content.endsWith("\n") ? options.content : `${options.content}\n`, "utf-8");
+	return filePath;
+};
+//#endregion
+//#region src/agents-md/remove-section.ts
+const removeAgentsMdSection = (options) => {
+	const document = readAgentsMd(options);
+	const target = findSection(document.sections, options.heading);
+	if (!target) return false;
+	const before = document.content.slice(0, target.start).replace(/\r?\n+$/, "");
+	const after = document.content.slice(target.end).replace(/^\r?\n+/, "");
+	const joined = before.length > 0 && after.length > 0 ? `${before}\n\n${after}` : before.length > 0 ? before : after;
+	writeAgentsMd({
+		cwd: options.cwd,
+		agent: options.agent,
+		file: options.file,
+		content: joined
+	});
+	return true;
+};
+//#endregion
+//#region src/agents-md/constants.ts
+const AGENTS_MD_FILENAME = "AGENTS.md";
+const CLAUDE_MD_FILENAME = "CLAUDE.md";
+//#endregion
+//#region src/agents-md/symlink-claude.ts
+const WIN_SYMLINK_TYPE = "file";
+const isAlreadyLinkedToAgentsMd = async (claudePath, agentsPath) => {
+	try {
+		if (!(await (0, node_fs_promises.lstat)(claudePath)).isSymbolicLink()) return false;
+		return await (0, node_fs_promises.realpath)(claudePath) === await (0, node_fs_promises.realpath)(agentsPath);
+	} catch {
+		return false;
+	}
+};
+const createSymlinkOrCopy = async (agentsPath, claudePath) => {
+	const symlinkType = (0, node_os.platform)() === "win32" ? WIN_SYMLINK_TYPE : void 0;
+	try {
+		await (0, node_fs_promises.symlink)(AGENTS_MD_FILENAME, claudePath, symlinkType);
+		return { fellBackToCopy: false };
+	} catch {
+		await (0, node_fs_promises.copyFile)(agentsPath, claudePath);
+		return { fellBackToCopy: true };
+	}
+};
+const symlinkClaudeToAgents = async (options = {}) => {
+	const cwd = options.cwd ?? process.cwd();
+	const agentsPath = (0, node_path.join)(cwd, AGENTS_MD_FILENAME);
+	const claudePath = (0, node_path.join)(cwd, CLAUDE_MD_FILENAME);
+	if (!(0, node_fs.existsSync)(agentsPath)) throw new Error(`Cannot create ${CLAUDE_MD_FILENAME} symlink: ${agentsPath} does not exist. Create ${AGENTS_MD_FILENAME} first.`);
+	if ((0, node_fs.existsSync)(claudePath)) {
+		if (await isAlreadyLinkedToAgentsMd(claudePath, agentsPath)) return {
+			claudePath,
+			agentsPath,
+			created: false,
+			alreadyLinked: true
+		};
+		if (!options.overwrite) return {
+			claudePath,
+			agentsPath,
+			created: false,
+			alreadyLinked: false
+		};
+		const backupPath = (0, node_path.join)(cwd, options.backupName ?? "CLAUDE.md.bak");
+		try {
+			await (0, node_fs_promises.rename)(claudePath, backupPath);
+			const { fellBackToCopy } = await createSymlinkOrCopy(agentsPath, claudePath);
+			return {
+				claudePath,
+				agentsPath,
+				created: true,
+				alreadyLinked: false,
+				backedUpTo: backupPath,
+				fellBackToCopy
+			};
+		} catch {
+			await (0, node_fs_promises.unlink)(claudePath).catch(() => {});
+		}
+	}
+	const { fellBackToCopy } = await createSymlinkOrCopy(agentsPath, claudePath);
+	return {
+		claudePath,
+		agentsPath,
+		created: true,
+		alreadyLinked: false,
+		fellBackToCopy
+	};
+};
+//#endregion
+//#region src/agents-md/upsert-section.ts
+const appendBlock = (content, block) => {
+	if (!content.trim()) return block;
+	return `${content.replace(/\r?\n+$/, "")}\n\n${block}`;
+};
+const prependBlock = (content, block) => {
+	if (!content.trim()) return block;
+	return `${block}\n${content.replace(/^\r?\n+/, "")}`;
+};
+const replaceSection = (document, heading, block) => {
+	const target = findSection(document.sections, heading);
+	if (!target) return appendBlock(document.content, block);
+	const before = document.content.slice(0, target.start).replace(/\r?\n+$/, "");
+	const after = document.content.slice(target.end).replace(/^\r?\n+/, "");
+	const middle = before.length > 0 ? `${before}\n\n${block}` : block;
+	return after.length > 0 ? `${middle}\n${after}` : middle;
+};
+const upsertAgentsMdSection = (options) => {
+	const document = readAgentsMd(options);
+	const level = options.level ?? 2;
+	const block = renderSection(options.heading, options.body, level);
+	const placement = options.placement ?? "replace";
+	let nextContent;
+	if (placement === "append") nextContent = appendBlock(document.content, block);
+	else if (placement === "prepend") nextContent = prependBlock(document.content, block);
+	else nextContent = replaceSection(document, options.heading, block);
+	return writeAgentsMd({
+		cwd: options.cwd,
+		agent: options.agent,
+		file: options.file,
+		content: nextContent
+	});
+};
+//#endregion
+//#region src/agents-md/index.ts
+var agents_md_exports = /* @__PURE__ */ require_chunk.__exportAll({
+	agentsMdFiles: () => agentsMdFiles,
+	findSection: () => findSection,
+	getAgentsMdDescriptor: () => getAgentsMdDescriptor,
+	listAgentsMdDescriptors: () => listAgentsMdDescriptors,
+	parseSections: () => parseSections,
+	read: () => readAgentsMd,
+	readAgentsMd: () => readAgentsMd,
+	removeAgentsMdSection: () => removeAgentsMdSection,
+	removeSection: () => removeAgentsMdSection,
+	renderSection: () => renderSection,
+	resolveAgentsMdFilePath: () => resolveAgentsMdFilePath,
+	setSection: () => upsertAgentsMdSection,
+	symlinkClaude: () => symlinkClaudeToAgents,
+	symlinkClaudeToAgents: () => symlinkClaudeToAgents,
+	upsertAgentsMdSection: () => upsertAgentsMdSection,
+	write: () => writeAgentsMd,
+	writeAgentsMd: () => writeAgentsMd
+});
+//#endregion
+Object.defineProperty(exports, "agentsMdFiles", {
+	enumerable: true,
+	get: function() {
+		return agentsMdFiles;
+	}
+});
+Object.defineProperty(exports, "agents_md_exports", {
+	enumerable: true,
+	get: function() {
+		return agents_md_exports;
+	}
+});
+Object.defineProperty(exports, "findSection", {
+	enumerable: true,
+	get: function() {
+		return findSection;
+	}
+});
+Object.defineProperty(exports, "getAgentsMdDescriptor", {
+	enumerable: true,
+	get: function() {
+		return getAgentsMdDescriptor;
+	}
+});
+Object.defineProperty(exports, "listAgentsMdDescriptors", {
+	enumerable: true,
+	get: function() {
+		return listAgentsMdDescriptors;
+	}
+});
+Object.defineProperty(exports, "parseSections", {
+	enumerable: true,
+	get: function() {
+		return parseSections;
+	}
+});
+Object.defineProperty(exports, "readAgentsMd", {
+	enumerable: true,
+	get: function() {
+		return readAgentsMd;
+	}
+});
+Object.defineProperty(exports, "removeAgentsMdSection", {
+	enumerable: true,
+	get: function() {
+		return removeAgentsMdSection;
+	}
+});
+Object.defineProperty(exports, "renderSection", {
+	enumerable: true,
+	get: function() {
+		return renderSection;
+	}
+});
+Object.defineProperty(exports, "resolveAgentsMdFilePath", {
+	enumerable: true,
+	get: function() {
+		return resolveAgentsMdFilePath;
+	}
+});
+Object.defineProperty(exports, "symlinkClaudeToAgents", {
+	enumerable: true,
+	get: function() {
+		return symlinkClaudeToAgents;
+	}
+});
+Object.defineProperty(exports, "upsertAgentsMdSection", {
+	enumerable: true,
+	get: function() {
+		return upsertAgentsMdSection;
+	}
+});
+Object.defineProperty(exports, "writeAgentsMd", {
+	enumerable: true,
+	get: function() {
+		return writeAgentsMd;
+	}
+});

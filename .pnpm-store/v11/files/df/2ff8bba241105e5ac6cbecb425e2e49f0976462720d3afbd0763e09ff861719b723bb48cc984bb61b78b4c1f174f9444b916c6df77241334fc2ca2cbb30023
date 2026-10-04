@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/properties/toggle-off-outline.tsx
+function ToggleOffOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M1.958 8a3.375 3.375 0 0 1 3.375-3.375h5.333a3.375 3.375 0 1 1 0 6.75H5.333A3.375 3.375 0 0 1 1.958 8m2.333 0a1.042 1.042 0 1 1 2.084 0 1.042 1.042 0 0 1-2.084 0m-1.25 0a2.292 2.292 0 1 0 4.583-.001A2.292 2.292 0 0 0 3.041 8M.708 8a4.625 4.625 0 0 0 4.625 4.625h5.333a4.625 4.625 0 0 0 0-9.25H5.333A4.625 4.625 0 0 0 .708 8"
+		})
+	});
+}
+//#endregion
+export { ToggleOffOutline };
+
+//# sourceMappingURL=toggle-off-outline.js.map

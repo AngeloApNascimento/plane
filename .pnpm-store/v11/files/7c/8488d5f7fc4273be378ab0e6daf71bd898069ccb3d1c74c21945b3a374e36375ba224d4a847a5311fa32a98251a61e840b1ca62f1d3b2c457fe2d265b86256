@@ -1,0 +1,8 @@
+"use client";
+import { cva } from "class-variance-authority";
+//#region src/elements/swatch/variants.ts
+const swatchVariants = cva("inline-flex size-(--node-size) shrink-0 items-center justify-center after:size-2 after:rounded-full after:bg-(--swatch-fill) after:content-['']");
+//#endregion
+export { swatchVariants };
+
+//# sourceMappingURL=variants.js.map

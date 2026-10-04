@@ -1,0 +1,16 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/workspace-avatar/variants.d.ts
+declare const workspaceAvatarVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "xs" | "2xs" | "3xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const workspaceAvatarFallbackVariants: (props?: ({
+  variant?: "purple" | "indigo" | "emerald" | "crimson" | "orange" | "pink" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type WorkspaceAvatarSize = NonNullable<VariantProps<typeof workspaceAvatarVariants>["size"]>;
+type WorkspaceAvatarVariantProps = StrictVariantProps<typeof workspaceAvatarVariants>;
+type WorkspaceAvatarFallbackVariantProps = StrictVariantProps<typeof workspaceAvatarFallbackVariants>;
+//#endregion
+export { WorkspaceAvatarFallbackVariantProps, WorkspaceAvatarSize, WorkspaceAvatarVariantProps, workspaceAvatarFallbackVariants, workspaceAvatarVariants };
+//# sourceMappingURL=variants.d.ts.map

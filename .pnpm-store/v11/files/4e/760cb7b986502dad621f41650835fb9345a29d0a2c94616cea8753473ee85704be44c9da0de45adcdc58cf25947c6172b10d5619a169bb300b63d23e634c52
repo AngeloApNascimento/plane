@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress-label.d.ts
+type LinearProgressLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled progress label. Base-UI-agnostic — graft in `components` via `<BaseProgress.Label
+ * render={<LinearProgressLabel/>} />`.
+ */
+declare function LinearProgressLabel({ render, ...props }: LinearProgressLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { LinearProgressLabel, LinearProgressLabelProps };
+//# sourceMappingURL=linear-progress-label.d.ts.map

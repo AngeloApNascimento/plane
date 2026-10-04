@@ -1,0 +1,17 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/input/variants.d.ts
+declare const inputVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type InputVariantConfig = VariantProps<typeof inputVariants>;
+type InputSize = NonNullable<InputVariantConfig["size"]>;
+type InputVariantProps = StrictVariantProps<typeof inputVariants>;
+declare const inputGroupVariants: (props?: ({
+  size?: "md" | "lg" | "xl" | "2xl" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type InputGroupVariantProps = StrictVariantProps<typeof inputGroupVariants>;
+//#endregion
+export { InputGroupVariantProps, InputSize, InputVariantProps, inputGroupVariants, inputVariants };
+//# sourceMappingURL=variants.d.ts.map

@@ -1,0 +1,74 @@
+"use client";
+import { TooltipArrow } from "../../elements/tooltip/tooltip-arrow.js";
+import { TooltipPopup } from "../../elements/tooltip/tooltip-popup.js";
+import { Positioner } from "../../internal/positioner.js";
+import { Shortcut } from "../shortcut/shortcut.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Tooltip } from "@base-ui/react/tooltip";
+//#region src/components/tooltip/tooltip.tsx
+/**
+* A small popup that describes the element it is attached to. Appears on hover or keyboard focus of
+* the trigger and is dismissed on blur, pointer-leave, or `Esc`.
+*
+* Built on Base UI's tooltip, so it's accessible by default: the popup is exposed as
+* `role="tooltip"` and wired to the trigger. Pass the trigger as `children`, the popup copy as
+* `label`, and an optional `shortcut` for a dimmed visual keyboard hint.
+*
+* Grafts Base UI's tooltip behavior onto propel's styled parts: `Tooltip.Root` + `Tooltip.Trigger`
+* + `Tooltip.Portal` → `Tooltip.Positioner` (shared `internal/positioner`) → `TooltipPopup`, with
+* an optional `TooltipArrow` when `showArrow` is set. Colors come from propel's adaptive surface
+* tokens (`bg-layer-2` / `text-primary` / `border-subtle-1`), so the tooltip is light on light
+* themes and dark on dark themes, matching the Figma "Tooltip" component.
+*/
+function Tooltip$1({ label, disabled = false, shortcut, layout = "single", children, side = "top", sideOffset = 8, align, alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, showArrow = false, arrowPadding, sticky, positionMethod, anchor, disableAnchorTracking, delay, ...props }) {
+	const popupId = React.useId();
+	const [popupMounted, setPopupMounted] = React.useState(false);
+	const popupRef = React.useCallback((node) => {
+		setPopupMounted(node !== null);
+	}, []);
+	const mounted = !disabled && !!label?.trim();
+	const triggerId = typeof children.props.id === "string" ? children.props.id : void 0;
+	const describedBy = [children.props["aria-describedby"], popupMounted ? popupId : void 0].filter(Boolean).join(" ") || void 0;
+	return /* @__PURE__ */ jsxs(Tooltip.Root, {
+		...props,
+		disabled: !mounted,
+		children: [/* @__PURE__ */ jsx(Tooltip.Trigger, {
+			id: triggerId,
+			delay,
+			render: React.cloneElement(children, { "aria-describedby": describedBy })
+		}), mounted ? /* @__PURE__ */ jsx(Tooltip.Portal, { children: /* @__PURE__ */ jsx(Tooltip.Positioner, {
+			side,
+			sideOffset,
+			align,
+			alignOffset,
+			collisionPadding,
+			collisionBoundary,
+			collisionAvoidance,
+			arrowPadding,
+			sticky,
+			positionMethod,
+			anchor,
+			disableAnchorTracking,
+			render: /* @__PURE__ */ jsx(Positioner, { hideWhenAnchorHidden: !sticky }),
+			children: /* @__PURE__ */ jsxs(Tooltip.Popup, {
+				ref: popupRef,
+				id: popupId,
+				role: "tooltip",
+				render: /* @__PURE__ */ jsx(TooltipPopup, { layout }),
+				children: [
+					label,
+					shortcut ? /* @__PURE__ */ jsx(Shortcut, {
+						keys: shortcut,
+						size: "sm"
+					}) : null,
+					showArrow ? /* @__PURE__ */ jsx(Tooltip.Arrow, { render: /* @__PURE__ */ jsx(TooltipArrow, {}) }) : null
+				]
+			})
+		}) }) : null]
+	});
+}
+//#endregion
+export { Tooltip$1 as Tooltip };
+
+//# sourceMappingURL=tooltip.js.map

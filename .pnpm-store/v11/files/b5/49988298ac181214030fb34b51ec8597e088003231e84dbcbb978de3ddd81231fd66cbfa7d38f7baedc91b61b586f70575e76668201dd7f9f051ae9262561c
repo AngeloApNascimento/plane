@@ -1,0 +1,20 @@
+"use client";
+import { comboboxStickyListVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-sticky-list.tsx
+/**
+* The padded inset around sticky rows in the overlay header (Select all + separator). Matches the
+* flat popup's `p-1` so header rows align with the scrolling list.
+*/
+function ComboboxStickyList({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: comboboxStickyListVariants() }, props)
+	});
+}
+//#endregion
+export { ComboboxStickyList };
+
+//# sourceMappingURL=combobox-sticky-list.js.map

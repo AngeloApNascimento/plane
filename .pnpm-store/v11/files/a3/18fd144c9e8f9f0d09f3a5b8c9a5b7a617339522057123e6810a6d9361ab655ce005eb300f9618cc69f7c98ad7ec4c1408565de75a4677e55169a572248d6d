@@ -1,0 +1,4 @@
+"use client";
+import { ScrollAreaScrollbarSize, ScrollAreaScrollbarVisibility } from "../../elements/scroll-area/variants.js";
+import { ScrollArea, ScrollAreaOrientation, ScrollAreaProps } from "./scroll-area.js";
+export { ScrollArea, ScrollAreaOrientation, ScrollAreaProps, type ScrollAreaScrollbarSize, type ScrollAreaScrollbarVisibility };

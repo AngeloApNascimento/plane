@@ -1,0 +1,9 @@
+"use client";
+import { cx } from "class-variance-authority";
+//#region src/internal/overlay-frame.ts
+const overlayActionsClass = "flex justify-end gap-2";
+const overlayCloseClass = cx("inline-flex items-center justify-center rounded-md text-icon-secondary outline-none", "hover:bg-layer-transparent-hover", "focus-visible:ring-2 focus-visible:ring-accent-strong");
+//#endregion
+export { overlayActionsClass, overlayCloseClass };
+
+//# sourceMappingURL=overlay-frame.js.map

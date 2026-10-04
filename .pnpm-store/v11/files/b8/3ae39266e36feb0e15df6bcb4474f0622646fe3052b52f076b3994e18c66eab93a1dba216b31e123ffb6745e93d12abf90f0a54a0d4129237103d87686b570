@@ -1,0 +1,27 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/alert-dialog/variants.d.ts
+declare const alertDialogIconVariants: (props?: ({
+  variant?: "danger" | "info" | "success" | "warning" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const alertDialogActionsDefaultVariants: {
+  readonly layout: "inline";
+};
+declare const alertDialogActionsVariants: (props?: ({
+  layout?: "inline" | "split" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type AlertDialogActionsLayout = NonNullable<VariantProps<typeof alertDialogActionsVariants>["layout"]>;
+type AlertDialogActionsVariantProps = StrictVariantProps<typeof alertDialogActionsVariants, keyof typeof alertDialogActionsDefaultVariants> & {
+  /**
+   * End-align actions in one row, or separate a leading action from an action group.
+   *
+   * @default "inline"
+   */
+  layout?: AlertDialogActionsLayout;
+};
+type AlertDialogIconVariant = NonNullable<VariantProps<typeof alertDialogIconVariants>["variant"]>;
+type AlertDialogIconVariantProps = StrictVariantProps<typeof alertDialogIconVariants>;
+//#endregion
+export { AlertDialogActionsLayout, AlertDialogActionsVariantProps, AlertDialogIconVariant, AlertDialogIconVariantProps, alertDialogActionsVariants, alertDialogIconVariants };
+//# sourceMappingURL=variants.d.ts.map

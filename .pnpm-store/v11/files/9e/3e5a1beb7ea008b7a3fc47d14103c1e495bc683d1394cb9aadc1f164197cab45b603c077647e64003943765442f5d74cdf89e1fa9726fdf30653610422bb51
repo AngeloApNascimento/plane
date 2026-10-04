@@ -1,0 +1,13 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/switch/variants.ts
+const switchVariants = cva(cx("relative inline-flex shrink-0 cursor-pointer items-center rounded-full p-px transition-colors duration-100", "before:absolute before:content-['']", "bg-icon-placeholder data-checked:bg-accent-primary", "data-disabled:cursor-not-allowed data-disabled:not-data-checked:bg-(--txt-disabled) data-disabled:data-checked:opacity-40 data-readonly:cursor-default data-readonly:opacity-40", "outline-none focus-visible:ring-2 focus-visible:ring-accent-strong focus-visible:ring-offset-2 focus-visible:outline-2 focus-visible:outline-transparent", "data-invalid:not-data-checked:shadow-[inset_0_0_0_1px_var(--border-color-danger-strong)]"), { variants: { size: {
+	lg: "h-[18px] w-[30px] [--switch-thumb-size:1rem] [--switch-thumb-travel:12px] before:inset-x-0 before:-inset-y-[3px]",
+	md: "h-4 w-[27px] [--switch-thumb-size:0.875rem] [--switch-thumb-travel:11px] before:inset-x-0 before:-inset-y-1",
+	sm: "h-[14px] w-[23px] [--switch-thumb-size:0.75rem] [--switch-thumb-travel:9px] before:-inset-x-px before:-inset-y-[5px]"
+} } });
+const switchThumbVariants = cva(cx("size-(--switch-thumb-size) rounded-full bg-on-color shadow-raised-100 transition-transform duration-100", "data-checked:translate-x-(--switch-thumb-travel)", "rtl:data-checked:-translate-x-(--switch-thumb-travel)"));
+//#endregion
+export { switchThumbVariants, switchVariants };
+
+//# sourceMappingURL=variants.js.map

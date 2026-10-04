@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/server-outline.d.ts
+declare function ServerOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ServerOutline };
+//# sourceMappingURL=server-outline.d.ts.map

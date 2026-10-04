@@ -1,0 +1,25 @@
+"use client";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-search.d.ts
+type ComboboxSearchProps = Omit<Combobox.Input.Props, "className" | "style" | "render"> & {
+  /** Placeholder text. @default "Search" */
+  placeholder?: string;
+  /**
+   * Accessible name for the search combobox. Placeholder is not a name — override to localize, or
+   * pass `aria-labelledby` instead.
+   *
+   * @default "Search"
+   */
+  "aria-label"?: string;
+};
+/**
+ * A sticky search input pinned above a `ComboboxContent` list. Grafts Base UI's `Input` onto the
+ * same search-row chrome `MenuSearch` uses, so the combobox panel matches the dropdown. This _is_
+ * the combobox's `Input` — compose it via `ComboboxContent`'s `search` slot instead of
+ * `ComboboxInputGroup` / `ComboboxChips`, which already mount an input in the field. Defaults to
+ * `aria-label="Search"` (or the `placeholder`, if you changed that) so the combobox stays named.
+ */
+declare function ComboboxSearch({ placeholder, "aria-label": ariaLabel, ...props }: ComboboxSearchProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxSearch, ComboboxSearchProps };
+//# sourceMappingURL=combobox-search.d.ts.map

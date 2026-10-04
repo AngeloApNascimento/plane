@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/blocking-filled.d.ts
+declare function BlockingFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BlockingFilled };
+//# sourceMappingURL=blocking-filled.d.ts.map

@@ -1,0 +1,21 @@
+"use client";
+import * as React from "react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/breadcrumb/breadcrumb-ellipsis-trigger.d.ts
+type BreadcrumbEllipsisTriggerProps = Omit<Menu.Trigger.Props, "className" | "style" | "children" | "render"> & {
+  /** Accessible name for the trigger (e.g. "Show more breadcrumbs"). Required (icon-only). */
+  "aria-label": string;
+  /** The glyph shown inside the trigger. @default an ellipsis */
+  icon?: React.ReactNode;
+};
+/**
+ * The icon-only crumb standing in for collapsed crumbs — grafts Base UI's `Menu.Trigger` onto the
+ * styled `BreadcrumbTrigger`, with an ellipsis glyph by default (defaults are a `components`
+ * concern). Unlike `BreadcrumbMenuTrigger` it carries no label and no chevron indicator: a
+ * `BreadcrumbSeparator` follows it in the trail. Place a `MenuContent` of the hidden crumbs as its
+ * sibling inside a `Menu`.
+ */
+declare function BreadcrumbEllipsisTrigger({ icon, ...props }: BreadcrumbEllipsisTriggerProps): React.JSX.Element;
+//#endregion
+export { BreadcrumbEllipsisTrigger, BreadcrumbEllipsisTriggerProps };
+//# sourceMappingURL=breadcrumb-ellipsis-trigger.d.ts.map

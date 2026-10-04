@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/avatar-group/avatar-group.d.ts
+type AvatarGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The overlapping avatar stack — the styled container only (a single `<div>` with the Figma -6px
+ * overlap). Compose `Avatar`s inside it. The shared-`size` behavior is the ready-made
+ * `components/avatar-group`, which wraps this in the `AvatarGroupContext` provider.
+ */
+declare function AvatarGroup({ render, ...props }: AvatarGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AvatarGroup, AvatarGroupProps };
+//# sourceMappingURL=avatar-group.d.ts.map

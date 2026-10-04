@@ -1,0 +1,25 @@
+"use client";
+import { FieldLabel as FieldLabel$1 } from "../../elements/field/field-label.js";
+import { FieldLabelRequiredMarker } from "../../elements/field/field-label-required-marker.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Field } from "@base-ui/react/field";
+//#region src/components/field/field-label.tsx
+/**
+* The ready-made field label: Base UI's `Field.Label` (auto-associated with the control) grafted
+* onto the styled `FieldLabel` element (rule 1a), plus a `FieldLabelRequiredMarker` when
+* `required`.
+*/
+function FieldLabel({ size, inset, required, children, ...props }) {
+	return /* @__PURE__ */ jsxs(Field.Label, {
+		...props,
+		render: /* @__PURE__ */ jsx(FieldLabel$1, {
+			size,
+			inset
+		}),
+		children: [children, required ? /* @__PURE__ */ jsx(FieldLabelRequiredMarker, { children: "*" }) : null]
+	});
+}
+//#endregion
+export { FieldLabel };
+
+//# sourceMappingURL=field-label.js.map

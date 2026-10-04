@@ -1,0 +1,3 @@
+"use client";
+import { Shortcut } from "./shortcut.js";
+export { Shortcut };

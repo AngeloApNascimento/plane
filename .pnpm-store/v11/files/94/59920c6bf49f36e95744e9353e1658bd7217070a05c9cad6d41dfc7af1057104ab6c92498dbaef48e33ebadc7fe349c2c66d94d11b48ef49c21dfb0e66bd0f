@@ -1,0 +1,38 @@
+"use client";
+import { ComboboxSurfaceProps } from "./combobox-content.shared.js";
+//#region src/components/combobox/combobox-submenu-content.d.ts
+type ComboboxSubmenuContentProps = Omit<ComboboxSurfaceProps, "side" | "sideOffset" | "align" | "sizing" | "anchor"> & {
+  /** Which side of the parent row the nested list opens toward. @default "right" */
+  side?: ComboboxSurfaceProps["side"];
+  /** Distance in px between the parent row and the nested list. @default 4 */
+  sideOffset?: ComboboxSurfaceProps["sideOffset"];
+  /** Alignment of the nested list relative to the parent row along `side`. @default "start" */
+  align?: ComboboxSurfaceProps["align"];
+  /**
+   * How the nested popup takes its width. `auto` is the content's width — never narrower than
+   * 192px, never wider than 384px or the room beside the row, and held while open so a filtering
+   * list does not reflow; it caps the list at 384px tall. `anchor` matches the parent row's width
+   * instead, which is rarely what a nested list wants.
+   *
+   * @default "auto"
+   */
+  sizing?: ComboboxSurfaceProps["sizing"];
+};
+/**
+ * The floating surface for a nested combobox — the same elevated, scrollable panel as
+ * `ComboboxContent`, but anchored beside its parent row instead of below the field. Place it inside
+ * a `ComboboxSubmenu`, which supplies both the row it anchors to and the nested root it belongs
+ * to.
+ *
+ * It has no `anchor` prop: the parent row is the anchor, and overriding it would leave the row
+ * highlighted next to a panel somewhere else.
+ *
+ * Same naming contract as `ComboboxContent`: a nested list with its own `ComboboxSearch` is a
+ * `role="dialog"` and must be named — pass `aria-label` (the parent row's label reads well) or
+ * `aria-labelledby`. Name its `ComboboxList` too, since that list, not the row, is what a screen
+ * reader lands in when the nested combobox opens.
+ */
+declare function ComboboxSubmenuContent({ side, sideOffset, align, sizing, onPointerEnter, onPointerLeave, onKeyDown, ...props }: ComboboxSubmenuContentProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxSubmenuContent, ComboboxSubmenuContentProps };
+//# sourceMappingURL=combobox-submenu-content.d.ts.map

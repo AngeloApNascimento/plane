@@ -1,0 +1,20 @@
+"use client";
+import { fieldControlContentVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-control-content.tsx
+/** The control + helper-text column shared by `InputField` and `TextAreaField`. */
+function FieldControlContent({ orientation, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: fieldControlContentVariants({
+			orientation,
+			size
+		}) }, props)
+	});
+}
+//#endregion
+export { FieldControlContent };
+
+//# sourceMappingURL=field-control-content.js.map

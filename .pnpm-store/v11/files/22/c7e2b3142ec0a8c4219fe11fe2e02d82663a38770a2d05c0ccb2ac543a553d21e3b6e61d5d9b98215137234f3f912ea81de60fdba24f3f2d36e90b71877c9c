@@ -1,0 +1,3 @@
+"use client";
+import { LogoSpinner } from "./logo-spinner.js";
+export { LogoSpinner };

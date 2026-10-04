@@ -1,0 +1,20 @@
+"use client";
+import { menuSubmenuTriggerVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-submenu-trigger.tsx
+/**
+* The styled row that opens a submenu. Base-UI-agnostic — graft the submenu-trigger behavior in
+* `components` via `<BaseMenu.SubmenuTrigger render={<MenuSubmenuTrigger />} />`.
+*/
+function MenuSubmenuTrigger({ variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: menuSubmenuTriggerVariants({ variant }) }, props)
+	});
+}
+//#endregion
+export { MenuSubmenuTrigger };
+
+//# sourceMappingURL=menu-submenu-trigger.js.map

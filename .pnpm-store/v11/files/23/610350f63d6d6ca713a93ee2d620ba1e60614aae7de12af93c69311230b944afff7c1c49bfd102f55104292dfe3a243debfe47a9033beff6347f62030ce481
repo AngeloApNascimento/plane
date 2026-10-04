@@ -1,0 +1,12 @@
+"use client";
+import { PreviewCard } from "@base-ui/react/preview-card";
+//#region src/components/preview-card/preview-card-trigger.d.ts
+type PreviewCardTriggerProps = Omit<PreviewCard.Trigger.Props, "className" | "style">;
+/**
+ * The link that opens the preview card on hover or focus. Renders an `<a>` by default; pass
+ * `render` to project the trigger onto your own link. Maps 1:1 to `PreviewCard.Trigger`.
+ */
+declare function PreviewCardTrigger(props: PreviewCardTriggerProps): import("react").JSX.Element;
+//#endregion
+export { PreviewCardTrigger, PreviewCardTriggerProps };
+//# sourceMappingURL=preview-card-trigger.d.ts.map

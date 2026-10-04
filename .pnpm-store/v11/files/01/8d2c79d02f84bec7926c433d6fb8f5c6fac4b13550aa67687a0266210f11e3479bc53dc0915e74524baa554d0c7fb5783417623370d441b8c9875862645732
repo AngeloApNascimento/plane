@@ -1,0 +1,24 @@
+"use client";
+import { ToolbarSize } from "../../elements/toolbar/variants.js";
+import { ToolbarMenuTriggerButtonProps as ToolbarMenuTriggerButtonProps$1 } from "../../elements/toolbar/toolbar-menu-trigger-button.js";
+import "../../elements/toolbar/index.js";
+import * as React from "react";
+import { Toolbar } from "@base-ui/react/toolbar";
+//#region src/components/toolbar/toolbar-menu-trigger-button.d.ts
+type ToolbarMenuTriggerButtonProps = Omit<Toolbar.Button.Props, "className" | "style" | "render"> & {
+  /** Size override; defaults to the surrounding `Toolbar`'s size. */
+  size?: ToolbarSize;
+  /**
+   * Custom render for the styled trigger (e.g. `render={<Menu.Trigger />}` so the menu trigger
+   * grafts onto the same focusable control).
+   */
+  render?: ToolbarMenuTriggerButtonProps$1["render"];
+};
+/**
+ * A toolbar menu-trigger button: grafts Base UI's `Toolbar.Button` (roving-focus item) behavior
+ * onto the styled `ToolbarMenuTriggerButton`, taking its `size` from the surrounding `Toolbar`.
+ */
+declare function ToolbarMenuTriggerButton({ size, render, ...props }: ToolbarMenuTriggerButtonProps): React.JSX.Element;
+//#endregion
+export { ToolbarMenuTriggerButton, ToolbarMenuTriggerButtonProps };
+//# sourceMappingURL=toolbar-menu-trigger-button.d.ts.map

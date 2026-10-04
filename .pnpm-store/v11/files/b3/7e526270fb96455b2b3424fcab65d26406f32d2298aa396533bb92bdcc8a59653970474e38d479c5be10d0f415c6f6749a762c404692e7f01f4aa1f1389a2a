@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/git-pull-request-filled.d.ts
+declare function GitPullRequestFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { GitPullRequestFilled };
+//# sourceMappingURL=git-pull-request-filled.d.ts.map

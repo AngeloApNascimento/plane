@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/autocomplete/autocomplete-input.d.ts
+type AutocompleteInputProps = Omit<useRender.ComponentProps<"input">, "className" | "style" | "size">;
+/**
+ * The styled autocomplete text field. Base-UI-agnostic — graft the combobox behavior in
+ * `components` via `<BaseAutocomplete.Input render={<AutocompleteInput/>} />`.
+ */
+declare function AutocompleteInput({ render, ...props }: AutocompleteInputProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AutocompleteInput, AutocompleteInputProps };
+//# sourceMappingURL=autocomplete-input.d.ts.map

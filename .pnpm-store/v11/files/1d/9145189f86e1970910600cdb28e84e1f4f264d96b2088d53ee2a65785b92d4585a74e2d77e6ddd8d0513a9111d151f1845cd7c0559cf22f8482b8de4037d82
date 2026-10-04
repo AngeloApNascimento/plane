@@ -1,0 +1,17 @@
+"use client";
+import { alertDialogActionGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-action-group.tsx
+/** Keeps related footer actions together in a split footer. */
+function AlertDialogActionGroup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: alertDialogActionGroupVariants() }, props)
+	});
+}
+//#endregion
+export { AlertDialogActionGroup };
+
+//# sourceMappingURL=alert-dialog-action-group.js.map

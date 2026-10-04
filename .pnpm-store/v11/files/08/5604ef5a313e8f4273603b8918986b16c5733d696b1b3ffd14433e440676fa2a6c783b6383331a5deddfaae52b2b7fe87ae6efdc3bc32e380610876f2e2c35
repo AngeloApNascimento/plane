@@ -1,0 +1,20 @@
+"use client";
+import { sliderValueVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-value.tsx
+/**
+* The styled value readout. Base-UI-agnostic — graft in `components` via `<BaseSlider.Value
+* render={<SliderValue/>} />`.
+*/
+function SliderValue({ render, ...props }) {
+	return useRender({
+		defaultTagName: "output",
+		render,
+		props: mergeProps({ className: sliderValueVariants() }, props)
+	});
+}
+//#endregion
+export { SliderValue };
+
+//# sourceMappingURL=slider-value.js.map

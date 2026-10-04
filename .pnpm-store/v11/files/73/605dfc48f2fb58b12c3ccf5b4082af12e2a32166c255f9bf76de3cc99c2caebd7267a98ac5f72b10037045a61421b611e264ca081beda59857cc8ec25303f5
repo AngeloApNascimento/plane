@@ -1,0 +1,19 @@
+"use client";
+import { CheckboxGroup as CheckboxGroup$2 } from "../../elements/checkbox-group/checkbox-group.js";
+import { jsx } from "react/jsx-runtime";
+import { CheckboxGroup } from "@base-ui/react/checkbox-group";
+//#region src/components/checkbox-group/checkbox-group.tsx
+/**
+* The ready-made checkbox group: grafts Base UI's `CheckboxGroup` behavior (the shared
+* selected-values state) onto the styled `elements/checkbox-group` container.
+*/
+function CheckboxGroup$1({ density, ...props }) {
+	return /* @__PURE__ */ jsx(CheckboxGroup, {
+		...props,
+		render: /* @__PURE__ */ jsx(CheckboxGroup$2, { density })
+	});
+}
+//#endregion
+export { CheckboxGroup$1 as CheckboxGroup };
+
+//# sourceMappingURL=checkbox-group.js.map

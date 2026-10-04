@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/underline-outline.d.ts
+declare function UnderlineOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { UnderlineOutline };
+//# sourceMappingURL=underline-outline.d.ts.map

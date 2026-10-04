@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/tick-filled.d.ts
+declare function TickFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TickFilled };
+//# sourceMappingURL=tick-filled.d.ts.map

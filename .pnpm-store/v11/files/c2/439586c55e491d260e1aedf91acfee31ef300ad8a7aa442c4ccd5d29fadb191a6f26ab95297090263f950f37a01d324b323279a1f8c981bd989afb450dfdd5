@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/disc-filled.tsx
+function DiscFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M8 .667a7.334 7.334 0 1 1-.001 14.667A7.334 7.334 0 0 1 8 .667m.125 4.708a2.625 2.625 0 1 0 0 5.25 2.625 2.625 0 0 0 0-5.25m0 1.25a1.375 1.375 0 1 1 0 2.75 1.375 1.375 0 0 1 0-2.75"
+		})
+	});
+}
+//#endregion
+export { DiscFilled };
+
+//# sourceMappingURL=disc-filled.js.map

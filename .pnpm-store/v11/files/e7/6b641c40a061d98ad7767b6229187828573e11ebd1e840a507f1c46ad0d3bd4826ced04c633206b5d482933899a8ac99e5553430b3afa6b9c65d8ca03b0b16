@@ -1,0 +1,10 @@
+"use client";
+import { Accordion, AccordionProps } from "./accordion.js";
+import { AccordionHeader, AccordionHeaderProps } from "./accordion-header.js";
+import { AccordionItem, AccordionItemProps } from "./accordion-item.js";
+import { AccordionPanel, AccordionPanelProps } from "./accordion-panel.js";
+import { AccordionTrigger, AccordionTriggerProps } from "./accordion-trigger.js";
+import { AccordionPanelContent, AccordionPanelContentProps } from "../../elements/accordion/accordion-panel-content.js";
+import { AccordionTriggerTitle, AccordionTriggerTitleProps } from "../../elements/accordion/accordion-trigger-title.js";
+import "../../elements/accordion/index.js";
+export { Accordion, AccordionHeader, AccordionHeaderProps, AccordionItem, AccordionItemProps, AccordionPanel, AccordionPanelContent, type AccordionPanelContentProps, AccordionPanelProps, AccordionProps, AccordionTrigger, AccordionTriggerProps, AccordionTriggerTitle, type AccordionTriggerTitleProps };

@@ -1,0 +1,30 @@
+"use client";
+import { DialogAsideSize, DialogAsideVariantProps, DialogDensity } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-aside.d.ts
+type DialogAsideProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & Omit<DialogAsideVariantProps, "size" | "density"> & {
+  /**
+   * Gutter tier, matching the popup `size` it sits in: 16 px start at every rung, 48 px at
+   * `full`.
+   *
+   * @default "md"
+   */
+  size?: DialogAsideSize;
+  /**
+   * Compactness. `comfortable` (default) lets `size` pick the gutter; `compact` keeps 16 px at
+   * every size, including `full`.
+   *
+   * @default "comfortable"
+   */
+  density?: DialogDensity;
+};
+/**
+ * A fixed-width (280 px) start-side column inside `DialogPanes`, beside `DialogMain`. Stretches to
+ * the panes' height so its end seam is the full popup. Scrolls on its own. Holds navigation for the
+ * dialog's content — a step list, a section list — supplied by the consumer. Pass `tabIndex={0}`
+ * when its content can overflow.
+ */
+declare function DialogAside({ size, density, render, ...props }: DialogAsideProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogAside, DialogAsideProps, type DialogAsideSize };
+//# sourceMappingURL=dialog-aside.d.ts.map

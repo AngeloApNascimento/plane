@@ -1,0 +1,9 @@
+"use client";
+import { Toast } from "@base-ui/react/toast";
+//#region src/components/toast/manager.ts
+const useToastManager = Toast.useToastManager;
+const createToastManager = Toast.createToastManager;
+//#endregion
+export { createToastManager, useToastManager };
+
+//# sourceMappingURL=manager.js.map

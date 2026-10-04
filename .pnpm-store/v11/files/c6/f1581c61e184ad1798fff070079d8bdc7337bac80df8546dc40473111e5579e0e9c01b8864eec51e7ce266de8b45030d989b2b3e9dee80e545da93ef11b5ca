@@ -1,0 +1,10 @@
+"use client";
+import { SliderControl } from "../../elements/slider/slider-control.js";
+import { SliderHeader } from "../../elements/slider/slider-header.js";
+import { SliderIndicator } from "../../elements/slider/slider-indicator.js";
+import { SliderLabel } from "../../elements/slider/slider-label.js";
+import { SliderThumb } from "../../elements/slider/slider-thumb.js";
+import { SliderTrack } from "../../elements/slider/slider-track.js";
+import { SliderValue } from "../../elements/slider/slider-value.js";
+import { Slider } from "./slider.js";
+export { Slider, SliderControl, SliderHeader, SliderIndicator, SliderLabel, SliderThumb, SliderTrack, SliderValue };

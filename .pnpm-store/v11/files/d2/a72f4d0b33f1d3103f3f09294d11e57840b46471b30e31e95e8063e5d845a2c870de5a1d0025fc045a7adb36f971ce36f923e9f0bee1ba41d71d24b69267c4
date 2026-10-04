@@ -1,0 +1,48 @@
+"use client";
+import { FieldsetLegend } from "../../elements/fieldset/fieldset-legend.js";
+import { Field } from "../field/field.js";
+import { FieldDescription } from "../field/field-description.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import { FieldOptionSizeProvider } from "../../internal/field-option-size.js";
+import { RadioGroup } from "../radio/radio-group.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Fieldset } from "@base-ui/react/fieldset";
+//#region src/components/radio-group-field/radio-group-field.tsx
+/** Ready-to-use radio group field with legend, description, and helper/error text. */
+function RadioGroupField({ children, density, description, disabled, error, hint, label, size, name, required, ...groupProps }) {
+	return /* @__PURE__ */ jsxs(Field, {
+		name,
+		disabled,
+		invalid: error != null || void 0,
+		children: [/* @__PURE__ */ jsxs(Fieldset.Root, {
+			render: /* @__PURE__ */ jsx(RadioGroup, {
+				density,
+				disabled,
+				required,
+				...groupProps
+			}),
+			children: [
+				/* @__PURE__ */ jsx(Fieldset.Legend, {
+					render: /* @__PURE__ */ jsx(FieldsetLegend, { size }),
+					children: label
+				}),
+				description != null ? /* @__PURE__ */ jsx(FieldDescription, {
+					size,
+					children: description
+				}) : null,
+				/* @__PURE__ */ jsx(FieldOptionSizeProvider, {
+					size,
+					children
+				})
+			]
+		}), /* @__PURE__ */ jsx(FieldHelperText, {
+			size,
+			hint,
+			error
+		})]
+	});
+}
+//#endregion
+export { RadioGroupField };
+
+//# sourceMappingURL=radio-group-field.js.map

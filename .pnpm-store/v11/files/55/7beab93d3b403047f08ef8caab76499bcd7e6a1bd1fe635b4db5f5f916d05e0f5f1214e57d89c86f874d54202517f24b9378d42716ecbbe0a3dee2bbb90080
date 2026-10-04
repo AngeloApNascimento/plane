@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-item-content.d.ts
+type FieldItemContentProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/** The label + description column for a single choice option (checkbox/radio/switch row). */
+declare function FieldItemContent({ render, ...props }: FieldItemContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldItemContent, FieldItemContentProps };
+//# sourceMappingURL=field-item-content.d.ts.map

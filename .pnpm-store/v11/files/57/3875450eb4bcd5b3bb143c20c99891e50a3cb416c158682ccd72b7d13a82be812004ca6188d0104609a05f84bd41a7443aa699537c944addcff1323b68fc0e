@@ -1,0 +1,10 @@
+"use client";
+import { BannerTitleVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/banner/banner-title.d.ts
+type BannerTitleProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & BannerTitleVariantProps;
+/** The banner's headline, stacked above the `BannerDescription` inside the `BannerBody`. */
+declare function BannerTitle({ placement, size, render, ...props }: BannerTitleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BannerTitle, BannerTitleProps };
+//# sourceMappingURL=banner-title.d.ts.map

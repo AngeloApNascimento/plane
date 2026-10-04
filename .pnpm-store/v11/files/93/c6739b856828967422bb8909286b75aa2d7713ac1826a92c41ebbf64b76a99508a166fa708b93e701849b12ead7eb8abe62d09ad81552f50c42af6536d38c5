@@ -1,0 +1,3 @@
+"use client";
+import { Calendar, CalendarProps } from "./calendar.js";
+export { Calendar, CalendarProps };

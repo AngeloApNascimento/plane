@@ -1,0 +1,83 @@
+"use client";
+import { listItemPrimaryVariants } from "../../internal/list-item-primary.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/list/variants.ts
+/** The list container — a vertical stack of rows. Role/aria are supplied by the consumer. */
+const listVariants = cva("flex w-full flex-col gap-0.5");
+const listItemVariants = cva(cx("group/list-item relative flex h-8 w-full items-center gap-2 rounded-lg pr-2 [--node-size:var(--control-glyph-lg)]", "text-secondary transition-colors", "hover:bg-layer-transparent-hover", "active:bg-layer-transparent-active", "has-[[aria-current=page]]:bg-layer-transparent-selected has-[[aria-current=page]]:text-primary", "has-[[data-list-item-primary]:focus-visible]:ring-2 has-[[data-list-item-primary]:focus-visible]:ring-accent-strong"), {
+	variants: {
+		level: {
+			1: "pl-2",
+			2: "pl-4",
+			3: "pl-6",
+			4: "pl-8",
+			5: "pl-10"
+		},
+		density: {
+			comfortable: "text-body-sm-medium",
+			compact: "text-body-xs-medium"
+		}
+	},
+	compoundVariants: [{
+		density: "comfortable",
+		class: "active:text-primary"
+	}],
+	defaultVariants: {
+		level: 1,
+		density: "comfortable"
+	}
+});
+const listItemLinkVariants = listItemPrimaryVariants;
+const listItemButtonVariants = listItemPrimaryVariants;
+/** The row label — fills the remaining width and truncates. */
+const listItemLabelVariants = cva("min-w-0 flex-1 truncate");
+/**
+* The row's trailing count chip (e.g. an unread count). Figma's fill is a raw 10% black overlay —
+* not theme-aware and unreadable in dark mode (measured: text and background land within ~0.02
+* lightness of each other). Uses `Badge`'s `neutral` palette (`bg-layer-3`/`text-label-grey-text`)
+* instead, which is already proven correct in both themes; the exact shade drifts slightly from the
+* literal Figma value, which didn't match any existing token anyway.
+*
+* Inherits `ListItem`'s `density` font-size/weight (`text-body-sm-medium` / `text-body-xs-medium`)
+* so label and counter share density, but pins `leading-none` — body utilities ship `line-height:
+* 1.54`, which stretches the chip into a tall pill. Color stays pinned (`text-label-grey-text`) so
+* the chip doesn't follow selected/pressed row text.
+*/
+const listItemCounterVariants = cva("flex shrink-0 items-center justify-center rounded-sm bg-layer-3 px-0.5 leading-none text-label-grey-text");
+/**
+* The row's trailing expand/collapse control — a sibling of the row's primary
+* (`ListItemLink`/`ListItemButton`), never nested inside it (a button inside a link/button is
+* invalid). Geometry: 20px box, 24px effective touch target via the transparent `before:-inset-0.5`
+* ring, 14px node — close to (but not the same as) `IconButton` `sm` (24px box / 16px glyph); kept
+* local until a third caller hits the rule-of-3. Carries `group` so the composed
+* `DisclosureIndicator` rotates off it. No own hover/active fill — it's a descendant of `ListItem`,
+* which already fills on hover/active for any interactive child. It DOES carry its own
+* focus-visible ring on the 20px box: the row's full-row ring only fires for the primary
+* (`[data-list-item-primary]`, see `listItemVariants`), so sibling controls stay visually distinct.
+* Disabled mirrors `listSectionTriggerVariants` (`disabled` / `data-disabled` cursor).
+*/
+const listItemDisclosureTriggerVariants = cva("group relative flex size-5 shrink-0 cursor-pointer items-center justify-center rounded-sm outline-none [--node-size:var(--control-glyph-xs)] before:absolute before:-inset-0.5 before:content-[''] focus-visible:ring-2 focus-visible:ring-accent-strong disabled:cursor-not-allowed data-disabled:cursor-not-allowed");
+/**
+* A static section heading — a small, muted label that names a group of rows. The non-interactive
+* sibling of `listSectionTrigger`: no button affordance (no hover/focus/cursor), it just titles a
+* static section in a settings-style sidebar.
+*/
+const listSectionHeadingVariants = cva(cx("flex h-7 w-full items-center px-2 py-1", "text-body-xs-semibold text-tertiary"));
+/**
+* The vertical gap between a `ListSection` heading and its first row. `ListSection` mounts rows
+* directly in the Collapsible panel (not `CollapsiblePanelContent` — that carries horizontal inset
+* + prose that would double-pad rows and mis-style list text), so this is the only source of that
+* spacing.
+*/
+const listSectionPanelContentVariants = cva("pt-2");
+/**
+* A collapsible section's header — a small, muted heading that toggles the section, with the
+* chevron pushed to the inline-end edge of the row. Styled `ListSectionTrigger` (grafted as
+* `BaseCollapsible.Trigger`'s render target); carries the `group` so a `DisclosureIndicator` inside
+* rotates off its `data-panel-open`.
+*/
+const listSectionTriggerVariants = cva(cx("group flex w-full items-center justify-between gap-1 rounded-md px-2 py-1 [--node-size:var(--control-glyph-md)]", "text-body-xs-semibold text-tertiary transition-colors", "cursor-pointer outline-none hover:text-secondary", "focus-visible:ring-2 focus-visible:ring-accent-strong", "disabled:cursor-not-allowed data-disabled:cursor-not-allowed"));
+//#endregion
+export { listItemButtonVariants, listItemCounterVariants, listItemDisclosureTriggerVariants, listItemLabelVariants, listItemLinkVariants, listItemVariants, listSectionHeadingVariants, listSectionPanelContentVariants, listSectionTriggerVariants, listVariants };
+
+//# sourceMappingURL=variants.js.map

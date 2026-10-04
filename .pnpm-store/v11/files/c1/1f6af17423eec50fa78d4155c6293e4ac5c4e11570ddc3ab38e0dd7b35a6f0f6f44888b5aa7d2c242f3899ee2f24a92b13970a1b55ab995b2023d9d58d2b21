@@ -1,0 +1,21 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/tooltip/variants.d.ts
+declare const tooltipPopupDefaultVariants: {
+  readonly layout: "single";
+};
+/**
+ * Tooltip surface. `layout` mirrors Figma singleline / multiline: a one-line nowrap row vs a
+ * stacked wrapping description with the shortcut beneath. Shared chrome (fill, border, shadow,
+ * padding) stays on the base; type, radius, direction, and gap switch per layout.
+ */
+declare const tooltipPopupVariants: (props?: ({
+  layout?: "single" | "stacked" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type TooltipPopupVariantConfig = VariantProps<typeof tooltipPopupVariants>;
+type TooltipLayout = NonNullable<TooltipPopupVariantConfig["layout"]>;
+type TooltipPopupVariantProps = StrictVariantProps<typeof tooltipPopupVariants, keyof typeof tooltipPopupDefaultVariants>;
+//#endregion
+export { TooltipLayout, TooltipPopupVariantProps, tooltipPopupVariants };
+//# sourceMappingURL=variants.d.ts.map

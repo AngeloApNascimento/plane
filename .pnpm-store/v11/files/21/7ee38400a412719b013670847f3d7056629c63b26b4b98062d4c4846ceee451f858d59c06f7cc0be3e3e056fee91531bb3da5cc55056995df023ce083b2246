@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/mail-x-filled.d.ts
+declare function MailXFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MailXFilled };
+//# sourceMappingURL=mail-x-filled.d.ts.map

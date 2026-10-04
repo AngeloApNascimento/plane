@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/hide-filled.d.ts
+declare function HideFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { HideFilled };
+//# sourceMappingURL=hide-filled.d.ts.map

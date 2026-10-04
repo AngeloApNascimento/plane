@@ -1,0 +1,21 @@
+"use client";
+import { linearProgressVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress.tsx
+/**
+* The styled linear-progress frame — the flex row that groups the track and its label/value.
+* Base-UI-agnostic; graft the `progressbar` value model in `components` via `<BaseProgress.Root
+* render={<LinearProgress/>} />`.
+*/
+function LinearProgress({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: linearProgressVariants() }, props)
+	});
+}
+//#endregion
+export { LinearProgress };
+
+//# sourceMappingURL=linear-progress.js.map

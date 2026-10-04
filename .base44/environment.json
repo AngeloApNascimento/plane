@@ -1,0 +1,19 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    {
+      "name": "SECRET_KEY",
+      "description": "Django SECRET_KEY for session signing and CSRF protection. Generate with: python -c \"from django.utils.crypto import get_random_secret_key; print(get_random_secret_key())\"",
+      "requiredAtBoot": true,
+      "generatedForDevelopment": true
+    },
+    {
+      "name": "LIVE_SERVER_SECRET_KEY",
+      "description": "Shared secret between the Django API and the live collaboration server (apps/live) for authenticating WebSocket connections.",
+      "requiredAtBoot": true,
+      "generatedForDevelopment": true
+    }
+  ]
+}

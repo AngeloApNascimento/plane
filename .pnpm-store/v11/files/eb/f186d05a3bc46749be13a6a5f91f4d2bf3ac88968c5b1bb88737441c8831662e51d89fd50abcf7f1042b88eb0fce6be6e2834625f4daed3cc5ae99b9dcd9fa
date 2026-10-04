@@ -1,0 +1,49 @@
+"use client";
+import { Pill as Pill$1 } from "../../elements/pill/pill.js";
+import { PillLabel } from "../../elements/pill/pill-label.js";
+import { Spinner } from "../../internal/spinner.js";
+import { usePillSize } from "./pill-group-context.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { LoaderCircle } from "lucide-react";
+import { Button } from "@base-ui/react/button";
+//#region src/components/pill/pill.tsx
+/**
+* The ready-made pill button: grafts Base UI's `Button` behavior onto the styled `Pill` container
+* (behavior outer, the styled button as the render target), with an optional leading node, the
+* `PillLabel`, an optional trailing node, and a trailing spinner while `loading`. `loading`
+* disables the button while keeping it focusable (`aria-busy`). With no `label` the label part is
+* skipped entirely (an empty flex child would still consume the pill's gap). A consumer `render` —
+* `render={<MenuTrigger />}` to make the pill open a picker — is threaded onto the styled element
+* so the trigger behavior and its `data-popup-open` land on the real `<button>`; the reverse graft
+* (`<MenuTrigger render={<Pill … />}>`) works as well. `nativeButton` rides along the way it does
+* on `Button`, for a `render` that is not a button.
+*/
+function Pill({ size, variant = "outline", placeholder, startIcon, endIcon, loading = false, disabled, label, render, nativeButton, ...props }) {
+	const resolvedSize = usePillSize(size);
+	return /* @__PURE__ */ jsxs(Button, {
+		...props,
+		nativeButton,
+		render: /* @__PURE__ */ jsx(Pill$1, {
+			size: resolvedSize,
+			variant,
+			placeholder,
+			render,
+			...nativeButton === false ? { type: void 0 } : void 0
+		}),
+		disabled: disabled || loading,
+		focusableWhenDisabled: loading ? true : void 0,
+		"aria-busy": loading ? true : void 0,
+		children: [
+			!loading ? startIcon : null,
+			label != null ? /* @__PURE__ */ jsx(PillLabel, { children: label }) : null,
+			endIcon != null && loading ? /* @__PURE__ */ jsx(Spinner, { children: /* @__PURE__ */ jsx(LoaderCircle, {}) }) : endIcon ?? /* @__PURE__ */ jsx(Spinner, {
+				active: loading,
+				children: /* @__PURE__ */ jsx(LoaderCircle, {})
+			})
+		]
+	});
+}
+//#endregion
+export { Pill };
+
+//# sourceMappingURL=pill.js.map

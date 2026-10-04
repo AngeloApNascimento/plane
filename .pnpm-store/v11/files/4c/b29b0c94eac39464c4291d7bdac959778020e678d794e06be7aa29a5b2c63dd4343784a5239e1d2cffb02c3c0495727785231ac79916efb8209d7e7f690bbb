@@ -1,0 +1,37 @@
+"use client";
+import * as React from "react";
+import { Tooltip } from "@base-ui/react/tooltip";
+//#region src/components/tooltip/tooltip-provider.d.ts
+type BaseTooltipProviderProps = Tooltip.Provider.Props;
+type TooltipProviderProps = Omit<BaseTooltipProviderProps, "delay" | "closeDelay" | "timeout" | "children"> & {
+  /**
+   * How long to wait before opening a tooltip, in milliseconds. Applied only when a child trigger
+   * does not set its own `delay` — Base UI resolves `delay ?? providerDelay ?? 600` (per-tooltip
+   * wins). No provider default — omit to leave each trigger on Base UI's `600` open delay.
+   */
+  delay?: number;
+  /**
+   * How long to wait before closing a tooltip, in milliseconds. Shared across the group so moving
+   * between nearby triggers can swap hints without a hard cut. Per-tooltip close delay is not on
+   * the ready-made `Tooltip` — set it here. No provider default — omit for Base UI's per-trigger
+   * close delay (`0`).
+   */
+  closeDelay?: number;
+  /**
+   * After a tooltip in this group closes, another may open instantly if its trigger is interacted
+   * with within this window (ms).
+   *
+   * @default 400
+   */
+  timeout?: number;
+  /** The subtree whose tooltips share this group's open/close timing. */
+  children?: React.ReactNode;
+};
+/**
+ * Shares one open/close delay across every tooltip beneath it, so moving between nearby triggers
+ * can show adjacent tooltips immediately.
+ */
+declare function TooltipProvider(props: TooltipProviderProps): React.JSX.Element;
+//#endregion
+export { TooltipProvider, TooltipProviderProps };
+//# sourceMappingURL=tooltip-provider.d.ts.map

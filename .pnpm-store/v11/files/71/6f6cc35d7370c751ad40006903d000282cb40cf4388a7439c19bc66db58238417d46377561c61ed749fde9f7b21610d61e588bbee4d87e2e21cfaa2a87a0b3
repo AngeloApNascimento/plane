@@ -1,0 +1,27 @@
+"use client";
+import { SuggestionMenuGroup as SuggestionMenuGroup$1 } from "../../elements/suggestion-menu/suggestion-menu-group.js";
+import { SuggestionMenuLabel } from "../../elements/suggestion-menu/suggestion-menu-label.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/suggestion-menu/suggestion-menu-group.tsx
+/**
+* A section of `SuggestionMenuItem` rows, with an optional heading. Sections are divided by a
+* hairline; the last draws none.
+*/
+function SuggestionMenuGroup({ label, children, ...props }) {
+	const labelId = React.useId();
+	const hasLabel = label != null;
+	return /* @__PURE__ */ jsxs(SuggestionMenuGroup$1, {
+		...props,
+		role: "group",
+		"aria-labelledby": hasLabel ? labelId : void 0,
+		children: [hasLabel ? /* @__PURE__ */ jsx(SuggestionMenuLabel, {
+			id: labelId,
+			children: label
+		}) : null, children]
+	});
+}
+//#endregion
+export { SuggestionMenuGroup };
+
+//# sourceMappingURL=suggestion-menu-group.js.map

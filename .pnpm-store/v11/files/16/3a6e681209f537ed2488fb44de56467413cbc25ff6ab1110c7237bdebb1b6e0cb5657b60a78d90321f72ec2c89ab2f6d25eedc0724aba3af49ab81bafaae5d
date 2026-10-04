@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/recurring-work-items-filled.d.ts
+declare function RecurringWorkItemsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RecurringWorkItemsFilled };
+//# sourceMappingURL=recurring-work-items-filled.d.ts.map

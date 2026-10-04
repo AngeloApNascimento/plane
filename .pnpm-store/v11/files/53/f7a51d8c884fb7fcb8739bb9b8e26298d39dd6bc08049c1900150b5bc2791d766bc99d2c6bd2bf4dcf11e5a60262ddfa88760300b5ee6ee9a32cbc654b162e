@@ -1,0 +1,30 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/badge/variants.ts
+const badgeVariants = cva("inline-flex w-fit shrink-0 items-center justify-center align-middle whitespace-nowrap", { variants: {
+	size: {
+		xs: cx("h-(--control-height-xs) gap-(--control-gap-xs) px-(--control-padding-x-xs)", "rounded-(--control-radius-xs) text-caption-md-medium [--node-size:var(--control-glyph-xs)]"),
+		sm: cx("h-(--control-height-sm) gap-(--control-gap-sm) px-1.5", "rounded-(--control-radius-sm) text-body-xs-medium [--node-size:var(--control-glyph-sm)]"),
+		md: cx("h-(--control-height-md) gap-(--control-gap-md) px-2", "rounded-(--control-radius-md) text-body-sm-medium [--node-size:var(--control-glyph-md)]")
+	},
+	variant: {
+		neutral: "bg-layer-3 text-primary",
+		grey: "bg-label-grey-bg text-label-grey-text",
+		brand: "bg-accent-subtle text-accent-primary",
+		info: "bg-info-subtle text-info-primary",
+		purple: "bg-label-purple-bg text-label-purple-text",
+		indigo: "bg-label-indigo-bg text-label-indigo-text",
+		success: "bg-success-subtle text-success-primary",
+		emerald: "bg-label-emerald-bg text-label-emerald-text",
+		warning: "bg-warning-subtle text-warning-primary",
+		yellow: "bg-label-yellow-bg text-label-yellow-text",
+		danger: "bg-danger-subtle text-danger-primary",
+		crimson: "bg-label-crimson-bg text-label-crimson-text",
+		orange: "bg-label-orange-bg text-label-orange-text"
+	}
+} });
+const badgeLabelVariants = cva("min-w-0");
+//#endregion
+export { badgeLabelVariants, badgeVariants };
+
+//# sourceMappingURL=variants.js.map

@@ -1,0 +1,21 @@
+"use client";
+import * as React from "react";
+import { Tabs } from "@base-ui/react/tabs";
+//#region src/components/tabs/tab.d.ts
+type TabProps = Omit<Tabs.Tab.Props, "children" | "className" | "style"> & {
+  /** Element rendered before the label (inline-start), e.g. `<Icon icon={Folder} />`. */
+  icon?: React.ReactNode;
+  /** Visible tab label. */
+  label: string;
+};
+/**
+ * The ready-made tab button: grafts the Base UI `Tabs.Tab` behavior onto the styled `elements/tabs`
+ * tab (taking the set's `variant`/`stretch` from context, so you don't pass them) and lays out an
+ * optional `icon` with the label. The `underline` variant additionally renders the sliding bar
+ * track beneath the label. A consumer `render` target is composed through the styled tab,
+ * preserving Propel's classes; render callbacks receive the original Base UI tab state.
+ */
+declare function Tab({ icon, label, render, ...props }: TabProps): React.JSX.Element;
+//#endregion
+export { Tab, TabProps };
+//# sourceMappingURL=tab.d.ts.map

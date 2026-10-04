@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-trigger-indicator.d.ts
+type BreadcrumbTriggerIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The disclosure caret inside a menu crumb — sizes its chevron-down child, rotates it while the
+ * crumb's menu is open, and shifts from `icon-secondary` to `icon-primary` when that crumb is the
+ * active (open) one. Decorative, so it is `aria-hidden`. Composed by `BreadcrumbMenuTrigger`.
+ */
+declare function BreadcrumbTriggerIndicator({ render, ...props }: BreadcrumbTriggerIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BreadcrumbTriggerIndicator, BreadcrumbTriggerIndicatorProps };
+//# sourceMappingURL=breadcrumb-trigger-indicator.d.ts.map

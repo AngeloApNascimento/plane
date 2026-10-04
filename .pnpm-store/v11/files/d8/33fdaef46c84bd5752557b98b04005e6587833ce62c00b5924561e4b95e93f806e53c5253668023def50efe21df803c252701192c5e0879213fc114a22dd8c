@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/dashboards-filled.d.ts
+declare function DashboardsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DashboardsFilled };
+//# sourceMappingURL=dashboards-filled.d.ts.map

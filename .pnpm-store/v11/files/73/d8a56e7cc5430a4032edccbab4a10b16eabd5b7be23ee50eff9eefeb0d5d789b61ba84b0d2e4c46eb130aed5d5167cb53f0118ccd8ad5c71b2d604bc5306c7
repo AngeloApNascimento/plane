@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/your-work-filled.d.ts
+declare function YourWorkFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { YourWorkFilled };
+//# sourceMappingURL=your-work-filled.d.ts.map

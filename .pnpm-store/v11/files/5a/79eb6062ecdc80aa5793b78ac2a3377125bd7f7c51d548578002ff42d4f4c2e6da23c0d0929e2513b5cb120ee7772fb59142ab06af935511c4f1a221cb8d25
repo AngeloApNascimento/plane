@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-header.d.ts
+type TableHeaderProps = Omit<useRender.ComponentProps<"thead">, "className" | "style">;
+/** Header section (`<thead>`). Holds a single `TableRow` of `TableHead` cells. */
+declare function TableHeader({ render, ...props }: TableHeaderProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableHeader, TableHeaderProps };
+//# sourceMappingURL=table-header.d.ts.map

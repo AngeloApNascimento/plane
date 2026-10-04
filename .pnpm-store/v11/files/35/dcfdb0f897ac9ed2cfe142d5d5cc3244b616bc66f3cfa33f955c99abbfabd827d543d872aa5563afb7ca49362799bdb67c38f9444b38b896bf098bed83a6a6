@@ -1,0 +1,35 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+const iconToggleVariants = cva(cx("relative inline-flex shrink-0 cursor-pointer items-center justify-center outline-none", "transition-colors", "focus-visible:ring-2 focus-visible:ring-accent-strong", "data-disabled:cursor-not-allowed"), {
+	variants: {
+		variant: {
+			secondary: cx("border border-subtle-1 bg-layer-2 text-icon-secondary shadow-raised-100", "hover:border-strong hover:bg-layer-2-hover", "active:border-strong active:bg-layer-2-active", "data-pressed:border-strong data-pressed:bg-layer-2-selected", "data-disabled:border-subtle-1 data-disabled:bg-transparent data-disabled:text-icon-disabled"),
+			ghost: cx("bg-layer-transparent text-icon-secondary", "hover:bg-layer-transparent-hover", "active:bg-layer-transparent-active", "data-pressed:bg-layer-transparent-selected", "data-disabled:bg-transparent data-disabled:text-icon-disabled")
+		},
+		size: {
+			xs: "size-(--control-height-xs) rounded-(--control-radius-xs) [--node-size:var(--control-glyph-xs)] before:absolute before:-inset-0.5 before:content-['']",
+			sm: "size-(--control-height-sm) rounded-(--control-radius-sm) [--node-size:var(--control-glyph-sm)]",
+			md: "size-(--control-height-md) rounded-(--control-radius-md) [--node-size:var(--control-glyph-md)]"
+		}
+	},
+	defaultVariants: {
+		variant: "secondary",
+		size: "md"
+	}
+});
+const toggleDefaultVariants = { size: "md" };
+const toggleSize = {
+	xs: cx("h-(--control-height-xs) gap-(--control-gap-xs) rounded-(--control-radius-xs) px-(--control-padding-x-xs)", "text-caption-md-regular [--node-size:var(--control-glyph-xs)]", "before:absolute before:-inset-0.5 before:content-['']"),
+	sm: cx("h-(--control-height-sm) gap-(--control-gap-sm) rounded-(--control-radius-sm) px-(--control-padding-x-sm)", "text-body-xs-regular [--node-size:var(--control-glyph-sm)]"),
+	md: cx("h-(--control-height-md) gap-(--control-gap-md) rounded-(--control-radius-md) px-(--control-padding-x-md)", "text-body-xs-regular [--node-size:var(--control-glyph-md)]")
+};
+const toggleVariants = cva(cx("relative inline-flex max-w-[120px] shrink-0 cursor-pointer items-center justify-center overflow-clip outline-none", "border border-subtle-1 bg-layer-2 text-secondary transition-colors", "hover:border-strong hover:bg-layer-2-hover", "active:border-strong active:bg-layer-2-active", "data-pressed:border-strong data-pressed:bg-layer-2-selected data-pressed:text-primary", "focus-visible:ring-2 focus-visible:ring-accent-strong", "data-disabled:cursor-not-allowed data-disabled:border-subtle-1 data-disabled:bg-transparent data-disabled:text-disabled"), {
+	variants: { size: toggleSize },
+	defaultVariants: toggleDefaultVariants
+});
+/** The single-line label inside a text Toggle. Truncates past the 120px cap. */
+const toggleLabelVariants = cva("min-w-0 truncate");
+//#endregion
+export { iconToggleVariants, toggleLabelVariants, toggleVariants };
+
+//# sourceMappingURL=variants.js.map

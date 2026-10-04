@@ -1,0 +1,30 @@
+"use client";
+import { ToggleSize } from "../../elements/toggle/variants.js";
+import "../../elements/toggle/index.js";
+import * as React from "react";
+import { Toggle } from "@base-ui/react/toggle";
+//#region src/components/toggle/toggle.d.ts
+type ToggleProps<Value extends string = string> = Omit<Toggle.Props<Value>, "children" | "className" | "style"> & {
+  /**
+   * Label-toggle scale (`xs`·`sm`·`md`).
+   *
+   * @default "md"
+   */
+  size?: ToggleSize;
+  /** Element rendered before the label (inline-start), e.g. `<Icon icon={Tag} />`. */
+  startIcon?: React.ReactNode;
+  /** Element rendered after the label (inline-end), e.g. `<Icon icon={X} />`. */
+  endIcon?: React.ReactNode;
+  /** Visible toggle label. */
+  label: string;
+};
+/**
+ * The ready-made label toggle: grafts Base UI's `Toggle` behavior onto the styled `Toggle` button
+ * (behavior outer, the styled button as the render target), with an optional leading node, the
+ * `ToggleLabel`, and an optional trailing node. The selected look is the container's pressed
+ * state.
+ */
+declare function Toggle$1<Value extends string = string>({ size, startIcon, endIcon, label, ...toggleProps }: ToggleProps<Value>): React.JSX.Element;
+//#endregion
+export { Toggle$1 as Toggle, ToggleProps };
+//# sourceMappingURL=toggle.d.ts.map

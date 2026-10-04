@@ -1,0 +1,68 @@
+"use client";
+import { NavigationMenuPopupProps } from "../../elements/navigation-menu/navigation-menu-popup.js";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-panel.d.ts
+type NavigationMenuPanelProps = NavigationMenuPopupProps & {
+  /** Which side of the trigger the panel opens toward. @default "bottom" */
+  side?: NavigationMenu.Positioner.Props["side"];
+  /** Distance in px between the trigger and the panel. @default 4 */
+  sideOffset?: NavigationMenu.Positioner.Props["sideOffset"];
+  /** Alignment of the panel relative to the trigger along `side`. @default "start" */
+  align?: NavigationMenu.Positioner.Props["align"];
+  /**
+   * Additional offset in px along the align axis — slides the panel along the trigger's edge
+   * without changing `align`.
+   *
+   * @default 0
+   */
+  alignOffset?: NavigationMenu.Positioner.Props["alignOffset"];
+  /**
+   * Minimum gap in px between the panel and the viewport edge it would otherwise touch.
+   *
+   * @default 5
+   */
+  collisionPadding?: NavigationMenu.Positioner.Props["collisionPadding"];
+  /**
+   * The element or rect the panel is confined to when avoiding collisions. Base UI's clipping
+   * ancestors when unset.
+   */
+  collisionBoundary?: NavigationMenu.Positioner.Props["collisionBoundary"];
+  /**
+   * What to do when the panel would overflow the boundary, set per axis: flip to the other side,
+   * shift along it, or stay put. Base UI flips the side and shifts the alignment when unset.
+   */
+  collisionAvoidance?: NavigationMenu.Positioner.Props["collisionAvoidance"];
+  /**
+   * Keep the panel on screen after the trigger scrolls out of view, instead of following it out.
+   *
+   * @default false
+   */
+  sticky?: NavigationMenu.Positioner.Props["sticky"];
+  /**
+   * Which CSS `position` the positioner uses. `fixed` escapes overflow-clipping ancestors, e.g. a
+   * menubar inside a sticky header.
+   *
+   * @default "absolute"
+   */
+  positionMethod?: NavigationMenu.Positioner.Props["positionMethod"];
+  /**
+   * Position against this element instead of the trigger — an element, a ref, a virtual element, or
+   * a function returning one. Geometry only; the trigger keeps its role and interactions.
+   */
+  anchor?: NavigationMenu.Positioner.Props["anchor"];
+  /**
+   * Stop tracking layout shifts of the anchor — position once, on open.
+   *
+   * @default false
+   */
+  disableAnchorTracking?: NavigationMenu.Positioner.Props["disableAnchorTracking"];
+};
+/**
+ * The navigation menu surface: Base UI portal + positioner + popup grafted onto Propel styling.
+ * Named `Panel` to avoid clashing with Base UI's atomic per-item `NavigationMenu.Content`. The
+ * viewport and per-item content remain children.
+ */
+declare function NavigationMenuPanel({ side, sideOffset, align, alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, ...props }: NavigationMenuPanelProps): import("react").JSX.Element;
+//#endregion
+export { NavigationMenuPanel, NavigationMenuPanelProps };
+//# sourceMappingURL=navigation-menu-panel.d.ts.map

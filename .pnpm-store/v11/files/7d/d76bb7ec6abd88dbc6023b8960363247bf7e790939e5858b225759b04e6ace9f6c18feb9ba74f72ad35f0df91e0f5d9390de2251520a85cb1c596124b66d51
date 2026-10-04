@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/accordion/accordion-panel-content.d.ts
+type AccordionPanelContentProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The padded inner content of an `AccordionPanel`. The padding lives here rather than on the panel
+ * itself, because the panel animates its height open/closed and padding there would offset the
+ * measured height.
+ */
+declare function AccordionPanelContent({ render, ...props }: AccordionPanelContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AccordionPanelContent, AccordionPanelContentProps };
+//# sourceMappingURL=accordion-panel-content.d.ts.map

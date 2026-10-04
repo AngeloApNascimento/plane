@@ -1,0 +1,17 @@
+"use client";
+import { CheckboxLabelStretch, CheckboxLabelVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/checkbox/checkbox-label.d.ts
+type CheckboxLabelProps = Omit<useRender.ComponentProps<"label">, "className" | "style"> & CheckboxLabelVariantProps;
+/**
+ * The clickable row chip that wraps a `Checkbox` box with an optional leading icon and the label
+ * text, matching the Figma "Checkbox with label" component. Associate it with the box via `htmlFor`
+ * so clicking anywhere in the row toggles the box. The row reads its disabled look off the wrapped
+ * `Checkbox` (which carries `data-disabled`) via `:has()`, so it takes no `disabled` prop. Pass the
+ * icon as a direct-child `aria-hidden` span (e.g. the shared `Icon`) so the disabled tint override
+ * applies.
+ */
+declare function CheckboxLabel({ stretch, render, ...props }: CheckboxLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { CheckboxLabel, CheckboxLabelProps, type CheckboxLabelStretch };
+//# sourceMappingURL=checkbox-label.d.ts.map

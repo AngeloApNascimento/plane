@@ -1,0 +1,3 @@
+"use client";
+import { Separator, SeparatorProps } from "./separator.js";
+export { Separator, SeparatorProps };

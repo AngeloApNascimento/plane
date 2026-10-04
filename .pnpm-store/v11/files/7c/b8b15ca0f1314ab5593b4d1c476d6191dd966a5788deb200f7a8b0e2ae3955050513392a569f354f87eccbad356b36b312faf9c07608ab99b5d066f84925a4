@@ -1,0 +1,20 @@
+"use client";
+import { CompositeRoot } from "@base-ui/react/internals/composite";
+import * as React from "react";
+//#region src/base/composite/composite.d.ts
+type BaseCompositeProps = CompositeRoot.Props<unknown, Record<string, never>>;
+/**
+ * The container half of Base UI's roving-tabindex `Composite` — the same engine `Toolbar` and
+ * `Menu` are built on. Renders a `<div>` by default; one `CompositeItem` child is the tab stop and
+ * the arrow keys move focus between them. Defaults to `vertical` (the common list case); pass
+ * `orientation` to change it. Unstyled — `elements` layers the look on top.
+ *
+ * NOTE: Base UI's `CompositeRoot`/`CompositeItem` live under `@base-ui/react/internals` (marked
+ * `@internal`). That dependency is isolated to `base/composite` on purpose: the Base UI version is
+ * pinned, and if a future bump changes the composite surface, only these two files change.
+ */
+type CompositeProps = Omit<BaseCompositeProps, "state" | "stateAttributesMapping" | "props" | "refs"> & Omit<React.HTMLAttributes<HTMLElement>, keyof BaseCompositeProps>;
+declare const Composite: React.ForwardRefExoticComponent<Omit<BaseCompositeProps, "state" | "stateAttributesMapping" | "props" | "refs"> & Omit<React.HTMLAttributes<HTMLElement>, keyof BaseCompositeProps> & React.RefAttributes<HTMLElement>>;
+//#endregion
+export { Composite, CompositeProps };
+//# sourceMappingURL=composite.d.ts.map

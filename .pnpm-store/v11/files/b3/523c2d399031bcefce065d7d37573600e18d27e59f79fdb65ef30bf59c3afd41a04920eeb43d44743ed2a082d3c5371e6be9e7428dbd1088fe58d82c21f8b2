@@ -1,0 +1,19 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/button/variants.d.ts
+/** The full Button className: the shared control chrome composed with the label-button geometry. */
+declare const buttonVariants: (props: VariantProps<(props?: ({
+  variant?: "primary" | "secondary" | "tertiary" | "ghost" | "danger" | "danger-outline" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string> & VariantProps<(props?: ({
+  size?: "sm" | "md" | "lg" | "xs" | null | undefined;
+  stretch?: "auto" | "full" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string>) => string;
+type ButtonVariantConfig = VariantProps<typeof buttonVariants>;
+type ButtonVariant = NonNullable<ButtonVariantConfig["variant"]>;
+type ButtonSize = NonNullable<ButtonVariantConfig["size"]>;
+type ButtonStretch = NonNullable<ButtonVariantConfig["stretch"]>;
+type ButtonVariantProps = StrictVariantProps<typeof buttonVariants>;
+//#endregion
+export { ButtonSize, ButtonStretch, ButtonVariant, ButtonVariantProps, buttonVariants };
+//# sourceMappingURL=variants.d.ts.map

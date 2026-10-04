@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/memory-outline.d.ts
+declare function MemoryOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MemoryOutline };
+//# sourceMappingURL=memory-outline.d.ts.map

@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/other-products/linear.tsx
+function Linear(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "#5e6ad2",
+			d: "M2.684 3.438A6.99 6.99 0 0 1 7.993 1a7.005 7.005 0 0 1 4.568 12.317zm-.624.844 9.658 9.657a7 7 0 0 1-.963.506l-9.2-9.2q.216-.504.505-.963m-.872 2.063 8.467 8.467a7 7 0 0 1-1.28.188L1 7.626a7 7 0 0 1 .188-1.28m-.1 2.836 5.73 5.73a7.01 7.01 0 0 1-5.73-5.73"
+		})
+	});
+}
+//#endregion
+export { Linear };
+
+//# sourceMappingURL=linear.js.map

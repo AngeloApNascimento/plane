@@ -1,0 +1,36 @@
+"use client";
+import { CheckboxLabelStretch } from "../../elements/checkbox/variants.js";
+import "../../elements/checkbox/index.js";
+import * as React from "react";
+import { Checkbox } from "@base-ui/react/checkbox";
+//#region src/components/checkbox/checkbox.d.ts
+type CheckboxProps = Omit<Checkbox.Root.Props, "className" | "style" | "render"> & {
+  /**
+   * Optional text shown beside the box; the whole row becomes the clickable label. Omit it for a
+   * bare checkbox (just the box) — in that case give the box an accessible name with `aria-label`
+   * or `aria-labelledby`.
+   */
+  label?: string;
+  /**
+   * Width of the clickable label row when `label` is present. Ready-made concern — the elements
+   * `CheckboxLabel` requires `stretch` explicitly.
+   *
+   * @default "auto"
+   */
+  stretch?: CheckboxLabelStretch;
+  /**
+   * Element shown between the box and the label (inline-start), e.g. `<Icon icon={User}
+   * tint="secondary" size="sm" />`. Only rendered when `label` is present. Prefer the shared `Icon`
+   * (a direct `aria-hidden` span) so the label's disabled tint override can recolor it.
+   */
+  icon?: React.ReactNode;
+};
+/**
+ * The ready-made checkbox: grafts Base UI checkbox behavior onto the styled `Checkbox` box with its
+ * check and indeterminate indicators, and optionally wraps the row in a clickable `CheckboxLabel`
+ * with an icon slot.
+ */
+declare function Checkbox$1({ label, stretch, icon, id, ...props }: CheckboxProps): React.JSX.Element;
+//#endregion
+export { Checkbox$1 as Checkbox, CheckboxProps };
+//# sourceMappingURL=checkbox.d.ts.map

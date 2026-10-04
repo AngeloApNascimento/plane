@@ -1,0 +1,55 @@
+"use client";
+import { AnchorButtonLabel } from "../../elements/anchor-button/anchor-button-label.js";
+import { AnchorButton as AnchorButton$1 } from "../../elements/anchor-button/anchor-button.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/anchor-button/anchor-button.tsx
+function runNavigationHandler(disabled, handler, event) {
+	if (disabled) {
+		event.preventDefault();
+		event.stopPropagation();
+		return;
+	}
+	handler?.(event);
+}
+function runInteractionHandler(disabled, handler, event) {
+	if (disabled) return;
+	handler?.(event);
+}
+/**
+* A semantic link with inline text-link chrome. It renders a native `<a>` by default and lays out
+* an optional `icon` beside the label (`iconPosition`). Pass `href`, or use `render` to project the
+* anchor props onto a router or framework link. For actions, use `Button`; for a navigation link
+* wearing button chrome, use `Button`'s render path.
+*/
+function AnchorButton({ variant, size, icon, iconPosition = "start", disabled, label, href, render, onAuxClick, onClick, onKeyDown, onKeyUp, onMouseDown, onPointerDown, tabIndex, "aria-disabled": ariaDisabled, ...props }) {
+	const handleAuxClick = (event) => runNavigationHandler(disabled, onAuxClick, event);
+	const handleClick = (event) => runNavigationHandler(disabled, onClick, event);
+	const handleKeyDown = (event) => runInteractionHandler(disabled, onKeyDown, event);
+	const handleKeyUp = (event) => runInteractionHandler(disabled, onKeyUp, event);
+	const handleMouseDown = (event) => runInteractionHandler(disabled, onMouseDown, event);
+	const handlePointerDown = (event) => runInteractionHandler(disabled, onPointerDown, event);
+	return /* @__PURE__ */ jsxs(AnchorButton$1, {
+		...props,
+		variant,
+		size,
+		href: disabled ? void 0 : href,
+		render: disabled ? void 0 : render,
+		onAuxClick: handleAuxClick,
+		onClick: handleClick,
+		onKeyDown: handleKeyDown,
+		onKeyUp: handleKeyUp,
+		onMouseDown: handleMouseDown,
+		onPointerDown: handlePointerDown,
+		tabIndex: disabled ? -1 : tabIndex,
+		"aria-disabled": disabled ? true : ariaDisabled,
+		children: [
+			iconPosition === "start" ? icon : null,
+			/* @__PURE__ */ jsx(AnchorButtonLabel, { children: label }),
+			iconPosition === "end" ? icon : null
+		]
+	});
+}
+//#endregion
+export { AnchorButton };
+
+//# sourceMappingURL=anchor-button.js.map

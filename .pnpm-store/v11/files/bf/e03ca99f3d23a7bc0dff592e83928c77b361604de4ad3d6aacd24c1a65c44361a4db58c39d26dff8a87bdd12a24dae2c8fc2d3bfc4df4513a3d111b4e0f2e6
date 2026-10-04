@@ -1,0 +1,4 @@
+import core, { ASTPath } from 'jscodeshift';
+export declare function getJSXAttributes(j: core.JSCodeshift, element: ASTPath<any>, attributeName: string): import("jscodeshift/src/Collection").Collection<import("ast-types").namedTypes.JSXAttribute>;
+export declare function hasJSXAttributes(j: core.JSCodeshift, element: ASTPath<any>, attributeName: string): boolean;
+export declare function removeJSXAttributes(j: core.JSCodeshift, element: ASTPath<any>, attributeName: string): import("jscodeshift/src/Collection").Collection<import("ast-types").namedTypes.JSXAttribute>;

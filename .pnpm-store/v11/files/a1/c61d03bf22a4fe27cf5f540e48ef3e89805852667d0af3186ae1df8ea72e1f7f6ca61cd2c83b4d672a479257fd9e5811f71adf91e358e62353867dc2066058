@@ -1,0 +1,15 @@
+"use client";
+import { ComboboxChipsVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-chips.d.ts
+type ComboboxChipsProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & ComboboxChipsVariantProps;
+/**
+ * The multiselect input frame holding the `ComboboxChip`s ahead of the inline `ComboboxInput` (it
+ * replaces `ComboboxInputGroup` in the `multiple` anatomy). `layout="wrap"` grows onto new rows;
+ * `layout="collapse"` keeps a single clipped row for the "+N more" overflow. Base-UI-agnostic —
+ * graft in `components` via `<BaseCombobox.Chips render={<ComboboxChips/>} />`.
+ */
+declare function ComboboxChips({ size, variant, layout, render, ...props }: ComboboxChipsProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxChips, ComboboxChipsProps };
+//# sourceMappingURL=combobox-chips.d.ts.map

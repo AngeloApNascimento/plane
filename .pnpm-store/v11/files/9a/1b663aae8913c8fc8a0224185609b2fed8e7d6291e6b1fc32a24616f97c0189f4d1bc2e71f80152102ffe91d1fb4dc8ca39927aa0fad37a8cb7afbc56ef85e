@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/search-outline.d.ts
+declare function SearchOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { SearchOutline };
+//# sourceMappingURL=search-outline.d.ts.map

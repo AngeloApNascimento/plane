@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-checkbox-item-indicator.d.ts
+type ComboboxCheckboxItemIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled checkbox BOX shown at the leading edge of a multi-select combobox item (16px
+ * hit-target, 14px inset chrome that fills the accent on `data-selected`; its glyph child stays
+ * hidden until selected). Base-UI-agnostic — graft the indicator behavior in `components` via
+ * `<BaseCombobox.ItemIndicator keepMounted render={<ComboboxCheckboxItemIndicator />} />`.
+ */
+declare function ComboboxCheckboxItemIndicator({ render, ...props }: ComboboxCheckboxItemIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxCheckboxItemIndicator, ComboboxCheckboxItemIndicatorProps };
+//# sourceMappingURL=combobox-checkbox-item-indicator.d.ts.map

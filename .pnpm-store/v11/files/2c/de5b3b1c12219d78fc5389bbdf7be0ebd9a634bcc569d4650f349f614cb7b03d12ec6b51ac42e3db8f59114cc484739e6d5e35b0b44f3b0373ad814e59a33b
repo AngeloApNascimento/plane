@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-head-sort-trigger.d.ts
+type TableHeadSortTriggerProps = Omit<useRender.ComponentProps<"button">, "className" | "style" | "type">;
+/**
+ * The sort control inside a sortable `TableHead`: a `<button>` wrapping the `TableHeadTitle` and a
+ * trailing `TableHeadSortIndicator`. Clicking it cycles the column's sort order.
+ */
+declare function TableHeadSortTrigger({ render, ...props }: TableHeadSortTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableHeadSortTrigger, TableHeadSortTriggerProps };
+//# sourceMappingURL=table-head-sort-trigger.d.ts.map

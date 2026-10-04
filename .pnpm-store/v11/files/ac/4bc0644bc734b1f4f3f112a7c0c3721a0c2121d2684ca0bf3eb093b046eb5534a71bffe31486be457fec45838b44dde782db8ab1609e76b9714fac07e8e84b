@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/preview-card/preview-card-image.d.ts
+type PreviewCardImageProps = Omit<useRender.ComponentProps<"img">, "className" | "style">;
+/**
+ * The thumbnail image shown inside the popup. Bakes in `w-full`, overflow-hidden, and object-cover
+ * so the thumbnail always spans the card, clips, and fills its box — these are "always the same"
+ * per the design spec. Height is set by the consumer's layout (native `height`, or the image's
+ * intrinsic aspect ratio at full width).
+ */
+declare function PreviewCardImage({ render, ...props }: PreviewCardImageProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PreviewCardImage, PreviewCardImageProps };
+//# sourceMappingURL=preview-card-image.d.ts.map

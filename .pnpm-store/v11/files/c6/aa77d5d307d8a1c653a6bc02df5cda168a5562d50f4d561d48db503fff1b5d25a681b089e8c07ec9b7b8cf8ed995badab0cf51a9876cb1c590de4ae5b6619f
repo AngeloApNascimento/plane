@@ -1,0 +1,33 @@
+"use client";
+import { MenuItemVariant } from "../../elements/menu/variants.js";
+import "../../elements/menu/index.js";
+import * as React from "react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-checkbox-item.d.ts
+type MenuCheckboxItemProps = Omit<Menu.CheckboxItem.Props, "children" | "className" | "label" | "style" | "render"> & {
+  /**
+   * Row look. `neutral` is the standard text hierarchy, `accent` marks the primary action, and
+   * `danger` marks a destructive one.
+   *
+   * @default "neutral"
+   */
+  variant?: MenuItemVariant;
+  /** Leading element shown after the checkbox, e.g. `<Icon icon={Settings} tint="secondary" />`. */
+  icon?: React.ReactNode;
+  /** Primary row label. */
+  label: string;
+  /** Content pinned at the row's inline end, e.g. `<Shortcut keys="⌘ K" />` or a count `<Badge />`. */
+  trailing?: React.ReactElement;
+};
+/**
+ * The ready-made toggleable multi-select menu row: grafts Base UI's `Menu.CheckboxItem` behavior
+ * onto the styled `MenuCheckboxItem` and lays out the checkbox box (a kept-mounted
+ * `Menu.CheckboxItemIndicator` grafted onto `MenuCheckboxItemIndicator` + a lucide `Check`),
+ * optional leading icon, label, and end content. Base UI's `Menu.CheckboxItem` tracks the checked
+ * state, so `checked` / `defaultChecked` / `onCheckedChange` forward straight to it and the
+ * indicator reads it from context.
+ */
+declare function MenuCheckboxItem({ variant, icon, label, trailing, ...props }: MenuCheckboxItemProps): React.JSX.Element;
+//#endregion
+export { MenuCheckboxItem, MenuCheckboxItemProps };
+//# sourceMappingURL=menu-checkbox-item.d.ts.map

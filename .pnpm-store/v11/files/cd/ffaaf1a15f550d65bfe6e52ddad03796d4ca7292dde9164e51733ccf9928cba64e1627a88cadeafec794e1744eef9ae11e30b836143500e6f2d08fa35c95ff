@@ -1,0 +1,3 @@
+"use client";
+import { SplitButton } from "./split-button.js";
+export { SplitButton };

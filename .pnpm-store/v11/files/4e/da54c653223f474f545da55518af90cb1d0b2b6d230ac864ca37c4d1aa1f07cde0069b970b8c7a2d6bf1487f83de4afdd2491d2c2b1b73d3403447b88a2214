@@ -1,0 +1,23 @@
+"use client";
+import { bannerTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/banner/banner-title.tsx
+/** The banner's headline, stacked above the `BannerDescription` inside the `BannerBody`. */
+function BannerTitle({ placement, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({
+			"data-slot": "banner-title",
+			className: bannerTitleVariants({
+				placement,
+				size
+			})
+		}, props)
+	});
+}
+//#endregion
+export { BannerTitle };
+
+//# sourceMappingURL=banner-title.js.map

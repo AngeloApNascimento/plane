@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/views-outline.d.ts
+declare function ViewsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ViewsOutline };
+//# sourceMappingURL=views-outline.d.ts.map

@@ -1,0 +1,24 @@
+"use client";
+import { MenuSurfaceProps } from "./menu-content.shared.js";
+//#region src/components/menu/menu-submenu-content.d.ts
+type MenuSubmenuContentProps = Omit<MenuSurfaceProps, "side" | "sizing"> & {
+  /** Which side of the parent row the submenu opens toward. @default "right" */
+  side?: MenuSurfaceProps["side"];
+  /**
+   * How the submenu popup takes its width — the same rule as `MenuContent`: `auto` is the content's
+   * width between the 192px floor and the 384px ceiling, held while open; `anchor` matches the
+   * parent row's width.
+   *
+   * @default "auto"
+   */
+  sizing?: MenuSurfaceProps["sizing"];
+};
+/**
+ * The floating surface for a submenu — the same elevated, scrollable panel as `MenuContent`, but
+ * anchored beside its parent row instead of below a trigger. Place it inside a `MenuSubmenu`,
+ * alongside the `MenuSubmenuTrigger` that opens it.
+ */
+declare function MenuSubmenuContent({ side, sideOffset, align, sizing, ...props }: MenuSubmenuContentProps): import("react").JSX.Element;
+//#endregion
+export { MenuSubmenuContent, MenuSubmenuContentProps };
+//# sourceMappingURL=menu-submenu-content.d.ts.map

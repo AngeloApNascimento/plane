@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/arrows/chevron-down-filled.tsx
+function ChevronDownFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M11.558 5.557a.626.626 0 0 1 .884.885l-4 4a.626.626 0 0 1-.884 0l-4-4a.626.626 0 0 1 .884-.885L8 9.115z"
+		})
+	});
+}
+//#endregion
+export { ChevronDownFilled };
+
+//# sourceMappingURL=chevron-down-filled.js.map

@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/actions/mark-all-read-outline.tsx
+function MarkAllReadOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("g", {
+			fill: "currentColor",
+			children: /* @__PURE__ */ jsx("path", { d: "M12.05 3.883a.625.625 0 0 1 .884.885L5.601 12.1a.625.625 0 0 1-.884 0L1.383 8.768a.626.626 0 0 1 .885-.885l2.89 2.892zM13.634 6.633a.625.625 0 0 1 .883.885L9.934 12.1a.625.625 0 0 1-.884 0l-.833-.833a.626.626 0 0 1 .884-.885l.39.392z" })
+		})
+	});
+}
+//#endregion
+export { MarkAllReadOutline };
+
+//# sourceMappingURL=mark-all-read-outline.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/arrow-up-filled.d.ts
+declare function ArrowUpFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ArrowUpFilled };
+//# sourceMappingURL=arrow-up-filled.d.ts.map

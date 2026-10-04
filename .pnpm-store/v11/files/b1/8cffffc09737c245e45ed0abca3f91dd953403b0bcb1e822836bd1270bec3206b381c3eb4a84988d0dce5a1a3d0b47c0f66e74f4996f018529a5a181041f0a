@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/accordion/accordion-header.d.ts
+type AccordionHeaderProps = Omit<useRender.ComponentProps<"h3">, "className" | "style">;
+/**
+ * The heading wrapper for an accordion trigger. Base-UI-agnostic — graft in `components` via
+ * `<BaseAccordion.Header render={<AccordionHeader/>} />`.
+ */
+declare function AccordionHeader({ render, ...props }: AccordionHeaderProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AccordionHeader, AccordionHeaderProps };
+//# sourceMappingURL=accordion-header.d.ts.map

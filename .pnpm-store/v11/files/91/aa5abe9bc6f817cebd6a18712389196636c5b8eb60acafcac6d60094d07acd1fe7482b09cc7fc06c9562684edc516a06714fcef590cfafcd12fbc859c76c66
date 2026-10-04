@@ -1,0 +1,3 @@
+"use client";
+import { CheckboxGroup } from "./checkbox-group.js";
+export { CheckboxGroup };

@@ -1,0 +1,23 @@
+"use client";
+import { menuCheckboxItemIndicatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-checkbox-item-indicator.tsx
+/**
+* The styled checkbox BOX shown at the leading edge of a checkbox item (16px hit-target, 14px inset
+* chrome that fills the accent on `data-checked`; its glyph child stays hidden until checked).
+* Base-UI-agnostic — graft the indicator behavior in `components` via
+* `<BaseMenu.CheckboxItemIndicator keepMounted render={<MenuCheckboxItemIndicator />} />` (keeping
+* it mounted shows the empty box when unchecked).
+*/
+function MenuCheckboxItemIndicator({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: menuCheckboxItemIndicatorVariants() }, props)
+	});
+}
+//#endregion
+export { MenuCheckboxItemIndicator };
+
+//# sourceMappingURL=menu-checkbox-item-indicator.js.map

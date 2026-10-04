@@ -1,0 +1,13 @@
+"use client";
+import { InputSize } from "../../elements/input/variants.js";
+import { InputProps } from "../../elements/input/input.js";
+//#region src/components/input/input.d.ts
+/**
+ * Single-line text field that automatically works inside `Field`. Base UI's `Input` control
+ * behavior grafted onto the styled `elements` `Input` element (rule 1a) — behavior part outer,
+ * styled part as the render target.
+ */
+declare function Input({ size, ...props }: InputProps): import("react").JSX.Element;
+//#endregion
+export { Input, type InputProps, type InputSize };
+//# sourceMappingURL=input.d.ts.map

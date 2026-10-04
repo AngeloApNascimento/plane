@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/settings-filled.d.ts
+declare function SettingsFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { SettingsFilled };
+//# sourceMappingURL=settings-filled.d.ts.map

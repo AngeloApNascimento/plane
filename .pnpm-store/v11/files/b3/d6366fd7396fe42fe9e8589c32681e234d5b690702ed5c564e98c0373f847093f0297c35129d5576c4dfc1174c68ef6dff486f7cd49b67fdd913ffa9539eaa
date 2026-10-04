@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/catchup-outline.d.ts
+declare function CatchupOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CatchupOutline };
+//# sourceMappingURL=catchup-outline.d.ts.map

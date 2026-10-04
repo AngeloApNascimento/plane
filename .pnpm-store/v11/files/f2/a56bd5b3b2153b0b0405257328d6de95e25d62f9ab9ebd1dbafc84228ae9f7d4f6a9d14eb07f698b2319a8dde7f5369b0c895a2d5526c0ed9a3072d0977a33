@@ -1,0 +1,20 @@
+"use client";
+import { previewCardMetaVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/preview-card/preview-card-meta.tsx
+/**
+* The muted footer caption closing out the card's text content (a source domain, a relative
+* timestamp, …).
+*/
+function PreviewCardMeta({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: previewCardMetaVariants() }, props)
+	});
+}
+//#endregion
+export { PreviewCardMeta };
+
+//# sourceMappingURL=preview-card-meta.js.map

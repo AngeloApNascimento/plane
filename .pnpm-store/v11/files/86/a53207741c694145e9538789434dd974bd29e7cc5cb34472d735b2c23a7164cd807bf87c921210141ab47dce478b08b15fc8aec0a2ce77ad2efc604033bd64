@@ -1,0 +1,20 @@
+"use client";
+import { selectLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/select/select-label.tsx
+/**
+* The styled select label. Base-UI-agnostic — graft the label behavior in `components` via
+* `<BaseSelect.Label render={<SelectLabel/>} />`.
+*/
+function SelectLabel({ render, size, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: selectLabelVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { SelectLabel };
+
+//# sourceMappingURL=select-label.js.map

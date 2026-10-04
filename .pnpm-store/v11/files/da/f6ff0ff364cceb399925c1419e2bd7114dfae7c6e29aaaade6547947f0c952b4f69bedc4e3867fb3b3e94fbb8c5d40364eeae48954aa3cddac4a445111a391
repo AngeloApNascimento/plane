@@ -1,0 +1,12 @@
+"use client";
+import { ComboboxStickyList as ComboboxStickyList$1 } from "../../elements/combobox/combobox-sticky-list.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/combobox/combobox-sticky-list.tsx
+/** Pads sticky header rows (Select all + separator) with the same inset the scrolling list uses. */
+function ComboboxStickyList(props) {
+	return /* @__PURE__ */ jsx(ComboboxStickyList$1, { ...props });
+}
+//#endregion
+export { ComboboxStickyList };
+
+//# sourceMappingURL=combobox-sticky-list.js.map

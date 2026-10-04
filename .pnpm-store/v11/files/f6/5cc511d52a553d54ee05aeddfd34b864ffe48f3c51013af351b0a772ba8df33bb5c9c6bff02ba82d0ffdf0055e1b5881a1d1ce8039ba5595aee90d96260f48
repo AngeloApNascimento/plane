@@ -1,0 +1,20 @@
+"use client";
+import { autocompleteEmptyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/autocomplete/autocomplete-empty.tsx
+/**
+* The styled empty-state row. Graft in `components` via `<BaseAutocomplete.Empty
+* render={<AutocompleteEmpty/>} />`.
+*/
+function AutocompleteEmpty({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: autocompleteEmptyVariants() }, props)
+	});
+}
+//#endregion
+export { AutocompleteEmpty };
+
+//# sourceMappingURL=autocomplete-empty.js.map

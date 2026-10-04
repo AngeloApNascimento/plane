@@ -1,0 +1,10 @@
+"use client";
+import { TableCellPadding, TableCellVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell.d.ts
+type TableCellProps = Omit<useRender.ComponentProps<"td">, "className" | "style" | "align"> & TableCellVariantProps;
+/** A data cell (`<td>`). Borders follow the `variant`. */
+declare function TableCell({ variant, pinned, padding, render, ...props }: TableCellProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableCell, type TableCellPadding, TableCellProps };
+//# sourceMappingURL=table-cell.d.ts.map

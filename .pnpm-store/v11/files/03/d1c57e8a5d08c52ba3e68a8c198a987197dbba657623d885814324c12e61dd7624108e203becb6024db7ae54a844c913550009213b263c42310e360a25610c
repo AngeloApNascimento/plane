@@ -1,0 +1,60 @@
+"use client";
+import { getAvatarInitials, getFirstAvatarInitial } from "../../internal/avatar-shared.js";
+import { getAvatarVariant, getAvatarVariantSeed } from "../../elements/avatar/avatar.js";
+import { WorkspaceAvatar as WorkspaceAvatar$1 } from "../../elements/workspace-avatar/workspace-avatar.js";
+import { WorkspaceAvatarFallback } from "../../elements/workspace-avatar/workspace-avatar-fallback.js";
+import { WorkspaceAvatarImage } from "../../elements/workspace-avatar/workspace-avatar-image.js";
+import { Icon } from "../../internal/icon.js";
+import { Tooltip } from "../tooltip/tooltip.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Building2 } from "lucide-react";
+import { Avatar } from "@base-ui/react/avatar";
+//#region src/components/workspace-avatar/workspace-avatar.tsx
+/**
+* The ready-made workspace avatar: a logo that falls back to initials, or an anonymous workspace
+* icon when there are no initials either, composed from the `elements/workspace-avatar` parts
+* (`WorkspaceAvatar` root + `WorkspaceAvatarImage` + `WorkspaceAvatarFallback`). Pass `src` for the
+* logo and `fallback` for initials; the initials color is chosen automatically and is not a
+* consumer prop.
+*/
+function WorkspaceAvatar({ size, src, alt, fallback, delay, tooltip, tabIndex, ...props }) {
+	const derivedInitials = React.useMemo(() => getAvatarInitials(alt), [alt]);
+	const resolvedFallback = fallback ?? derivedInitials;
+	const displayFallback = size === "2xs" && typeof resolvedFallback === "string" ? getFirstAvatarInitial(resolvedFallback) : resolvedFallback;
+	const hasInitials = resolvedFallback != null;
+	const resolvedVariant = getAvatarVariant(getAvatarVariantSeed(alt, resolvedFallback));
+	const tooltipLabel = tooltip === true ? alt : typeof tooltip === "string" ? tooltip || void 0 : void 0;
+	const accessibleName = alt ?? tooltipLabel;
+	const a11y = accessibleName != null ? {
+		role: "img",
+		"aria-label": accessibleName
+	} : { "aria-hidden": true };
+	const avatar = /* @__PURE__ */ jsxs(Avatar.Root, {
+		...props,
+		render: /* @__PURE__ */ jsx(WorkspaceAvatar$1, { size }),
+		...a11y,
+		tabIndex,
+		children: [src ? /* @__PURE__ */ jsx(Avatar.Image, {
+			render: /* @__PURE__ */ jsx(WorkspaceAvatarImage, {}),
+			src,
+			alt: ""
+		}) : null, hasInitials ? /* @__PURE__ */ jsx(Avatar.Fallback, {
+			delay,
+			render: /* @__PURE__ */ jsx(WorkspaceAvatarFallback, { variant: resolvedVariant }),
+			children: displayFallback
+		}) : /* @__PURE__ */ jsx(Avatar.Fallback, {
+			delay,
+			render: /* @__PURE__ */ jsx(Icon, { tint: "muted" }),
+			children: /* @__PURE__ */ jsx(Building2, {})
+		})]
+	});
+	return tooltipLabel ? /* @__PURE__ */ jsx(Tooltip, {
+		label: tooltipLabel,
+		children: avatar
+	}) : avatar;
+}
+//#endregion
+export { WorkspaceAvatar };
+
+//# sourceMappingURL=workspace-avatar.js.map

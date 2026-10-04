@@ -1,0 +1,9 @@
+"use client";
+import { createContext, useContext } from "react";
+//#region src/internal/menu-radio-marker.ts
+const MenuRadioMarkerContext = createContext("check");
+const useMenuRadioMarker = () => useContext(MenuRadioMarkerContext);
+//#endregion
+export { MenuRadioMarkerContext, useMenuRadioMarker };
+
+//# sourceMappingURL=menu-radio-marker.js.map

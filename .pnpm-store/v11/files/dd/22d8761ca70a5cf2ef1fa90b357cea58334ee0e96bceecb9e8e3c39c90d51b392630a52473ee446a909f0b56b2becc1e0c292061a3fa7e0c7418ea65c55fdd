@@ -1,0 +1,19 @@
+"use client";
+import { MenuSeparator as MenuSeparator$1 } from "../../elements/menu/menu-separator.js";
+import { jsx } from "react/jsx-runtime";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-separator.tsx
+/**
+* Ready-made divider between groups of menu items: grafts Base UI's `Menu.Separator` behavior
+* (`role="separator"`) onto the styled `MenuSeparator` element.
+*/
+function MenuSeparator(props) {
+	return /* @__PURE__ */ jsx(Menu.Separator, {
+		...props,
+		render: /* @__PURE__ */ jsx(MenuSeparator$1, {})
+	});
+}
+//#endregion
+export { MenuSeparator };
+
+//# sourceMappingURL=menu-separator.js.map

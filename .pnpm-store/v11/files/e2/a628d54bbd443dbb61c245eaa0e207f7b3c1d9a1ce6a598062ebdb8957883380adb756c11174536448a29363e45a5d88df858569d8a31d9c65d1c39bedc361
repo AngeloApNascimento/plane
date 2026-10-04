@@ -1,0 +1,27 @@
+"use client";
+import { Badge as Badge$1 } from "../../elements/badge/badge.js";
+import { BadgeLabel } from "../../elements/badge/badge-label.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/badge/badge.tsx
+/**
+* The ready-made badge: composes the atomic `Badge` pill with the `BadgeLabel` and optional leading
+* (`startIcon`) and trailing (`endIcon`) icon slots. With no `label` the pill is icon-only — the
+* label part is skipped entirely (an empty flex child would still consume the pill's `gap` and
+* render it lopsided), and the pill defaults to `role="img"` so an author-supplied `aria-label` is
+* valid ARIA (a bare `<span>`'s `generic` role doesn't support naming).
+*/
+function Badge({ label, startIcon, endIcon, ...props }) {
+	return /* @__PURE__ */ jsxs(Badge$1, {
+		role: label == null ? "img" : void 0,
+		...props,
+		children: [
+			startIcon,
+			label != null ? /* @__PURE__ */ jsx(BadgeLabel, { children: label }) : null,
+			endIcon
+		]
+	});
+}
+//#endregion
+export { Badge };
+
+//# sourceMappingURL=badge.js.map

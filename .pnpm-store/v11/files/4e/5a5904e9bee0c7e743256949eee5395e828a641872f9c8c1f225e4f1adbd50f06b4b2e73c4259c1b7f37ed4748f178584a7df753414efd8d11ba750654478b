@@ -1,0 +1,19 @@
+"use client";
+import { Toast, useToast } from "./toast.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/toast/toast-list.tsx
+/**
+* Renders one styled {@link Toast} per queued toast from the manager. Mounted inside
+* {@link ToastProvider}'s viewport — you normally don't render this directly.
+*/
+function ToastList({ close }) {
+	const { toasts } = useToast();
+	return toasts.map((toast) => /* @__PURE__ */ jsx(Toast, {
+		toast,
+		close
+	}, toast.id));
+}
+//#endregion
+export { ToastList };
+
+//# sourceMappingURL=toast-list.js.map

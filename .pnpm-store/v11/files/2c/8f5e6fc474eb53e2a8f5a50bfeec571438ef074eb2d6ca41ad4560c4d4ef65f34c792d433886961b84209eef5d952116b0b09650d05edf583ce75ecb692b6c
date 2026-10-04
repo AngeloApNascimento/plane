@@ -1,0 +1,22 @@
+
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/icons/arrows/double-chevron-right-outline.tsx
+function DoubleChevronRightOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsxs("g", {
+			fill: "currentColor",
+			children: [/* @__PURE__ */ jsx("path", { d: "M8.817 3.183a.626.626 0 0 0-.885.885l3.558 3.557-3.558 3.558a.626.626 0 0 0 .885.885l4-4a.626.626 0 0 0 0-.885z" }), /* @__PURE__ */ jsx("path", { d: "M4.817 3.183a.626.626 0 0 0-.885.885L7.49 7.625l-3.558 3.558a.626.626 0 0 0 .885.885l4-4a.626.626 0 0 0 0-.885z" })]
+		})
+	});
+}
+//#endregion
+export { DoubleChevronRightOutline };
+
+//# sourceMappingURL=double-chevron-right-outline.js.map

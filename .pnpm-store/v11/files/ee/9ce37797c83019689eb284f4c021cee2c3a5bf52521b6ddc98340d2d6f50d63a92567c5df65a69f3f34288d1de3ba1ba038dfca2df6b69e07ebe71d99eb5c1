@@ -1,0 +1,27 @@
+"use client";
+import { selectValueVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/select/select-value.tsx
+/**
+* The styled selected-value display inside a trigger — single-line, shrinks and truncates instead
+* of wrapping. When `children` is a string, bakes a native `title` so hover recovers the full text
+* past the truncation point; pass `title` explicitly to override (or `title=""` to suppress).
+* Base-UI-agnostic — graft the value behavior in `components` via `<BaseSelect.Value
+* render={<SelectValue/>} />`.
+*/
+function SelectValue({ render, children, title, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			className: selectValueVariants(),
+			children,
+			title: title !== void 0 ? title : typeof children === "string" ? children : void 0
+		}, props)
+	});
+}
+//#endregion
+export { SelectValue };
+
+//# sourceMappingURL=select-value.js.map

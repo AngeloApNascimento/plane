@@ -1,0 +1,12 @@
+"use client";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-list.d.ts
+type NavigationMenuListProps = Omit<NavigationMenu.List.Props, "className" | "style">;
+/**
+ * The ready-made top-level row: grafts Base UI's `NavigationMenu.List` behavior (roving focus,
+ * open-state tracking) onto the styled `elements` list. Holds `NavigationMenuItem` children.
+ */
+declare function NavigationMenuList(props: NavigationMenuListProps): import("react").JSX.Element;
+//#endregion
+export { NavigationMenuList, NavigationMenuListProps };
+//# sourceMappingURL=navigation-menu-list.d.ts.map

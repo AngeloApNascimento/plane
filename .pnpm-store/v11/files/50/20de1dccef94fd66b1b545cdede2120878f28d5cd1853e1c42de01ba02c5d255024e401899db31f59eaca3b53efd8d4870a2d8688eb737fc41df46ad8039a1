@@ -1,0 +1,26 @@
+"use client";
+import { iconButtonVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/icon-button/icon-button.tsx
+/**
+* The square button box of the icon-only button: a styled `<button>` with no baked content. It owns
+* its chrome (`variant`) and geometry (`size`'s square `size-N` box and `--node-size` glyph scale)
+* through `iconButtonVariants`. Base-UI-agnostic — graft the `Button` behavior in `components` via
+* `<BaseButton render={<IconButton/>} />`. The ready-made can still render as `<a>` via `render` +
+* `nativeButton={false}`. Compose an icon or spinner slot inside it.
+*/
+function IconButton({ variant, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({ className: iconButtonVariants({
+			variant,
+			size
+		}) }, props)
+	});
+}
+//#endregion
+export { IconButton };
+
+//# sourceMappingURL=icon-button.js.map

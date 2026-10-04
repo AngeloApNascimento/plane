@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/new-chat-outline.d.ts
+declare function NewChatOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { NewChatOutline };
+//# sourceMappingURL=new-chat-outline.d.ts.map

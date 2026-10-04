@@ -1,0 +1,13 @@
+"use client";
+import { MenuRowVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-radio-item.d.ts
+type MenuRadioItemProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & Pick<MenuRowVariantProps, "variant">;
+/**
+ * A styled menu row that behaves like a radio button. Base-UI-agnostic — graft the radio-item
+ * behavior in `components` via `<BaseMenu.RadioItem render={<MenuRadioItem />} />`.
+ */
+declare function MenuRadioItem({ variant, render, ...props }: MenuRadioItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuRadioItem, MenuRadioItemProps };
+//# sourceMappingURL=menu-radio-item.d.ts.map

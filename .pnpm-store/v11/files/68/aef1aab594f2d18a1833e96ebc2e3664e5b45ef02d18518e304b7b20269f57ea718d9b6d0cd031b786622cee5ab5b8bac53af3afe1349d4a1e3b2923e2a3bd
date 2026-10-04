@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/display-filled.d.ts
+declare function DisplayFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DisplayFilled };
+//# sourceMappingURL=display-filled.d.ts.map

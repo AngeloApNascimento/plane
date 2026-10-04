@@ -1,0 +1,28 @@
+"use client";
+import { dialogPopupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-popup.tsx
+/**
+* The card that holds the dialog content, hung 80 px from the top of the viewport. Base-UI-agnostic
+* — graft the dialog behavior in `components` via `<BaseDialog.Popup render={<DialogPopup />} />`.
+*
+* Compose optional `DialogToolbar` + `DialogMain` + `DialogActions` inside, and pin dismiss in
+* `DialogCloseGroup`. Gutter of Toolbar / Main / Actions / Aside is a ready-made concern: the
+* components-tier wrappers read `size` and `density` from context and pass them as props (rules 1,
+* 7).
+*/
+function DialogPopup({ size, height, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: dialogPopupVariants({
+			size,
+			height
+		}) }, props)
+	});
+}
+//#endregion
+export { DialogPopup };
+
+//# sourceMappingURL=dialog-popup.js.map

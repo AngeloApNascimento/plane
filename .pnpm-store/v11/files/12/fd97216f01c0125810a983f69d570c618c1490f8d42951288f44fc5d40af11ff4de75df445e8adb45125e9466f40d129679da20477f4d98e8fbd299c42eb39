@@ -1,0 +1,28 @@
+"use client";
+import * as React from "react";
+//#region src/components/combobox/combobox-chip-size-context.ts
+/**
+* Set by the components `ComboboxChips` so every chip inside the frame shares its `size`.
+*
+* Chips are consumer-rendered — `ComboboxChips` takes a `children` render function and Base UI
+* derives which selected value each chip represents from its position among its siblings — so the
+* frame cannot pass `size` down as a prop. A context is the only way the chip can inherit it
+* without every call site repeating the frame's own size, and context is a composition concern, so
+* it lives here rather than in `elements` (rule 7).
+*/
+const ComboboxChipSizeContext = React.createContext(void 0);
+/**
+* The effective chip size: an explicit `size` wins, otherwise the enclosing `ComboboxChips`
+* supplies it. Throws when neither is present — a chip has no sensible default size, and silently
+* rendering an unsized chip is what let the frame and its chips drift apart in the first place.
+*/
+function useComboboxChipSize(size) {
+	const inheritedSize = React.useContext(ComboboxChipSizeContext);
+	const resolvedSize = size ?? inheritedSize;
+	if (resolvedSize == null) throw new Error("ComboboxChip requires a size or a parent ComboboxChips.");
+	return resolvedSize;
+}
+//#endregion
+export { ComboboxChipSizeContext, useComboboxChipSize };
+
+//# sourceMappingURL=combobox-chip-size-context.js.map

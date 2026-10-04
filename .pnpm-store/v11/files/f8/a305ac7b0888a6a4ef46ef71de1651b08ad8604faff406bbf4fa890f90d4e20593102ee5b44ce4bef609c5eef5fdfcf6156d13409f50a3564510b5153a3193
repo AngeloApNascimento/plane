@@ -1,0 +1,16 @@
+"use client";
+import { TabsListScrollAreaVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tabs-list-scroll-area.d.ts
+type TabsListScrollAreaProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & TabsListScrollAreaVariantProps;
+/**
+ * The horizontal scroll frame around a `TabsList` — a single styled `<div>` by default. It bakes in
+ * NO scroll behavior, keeping `elements/tabs` independent of the ScrollArea primitive: the
+ * ready-made `components/tabs` `TabsList` grafts the Base UI `ScrollArea.Root` behavior onto it
+ * (`<BaseScrollArea.Root render={<TabsListScrollArea/>}/>`) and composes the list (as the scroll
+ * viewport) plus a scrollbar so a long row of tabs scrolls sideways.
+ */
+declare function TabsListScrollArea({ stretch, render, ...props }: TabsListScrollAreaProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TabsListScrollArea, TabsListScrollAreaProps };
+//# sourceMappingURL=tabs-list-scroll-area.d.ts.map

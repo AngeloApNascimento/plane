@@ -1,0 +1,23 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.removeJSXAttributes = exports.hasJSXAttributes = exports.getJSXAttributes = void 0;
+function getJSXAttributes(j, element, attributeName) {
+    return j(element)
+        .find(j.JSXOpeningElement)
+        .find(j.JSXAttribute)
+        .filter(attribute => {
+        const matches = j(attribute)
+            .find(j.JSXIdentifier)
+            .filter(identifier => identifier.value.name === attributeName);
+        return Boolean(matches.length);
+    });
+}
+exports.getJSXAttributes = getJSXAttributes;
+function hasJSXAttributes(j, element, attributeName) {
+    return getJSXAttributes(j, element, attributeName).length > 0;
+}
+exports.hasJSXAttributes = hasJSXAttributes;
+function removeJSXAttributes(j, element, attributeName) {
+    return getJSXAttributes(j, element, attributeName).remove();
+}
+exports.removeJSXAttributes = removeJSXAttributes;

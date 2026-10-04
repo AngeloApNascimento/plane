@@ -1,0 +1,19 @@
+"use client";
+import { ListboxGroupLabel } from "../../internal/listbox-group-label.js";
+import { jsx } from "react/jsx-runtime";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-group-label.tsx
+/**
+* The muted heading naming an `AutocompleteGroup` — Base UI's `GroupLabel` behavior grafted onto
+* the shared styled listbox heading.
+*/
+function AutocompleteGroupLabel(props) {
+	return /* @__PURE__ */ jsx(Autocomplete.GroupLabel, {
+		...props,
+		render: /* @__PURE__ */ jsx(ListboxGroupLabel, {})
+	});
+}
+//#endregion
+export { AutocompleteGroupLabel };
+
+//# sourceMappingURL=autocomplete-group-label.js.map

@@ -1,0 +1,16 @@
+"use client";
+import { NavigationMenuLinkProps as NavigationMenuLinkProps$1 } from "../../elements/navigation-menu/navigation-menu-link.js";
+import "../../elements/navigation-menu/index.js";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-link.d.ts
+type NavigationMenuLinkProps = Omit<NavigationMenu.Link.Props, "className" | "style"> & Pick<NavigationMenuLinkProps$1, "appearance">;
+/**
+ * The ready-made navigable link: grafts Base UI's `NavigationMenu.Link` behavior onto the styled
+ * link. `appearance="item"` is a top-level pill beside the triggers; `appearance="card"` is a
+ * stacked entry inside a `NavigationMenuContent`, pairing a `NavigationMenuLinkTitle` with an
+ * optional `NavigationMenuLinkDescription`.
+ */
+declare function NavigationMenuLink({ appearance, ...props }: NavigationMenuLinkProps): import("react").JSX.Element;
+//#endregion
+export { NavigationMenuLink, NavigationMenuLinkProps };
+//# sourceMappingURL=navigation-menu-link.d.ts.map

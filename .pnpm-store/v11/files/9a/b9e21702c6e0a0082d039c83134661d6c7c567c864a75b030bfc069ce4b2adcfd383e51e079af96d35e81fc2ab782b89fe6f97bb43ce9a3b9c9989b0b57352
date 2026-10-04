@@ -1,0 +1,25 @@
+"use client";
+import { iconToggleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toggle/icon-toggle.tsx
+/**
+* The styled square icon-only toggle button. Base-UI-agnostic — graft the `Toggle` behavior in
+* `components` via `<BaseToggle render={<IconToggle variant=… size=… />} />`. `variant` is the look
+* (`secondary`·`ghost`); `size` is the square scale (`xs`·`sm`·`md`). Pressed/disabled are control
+* state Base UI reflects as `data-*`.
+*/
+function IconToggle({ variant, size, render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({ className: iconToggleVariants({
+			variant,
+			size
+		}) }, props)
+	});
+}
+//#endregion
+export { IconToggle };
+
+//# sourceMappingURL=icon-toggle.js.map

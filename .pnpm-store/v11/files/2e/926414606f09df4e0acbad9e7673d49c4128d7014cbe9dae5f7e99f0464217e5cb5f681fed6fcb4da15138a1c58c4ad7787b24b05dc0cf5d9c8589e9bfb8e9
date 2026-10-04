@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/collapsible/collapsible.d.ts
+type CollapsibleProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled collapsible frame (`w-full`). Base-UI-agnostic — graft the collapsible behavior in
+ * `components` via `<BaseCollapsible.Root render={<Collapsible />} />`.
+ */
+declare function Collapsible({ render, ...props }: CollapsibleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Collapsible, CollapsibleProps };
+//# sourceMappingURL=collapsible.d.ts.map

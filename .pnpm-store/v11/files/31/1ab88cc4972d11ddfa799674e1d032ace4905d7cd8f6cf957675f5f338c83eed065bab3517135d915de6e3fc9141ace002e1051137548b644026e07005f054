@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/cycle-states/cycle-current.d.ts
+declare function CycleCurrent(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CycleCurrent };
+//# sourceMappingURL=cycle-current.d.ts.map

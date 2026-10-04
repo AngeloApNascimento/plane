@@ -1,0 +1,70 @@
+"use client";
+import { Banner as Banner$1 } from "../../elements/banner/banner.js";
+import { BannerActions } from "../../elements/banner/banner-actions.js";
+import { BannerBody } from "../../elements/banner/banner-body.js";
+import { BannerDescription } from "../../elements/banner/banner-description.js";
+import { BannerIcon } from "../../elements/banner/banner-icon.js";
+import { BannerTitle } from "../../elements/banner/banner-title.js";
+import { InfoOutline } from "../../icons/miscellaneous/info-outline.js";
+import { WarningTriangleOutline } from "../../icons/miscellaneous/warning-triangle-outline.js";
+import { CloseOutline } from "../../icons/actions/close-outline.js";
+import { WarningCircleOutline } from "../../icons/miscellaneous/warning-circle-outline.js";
+import { Icon } from "../icon/icon.js";
+import { IconButton } from "../icon-button/icon-button.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/banner/banner.tsx
+const variantIcon = {
+	neutral: InfoOutline,
+	info: InfoOutline,
+	accent: InfoOutline,
+	warning: WarningTriangleOutline,
+	danger: WarningCircleOutline
+};
+/**
+* The ready-made banner: composes the atomic banner parts — the variant icon, the message body
+* (`title` + `description`), trailing `actions`, and an optional trailing `onDismiss` control — so
+* consumers pass content, not layout. Drop down to `@makeplane/propel/elements/banner` to assemble
+* the parts directly.
+*/
+function Banner({ placement, size = "md", variant, icon, title, description, actions, onDismiss, dismissLabel = "Dismiss", ...props }) {
+	const DefaultIcon = variantIcon[variant];
+	const resolvedIcon = icon === void 0 ? /* @__PURE__ */ jsx(DefaultIcon, {}) : icon;
+	return /* @__PURE__ */ jsxs(Banner$1, {
+		size,
+		placement,
+		variant,
+		...props,
+		children: [
+			resolvedIcon ? /* @__PURE__ */ jsx(BannerIcon, {
+				placement,
+				variant,
+				size,
+				children: resolvedIcon
+			}) : null,
+			/* @__PURE__ */ jsxs(BannerBody, {
+				size,
+				placement,
+				variant,
+				children: [title ? /* @__PURE__ */ jsx(BannerTitle, {
+					size,
+					placement,
+					children: title
+				}) : null, description ? /* @__PURE__ */ jsx(BannerDescription, {
+					size,
+					children: description
+				}) : null]
+			}),
+			actions || onDismiss ? /* @__PURE__ */ jsxs(BannerActions, { children: [actions, onDismiss ? /* @__PURE__ */ jsx(IconButton, {
+				variant: "ghost",
+				size: "xs",
+				"aria-label": dismissLabel,
+				onClick: onDismiss,
+				icon: /* @__PURE__ */ jsx(Icon, { icon: CloseOutline })
+			}) : null] }) : null
+		]
+	});
+}
+//#endregion
+export { Banner };
+
+//# sourceMappingURL=banner.js.map

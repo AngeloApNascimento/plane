@@ -1,0 +1,52 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/banner/variants.d.ts
+declare const bannerDefaultVariants: {
+  readonly size: "md";
+};
+declare const bannerVariants: (props?: ({
+  placement?: "inline" | "page" | null | undefined;
+  size?: "sm" | "md" | null | undefined;
+  variant?: "danger" | "neutral" | "info" | "warning" | "accent" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const bannerIconDefaultVariants: {
+  readonly size: "md";
+};
+declare const bannerIconVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+  placement?: "inline" | "page" | null | undefined;
+  variant?: "danger" | "neutral" | "info" | "warning" | "accent" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const bannerBodyDefaultVariants: {
+  readonly size: "md";
+};
+declare const bannerBodyVariants: (props?: ({
+  placement?: "inline" | "page" | null | undefined;
+  size?: "sm" | "md" | null | undefined;
+  variant?: "danger" | "neutral" | "info" | "warning" | "accent" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const bannerTitleDefaultVariants: {
+  readonly size: "md";
+};
+declare const bannerTitleVariants: (props?: ({
+  placement?: "inline" | "page" | null | undefined;
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const bannerDescriptionDefaultVariants: {
+  readonly size: "md";
+};
+declare const bannerDescriptionVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type BannerPlacement = NonNullable<VariantProps<typeof bannerVariants>["placement"]>;
+type BannerVariant = NonNullable<VariantProps<typeof bannerVariants>["variant"]>;
+type BannerSize = NonNullable<VariantProps<typeof bannerVariants>["size"]>;
+type BannerVariantProps = StrictVariantProps<typeof bannerVariants, keyof typeof bannerDefaultVariants>;
+type BannerBodyVariantProps = StrictVariantProps<typeof bannerBodyVariants, keyof typeof bannerBodyDefaultVariants>;
+type BannerIconVariantProps = StrictVariantProps<typeof bannerIconVariants, keyof typeof bannerIconDefaultVariants>;
+type BannerTitleVariantProps = StrictVariantProps<typeof bannerTitleVariants, keyof typeof bannerTitleDefaultVariants>;
+type BannerDescriptionVariantProps = StrictVariantProps<typeof bannerDescriptionVariants, keyof typeof bannerDescriptionDefaultVariants>;
+//#endregion
+export { BannerBodyVariantProps, BannerDescriptionVariantProps, BannerIconVariantProps, BannerPlacement, BannerSize, BannerTitleVariantProps, BannerVariant, BannerVariantProps, bannerBodyVariants, bannerDescriptionVariants, bannerIconVariants, bannerTitleVariants, bannerVariants };
+//# sourceMappingURL=variants.d.ts.map

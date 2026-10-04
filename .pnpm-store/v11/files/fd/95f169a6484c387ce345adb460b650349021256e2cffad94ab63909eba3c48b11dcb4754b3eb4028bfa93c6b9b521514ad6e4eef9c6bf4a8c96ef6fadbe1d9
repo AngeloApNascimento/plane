@@ -1,0 +1,38 @@
+"use client";
+import { IconPillSize } from "../../elements/pill/variants.js";
+import { IconPillProps as IconPillProps$1 } from "../../elements/pill/icon-pill.js";
+import "../../elements/pill/index.js";
+import * as React from "react";
+//#region src/components/pill/icon-pill.d.ts
+type IconPillProps = Omit<IconPillProps$1, "children" | "size"> & {
+  /**
+   * Scale. Required, except inside a `PillGroup` — the group shares its own `size` with every
+   * segment, so a segment omits it. Omitting it outside a group throws rather than guessing a
+   * rung.
+   */
+  size?: IconPillSize;
+  /** The icon element, usually `<Icon icon={...} />`. */
+  icon: React.ReactNode;
+  /** Required: icon-only pills have no visible text, so they must be labeled. */
+  "aria-label": string;
+  /** Busy state: swaps the icon for a spinner and blocks clicks. */
+  loading?: boolean;
+  /**
+   * Set `false` when `render` swaps the underlying tag away from `<button>` (an `<a href>`, a
+   * `<span>`): Base UI then adds `role="button"`, tab focus, and Enter/Space activation, and the
+   * element's `type="button"` default is withheld — it is valid on nothing but a button.
+   */
+  nativeButton?: boolean;
+};
+/**
+ * The ready-made icon-only pill: grafts Base UI's `Button` behavior onto the square `IconPill`
+ * container (behavior outer, the styled button as the render target), filling it with the icon (or
+ * a spinner while `loading`). `loading` disables the button while keeping it focusable
+ * (`aria-busy`). An `aria-label` is required for the accessible name. A consumer `render`
+ * (`render={<MenuTrigger />}`) is threaded onto the styled element, so the trigger behavior and its
+ * `data-popup-open` land on the real `<button>` and the pill wears its open look.
+ */
+declare function IconPill({ size, loading, disabled, icon, render, nativeButton, ...props }: IconPillProps): React.JSX.Element;
+//#endregion
+export { IconPill, IconPillProps };
+//# sourceMappingURL=icon-pill.d.ts.map

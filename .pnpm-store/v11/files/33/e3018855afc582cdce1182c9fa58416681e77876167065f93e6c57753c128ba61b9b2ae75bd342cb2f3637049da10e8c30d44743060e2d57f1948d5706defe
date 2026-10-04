@@ -1,0 +1,20 @@
+"use client";
+import { DialogPanes as DialogPanes$1 } from "../../elements/dialog/dialog-panes.js";
+import { DialogPanesContext } from "./dialog-context.js";
+import "react";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/dialog/dialog-panes.tsx
+/**
+* The side-by-side row of a two-pane dialog: `DialogAside` on the start side, `DialogMain` filling
+* the rest. Marks its descendants so the ready-made `DialogMain` fills the row (rule 7).
+*/
+function DialogPanes(props) {
+	return /* @__PURE__ */ jsx(DialogPanesContext.Provider, {
+		value: true,
+		children: /* @__PURE__ */ jsx(DialogPanes$1, { ...props })
+	});
+}
+//#endregion
+export { DialogPanes };
+
+//# sourceMappingURL=dialog-panes.js.map

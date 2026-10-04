@@ -1,0 +1,25 @@
+"use client";
+import { cva } from "class-variance-authority";
+//#region src/elements/linear-progress/variants.ts
+const linearProgressVariants = cva("flex w-full items-center gap-2");
+const linearProgressTrackVariants = cva("relative min-w-0 flex-1 overflow-hidden rounded-full bg-layer-3-selected", { variants: { size: {
+	sm: "h-[5px]",
+	md: "h-2"
+} } });
+/**
+* Indicator fill variants. `variant` drives the fill color of the bar; all other indicator styles
+* (pill radius, transition, inset) are always the same. Base UI's `data-indeterminate` triggers a
+* slide-pulse so the bar can communicate an unknown-duration operation without a fixed value.
+*/
+const linearProgressIndicatorVariants = cva(["absolute inset-y-0 rounded-full transition-[width] duration-300 ease-out", "data-indeterminate:w-1/3 data-indeterminate:animate-progress-indeterminate data-indeterminate:transition-none"], { variants: { variant: {
+	brand: "bg-accent-primary",
+	success: "bg-success-primary",
+	warning: "bg-warning-primary",
+	danger: "bg-danger-primary"
+} } });
+const linearProgressLabelVariants = cva("text-body-xs-medium text-secondary");
+const linearProgressValueVariants = cva("text-caption-md-medium text-secondary tabular-nums");
+//#endregion
+export { linearProgressIndicatorVariants, linearProgressLabelVariants, linearProgressTrackVariants, linearProgressValueVariants, linearProgressVariants };
+
+//# sourceMappingURL=variants.js.map

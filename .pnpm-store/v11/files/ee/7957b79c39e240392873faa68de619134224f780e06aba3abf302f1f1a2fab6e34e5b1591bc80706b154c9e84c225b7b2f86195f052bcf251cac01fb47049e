@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/upgrade-alt-filled.d.ts
+declare function UpgradeAltFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { UpgradeAltFilled };
+//# sourceMappingURL=upgrade-alt-filled.d.ts.map

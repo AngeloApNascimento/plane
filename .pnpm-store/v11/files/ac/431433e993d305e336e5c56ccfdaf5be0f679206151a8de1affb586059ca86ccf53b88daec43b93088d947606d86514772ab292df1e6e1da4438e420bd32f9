@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/add-time-tracking-filled.d.ts
+declare function AddTimeTrackingFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AddTimeTrackingFilled };
+//# sourceMappingURL=add-time-tracking-filled.d.ts.map

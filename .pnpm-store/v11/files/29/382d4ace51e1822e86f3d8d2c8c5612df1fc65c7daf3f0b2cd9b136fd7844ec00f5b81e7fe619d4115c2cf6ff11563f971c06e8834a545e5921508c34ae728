@@ -1,0 +1,9 @@
+"use client";
+import { NumberField } from "@base-ui/react/number-field";
+//#region src/components/number-field/number-field-scrub-area-cursor.d.ts
+type NumberFieldScrubAreaCursorProps = Omit<NumberField.ScrubAreaCursor.Props, "className" | "style">;
+/** The virtual cursor shown while scrubbing; pass your cursor svg as children. */
+declare function NumberFieldScrubAreaCursor(props: NumberFieldScrubAreaCursorProps): import("react").JSX.Element;
+//#endregion
+export { NumberFieldScrubAreaCursor, NumberFieldScrubAreaCursorProps };
+//# sourceMappingURL=number-field-scrub-area-cursor.d.ts.map

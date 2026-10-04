@@ -1,0 +1,13 @@
+"use client";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox.d.ts
+type ComboboxProps<Value, Multiple extends boolean | undefined = false> = Omit<Combobox.Root.Props<Value, Multiple>, "className" | "style">;
+/**
+ * The combobox Root — Base UI's context/state provider (renders no element of its own). A
+ * behavior-only role, so it lives in `components` (rules 1a, 2); the styled parts live in
+ * `elements/combobox` and are grafted onto Base UI behavior here.
+ */
+declare function Combobox$1<Value, Multiple extends boolean | undefined = false>(props: ComboboxProps<Value, Multiple>): import("react").JSX.Element;
+//#endregion
+export { Combobox$1 as Combobox, ComboboxProps };
+//# sourceMappingURL=combobox.d.ts.map

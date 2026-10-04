@@ -1,0 +1,19 @@
+"use client";
+import { MenuRadioMarker } from "../../internal/menu-radio-marker.js";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-radio-group.d.ts
+type MenuRadioGroupProps = Omit<Menu.RadioGroup.Props, "className" | "style"> & {
+  /**
+   * How the group marks its current row. Defaults to `check` — the trailing tick every other
+   * single-select row uses. Pass `radio` only when this group shares a popup with a multi-select
+   * (checkbox) group and the two need telling apart.
+   *
+   * @default "check"
+   */
+  marker?: MenuRadioMarker;
+};
+/** Wraps `MenuRadioItem`s sharing one `value` — Base UI's radio-group state, no element chrome. */
+declare function MenuRadioGroup({ marker, ...props }: MenuRadioGroupProps): import("react").JSX.Element;
+//#endregion
+export { MenuRadioGroup, MenuRadioGroupProps };
+//# sourceMappingURL=menu-radio-group.d.ts.map

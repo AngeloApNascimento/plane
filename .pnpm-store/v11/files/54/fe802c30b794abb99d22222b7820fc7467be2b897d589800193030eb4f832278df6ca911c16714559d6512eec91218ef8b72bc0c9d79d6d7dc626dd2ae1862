@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-spinner.d.ts
+type PaginationSpinnerProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The in-flight indicator a page button shows in place of its number while navigating to it. Spins
+ * whatever icon you pass, sized to `--node-size` (14px) and tinted the placeholder color.
+ * Decorative, so `aria-hidden`.
+ */
+declare function PaginationSpinner({ render, ...props }: PaginationSpinnerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationSpinner, PaginationSpinnerProps };
+//# sourceMappingURL=pagination-spinner.d.ts.map

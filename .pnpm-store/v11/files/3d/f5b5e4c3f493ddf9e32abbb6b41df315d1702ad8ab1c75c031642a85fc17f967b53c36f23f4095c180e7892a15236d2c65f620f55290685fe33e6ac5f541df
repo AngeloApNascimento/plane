@@ -1,0 +1,1694 @@
+const require_chunk = require("./chunk-CZWwpsFl.cjs");
+const require_to_error_message = require("./to-error-message-DMTSr_Bl.cjs");
+let node_fs = require("node:fs");
+let node_os = require("node:os");
+let node_path = require("node:path");
+let node_fs_promises = require("node:fs/promises");
+let yaml = require("yaml");
+let node_child_process = require("node:child_process");
+//#region src/utils/xdg-config-home.ts
+const xdgConfigHome = () => {
+	const explicit = process.env.XDG_CONFIG_HOME?.trim();
+	if (explicit) return explicit;
+	if ((0, node_os.platform)() === "win32") {
+		const localAppData = process.env.LOCALAPPDATA?.trim();
+		if (localAppData) return localAppData;
+	}
+	return (0, node_path.join)((0, node_os.homedir)(), ".config");
+};
+//#endregion
+//#region src/skill/constants.ts
+const CANONICAL_SKILLS_DIR = ".agents/skills";
+const SKILL_MANIFEST_FILE = "SKILL.md";
+const DEFAULT_CLONE_TIMEOUT_MS = 3e5;
+const DEFAULT_FETCH_TIMEOUT_MS = 3e4;
+const MS_PER_SECOND = 1e3;
+const SKIP_DISCOVERY_DIRS = new Set([
+	"node_modules",
+	".git",
+	"dist",
+	"build",
+	"__pycache__",
+	"coverage",
+	".next",
+	".turbo"
+]);
+const COPY_EXCLUDE_FILES = new Set(["metadata.json"]);
+const COPY_EXCLUDE_DIRS = new Set([
+	".git",
+	"__pycache__",
+	"__pypackages__"
+]);
+const WELL_KNOWN_INDEX_FILE = "index.json";
+const WELL_KNOWN_PATHS = [".well-known/agent-skills", ".well-known/skills"];
+//#endregion
+//#region src/skill/agents.ts
+const home = (0, node_os.homedir)();
+const configHome = xdgConfigHome();
+const codexHome = process.env.CODEX_HOME?.trim() || (0, node_path.join)(home, ".codex");
+const claudeHome = process.env.CLAUDE_CONFIG_DIR?.trim() || (0, node_path.join)(home, ".claude");
+const vibeHome = process.env.VIBE_HOME?.trim() || (0, node_path.join)(home, ".vibe");
+const resolveOpenClawGlobalSkillsDir = () => {
+	if ((0, node_fs.existsSync)((0, node_path.join)(home, ".openclaw"))) return (0, node_path.join)(home, ".openclaw/skills");
+	if ((0, node_fs.existsSync)((0, node_path.join)(home, ".clawdbot"))) return (0, node_path.join)(home, ".clawdbot/skills");
+	if ((0, node_fs.existsSync)((0, node_path.join)(home, ".moltbot"))) return (0, node_path.join)(home, ".moltbot/skills");
+	return (0, node_path.join)(home, ".openclaw/skills");
+};
+const detectOpenClaw = () => (0, node_fs.existsSync)((0, node_path.join)(home, ".openclaw")) || (0, node_fs.existsSync)((0, node_path.join)(home, ".clawdbot")) || (0, node_fs.existsSync)((0, node_path.join)(home, ".moltbot"));
+const skillAgents = {
+	adal: {
+		name: "adal",
+		displayName: "AdaL",
+		skillsDir: ".adal/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".adal/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".adal"))
+	},
+	"aider-desk": {
+		name: "aider-desk",
+		displayName: "AiderDesk",
+		skillsDir: ".aider-desk/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".aider-desk/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".aider-desk"))
+	},
+	amp: {
+		name: "amp",
+		displayName: "Amp",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(configHome, "agents/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(configHome, "amp")),
+		isUniversal: true
+	},
+	antigravity: {
+		name: "antigravity",
+		displayName: "Antigravity",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".gemini/antigravity/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".gemini/antigravity")),
+		isUniversal: true
+	},
+	augment: {
+		name: "augment",
+		displayName: "Augment",
+		skillsDir: ".augment/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".augment/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".augment"))
+	},
+	bob: {
+		name: "bob",
+		displayName: "IBM Bob",
+		skillsDir: ".bob/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".bob/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".bob"))
+	},
+	"claude-code": {
+		name: "claude-code",
+		displayName: "Claude Code",
+		skillsDir: ".claude/skills",
+		globalSkillsDir: (0, node_path.join)(claudeHome, "skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)(claudeHome)
+	},
+	cline: {
+		name: "cline",
+		displayName: "Cline",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".agents/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".cline")),
+		isUniversal: true
+	},
+	"codearts-agent": {
+		name: "codearts-agent",
+		displayName: "CodeArts Agent",
+		skillsDir: ".codeartsdoer/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".codeartsdoer/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".codeartsdoer"))
+	},
+	codebuddy: {
+		name: "codebuddy",
+		displayName: "CodeBuddy",
+		skillsDir: ".codebuddy/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".codebuddy/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(process.cwd(), ".codebuddy")) || (0, node_fs.existsSync)((0, node_path.join)(home, ".codebuddy"))
+	},
+	codemaker: {
+		name: "codemaker",
+		displayName: "Codemaker",
+		skillsDir: ".codemaker/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".codemaker/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".codemaker"))
+	},
+	codestudio: {
+		name: "codestudio",
+		displayName: "Code Studio",
+		skillsDir: ".codestudio/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".codestudio/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".codestudio"))
+	},
+	codex: {
+		name: "codex",
+		displayName: "Codex",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(codexHome, "skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)(codexHome) || (0, node_fs.existsSync)("/etc/codex"),
+		isUniversal: true
+	},
+	"command-code": {
+		name: "command-code",
+		displayName: "Command Code",
+		skillsDir: ".commandcode/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".commandcode/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".commandcode"))
+	},
+	continue: {
+		name: "continue",
+		displayName: "Continue",
+		skillsDir: ".continue/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".continue/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(process.cwd(), ".continue")) || (0, node_fs.existsSync)((0, node_path.join)(home, ".continue"))
+	},
+	cortex: {
+		name: "cortex",
+		displayName: "Cortex Code",
+		skillsDir: ".cortex/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".snowflake/cortex/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".snowflake/cortex"))
+	},
+	crush: {
+		name: "crush",
+		displayName: "Crush",
+		skillsDir: ".crush/skills",
+		globalSkillsDir: (0, node_path.join)(configHome, "crush/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(configHome, "crush"))
+	},
+	cursor: {
+		name: "cursor",
+		displayName: "Cursor",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".cursor/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".cursor")),
+		isUniversal: true
+	},
+	deepagents: {
+		name: "deepagents",
+		displayName: "Deep Agents",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".deepagents/agent/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".deepagents")),
+		isUniversal: true
+	},
+	devin: {
+		name: "devin",
+		displayName: "Devin",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(configHome, "devin/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(configHome, "devin")),
+		isUniversal: true
+	},
+	dexto: {
+		name: "dexto",
+		displayName: "Dexto",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".agents/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".dexto")),
+		isUniversal: true
+	},
+	droid: {
+		name: "droid",
+		displayName: "Factory Droid",
+		skillsDir: ".factory/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".factory/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".factory"))
+	},
+	firebender: {
+		name: "firebender",
+		displayName: "Firebender",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".firebender/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".firebender")),
+		isUniversal: true
+	},
+	forgecode: {
+		name: "forgecode",
+		displayName: "ForgeCode",
+		skillsDir: ".forge/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".forge/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".forge"))
+	},
+	"gemini-cli": {
+		name: "gemini-cli",
+		displayName: "Gemini CLI",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".gemini/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".gemini")),
+		isUniversal: true
+	},
+	"github-copilot": {
+		name: "github-copilot",
+		displayName: "GitHub Copilot",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".copilot/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".copilot")),
+		isUniversal: true
+	},
+	goose: {
+		name: "goose",
+		displayName: "Goose",
+		skillsDir: ".goose/skills",
+		globalSkillsDir: (0, node_path.join)(configHome, "goose/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(configHome, "goose"))
+	},
+	"iflow-cli": {
+		name: "iflow-cli",
+		displayName: "iFlow CLI",
+		skillsDir: ".iflow/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".iflow/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".iflow"))
+	},
+	junie: {
+		name: "junie",
+		displayName: "Junie",
+		skillsDir: ".junie/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".junie/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".junie"))
+	},
+	kilo: {
+		name: "kilo",
+		displayName: "Kilo Code",
+		skillsDir: ".kilocode/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".kilocode/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".kilocode"))
+	},
+	"kimi-cli": {
+		name: "kimi-cli",
+		displayName: "Kimi Code CLI",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(configHome, "agents/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".kimi")),
+		isUniversal: true
+	},
+	"kiro-cli": {
+		name: "kiro-cli",
+		displayName: "Kiro CLI",
+		skillsDir: ".kiro/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".kiro/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".kiro"))
+	},
+	kode: {
+		name: "kode",
+		displayName: "Kode",
+		skillsDir: ".kode/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".kode/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".kode"))
+	},
+	mcpjam: {
+		name: "mcpjam",
+		displayName: "MCPJam",
+		skillsDir: ".mcpjam/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".mcpjam/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".mcpjam"))
+	},
+	"mistral-vibe": {
+		name: "mistral-vibe",
+		displayName: "Mistral Vibe",
+		skillsDir: ".vibe/skills",
+		globalSkillsDir: (0, node_path.join)(vibeHome, "skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)(vibeHome)
+	},
+	mux: {
+		name: "mux",
+		displayName: "Mux",
+		skillsDir: ".mux/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".mux/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".mux"))
+	},
+	neovate: {
+		name: "neovate",
+		displayName: "Neovate",
+		skillsDir: ".neovate/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".neovate/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".neovate"))
+	},
+	openclaw: {
+		name: "openclaw",
+		displayName: "OpenClaw",
+		skillsDir: "skills",
+		globalSkillsDir: resolveOpenClawGlobalSkillsDir(),
+		detectInstalled: async () => detectOpenClaw()
+	},
+	opencode: {
+		name: "opencode",
+		displayName: "OpenCode",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(configHome, "opencode/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(configHome, "opencode")),
+		isUniversal: true
+	},
+	openhands: {
+		name: "openhands",
+		displayName: "OpenHands",
+		skillsDir: ".openhands/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".openhands/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".openhands"))
+	},
+	pi: {
+		name: "pi",
+		displayName: "Pi",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".pi/agent/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".pi")),
+		isUniversal: true
+	},
+	pochi: {
+		name: "pochi",
+		displayName: "Pochi",
+		skillsDir: ".pochi/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".pochi/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".pochi"))
+	},
+	qoder: {
+		name: "qoder",
+		displayName: "Qoder",
+		skillsDir: ".qoder/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".qoder/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".qoder"))
+	},
+	"qwen-code": {
+		name: "qwen-code",
+		displayName: "Qwen Code",
+		skillsDir: ".qwen/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".qwen/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".qwen"))
+	},
+	replit: {
+		name: "replit",
+		displayName: "Replit",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(configHome, "agents/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(process.cwd(), ".replit")),
+		isUniversal: true
+	},
+	roo: {
+		name: "roo",
+		displayName: "Roo Code",
+		skillsDir: ".roo/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".roo/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".roo"))
+	},
+	rovodev: {
+		name: "rovodev",
+		displayName: "Rovo Dev",
+		skillsDir: ".rovodev/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".rovodev/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".rovodev"))
+	},
+	"tabnine-cli": {
+		name: "tabnine-cli",
+		displayName: "Tabnine CLI",
+		skillsDir: ".tabnine/agent/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".tabnine/agent/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".tabnine"))
+	},
+	trae: {
+		name: "trae",
+		displayName: "Trae",
+		skillsDir: ".trae/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".trae/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".trae"))
+	},
+	"trae-cn": {
+		name: "trae-cn",
+		displayName: "Trae CN",
+		skillsDir: ".trae/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".trae-cn/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".trae-cn"))
+	},
+	universal: {
+		name: "universal",
+		displayName: "Universal",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".agents/skills"),
+		detectInstalled: async () => false,
+		isUniversal: true
+	},
+	warp: {
+		name: "warp",
+		displayName: "Warp",
+		skillsDir: CANONICAL_SKILLS_DIR,
+		globalSkillsDir: (0, node_path.join)(home, ".agents/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".warp")),
+		isUniversal: true
+	},
+	windsurf: {
+		name: "windsurf",
+		displayName: "Windsurf",
+		skillsDir: ".windsurf/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".codeium/windsurf/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".codeium/windsurf"))
+	},
+	zencoder: {
+		name: "zencoder",
+		displayName: "Zencoder",
+		skillsDir: ".zencoder/skills",
+		globalSkillsDir: (0, node_path.join)(home, ".zencoder/skills"),
+		detectInstalled: async () => (0, node_fs.existsSync)((0, node_path.join)(home, ".zencoder"))
+	}
+};
+const getSkillAgentConfig = (agentType) => skillAgents[agentType];
+const isUniversalSkillAgent = (agentType) => Boolean(skillAgents[agentType].isUniversal);
+const getSkillAgentDir = (agentType, options = {}) => {
+	const agent = skillAgents[agentType];
+	if (options.global ?? false) return agent.globalSkillsDir ?? (0, node_path.join)(home, agent.skillsDir);
+	return (0, node_path.join)(options.cwd ?? process.cwd(), agent.skillsDir);
+};
+const agentConfigEntries = () => Object.values(skillAgents).map((config) => [config.name, config]);
+const getSkillAgentTypes = () => agentConfigEntries().map(([name]) => name);
+const isSkillAgentType = (value) => value in skillAgents;
+const getUniversalSkillAgents = () => agentConfigEntries().filter(([name, config]) => config.isUniversal && name !== "universal").map(([name]) => name);
+const getNonUniversalSkillAgents = () => agentConfigEntries().filter(([, config]) => !config.isUniversal).map(([name]) => name);
+const detectInstalledSkillAgents = async () => {
+	return (await Promise.all(Object.values(skillAgents).map(async (config) => ({
+		name: config.name,
+		installed: await config.detectInstalled()
+	})))).filter((entry) => entry.installed).map((entry) => entry.name);
+};
+//#endregion
+//#region src/skill/frontmatter.ts
+const parseFrontmatter = (raw) => {
+	const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+	if (!match) return {
+		data: {},
+		content: raw
+	};
+	const parsed = (0, yaml.parse)(match[1] ?? "");
+	return {
+		data: require_to_error_message.isPlainObject(parsed) ? parsed : {},
+		content: match[2] ?? ""
+	};
+};
+//#endregion
+//#region src/utils/sanitize-name.ts
+const sanitizeName = (name) => {
+	return name.toLowerCase().replace(/[^a-z0-9._]+/g, "-").replace(/^[.-]+|[.-]+$/g, "").substring(0, 255) || "unnamed-skill";
+};
+//#endregion
+//#region src/skill/fetch-url.ts
+const fetchSkillManifestFromUrl = async (url) => {
+	const controller = new AbortController();
+	const timer = setTimeout(() => controller.abort(), DEFAULT_FETCH_TIMEOUT_MS);
+	try {
+		const response = await fetch(url, { signal: controller.signal });
+		if (!response.ok) throw new Error(`Failed to fetch ${url}: HTTP ${response.status}`);
+		const content = await response.text();
+		const { data } = parseFrontmatter(content);
+		if (typeof data.name !== "string" || !data.name) throw new Error(`Fetched SKILL.md has no "name" in its frontmatter: ${url}`);
+		const skillName = sanitizeName(data.name);
+		const baseDir = await (0, node_fs_promises.mkdtemp)((0, node_path.join)((0, node_os.tmpdir)(), "agent-install-url-"));
+		const skillDir = (0, node_path.join)(baseDir, skillName);
+		await (0, node_fs_promises.mkdir)((0, node_path.dirname)((0, node_path.join)(skillDir, SKILL_MANIFEST_FILE)), { recursive: true });
+		await (0, node_fs_promises.writeFile)((0, node_path.join)(skillDir, SKILL_MANIFEST_FILE), content, "utf-8");
+		return baseDir;
+	} finally {
+		clearTimeout(timer);
+	}
+};
+//#endregion
+//#region src/utils/is-path-safe.ts
+const isPathSafe = (basePath, targetPath) => {
+	const normalizedBase = (0, node_path.normalize)((0, node_path.resolve)(basePath));
+	const normalizedTarget = (0, node_path.normalize)((0, node_path.resolve)(targetPath));
+	return normalizedTarget.startsWith(normalizedBase + node_path.sep) || normalizedTarget === normalizedBase;
+};
+//#endregion
+//#region src/utils/strip-trailing-slash.ts
+const stripTrailingSlash = (input) => input.endsWith("/") ? input.slice(0, -1) : input;
+//#endregion
+//#region src/skill/fetch-well-known.ts
+const TEMP_PREFIX = "agent-install-well-known-";
+const SKILL_NAME_PATTERN = /^[a-z0-9]([a-z0-9-]{0,62}[a-z0-9])?$/;
+var WellKnownTimeoutError = class extends Error {
+	constructor(message) {
+		super(message);
+		this.name = "WellKnownTimeoutError";
+	}
+};
+const isValidWellKnownEntry = (value) => {
+	if (!require_to_error_message.isPlainObject(value)) return false;
+	if (typeof value.name !== "string" || !value.name) return false;
+	if (typeof value.description !== "string" || !value.description) return false;
+	if (!Array.isArray(value.files) || value.files.length === 0) return false;
+	if (value.name.length > 1 && !SKILL_NAME_PATTERN.test(value.name)) return false;
+	if (value.name.length === 1 && !/^[a-z0-9]$/.test(value.name)) return false;
+	for (const file of value.files) {
+		if (typeof file !== "string") return false;
+		if (file.startsWith("/") || file.startsWith("\\") || file.includes("..")) return false;
+	}
+	return value.files.some((file) => typeof file === "string" && file.toLowerCase() === "skill.md");
+};
+const fetchOk = async (url) => {
+	try {
+		const response = await fetch(url, { signal: AbortSignal.timeout(DEFAULT_FETCH_TIMEOUT_MS) });
+		return response.ok ? response : null;
+	} catch (error) {
+		if (error instanceof DOMException && error.name === "TimeoutError") throw new WellKnownTimeoutError(`Request timed out: ${url}`);
+		return null;
+	}
+};
+const buildIndexCandidates = (inputUrl) => {
+	const parsed = new URL(inputUrl);
+	const basePath = stripTrailingSlash(parsed.pathname);
+	const candidates = [];
+	for (const wellKnownPath of WELL_KNOWN_PATHS) {
+		candidates.push({
+			indexUrl: `${parsed.protocol}//${parsed.host}${basePath}/${wellKnownPath}/${WELL_KNOWN_INDEX_FILE}`,
+			baseUrl: `${parsed.protocol}//${parsed.host}${basePath}`,
+			wellKnownPath
+		});
+		if (basePath) candidates.push({
+			indexUrl: `${parsed.protocol}//${parsed.host}/${wellKnownPath}/${WELL_KNOWN_INDEX_FILE}`,
+			baseUrl: `${parsed.protocol}//${parsed.host}`,
+			wellKnownPath
+		});
+	}
+	return candidates;
+};
+const extractRequestedSkillName = (inputUrl) => {
+	try {
+		const name = new URL(inputUrl).pathname.match(/\/.well-known\/(?:agent-skills|skills)\/([^/]+)\/?$/)?.[1];
+		return name && name !== "index.json" ? name : void 0;
+	} catch {
+		return;
+	}
+};
+const validateIndexEntries = (payload) => {
+	if (!require_to_error_message.isPlainObject(payload)) return null;
+	const { skills } = payload;
+	if (!Array.isArray(skills)) return null;
+	if (!skills.every(isValidWellKnownEntry)) return null;
+	return skills;
+};
+const resolveIndex = async (inputUrl) => {
+	for (const candidate of buildIndexCandidates(inputUrl)) {
+		const response = await fetchOk(candidate.indexUrl);
+		if (!response) continue;
+		let payload;
+		try {
+			payload = await response.json();
+		} catch {
+			continue;
+		}
+		const entries = validateIndexEntries(payload);
+		if (!entries) continue;
+		return {
+			entries,
+			baseUrl: candidate.baseUrl,
+			wellKnownPath: candidate.wellKnownPath,
+			requestedSkillName: extractRequestedSkillName(inputUrl)
+		};
+	}
+	return null;
+};
+const writeSkillFiles = async (resolved, entry, rootDir) => {
+	const skillDir = (0, node_path.join)(rootDir, sanitizeName(entry.name));
+	await (0, node_fs_promises.mkdir)(skillDir, { recursive: true });
+	const skillBaseUrl = `${stripTrailingSlash(resolved.baseUrl)}/${resolved.wellKnownPath}/${entry.name}`;
+	let installedAny = false;
+	await Promise.all(entry.files.map(async (relativePath) => {
+		const targetPath = (0, node_path.join)(skillDir, relativePath);
+		if (!isPathSafe(skillDir, targetPath)) return;
+		const response = await fetchOk(`${skillBaseUrl}/${relativePath}`);
+		if (!response) return;
+		const content = await response.text();
+		await (0, node_fs_promises.mkdir)((0, node_path.dirname)(targetPath), { recursive: true });
+		await (0, node_fs_promises.writeFile)(targetPath, content, "utf-8");
+		installedAny = true;
+	}));
+	return installedAny;
+};
+const fetchWellKnownSkills = async (inputUrl) => {
+	const resolved = await resolveIndex(inputUrl).catch((error) => {
+		if (error instanceof WellKnownTimeoutError) throw new Error(`Timed out resolving well-known skills index at ${inputUrl}. Set the source's HTTP server to respond faster, or pass a local path.`);
+		throw error;
+	});
+	if (!resolved) throw new Error(`No /.well-known/agent-skills/index.json (or fallback /.well-known/skills/index.json) found at ${inputUrl}`);
+	const entries = resolved.requestedSkillName ? resolved.entries.filter((entry) => entry.name === resolved.requestedSkillName) : resolved.entries;
+	if (entries.length === 0) throw new Error(resolved.requestedSkillName ? `Skill "${resolved.requestedSkillName}" not found in well-known index at ${inputUrl}` : `Well-known index at ${inputUrl} declares no skills`);
+	const baseDir = await (0, node_fs_promises.mkdtemp)((0, node_path.join)((0, node_os.tmpdir)(), TEMP_PREFIX));
+	if (!(await Promise.all(entries.map((entry) => writeSkillFiles(resolved, entry, baseDir)))).some(Boolean)) throw new Error(`Failed to fetch any skill files from well-known index at ${inputUrl}`);
+	return baseDir;
+};
+//#endregion
+//#region src/utils/read-json-object-if-exists.ts
+const readJsonObjectIfExists = async (path) => {
+	try {
+		const content = await (0, node_fs_promises.readFile)(path, "utf-8");
+		const parsed = JSON.parse(content);
+		return require_to_error_message.isPlainObject(parsed) ? parsed : null;
+	} catch {
+		return null;
+	}
+};
+//#endregion
+//#region src/skill/plugin-manifest.ts
+const MARKETPLACE_RELATIVE_PATH = ".claude-plugin/marketplace.json";
+const PLUGIN_RELATIVE_PATH = ".claude-plugin/plugin.json";
+const PLUGIN_SKILLS_SUBDIR = "skills";
+const isClaudeRelativePath = (input) => typeof input === "string" && input.startsWith("./");
+const stringValueOrEmpty = (input) => typeof input === "string" ? input : "";
+const resolvePluginRoot = (manifest) => {
+	if (!require_to_error_message.isPlainObject(manifest.metadata)) return "";
+	const rawPluginRoot = manifest.metadata.pluginRoot;
+	if (rawPluginRoot === void 0) return "";
+	return isClaudeRelativePath(rawPluginRoot) ? rawPluginRoot : null;
+};
+const collectPluginSkillSearchDirs = (basePath, pluginBase, rawSkills, searchDirs) => {
+	if (!isPathSafe(basePath, pluginBase)) return;
+	if (Array.isArray(rawSkills)) for (const entry of rawSkills) {
+		if (!isClaudeRelativePath(entry)) continue;
+		const skillDir = (0, node_path.dirname)((0, node_path.join)(pluginBase, entry));
+		if (isPathSafe(basePath, skillDir)) searchDirs.push(skillDir);
+	}
+	searchDirs.push((0, node_path.join)(pluginBase, PLUGIN_SKILLS_SUBDIR));
+};
+const collectPluginGroupings = (basePath, pluginBase, pluginName, rawSkills, groupings) => {
+	if (!isPathSafe(basePath, pluginBase) || !Array.isArray(rawSkills)) return;
+	for (const entry of rawSkills) {
+		if (!isClaudeRelativePath(entry)) continue;
+		const skillDir = (0, node_path.join)(pluginBase, entry);
+		if (!isPathSafe(basePath, skillDir)) continue;
+		groupings.set((0, node_path.resolve)(skillDir), pluginName);
+	}
+};
+const getPluginSkillPaths = async (basePath) => {
+	const searchDirs = [];
+	const marketplace = await readJsonObjectIfExists((0, node_path.join)(basePath, MARKETPLACE_RELATIVE_PATH));
+	if (marketplace) {
+		const pluginRoot = resolvePluginRoot(marketplace);
+		if (pluginRoot !== null && Array.isArray(marketplace.plugins)) for (const plugin of marketplace.plugins) {
+			if (!require_to_error_message.isPlainObject(plugin)) continue;
+			if (plugin.source !== void 0 && !isClaudeRelativePath(plugin.source)) continue;
+			collectPluginSkillSearchDirs(basePath, (0, node_path.join)(basePath, pluginRoot, stringValueOrEmpty(plugin.source)), plugin.skills, searchDirs);
+		}
+	}
+	const single = await readJsonObjectIfExists((0, node_path.join)(basePath, PLUGIN_RELATIVE_PATH));
+	if (single) collectPluginSkillSearchDirs(basePath, basePath, single.skills, searchDirs);
+	return searchDirs;
+};
+const getPluginGroupings = async (basePath) => {
+	const groupings = /* @__PURE__ */ new Map();
+	const marketplace = await readJsonObjectIfExists((0, node_path.join)(basePath, MARKETPLACE_RELATIVE_PATH));
+	if (marketplace) {
+		const pluginRoot = resolvePluginRoot(marketplace);
+		if (pluginRoot !== null && Array.isArray(marketplace.plugins)) for (const plugin of marketplace.plugins) {
+			if (!require_to_error_message.isPlainObject(plugin)) continue;
+			if (typeof plugin.name !== "string" || !plugin.name) continue;
+			if (plugin.source !== void 0 && !isClaudeRelativePath(plugin.source)) continue;
+			collectPluginGroupings(basePath, (0, node_path.join)(basePath, pluginRoot, stringValueOrEmpty(plugin.source)), plugin.name, plugin.skills, groupings);
+		}
+	}
+	const single = await readJsonObjectIfExists((0, node_path.join)(basePath, PLUGIN_RELATIVE_PATH));
+	if (single && typeof single.name === "string" && single.name) collectPluginGroupings(basePath, basePath, single.name, single.skills, groupings);
+	return groupings;
+};
+//#endregion
+//#region src/skill/git.ts
+const CLONE_TIMEOUT_ENV_VAR = "AGENT_INSTALL_CLONE_TIMEOUT_MS";
+const LEGACY_CLONE_TIMEOUT_ENV_VAR = "SKILL_INSTALL_CLONE_TIMEOUT_MS";
+const TEMP_CLONE_PREFIX = "agent-install-";
+var GitCloneError = class extends Error {
+	url;
+	kind;
+	constructor(message, url, kind = "unknown") {
+		super(message);
+		this.name = "GitCloneError";
+		this.url = url;
+		this.kind = kind;
+	}
+	get isTimeout() {
+		return this.kind === "timeout";
+	}
+	get isAuthError() {
+		return this.kind === "auth";
+	}
+};
+const resolveCloneTimeoutMs = () => {
+	const raw = process.env[CLONE_TIMEOUT_ENV_VAR] ?? process.env[LEGACY_CLONE_TIMEOUT_ENV_VAR];
+	if (!raw) return DEFAULT_CLONE_TIMEOUT_MS;
+	const parsed = Number.parseInt(raw, 10);
+	return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_CLONE_TIMEOUT_MS;
+};
+const runGit = (args, timeoutMs) => new Promise((resolvePromise) => {
+	const child = (0, node_child_process.spawn)("git", args, { env: {
+		...process.env,
+		GIT_TERMINAL_PROMPT: "0",
+		GIT_LFS_SKIP_SMUDGE: "1"
+	} });
+	let stderr = "";
+	let timedOut = false;
+	const timer = setTimeout(() => {
+		timedOut = true;
+		child.kill("SIGKILL");
+	}, timeoutMs);
+	child.stderr.on("data", (chunk) => {
+		stderr += chunk.toString();
+	});
+	child.on("close", (code) => {
+		clearTimeout(timer);
+		resolvePromise({
+			code: code ?? 1,
+			stderr,
+			timedOut
+		});
+	});
+	child.on("error", (err) => {
+		clearTimeout(timer);
+		stderr += err.message;
+		resolvePromise({
+			code: 1,
+			stderr,
+			timedOut
+		});
+	});
+});
+const AUTH_ERROR_MARKERS = [
+	"Authentication failed",
+	"could not read Username",
+	"Permission denied",
+	"Repository not found"
+];
+const isAuthErrorMessage = (stderr) => AUTH_ERROR_MARKERS.some((marker) => stderr.includes(marker));
+const cloneRepo = async (url, ref) => {
+	const tempDir = await (0, node_fs_promises.mkdtemp)((0, node_path.join)((0, node_os.tmpdir)(), TEMP_CLONE_PREFIX));
+	const timeoutMs = resolveCloneTimeoutMs();
+	const args = [
+		"-c",
+		"filter.lfs.required=false",
+		"-c",
+		"filter.lfs.smudge=",
+		"-c",
+		"filter.lfs.clean=",
+		"-c",
+		"filter.lfs.process=",
+		"clone",
+		"--depth",
+		"1"
+	];
+	if (ref) args.push("--branch", ref);
+	args.push(url, tempDir);
+	const { code, stderr, timedOut } = await runGit(args, timeoutMs);
+	if (code === 0) return tempDir;
+	await (0, node_fs_promises.rm)(tempDir, {
+		recursive: true,
+		force: true
+	}).catch(() => {});
+	if (timedOut) throw new GitCloneError([
+		`Clone timed out after ${Math.round(timeoutMs / MS_PER_SECOND)}s. Common causes:`,
+		`  - Large repository: raise the timeout with ${CLONE_TIMEOUT_ENV_VAR}=600000 (10m)`,
+		`  - Slow network: retry, or clone manually and pass the local path to 'skill add'`,
+		`  - Private repo without credentials:`,
+		`      - For SSH: ssh-add -l (to check loaded keys)`,
+		`      - For HTTPS: gh auth status (if using GitHub CLI)`
+	].join("\n"), url, "timeout");
+	if (isAuthErrorMessage(stderr)) throw new GitCloneError([
+		`Authentication failed for ${url}.`,
+		`  - For private repos, ensure you have access`,
+		`  - For SSH: check your keys with 'ssh -T git@github.com'`,
+		`  - For HTTPS: run 'gh auth login' or configure git credentials`
+	].join("\n"), url, "auth");
+	throw new GitCloneError(`Failed to clone ${url}: ${stderr.trim() || "unknown error"}`, url);
+};
+const cleanupTempDir = async (dir) => {
+	const normalizedDir = (0, node_path.normalize)((0, node_path.resolve)(dir));
+	const normalizedTmpDir = (0, node_path.normalize)((0, node_path.resolve)((0, node_os.tmpdir)()));
+	if (!normalizedDir.startsWith(normalizedTmpDir + node_path.sep) && normalizedDir !== normalizedTmpDir) throw new Error("Attempted to clean up directory outside of temp directory");
+	await (0, node_fs_promises.rm)(dir, {
+		recursive: true,
+		force: true
+	});
+};
+//#endregion
+//#region src/skill/installer.ts
+const getCanonicalSkillsDir = (isGlobal, cwd) => {
+	return (0, node_path.join)(isGlobal ? (0, node_os.homedir)() : cwd || process.cwd(), CANONICAL_SKILLS_DIR);
+};
+const getSkillAgentBaseDir = (agentType, isGlobal, cwd) => {
+	if (isUniversalSkillAgent(agentType)) return getCanonicalSkillsDir(isGlobal, cwd);
+	const agent = getSkillAgentConfig(agentType);
+	const baseDir = isGlobal ? (0, node_os.homedir)() : cwd || process.cwd();
+	if (isGlobal) return agent.globalSkillsDir ?? (0, node_path.join)(baseDir, agent.skillsDir);
+	return (0, node_path.join)(baseDir, agent.skillsDir);
+};
+const cleanAndCreateDirectory = async (path) => {
+	await (0, node_fs_promises.rm)(path, {
+		recursive: true,
+		force: true
+	}).catch(() => void 0);
+	await (0, node_fs_promises.mkdir)(path, { recursive: true });
+};
+const resolveSymlinkTarget = (linkPath, linkTarget) => (0, node_path.resolve)((0, node_path.dirname)(linkPath), linkTarget);
+const resolveParentSymlinks = async (path) => {
+	const resolved = (0, node_path.resolve)(path);
+	const parentDir = (0, node_path.dirname)(resolved);
+	const name = (0, node_path.basename)(resolved);
+	try {
+		return (0, node_path.join)(await (0, node_fs_promises.realpath)(parentDir), name);
+	} catch {
+		return resolved;
+	}
+};
+const isPathInsideBase = (basePath, targetPath) => {
+	const normalizedBase = (0, node_path.resolve)(basePath);
+	const normalizedTarget = (0, node_path.resolve)(targetPath);
+	return normalizedTarget === normalizedBase || normalizedTarget.startsWith(normalizedBase + node_path.sep);
+};
+const copyDirectory = async (src, dest, rootSrc = src) => {
+	await (0, node_fs_promises.mkdir)(dest, { recursive: true });
+	const entries = await (0, node_fs_promises.readdir)(src, { withFileTypes: true });
+	await Promise.all(entries.filter((entry) => !COPY_EXCLUDE_FILES.has(entry.name) && !(entry.isDirectory() && COPY_EXCLUDE_DIRS.has(entry.name))).map(async (entry) => {
+		const srcPath = (0, node_path.join)(src, entry.name);
+		const destPath = (0, node_path.join)(dest, entry.name);
+		if (entry.isSymbolicLink()) {
+			const linkRealPath = await (0, node_fs_promises.realpath)(srcPath).catch(() => null);
+			if (!linkRealPath || !isPathInsideBase(rootSrc, linkRealPath)) return;
+			await (0, node_fs_promises.cp)(srcPath, destPath, {
+				dereference: true,
+				recursive: true
+			});
+			return;
+		}
+		if (entry.isDirectory()) {
+			await copyDirectory(srcPath, destPath, rootSrc);
+			return;
+		}
+		await (0, node_fs_promises.cp)(srcPath, destPath, {
+			dereference: false,
+			recursive: true
+		});
+	}));
+};
+const isLoopError = (error) => Boolean(error && typeof error === "object" && "code" in error && error.code === "ELOOP");
+const createSymlink = async (target, linkPath) => {
+	try {
+		const resolvedTarget = (0, node_path.resolve)(target);
+		const resolvedLinkPath = (0, node_path.resolve)(linkPath);
+		const [realTarget, realLinkPath] = await Promise.all([(0, node_fs_promises.realpath)(resolvedTarget).catch(() => resolvedTarget), (0, node_fs_promises.realpath)(resolvedLinkPath).catch(() => resolvedLinkPath)]);
+		if (realTarget === realLinkPath) return true;
+		const [realTargetWithParents, realLinkPathWithParents] = await Promise.all([resolveParentSymlinks(target), resolveParentSymlinks(linkPath)]);
+		if (realTargetWithParents === realLinkPathWithParents) return true;
+		try {
+			if ((await (0, node_fs_promises.lstat)(linkPath)).isSymbolicLink()) {
+				if (resolveSymlinkTarget(linkPath, await (0, node_fs_promises.readlink)(linkPath)) === resolvedTarget) return true;
+				await (0, node_fs_promises.rm)(linkPath);
+			} else await (0, node_fs_promises.rm)(linkPath, { recursive: true });
+		} catch (error) {
+			if (isLoopError(error)) await (0, node_fs_promises.rm)(linkPath, { force: true }).catch(() => {});
+		}
+		const linkDir = (0, node_path.dirname)(linkPath);
+		await (0, node_fs_promises.mkdir)(linkDir, { recursive: true });
+		await (0, node_fs_promises.symlink)((0, node_path.relative)(await resolveParentSymlinks(linkDir), target), linkPath, (0, node_os.platform)() === "win32" ? "junction" : void 0);
+		return true;
+	} catch {
+		return false;
+	}
+};
+const installByCopy = async (skill, destination) => {
+	await cleanAndCreateDirectory(destination);
+	await copyDirectory(skill.path, destination);
+	return {
+		success: true,
+		path: destination,
+		mode: "copy"
+	};
+};
+const installBySymlink = async (skill, agentType, canonicalDir, agentDir, isGlobal) => {
+	await cleanAndCreateDirectory(canonicalDir);
+	await copyDirectory(skill.path, canonicalDir);
+	if (isGlobal && isUniversalSkillAgent(agentType)) return {
+		success: true,
+		path: canonicalDir,
+		canonicalPath: canonicalDir,
+		mode: "symlink"
+	};
+	if (await createSymlink(canonicalDir, agentDir)) return {
+		success: true,
+		path: agentDir,
+		canonicalPath: canonicalDir,
+		mode: "symlink"
+	};
+	await cleanAndCreateDirectory(agentDir);
+	await copyDirectory(skill.path, agentDir);
+	return {
+		success: true,
+		path: agentDir,
+		canonicalPath: canonicalDir,
+		mode: "symlink",
+		symlinkFailed: true
+	};
+};
+const installSkillForAgent = async (skill, agentType, options = {}) => {
+	const agent = skillAgents[agentType];
+	const isGlobal = options.global ?? false;
+	const cwd = options.cwd || process.cwd();
+	const installMode = options.mode ?? "symlink";
+	if (isGlobal && agent.globalSkillsDir === void 0) return {
+		success: false,
+		path: "",
+		mode: installMode,
+		error: `${agent.displayName} does not support global skill installation`
+	};
+	const skillName = sanitizeName(skill.name || (0, node_path.basename)(skill.path));
+	const canonicalBase = getCanonicalSkillsDir(isGlobal, cwd);
+	const canonicalDir = (0, node_path.join)(canonicalBase, skillName);
+	const agentBase = getSkillAgentBaseDir(agentType, isGlobal, cwd);
+	const agentDir = (0, node_path.join)(agentBase, skillName);
+	if (!isPathSafe(canonicalBase, canonicalDir) || !isPathSafe(agentBase, agentDir)) return {
+		success: false,
+		path: agentDir,
+		mode: installMode,
+		error: "Invalid skill name: potential path traversal detected"
+	};
+	try {
+		return installMode === "copy" ? await installByCopy(skill, agentDir) : await installBySymlink(skill, agentType, canonicalDir, agentDir, isGlobal);
+	} catch (error) {
+		return {
+			success: false,
+			path: agentDir,
+			mode: installMode,
+			error: require_to_error_message.toErrorMessage(error)
+		};
+	}
+};
+const isSkillInstalledForAgent = async (skillName, agentType, options = {}) => {
+	return (0, node_fs.existsSync)((0, node_path.join)(getSkillAgentBaseDir(agentType, options.global ?? false, options.cwd || process.cwd()), sanitizeName(skillName)));
+};
+//#endregion
+//#region src/utils/strip-terminal-escapes.ts
+const OSC_RE = /\x1b\][\s\S]*?(?:\x07|\x1b\\)/g;
+const DCS_PM_APC_RE = /\x1b[P^_][\s\S]*?(?:\x1b\\)/g;
+const CSI_RE = /\x1b\[[\x30-\x3f]*[\x20-\x2f]*[\x40-\x7e]/g;
+const SIMPLE_ESC_RE = /\x1b[\x20-\x7e]/g;
+const C1_RE = /[\x80-\x9f]/g;
+const CONTROL_RE = /[\x00-\x06\x07\x08\x0b\x0c\x0d-\x1a\x1c-\x1f\x7f]/g;
+const stripTerminalEscapes = (input) => input.replace(OSC_RE, "").replace(DCS_PM_APC_RE, "").replace(CSI_RE, "").replace(SIMPLE_ESC_RE, "").replace(C1_RE, "").replace(CONTROL_RE, "");
+//#endregion
+//#region src/utils/sanitize-metadata.ts
+const sanitizeMetadata = (input) => stripTerminalEscapes(input).replace(/[\r\n]+/g, " ").trim();
+//#endregion
+//#region src/skill/skills.ts
+const PRIORITY_RELATIVE_PATHS = [
+	"",
+	"skills",
+	"skills/.curated",
+	"skills/.experimental",
+	"skills/.system",
+	".agents/skills",
+	".aider-desk/skills",
+	".augment/skills",
+	".bob/skills",
+	".claude/skills",
+	".cline/skills",
+	".codeartsdoer/skills",
+	".codebuddy/skills",
+	".codemaker/skills",
+	".codestudio/skills",
+	".codex/skills",
+	".commandcode/skills",
+	".continue/skills",
+	".cortex/skills",
+	".crush/skills",
+	".cursor/skills",
+	".factory/skills",
+	".forge/skills",
+	".gemini/skills",
+	".github/skills",
+	".goose/skills",
+	".iflow/skills",
+	".junie/skills",
+	".kilocode/skills",
+	".kiro/skills",
+	".kode/skills",
+	".mcpjam/skills",
+	".mux/skills",
+	".neovate/skills",
+	".openhands/skills",
+	".pi/skills",
+	".pochi/skills",
+	".qoder/skills",
+	".qwen/skills",
+	".roo/skills",
+	".rovodev/skills",
+	".tabnine/agent/skills",
+	".trae/skills",
+	".vibe/skills",
+	".windsurf/skills",
+	".zencoder/skills"
+];
+const hasSkillManifest = async (dir) => {
+	try {
+		return (await (0, node_fs_promises.stat)((0, node_path.join)(dir, SKILL_MANIFEST_FILE))).isFile();
+	} catch {
+		return false;
+	}
+};
+const parseSkillManifest = async (manifestPath) => {
+	try {
+		const content = await (0, node_fs_promises.readFile)(manifestPath, "utf-8");
+		const { data } = parseFrontmatter(content);
+		if (typeof data.name !== "string" || typeof data.description !== "string") return null;
+		if (!data.name || !data.description) return null;
+		const metadata = require_to_error_message.isPlainObject(data.metadata) ? data.metadata : void 0;
+		return {
+			name: sanitizeMetadata(data.name),
+			description: sanitizeMetadata(data.description),
+			path: (0, node_path.dirname)(manifestPath),
+			rawContent: content,
+			metadata
+		};
+	} catch {
+		return null;
+	}
+};
+const findSkillDirs = async (dir, depth = 0) => {
+	if (depth > 5) return [];
+	try {
+		const [hasManifest, entries] = await Promise.all([hasSkillManifest(dir), (0, node_fs_promises.readdir)(dir, { withFileTypes: true }).catch(() => [])]);
+		const currentDir = hasManifest ? [dir] : [];
+		const subDirResults = await Promise.all(entries.filter((entry) => entry.isDirectory() && !SKIP_DISCOVERY_DIRS.has(entry.name)).map((entry) => findSkillDirs((0, node_path.join)(dir, entry.name), depth + 1)));
+		return [...currentDir, ...subDirResults.flat()];
+	} catch {
+		return [];
+	}
+};
+const discoverSkills = async (basePath, subpath, options) => {
+	if (subpath && !isPathSafe(basePath, (0, node_path.join)(basePath, subpath))) throw new Error(`Invalid subpath: "${subpath}" resolves outside the base directory. Subpath must not contain ".." segments that escape the base path.`);
+	const searchPath = subpath ? (0, node_path.join)(basePath, subpath) : basePath;
+	const seenNames = /* @__PURE__ */ new Set();
+	const results = [];
+	const pluginGroupings = await getPluginGroupings(searchPath);
+	const enhanceSkill = (skill) => {
+		const pluginName = pluginGroupings.get((0, node_path.resolve)(skill.path));
+		return pluginName ? {
+			...skill,
+			pluginName
+		} : skill;
+	};
+	const pluginExtraDirs = await getPluginSkillPaths(searchPath);
+	if (await hasSkillManifest(searchPath)) {
+		const skill = await parseSkillManifest((0, node_path.join)(searchPath, SKILL_MANIFEST_FILE));
+		if (skill) {
+			results.push(enhanceSkill(skill));
+			seenNames.add(skill.name);
+			if (!options?.fullDepth) return results;
+		}
+	}
+	const prioritySearchDirs = [...PRIORITY_RELATIVE_PATHS.map((relative) => relative ? (0, node_path.join)(searchPath, relative) : searchPath), ...pluginExtraDirs];
+	for (const dir of prioritySearchDirs) try {
+		const entries = await (0, node_fs_promises.readdir)(dir, { withFileTypes: true });
+		for (const entry of entries) {
+			if (!entry.isDirectory()) continue;
+			const skillDir = (0, node_path.join)(dir, entry.name);
+			if (!await hasSkillManifest(skillDir)) continue;
+			const skill = await parseSkillManifest((0, node_path.join)(skillDir, SKILL_MANIFEST_FILE));
+			if (skill && !seenNames.has(skill.name)) {
+				results.push(enhanceSkill(skill));
+				seenNames.add(skill.name);
+			}
+		}
+	} catch {}
+	if (results.length === 0 || options?.fullDepth) {
+		const allSkillDirs = await findSkillDirs(searchPath);
+		for (const skillDir of allSkillDirs) {
+			const skill = await parseSkillManifest((0, node_path.join)(skillDir, SKILL_MANIFEST_FILE));
+			if (skill && !seenNames.has(skill.name)) {
+				results.push(enhanceSkill(skill));
+				seenNames.add(skill.name);
+			}
+		}
+	}
+	return results;
+};
+const getSkillDisplayName = (skill) => skill.name || (0, node_path.basename)(skill.path);
+const filterSkillsByName = (skills, inputNames) => {
+	const normalizedInputs = inputNames.map((inputName) => inputName.toLowerCase());
+	return skills.filter((skill) => {
+		const name = skill.name.toLowerCase();
+		const displayName = getSkillDisplayName(skill).toLowerCase();
+		return normalizedInputs.some((inputName) => inputName === name || inputName === displayName);
+	});
+};
+//#endregion
+//#region src/utils/escape-regex.ts
+const escapeRegex = (input) => input.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+//#endregion
+//#region src/utils/sanitize-subpath.ts
+const sanitizeSubpath = (subpath) => {
+	const segments = subpath.replace(/\\/g, "/").split("/");
+	for (const segment of segments) if (segment === "..") throw new Error(`Unsafe subpath: "${subpath}" contains path traversal segments. Subpaths must not contain ".." components.`);
+	return subpath;
+};
+//#endregion
+//#region src/skill/source-parser.ts
+const HOST_CONFIGS = [{
+	host: "github",
+	domain: "github.com",
+	prefix: "github:",
+	treePrefix: "/tree/",
+	anchorRepo: false
+}, {
+	host: "gitlab",
+	domain: "gitlab.com",
+	prefix: "gitlab:",
+	treePrefix: "/-/tree/",
+	anchorRepo: true
+}];
+const HOST_BY_NAME = new Map(HOST_CONFIGS.map((config) => [config.host, config]));
+const HOST_BY_DOMAIN = new Map(HOST_CONFIGS.map((config) => [config.domain, config]));
+const SSH_URL_PATTERN = /^git@([^:]+):([^/]+)\/([^/]+?)(?:\.git)?$/;
+const isLocalPath = (input) => (0, node_path.isAbsolute)(input) || input.startsWith("./") || input.startsWith("../") || input === "." || input === ".." || /^[a-zA-Z]:[/\\]/.test(input);
+const isShorthandCandidate = (input) => !input.includes(":") && !input.startsWith(".") && !input.startsWith("/");
+const buildHostedSource = ({ host, owner, repo, ref, subpath, skillFilter }) => {
+	const config = HOST_BY_NAME.get(host);
+	if (!config) throw new Error(`Unknown host: ${host}`);
+	const cleanRepo = repo.replace(/\.git$/, "");
+	const result = {
+		type: host,
+		url: `https://${config.domain}/${owner}/${cleanRepo}.git`
+	};
+	if (ref) result.ref = ref;
+	if (subpath) result.subpath = sanitizeSubpath(subpath);
+	if (skillFilter) result.skillFilter = skillFilter;
+	return result;
+};
+const buildHostUrlPatterns = (config) => {
+	const domain = escapeRegex(config.domain);
+	const treePrefix = escapeRegex(config.treePrefix);
+	const repoPattern = config.anchorRepo ? `${domain}/([^/]+)/([^/]+?)(?:\\.git)?/?$` : `${domain}/([^/]+)/([^/]+)`;
+	return {
+		treeWithPath: new RegExp(`${domain}/([^/]+)/([^/]+)${treePrefix}([^/]+)/(.+)`),
+		tree: new RegExp(`${domain}/([^/]+)/([^/]+)${treePrefix}([^/]+)$`),
+		repo: new RegExp(repoPattern)
+	};
+};
+const HOST_URL_PATTERNS = new Map(HOST_CONFIGS.map((config) => [config.host, buildHostUrlPatterns(config)]));
+const decodeFragmentValue = (value) => {
+	try {
+		return decodeURIComponent(value);
+	} catch {
+		return value;
+	}
+};
+const looksLikeGitSource = (input) => {
+	if (input.startsWith("git@")) return true;
+	if (HOST_CONFIGS.some((config) => input.startsWith(config.prefix))) return true;
+	if (input.startsWith("http://") || input.startsWith("https://")) try {
+		const parsed = new URL(input);
+		const config = HOST_BY_DOMAIN.get(parsed.hostname);
+		if (config) {
+			const treePrefix = escapeRegex(config.treePrefix);
+			return new RegExp(`^/[^/]+/[^/]+(?:\\.git)?(?:${treePrefix}[^/]+(?:/.*)?)?/?$`).test(parsed.pathname);
+		}
+	} catch {
+		return false;
+	}
+	if (/^https?:\/\/.+\.git(?:$|[/?])/i.test(input)) return true;
+	return isShorthandCandidate(input) && /^([^/]+)\/([^/]+)(?:\/(.+)|@(.+))?$/.test(input);
+};
+const parseFragmentRef = (input) => {
+	const hashIndex = input.indexOf("#");
+	if (hashIndex < 0) return { inputWithoutFragment: input };
+	const inputWithoutFragment = input.slice(0, hashIndex);
+	const fragment = input.slice(hashIndex + 1);
+	if (!fragment || !looksLikeGitSource(inputWithoutFragment)) return { inputWithoutFragment: input };
+	const atIndex = fragment.indexOf("@");
+	if (atIndex === -1) return {
+		inputWithoutFragment,
+		ref: decodeFragmentValue(fragment)
+	};
+	const ref = fragment.slice(0, atIndex);
+	const skillFilter = fragment.slice(atIndex + 1);
+	return {
+		inputWithoutFragment,
+		ref: ref ? decodeFragmentValue(ref) : void 0,
+		skillFilter: skillFilter ? decodeFragmentValue(skillFilter) : void 0
+	};
+};
+const isDirectSkillMdUrl = (input) => /^https?:\/\//.test(input) && /\bSKILL\.md(?:$|\?|#)/i.test(input);
+const EXCLUDED_WELL_KNOWN_HOSTS = new Set(["raw.githubusercontent.com"]);
+const isWellKnownCandidate = (input) => {
+	if (!/^https?:\/\//.test(input)) return false;
+	let parsed;
+	try {
+		parsed = new URL(input);
+	} catch {
+		return false;
+	}
+	if (HOST_BY_DOMAIN.has(parsed.hostname)) return false;
+	if (EXCLUDED_WELL_KNOWN_HOSTS.has(parsed.hostname)) return false;
+	if (input.endsWith(".git")) return false;
+	if (isDirectSkillMdUrl(input)) return false;
+	return true;
+};
+const parseHostedShorthand = (rest, host, fragmentRef, fragmentSkillFilter) => {
+	const atSkillMatch = rest.match(/^([^/]+)\/([^/@]+)@(.+)$/);
+	if (atSkillMatch) {
+		const [, owner, repo, skillFilter] = atSkillMatch;
+		return buildHostedSource({
+			host,
+			owner,
+			repo,
+			ref: fragmentRef,
+			skillFilter: fragmentSkillFilter ?? skillFilter
+		});
+	}
+	const shorthandMatch = rest.match(/^([^/]+)\/([^/]+)(?:\/(.+?))?\/?$/);
+	if (shorthandMatch) {
+		const [, owner, repo, subpath] = shorthandMatch;
+		return buildHostedSource({
+			host,
+			owner,
+			repo,
+			ref: fragmentRef,
+			subpath,
+			skillFilter: fragmentSkillFilter
+		});
+	}
+	return null;
+};
+const isHostnameAuthoritative = (input, expectedHostname) => {
+	if (!input.startsWith("http://") && !input.startsWith("https://")) return false;
+	try {
+		return new URL(input).hostname === expectedHostname;
+	} catch {
+		return false;
+	}
+};
+const parseHostUrl = (input, host, fragmentRef) => {
+	const config = HOST_BY_NAME.get(host);
+	if (!config) return null;
+	if (!isHostnameAuthoritative(input, config.domain)) return null;
+	const patterns = HOST_URL_PATTERNS.get(host);
+	if (!patterns) return null;
+	const treeWithPathMatch = input.match(patterns.treeWithPath);
+	if (treeWithPathMatch) {
+		const [, owner, repo, ref, subpath] = treeWithPathMatch;
+		return buildHostedSource({
+			host,
+			owner,
+			repo,
+			ref: ref || fragmentRef,
+			subpath
+		});
+	}
+	const treeMatch = input.match(patterns.tree);
+	if (treeMatch) {
+		const [, owner, repo, ref] = treeMatch;
+		return buildHostedSource({
+			host,
+			owner,
+			repo,
+			ref: ref || fragmentRef
+		});
+	}
+	const repoMatch = input.match(patterns.repo);
+	if (repoMatch) {
+		const [, owner, repo] = repoMatch;
+		return buildHostedSource({
+			host,
+			owner,
+			repo,
+			ref: fragmentRef
+		});
+	}
+	return null;
+};
+const parseSshUrl = (input, fragmentRef, fragmentSkillFilter) => {
+	const match = input.match(SSH_URL_PATTERN);
+	if (!match) return null;
+	const [, sshHost] = match;
+	const result = {
+		type: HOST_BY_DOMAIN.get(sshHost)?.host ?? "git",
+		url: input
+	};
+	if (fragmentRef) result.ref = fragmentRef;
+	if (fragmentSkillFilter) result.skillFilter = fragmentSkillFilter;
+	return result;
+};
+const parseSkillSource = (input) => {
+	if (!input || input.trim().length === 0) throw new Error("Invalid skill source: input is empty. Expected a local path, owner/repo shorthand, or URL.");
+	if (isLocalPath(input)) {
+		const resolvedPath = (0, node_path.resolve)(input);
+		return {
+			type: "local",
+			url: resolvedPath,
+			localPath: resolvedPath
+		};
+	}
+	const { inputWithoutFragment, ref: fragmentRef, skillFilter: fragmentSkillFilter } = parseFragmentRef(input);
+	const normalized = inputWithoutFragment;
+	for (const config of HOST_CONFIGS) if (normalized.startsWith(config.prefix)) {
+		const result = parseHostedShorthand(normalized.slice(config.prefix.length), config.host, fragmentRef, fragmentSkillFilter);
+		if (result) return result;
+	}
+	if (normalized.startsWith("git@")) {
+		const sshResult = parseSshUrl(normalized, fragmentRef, fragmentSkillFilter);
+		if (sshResult) return sshResult;
+	}
+	for (const config of HOST_CONFIGS) {
+		const result = parseHostUrl(normalized, config.host, fragmentRef);
+		if (result) return result;
+	}
+	if (isDirectSkillMdUrl(normalized)) return {
+		type: "url",
+		url: normalized
+	};
+	if (isShorthandCandidate(normalized)) {
+		const result = parseHostedShorthand(normalized, "github", fragmentRef, fragmentSkillFilter);
+		if (result) return result;
+	}
+	if (isWellKnownCandidate(normalized)) {
+		const wellKnownResult = {
+			type: "well-known",
+			url: normalized
+		};
+		if (fragmentSkillFilter) wellKnownResult.skillFilter = fragmentSkillFilter;
+		return wellKnownResult;
+	}
+	const result = {
+		type: "git",
+		url: normalized
+	};
+	if (fragmentRef) result.ref = fragmentRef;
+	return result;
+};
+//#endregion
+//#region src/skill/install-skills-from-source.ts
+const resolveSource = async (parsed) => {
+	if (parsed.type === "local") {
+		if (!parsed.localPath) throw new Error("Local source is missing a resolved path");
+		return { basePath: parsed.localPath };
+	}
+	if (parsed.type === "url") {
+		const baseDir = await fetchSkillManifestFromUrl(parsed.url);
+		return {
+			basePath: baseDir,
+			cleanup: () => cleanupTempDir(baseDir)
+		};
+	}
+	if (parsed.type === "well-known") {
+		const baseDir = await fetchWellKnownSkills(parsed.url);
+		return {
+			basePath: baseDir,
+			skillFilter: parsed.skillFilter,
+			cleanup: () => cleanupTempDir(baseDir)
+		};
+	}
+	const cloneDir = await cloneRepo(parsed.url, parsed.ref);
+	return {
+		basePath: cloneDir,
+		subpath: parsed.subpath,
+		skillFilter: parsed.skillFilter,
+		cleanup: () => cleanupTempDir(cloneDir)
+	};
+};
+const resolveTargetAgents = async (requested) => {
+	if (requested && requested.length > 0) return requested;
+	const installed = await detectInstalledSkillAgents();
+	return installed.length > 0 ? installed : getUniversalSkillAgents();
+};
+const resolveSkillFilters = (explicit, fromSource) => {
+	if (explicit && explicit.length > 0) return explicit;
+	if (fromSource) return [fromSource];
+};
+const installSkillsFromSource = async (options) => {
+	const resolved = await resolveSource(parseSkillSource(options.source));
+	try {
+		const filters = resolveSkillFilters(options.skills, resolved.skillFilter);
+		const discovered = await discoverSkills(resolved.basePath, resolved.subpath);
+		const skills = filters ? filterSkillsByName(discovered, filters) : discovered;
+		if (skills.length === 0) return {
+			installed: [],
+			failed: [],
+			skills: []
+		};
+		const targetAgents = await resolveTargetAgents(options.agents);
+		const installed = [];
+		const failed = [];
+		for (const skill of skills) for (const agent of targetAgents) {
+			const result = await installSkillForAgent(skill, agent, {
+				global: options.global,
+				cwd: options.cwd,
+				mode: options.mode
+			});
+			if (result.success) installed.push({
+				skill: skill.name,
+				agent,
+				path: result.path,
+				canonicalPath: result.canonicalPath,
+				mode: result.mode,
+				symlinkFailed: result.symlinkFailed
+			});
+			else failed.push({
+				skill: skill.name,
+				agent,
+				error: result.error ?? "Unknown error"
+			});
+		}
+		return {
+			installed,
+			failed,
+			skills
+		};
+	} finally {
+		await resolved.cleanup?.().catch(() => {});
+	}
+};
+//#endregion
+//#region src/skill/index.ts
+var skill_exports = /* @__PURE__ */ require_chunk.__exportAll({
+	CANONICAL_SKILLS_DIR: () => CANONICAL_SKILLS_DIR,
+	GitCloneError: () => GitCloneError,
+	SKILL_MANIFEST_FILE: () => SKILL_MANIFEST_FILE,
+	add: () => installSkillsFromSource,
+	cleanupTempDir: () => cleanupTempDir,
+	cloneRepo: () => cloneRepo,
+	detectInstalledSkillAgents: () => detectInstalledSkillAgents,
+	discover: () => discoverSkills,
+	discoverSkills: () => discoverSkills,
+	fetchSkillManifestFromUrl: () => fetchSkillManifestFromUrl,
+	fetchWellKnownSkills: () => fetchWellKnownSkills,
+	filterSkillsByName: () => filterSkillsByName,
+	getCanonicalSkillsDir: () => getCanonicalSkillsDir,
+	getNonUniversalSkillAgents: () => getNonUniversalSkillAgents,
+	getPluginGroupings: () => getPluginGroupings,
+	getPluginSkillPaths: () => getPluginSkillPaths,
+	getSkillAgentBaseDir: () => getSkillAgentBaseDir,
+	getSkillAgentConfig: () => getSkillAgentConfig,
+	getSkillAgentDir: () => getSkillAgentDir,
+	getSkillAgentTypes: () => getSkillAgentTypes,
+	getSkillDisplayName: () => getSkillDisplayName,
+	getUniversalSkillAgents: () => getUniversalSkillAgents,
+	install: () => installSkillsFromSource,
+	installSkillForAgent: () => installSkillForAgent,
+	installSkillsFromSource: () => installSkillsFromSource,
+	isSkillAgentType: () => isSkillAgentType,
+	isSkillInstalledForAgent: () => isSkillInstalledForAgent,
+	isUniversalSkillAgent: () => isUniversalSkillAgent,
+	parseFrontmatter: () => parseFrontmatter,
+	parseSkillManifest: () => parseSkillManifest,
+	parseSkillSource: () => parseSkillSource,
+	parseSource: () => parseSkillSource,
+	sanitizeMetadata: () => sanitizeMetadata,
+	sanitizeName: () => sanitizeName,
+	skillAgents: () => skillAgents
+});
+//#endregion
+Object.defineProperty(exports, "CANONICAL_SKILLS_DIR", {
+	enumerable: true,
+	get: function() {
+		return CANONICAL_SKILLS_DIR;
+	}
+});
+Object.defineProperty(exports, "GitCloneError", {
+	enumerable: true,
+	get: function() {
+		return GitCloneError;
+	}
+});
+Object.defineProperty(exports, "SKILL_MANIFEST_FILE", {
+	enumerable: true,
+	get: function() {
+		return SKILL_MANIFEST_FILE;
+	}
+});
+Object.defineProperty(exports, "cleanupTempDir", {
+	enumerable: true,
+	get: function() {
+		return cleanupTempDir;
+	}
+});
+Object.defineProperty(exports, "cloneRepo", {
+	enumerable: true,
+	get: function() {
+		return cloneRepo;
+	}
+});
+Object.defineProperty(exports, "detectInstalledSkillAgents", {
+	enumerable: true,
+	get: function() {
+		return detectInstalledSkillAgents;
+	}
+});
+Object.defineProperty(exports, "discoverSkills", {
+	enumerable: true,
+	get: function() {
+		return discoverSkills;
+	}
+});
+Object.defineProperty(exports, "fetchSkillManifestFromUrl", {
+	enumerable: true,
+	get: function() {
+		return fetchSkillManifestFromUrl;
+	}
+});
+Object.defineProperty(exports, "fetchWellKnownSkills", {
+	enumerable: true,
+	get: function() {
+		return fetchWellKnownSkills;
+	}
+});
+Object.defineProperty(exports, "filterSkillsByName", {
+	enumerable: true,
+	get: function() {
+		return filterSkillsByName;
+	}
+});
+Object.defineProperty(exports, "getCanonicalSkillsDir", {
+	enumerable: true,
+	get: function() {
+		return getCanonicalSkillsDir;
+	}
+});
+Object.defineProperty(exports, "getNonUniversalSkillAgents", {
+	enumerable: true,
+	get: function() {
+		return getNonUniversalSkillAgents;
+	}
+});
+Object.defineProperty(exports, "getPluginGroupings", {
+	enumerable: true,
+	get: function() {
+		return getPluginGroupings;
+	}
+});
+Object.defineProperty(exports, "getPluginSkillPaths", {
+	enumerable: true,
+	get: function() {
+		return getPluginSkillPaths;
+	}
+});
+Object.defineProperty(exports, "getSkillAgentBaseDir", {
+	enumerable: true,
+	get: function() {
+		return getSkillAgentBaseDir;
+	}
+});
+Object.defineProperty(exports, "getSkillAgentConfig", {
+	enumerable: true,
+	get: function() {
+		return getSkillAgentConfig;
+	}
+});
+Object.defineProperty(exports, "getSkillAgentDir", {
+	enumerable: true,
+	get: function() {
+		return getSkillAgentDir;
+	}
+});
+Object.defineProperty(exports, "getSkillAgentTypes", {
+	enumerable: true,
+	get: function() {
+		return getSkillAgentTypes;
+	}
+});
+Object.defineProperty(exports, "getSkillDisplayName", {
+	enumerable: true,
+	get: function() {
+		return getSkillDisplayName;
+	}
+});
+Object.defineProperty(exports, "getUniversalSkillAgents", {
+	enumerable: true,
+	get: function() {
+		return getUniversalSkillAgents;
+	}
+});
+Object.defineProperty(exports, "installSkillForAgent", {
+	enumerable: true,
+	get: function() {
+		return installSkillForAgent;
+	}
+});
+Object.defineProperty(exports, "installSkillsFromSource", {
+	enumerable: true,
+	get: function() {
+		return installSkillsFromSource;
+	}
+});
+Object.defineProperty(exports, "isSkillAgentType", {
+	enumerable: true,
+	get: function() {
+		return isSkillAgentType;
+	}
+});
+Object.defineProperty(exports, "isSkillInstalledForAgent", {
+	enumerable: true,
+	get: function() {
+		return isSkillInstalledForAgent;
+	}
+});
+Object.defineProperty(exports, "isUniversalSkillAgent", {
+	enumerable: true,
+	get: function() {
+		return isUniversalSkillAgent;
+	}
+});
+Object.defineProperty(exports, "parseFrontmatter", {
+	enumerable: true,
+	get: function() {
+		return parseFrontmatter;
+	}
+});
+Object.defineProperty(exports, "parseSkillManifest", {
+	enumerable: true,
+	get: function() {
+		return parseSkillManifest;
+	}
+});
+Object.defineProperty(exports, "parseSkillSource", {
+	enumerable: true,
+	get: function() {
+		return parseSkillSource;
+	}
+});
+Object.defineProperty(exports, "sanitizeMetadata", {
+	enumerable: true,
+	get: function() {
+		return sanitizeMetadata;
+	}
+});
+Object.defineProperty(exports, "sanitizeName", {
+	enumerable: true,
+	get: function() {
+		return sanitizeName;
+	}
+});
+Object.defineProperty(exports, "skillAgents", {
+	enumerable: true,
+	get: function() {
+		return skillAgents;
+	}
+});
+Object.defineProperty(exports, "skill_exports", {
+	enumerable: true,
+	get: function() {
+		return skill_exports;
+	}
+});

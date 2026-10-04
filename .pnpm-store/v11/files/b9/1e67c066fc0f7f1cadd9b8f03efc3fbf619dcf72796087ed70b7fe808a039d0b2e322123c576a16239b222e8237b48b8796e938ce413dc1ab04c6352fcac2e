@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-content-list.d.ts
+type NavigationMenuContentListProps = Omit<useRender.ComponentProps<"ul">, "className" | "style">;
+/**
+ * The styled vertical list of links inside a `NavigationMenuContent` panel. Stacks its items with a
+ * consistent gap; the surrounding `NavigationMenuPopup` owns the padding. Renders a `<ul>`, so each
+ * child link belongs in its own `<li>`.
+ */
+declare function NavigationMenuContentList({ render, ...props }: NavigationMenuContentListProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NavigationMenuContentList, NavigationMenuContentListProps };
+//# sourceMappingURL=navigation-menu-content-list.d.ts.map

@@ -1,0 +1,38 @@
+"use client";
+import { TableCell } from "../../elements/table/table-cell.js";
+import { TableSelectLayout } from "../../elements/table/table-select-layout.js";
+import { Checkbox } from "../checkbox/checkbox.js";
+import { useTableVariant } from "./table-context.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/table/table-select-cell.tsx
+/**
+* The row-selection cell (`<td>`): a checkbox centred in an unpadded cell, so the whole 44px cell
+* is the pointer target.
+*
+* The checkbox is the semantic source of truth — its own checked state is what assistive tech
+* announces. Pair it with `selected` on the `TableRow` for the row tint, which is decoration.
+*/
+function TableSelectCell({ checked, onCheckedChange, pinned = "none", disabled, "aria-label": ariaLabel, ...props }) {
+	return /* @__PURE__ */ jsx(TableCell, {
+		variant: useTableVariant(),
+		pinned,
+		padding: "trigger",
+		...props,
+		children: /* @__PURE__ */ jsx(TableSelectLayout, {
+			onClick: (event) => {
+				if (event.target !== event.currentTarget || disabled) return;
+				onCheckedChange?.(!checked);
+			},
+			children: /* @__PURE__ */ jsx(Checkbox, {
+				checked,
+				onCheckedChange,
+				disabled,
+				"aria-label": ariaLabel
+			})
+		})
+	});
+}
+//#endregion
+export { TableSelectCell };
+
+//# sourceMappingURL=table-select-cell.js.map

@@ -1,0 +1,3 @@
+"use client";
+import { InputField, InputFieldProps } from "./input-field.js";
+export { InputField, InputFieldProps };

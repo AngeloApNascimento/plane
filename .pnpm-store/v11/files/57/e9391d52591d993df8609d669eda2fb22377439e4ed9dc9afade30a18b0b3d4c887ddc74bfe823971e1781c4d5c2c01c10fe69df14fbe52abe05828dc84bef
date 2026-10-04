@@ -1,0 +1,21 @@
+"use client";
+import { popoverPopupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/popover/popover-popup.tsx
+/**
+* The anchored panel surface. `rich` is the padded content panel; `text` is the compact title +
+* description card. Base-UI-agnostic — graft in `components` via `<BasePopover.Popup
+* render={<PopoverPopup />} />`.
+*/
+function PopoverPopup({ variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: popoverPopupVariants({ variant }) }, props)
+	});
+}
+//#endregion
+export { PopoverPopup };
+
+//# sourceMappingURL=popover-popup.js.map

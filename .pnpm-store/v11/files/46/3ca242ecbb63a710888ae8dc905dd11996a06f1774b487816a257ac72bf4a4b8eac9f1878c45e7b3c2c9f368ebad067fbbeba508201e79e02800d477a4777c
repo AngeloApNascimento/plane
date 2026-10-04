@@ -1,0 +1,37 @@
+"use client";
+import { DialogDensity, DialogMainSize, DialogMainVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-main.d.ts
+type DialogMainProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & Omit<DialogMainVariantProps, "size" | "density" | "inPanes"> & {
+  /**
+   * Gutter tier, matching the popup `size` it sits in: 16 px at every rung, 48 px at `full`.
+   *
+   * @default "md"
+   */
+  size?: DialogMainSize;
+  /**
+   * Compactness. `comfortable` (default) lets `size` pick the gutter; `compact` keeps 16 px at
+   * every size, including `full`.
+   *
+   * @default "comfortable"
+   */
+  density?: DialogDensity;
+  /**
+   * True when this part sits inside `DialogPanes`. Derived by the ready-made; pass it at the
+   * elements tier so the pane child can fill the row.
+   *
+   * @default false
+   */
+  inPanes?: boolean;
+};
+/**
+ * The padded top section of the dialog popup: stacks optional `DialogProgression`, `DialogHeader` /
+ * `DialogHeading`, and the scrollable `DialogBody`. Content-sized; when the popup hits its ceiling
+ * this section shrinks (`min-h-0`) while `DialogActions` stays put, so the footer is always visible
+ * and the body scrolls. Inside `DialogPanes` it fills the width beside `DialogAside`. The absolute
+ * close overlays the top-end — it does not widen the end gutter.
+ */
+declare function DialogMain({ size, density, inPanes, render, ...props }: DialogMainProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogMain, DialogMainProps, type DialogMainSize };
+//# sourceMappingURL=dialog-main.d.ts.map

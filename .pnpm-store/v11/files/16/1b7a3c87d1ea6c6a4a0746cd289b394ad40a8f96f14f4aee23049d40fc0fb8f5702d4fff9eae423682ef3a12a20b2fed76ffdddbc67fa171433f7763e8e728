@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/anchor-outline.d.ts
+declare function AnchorOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AnchorOutline };
+//# sourceMappingURL=anchor-outline.d.ts.map

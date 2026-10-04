@@ -1,0 +1,25 @@
+"use client";
+import { scrollAreaVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/scroll-area/scroll-area.tsx
+/**
+* The styled scroll-area root: lays its viewport out as a height-constrained flex column but
+* renders no scrollbars itself. Base-UI-agnostic — graft the scroll behavior in `components` via
+* `<BaseScrollArea.Root render={<ScrollArea/>} />`. The ready-made scroller that composes the
+* viewport, scrollbars, thumb and corner lives in `@makeplane/propel/components/scroll-area`.
+*
+* No `ScrollAreaContent` element: Base UI's optional Content wrapper is omitted (no Figma part;
+* children go in the Viewport). Graft `BaseScrollArea.Content` yourself if you need it.
+*/
+function ScrollArea({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: scrollAreaVariants() }, props)
+	});
+}
+//#endregion
+export { ScrollArea };
+
+//# sourceMappingURL=scroll-area.js.map

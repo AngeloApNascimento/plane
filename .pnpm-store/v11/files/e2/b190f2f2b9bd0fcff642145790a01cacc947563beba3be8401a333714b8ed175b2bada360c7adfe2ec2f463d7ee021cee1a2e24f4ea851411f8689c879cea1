@@ -1,0 +1,24 @@
+"use client";
+import { dialogActionsVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-actions.tsx
+/**
+* The footer of the dialog popup. Top border separates it from `DialogMain`. Compose an optional
+* `DialogInfo` (flexes to the inline-start) followed by action buttons (ghost / secondary /
+* primary) with a 12 px gap.
+*/
+function DialogActions({ size, density, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: dialogActionsVariants({
+			size,
+			density
+		}) }, props)
+	});
+}
+//#endregion
+export { DialogActions };
+
+//# sourceMappingURL=dialog-actions.js.map

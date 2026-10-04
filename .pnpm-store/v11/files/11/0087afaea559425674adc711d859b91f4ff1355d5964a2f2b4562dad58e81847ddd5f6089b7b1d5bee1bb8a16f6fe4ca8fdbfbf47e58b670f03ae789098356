@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/arrow-narrow-left-filled.d.ts
+declare function ArrowNarrowLeftFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ArrowNarrowLeftFilled };
+//# sourceMappingURL=arrow-narrow-left-filled.d.ts.map

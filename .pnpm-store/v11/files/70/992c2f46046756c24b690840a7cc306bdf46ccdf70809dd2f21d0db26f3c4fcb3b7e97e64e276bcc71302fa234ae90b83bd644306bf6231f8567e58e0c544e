@@ -1,0 +1,22 @@
+"use client";
+import { ContextMenuSurfaceProps } from "./context-menu-content.shared.js";
+//#region src/components/context-menu/context-menu-submenu-content.d.ts
+type ContextMenuSubmenuContentProps = Omit<ContextMenuSurfaceProps, "sizing"> & {
+  /**
+   * How the submenu popup takes its width — the same rule as `ContextMenuContent`: `auto` is the
+   * content's width between the 192px floor and the 384px ceiling, held while open; `anchor`
+   * matches the parent row's width.
+   *
+   * @default "auto"
+   */
+  sizing?: ContextMenuSurfaceProps["sizing"];
+};
+/**
+ * The floating surface for a submenu — the same elevated, scrollable panel as `ContextMenuContent`,
+ * anchored beside its parent row instead of at the pointer. Place it inside a `ContextMenuSubmenu`,
+ * alongside the `ContextMenuSubmenuTrigger` that opens it.
+ */
+declare function ContextMenuSubmenuContent({ sizing, ...props }: ContextMenuSubmenuContentProps): import("react").JSX.Element;
+//#endregion
+export { ContextMenuSubmenuContent, ContextMenuSubmenuContentProps };
+//# sourceMappingURL=context-menu-submenu-content.d.ts.map

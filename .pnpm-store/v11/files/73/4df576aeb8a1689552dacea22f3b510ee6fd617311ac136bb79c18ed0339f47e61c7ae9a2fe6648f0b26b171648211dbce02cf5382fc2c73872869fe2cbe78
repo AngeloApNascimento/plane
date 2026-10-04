@@ -1,0 +1,12 @@
+"use client";
+import { DialogPanesProps } from "../../elements/dialog/dialog-panes.js";
+import * as React from "react";
+//#region src/components/dialog/dialog-panes.d.ts
+/**
+ * The side-by-side row of a two-pane dialog: `DialogAside` on the start side, `DialogMain` filling
+ * the rest. Marks its descendants so the ready-made `DialogMain` fills the row (rule 7).
+ */
+declare function DialogPanes(props: DialogPanesProps): React.JSX.Element;
+//#endregion
+export { DialogPanes, type DialogPanesProps };
+//# sourceMappingURL=dialog-panes.d.ts.map

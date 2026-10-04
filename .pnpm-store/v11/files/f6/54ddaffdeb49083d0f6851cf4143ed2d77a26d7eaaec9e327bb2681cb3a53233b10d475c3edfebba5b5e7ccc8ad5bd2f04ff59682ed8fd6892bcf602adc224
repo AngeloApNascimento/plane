@@ -1,0 +1,10 @@
+"use client";
+import { linkChromeVariants } from "../../internal/link-chrome.js";
+import { cva } from "class-variance-authority";
+//#region src/elements/anchor-button/variants.ts
+const anchorButtonVariants = linkChromeVariants;
+const anchorButtonLabelVariants = cva("underline underline-offset-2");
+//#endregion
+export { anchorButtonLabelVariants, anchorButtonVariants };
+
+//# sourceMappingURL=variants.js.map

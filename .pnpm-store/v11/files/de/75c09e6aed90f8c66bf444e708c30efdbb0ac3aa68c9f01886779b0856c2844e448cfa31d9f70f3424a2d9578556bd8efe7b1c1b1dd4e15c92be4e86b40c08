@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-list.d.ts
+type PaginationListProps = Omit<useRender.ComponentProps<"ul">, "className" | "style">;
+/**
+ * The ordered list of page controls: the previous button, page numbers and ellipses, and the next
+ * button.
+ */
+declare function PaginationList({ render, ...props }: PaginationListProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationList, PaginationListProps };
+//# sourceMappingURL=pagination-list.d.ts.map

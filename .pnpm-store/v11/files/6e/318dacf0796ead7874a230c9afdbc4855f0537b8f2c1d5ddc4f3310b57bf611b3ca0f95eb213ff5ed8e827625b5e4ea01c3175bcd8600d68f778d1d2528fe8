@@ -1,0 +1,25 @@
+"use client";
+import { pillLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pill/pill-label.tsx
+/**
+* The pill's single-line label. Shrinks and truncates instead of wrapping. When `children` is a
+* string, bakes a native `title` so hover recovers the full text past the 150px cap; pass `title`
+* explicitly to override (or `title=""` to suppress).
+*/
+function PillLabel({ render, children, title, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({
+			className: pillLabelVariants(),
+			children,
+			title: title !== void 0 ? title : typeof children === "string" ? children : void 0
+		}, props)
+	});
+}
+//#endregion
+export { PillLabel };
+
+//# sourceMappingURL=pill-label.js.map

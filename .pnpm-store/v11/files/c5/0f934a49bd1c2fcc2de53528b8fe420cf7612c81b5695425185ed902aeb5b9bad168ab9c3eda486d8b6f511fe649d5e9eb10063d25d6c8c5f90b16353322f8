@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/top-arrow-outline.d.ts
+declare function TopArrowOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TopArrowOutline };
+//# sourceMappingURL=top-arrow-outline.d.ts.map

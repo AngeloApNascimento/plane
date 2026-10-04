@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/monday.d.ts
+declare function Monday(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Monday };
+//# sourceMappingURL=monday.d.ts.map

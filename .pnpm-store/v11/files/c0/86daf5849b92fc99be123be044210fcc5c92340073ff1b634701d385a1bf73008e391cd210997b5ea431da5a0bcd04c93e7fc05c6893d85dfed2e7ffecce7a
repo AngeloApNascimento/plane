@@ -1,0 +1,14 @@
+"use client";
+import { ComboboxItemVariant, ComboboxItemVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-item.d.ts
+type ComboboxItemProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & ComboboxItemVariantProps;
+/**
+ * The styled option row. Base-UI-agnostic — graft the item behavior in `components` via
+ * `<BaseCombobox.Item render={<ComboboxItem />} />`. Uses the shared menu-row chrome so the
+ * combobox list matches the dropdown panel.
+ */
+declare function ComboboxItem({ variant, render, ...props }: ComboboxItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxItem, ComboboxItemProps, type ComboboxItemVariant };
+//# sourceMappingURL=combobox-item.d.ts.map

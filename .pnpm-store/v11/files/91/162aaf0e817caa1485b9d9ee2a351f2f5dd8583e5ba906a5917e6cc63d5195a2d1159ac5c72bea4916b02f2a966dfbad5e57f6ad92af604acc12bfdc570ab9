@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/between-vertical-end-filled.d.ts
+declare function BetweenVerticalEndFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { BetweenVerticalEndFilled };
+//# sourceMappingURL=between-vertical-end-filled.d.ts.map

@@ -1,0 +1,17 @@
+"use client";
+import { suggestionMenuItemVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/suggestion-menu/suggestion-menu-item.tsx
+/** A suggestion row. Reads as highlighted when it carries `data-highlighted`. */
+function SuggestionMenuItem({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: suggestionMenuItemVariants() }, props)
+	});
+}
+//#endregion
+export { SuggestionMenuItem };
+
+//# sourceMappingURL=suggestion-menu-item.js.map

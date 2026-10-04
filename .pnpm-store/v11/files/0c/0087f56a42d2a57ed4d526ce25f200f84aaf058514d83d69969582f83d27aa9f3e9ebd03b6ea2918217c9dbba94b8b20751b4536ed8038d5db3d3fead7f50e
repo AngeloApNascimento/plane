@@ -1,0 +1,3 @@
+"use client";
+import { TextAreaField, TextAreaFieldProps } from "./text-area-field.js";
+export { TextAreaField, TextAreaFieldProps };

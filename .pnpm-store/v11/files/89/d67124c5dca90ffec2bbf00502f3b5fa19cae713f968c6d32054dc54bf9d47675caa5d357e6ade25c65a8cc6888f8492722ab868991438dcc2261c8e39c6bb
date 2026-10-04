@@ -1,0 +1,45 @@
+"use client";
+import { disclosureTriggerClass } from "../../internal/disclosure-trigger.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/collapsible/variants.ts
+const collapsibleVariants = cva("w-full");
+const collapsibleHeaderVariants = cva("w-full", {
+	variants: { placement: {
+		inline: "flex",
+		sidebar: "grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-x-1 rounded-lg px-2 hover:bg-layer-transparent-hover has-[>[data-disabled]]:hover:bg-transparent"
+	} },
+	defaultVariants: { placement: "inline" }
+});
+const collapsibleTriggerVariants = cva(cx(disclosureTriggerClass, "min-w-0 flex-1 bg-layer-transparent [--node-size:var(--control-glyph-lg)]"), {
+	variants: { placement: {
+		inline: "px-3 py-2",
+		sidebar: "col-span-3 col-start-1 row-start-1 grid h-8 grid-cols-subgrid gap-x-1 px-0 py-0 [&>[data-slot=disclosure-indicator]]:col-start-3 [&>[data-slot=disclosure-indicator]]:[--node-size:var(--control-glyph-sm)]"
+	} },
+	defaultVariants: { placement: "inline" }
+});
+const collapsibleTriggerTrailingVariants = cva("flex shrink-0 items-center gap-2", {
+	variants: { placement: {
+		inline: "pe-3",
+		sidebar: "relative col-start-2 row-start-1"
+	} },
+	defaultVariants: { placement: "inline" }
+});
+const collapsibleTriggerTitleVariants = cva("min-w-0 text-start", {
+	variants: { placement: {
+		inline: "",
+		sidebar: "col-start-1 flex min-w-0 items-center gap-2 overflow-hidden text-body-xs-semibold text-tertiary [&>*]:truncate"
+	} },
+	defaultVariants: { placement: "inline" }
+});
+const collapsiblePanelVariants = cva(cx("h-(--collapsible-panel-height) overflow-hidden", "transition-[height] duration-200 ease-out", "data-ending-style:h-0 data-starting-style:h-0"));
+const collapsiblePanelContentVariants = cva("text-body-xs-regular text-secondary", {
+	variants: { placement: {
+		inline: "px-3 pt-1.5 pb-3",
+		sidebar: "p-0"
+	} },
+	defaultVariants: { placement: "inline" }
+});
+//#endregion
+export { collapsibleHeaderVariants, collapsiblePanelContentVariants, collapsiblePanelVariants, collapsibleTriggerTitleVariants, collapsibleTriggerTrailingVariants, collapsibleTriggerVariants, collapsibleVariants };
+
+//# sourceMappingURL=variants.js.map

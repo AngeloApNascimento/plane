@@ -1,0 +1,4 @@
+"use client";
+import { TextAreaResize } from "../../elements/text-area/variants.js";
+import { TextAreaField, TextAreaFieldProps, TextAreaFieldSize } from "./text-area-field.js";
+export { TextAreaField, TextAreaFieldProps, TextAreaFieldSize, type TextAreaResize };

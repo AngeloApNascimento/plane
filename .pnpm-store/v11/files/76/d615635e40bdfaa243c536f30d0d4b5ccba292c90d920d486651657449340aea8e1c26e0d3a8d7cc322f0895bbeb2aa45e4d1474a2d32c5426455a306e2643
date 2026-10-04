@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/priority-filled.d.ts
+declare function PriorityFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { PriorityFilled };
+//# sourceMappingURL=priority-filled.d.ts.map

@@ -1,0 +1,23 @@
+"use client";
+import { buttonGroupButtonVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/button-group/button-group-button.tsx
+/**
+* The styled segment of a `ButtonGroup`: a transparent, borderless `<button>` whose group chrome
+* (surface, border, dividers, radius) is owned by the surrounding `ButtonGroup` container. Its only
+* visual axis is `size`; the Base UI `Button` behavior grafts onto it in `components` via
+* `<BaseButton render={<ButtonGroupButton/>} />`. `children` is passed through; it is not a
+* variant.
+*/
+function ButtonGroupButton({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "button",
+		render,
+		props: mergeProps({ className: buttonGroupButtonVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { ButtonGroupButton };
+
+//# sourceMappingURL=button-group-button.js.map

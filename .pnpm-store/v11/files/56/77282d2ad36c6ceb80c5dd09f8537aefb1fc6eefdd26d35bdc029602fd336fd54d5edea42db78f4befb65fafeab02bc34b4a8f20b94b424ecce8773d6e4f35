@@ -1,0 +1,17 @@
+"use client";
+import { anchorButtonLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/anchor-button/anchor-button-label.tsx
+/** The text label inside an `AnchorButton`. Owns the underline so flanking icons stay un-underlined. */
+function AnchorButtonLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: anchorButtonLabelVariants() }, props)
+	});
+}
+//#endregion
+export { AnchorButtonLabel };
+
+//# sourceMappingURL=anchor-button-label.js.map

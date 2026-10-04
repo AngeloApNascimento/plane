@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/lock-outline.d.ts
+declare function LockOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { LockOutline };
+//# sourceMappingURL=lock-outline.d.ts.map

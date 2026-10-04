@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/modal-peek-outline.d.ts
+declare function ModalPeekOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ModalPeekOutline };
+//# sourceMappingURL=modal-peek-outline.d.ts.map

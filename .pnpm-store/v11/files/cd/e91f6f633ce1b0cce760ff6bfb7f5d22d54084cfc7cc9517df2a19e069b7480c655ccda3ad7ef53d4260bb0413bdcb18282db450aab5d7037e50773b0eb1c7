@@ -1,0 +1,23 @@
+"use client";
+import { TooltipLayout, TooltipPopupVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tooltip/tooltip-popup.d.ts
+type TooltipPopupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & Omit<TooltipPopupVariantProps, "layout"> & {
+  /**
+   * Content arrangement. `single` is the one-line Figma singleline chip (`whitespace-nowrap` —
+   * long labels do not wrap); `stacked` is the multiline description layout (body type, larger
+   * radius, soft max width, shortcut below).
+   *
+   * @default "single"
+   */
+  layout?: TooltipLayout;
+};
+/**
+ * The styled tooltip surface — adaptive popup with caption/body text, radius, shadow, and the gap
+ * to the shortcut. `layout` switches Figma singleline vs multiline chrome. Base-UI-agnostic; graft
+ * in `components` via `<BaseTooltip.Popup render={<TooltipPopup/>} />`.
+ */
+declare function TooltipPopup({ layout, render, ...props }: TooltipPopupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { type TooltipLayout, TooltipPopup, TooltipPopupProps };
+//# sourceMappingURL=tooltip-popup.d.ts.map

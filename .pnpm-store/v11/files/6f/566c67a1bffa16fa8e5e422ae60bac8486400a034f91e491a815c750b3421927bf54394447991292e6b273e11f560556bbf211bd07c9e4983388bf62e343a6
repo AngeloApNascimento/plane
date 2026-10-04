@@ -1,0 +1,22 @@
+"use client";
+import { collapsibleTriggerTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/collapsible/collapsible-trigger-title.tsx
+/**
+* The trigger's label. Packed beside an optional leading icon and the disclosure caret (Figma
+* clusters `[icon?][title][chevron]` — the title does not grow to push the caret trail-end). A
+* header trailing action sits outside the trigger, as a sibling. Long labels wrap (`min-w-0`)
+* rather than Figma's sample `whitespace-nowrap`, matching Accordion.
+*/
+function CollapsibleTriggerTitle({ placement, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: collapsibleTriggerTitleVariants({ placement }) }, props)
+	});
+}
+//#endregion
+export { CollapsibleTriggerTitle };
+
+//# sourceMappingURL=collapsible-trigger-title.js.map

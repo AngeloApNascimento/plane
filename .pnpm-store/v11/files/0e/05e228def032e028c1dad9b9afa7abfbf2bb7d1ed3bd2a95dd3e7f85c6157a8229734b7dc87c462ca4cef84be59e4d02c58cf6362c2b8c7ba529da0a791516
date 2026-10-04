@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-cell-trigger-indicator.d.ts
+type TableCellTriggerIndicatorProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The trailing glyph slot inside a `TableCellTrigger` (the editable chevron, the action ellipsis).
+ * Sizes its single child to the trigger's `--node-size` and tints it, dimming when the trigger is
+ * disabled. Decorative, so it is `aria-hidden`.
+ */
+declare function TableCellTriggerIndicator({ render, ...props }: TableCellTriggerIndicatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableCellTriggerIndicator, TableCellTriggerIndicatorProps };
+//# sourceMappingURL=table-cell-trigger-indicator.d.ts.map

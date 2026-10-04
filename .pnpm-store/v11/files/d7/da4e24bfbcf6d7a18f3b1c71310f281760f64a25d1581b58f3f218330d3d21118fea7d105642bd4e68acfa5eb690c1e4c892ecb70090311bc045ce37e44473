@@ -1,0 +1,21 @@
+"use client";
+import { toolbarInputVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-input.tsx
+/**
+* The styled inline text input for a toolbar (a miniature field on the shared control surface,
+* size-matched to the items). Base-UI-agnostic — graft in `components` via `<BaseToolbar.Input
+* render={<ToolbarInput size=… />} />`.
+*/
+function ToolbarInput({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "input",
+		render,
+		props: mergeProps({ className: toolbarInputVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { ToolbarInput };
+
+//# sourceMappingURL=toolbar-input.js.map

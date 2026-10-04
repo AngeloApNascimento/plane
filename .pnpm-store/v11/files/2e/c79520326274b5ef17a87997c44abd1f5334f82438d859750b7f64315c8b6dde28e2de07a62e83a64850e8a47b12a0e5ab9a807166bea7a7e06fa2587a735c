@@ -1,0 +1,15 @@
+"use client";
+import * as React from "react";
+//#region src/hooks/use-controllable-state/index.ts
+function useControllableState({ value, defaultValue, onValueChange }) {
+	const isControlled = value !== void 0;
+	const [internalValue, setInternalValue] = React.useState(defaultValue);
+	return [isControlled ? value : internalValue, React.useCallback((next) => {
+		if (!isControlled) setInternalValue(next);
+		onValueChange?.(next);
+	}, [isControlled, onValueChange])];
+}
+//#endregion
+export { useControllableState };
+
+//# sourceMappingURL=index.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/jira.d.ts
+declare function Jira(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Jira };
+//# sourceMappingURL=jira.d.ts.map

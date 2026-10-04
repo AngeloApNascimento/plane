@@ -1,0 +1,15 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Tooltip } from "@base-ui/react/tooltip";
+//#region src/components/tooltip/tooltip-provider.tsx
+/**
+* Shares one open/close delay across every tooltip beneath it, so moving between nearby triggers
+* can show adjacent tooltips immediately.
+*/
+function TooltipProvider(props) {
+	return /* @__PURE__ */ jsx(Tooltip.Provider, { ...props });
+}
+//#endregion
+export { TooltipProvider };
+
+//# sourceMappingURL=tooltip-provider.js.map

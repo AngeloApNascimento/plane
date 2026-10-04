@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-title.d.ts
+type DialogTitleProps = Omit<useRender.ComponentProps<"h2">, "className" | "style">;
+/**
+ * Styled dialog title chrome (`text-h5-medium`). Base-UI-agnostic — graft title behavior in
+ * `components` via `<BaseDialog.Title render={<DialogTitle />} />`. Dialog-owned (diverges from
+ * shared `OverlayTitle`).
+ */
+declare function DialogTitle({ render, ...props }: DialogTitleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DialogTitle, DialogTitleProps };
+//# sourceMappingURL=dialog-title.d.ts.map

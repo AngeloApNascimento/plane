@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/folder-outline.d.ts
+declare function FolderMiscOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FolderMiscOutline };
+//# sourceMappingURL=folder-outline.d.ts.map

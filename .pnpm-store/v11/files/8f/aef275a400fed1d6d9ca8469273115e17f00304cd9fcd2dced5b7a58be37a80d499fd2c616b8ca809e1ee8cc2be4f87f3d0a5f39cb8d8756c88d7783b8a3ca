@@ -1,0 +1,13 @@
+"use client";
+import { MenuRowVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-link-item.d.ts
+type MenuLinkItemProps = Omit<useRender.ComponentProps<"a">, "className" | "style"> & Pick<MenuRowVariantProps, "variant">;
+/**
+ * A styled navigational `<a>` menu row. Base-UI-agnostic — graft the link-item behavior in
+ * `components` via `<BaseMenu.LinkItem render={<MenuLinkItem />} />`.
+ */
+declare function MenuLinkItem({ variant, render, ...props }: MenuLinkItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuLinkItem, MenuLinkItemProps };
+//# sourceMappingURL=menu-link-item.d.ts.map

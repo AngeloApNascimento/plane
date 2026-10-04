@@ -1,0 +1,21 @@
+"use client";
+import { menuSearchInputVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-search-input.tsx
+/**
+* The styled borderless text field inside `MenuSearch`. Base-UI-agnostic — the ready-made
+* `MenuSearch` (`components`) keeps text-editing keys from bubbling so typing does not trigger the
+* menu's own type-ahead navigation, while letting Escape and the arrow keys through to the menu.
+*/
+function MenuSearchInput({ render, ...props }) {
+	return useRender({
+		defaultTagName: "input",
+		render,
+		props: mergeProps({ className: menuSearchInputVariants() }, props)
+	});
+}
+//#endregion
+export { MenuSearchInput };
+
+//# sourceMappingURL=menu-search-input.js.map

@@ -1,0 +1,30 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isDecendantOfType = exports.isNodeOfType = void 0;
+/**
+ * The isNodeOfType function uses generics to check if a node of type ASTNode is of a specified type.
+ * If the check passes, the type of node is narrowed to the expected type, ensuring that the returned type of the function is always correct.
+ *
+ * Example:
+ *
+ * ```ts
+ * const isImportSpecifier = isNodeOfType(node, 'ImportSpecifier');
+ * ```
+ */
+const isNodeOfType = (node, type) => node.type === type;
+exports.isNodeOfType = isNodeOfType;
+/**
+ * Determines if the current node is a decendant of a parent node of specific type
+ *
+ * Example:
+ *
+ * ```ts
+ * const isDecendantOfImportSpecifier = isDecendantOfType(node, j.ImportSpecifier);
+ * ```
+ */
+const isDecendantOfType = (j, source, type, filter) => {
+    const closestNodes = j(source).closest(type, filter);
+    const count = closestNodes.length;
+    return count > 0;
+};
+exports.isDecendantOfType = isDecendantOfType;

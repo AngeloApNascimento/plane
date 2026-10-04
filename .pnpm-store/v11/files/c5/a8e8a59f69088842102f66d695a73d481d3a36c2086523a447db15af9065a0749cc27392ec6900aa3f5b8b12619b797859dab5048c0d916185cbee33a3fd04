@@ -1,0 +1,10 @@
+"use client";
+import { FieldControlContentVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-control-content.d.ts
+type FieldControlContentProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & FieldControlContentVariantProps;
+/** The control + helper-text column shared by `InputField` and `TextAreaField`. */
+declare function FieldControlContent({ orientation, size, render, ...props }: FieldControlContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { FieldControlContent, FieldControlContentProps };
+//# sourceMappingURL=field-control-content.d.ts.map

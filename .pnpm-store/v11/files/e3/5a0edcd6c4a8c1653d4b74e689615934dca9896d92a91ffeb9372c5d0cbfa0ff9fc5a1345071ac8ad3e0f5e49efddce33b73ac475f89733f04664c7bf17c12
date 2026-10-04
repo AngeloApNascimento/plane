@@ -1,0 +1,19 @@
+"use client";
+import { controlGroupClass, controlSize } from "../../internal/control-group.js";
+import { controlInputClass } from "../../internal/control-input.js";
+import { listboxEmptyClass } from "../../internal/listbox-empty.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/autocomplete/variants.ts
+const autocompleteInputGroupVariants = cva(cx(controlGroupClass, "w-full items-center", "has-[[data-slot=clear]]:pe-1 has-[button]:pe-1"), { variants: { size: {
+	md: cx(controlSize.md, "gap-(--control-gap-md) rounded-(--control-radius-md) px-(--control-padding-x-md)"),
+	lg: cx(controlSize.lg, "gap-(--control-gap-lg) rounded-(--control-radius-lg) px-(--control-padding-x-lg)"),
+	xl: cx(controlSize.xl, "gap-(--control-gap-xl) rounded-(--control-radius-xl) px-(--control-padding-x-xl)"),
+	"2xl": cx(controlSize["2xl"], "gap-(--control-gap-2xl) rounded-(--control-radius-2xl) px-(--control-padding-x-2xl)")
+} } });
+const autocompleteInputGroupClearVariants = cva("shrink-0 [&>*:not([data-visible])]:invisible");
+const autocompleteInputVariants = cva(cx(controlInputClass, "flex-1"));
+const autocompleteEmptyVariants = cva(listboxEmptyClass);
+//#endregion
+export { autocompleteEmptyVariants, autocompleteInputGroupClearVariants, autocompleteInputGroupVariants, autocompleteInputVariants };
+
+//# sourceMappingURL=variants.js.map

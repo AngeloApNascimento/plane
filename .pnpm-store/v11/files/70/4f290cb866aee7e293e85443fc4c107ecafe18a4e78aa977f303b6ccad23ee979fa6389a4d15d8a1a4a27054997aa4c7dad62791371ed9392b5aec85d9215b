@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-page.d.ts
+type BreadcrumbPageProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** The current page — the last, non-navigable crumb. */
+declare function BreadcrumbPage({ render, ...props }: BreadcrumbPageProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BreadcrumbPage, BreadcrumbPageProps };
+//# sourceMappingURL=breadcrumb-page.d.ts.map

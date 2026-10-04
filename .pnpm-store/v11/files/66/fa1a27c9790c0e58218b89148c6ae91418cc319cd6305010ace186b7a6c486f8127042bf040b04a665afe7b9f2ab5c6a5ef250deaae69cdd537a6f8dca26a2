@@ -1,0 +1,21 @@
+"use client";
+import { dialogViewportVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-viewport.tsx
+/**
+* The full-screen container that anchors the popup 80 px from the top edge, with the same margin
+* below once the popup reaches its ceiling. Base-UI-agnostic — graft the dialog behavior in
+* `components` via `<BaseDialog.Viewport render={<DialogViewport />} />`.
+*/
+function DialogViewport({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: dialogViewportVariants() }, props)
+	});
+}
+//#endregion
+export { DialogViewport };
+
+//# sourceMappingURL=dialog-viewport.js.map

@@ -1,0 +1,40 @@
+"use client";
+import { MenuCheckboxItem as MenuCheckboxItem$1 } from "../../elements/menu/menu-checkbox-item.js";
+import { MenuCheckboxItemIndicator } from "../../elements/menu/menu-checkbox-item-indicator.js";
+import { MenuItemContent } from "../../elements/menu/menu-item-content.js";
+import { MenuItemControl } from "../../elements/menu/menu-item-control.js";
+import { MenuItemTitle } from "../../elements/menu/menu-item-title.js";
+import { MenuItemTitleRow } from "../../elements/menu/menu-item-title-row.js";
+import { MenuItemTrailing } from "../../elements/menu/menu-item-trailing.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Check } from "lucide-react";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-checkbox-item.tsx
+/**
+* The ready-made toggleable multi-select menu row: grafts Base UI's `Menu.CheckboxItem` behavior
+* onto the styled `MenuCheckboxItem` and lays out the checkbox box (a kept-mounted
+* `Menu.CheckboxItemIndicator` grafted onto `MenuCheckboxItemIndicator` + a lucide `Check`),
+* optional leading icon, label, and end content. Base UI's `Menu.CheckboxItem` tracks the checked
+* state, so `checked` / `defaultChecked` / `onCheckedChange` forward straight to it and the
+* indicator reads it from context.
+*/
+function MenuCheckboxItem({ variant, icon, label, trailing, ...props }) {
+	return /* @__PURE__ */ jsxs(Menu.CheckboxItem, {
+		...props,
+		render: /* @__PURE__ */ jsx(MenuCheckboxItem$1, { variant }),
+		children: [
+			/* @__PURE__ */ jsx(MenuItemControl, { children: /* @__PURE__ */ jsx(Menu.CheckboxItemIndicator, {
+				keepMounted: true,
+				render: /* @__PURE__ */ jsx(MenuCheckboxItemIndicator, {}),
+				children: /* @__PURE__ */ jsx(Check, { "aria-hidden": true })
+			}) }),
+			icon,
+			/* @__PURE__ */ jsx(MenuItemContent, { children: /* @__PURE__ */ jsx(MenuItemTitleRow, { children: /* @__PURE__ */ jsx(MenuItemTitle, { children: label }) }) }),
+			trailing != null ? /* @__PURE__ */ jsx(MenuItemTrailing, { children: trailing }) : null
+		]
+	});
+}
+//#endregion
+export { MenuCheckboxItem };
+
+//# sourceMappingURL=menu-checkbox-item.js.map

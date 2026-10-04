@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-actions.d.ts
+type ToastActionsProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The full-width action row beneath a toast's text and optional progress bar. Holds the
+ * inline-start `ToastActionGroup` cluster and an optional inline-end `ToastAction`.
+ */
+declare function ToastActions({ render, ...props }: ToastActionsProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToastActions, ToastActionsProps };
+//# sourceMappingURL=toast-actions.d.ts.map

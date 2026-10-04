@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/deepseek.d.ts
+declare function Deepseek(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Deepseek };
+//# sourceMappingURL=deepseek.d.ts.map

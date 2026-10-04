@@ -1,0 +1,34 @@
+"use client";
+import { TableCell } from "../../elements/table/table-cell.js";
+import { TableCellTrigger } from "../../elements/table/table-cell-trigger.js";
+import { TableCellTriggerIndicator } from "../../elements/table/table-cell-trigger-indicator.js";
+import { Menu } from "../menu/menu.js";
+import { MenuTrigger } from "../menu/menu-trigger.js";
+import { useTableVariant } from "./table-context.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Ellipsis } from "lucide-react";
+//#region src/components/table/table-action-cell.tsx
+/** An icon-only action cell (`<td>`) that opens a row-actions menu. */
+function TableActionCell({ children, "aria-label": ariaLabel, icon, pinned = "none", open, defaultOpen, onOpenChange, disabled, ...props }) {
+	return /* @__PURE__ */ jsx(TableCell, {
+		variant: useTableVariant(),
+		pinned,
+		padding: "trigger",
+		...props,
+		children: /* @__PURE__ */ jsxs(Menu, {
+			open,
+			defaultOpen,
+			onOpenChange,
+			children: [/* @__PURE__ */ jsx(MenuTrigger, {
+				disabled,
+				"aria-label": ariaLabel,
+				render: /* @__PURE__ */ jsx(TableCellTrigger, { layout: "action" }),
+				children: /* @__PURE__ */ jsx(TableCellTriggerIndicator, { children: icon ?? /* @__PURE__ */ jsx(Ellipsis, {}) })
+			}), children]
+		})
+	});
+}
+//#endregion
+export { TableActionCell };
+
+//# sourceMappingURL=table-action-cell.js.map

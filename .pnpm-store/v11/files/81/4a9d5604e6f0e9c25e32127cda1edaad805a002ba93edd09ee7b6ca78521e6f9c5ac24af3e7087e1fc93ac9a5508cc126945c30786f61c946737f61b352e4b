@@ -1,0 +1,13 @@
+"use client";
+import * as React from "react";
+//#region src/components/avatar/avatar-group-context.ts
+/**
+* Set by the components `AvatarGroup` so every `Avatar` inside it shares one `size` (an avatar's
+* own `size` still wins). Lives in the components tier: a context is cross-tree coordination —
+* composition — not a single-element `elements` concern.
+*/
+const AvatarGroupContext = React.createContext(void 0);
+//#endregion
+export { AvatarGroupContext };
+
+//# sourceMappingURL=avatar-group-context.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/shield-filled.d.ts
+declare function ShieldFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ShieldFilled };
+//# sourceMappingURL=shield-filled.d.ts.map

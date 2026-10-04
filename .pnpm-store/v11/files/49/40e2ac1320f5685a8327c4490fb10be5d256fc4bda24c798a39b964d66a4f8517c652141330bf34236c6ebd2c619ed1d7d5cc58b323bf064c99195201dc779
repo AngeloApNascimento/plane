@@ -1,0 +1,20 @@
+"use client";
+import { DialogDescription as DialogDescription$1 } from "../../elements/dialog/dialog-description.js";
+import { jsx } from "react/jsx-runtime";
+import { Dialog } from "@base-ui/react/dialog";
+//#region src/components/dialog/dialog-description.tsx
+/**
+* The supporting description for the dialog: Base UI's `Dialog.Description` behavior (links to the
+* popup via `aria-describedby`) grafted onto the dialog-owned description chrome (`text-body-xs`
+* tertiary).
+*/
+function DialogDescription(props) {
+	return /* @__PURE__ */ jsx(Dialog.Description, {
+		...props,
+		render: /* @__PURE__ */ jsx(DialogDescription$1, {})
+	});
+}
+//#endregion
+export { DialogDescription };
+
+//# sourceMappingURL=dialog-description.js.map

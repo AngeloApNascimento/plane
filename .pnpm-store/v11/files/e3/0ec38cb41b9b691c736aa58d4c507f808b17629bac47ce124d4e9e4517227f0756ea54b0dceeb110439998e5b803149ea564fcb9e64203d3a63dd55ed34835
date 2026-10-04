@@ -1,0 +1,4 @@
+"use client";
+import { SplitButtonSize, SplitButtonVariant } from "./variants.js";
+import { SplitButton, SplitButtonProps } from "./split-button.js";
+export { SplitButton, SplitButtonProps, type SplitButtonSize, type SplitButtonVariant };

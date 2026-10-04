@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/state-filled.d.ts
+declare function StateFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { StateFilled };
+//# sourceMappingURL=state-filled.d.ts.map

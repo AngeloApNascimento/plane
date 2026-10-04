@@ -1,0 +1,20 @@
+"use client";
+import { toastDescriptionVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-description.tsx
+/**
+* The supporting description for the toast. Base-UI-agnostic — graft in `components` via
+* `<BaseToast.Description render={<ToastDescription/>}>`.
+*/
+function ToastDescription({ render, ...props }) {
+	return useRender({
+		defaultTagName: "p",
+		render,
+		props: mergeProps({ className: toastDescriptionVariants() }, props)
+	});
+}
+//#endregion
+export { ToastDescription };
+
+//# sourceMappingURL=toast-description.js.map

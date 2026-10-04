@@ -1,0 +1,11 @@
+"use client";
+import { Tab } from "./tab.js";
+import { TabUnderlineBar } from "./tab-underline-bar.js";
+import { TabUnderlineBarTrack } from "./tab-underline-bar-track.js";
+import { TabUnderlineLabel } from "./tab-underline-label.js";
+import { Tabs } from "./tabs.js";
+import { TabsIndicator } from "./tabs-indicator.js";
+import { TabsList } from "./tabs-list.js";
+import { TabsListScrollArea } from "./tabs-list-scroll-area.js";
+import { TabsPanel } from "./tabs-panel.js";
+export { Tab, TabUnderlineBar, TabUnderlineBarTrack, TabUnderlineLabel, Tabs, TabsIndicator, TabsList, TabsListScrollArea, TabsPanel };

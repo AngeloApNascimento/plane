@@ -1,0 +1,20 @@
+"use client";
+import { cva } from "class-variance-authority";
+//#region src/internal/surface.ts
+const surfaceBase = cva("border border-subtle bg-layer-2", { variants: {
+	elevation: {
+		raised: "shadow-overlay-100",
+		overlay: "shadow-overlay-200"
+	},
+	radius: {
+		md: "rounded-md",
+		lg: "rounded-lg"
+	}
+} });
+function surfaceVariants(props) {
+	return surfaceBase(props);
+}
+//#endregion
+export { surfaceVariants };
+
+//# sourceMappingURL=surface.js.map

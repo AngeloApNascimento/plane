@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/lead-outline.d.ts
+declare function LeadOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { LeadOutline };
+//# sourceMappingURL=lead-outline.d.ts.map

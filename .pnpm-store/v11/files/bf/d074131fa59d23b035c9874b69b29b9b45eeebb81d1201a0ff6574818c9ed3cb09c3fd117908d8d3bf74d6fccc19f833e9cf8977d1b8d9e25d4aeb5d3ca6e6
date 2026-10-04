@@ -1,0 +1,15 @@
+"use client";
+import { DialogMainProps as DialogMainProps$1 } from "../../elements/dialog/dialog-main.js";
+import * as React from "react";
+//#region src/components/dialog/dialog-main.d.ts
+type DialogMainProps = Omit<DialogMainProps$1, "size" | "density" | "inPanes">;
+/**
+ * The padded top section of the dialog popup: optional `DialogProgression`, `DialogHeader` /
+ * `DialogHeading`, and the scrollable `DialogBody`. Its gutter follows the `size` chosen on
+ * `DialogContent` (16 px, 48 px at `full`); `density="compact"` keeps 16 px at `full`. Inside
+ * `DialogPanes` it fills the width beside `DialogAside`.
+ */
+declare function DialogMain(props: DialogMainProps): React.JSX.Element;
+//#endregion
+export { DialogMain, DialogMainProps };
+//# sourceMappingURL=dialog-main.d.ts.map

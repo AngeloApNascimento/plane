@@ -1,0 +1,23 @@
+"use client";
+import { DialogToolbar as DialogToolbar$1 } from "../../elements/dialog/dialog-toolbar.js";
+import { DialogDensityContext, DialogSizeContext } from "./dialog-context.js";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/dialog/dialog-toolbar.tsx
+/**
+* Top chrome of the dialog popup, sibling of `DialogMain`. Its start gutter follows the `size`
+* chosen on `DialogContent` (16 px, 48 px at `full`); the end gutter is 40 px so an end-aligned
+* control clears the corner dismiss. `density="compact"` keeps 16 px start at `full`. Bottom border
+* is flush to the popup, matching `DialogActions`.
+*/
+function DialogToolbar(props) {
+	return /* @__PURE__ */ jsx(DialogToolbar$1, {
+		size: React.useContext(DialogSizeContext),
+		density: React.useContext(DialogDensityContext),
+		...props
+	});
+}
+//#endregion
+export { DialogToolbar };
+
+//# sourceMappingURL=dialog-toolbar.js.map

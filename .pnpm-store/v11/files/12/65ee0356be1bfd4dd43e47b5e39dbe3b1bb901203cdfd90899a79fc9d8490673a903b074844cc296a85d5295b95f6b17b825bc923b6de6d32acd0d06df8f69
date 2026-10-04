@@ -1,0 +1,31 @@
+
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/icons/arrows/circle-chevron-right-filled.tsx
+function CircleChevronRightFilled(props) {
+	return /* @__PURE__ */ jsxs("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: [/* @__PURE__ */ jsx("g", {
+			clipPath: "url(#CircleChevronRightFilled-a)",
+			children: /* @__PURE__ */ jsx("path", {
+				fill: "currentColor",
+				d: "M8.001.708a7.292 7.292 0 1 1-.002 14.584A7.292 7.292 0 0 1 8 .708m-.892 4.183a.626.626 0 0 0-.884.884L8.449 8l-2.224 2.226a.625.625 0 0 0 .884.883l2.666-2.667a.625.625 0 0 0 0-.883z"
+			})
+		}), /* @__PURE__ */ jsx("defs", { children: /* @__PURE__ */ jsx("clipPath", {
+			id: "CircleChevronRightFilled-a",
+			children: /* @__PURE__ */ jsx("path", {
+				fill: "#fff",
+				d: "M0 0h16v16H0z"
+			})
+		}) })]
+	});
+}
+//#endregion
+export { CircleChevronRightFilled };
+
+//# sourceMappingURL=circle-chevron-right-filled.js.map

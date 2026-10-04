@@ -1,0 +1,21 @@
+"use client";
+import { otpFieldVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/otp-field/otp-field.tsx
+/**
+* The styled OTP field container — a horizontal row of character slots (and optional separators).
+* Base-UI-agnostic; graft the field behavior in `components` via `<BaseOTPField.Root
+* render={<OTPField/>} />`.
+*/
+function OTPField({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: otpFieldVariants() }, props)
+	});
+}
+//#endregion
+export { OTPField };
+
+//# sourceMappingURL=otp-field.js.map

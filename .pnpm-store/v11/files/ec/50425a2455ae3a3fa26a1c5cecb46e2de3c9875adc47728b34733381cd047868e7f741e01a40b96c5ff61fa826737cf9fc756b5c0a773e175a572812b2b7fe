@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/monospace-filled.d.ts
+declare function MonospaceFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MonospaceFilled };
+//# sourceMappingURL=monospace-filled.d.ts.map

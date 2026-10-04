@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/properties/state-outline.d.ts
+declare function StateOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { StateOutline };
+//# sourceMappingURL=state-outline.d.ts.map

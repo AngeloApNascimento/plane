@@ -1,0 +1,63 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+/**
+* The loading-region frame: pulse lives here so every bone animates together. `layout` is the flex
+* axis (`stack` / `row`). Inline size is not a cva axis — see `skeletonFrameProps`: exactly one
+* width utility is emitted per part, chosen from `stretch` and `inlineSize`, so a fit-content
+* region and an explicit length can never fight over the same property.
+*/
+const skeletonVariants = cva("animate-pulse motion-reduce:animate-none", {
+	variants: { layout: {
+		stack: "flex flex-col gap-2",
+		row: "flex flex-row gap-2"
+	} },
+	defaultVariants: { layout: "stack" }
+});
+/**
+* One decorative bone. `variant` is the look (`bar` has rounded-md corners; `circle` is a disc).
+* Height is not an axis — `blockSize` lands as a CSS variable. Omitting it fills a sized region
+* (`h-full`) and, in an unsized one, keeps the bone one text line tall (`min-h-4`) rather than
+* collapsing to nothing.
+*/
+const skeletonItemVariants = cva("bg-layer-1", {
+	variants: { variant: {
+		bar: "rounded-md",
+		circle: "shrink-0 rounded-full"
+	} },
+	defaultVariants: { variant: "bar" }
+});
+/**
+* Turns the size inputs into the `--skeleton-*-size` CSS vars plus the matching `h-` / `w-`
+* utilities, layered onto a base class. Width is decided once, in priority order: an explicit
+* `inlineSize` wins, then `stretch` picks `w-full` or `w-fit` — never two width utilities on one
+* element, so the result does not depend on stylesheet order. `blockFallbackClassName` covers the
+* "no exact block length" case, which differs per part.
+*/
+function withSize(baseClassName, size, blockFallbackClassName) {
+	const { blockSize, inlineSize, stretch } = size;
+	return {
+		className: cx(baseClassName, blockSize != null ? "h-(--skeleton-block-size)" : blockFallbackClassName, inlineSize != null ? "w-(--skeleton-inline-size)" : stretch === "full" ? "w-full" : "w-fit"),
+		style: {
+			...blockSize != null ? { "--skeleton-block-size": blockSize } : {},
+			...inlineSize != null ? { "--skeleton-inline-size": inlineSize } : {}
+		}
+	};
+}
+function skeletonFrameProps(props) {
+	return withSize(skeletonVariants({ layout: props.layout }), {
+		blockSize: props.blockSize,
+		inlineSize: props.inlineSize,
+		stretch: props.stretch
+	});
+}
+function skeletonItemFrameProps(props) {
+	return withSize(skeletonItemVariants({ variant: props.variant }), {
+		blockSize: props.blockSize,
+		inlineSize: props.inlineSize,
+		stretch: "full"
+	}, "h-full min-h-4");
+}
+//#endregion
+export { skeletonFrameProps, skeletonItemFrameProps, skeletonItemVariants, skeletonVariants };
+
+//# sourceMappingURL=variants.js.map

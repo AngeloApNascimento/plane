@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-separator.d.ts
+type MenuSeparatorProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * A styled thin divider between groups of items. Base-UI-agnostic — graft the separator behavior in
+ * `components` via `<BaseMenu.Separator render={<MenuSeparator />} />`.
+ */
+declare function MenuSeparator({ render, ...props }: MenuSeparatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuSeparator, MenuSeparatorProps };
+//# sourceMappingURL=menu-separator.d.ts.map

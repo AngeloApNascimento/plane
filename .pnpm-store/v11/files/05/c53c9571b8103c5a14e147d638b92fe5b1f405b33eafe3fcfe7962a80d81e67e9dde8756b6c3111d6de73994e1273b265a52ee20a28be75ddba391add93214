@@ -1,0 +1,26 @@
+"use client";
+import { FieldDescription } from "./field-description.js";
+import { FieldError } from "./field-error.js";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/field/field-helper-text.tsx
+/**
+* The error-or-hint line beneath a field: shows the `FieldError` when there is an error, otherwise
+* the `FieldDescription` hint. With no explicit `error`, the `FieldError` renders unmatched so Base
+* UI's own error channel stays open — validity messages and external `Form` `errors` for this field
+* display (and clear) automatically. A components-tier composition of the two elements parts;
+* shared by the ready-made field types so the error-XOR-hint rule lives in one place.
+*/
+function FieldHelperText({ size, hint, error }) {
+	return /* @__PURE__ */ jsxs(Fragment, { children: [error != null ? /* @__PURE__ */ jsx(FieldError, {
+		size,
+		match: true,
+		children: error
+	}) : /* @__PURE__ */ jsx(FieldError, { size }), error == null && hint != null ? /* @__PURE__ */ jsx(FieldDescription, {
+		size,
+		children: hint
+	}) : null] });
+}
+//#endregion
+export { FieldHelperText };
+
+//# sourceMappingURL=field-helper-text.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/thumbs-down-outline.d.ts
+declare function ThumbsDownOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ThumbsDownOutline };
+//# sourceMappingURL=thumbs-down-outline.d.ts.map

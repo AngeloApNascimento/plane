@@ -1,0 +1,20 @@
+"use client";
+import { contextMenuItemVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-checkbox-item.tsx
+/**
+* The styled checkbox menu row. Base-UI-agnostic — graft the checkbox-item behavior in `components`
+* via `<BaseContextMenu.CheckboxItem render={<ContextMenuCheckboxItem/>} />`.
+*/
+function ContextMenuCheckboxItem({ variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: contextMenuItemVariants({ variant }) }, props)
+	});
+}
+//#endregion
+export { ContextMenuCheckboxItem };
+
+//# sourceMappingURL=context-menu-checkbox-item.js.map

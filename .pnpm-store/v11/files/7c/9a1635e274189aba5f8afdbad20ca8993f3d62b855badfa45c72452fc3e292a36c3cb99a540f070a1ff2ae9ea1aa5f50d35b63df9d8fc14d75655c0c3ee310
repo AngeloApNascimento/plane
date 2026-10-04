@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/scroll-area/scroll-area-corner.d.ts
+type ScrollAreaCornerProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled corner that fills the gap where the vertical and horizontal scrollbars meet.
+ * Base-UI-agnostic — graft in `components` via `<BaseScrollArea.Corner render={<ScrollAreaCorner/>}
+ * />`.
+ */
+declare function ScrollAreaCorner({ render, ...props }: ScrollAreaCornerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ScrollAreaCorner, ScrollAreaCornerProps };
+//# sourceMappingURL=scroll-area-corner.d.ts.map

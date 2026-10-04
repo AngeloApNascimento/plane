@@ -1,0 +1,42 @@
+"use client";
+import { PreviewCardPopup } from "../../elements/preview-card/preview-card-popup.js";
+import { Positioner } from "../../internal/positioner.js";
+import { jsx } from "react/jsx-runtime";
+import { PreviewCard } from "@base-ui/react/preview-card";
+//#region src/components/preview-card/preview-card-content.tsx
+/**
+* Convenience that composes the anchored preview card boilerplate — Base UI portal, positioner, and
+* popup grafted onto Propel's styled surface — so a consumer only writes the trigger and the card
+* body. Pass `side`/`sideOffset`/`align` through to the positioner.
+*
+* No backdrop: unlike Dialog/AlertDialog/Drawer, a preview card is a non-modal, hover-triggered
+* rich tooltip (it opens on hover/focus and closes on pointer-leave/blur, with no focus trap) —
+* dimming the page behind a hover preview reads as a modal takeover it isn't. Base UI ships a
+* `PreviewCard.Backdrop` primitive, but it is purely optional/decorative for apps that want one; it
+* has none of `Dialog.Backdrop`'s click-outside-to-dismiss semantics, so omitting it costs no
+* behavior.
+*/
+function PreviewCardContent({ side = "bottom", sideOffset = 4, align = "center", alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, ...props }) {
+	return /* @__PURE__ */ jsx(PreviewCard.Portal, { children: /* @__PURE__ */ jsx(PreviewCard.Positioner, {
+		side,
+		sideOffset,
+		align,
+		alignOffset,
+		collisionPadding,
+		collisionBoundary,
+		collisionAvoidance,
+		sticky,
+		positionMethod,
+		anchor,
+		disableAnchorTracking,
+		render: /* @__PURE__ */ jsx(Positioner, {}),
+		children: /* @__PURE__ */ jsx(PreviewCard.Popup, {
+			...props,
+			render: /* @__PURE__ */ jsx(PreviewCardPopup, {})
+		})
+	}) });
+}
+//#endregion
+export { PreviewCardContent };
+
+//# sourceMappingURL=preview-card-content.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/multiple-sticky-filled.d.ts
+declare function MultipleStickyFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MultipleStickyFilled };
+//# sourceMappingURL=multiple-sticky-filled.d.ts.map

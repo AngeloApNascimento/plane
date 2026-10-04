@@ -1,0 +1,12 @@
+"use client";
+import { AccordionItem } from "@base-ui/react/accordion";
+//#region src/components/accordion/accordion-item.d.ts
+type AccordionItemProps = Omit<AccordionItem.Props, "className" | "style">;
+/**
+ * A single collapsible section: pairs an `AccordionHeader` and `AccordionPanel`. Grafts Base UI's
+ * item behavior onto the styled `AccordionItem`.
+ */
+declare function AccordionItem$1(props: AccordionItemProps): import("react").JSX.Element;
+//#endregion
+export { AccordionItem$1 as AccordionItem, AccordionItemProps };
+//# sourceMappingURL=accordion-item.d.ts.map

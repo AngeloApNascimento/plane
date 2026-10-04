@@ -1,0 +1,13 @@
+"use client";
+import { SelectLabelSize, SelectLabelVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/select/select-label.d.ts
+type SelectLabelProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & SelectLabelVariantProps;
+/**
+ * The styled select label. Base-UI-agnostic — graft the label behavior in `components` via
+ * `<BaseSelect.Label render={<SelectLabel/>} />`.
+ */
+declare function SelectLabel({ render, size, ...props }: SelectLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SelectLabel, SelectLabelProps, type SelectLabelSize };
+//# sourceMappingURL=select-label.d.ts.map

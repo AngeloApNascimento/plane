@@ -1,0 +1,12 @@
+"use client";
+import { CSPProvider } from "@base-ui/react/csp-provider";
+//#region src/components/csp-provider/csp-provider.d.ts
+type CSPProviderProps = CSPProvider.Props;
+/**
+ * Base UI's Content-Security-Policy context, re-exported so strict-CSP apps compose entirely from
+ * propel: pass your style `nonce` once at the app root and every portaled surface inherits it.
+ */
+declare function CSPProvider$1(props: CSPProviderProps): import("react").JSX.Element;
+//#endregion
+export { CSPProvider$1 as CSPProvider, CSPProviderProps };
+//# sourceMappingURL=csp-provider.d.ts.map

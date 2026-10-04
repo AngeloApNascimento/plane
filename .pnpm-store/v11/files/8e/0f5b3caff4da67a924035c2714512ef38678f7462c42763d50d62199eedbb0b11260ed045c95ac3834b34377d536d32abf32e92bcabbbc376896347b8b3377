@@ -1,0 +1,8 @@
+"use client";
+import { cva } from "class-variance-authority";
+//#region src/elements/separator/variants.ts
+const separatorVariants = cva("shrink-0 border-subtle data-[orientation=horizontal]:h-0 data-[orientation=horizontal]:w-full data-[orientation=horizontal]:border-t-sm data-[orientation=vertical]:w-0 data-[orientation=vertical]:self-stretch data-[orientation=vertical]:border-s-sm");
+//#endregion
+export { separatorVariants };
+
+//# sourceMappingURL=variants.js.map

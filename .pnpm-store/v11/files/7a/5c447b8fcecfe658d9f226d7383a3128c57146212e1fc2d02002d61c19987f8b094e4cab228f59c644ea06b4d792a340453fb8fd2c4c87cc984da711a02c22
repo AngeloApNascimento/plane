@@ -1,0 +1,25 @@
+"use client";
+import { PillSize, PillVariant, PillVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pill/pill.d.ts
+type PillProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & PillVariantProps & {
+  /**
+   * Marks a trigger with no value yet. Sets `data-placeholder`, which dims the label and any
+   * inherited-tint glyph to the placeholder colour — still dim while the picker is open; the
+   * disabled and busy colours win over it.
+   *
+   * @default false
+   */
+  placeholder?: boolean;
+};
+/**
+ * The pill-shaped button container: a styled `<button>` with no baked content. Compose a
+ * `PillLabel` and optional leading/trailing `Icon`, `Swatch` or avatar stack (or `Spinner` while
+ * busy) inside it. Base-UI-agnostic — graft the Base UI `Button` behavior in `components` via
+ * `<BaseButton render={<Pill/>} />`; an open picker shows through Base UI's `data-popup-open` when
+ * a `Menu`/`Popover` trigger is grafted the same way.
+ */
+declare function Pill({ size, variant, placeholder, render, ...props }: PillProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Pill, PillProps, type PillSize, type PillVariant };
+//# sourceMappingURL=pill.d.ts.map

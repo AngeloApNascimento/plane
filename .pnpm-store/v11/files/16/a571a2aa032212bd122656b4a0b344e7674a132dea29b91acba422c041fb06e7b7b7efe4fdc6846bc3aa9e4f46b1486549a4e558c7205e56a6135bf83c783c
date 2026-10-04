@@ -1,0 +1,17 @@
+"use client";
+import { CompositeRoot } from "@base-ui/react/internals/composite";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+//#region src/base/composite/composite.tsx
+const Composite = React.forwardRef(function Composite({ orientation = "vertical", ...props }, forwardedRef) {
+	return /* @__PURE__ */ jsx(CompositeRoot, {
+		orientation,
+		refs: [forwardedRef],
+		...props
+	});
+});
+if (process.env.NODE_ENV !== "production") Composite.displayName = "Composite";
+//#endregion
+export { Composite };
+
+//# sourceMappingURL=composite.js.map

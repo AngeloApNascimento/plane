@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/form/form.d.ts
+type FormProps = Omit<useRender.ComponentProps<"form">, "className" | "style">;
+/**
+ * The styled form frame: a native `<form>` that lays out its regions (`FormBody`, `FormActions`)
+ * with a consistent vertical rhythm; field spacing and the actions-bar treatment live on those
+ * parts. Base-UI-agnostic — graft Base UI's consolidated form behavior in `components` via
+ * `<BaseForm render={<Form/>} />`.
+ */
+declare function Form({ render, ...props }: FormProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Form, FormProps };
+//# sourceMappingURL=form.d.ts.map

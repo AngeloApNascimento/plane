@@ -1,0 +1,20 @@
+"use client";
+import { OverlayTitle } from "../../internal/overlay-title.js";
+import { jsx } from "react/jsx-runtime";
+import { Drawer } from "@base-ui/react/drawer";
+//#region src/components/drawer/drawer-title.tsx
+/**
+* The accessible heading for the drawer: Base UI's `Drawer.Title` behavior (wired as the popup's
+* `aria-labelledby` target) grafted onto the shared `internal/OverlayTitle` at `size="xl"` (body-md
+* semibold per Figma; rule 4a).
+*/
+function DrawerTitle(props) {
+	return /* @__PURE__ */ jsx(Drawer.Title, {
+		...props,
+		render: /* @__PURE__ */ jsx(OverlayTitle, { size: "xl" })
+	});
+}
+//#endregion
+export { DrawerTitle };
+
+//# sourceMappingURL=drawer-title.js.map

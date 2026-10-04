@@ -1,0 +1,12 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-group.tsx
+/** Groups related rows; provide `aria-label`/`aria-labelledby` when the group needs a name. */
+function ContextMenuGroup(props) {
+	return /* @__PURE__ */ jsx(ContextMenu.Group, { ...props });
+}
+//#endregion
+export { ContextMenuGroup };
+
+//# sourceMappingURL=context-menu-group.js.map

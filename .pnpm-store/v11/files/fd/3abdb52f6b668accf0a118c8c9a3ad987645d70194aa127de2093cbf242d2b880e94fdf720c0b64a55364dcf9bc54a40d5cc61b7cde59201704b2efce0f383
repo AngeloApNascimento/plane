@@ -1,0 +1,58 @@
+"use client";
+import { LogoSpinner as LogoSpinner$1 } from "../../elements/logo-spinner/logo-spinner.js";
+import { LogoSpinnerImage } from "../../elements/logo-spinner/logo-spinner-image.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import DARK_STILL_SRC from "./logo-spinner-dark-still.png";
+import DARK_SRC from "./logo-spinner-dark.gif";
+import LIGHT_STILL_SRC from "./logo-spinner-light-still.png";
+import LIGHT_SRC from "./logo-spinner-light.gif";
+//#region src/components/logo-spinner/logo-spinner.tsx
+const url = (src) => typeof src === "string" ? src : src.src;
+/**
+* The animated Plane mark, for the moments a whole screen is waiting — app boot, a splash screen, a
+* full-page route transition. For pending state inside a control or a section, use
+* `CircularProgress` (or a control's own loading state) instead: this is brand furniture, not a
+* status glyph.
+*
+* Both themes' artwork is rendered and CSS shows the one matching the active `data-theme`, so a
+* theme flip costs no JS and no second request. Under `prefers-reduced-motion: reduce` the same CSS
+* paints a still of the fully drawn mark instead of the animation. Only the visible image is in the
+* accessibility tree (the other three are `display: none`), so `alt` is announced once.
+*/
+function LogoSpinner({ size, alt, ...props }) {
+	return /* @__PURE__ */ jsxs(LogoSpinner$1, {
+		...props,
+		children: [
+			/* @__PURE__ */ jsx(LogoSpinnerImage, {
+				src: url(LIGHT_SRC),
+				alt,
+				size,
+				theme: "light"
+			}),
+			/* @__PURE__ */ jsx(LogoSpinnerImage, {
+				src: url(DARK_SRC),
+				alt,
+				size,
+				theme: "dark"
+			}),
+			/* @__PURE__ */ jsx(LogoSpinnerImage, {
+				src: url(LIGHT_STILL_SRC),
+				alt,
+				size,
+				theme: "light",
+				motion: "still"
+			}),
+			/* @__PURE__ */ jsx(LogoSpinnerImage, {
+				src: url(DARK_STILL_SRC),
+				alt,
+				size,
+				theme: "dark",
+				motion: "still"
+			})
+		]
+	});
+}
+//#endregion
+export { LogoSpinner };
+
+//# sourceMappingURL=logo-spinner.js.map

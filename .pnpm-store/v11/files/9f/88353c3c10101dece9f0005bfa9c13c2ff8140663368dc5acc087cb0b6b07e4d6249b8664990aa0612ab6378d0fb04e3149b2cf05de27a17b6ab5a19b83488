@@ -1,0 +1,29 @@
+"use client";
+import { FieldLabelGroup as FieldLabelGroup$1 } from "../../elements/field/field-label-group.js";
+import { FieldDescription } from "./field-description.js";
+import { FieldLabel } from "./field-label.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/field/field-label-group.tsx
+/**
+* The ready-made label/description block of a field: lays out an optional `FieldLabel` and
+* `FieldDescription` inside the `FieldLabelGroup` container. Renders nothing when both are absent.
+*/
+function FieldLabelGroup({ size, required, label, description, orientation }) {
+	if (label == null && description == null) return null;
+	return /* @__PURE__ */ jsxs(FieldLabelGroup$1, {
+		orientation,
+		children: [label != null ? /* @__PURE__ */ jsx(FieldLabel, {
+			size,
+			required,
+			inset: orientation === "horizontal" && description == null,
+			children: label
+		}) : null, description != null ? /* @__PURE__ */ jsx(FieldDescription, {
+			size,
+			children: description
+		}) : null]
+	});
+}
+//#endregion
+export { FieldLabelGroup };
+
+//# sourceMappingURL=field-label-group.js.map

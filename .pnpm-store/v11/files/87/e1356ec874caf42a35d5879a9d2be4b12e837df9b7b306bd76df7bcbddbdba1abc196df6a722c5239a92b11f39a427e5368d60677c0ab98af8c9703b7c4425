@@ -1,0 +1,11 @@
+import "./shared/binding-DOZoR4bu.mjs";
+import { C as version, r as defineConfig } from "./shared/src-D1weNlnG.mjs";
+import "./shared/parse-ast-index-oPgrkdqc.mjs";
+import "./shared/misc-usdOVIou.mjs";
+import { t as loadConfig } from "./shared/load-config-Brje6-4J.mjs";
+
+//#region src/config.ts
+const VERSION = version;
+
+//#endregion
+export { VERSION, defineConfig, loadConfig };

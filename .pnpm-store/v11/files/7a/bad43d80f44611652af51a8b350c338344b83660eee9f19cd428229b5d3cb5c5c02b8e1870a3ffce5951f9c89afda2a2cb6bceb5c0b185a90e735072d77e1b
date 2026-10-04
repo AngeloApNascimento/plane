@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/add-filled.d.ts
+declare function AddFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AddFilled };
+//# sourceMappingURL=add-filled.d.ts.map

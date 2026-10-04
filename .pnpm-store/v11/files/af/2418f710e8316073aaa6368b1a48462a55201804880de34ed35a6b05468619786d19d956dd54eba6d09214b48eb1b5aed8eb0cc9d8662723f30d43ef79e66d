@@ -1,0 +1,435 @@
+//#region src/errors.d.ts
+type DeslopErrorCode = "file-read-failed" | "file-too-large" | "file-empty" | "file-binary" | "file-minified" | "parse-failed" | "parse-recovered" | "parse-recovered-partial" | "ast-walk-failed" | "ast-walk-depth-exceeded" | "tsconfig-not-found" | "tsconfig-parse-failed" | "ts-program-creation-failed" | "ts-program-too-large" | "ts-not-loadable" | "package-json-not-found" | "package-json-parse-failed" | "workspace-discovery-failed" | "gitignore-check-failed" | "resolver-init-failed" | "monorepo-discovery-failed" | "detector-failed" | "config-invalid" | "system-out-of-memory" | "unknown";
+type DeslopErrorModule = "collect" | "parse" | "linker" | "resolver" | "report" | "semantic" | "config";
+type DeslopErrorSeverity = "fatal" | "warning" | "info";
+interface DeslopErrorInput {
+  code: DeslopErrorCode;
+  module: DeslopErrorModule;
+  message: string;
+  severity?: DeslopErrorSeverity;
+  path?: string;
+  detail?: string;
+}
+interface DeslopErrorFromCaughtInput extends Omit<DeslopErrorInput, "detail"> {
+  caught: unknown;
+}
+interface DeslopErrorJson {
+  name: string;
+  code: DeslopErrorCode;
+  module: DeslopErrorModule;
+  severity: DeslopErrorSeverity;
+  message: string;
+  path?: string;
+  detail?: string;
+}
+declare class DeslopError extends Error {
+  readonly code: DeslopErrorCode;
+  readonly module: DeslopErrorModule;
+  readonly severity: DeslopErrorSeverity;
+  readonly path?: string;
+  readonly detail?: string;
+  constructor(input: DeslopErrorInput);
+  toJSON(): DeslopErrorJson;
+  static fromCaught(input: DeslopErrorFromCaughtInput): DeslopError;
+}
+//#endregion
+//#region src/types.d.ts
+interface UnusedFile {
+  path: string;
+}
+interface UnusedExport {
+  path: string;
+  name: string;
+  line: number;
+  column: number;
+  isTypeOnly: boolean;
+}
+interface UnusedDependency {
+  name: string;
+  isDevDependency: boolean;
+}
+interface CircularDependency {
+  files: string[];
+}
+type SemanticConfidence = "high" | "medium" | "low";
+type UnusedTypeKind = "interface" | "type-alias" | "enum-type";
+interface UnusedType {
+  path: string;
+  name: string;
+  line: number;
+  column: number;
+  kind: UnusedTypeKind;
+  confidence: SemanticConfidence;
+  reason: string;
+  trace: string[];
+  suppressionHint?: string;
+}
+type DependencyDeclaredAs = "dependencies" | "peerDependencies";
+interface MisclassifiedDependency {
+  name: string;
+  declaredAs: DependencyDeclaredAs;
+  suggestedAs: "devDependencies";
+  confidence: SemanticConfidence;
+  reason: string;
+  trace: string[];
+}
+interface UnusedEnumMember {
+  path: string;
+  enumName: string;
+  memberName: string;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+  trace: string[];
+}
+type ClassMemberKind = "method" | "property" | "accessor";
+interface UnusedClassMember {
+  path: string;
+  className: string;
+  memberName: string;
+  memberKind: ClassMemberKind;
+  isStatic: boolean;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+  trace: string[];
+}
+type RedundantAliasKind = "import-self-alias" | "export-self-alias" | "reexport-self-alias" | "variable-alias" | "reexport-aliased-not-used" | "roundtrip-alias";
+interface RedundantAlias {
+  path: string;
+  kind: RedundantAliasKind;
+  name: string;
+  aliasedFrom: string;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+}
+interface DuplicateExportOccurrence {
+  line: number;
+  column: number;
+  reExportSource?: string;
+  isReExport: boolean;
+}
+interface DuplicateExport {
+  path: string;
+  name: string;
+  occurrences: DuplicateExportOccurrence[];
+  confidence: SemanticConfidence;
+  reason: string;
+}
+interface DuplicateImportOccurrence {
+  line: number;
+  column: number;
+  importedNames: string[];
+  isTypeOnly: boolean;
+}
+interface DuplicateImport {
+  path: string;
+  specifier: string;
+  occurrences: DuplicateImportOccurrence[];
+  confidence: SemanticConfidence;
+  reason: string;
+}
+type RedundantTypePatternKind = "intersection-with-empty-object" | "self-union" | "self-intersection" | "nested-partial" | "nested-readonly" | "nested-required" | "pick-all-keys" | "omit-no-keys" | "empty-interface-extends-one";
+interface RedundantTypePattern {
+  path: string;
+  typeName: string;
+  kind: RedundantTypePatternKind;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+  suggestion: string;
+}
+interface IdentityWrapper {
+  path: string;
+  wrapperName: string;
+  wrappedExpression: string;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+}
+interface DuplicateTypeDefinitionInstance {
+  path: string;
+  typeName: string;
+  line: number;
+  column: number;
+}
+interface DuplicateTypeDefinition {
+  structuralHash: string;
+  instances: DuplicateTypeDefinitionInstance[];
+  confidence: SemanticConfidence;
+  reason: string;
+}
+type InlineTypeContext = "function-parameter" | "function-return" | "variable-annotation" | "local-type-alias" | "class-property" | "interface-property" | "generic-type-argument";
+interface InlineTypeOccurrence {
+  path: string;
+  line: number;
+  column: number;
+  context: InlineTypeContext;
+  nearestName?: string;
+}
+interface DuplicateInlineType {
+  structuralHash: string;
+  memberCount: number;
+  preview: string;
+  occurrences: InlineTypeOccurrence[];
+  confidence: SemanticConfidence;
+  reason: string;
+}
+type SimplifiableFunctionKind = "block-arrow-single-return" | "redundant-await-return" | "useless-async-no-await";
+interface SimplifiableFunction {
+  path: string;
+  kind: SimplifiableFunctionKind;
+  functionName?: string;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+  suggestion: string;
+}
+type SimplifiableExpressionKind = "self-fallback-ternary" | "double-bang-boolean" | "ternary-returns-boolean" | "nullish-coalescing-with-nullish" | "redundant-null-and-undefined-check";
+interface SimplifiableExpression {
+  path: string;
+  kind: SimplifiableExpressionKind;
+  snippet: string;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+  suggestion: string;
+}
+interface DuplicateConstantOccurrence {
+  path: string;
+  constantName: string;
+  line: number;
+  column: number;
+}
+interface DuplicateConstant {
+  literalHash: string;
+  literalPreview: string;
+  occurrences: DuplicateConstantOccurrence[];
+  confidence: SemanticConfidence;
+  reason: string;
+}
+interface CrossFileDuplicateExportLocation {
+  path: string;
+  line: number;
+  column: number;
+  isTypeOnly: boolean;
+}
+interface CrossFileDuplicateExport {
+  name: string;
+  locations: CrossFileDuplicateExportLocation[];
+  confidence: SemanticConfidence;
+  reason: string;
+}
+type DuplicateBlockDetectionMode = "strict" | "semantic";
+interface DuplicateBlockOccurrence {
+  path: string;
+  startLine: number;
+  endLine: number;
+  startColumn: number;
+  endColumn: number;
+}
+interface DuplicateBlock {
+  instances: DuplicateBlockOccurrence[];
+  tokenCount: number;
+  lineCount: number;
+  confidence: SemanticConfidence;
+  reason: string;
+}
+type DuplicateBlockRefactoringKind = "extract-function" | "extract-module";
+interface DuplicateBlockRefactoringHint {
+  kind: DuplicateBlockRefactoringKind;
+  description: string;
+  estimatedSavings: number;
+}
+interface DuplicateBlockCluster {
+  files: string[];
+  groups: DuplicateBlock[];
+  totalDuplicatedLines: number;
+  totalDuplicatedTokens: number;
+  suggestions: DuplicateBlockRefactoringHint[];
+}
+interface ShadowedDirectoryPair {
+  directoryA: string;
+  directoryB: string;
+  sharedFiles: string[];
+  totalDuplicatedLines: number;
+}
+interface DuplicateBlocksConfig {
+  enabled: boolean;
+  mode: DuplicateBlockDetectionMode;
+  minTokens: number;
+  minLines: number;
+  minOccurrences: number;
+  skipLocal: boolean;
+}
+type ReExportCycleKind = "self-loop" | "multi-node";
+interface ReExportCycle {
+  files: string[];
+  kind: ReExportCycleKind;
+  confidence: SemanticConfidence;
+  reason: string;
+}
+type FeatureFlagKind = "env-var" | "sdk-call" | "config-object";
+interface FeatureFlag {
+  path: string;
+  name: string;
+  kind: FeatureFlagKind;
+  line: number;
+  column: number;
+  sdkProvider?: string;
+  guardLineStart?: number;
+  guardLineEnd?: number;
+  guardsDeadCode: boolean;
+}
+interface FeatureFlagsConfig {
+  enabled: boolean;
+  extraEnvPrefixes: string[];
+  extraSdkFunctionNames: string[];
+  detectConfigObjects: boolean;
+}
+interface FunctionComplexity {
+  path: string;
+  functionName: string;
+  line: number;
+  column: number;
+  cyclomatic: number;
+  cognitive: number;
+  lineCount: number;
+  paramCount: number;
+  confidence: SemanticConfidence;
+  reason: string;
+}
+interface ComplexityConfig {
+  enabled: boolean;
+  cyclomaticThreshold: number;
+  cognitiveThreshold: number;
+  paramCountThreshold: number;
+  functionLineThreshold: number;
+}
+interface PrivateTypeLeak {
+  path: string;
+  exportName: string;
+  typeName: string;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+}
+type UnnecessaryAssertionKind = "redundant-double-assertion" | "assertion-to-any" | "redundant-non-null-on-literal" | "double-non-null" | "angle-bracket-assertion";
+interface UnnecessaryAssertion {
+  path: string;
+  kind: UnnecessaryAssertionKind;
+  snippet: string;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+  suggestion: string;
+}
+type LazyImportKind = "top-level-await-import" | "top-level-then-import";
+interface LazyImportAtTopLevel {
+  path: string;
+  specifier: string;
+  kind: LazyImportKind;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+}
+type CommonjsInEsmKind = "require" | "module-exports" | "exports-assignment";
+interface CommonjsInEsm {
+  path: string;
+  kind: CommonjsInEsmKind;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+  snippet: string;
+}
+type TypeScriptEscapeHatchKind = "ts-ignore" | "ts-nocheck" | "ts-expect-error-without-explanation";
+interface TypeScriptEscapeHatch {
+  path: string;
+  kind: TypeScriptEscapeHatchKind;
+  line: number;
+  column: number;
+  confidence: SemanticConfidence;
+  reason: string;
+  suggestion: string;
+}
+interface ScanResult {
+  unusedFiles: UnusedFile[];
+  unusedExports: UnusedExport[];
+  unusedDependencies: UnusedDependency[];
+  circularDependencies: CircularDependency[];
+  unusedTypes: UnusedType[];
+  misclassifiedDependencies: MisclassifiedDependency[];
+  unusedEnumMembers: UnusedEnumMember[];
+  unusedClassMembers: UnusedClassMember[];
+  redundantAliases: RedundantAlias[];
+  duplicateExports: DuplicateExport[];
+  duplicateImports: DuplicateImport[];
+  redundantTypePatterns: RedundantTypePattern[];
+  identityWrappers: IdentityWrapper[];
+  duplicateTypeDefinitions: DuplicateTypeDefinition[];
+  duplicateInlineTypes: DuplicateInlineType[];
+  simplifiableFunctions: SimplifiableFunction[];
+  simplifiableExpressions: SimplifiableExpression[];
+  duplicateConstants: DuplicateConstant[];
+  crossFileDuplicateExports: CrossFileDuplicateExport[];
+  duplicateBlocks: DuplicateBlock[];
+  duplicateBlockClusters: DuplicateBlockCluster[];
+  shadowedDirectoryPairs: ShadowedDirectoryPair[];
+  reExportCycles: ReExportCycle[];
+  featureFlags: FeatureFlag[];
+  complexFunctions: FunctionComplexity[];
+  privateTypeLeaks: PrivateTypeLeak[];
+  unnecessaryAssertions: UnnecessaryAssertion[];
+  lazyImportsAtTopLevel: LazyImportAtTopLevel[];
+  commonjsInEsm: CommonjsInEsm[];
+  typeScriptEscapeHatches: TypeScriptEscapeHatch[];
+  analysisErrors: DeslopError[];
+  totalFiles: number;
+  totalExports: number;
+  analysisTimeMs: number;
+}
+interface SemanticConfig {
+  enabled: boolean;
+  reportUnusedTypes: boolean;
+  reportUnusedEnumMembers: boolean;
+  reportUnusedClassMembers: boolean;
+  reportRedundantVariableAliases: boolean;
+  reportMisclassifiedDependencies: boolean;
+  reportRoundTripAliases: boolean;
+  decoratorAllowlist: string[];
+}
+interface DeslopConfig {
+  rootDir: string;
+  entryPatterns: string[];
+  ignorePatterns: string[];
+  includeExtensions: string[];
+  tsConfigPath: string | undefined;
+  paths: Record<string, string[]> | undefined;
+  reportTypes: boolean;
+  includeEntryExports: boolean;
+  reportRedundancy: boolean;
+  semantic: SemanticConfig | undefined;
+  duplicateBlocks: DuplicateBlocksConfig | undefined;
+  featureFlags: FeatureFlagsConfig | undefined;
+  complexity: ComplexityConfig | undefined;
+}
+//#endregion
+//#region src/index.d.ts
+declare const defineConfig: (options: Partial<DeslopConfig> & {
+  rootDir: string;
+}) => DeslopConfig;
+declare const analyze: (config: DeslopConfig) => Promise<ScanResult>;
+//#endregion
+export { type CircularDependency, type ClassMemberKind, type CommonjsInEsm, type CommonjsInEsmKind, type ComplexityConfig, type CrossFileDuplicateExport, type CrossFileDuplicateExportLocation, type DependencyDeclaredAs, type DeslopConfig, type DeslopError, type DeslopErrorCode, type DeslopErrorModule, type DeslopErrorSeverity, type DuplicateBlock, type DuplicateBlockCluster, type DuplicateBlockDetectionMode, type DuplicateBlockOccurrence, type DuplicateBlockRefactoringHint, type DuplicateBlockRefactoringKind, type DuplicateBlocksConfig, type DuplicateConstant, type DuplicateConstantOccurrence, type DuplicateExport, type DuplicateExportOccurrence, type DuplicateImport, type DuplicateImportOccurrence, type DuplicateInlineType, type DuplicateTypeDefinition, type DuplicateTypeDefinitionInstance, type FeatureFlag, type FeatureFlagKind, type FeatureFlagsConfig, type FunctionComplexity, type IdentityWrapper, type InlineTypeContext, type InlineTypeOccurrence, type LazyImportAtTopLevel, type LazyImportKind, type MisclassifiedDependency, type PrivateTypeLeak, type ReExportCycle, type ReExportCycleKind, type RedundantAlias, type RedundantAliasKind, type RedundantTypePattern, type RedundantTypePatternKind, type ScanResult, type SemanticConfidence, type SemanticConfig, type ShadowedDirectoryPair, type SimplifiableExpression, type SimplifiableExpressionKind, type SimplifiableFunction, type SimplifiableFunctionKind, type TypeScriptEscapeHatch, type TypeScriptEscapeHatchKind, type UnnecessaryAssertion, type UnnecessaryAssertionKind, type UnusedClassMember, type UnusedDependency, type UnusedEnumMember, type UnusedExport, type UnusedFile, type UnusedType, type UnusedTypeKind, analyze, defineConfig };

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/asana.d.ts
+declare function Asana(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Asana };
+//# sourceMappingURL=asana.d.ts.map

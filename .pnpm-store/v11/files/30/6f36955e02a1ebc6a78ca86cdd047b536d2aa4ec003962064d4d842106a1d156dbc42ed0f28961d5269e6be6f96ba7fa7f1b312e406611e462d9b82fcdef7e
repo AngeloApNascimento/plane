@@ -1,0 +1,14 @@
+"use client";
+import { TableAlign, TablePinned, TableVariant } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table.d.ts
+type TableProps = Omit<useRender.ComponentProps<"table">, "className" | "style">;
+/**
+ * The styled `<table>` element — a single element. The ready-made `components/table` wraps it in
+ * the rounded scroll frame (`TableScrollArea` + `TableScrollAreaViewport`) and shares the layout
+ * `variant` with the cells/heads via context.
+ */
+declare function Table({ render, ...props }: TableProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Table, type TableAlign, type TablePinned, TableProps, type TableVariant };
+//# sourceMappingURL=table.d.ts.map

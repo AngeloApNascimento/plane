@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/request-filled.d.ts
+declare function RequestFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RequestFilled };
+//# sourceMappingURL=request-filled.d.ts.map

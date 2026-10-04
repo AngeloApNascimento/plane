@@ -1,0 +1,16 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-list.tsx
+/**
+* The container for the select items — Base UI's `Select.List`, unstyled (the popup surface is
+* `SelectContent`; the rows are `SelectItem`s). A passthrough so consumers never import
+* `@base-ui/react/select` themselves.
+*/
+function SelectList(props) {
+	return /* @__PURE__ */ jsx(Select.List, { ...props });
+}
+//#endregion
+export { SelectList };
+
+//# sourceMappingURL=select-list.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/right-down-outline.d.ts
+declare function RightDownOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RightDownOutline };
+//# sourceMappingURL=right-down-outline.d.ts.map

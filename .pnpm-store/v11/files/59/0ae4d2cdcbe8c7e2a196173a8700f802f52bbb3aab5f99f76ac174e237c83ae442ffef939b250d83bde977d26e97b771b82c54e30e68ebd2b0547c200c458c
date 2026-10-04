@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/sandbox-outline.d.ts
+declare function SandboxOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { SandboxOutline };
+//# sourceMappingURL=sandbox-outline.d.ts.map

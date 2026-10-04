@@ -1,0 +1,15 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list-item-link.d.ts
+type ListItemLinkProps = Omit<useRender.ComponentProps<"a">, "className" | "style">;
+/**
+ * The styled primary navigation target of a list row — an `<a>`. Base-UI-agnostic — graft the
+ * roving `CompositeItem` behavior in `components` via `<CompositeItem tag="a"
+ * render={<ListItemLink/>} />`. Mark the current page with `aria-current="page"` (the wrapping
+ * `ListItem` reads it for the selected look). Compose a leading `<Icon />`, `ListItemLabel`, and
+ * optional `ListItemCounter` / trailing icon inside.
+ */
+declare function ListItemLink({ render, ...props }: ListItemLinkProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ListItemLink, ListItemLinkProps };
+//# sourceMappingURL=list-item-link.d.ts.map

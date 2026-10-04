@@ -1,0 +1,20 @@
+"use client";
+import { alertDialogTitleVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/alert-dialog/alert-dialog-title.tsx
+/**
+* The alert dialog heading. Base-UI-agnostic — graft the title behavior in `components` via
+* `<BaseAlertDialog.Title render={<AlertDialogTitle />} />`.
+*/
+function AlertDialogTitle({ render, ...props }) {
+	return useRender({
+		defaultTagName: "h2",
+		render,
+		props: mergeProps({ className: alertDialogTitleVariants() }, props)
+	});
+}
+//#endregion
+export { AlertDialogTitle };
+
+//# sourceMappingURL=alert-dialog-title.js.map

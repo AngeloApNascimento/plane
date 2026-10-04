@@ -1,0 +1,14 @@
+"use client";
+import { WorkspaceAvatarFallbackVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/workspace-avatar/workspace-avatar-fallback.d.ts
+/** Props for {@link WorkspaceAvatarFallback}; a styled `<span>` plus a `variant`. */
+type WorkspaceAvatarFallbackProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & WorkspaceAvatarFallbackVariantProps;
+/**
+ * The styled workspace initials surface. Base-UI-agnostic — graft the `Avatar.Fallback` behavior in
+ * `components` via `<BaseAvatar.Fallback render={<WorkspaceAvatarFallback/>} />`.
+ */
+declare function WorkspaceAvatarFallback({ variant, render, ...props }: WorkspaceAvatarFallbackProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { WorkspaceAvatarFallback, WorkspaceAvatarFallbackProps };
+//# sourceMappingURL=workspace-avatar-fallback.d.ts.map

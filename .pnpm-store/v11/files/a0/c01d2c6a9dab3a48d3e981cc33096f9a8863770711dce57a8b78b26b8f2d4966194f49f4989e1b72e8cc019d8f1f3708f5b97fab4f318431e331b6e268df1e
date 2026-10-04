@@ -1,0 +1,19 @@
+"use client";
+import { AlertDialogTitle as AlertDialogTitle$1 } from "../../elements/alert-dialog/alert-dialog-title.js";
+import { jsx } from "react/jsx-runtime";
+import { AlertDialog } from "@base-ui/react/alert-dialog";
+//#region src/components/alert-dialog/alert-dialog-title.tsx
+/**
+* The accessible title for the alert dialog. Base UI links it to the popup via `aria-labelledby`;
+* the styled `elements` title supplies the h6/semibold look.
+*/
+function AlertDialogTitle(props) {
+	return /* @__PURE__ */ jsx(AlertDialog.Title, {
+		...props,
+		render: /* @__PURE__ */ jsx(AlertDialogTitle$1, {})
+	});
+}
+//#endregion
+export { AlertDialogTitle };
+
+//# sourceMappingURL=alert-dialog-title.js.map

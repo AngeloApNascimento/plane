@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/preview-card/preview-card-popup.d.ts
+type PreviewCardPopupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled card surface that holds the rich link preview. Graft in `components` via
+ * `<BasePreviewCard.Popup render={<PreviewCardPopup />} />`.
+ */
+declare function PreviewCardPopup({ render, ...props }: PreviewCardPopupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PreviewCardPopup, PreviewCardPopupProps };
+//# sourceMappingURL=preview-card-popup.d.ts.map

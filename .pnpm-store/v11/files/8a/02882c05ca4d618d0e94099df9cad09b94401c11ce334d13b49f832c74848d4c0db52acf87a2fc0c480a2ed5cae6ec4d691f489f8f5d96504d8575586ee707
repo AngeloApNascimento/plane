@@ -1,0 +1,20 @@
+"use client";
+import { comboboxEmptyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-empty.tsx
+/**
+* The styled empty-state row. Graft in `components` via `<BaseCombobox.Empty
+* render={<ComboboxEmpty/>} />`.
+*/
+function ComboboxEmpty({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: comboboxEmptyVariants() }, props)
+	});
+}
+//#endregion
+export { ComboboxEmpty };
+
+//# sourceMappingURL=combobox-empty.js.map

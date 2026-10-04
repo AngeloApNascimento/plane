@@ -1,0 +1,26 @@
+"use client";
+import { SwitchSize } from "../../elements/switch/variants.js";
+import "../../elements/switch/index.js";
+import { Switch } from "@base-ui/react/switch";
+//#region src/components/switch/switch.d.ts
+type SwitchProps = Omit<Switch.Root.Props, "className" | "style"> & {
+  /** The switch size axis. */
+  size: SwitchSize;
+};
+/**
+ * The ready-made switch: grafts Base UI's `Switch` behavior onto the styled `Switch` track and
+ * `SwitchThumb` knob. The track owns the required `size`; the thumb sizes itself from it. Base UI
+ * supplies `role="switch"` and full keyboard/form support. Maps to Figma's "Toggle" component.
+ *
+ * On/off, `disabled`, and `readOnly` are control state from the primitive, not variants — pass them
+ * as props (`checked`/`defaultChecked`, `disabled`, `readOnly`). Only the size axis (`size`) is a
+ * visual variant.
+ *
+ * When `nativeButton` is set, pass a host element via `render` (typically `<button type="button"
+ * />`) — `size` still lives on this component and is applied to the styled track that wraps the
+ * host, so callers do not re-specify size on `SwitchTrack`.
+ */
+declare function Switch$1({ size, render, ...props }: SwitchProps): import("react").JSX.Element;
+//#endregion
+export { Switch$1 as Switch, SwitchProps, type SwitchSize };
+//# sourceMappingURL=switch.d.ts.map

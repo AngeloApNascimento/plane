@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/properties/implemented-by-filled.tsx
+function ImplementedByFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M5 7.375h7.824L9.892 4.442a.626.626 0 0 1 .883-.884l4 4a.626.626 0 0 1 0 .884l-4 4a.625.625 0 0 1-.883-.884l2.932-2.933H5a.625.625 0 1 1 0-1.25M2.625 14a.625.625 0 1 1-1.25 0V2a.625.625 0 1 1 1.25 0z"
+		})
+	});
+}
+//#endregion
+export { ImplementedByFilled };
+
+//# sourceMappingURL=implemented-by-filled.js.map

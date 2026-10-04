@@ -1,0 +1,17 @@
+"use client";
+import { ListSectionTriggerVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/list/list-section-trigger.d.ts
+type ListSectionTriggerProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & ListSectionTriggerVariantProps;
+/**
+ * A collapsible section's header — a small, muted heading with the chevron pushed to the
+ * inline-end. Renders a `<button>` by default and carries the `group` so a `DisclosureIndicator`
+ * inside rotates off `data-panel-open`. It does NOT embed any disclosure behavior, keeping
+ * `elements/list` independent of the Collapsible primitive: graft Base UI in `components` via
+ * `<BaseCollapsible.Trigger render={<ListSectionTrigger />} />` (behavior outer, styled part as the
+ * render target — same shape as the ready-made `Collapsible`).
+ */
+declare function ListSectionTrigger({ render, ...props }: ListSectionTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ListSectionTrigger, ListSectionTriggerProps };
+//# sourceMappingURL=list-section-trigger.d.ts.map

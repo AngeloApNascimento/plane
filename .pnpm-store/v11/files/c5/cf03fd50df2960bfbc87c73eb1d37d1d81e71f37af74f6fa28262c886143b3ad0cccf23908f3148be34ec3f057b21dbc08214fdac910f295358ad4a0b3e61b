@@ -1,0 +1,24 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/layouts/menu-filled.tsx
+function MenuFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("g", {
+			fill: "currentColor",
+			fillRule: "evenodd",
+			clipRule: "evenodd",
+			children: /* @__PURE__ */ jsx("path", { d: "M1.334 8c0-.369.298-.667.666-.667h12a.667.667 0 1 1 0 1.333H2A.667.667 0 0 1 1.333 8M1.334 4c0-.369.298-.667.666-.667h12a.667.667 0 1 1 0 1.333H2A.667.667 0 0 1 1.333 4M1.334 12c0-.368.298-.667.666-.667h12a.667.667 0 0 1 0 1.333H2A.667.667 0 0 1 1.333 12" })
+		})
+	});
+}
+//#endregion
+export { MenuFilled };
+
+//# sourceMappingURL=menu-filled.js.map

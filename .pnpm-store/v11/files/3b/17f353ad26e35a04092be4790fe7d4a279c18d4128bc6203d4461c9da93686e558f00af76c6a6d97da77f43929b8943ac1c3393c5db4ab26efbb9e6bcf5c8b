@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/translate-outline.d.ts
+declare function TranslateOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { TranslateOutline };
+//# sourceMappingURL=translate-outline.d.ts.map

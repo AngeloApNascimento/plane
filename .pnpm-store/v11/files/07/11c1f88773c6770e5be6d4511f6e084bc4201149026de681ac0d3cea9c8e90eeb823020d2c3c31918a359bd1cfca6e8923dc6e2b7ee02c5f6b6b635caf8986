@@ -1,0 +1,19 @@
+"use client";
+import { AvatarGroupCounterVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/avatar-group/avatar-group-counter.d.ts
+/** Props for {@link AvatarGroupCounter}, plus a `size`. */
+type AvatarGroupCounterProps = Omit<useRender.ComponentProps<"span">, "className" | "style"> & AvatarGroupCounterVariantProps;
+/**
+ * The styled "+N" overflow counter that closes an avatar stack — the last rung of the Figma "Avatar
+ * groups" component. It is a sibling of the avatars, not an `Avatar` itself: its surface is fixed
+ * to the orange label fill as defined in `variants.ts`.
+ *
+ * This is the styled part only. The ready-made `AvatarGroup` from
+ * `@makeplane/propel/components/avatar-group` derives the count from `max`/`total` and renders this
+ * for you; reach for this element when you are composing a stack by hand.
+ */
+declare function AvatarGroupCounter({ size, render, ...props }: AvatarGroupCounterProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { AvatarGroupCounter, AvatarGroupCounterProps };
+//# sourceMappingURL=avatar-group-counter.d.ts.map

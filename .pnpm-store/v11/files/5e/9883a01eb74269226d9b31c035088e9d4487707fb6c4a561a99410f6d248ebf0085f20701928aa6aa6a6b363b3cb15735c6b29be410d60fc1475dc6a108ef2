@@ -1,0 +1,20 @@
+"use client";
+import { linearProgressIndicatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress-indicator.tsx
+/**
+* The styled fill bar. `variant` drives the fill color. Base-UI-agnostic — graft in `components`
+* via `<BaseProgress.Indicator render={<LinearProgressIndicator/>} />`.
+*/
+function LinearProgressIndicator({ variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: linearProgressIndicatorVariants({ variant }) }, props)
+	});
+}
+//#endregion
+export { LinearProgressIndicator };
+
+//# sourceMappingURL=linear-progress-indicator.js.map

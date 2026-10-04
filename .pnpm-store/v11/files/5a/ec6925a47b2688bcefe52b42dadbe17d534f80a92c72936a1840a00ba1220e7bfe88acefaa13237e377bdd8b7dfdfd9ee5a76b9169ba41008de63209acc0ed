@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-viewport.d.ts
+type NavigationMenuViewportProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled morph container that resizes between items' `Content`, reading Base UI's
+ * `--popup-width`/`--popup-height`. Base-UI-agnostic — graft in `components` via
+ * `<BaseNavigationMenu.Viewport render={<NavigationMenuViewport />} />`.
+ */
+declare function NavigationMenuViewport({ render, ...props }: NavigationMenuViewportProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NavigationMenuViewport, NavigationMenuViewportProps };
+//# sourceMappingURL=navigation-menu-viewport.d.ts.map

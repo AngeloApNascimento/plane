@@ -1,0 +1,25 @@
+"use client";
+import { bannerBodyVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/banner/banner-body.tsx
+/**
+* The message column between the icon and the trailing controls. Grows to fill the row and stacks a
+* `BannerTitle` above a `BannerDescription`. Carries the variant foreground color (inherited by
+* both) and the size-specific regular text weight.
+*/
+function BannerBody({ placement, size, variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: bannerBodyVariants({
+			placement,
+			size,
+			variant
+		}) }, props)
+	});
+}
+//#endregion
+export { BannerBody };
+
+//# sourceMappingURL=banner-body.js.map

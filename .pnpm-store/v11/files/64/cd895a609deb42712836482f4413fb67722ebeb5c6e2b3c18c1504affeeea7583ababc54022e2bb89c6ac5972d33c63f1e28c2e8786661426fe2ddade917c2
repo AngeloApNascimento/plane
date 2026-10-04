@@ -1,0 +1,12 @@
+"use client";
+import { Popover } from "@base-ui/react/popover";
+//#region src/components/popover/popover-title.d.ts
+type PopoverTitleProps = Omit<Popover.Title.Props, "className" | "style">;
+/**
+ * The accessible title for the popover: Base UI's `Popover.Title` behavior (links to the popup via
+ * `aria-labelledby`) grafted onto the family-owned title chrome (`text-body-sm-medium`).
+ */
+declare function PopoverTitle(props: PopoverTitleProps): import("react").JSX.Element;
+//#endregion
+export { PopoverTitle, PopoverTitleProps };
+//# sourceMappingURL=popover-title.d.ts.map

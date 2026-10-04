@@ -1,0 +1,7 @@
+"use client";
+import { DayPickerProps } from "react-day-picker";
+//#region src/elements/calendar/variants.d.ts
+declare const calendarClassNames: Partial<NonNullable<DayPickerProps["classNames"]>>;
+//#endregion
+export { calendarClassNames };
+//# sourceMappingURL=variants.d.ts.map

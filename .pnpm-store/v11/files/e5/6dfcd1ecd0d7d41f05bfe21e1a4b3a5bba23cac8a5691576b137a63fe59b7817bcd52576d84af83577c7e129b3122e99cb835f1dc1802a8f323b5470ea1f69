@@ -1,0 +1,6 @@
+"use client";
+import { IconPill } from "./icon-pill.js";
+import { Pill } from "./pill.js";
+import { PillGroup } from "./pill-group.js";
+import { PillLabel } from "./pill-label.js";
+export { IconPill, Pill, PillGroup, PillLabel };

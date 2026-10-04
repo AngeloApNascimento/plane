@@ -1,0 +1,12 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/radio/variants.d.ts
+declare const radioGroupVariants: (props?: ({
+  density?: "comfortable" | "compact" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type RadioGroupDensity = NonNullable<VariantProps<typeof radioGroupVariants>["density"]>;
+type RadioGroupVariantProps = StrictVariantProps<typeof radioGroupVariants>;
+//#endregion
+export { RadioGroupDensity, RadioGroupVariantProps, radioGroupVariants };
+//# sourceMappingURL=variants.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/group-outline.d.ts
+declare function GroupOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { GroupOutline };
+//# sourceMappingURL=group-outline.d.ts.map

@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/breadcrumb/breadcrumb-separator.d.ts
+type BreadcrumbSeparatorProps = Omit<useRender.ComponentProps<"li">, "className" | "style">;
+/**
+ * The visual divider between crumbs. A node-slot: it sizes its single child (icon or character), so
+ * callers pass the divider glyph as `children`. Decorative, so it is removed from the a11y tree.
+ */
+declare function BreadcrumbSeparator({ render, ...props }: BreadcrumbSeparatorProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { BreadcrumbSeparator, BreadcrumbSeparatorProps };
+//# sourceMappingURL=breadcrumb-separator.d.ts.map

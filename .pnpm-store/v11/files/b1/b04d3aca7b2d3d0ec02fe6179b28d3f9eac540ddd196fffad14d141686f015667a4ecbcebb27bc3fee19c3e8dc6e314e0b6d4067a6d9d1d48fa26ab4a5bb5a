@@ -1,0 +1,26 @@
+
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/icons/formatting-and-editors/h4-filled.tsx
+function H4Filled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsxs("g", {
+			fill: "currentColor",
+			children: [
+				/* @__PURE__ */ jsx("path", { d: "M7.033 12.06v-8a.625.625 0 0 1 1.25 0v8a.625.625 0 0 1-1.25 0M10.367 8.726v-2a.625.625 0 1 1 1.25 0v2q0 .017.011.03.014.011.03.012h2a.625.625 0 0 1 0 1.25h-2a1.294 1.294 0 0 1-1.291-1.292" }),
+				/* @__PURE__ */ jsx("path", { d: "M13.033 12.06V6.725a.625.625 0 1 1 1.25 0v5.333a.625.625 0 1 1-1.25 0M7.658 7.435a.625.625 0 1 1 0 1.25H2.325a.625.625 0 1 1 0-1.25z" }),
+				/* @__PURE__ */ jsx("path", { d: "M1.7 12.06v-8a.625.625 0 1 1 1.25 0v8a.625.625 0 0 1-1.25 0" })
+			]
+		})
+	});
+}
+//#endregion
+export { H4Filled };
+
+//# sourceMappingURL=h4-filled.js.map

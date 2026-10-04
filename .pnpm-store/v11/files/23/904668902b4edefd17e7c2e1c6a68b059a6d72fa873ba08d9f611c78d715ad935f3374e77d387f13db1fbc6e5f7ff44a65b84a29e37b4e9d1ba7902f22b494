@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/double-chevron-left-outline.d.ts
+declare function DoubleChevronLeftOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DoubleChevronLeftOutline };
+//# sourceMappingURL=double-chevron-left-outline.d.ts.map

@@ -1,0 +1,26 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/number-field/variants.d.ts
+declare const numberFieldGroupVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const numberFieldInputVariants: (props?: ({
+  size?: "sm" | "md" | "lg" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type NumberFieldGroupVariantProps = StrictVariantProps<typeof numberFieldGroupVariants>;
+type NumberFieldInputVariantProps = StrictVariantProps<typeof numberFieldInputVariants>;
+type NumberFieldSize = NonNullable<VariantProps<typeof numberFieldGroupVariants>["size"]>;
+/**
+ * IconButton `size` that keeps steppers flush inside a field of the given `size` (Figma: field sm →
+ * button xs, md → sm, lg → md).
+ */
+declare const numberFieldStepperSize: {
+  readonly sm: "xs";
+  readonly md: "sm";
+  readonly lg: "md";
+};
+type NumberFieldStepperSize = (typeof numberFieldStepperSize)[NumberFieldSize];
+//#endregion
+export { NumberFieldGroupVariantProps, NumberFieldInputVariantProps, NumberFieldSize, NumberFieldStepperSize, numberFieldGroupVariants, numberFieldInputVariants, numberFieldStepperSize };
+//# sourceMappingURL=variants.d.ts.map

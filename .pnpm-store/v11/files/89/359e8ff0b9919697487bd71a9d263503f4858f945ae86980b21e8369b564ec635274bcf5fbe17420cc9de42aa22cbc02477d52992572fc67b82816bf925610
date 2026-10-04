@@ -1,0 +1,32 @@
+"use client";
+//#region src/elements/calendar/variants.ts
+const navButton = "inline-flex size-7 cursor-pointer items-center justify-center rounded-md text-icon-tertiary hover:bg-layer-transparent-hover aria-disabled:cursor-not-allowed aria-disabled:opacity-60";
+const calendarClassNames = {
+	root: "relative w-fit",
+	months: "flex flex-col gap-3",
+	month: "flex flex-col gap-3",
+	month_caption: "flex items-center h-7",
+	caption_label: "text-h4-semibold text-primary",
+	nav: "absolute inset-e-0 top-0 flex items-center gap-1",
+	button_previous: navButton,
+	button_next: navButton,
+	chevron: "size-4 rtl:-scale-x-100",
+	month_grid: "border-collapse",
+	weekdays: "flex",
+	weekday: "flex size-10 items-center justify-center text-body-sm-regular text-tertiary",
+	week: "flex w-full",
+	day: "relative size-10 p-0 text-center [&.range-start]:bg-accent-subtle-hover [&.range-middle]:bg-accent-subtle-hover [&.range-end]:bg-accent-subtle-hover [&.range-start]:rounded-s-full [&.range-end]:rounded-e-full",
+	day_button: "relative inline-flex size-10 cursor-pointer items-center justify-center rounded-full text-body-sm-regular text-primary hover:bg-layer-transparent-hover",
+	selected: "[&>button]:bg-accent-primary [&>button]:text-inverse [&>button:hover]:bg-accent-primary",
+	range_start: "range-start",
+	range_end: "range-end",
+	range_middle: "range-middle [&>button]:bg-transparent [&>button]:text-primary [&>button:hover]:bg-transparent",
+	today: "[&:not([aria-selected])>button]:text-accent-primary [&>button]:font-semibold after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:size-1.5 after:rounded-full after:bg-(--txt-icon-accent-subtle)",
+	disabled: "cursor-not-allowed [&>button]:text-disabled [&>button]:pointer-events-none",
+	outside: "[&>button]:text-tertiary",
+	hidden: "invisible"
+};
+//#endregion
+export { calendarClassNames };
+
+//# sourceMappingURL=variants.js.map

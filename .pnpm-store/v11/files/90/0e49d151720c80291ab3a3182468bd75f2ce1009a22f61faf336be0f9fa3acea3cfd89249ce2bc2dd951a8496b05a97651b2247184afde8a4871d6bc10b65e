@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/restore-outline.d.ts
+declare function RestoreOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RestoreOutline };
+//# sourceMappingURL=restore-outline.d.ts.map

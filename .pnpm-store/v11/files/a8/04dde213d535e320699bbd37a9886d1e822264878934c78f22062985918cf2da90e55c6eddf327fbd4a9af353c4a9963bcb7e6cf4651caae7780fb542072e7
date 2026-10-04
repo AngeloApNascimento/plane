@@ -1,0 +1,12 @@
+"use client";
+import { Autocomplete } from "@base-ui/react/autocomplete";
+//#region src/components/autocomplete/autocomplete-list.d.ts
+type AutocompleteListProps = Omit<Autocomplete.List.Props, "className" | "style">;
+/**
+ * The container for autocomplete items — a passthrough of Base UI's `Autocomplete.List` (it carries
+ * no propel styling of its own), so the whole anatomy composes from one entry.
+ */
+declare function AutocompleteList(props: AutocompleteListProps): import("react").JSX.Element;
+//#endregion
+export { AutocompleteList, AutocompleteListProps };
+//# sourceMappingURL=autocomplete-list.d.ts.map

@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/suggestion-menu/suggestion-menu-item.d.ts
+type SuggestionMenuItemProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/** A suggestion row. Reads as highlighted when it carries `data-highlighted`. */
+declare function SuggestionMenuItem({ render, ...props }: SuggestionMenuItemProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SuggestionMenuItem, SuggestionMenuItemProps };
+//# sourceMappingURL=suggestion-menu-item.d.ts.map

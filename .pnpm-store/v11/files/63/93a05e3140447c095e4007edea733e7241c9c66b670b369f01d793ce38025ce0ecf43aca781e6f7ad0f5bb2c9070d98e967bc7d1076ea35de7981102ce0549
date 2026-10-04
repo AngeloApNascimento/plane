@@ -1,0 +1,17 @@
+"use client";
+import * as React from "react";
+//#region src/components/tabs/tabs-context.ts
+/**
+* Set by the components `Tabs` so the `TabsList`/`Tab`s inside share the set's `variant`. Lives in
+* the components tier: a context is cross-tree coordination — composition — not a single-element
+* `elements` concern.
+*/
+const TabsAppearanceContext = React.createContext("contained");
+/** Set by the components `Tabs` so the `TabsList`/`Tab`s inside share the set's `stretch` axis. */
+const TabsStretchContext = React.createContext("auto");
+/** Set by the components `Tabs` so its root and panels share the set's height layout. */
+const TabsLayoutContext = React.createContext("content");
+//#endregion
+export { TabsAppearanceContext, TabsLayoutContext, TabsStretchContext };
+
+//# sourceMappingURL=tabs-context.js.map

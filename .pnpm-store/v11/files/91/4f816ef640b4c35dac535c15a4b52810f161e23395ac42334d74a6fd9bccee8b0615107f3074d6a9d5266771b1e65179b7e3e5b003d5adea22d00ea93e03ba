@@ -1,0 +1,34 @@
+"use client";
+import { ComboboxTrigger as ComboboxTrigger$1 } from "../../elements/combobox/combobox-trigger.js";
+import { ComboboxValue } from "../../elements/combobox/combobox-value.js";
+import { Icon } from "../../internal/icon.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-trigger.tsx
+/**
+* The ready-made closed-field trigger: grafts Base UI's `Trigger` onto the styled frame and shows
+* the selected value (or `placeholder`) plus a trailing chevron. Use this instead of
+* `ComboboxInputGroup` when the filter input lives in the panel (`ComboboxSearch`).
+*/
+function ComboboxTrigger({ size, variant, placeholder, icon, trailing, ...props }) {
+	return /* @__PURE__ */ jsxs(Combobox.Trigger, {
+		...props,
+		render: /* @__PURE__ */ jsx(ComboboxTrigger$1, {
+			size,
+			variant
+		}),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(ComboboxValue, { children: /* @__PURE__ */ jsx(Combobox.Value, { placeholder }) }),
+			trailing ?? /* @__PURE__ */ jsx(Icon, {
+				tint: "secondary",
+				children: /* @__PURE__ */ jsx(ChevronDown, { "aria-hidden": true })
+			})
+		]
+	});
+}
+//#endregion
+export { ComboboxTrigger };
+
+//# sourceMappingURL=combobox-trigger.js.map

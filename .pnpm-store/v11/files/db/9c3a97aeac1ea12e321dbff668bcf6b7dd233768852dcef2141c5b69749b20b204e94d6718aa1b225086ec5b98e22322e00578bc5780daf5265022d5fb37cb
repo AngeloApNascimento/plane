@@ -1,0 +1,24 @@
+
+import { SVGProps } from "react";
+//#region src/state-icons/index.d.ts
+type StateGroup = "backlog" | "unstarted" | "started" | "completed" | "cancelled";
+type StateIconSize = "xs" | "sm" | "md" | "lg" | "xl";
+type StateProgressIconProps = SVGProps<SVGSVGElement> & {
+  /** Progress as a fraction (0–1) or percentage (above 1–100). Defaults to 100%. */
+  percentage?: number;
+};
+type StateGroupIconProps = Omit<StateProgressIconProps, "width" | "height"> & {
+  /** Workflow group; started and unstarted render continuous progress. */
+  stateGroup: StateGroup;
+  /** Plane EE icon size: xs=10, sm=12, md=14, lg=16, xl=18px. @default "sm" */
+  size?: StateIconSize;
+};
+/** Todo glyph with continuous progress and the unstarted semantic color. */
+declare function UnstartedGroupIcon(props: StateProgressIconProps): import("react").JSX.Element;
+/** In-progress glyph with an inner ring and continuous outer progress. */
+declare function StartedGroupIcon(props: StateProgressIconProps): import("react").JSX.Element;
+/** Select a workflow glyph using Plane EE group names, sizing, and percentage conventions. */
+declare function StateGroupIcon({ stateGroup, size, percentage, ...props }: StateGroupIconProps): import("react").JSX.Element;
+//#endregion
+export { StartedGroupIcon, StateGroup, StateGroupIcon, StateGroupIconProps, StateIconSize, StateProgressIconProps, UnstartedGroupIcon };
+//# sourceMappingURL=index.d.ts.map

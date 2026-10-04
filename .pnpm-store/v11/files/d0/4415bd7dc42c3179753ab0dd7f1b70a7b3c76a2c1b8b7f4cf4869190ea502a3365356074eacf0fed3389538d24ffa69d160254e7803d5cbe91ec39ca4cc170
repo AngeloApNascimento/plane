@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/copy-outline.d.ts
+declare function CopyOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CopyOutline };
+//# sourceMappingURL=copy-outline.d.ts.map

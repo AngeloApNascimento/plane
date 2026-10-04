@@ -1,0 +1,13 @@
+"use client";
+import "./surface.js";
+import "react";
+import { useRender } from "@base-ui/react/use-render";
+import { VariantProps } from "class-variance-authority";
+//#region src/internal/overlay-panel.d.ts
+declare const overlayPanelVariants: (props?: ({
+  sizing?: "menu" | "auto" | "sm" | "md" | "lg" | "anchor" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type OverlayPanelSizing = NonNullable<VariantProps<typeof overlayPanelVariants>["sizing"]>;
+//#endregion
+export { OverlayPanelSizing };
+//# sourceMappingURL=overlay-panel.d.ts.map

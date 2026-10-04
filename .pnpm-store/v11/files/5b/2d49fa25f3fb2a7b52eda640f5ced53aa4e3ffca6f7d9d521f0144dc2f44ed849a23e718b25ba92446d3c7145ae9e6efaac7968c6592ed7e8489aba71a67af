@@ -1,0 +1,129 @@
+"use client";
+import { ExpandableSearchRow } from "../../elements/expandable-search/expandable-search-row.js";
+import { ExpandableSearchTrack } from "../../elements/expandable-search/expandable-search-track.js";
+import { ExpandableSearchTrigger } from "../../elements/expandable-search/expandable-search-trigger.js";
+import { Autocomplete } from "../autocomplete/autocomplete.js";
+import { AutocompleteInputGroup } from "../autocomplete/autocomplete-input-group.js";
+import { Icon } from "../icon/icon.js";
+import { IconButton } from "../icon-button/icon-button.js";
+import { useControllableState } from "../../hooks/use-controllable-state/index.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Search, X } from "lucide-react";
+//#region src/components/expandable-search/expandable-search.tsx
+const ICON_BUTTON_SIZE = {
+	md: "sm",
+	lg: "md",
+	xl: "lg",
+	"2xl": "lg"
+};
+function isFilledValue(value) {
+	if (value == null) return false;
+	if (typeof value === "string") return value.length > 0;
+	if (Array.isArray(value)) return value.length > 0;
+	return true;
+}
+/**
+* A collapsed icon trigger that expands into a search input on click, collapsing again on blur or
+* Escape while empty — unless it's `required` and still invalid, in which case it stays expanded so
+* the field remains focusable instead of collapsing back into an inert trigger. Escape restores
+* focus to the trigger. Expand is controllable via `expanded`/`defaultExpanded`/`onExpandedChange`
+* (separate from Autocomplete's popup `open`). Built on `Autocomplete` — pass `items` and
+* `children` (e.g. `AutocompleteContent`) for suggestions, or omit both for a plain search box.
+* Without `children` the popup is forced closed (no listbox ever mounts), so a plain search box
+* never claims `aria-expanded`. Non-empty `value`/`defaultValue` starts expanded (and controlled
+* non-empty `value` keeps it expanded); a controlled `open` is forced closed while collapsed so a
+* popup never mounts over an inert input. The `Autocomplete` root and its input stay mounted at
+* every state — the trigger/row swap width via an animated CSS grid track and `inert` instead of
+* unmounting or `hidden` — so a `required`/`defaultValue` input keeps working under native form
+* validation and keeps its own state across collapse/expand instead of resetting.
+*/
+function ExpandableSearch({ "aria-label": ariaLabel, clearLabel, size, placeholder = "Search…", children, open, disabled, value, defaultValue, expanded: expandedProp, defaultExpanded, onExpandedChange, ...rootProps }) {
+	const [expanded, setExpanded] = useControllableState({
+		value: expandedProp,
+		defaultValue: defaultExpanded ?? isFilledValue(value ?? defaultValue),
+		onValueChange: onExpandedChange
+	});
+	const inputRef = React.useRef(null);
+	const triggerRef = React.useRef(null);
+	const restoreTriggerFocusRef = React.useRef(false);
+	React.useEffect(() => {
+		if (value !== void 0 && isFilledValue(value)) setExpanded(true);
+	}, [value, setExpanded]);
+	const wasExpandedRef = React.useRef(expanded);
+	React.useEffect(() => {
+		const becameExpanded = expanded && !wasExpandedRef.current;
+		const becameCollapsed = !expanded && wasExpandedRef.current;
+		wasExpandedRef.current = expanded;
+		if (becameExpanded) {
+			inputRef.current?.focus();
+			return;
+		}
+		if (becameCollapsed && restoreTriggerFocusRef.current) {
+			restoreTriggerFocusRef.current = false;
+			triggerRef.current?.focus();
+		}
+	}, [expanded]);
+	return /* @__PURE__ */ jsxs(Autocomplete, {
+		open: open !== void 0 ? expanded ? open : false : children != null ? void 0 : false,
+		disabled,
+		value,
+		defaultValue,
+		...rootProps,
+		children: [/* @__PURE__ */ jsxs(ExpandableSearchTrack, { children: [/* @__PURE__ */ jsx(ExpandableSearchTrigger, {
+			size,
+			"data-expanded": expanded ? "" : void 0,
+			inert: expanded,
+			children: /* @__PURE__ */ jsx(IconButton, {
+				ref: triggerRef,
+				variant: "ghost",
+				size: ICON_BUTTON_SIZE[size],
+				"aria-label": ariaLabel,
+				"aria-expanded": expanded,
+				icon: /* @__PURE__ */ jsx(Icon, { icon: Search }),
+				disabled,
+				onClick: () => setExpanded(true)
+			})
+		}), /* @__PURE__ */ jsx(ExpandableSearchRow, {
+			"data-expanded": expanded ? "" : void 0,
+			inert: !expanded,
+			children: /* @__PURE__ */ jsx(AutocompleteInputGroup, {
+				ref: inputRef,
+				size,
+				placeholder,
+				"aria-label": ariaLabel,
+				icon: /* @__PURE__ */ jsx(Icon, {
+					icon: Search,
+					tint: "placeholder"
+				}),
+				onInvalid: () => setExpanded(true),
+				...children == null && {
+					role: "searchbox",
+					"aria-haspopup": void 0,
+					"aria-expanded": void 0,
+					"aria-autocomplete": void 0
+				},
+				clear: /* @__PURE__ */ jsx(IconButton, {
+					variant: "ghost",
+					size: ICON_BUTTON_SIZE[size],
+					"aria-label": clearLabel,
+					icon: /* @__PURE__ */ jsx(Icon, { icon: X })
+				}),
+				onKeyDown: (event) => {
+					if (event.key !== "Escape") return;
+					if (event.currentTarget.value !== "" || !event.currentTarget.validity.valid) return;
+					event.preventDefault();
+					restoreTriggerFocusRef.current = true;
+					setExpanded(false);
+				},
+				onBlur: (event) => {
+					if (event.target.value === "" && event.target.validity.valid) setExpanded(false);
+				}
+			})
+		})] }), children]
+	});
+}
+//#endregion
+export { ExpandableSearch };
+
+//# sourceMappingURL=expandable-search.js.map

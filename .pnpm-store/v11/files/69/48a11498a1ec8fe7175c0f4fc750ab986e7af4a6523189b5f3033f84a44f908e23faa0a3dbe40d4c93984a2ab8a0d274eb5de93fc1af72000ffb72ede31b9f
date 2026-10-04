@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/user-cog-outline.d.ts
+declare function UserCogOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { UserCogOutline };
+//# sourceMappingURL=user-cog-outline.d.ts.map

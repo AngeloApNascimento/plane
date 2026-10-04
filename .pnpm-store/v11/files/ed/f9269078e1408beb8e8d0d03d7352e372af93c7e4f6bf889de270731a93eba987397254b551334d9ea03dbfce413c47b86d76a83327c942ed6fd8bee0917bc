@@ -1,0 +1,13 @@
+"use client";
+import { buttonGeometryVariants } from "../../internal/button-geometry.js";
+import { composeVariants } from "../../internal/compose-variants.js";
+import { controlChromeVariants } from "../../internal/control-chrome.js";
+import { cva } from "class-variance-authority";
+//#region src/elements/button/variants.ts
+/** The full Button className: the shared control chrome composed with the label-button geometry. */
+const buttonVariants = composeVariants(controlChromeVariants, buttonGeometryVariants);
+const buttonLabelVariants = cva("");
+//#endregion
+export { buttonLabelVariants, buttonVariants };
+
+//# sourceMappingURL=variants.js.map

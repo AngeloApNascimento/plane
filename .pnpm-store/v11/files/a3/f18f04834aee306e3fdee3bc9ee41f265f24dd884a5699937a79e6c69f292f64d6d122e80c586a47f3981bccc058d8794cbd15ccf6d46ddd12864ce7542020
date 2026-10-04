@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/arrow-expand-outline.d.ts
+declare function ArrowExpandOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ArrowExpandOutline };
+//# sourceMappingURL=arrow-expand-outline.d.ts.map

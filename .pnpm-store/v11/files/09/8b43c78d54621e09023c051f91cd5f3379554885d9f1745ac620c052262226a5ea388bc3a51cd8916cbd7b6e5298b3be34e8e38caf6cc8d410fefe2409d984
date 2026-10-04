@@ -1,0 +1,62 @@
+"use client";
+import { OTPField as OTPField$2 } from "../../elements/otp-field/otp-field.js";
+import { OTPFieldInput } from "../../elements/otp-field/otp-field-input.js";
+import { OTPFieldLabel } from "../../elements/otp-field/otp-field-label.js";
+import { OTPFieldSeparator } from "../../elements/otp-field/otp-field-separator.js";
+import { Field } from "../field/field.js";
+import { FieldHelperText } from "../field/field-helper-text.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Minus } from "lucide-react";
+import { OTPField } from "@base-ui/react/otp-field";
+//#region src/components/otp-field/otp-field.tsx
+/**
+* The ready-made one-time-password / verification-code field: a row of `length` character slots.
+* Drive it with `value`/`defaultValue` + `onValueChange`; the root owns focus movement, paste, and
+* completion across the slots. Pass `mask` to obscure entered characters, `size` to set the box
+* size, `hint` for helper text below the slots (e.g. a resend countdown), and `error` to show an
+* error message instead — `Field.Root invalid` then propagates `data-invalid` to every slot, which
+* recolors its border (and focus ring) to danger off that state.
+*
+* Grafts Base UI `OTPField` behavior onto the `elements/otp-field` styled parts (`OTPField` root +
+* `OTPFieldInput`). Each slot resolves its index from the root context, so the ready-made simply
+* renders one per slot; `groups` splits the run with separators (e.g. `groups={[3, 3]}` renders
+* `123-456`).
+*/
+function OTPField$1({ length, size, hint, error, groups, ...props }) {
+	if (groups != null && groups.reduce((sum, count) => sum + count, 0) !== length) throw new Error(`propel OTPField: groups [${groups.join(", ")}] must sum to length ${length}.`);
+	const firstSlotLabelId = React.useId();
+	const boundaries = groups == null ? null : new Set(groups.slice(0, -1).reduce((acc, count) => {
+		acc.push((acc.at(-1) ?? 0) + count);
+		return acc;
+	}, []));
+	return /* @__PURE__ */ jsxs(Field, {
+		invalid: error != null || void 0,
+		children: [/* @__PURE__ */ jsxs(OTPField.Root, {
+			length,
+			...props,
+			render: /* @__PURE__ */ jsx(OTPField$2, {}),
+			children: [/* @__PURE__ */ jsx(OTPFieldLabel, {
+				id: firstSlotLabelId,
+				children: "Character 1"
+			}), Array.from({ length }, (_, index) => {
+				const slot = index === 0 ? /* @__PURE__ */ jsx(OTPField.Input, {
+					render: /* @__PURE__ */ jsx(OTPFieldInput, { size }),
+					"aria-labelledby": firstSlotLabelId
+				}, index) : /* @__PURE__ */ jsx(OTPField.Input, {
+					render: /* @__PURE__ */ jsx(OTPFieldInput, { size }),
+					"aria-label": `Character ${index + 1}`
+				}, index);
+				return index < length - 1 && (boundaries?.has(index + 1) ?? false) ? /* @__PURE__ */ jsxs(React.Fragment, { children: [slot, /* @__PURE__ */ jsx(OTPFieldSeparator, { children: /* @__PURE__ */ jsx(Minus, { "aria-hidden": true }) })] }, index) : slot;
+			})]
+		}), /* @__PURE__ */ jsx(FieldHelperText, {
+			size,
+			hint,
+			error
+		})]
+	});
+}
+//#endregion
+export { OTPField$1 as OTPField };
+
+//# sourceMappingURL=otp-field.js.map

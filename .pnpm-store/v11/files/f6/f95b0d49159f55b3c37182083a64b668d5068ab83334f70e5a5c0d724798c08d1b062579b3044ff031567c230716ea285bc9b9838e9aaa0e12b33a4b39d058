@@ -1,0 +1,25 @@
+"use client";
+import { ComboboxItemIndicator as ComboboxItemIndicator$1 } from "../../elements/combobox/combobox-item-indicator.js";
+import { jsx } from "react/jsx-runtime";
+import { Check } from "lucide-react";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-item-indicator.tsx
+/**
+* Ready-made combobox item indicator: Base UI's selection behavior grafted onto the styled marker,
+* with a default check when no children are given (defaults are a `components` concern). Composed
+* at the row's inline-end. Mounted on every row by default, so a selection change never
+* re-truncates a label and the reserved column holds while unselected (the styled marker hides its
+* glyph off `data-selected`).
+*/
+function ComboboxItemIndicator({ children, ...props }) {
+	return /* @__PURE__ */ jsx(Combobox.ItemIndicator, {
+		keepMounted: true,
+		...props,
+		render: /* @__PURE__ */ jsx(ComboboxItemIndicator$1, {}),
+		children: children ?? /* @__PURE__ */ jsx(Check, { "aria-hidden": true })
+	});
+}
+//#endregion
+export { ComboboxItemIndicator };
+
+//# sourceMappingURL=combobox-item-indicator.js.map

@@ -1,0 +1,25 @@
+"use client";
+import { composeVariants } from "../../internal/compose-variants.js";
+import { controlChromeVariants } from "../../internal/control-chrome.js";
+import { cva } from "class-variance-authority";
+/** The full icon button className: the shared control chrome composed with the square geometry. */
+const iconButtonVariants = composeVariants(controlChromeVariants, cva("", { variants: {
+	variant: {
+		primary: "",
+		secondary: "",
+		tertiary: "",
+		ghost: "",
+		danger: "",
+		"danger-outline": ""
+	},
+	size: {
+		xs: "size-(--control-height-xs) rounded-(--control-radius-xs) [--node-size:var(--control-glyph-xs)] before:absolute before:-inset-0.5 before:-z-10 before:content-['']",
+		sm: "size-(--control-height-sm) rounded-(--control-radius-sm) [--node-size:var(--control-glyph-sm)]",
+		md: "size-(--control-height-md) rounded-(--control-radius-md) [--node-size:var(--control-glyph-md)]",
+		lg: "size-(--control-height-lg) rounded-(--control-radius-lg) [--node-size:var(--control-glyph-lg)]"
+	}
+} }));
+//#endregion
+export { iconButtonVariants };
+
+//# sourceMappingURL=variants.js.map

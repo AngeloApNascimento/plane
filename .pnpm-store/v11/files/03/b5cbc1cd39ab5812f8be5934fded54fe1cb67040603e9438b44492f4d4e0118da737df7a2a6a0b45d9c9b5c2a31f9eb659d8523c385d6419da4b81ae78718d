@@ -1,0 +1,25 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/cloud-outline.tsx
+function CloudOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			stroke: "currentColor",
+			strokeLinecap: "round",
+			strokeLinejoin: "round",
+			strokeWidth: 1.25,
+			d: "M4.333 12.666a3 3 0 0 1-.28-5.987 4.001 4.001 0 0 1 7.894 0 3 3 0 0 1-.28 5.987z"
+		})
+	});
+}
+//#endregion
+export { CloudOutline };
+
+//# sourceMappingURL=cloud-outline.js.map

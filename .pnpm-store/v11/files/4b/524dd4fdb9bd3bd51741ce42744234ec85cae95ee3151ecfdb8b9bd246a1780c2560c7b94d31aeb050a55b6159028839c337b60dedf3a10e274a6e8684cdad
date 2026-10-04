@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/actions/remove-outline.tsx
+function RemoveOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M14.043 8.002a6.042 6.042 0 1 0-12.083 0 6.042 6.042 0 0 0 12.083 0m-3.375-.625a.625.625 0 0 1 0 1.25H5.335a.625.625 0 0 1 0-1.25zm4.625.625a7.291 7.291 0 1 1-14.583 0 7.291 7.291 0 0 1 14.583 0"
+		})
+	});
+}
+//#endregion
+export { RemoveOutline };
+
+//# sourceMappingURL=remove-outline.js.map

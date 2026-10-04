@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/hierarchy-filled.d.ts
+declare function HierarchyFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { HierarchyFilled };
+//# sourceMappingURL=hierarchy-filled.d.ts.map

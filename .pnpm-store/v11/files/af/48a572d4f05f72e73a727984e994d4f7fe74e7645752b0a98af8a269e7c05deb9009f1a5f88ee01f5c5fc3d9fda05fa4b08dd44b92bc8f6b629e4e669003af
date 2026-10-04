@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/migrate-filled.d.ts
+declare function MigrateFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { MigrateFilled };
+//# sourceMappingURL=migrate-filled.d.ts.map

@@ -1,0 +1,21 @@
+"use client";
+import { AlertDialogDescription as AlertDialogDescription$1 } from "../../elements/alert-dialog/alert-dialog-description.js";
+import { jsx } from "react/jsx-runtime";
+import { AlertDialog } from "@base-ui/react/alert-dialog";
+//#region src/components/alert-dialog/alert-dialog-description.tsx
+/**
+* The supporting description for the alert dialog. Base UI links it to the popup via
+* `aria-describedby`; the styled `elements` description supplies the body-sm / secondary look.
+* Defaults to a paragraph. Pass `render={<div />}` for block content such as an impact list; both
+* the description styling and Base UI accessibility wiring are preserved.
+*/
+function AlertDialogDescription({ render, ...props }) {
+	return /* @__PURE__ */ jsx(AlertDialog.Description, {
+		...props,
+		render: /* @__PURE__ */ jsx(AlertDialogDescription$1, { render })
+	});
+}
+//#endregion
+export { AlertDialogDescription };
+
+//# sourceMappingURL=alert-dialog-description.js.map

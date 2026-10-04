@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-link-description.d.ts
+type NavigationMenuLinkDescriptionProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The optional secondary line of a `appearance="card"` `NavigationMenuLink`: a muted description
+ * shown below the `NavigationMenuLinkTitle`.
+ */
+declare function NavigationMenuLinkDescription({ render, ...props }: NavigationMenuLinkDescriptionProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NavigationMenuLinkDescription, NavigationMenuLinkDescriptionProps };
+//# sourceMappingURL=navigation-menu-link-description.d.ts.map

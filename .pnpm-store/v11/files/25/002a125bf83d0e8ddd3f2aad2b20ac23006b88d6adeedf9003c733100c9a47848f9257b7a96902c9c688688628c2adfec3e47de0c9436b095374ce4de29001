@@ -1,0 +1,131 @@
+{
+  "name": "@makeplane/propel",
+  "version": "0.7.3",
+  "description": "Plane's React component library built on Base UI and Tailwind CSS v4.",
+  "keywords": [
+    "base-ui",
+    "components",
+    "design-system",
+    "plane",
+    "react",
+    "tailwindcss",
+    "ui"
+  ],
+  "homepage": "https://github.com/makeplane/propel/tree/main/packages/propel#readme",
+  "bugs": "https://github.com/makeplane/propel/issues",
+  "license": "AGPL-3.0-only",
+  "author": "Plane (https://plane.so)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makeplane/propel.git",
+    "directory": "packages/propel"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    "./base/*": {
+      "types": "./dist/base/*/index.d.ts",
+      "import": "./dist/base/*/index.js"
+    },
+    "./elements/*": {
+      "types": "./dist/elements/*/index.d.ts",
+      "import": "./dist/elements/*/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*/index.d.ts",
+      "import": "./dist/components/*/index.js"
+    },
+    "./components/logo-spinner/*.gif": "./dist/components/logo-spinner/*.gif",
+    "./components/logo-spinner/*.png": "./dist/components/logo-spinner/*.png",
+    "./hooks/*": {
+      "types": "./dist/hooks/*/index.d.ts",
+      "import": "./dist/hooks/*/index.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js"
+    },
+    "./styles": "./dist/styles/propel.css",
+    "./styles/*": "./dist/styles/*.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.6.0",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^1.23.0",
+    "react-day-picker": "^10.0.1"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.5",
+    "@storybook/addon-a11y": "^10.4.6",
+    "@storybook/addon-designs": "^11.1.3",
+    "@storybook/addon-docs": "^10.4.6",
+    "@storybook/addon-themes": "^10.4.6",
+    "@storybook/addon-vitest": "^10.4.6",
+    "@storybook/react-vite": "^10.4.6",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@tailwindcss/vite": "^4.3.2",
+    "@types/node": "^24",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@typescript/native-preview": "7.0.0-dev.20260701.1",
+    "@vitest/browser-playwright": "4.1.10",
+    "@vitest/coverage-v8": "4.1.10",
+    "playwright": "^1.61.1",
+    "publint": "^0.3.21",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "storybook": "^10.4.6",
+    "storybook-addon-pseudo-states": "^10.4.6",
+    "svgo": "^4.1.0",
+    "tailwindcss": "^4.3.2",
+    "tsdown": "^0.22.9",
+    "typescript": "^6.0.3",
+    "vite": "^8",
+    "vitest": "4.1.11",
+    "wrangler": "4.107.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "tailwindcss": "^4.0.0"
+  },
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 128",
+    "safari >= 16.4",
+    "ios_saf >= 16.4"
+  ],
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "build-storybook": "storybook build",
+    "storybook": "storybook dev -p 6006",
+    "check:format": "oxfmt . --check",
+    "check:icons": "node scripts/generate-icons.mjs --check",
+    "check:lint": "oxlint --type-aware -c ../../.oxlintrc.json .",
+    "check:types": "tsc --noEmit --declaration false --declarationMap false",
+    "clean": "rm -rf .turbo node_modules dist storybook-static",
+    "fix:format": "oxfmt . --write",
+    "fix:lint": "oxlint --type-aware --fix -c ../../.oxlintrc.json .",
+    "gen:icons": "node scripts/generate-icons.mjs",
+    "pretest": "if [ \"$CI\" = \"true\" ]; then playwright install --with-deps chromium; else playwright install chromium; fi",
+    "test": "vitest run --project=storybook --project=unit"
+  }
+}

@@ -1,0 +1,10 @@
+"use client";
+import { InputGroupVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/input/input-group.d.ts
+type InputGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & InputGroupVariantProps;
+/** The bordered group that frames the input control and its inline slots. */
+declare function InputGroup({ size, render, ...props }: InputGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { InputGroup, InputGroupProps };
+//# sourceMappingURL=input-group.d.ts.map

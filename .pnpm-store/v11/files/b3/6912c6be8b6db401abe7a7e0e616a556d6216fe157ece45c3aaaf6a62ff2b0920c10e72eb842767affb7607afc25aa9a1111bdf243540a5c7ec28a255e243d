@@ -1,0 +1,14 @@
+"use client";
+import { DrawerViewportVariant, DrawerViewportVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-viewport.d.ts
+type DrawerViewportProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & DrawerViewportVariantProps;
+/**
+ * Positioning layer around the popup. `inline` / `contained` = absolute fill of a portal parent;
+ * `overlay` = fixed viewport (body portal). Base-UI-agnostic — graft via `<BaseDrawer.Viewport
+ * render={<DrawerViewport variant={…} />} />`.
+ */
+declare function DrawerViewport({ variant, render, ...props }: DrawerViewportProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { DrawerViewport, DrawerViewportProps, type DrawerViewportVariant };
+//# sourceMappingURL=drawer-viewport.d.ts.map

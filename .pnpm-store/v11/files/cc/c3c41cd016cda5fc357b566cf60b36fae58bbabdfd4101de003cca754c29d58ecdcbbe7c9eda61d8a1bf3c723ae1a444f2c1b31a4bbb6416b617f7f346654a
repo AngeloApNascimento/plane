@@ -1,0 +1,12 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-group.tsx
+/** Groups related options under a `SelectGroupLabel`. */
+function SelectGroup(props) {
+	return /* @__PURE__ */ jsx(Select.Group, { ...props });
+}
+//#endregion
+export { SelectGroup };
+
+//# sourceMappingURL=select-group.js.map

@@ -1,0 +1,14 @@
+"use client";
+import { FieldVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field.d.ts
+type FieldProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & FieldVariantProps;
+/**
+ * The shared field chrome for custom controls. Base-UI-agnostic — graft the Base UI field
+ * labeling/validation behavior in `components` via `<BaseField.Root render={<Field/>} />`. Compose
+ * it with `FieldLabel`, a control, `FieldDescription`, and `FieldError`.
+ */
+declare function Field({ size, render, ...props }: FieldProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Field, FieldProps };
+//# sourceMappingURL=field.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/command-filled.d.ts
+declare function CommandFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { CommandFilled };
+//# sourceMappingURL=command-filled.d.ts.map

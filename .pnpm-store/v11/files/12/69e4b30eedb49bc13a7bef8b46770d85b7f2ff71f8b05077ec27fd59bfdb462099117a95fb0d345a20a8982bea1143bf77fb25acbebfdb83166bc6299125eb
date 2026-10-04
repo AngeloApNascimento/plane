@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-icon.d.ts
+type NavigationMenuIconProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The styled disclosure caret rendered inside a `NavigationMenuTrigger`; rotates while the popup is
+ * open, reading the parent trigger's `group-data-popup-open` state. Base-UI-agnostic — graft in
+ * `components` via `<BaseNavigationMenu.Icon render={<NavigationMenuIcon />} />`.
+ */
+declare function NavigationMenuIcon({ render, ...props }: NavigationMenuIconProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { NavigationMenuIcon, NavigationMenuIconProps };
+//# sourceMappingURL=navigation-menu-icon.d.ts.map

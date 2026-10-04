@@ -1,0 +1,20 @@
+"use client";
+import { menuItemContentVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-item-content.tsx
+/**
+* The text column of a row. Grows to fill the row so trailing nodes/indicators sit at the
+* inline-end, and stacks a `MenuItemTitleRow` over an optional `MenuItemDescription`.
+*/
+function MenuItemContent({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: menuItemContentVariants() }, props)
+	});
+}
+//#endregion
+export { MenuItemContent };
+
+//# sourceMappingURL=menu-item-content.js.map

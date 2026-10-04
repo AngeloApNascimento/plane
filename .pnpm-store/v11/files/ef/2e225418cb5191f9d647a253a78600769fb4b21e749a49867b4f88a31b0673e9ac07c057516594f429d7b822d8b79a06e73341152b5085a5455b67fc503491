@@ -1,0 +1,21 @@
+"use client";
+import { tabsIndicatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tabs-indicator.tsx
+/**
+* The underline bar — a single styled `<span>`. Base-UI-agnostic: the ready-made `components/tabs`
+* grafts the Base UI `Tabs.Indicator` behavior (`<BaseTabs.Indicator render={<TabsIndicator/>}/>`);
+* the built-in `TabsList` already renders it for the `underline` variant.
+*/
+function TabsIndicator({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: tabsIndicatorVariants() }, props)
+	});
+}
+//#endregion
+export { TabsIndicator };
+
+//# sourceMappingURL=tabs-indicator.js.map

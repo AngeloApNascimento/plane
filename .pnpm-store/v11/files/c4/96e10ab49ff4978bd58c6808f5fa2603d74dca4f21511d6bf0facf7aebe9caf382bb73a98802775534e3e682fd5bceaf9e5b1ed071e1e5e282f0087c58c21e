@@ -1,0 +1,9 @@
+"use client";
+import { ToolbarItemLabelProps } from "./toolbar-item-label.js";
+//#region src/elements/toolbar/toolbar-menu-trigger-label.d.ts
+type ToolbarMenuTriggerLabelProps = ToolbarItemLabelProps;
+/** Alias of `ToolbarItemLabel` kept for the menu-trigger anatomy name (e.g. "Text", "Aa"). */
+declare function ToolbarMenuTriggerLabel(props: ToolbarMenuTriggerLabelProps): import("react").JSX.Element;
+//#endregion
+export { ToolbarMenuTriggerLabel, ToolbarMenuTriggerLabelProps };
+//# sourceMappingURL=toolbar-menu-trigger-label.d.ts.map

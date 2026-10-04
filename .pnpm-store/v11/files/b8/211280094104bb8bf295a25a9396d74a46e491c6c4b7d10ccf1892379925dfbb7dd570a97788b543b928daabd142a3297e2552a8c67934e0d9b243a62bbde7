@@ -1,0 +1,30 @@
+"use client";
+import { cva } from "class-variance-authority";
+//#region src/elements/fieldset/variants.ts
+const fieldsetVariants = cva("flex min-w-0 flex-col gap-3", { variants: { 
+/** Whether a visible border wraps the group. */
+bordered: {
+	true: "rounded-md border-sm border-subtle p-4",
+	false: ""
+} } });
+const fieldsetLegendVariants = cva("text-primary", { variants: { size: {
+	md: "text-body-xs-medium",
+	lg: "text-body-xs-medium",
+	xl: "text-body-sm-medium",
+	"2xl": "text-body-sm-medium"
+} } });
+/**
+* Supporting text shown directly below the legend. Steps with `size` the way `FieldDescription`
+* does: one tier below the legend.
+*/
+const fieldsetDescriptionVariants = cva("text-tertiary", { variants: { size: {
+	md: "text-body-2xs-regular",
+	lg: "text-body-2xs-regular",
+	xl: "text-body-xs-regular",
+	"2xl": "text-body-xs-regular"
+} } });
+const fieldsetBodyVariants = cva("flex min-w-0 flex-col gap-4");
+//#endregion
+export { fieldsetBodyVariants, fieldsetDescriptionVariants, fieldsetLegendVariants, fieldsetVariants };
+
+//# sourceMappingURL=variants.js.map

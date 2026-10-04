@@ -1,0 +1,21 @@
+"use client";
+import { navigationMenuTriggerLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/navigation-menu/navigation-menu-trigger-label.tsx
+/**
+* The trigger's text label, sitting beside the disclosure `NavigationMenuIcon`. Splitting the label
+* into its own styled part keeps `NavigationMenuTrigger` a single styled element that composes
+* parts rather than baking in raw text.
+*/
+function NavigationMenuTriggerLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: navigationMenuTriggerLabelVariants() }, props)
+	});
+}
+//#endregion
+export { NavigationMenuTriggerLabel };
+
+//# sourceMappingURL=navigation-menu-trigger-label.js.map

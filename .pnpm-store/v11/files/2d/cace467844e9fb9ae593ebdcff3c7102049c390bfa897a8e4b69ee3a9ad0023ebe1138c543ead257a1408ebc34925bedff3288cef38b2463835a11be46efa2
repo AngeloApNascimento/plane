@@ -1,0 +1,33 @@
+"use client";
+import { ContextMenuItemLabel } from "../../elements/context-menu/context-menu-item-label.js";
+import { ContextMenuSubmenuTrigger as ContextMenuSubmenuTrigger$1 } from "../../elements/context-menu/context-menu-submenu-trigger.js";
+import { DisclosureIndicator } from "../../internal/disclosure-indicator.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { ContextMenu } from "@base-ui/react/context-menu";
+//#region src/components/context-menu/context-menu-submenu-trigger.tsx
+/**
+* The ready-made submenu trigger: grafts Base UI's `SubmenuTrigger` behavior onto the styled
+* `ContextMenuSubmenuTrigger` and composes its region parts — a leading icon, the label, optional
+* trailing content, and the caret that points toward the submenu.
+*/
+function ContextMenuSubmenuTrigger({ variant, icon, trailing, label, ...props }) {
+	return /* @__PURE__ */ jsxs(ContextMenu.SubmenuTrigger, {
+		...props,
+		render: /* @__PURE__ */ jsx(ContextMenuSubmenuTrigger$1, { variant }),
+		children: [
+			icon,
+			/* @__PURE__ */ jsx(ContextMenuItemLabel, { children: label }),
+			trailing,
+			/* @__PURE__ */ jsx(DisclosureIndicator, {
+				motion: "pointEnd",
+				tint: "tertiary",
+				children: /* @__PURE__ */ jsx(ChevronDown, {})
+			})
+		]
+	});
+}
+//#endregion
+export { ContextMenuSubmenuTrigger };
+
+//# sourceMappingURL=context-menu-submenu-trigger.js.map

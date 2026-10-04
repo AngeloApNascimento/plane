@@ -1,0 +1,18 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import { RadioProps } from "../radio/radio.js";
+import * as React from "react";
+//#region src/components/radio-group-field/radio-group-field-option.d.ts
+type RadioGroupFieldOptionProps = RadioProps & {
+  /** Visible option label. */
+  label: string;
+  /** Optional supporting text announced as the radio description. */
+  description?: React.ReactNode;
+  /** Label and description size. Inherited from `RadioGroupField` when omitted. */
+  size?: FieldSize;
+};
+/** A radio option row for use inside `RadioGroupField` or a custom `RadioGroup`. */
+declare function RadioGroupFieldOption({ label, description, size: sizeProp, ...props }: RadioGroupFieldOptionProps): React.JSX.Element;
+//#endregion
+export { RadioGroupFieldOption, RadioGroupFieldOptionProps };
+//# sourceMappingURL=radio-group-field-option.d.ts.map

@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/table/table-body.d.ts
+type TableBodyProps = Omit<useRender.ComponentProps<"tbody">, "className" | "style">;
+/** Body section (`<tbody>`). Holds the data `TableRow`s. */
+declare function TableBody({ render, ...props }: TableBodyProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TableBody, TableBodyProps };
+//# sourceMappingURL=table-body.d.ts.map

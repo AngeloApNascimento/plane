@@ -1,0 +1,26 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import { SwitchSize } from "../../elements/switch/variants.js";
+import { SwitchProps } from "../switch/switch.js";
+import "../switch/index.js";
+import * as React from "react";
+//#region src/components/switch-field/switch-field.d.ts
+type SwitchFieldProps = Omit<SwitchProps, "aria-label" | "size"> & {
+  /** The switch track's size. */
+  switchSize: SwitchSize;
+  /** Label and helper text size. */
+  size: FieldSize;
+  /** Helper text shown below the control. Replaced by `error` when an error is set. */
+  hint?: React.ReactNode;
+  /** Error text shown below the control. */
+  error?: React.ReactNode;
+  /** Visible field label. */
+  label: string;
+  /** Optional supporting text announced as the switch description. */
+  description?: React.ReactNode;
+};
+/** Ready-to-use switch field with label, description, and helper/error text. */
+declare function SwitchField({ label, description, hint, error, switchSize, size, name, disabled, ...controlProps }: SwitchFieldProps): React.JSX.Element;
+//#endregion
+export { SwitchField, SwitchFieldProps };
+//# sourceMappingURL=switch-field.d.ts.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/workspace-features/drafts-outline.d.ts
+declare function DraftsOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DraftsOutline };
+//# sourceMappingURL=drafts-outline.d.ts.map

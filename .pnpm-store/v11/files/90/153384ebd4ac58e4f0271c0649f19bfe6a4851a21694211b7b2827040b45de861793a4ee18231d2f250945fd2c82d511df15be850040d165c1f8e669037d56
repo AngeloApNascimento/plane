@@ -1,0 +1,17 @@
+"use client";
+import { contextMenuItemDescriptionVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/context-menu/context-menu-item-description.tsx
+/** A muted second line beneath the label, holding the item's description. Base-UI-agnostic. */
+function ContextMenuItemDescription({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: contextMenuItemDescriptionVariants() }, props)
+	});
+}
+//#endregion
+export { ContextMenuItemDescription };
+
+//# sourceMappingURL=context-menu-item-description.js.map

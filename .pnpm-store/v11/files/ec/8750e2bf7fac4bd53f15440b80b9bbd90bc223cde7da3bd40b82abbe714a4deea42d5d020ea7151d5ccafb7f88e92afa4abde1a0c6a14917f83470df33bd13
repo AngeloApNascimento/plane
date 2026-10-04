@@ -1,0 +1,14 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/circular-progress/circular-progress-svg.d.ts
+type CircularProgressSvgProps = Omit<useRender.ComponentProps<"svg">, "className" | "style">;
+/**
+ * The SVG viewport of the circular ring. Fills its `CircularProgress` box and holds the
+ * `CircularProgressTrack` + `CircularProgressIndicator` circles. Decorative (the `CircularProgress`
+ * root carries the `progressbar` a11y), so it is `aria-hidden`. Pass a `viewBox` matching the ring
+ * box so one SVG user unit equals one pixel.
+ */
+declare function CircularProgressSvg({ render, ...props }: CircularProgressSvgProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { CircularProgressSvg, CircularProgressSvgProps };
+//# sourceMappingURL=circular-progress-svg.d.ts.map

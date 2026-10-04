@@ -1,0 +1,22 @@
+"use client";
+import { buttonGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/button-group/button-group.tsx
+/**
+* The styled connected container around `ButtonGroupButton`s — raised white surface, shared outer
+* border, dividers between items, and clipped corners. Base-UI-agnostic (there is no Base UI
+* button-group primitive); the `components` ready-made adds the `group` role and shares one `size`
+* with every item via context.
+*/
+function ButtonGroup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: buttonGroupVariants() }, props)
+	});
+}
+//#endregion
+export { ButtonGroup };
+
+//# sourceMappingURL=button-group.js.map

@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pill/pill-label.d.ts
+type PillLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The pill's single-line label. Shrinks and truncates instead of wrapping. When `children` is a
+ * string, bakes a native `title` so hover recovers the full text past the 150px cap; pass `title`
+ * explicitly to override (or `title=""` to suppress).
+ */
+declare function PillLabel({ render, children, title, ...props }: PillLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PillLabel, PillLabelProps };
+//# sourceMappingURL=pill-label.d.ts.map

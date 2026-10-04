@@ -1,0 +1,19 @@
+"use client";
+import { ContextMenuContentSurface } from "./context-menu-content.shared.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/context-menu/context-menu-submenu-content.tsx
+/**
+* The floating surface for a submenu — the same elevated, scrollable panel as `ContextMenuContent`,
+* anchored beside its parent row instead of at the pointer. Place it inside a `ContextMenuSubmenu`,
+* alongside the `ContextMenuSubmenuTrigger` that opens it.
+*/
+function ContextMenuSubmenuContent({ sizing = "auto", ...props }) {
+	return /* @__PURE__ */ jsx(ContextMenuContentSurface, {
+		sizing,
+		...props
+	});
+}
+//#endregion
+export { ContextMenuSubmenuContent };
+
+//# sourceMappingURL=context-menu-submenu-content.js.map

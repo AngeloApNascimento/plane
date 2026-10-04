@@ -1,0 +1,32 @@
+"use client";
+import { AlertDialogIcon as AlertDialogIcon$1 } from "../../elements/alert-dialog/alert-dialog-icon.js";
+import { InfoOutline } from "../../icons/miscellaneous/info-outline.js";
+import { TickCircleOutline } from "../../icons/miscellaneous/tick-circle-outline.js";
+import { WarningTriangleOutline } from "../../icons/miscellaneous/warning-triangle-outline.js";
+import { jsx } from "react/jsx-runtime";
+//#region src/components/alert-dialog/alert-dialog-icon.tsx
+const STATUS_ICON = {
+	danger: WarningTriangleOutline,
+	warning: WarningTriangleOutline,
+	info: InfoOutline,
+	success: TickCircleOutline
+};
+/**
+* The leading intent badge above the title. Soft tinted surface + outline status glyph selected
+* from `variant` — callers never pass an icon (matches the Alert Dialog Figma family). Decorative
+* (`aria-hidden`) — the title carries the accessible name.
+*
+* `variant` is required (`danger` | `warning` | `info` | `success`).
+*/
+function AlertDialogIcon({ variant, ...props }) {
+	const Glyph = STATUS_ICON[variant];
+	return /* @__PURE__ */ jsx(AlertDialogIcon$1, {
+		variant,
+		...props,
+		children: /* @__PURE__ */ jsx(Glyph, {})
+	});
+}
+//#endregion
+export { AlertDialogIcon };
+
+//# sourceMappingURL=alert-dialog-icon.js.map

@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/pagination/pagination-per-page-label.d.ts
+type PaginationPerPageLabelProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/**
+ * The trailing "per page" text after the selector pill (Figma `50 v per page`). Decorative, so
+ * `aria-hidden`.
+ */
+declare function PaginationPerPageLabel({ render, ...props }: PaginationPerPageLabelProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PaginationPerPageLabel, PaginationPerPageLabelProps };
+//# sourceMappingURL=pagination-per-page-label.d.ts.map

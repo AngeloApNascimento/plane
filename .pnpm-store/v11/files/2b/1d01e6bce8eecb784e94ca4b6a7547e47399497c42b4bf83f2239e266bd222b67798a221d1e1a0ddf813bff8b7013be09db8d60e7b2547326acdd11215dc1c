@@ -1,0 +1,18 @@
+"use client";
+import * as React from "react";
+//#region src/components/combobox/combobox-submenu-context.ts
+/**
+* Shared state for one `ComboboxSubmenu`: the open flag, the parent row it anchors to, and the
+* hover timers the trigger and the nested surface hand back and forth. Private to the family (rule
+* 7) — the index deliberately does not export it.
+*/
+const ComboboxSubmenuContext = React.createContext(null);
+function useComboboxSubmenuContext(part) {
+	const context = React.useContext(ComboboxSubmenuContext);
+	if (context === null) throw new Error(`\`${part}\` must be rendered inside a \`ComboboxSubmenu\`.`);
+	return context;
+}
+//#endregion
+export { ComboboxSubmenuContext, useComboboxSubmenuContext };
+
+//# sourceMappingURL=combobox-submenu-context.js.map

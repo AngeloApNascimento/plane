@@ -1,0 +1,4 @@
+"use client";
+import { BadgeLabel } from "../../elements/badge/badge-label.js";
+import { Badge } from "./badge.js";
+export { Badge, BadgeLabel };

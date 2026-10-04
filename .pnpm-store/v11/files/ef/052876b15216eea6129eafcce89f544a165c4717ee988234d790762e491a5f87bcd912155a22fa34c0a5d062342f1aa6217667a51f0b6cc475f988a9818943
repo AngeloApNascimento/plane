@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/formatting-and-editors/align-right-outline.tsx
+function AlignRightOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M13.667 11.375a.625.625 0 1 1 0 1.25H5a.625.625 0 1 1 0-1.25zm0-2.667a.625.625 0 0 1 0 1.25H2.333a.625.625 0 1 1 0-1.25zm0-2.666a.625.625 0 1 1 0 1.25H5a.625.625 0 0 1 0-1.25zm0-2.667a.625.625 0 1 1 0 1.25H2.333a.625.625 0 1 1 0-1.25z"
+		})
+	});
+}
+//#endregion
+export { AlignRightOutline };
+
+//# sourceMappingURL=align-right-outline.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/folder-open-filled.d.ts
+declare function FolderOpenFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FolderOpenFilled };
+//# sourceMappingURL=folder-open-filled.d.ts.map

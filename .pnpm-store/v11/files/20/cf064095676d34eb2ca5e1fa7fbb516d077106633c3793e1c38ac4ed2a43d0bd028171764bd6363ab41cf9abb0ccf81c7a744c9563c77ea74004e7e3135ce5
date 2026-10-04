@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/wifi-off-filled.d.ts
+declare function WifiOffFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { WifiOffFilled };
+//# sourceMappingURL=wifi-off-filled.d.ts.map

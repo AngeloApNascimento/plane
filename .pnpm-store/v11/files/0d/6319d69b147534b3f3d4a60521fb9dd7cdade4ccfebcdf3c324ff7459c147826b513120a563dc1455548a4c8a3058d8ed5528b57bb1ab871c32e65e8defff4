@@ -1,0 +1,34 @@
+"use client";
+import { buttonVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/button/button.tsx
+/**
+* The styled action button element: a `<button>` built on propel's design tokens. Pick its look
+* with `variant` (Figma Type primary·secondary·tertiary·ghost plus the `danger`/`danger-outline`
+* error palettes), the size with `size`, and full-width with `stretch` — all required, so consumers
+* choose explicitly. Base-UI-agnostic — graft Base UI's `Button` behavior in `components` via
+* `<BaseButton render={<Button/>} />`. For a navigation link wearing this chrome, render it as an
+* `<a>` (`nativeButton={false}` + `render={<a href=… />}` on the ready-made). `children` is passed
+* through; it is not a variant.
+*/
+function Button({ variant, size, stretch, render, ...props }) {
+	const defaultProps = { className: buttonVariants({
+		variant,
+		size,
+		stretch
+	}) };
+	return useRender({
+		defaultTagName: "button",
+		render,
+		state: {
+			variant,
+			size
+		},
+		props: mergeProps(defaultProps, props)
+	});
+}
+//#endregion
+export { Button };
+
+//# sourceMappingURL=button.js.map

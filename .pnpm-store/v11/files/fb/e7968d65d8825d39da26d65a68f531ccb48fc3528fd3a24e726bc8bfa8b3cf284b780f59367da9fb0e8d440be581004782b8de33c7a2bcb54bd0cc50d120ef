@@ -1,0 +1,21 @@
+"use client";
+import { avatarFallbackVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/avatar/avatar-fallback.tsx
+/**
+* The styled avatar fallback (colored initials, or the neutral anonymous-icon surface).
+* Base-UI-agnostic — graft the Base UI `Avatar.Fallback` (shown while the image is
+* absent/loading/failed) in `components` via `<BaseAvatar.Fallback render={<AvatarFallback/>} />`.
+*/
+function AvatarFallback({ variant, render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: avatarFallbackVariants({ variant }) }, props)
+	});
+}
+//#endregion
+export { AvatarFallback };
+
+//# sourceMappingURL=avatar-fallback.js.map

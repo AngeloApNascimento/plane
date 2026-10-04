@@ -1,0 +1,22 @@
+"use client";
+import { separatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/separator/separator.tsx
+/**
+* The styled divider rule — a Base-UI-agnostic `useRender` `<div>`. Its cva keys off the
+* `[data-orientation]` that Base UI's `Separator` behavior contributes when grafted in `components`
+* via `<BaseSeparator render={<Separator/>} />`; the semantic vs. decorative role is wired there
+* too. Spacing around the rule belongs to the surrounding layout, not the separator.
+*/
+function Separator({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: separatorVariants() }, props)
+	});
+}
+//#endregion
+export { Separator };
+
+//# sourceMappingURL=separator.js.map

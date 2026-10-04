@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-item-description.d.ts
+type MenuItemDescriptionProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** A muted second line beneath the title, holding the item's description. */
+declare function MenuItemDescription({ render, ...props }: MenuItemDescriptionProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuItemDescription, MenuItemDescriptionProps };
+//# sourceMappingURL=menu-item-description.d.ts.map

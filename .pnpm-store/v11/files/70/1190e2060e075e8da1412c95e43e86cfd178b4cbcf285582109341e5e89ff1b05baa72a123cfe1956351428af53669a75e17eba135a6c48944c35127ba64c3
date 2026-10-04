@@ -1,0 +1,46 @@
+"use client";
+import { BannerPlacement, BannerSize, BannerVariant } from "../../elements/banner/variants.js";
+import { BannerProps as BannerProps$1 } from "../../elements/banner/banner.js";
+import "../../elements/banner/index.js";
+import * as React from "react";
+//#region src/components/banner/banner.d.ts
+type BannerProps = Omit<BannerProps$1, "children" | "title"> & {
+  /** Banner scale, independent of placement. @default "md" */
+  size?: BannerProps$1["size"];
+  /** Accessible name for the dismiss control; localize at the call site. @default "Dismiss" */
+  dismissLabel?: string;
+  /**
+   * Node rendered before the message (inline-start). Defaults to a variant-appropriate Plane icon;
+   * pass `null` to hide it. Sized to the banner's node size. Decorative, kept out of the name.
+   */
+  icon?: React.ReactNode;
+  /** The banner's headline. Rendered as its own block above any description body. */
+  title?: React.ReactNode;
+  /** Body text rendered under the title. */
+  description?: React.ReactNode;
+  /**
+   * Trailing CTA buttons, placed after the message. Per Figma the banner carries up to three CTAs
+   * (primary / secondary / tertiary). The dismiss control is a separate slot — pass `onDismiss`
+   * rather than appending a dismiss button here.
+   *
+   * Actions move below the message when space is constrained and wrap within the banner. Long
+   * button labels can truncate visually while retaining their full accessible name.
+   */
+  actions?: React.ReactNode;
+  /**
+   * When set, renders the dedicated dismiss control — a ghost, icon-only `IconButton` fixed at the
+   * banner's trailing edge (after `actions`), matching Figma's always-last "Close" anatomy node.
+   * Consumers own visibility: the handler fires on click; the banner does not hide itself.
+   */
+  onDismiss?: () => void;
+};
+/**
+ * The ready-made banner: composes the atomic banner parts — the variant icon, the message body
+ * (`title` + `description`), trailing `actions`, and an optional trailing `onDismiss` control — so
+ * consumers pass content, not layout. Drop down to `@makeplane/propel/elements/banner` to assemble
+ * the parts directly.
+ */
+declare function Banner({ placement, size, variant, icon, title, description, actions, onDismiss, dismissLabel, ...props }: BannerProps): React.JSX.Element;
+//#endregion
+export { Banner, type BannerPlacement, BannerProps, type BannerSize, type BannerVariant };
+//# sourceMappingURL=banner.d.ts.map

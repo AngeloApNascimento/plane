@@ -1,0 +1,30 @@
+"use client";
+import { skeletonItemFrameProps } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/skeleton/skeleton-item.tsx
+/**
+* One styled placeholder bone. `variant="bar"` (default) is a rounded-md block; `variant="circle"`
+* is a disc. A bone is full width unless `inlineSize` narrows it. Exact lengths are applied as
+* `--skeleton-block-size` / `--skeleton-inline-size` so `style` is never exposed. Decorative —
+* `aria-hidden` is baked in; the region's `status` names it.
+*/
+function SkeletonItem({ variant = "bar", blockSize, inlineSize, render, ...props }) {
+	const isCircle = variant === "circle";
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({
+			"aria-hidden": true,
+			...skeletonItemFrameProps({
+				variant,
+				blockSize: blockSize ?? (isCircle ? inlineSize : void 0),
+				inlineSize: inlineSize ?? (isCircle && blockSize != null ? blockSize : void 0)
+			})
+		}, props)
+	});
+}
+//#endregion
+export { SkeletonItem };
+
+//# sourceMappingURL=skeleton-item.js.map

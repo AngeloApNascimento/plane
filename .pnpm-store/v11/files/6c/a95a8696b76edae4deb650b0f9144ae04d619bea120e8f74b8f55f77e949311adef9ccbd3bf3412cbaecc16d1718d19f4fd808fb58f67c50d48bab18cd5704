@@ -1,0 +1,14 @@
+"use client";
+import { TabVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tabs/tab.d.ts
+type TabProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & TabVariantProps;
+/**
+ * A single tab button — a styled `<button>`. Base-UI-agnostic: the ready-made `components/tabs`
+ * grafts the Base UI `Tabs.Tab` behavior (which ties it to the `TabsPanel` of the same `value`) via
+ * `<BaseTabs.Tab render={<Tab/>}/>`.
+ */
+declare function Tab({ variant, stretch, render, ...props }: TabProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Tab, TabProps };
+//# sourceMappingURL=tab.d.ts.map

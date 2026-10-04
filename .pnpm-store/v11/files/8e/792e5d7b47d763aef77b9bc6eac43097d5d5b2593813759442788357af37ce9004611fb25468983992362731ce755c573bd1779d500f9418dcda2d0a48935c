@@ -1,0 +1,18 @@
+"use client";
+import { FieldLabelGroupVariantProps, FieldSize } from "../../elements/field/variants.js";
+import * as React from "react";
+//#region src/components/field/field-label-group.d.ts
+type FieldLabelGroupProps = FieldLabelGroupVariantProps & {
+  size: FieldSize;
+  required?: boolean;
+  label?: string;
+  description?: React.ReactNode;
+};
+/**
+ * The ready-made label/description block of a field: lays out an optional `FieldLabel` and
+ * `FieldDescription` inside the `FieldLabelGroup` container. Renders nothing when both are absent.
+ */
+declare function FieldLabelGroup({ size, required, label, description, orientation }: FieldLabelGroupProps): React.JSX.Element | null;
+//#endregion
+export { FieldLabelGroup, FieldLabelGroupProps };
+//# sourceMappingURL=field-label-group.d.ts.map

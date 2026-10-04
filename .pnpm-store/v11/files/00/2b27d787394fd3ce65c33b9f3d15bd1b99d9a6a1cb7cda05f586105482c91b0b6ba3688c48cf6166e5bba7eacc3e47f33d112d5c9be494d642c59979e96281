@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/rewind-filled.d.ts
+declare function RewindFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RewindFilled };
+//# sourceMappingURL=rewind-filled.d.ts.map

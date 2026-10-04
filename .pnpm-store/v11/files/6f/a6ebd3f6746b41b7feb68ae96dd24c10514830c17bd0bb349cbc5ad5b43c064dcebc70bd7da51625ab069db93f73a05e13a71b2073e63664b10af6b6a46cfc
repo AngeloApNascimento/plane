@@ -1,0 +1,19 @@
+"use client";
+import { TableVariant } from "../../elements/table/variants.js";
+import { TableProps as TableProps$1 } from "../../elements/table/table.js";
+import "../../elements/table/index.js";
+//#region src/components/table/table.d.ts
+type TableProps = TableProps$1 & {
+  /** Layout (required). `table` draws row dividers only; `spreadsheet` draws a full grid. */
+  variant: TableVariant;
+};
+/**
+ * The ready-made table: the styled `<table>` wrapped in a rounded, hairline-bordered scroll frame,
+ * sharing its layout `variant` with the cells/heads via context. The Base UI `ScrollArea` behavior
+ * grafts onto the styled `TableScrollArea` frame + viewport (and the overlay scrollbars) via
+ * `render`, behavior part outer.
+ */
+declare function Table({ variant, ...props }: TableProps): import("react").JSX.Element;
+//#endregion
+export { Table, TableProps };
+//# sourceMappingURL=table.d.ts.map

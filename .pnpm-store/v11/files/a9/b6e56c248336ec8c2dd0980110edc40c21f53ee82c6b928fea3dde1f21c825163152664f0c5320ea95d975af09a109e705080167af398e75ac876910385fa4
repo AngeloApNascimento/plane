@@ -1,0 +1,20 @@
+"use client";
+import { fieldErrorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/field/field-error.tsx
+/**
+* Error text for a custom field. Base-UI-agnostic — graft the Base UI `Field.Error` validation
+* behavior in `components` via `<BaseField.Error render={<FieldError/>} />`.
+*/
+function FieldError({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: fieldErrorVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { FieldError };
+
+//# sourceMappingURL=field-error.js.map

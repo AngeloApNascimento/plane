@@ -1,0 +1,12 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/suggestion-menu/suggestion-menu.d.ts
+type SuggestionMenuProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The popup surface of a suggestion menu. Renders a `<div>`; the `components` ready-made adds the
+ * `listbox` role and the keyboard highlight.
+ */
+declare function SuggestionMenu({ render, ...props }: SuggestionMenuProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SuggestionMenu, SuggestionMenuProps };
+//# sourceMappingURL=suggestion-menu.d.ts.map

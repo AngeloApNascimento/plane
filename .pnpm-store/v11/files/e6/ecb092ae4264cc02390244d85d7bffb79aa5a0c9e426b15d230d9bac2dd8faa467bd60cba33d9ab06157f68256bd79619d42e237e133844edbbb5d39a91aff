@@ -1,0 +1,27 @@
+"use client";
+import { NodeSlot } from "../../internal/node-slot.js";
+import { TableCell as TableCell$1 } from "../../elements/table/table-cell.js";
+import { TableCellContent } from "../../elements/table/table-cell-content.js";
+import { TableCellLayout } from "../../elements/table/table-cell-layout.js";
+import { useTableVariant } from "./table-context.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/table/table-cell.tsx
+/** A ready-made data cell: optional leading/trailing slots around a truncating content region. */
+function TableCell({ startIcon, endIcon, children, align, ...props }) {
+	return /* @__PURE__ */ jsx(TableCell$1, {
+		variant: useTableVariant(),
+		...props,
+		children: /* @__PURE__ */ jsxs(TableCellLayout, { children: [
+			startIcon != null ? /* @__PURE__ */ jsx(NodeSlot, { children: startIcon }) : null,
+			/* @__PURE__ */ jsx(TableCellContent, {
+				align,
+				children
+			}),
+			endIcon != null ? /* @__PURE__ */ jsx(NodeSlot, { children: endIcon }) : null
+		] })
+	});
+}
+//#endregion
+export { TableCell };
+
+//# sourceMappingURL=table-cell.js.map

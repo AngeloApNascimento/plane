@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/combobox/combobox-item-content.d.ts
+type ComboboxItemContentProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** The text column of a row. Grows to fill the row so trailing nodes sit at the inline-end. */
+declare function ComboboxItemContent({ render, ...props }: ComboboxItemContentProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ComboboxItemContent, ComboboxItemContentProps };
+//# sourceMappingURL=combobox-item-content.d.ts.map

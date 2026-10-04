@@ -1,0 +1,15 @@
+"use client";
+import { jsx } from "react/jsx-runtime";
+import { PreviewCard } from "@base-ui/react/preview-card";
+//#region src/components/preview-card/preview-card-trigger.tsx
+/**
+* The link that opens the preview card on hover or focus. Renders an `<a>` by default; pass
+* `render` to project the trigger onto your own link. Maps 1:1 to `PreviewCard.Trigger`.
+*/
+function PreviewCardTrigger(props) {
+	return /* @__PURE__ */ jsx(PreviewCard.Trigger, { ...props });
+}
+//#endregion
+export { PreviewCardTrigger };
+
+//# sourceMappingURL=preview-card-trigger.js.map

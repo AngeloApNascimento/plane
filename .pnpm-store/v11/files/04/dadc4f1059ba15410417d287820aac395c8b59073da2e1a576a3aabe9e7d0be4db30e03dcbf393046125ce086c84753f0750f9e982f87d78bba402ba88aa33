@@ -1,0 +1,16 @@
+"use client";
+import { nodeSlotClass } from "../../internal/node-slot.js";
+import { checkboxBoxVariants } from "../../internal/checkbox-box.js";
+import { cva, cx } from "class-variance-authority";
+//#region src/elements/checkbox/variants.ts
+const checkboxVariants = checkboxBoxVariants;
+const checkboxIndicatorVariants = cva(cx(nodeSlotClass, "text-current", "data-indeterminate:hidden"));
+const checkboxIndeterminateIndicatorVariants = cva(cx("hidden items-center justify-center data-indeterminate:inline-flex [&>img]:size-(--node-size) [&>svg]:size-(--node-size)", "text-current"));
+const checkboxLabelVariants = cva(cx("inline-flex items-center gap-2 rounded-sm px-2 py-1 align-top", "text-body-xs-regular text-secondary transition-colors", "cursor-pointer not-has-[[data-disabled]]:hover:bg-layer-transparent-hover", "has-[[data-disabled]]:cursor-not-allowed has-[[data-disabled]]:text-disabled has-[[data-disabled]]:[&>span[aria-hidden]]:text-disabled"), { variants: { stretch: {
+	auto: "w-fit",
+	full: "w-full"
+} } });
+//#endregion
+export { checkboxIndeterminateIndicatorVariants, checkboxIndicatorVariants, checkboxLabelVariants, checkboxVariants };
+
+//# sourceMappingURL=variants.js.map

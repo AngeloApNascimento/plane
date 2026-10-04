@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/dependency-outline.d.ts
+declare function DependencyOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DependencyOutline };
+//# sourceMappingURL=dependency-outline.d.ts.map

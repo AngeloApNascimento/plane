@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/right-side-pane-outline.d.ts
+declare function RightSidePaneOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RightSidePaneOutline };
+//# sourceMappingURL=right-side-pane-outline.d.ts.map

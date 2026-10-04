@@ -1,0 +1,21 @@
+"use client";
+import { linearProgressTrackVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/linear-progress/linear-progress-track.tsx
+/**
+* The styled track (the pill the fill sits inside). `size` drives the thickness (`sm` 5px / `md`
+* 8px). Base-UI-agnostic — graft in `components` via `<BaseProgress.Track
+* render={<LinearProgressTrack/>} />`.
+*/
+function LinearProgressTrack({ size, render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: linearProgressTrackVariants({ size }) }, props)
+	});
+}
+//#endregion
+export { LinearProgressTrack };
+
+//# sourceMappingURL=linear-progress-track.js.map

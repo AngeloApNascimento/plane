@@ -1,0 +1,20 @@
+"use client";
+import { sliderLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-label.tsx
+/**
+* The styled slider label. Base-UI-agnostic — graft in `components` via `<BaseSlider.Label
+* render={<SliderLabel/>} />`.
+*/
+function SliderLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: sliderLabelVariants() }, props)
+	});
+}
+//#endregion
+export { SliderLabel };
+
+//# sourceMappingURL=slider-label.js.map

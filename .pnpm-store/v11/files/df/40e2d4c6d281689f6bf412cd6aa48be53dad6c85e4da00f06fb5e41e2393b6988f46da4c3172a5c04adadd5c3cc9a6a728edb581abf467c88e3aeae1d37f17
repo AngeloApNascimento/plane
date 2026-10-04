@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/claude.d.ts
+declare function Claude(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Claude };
+//# sourceMappingURL=claude.d.ts.map

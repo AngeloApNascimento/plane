@@ -1,0 +1,56 @@
+"use client";
+import { SplitButton as SplitButton$1 } from "../../elements/split-button/split-button.js";
+import { Icon } from "../icon/icon.js";
+import { IconButton } from "../icon-button/icon-button.js";
+import { Button } from "../button/button.js";
+import { MenuTrigger } from "../menu/menu-trigger.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+//#region src/components/split-button/split-button.tsx
+/**
+* The ready-made split button: a main action `Button` plus a chevron `IconButton` grafted as the
+* surrounding menu's `MenuTrigger`, laid out by the styled `SplitButton` frame (separate pills when
+* primary, connected outline when secondary). Neutral only — there is no danger/error split button.
+* It ships no menu of its own — render it as a `Menu`'s child, with the surface as a sibling
+* `MenuContent`:
+*
+* ```tsx
+* <Menu>
+*   <SplitButton variant="primary" size="md" label="Save" onClick={save} />
+*   <MenuContent>
+*     <MenuItem label="Save as draft" />
+*   </MenuContent>
+* </Menu>;
+* ```
+*/
+function SplitButton({ variant, size, label, onClick, icon, iconPosition, loading = false, disabled, type = "button", menuLabel = "More options", ...props }) {
+	return /* @__PURE__ */ jsxs(SplitButton$1, {
+		variant,
+		size,
+		...props,
+		children: [/* @__PURE__ */ jsx(Button, {
+			variant,
+			size,
+			stretch: "auto",
+			label,
+			onClick,
+			icon,
+			iconPosition,
+			loading,
+			disabled,
+			type
+		}), /* @__PURE__ */ jsx(MenuTrigger, {
+			disabled: disabled || loading,
+			render: /* @__PURE__ */ jsx(IconButton, {
+				variant,
+				size,
+				icon: /* @__PURE__ */ jsx(Icon, { icon: ChevronDown }),
+				"aria-label": menuLabel
+			})
+		})]
+	});
+}
+//#endregion
+export { SplitButton };
+
+//# sourceMappingURL=split-button.js.map

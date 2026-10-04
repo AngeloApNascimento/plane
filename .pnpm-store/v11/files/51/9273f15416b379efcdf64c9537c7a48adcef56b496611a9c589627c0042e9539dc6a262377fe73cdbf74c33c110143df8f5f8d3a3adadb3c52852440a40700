@@ -1,0 +1,75 @@
+"use client";
+import { controlGroupClass } from "../../internal/control-group.js";
+import { cva, cx } from "class-variance-authority";
+const textAreaGroupVariants = cva(cx(controlGroupClass, "w-full items-stretch gap-1.5 rounded-lg"), {
+	variants: { 
+	/** Controls whether the user can resize the framed textarea. */
+resize: {
+		none: "resize-none",
+		vertical: "resize-y overflow-hidden",
+		both: "resize overflow-hidden"
+	} },
+	defaultVariants: { resize: "vertical" }
+});
+const textAreaVariants = cva(cx("scrollbar-sm resize-none overflow-y-auto bg-transparent text-primary outline-none", "placeholder:text-placeholder", "disabled:cursor-not-allowed disabled:text-disabled"), {
+	variants: {
+		size: {
+			md: "text-caption-md-regular",
+			lg: "text-body-xs-regular",
+			xl: "text-body-sm-regular",
+			"2xl": "text-body-md-regular"
+		},
+		surface: {
+			field: "w-full min-w-full px-3 py-2",
+			embedded: "w-full min-w-full p-3 leading-snug",
+			inline: "min-w-0 flex-1 leading-tight"
+		},
+		/**
+		* Visual state only — this leaf does not grow itself. Pair with the `components` `TextArea`/
+		* `TextAreaField`, which syncs an explicit pixel height in JS on every input (no CSS
+		* `field-sizing` path — an inline `height` always wins over it, so a CSS-only class would be
+		* dead weight) and grows the control with its content above the size `min-height`.
+		*/
+		autoResize: {
+			false: "",
+			true: ""
+		}
+	},
+	compoundVariants: [
+		{
+			surface: "field",
+			size: "md",
+			class: "min-h-[3.75rem]"
+		},
+		{
+			surface: "field",
+			size: "lg",
+			class: "min-h-[4.75rem]"
+		},
+		{
+			surface: "field",
+			size: "xl",
+			class: "min-h-[6.375rem]"
+		},
+		{
+			surface: "field",
+			size: "2xl",
+			class: "min-h-[5.625rem]"
+		},
+		{
+			surface: "field",
+			autoResize: false,
+			class: "h-full"
+		},
+		{
+			surface: "field",
+			autoResize: true,
+			class: "h-auto"
+		}
+	],
+	defaultVariants: { autoResize: false }
+});
+//#endregion
+export { textAreaGroupVariants, textAreaVariants };
+
+//# sourceMappingURL=variants.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/down-left-outline.d.ts
+declare function DownLeftOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DownLeftOutline };
+//# sourceMappingURL=down-left-outline.d.ts.map

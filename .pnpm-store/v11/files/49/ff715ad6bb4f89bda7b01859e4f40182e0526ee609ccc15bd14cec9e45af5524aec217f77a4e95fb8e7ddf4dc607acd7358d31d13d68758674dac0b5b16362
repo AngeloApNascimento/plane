@@ -1,0 +1,58 @@
+"use client";
+import { cva, cx } from "class-variance-authority";
+const tabsVariants = cva("flex w-full max-w-full flex-col items-start gap-3", {
+	variants: {
+		variant: {
+			contained: "",
+			underline: ""
+		},
+		stretch: {
+			auto: "",
+			full: ""
+		},
+		layout: {
+			content: "",
+			fill: "h-full min-h-0 flex-1"
+		}
+	},
+	defaultVariants: {
+		layout: "content",
+		stretch: "auto"
+	}
+});
+const tabsListVariants = cva("relative max-w-full overscroll-x-contain outline-none", { variants: {
+	variant: {
+		contained: "items-center gap-px rounded-lg bg-layer-3 p-0.5",
+		underline: "items-start gap-px px-0.5"
+	},
+	stretch: {
+		auto: "inline-flex",
+		full: "flex w-full"
+	}
+} });
+const tabsListScrollAreaVariants = cva("relative max-w-full", { variants: { stretch: {
+	auto: "",
+	full: "w-full"
+} } });
+const tabVariants = cva("cursor-pointer whitespace-nowrap transition-colors outline-none select-none aria-disabled:cursor-not-allowed aria-disabled:text-disabled", { variants: {
+	variant: {
+		contained: "inline-flex h-6 items-center justify-center gap-1 rounded-md border-sm border-transparent px-1.5 text-body-xs-medium text-secondary [--node-size:var(--control-glyph-sm)] not-aria-disabled:not-data-active:hover:bg-layer-transparent-hover focus-visible:ring-2 focus-visible:ring-accent-strong not-aria-disabled:not-data-active:active:bg-layer-transparent-active data-active:border-subtle-1 data-active:bg-layer-2 data-active:text-primary data-active:shadow-raised-200",
+		underline: "group/tab inline-flex flex-col items-stretch gap-2 text-body-sm-medium [--node-size:var(--control-glyph-md)]"
+	},
+	stretch: {
+		auto: "",
+		full: "flex-1"
+	}
+} });
+const tabUnderlineLabelVariants = cva("flex h-7 items-center justify-center gap-1.5 rounded-md px-2 py-0.5 text-tertiary transition-colors group-focus-visible/tab:ring-2 group-focus-visible/tab:ring-accent-strong group-focus-visible/tab:ring-inset group-aria-disabled/tab:bg-transparent group-aria-disabled/tab:text-disabled group-data-active/tab:bg-layer-transparent-selected group-data-active/tab:text-primary group-[&:active:not([aria-disabled='true']):not([data-active])]/tab:bg-layer-transparent-active group-[&:active:not([aria-disabled='true']):not([data-active])]/tab:text-primary group-[&:hover:not([aria-disabled='true']):not([data-active])]/tab:bg-layer-transparent-hover group-[&:hover:not([aria-disabled='true']):not([data-active])]/tab:text-secondary");
+const tabUnderlineBarTrackVariants = cva("flex px-2");
+const tabUnderlineBarVariants = cva("h-[3px] w-full rounded-full bg-current text-transparent transition-colors group-data-active/tab:text-transparent group-[&:active:not([aria-disabled='true']):not([data-active])]/tab:text-icon-tertiary group-[&:hover:not([aria-disabled='true']):not([data-active])]/tab:text-icon-placeholder");
+const tabsPanelVariants = cva("w-full min-w-0 text-body-sm-regular text-secondary outline-none", { variants: { layout: {
+	content: "",
+	fill: "min-h-0 flex-1"
+} } });
+const tabsIndicatorVariants = cva(cx("absolute top-[calc(var(--active-tab-top)+1.75rem+0.5rem)] left-[calc(var(--active-tab-left)+0.5rem)] h-[3px] w-[calc(var(--active-tab-width)-1rem)]", "rounded-full bg-inverse transition-all duration-150"));
+//#endregion
+export { tabUnderlineBarTrackVariants, tabUnderlineBarVariants, tabUnderlineLabelVariants, tabVariants, tabsIndicatorVariants, tabsListScrollAreaVariants, tabsListVariants, tabsPanelVariants, tabsVariants };
+
+//# sourceMappingURL=variants.js.map

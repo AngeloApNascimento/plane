@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/file-key-filled.d.ts
+declare function FileKeyFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { FileKeyFilled };
+//# sourceMappingURL=file-key-filled.d.ts.map

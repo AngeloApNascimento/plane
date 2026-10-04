@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/ai-star-one-outline.d.ts
+declare function AiStarOneOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { AiStarOneOutline };
+//# sourceMappingURL=ai-star-one-outline.d.ts.map

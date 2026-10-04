@@ -1,0 +1,95 @@
+"use client";
+import { ComboboxSubmenuContext } from "./combobox-submenu-context.js";
+import * as React from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-submenu.tsx
+/**
+* One nested combobox: the parent row that opens it, plus its own Base UI `Combobox.Root`. The row
+* itself carries no value — it is a way into the nested list, and only that list's items are
+* selectable — so the two roots keep separate values. Point this root's `value`/`onValueChange` at
+* the parent's state when the nested picks should land in the parent's selection, or at state of
+* its own when they should not.
+*
+* Base UI has no combobox submenu primitive (only `Menu` does), so the nesting is assembled here.
+* The nested popup still portals to `<body>`, but it stays a React-tree descendant of the parent
+* popup, which is what stops a press inside it from reading as an outside-press that dismisses the
+* parent.
+*
+* Selecting a nested item closes the nested list (Base UI's own single-select behavior) and leaves
+* the parent list open. Closing the parent too is the consumer's call — do it from `onValueChange`,
+* where the parent's own `open` is in reach.
+*/
+function ComboboxSubmenu({ trigger, open: openProp, defaultOpen = false, onOpenChange, openOnHover = true, delay = 100, closeDelay = 150, closeParentOnEsc = false, children, ...props }) {
+	const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen);
+	const open = openProp ?? uncontrolledOpen;
+	const triggerRef = React.useRef(null);
+	const timeoutRef = React.useRef(null);
+	const cancelScheduled = React.useCallback(() => {
+		if (timeoutRef.current !== null) {
+			clearTimeout(timeoutRef.current);
+			timeoutRef.current = null;
+		}
+	}, []);
+	React.useEffect(() => cancelScheduled, [cancelScheduled]);
+	const openRef = React.useRef(open);
+	openRef.current = open;
+	const onOpenChangeRef = React.useRef(onOpenChange);
+	onOpenChangeRef.current = onOpenChange;
+	const commitOpen = React.useCallback((next, eventDetails) => {
+		cancelScheduled();
+		if (openRef.current === next) return;
+		setUncontrolledOpen(next);
+		onOpenChangeRef.current?.(next, eventDetails);
+	}, [cancelScheduled]);
+	const handleRootOpenChange = React.useCallback((next, eventDetails) => commitOpen(next, eventDetails), [commitOpen]);
+	const scheduleOpen = React.useCallback(() => {
+		if (!openOnHover) return;
+		cancelScheduled();
+		if (openRef.current) return;
+		timeoutRef.current = setTimeout(() => commitOpen(true), delay);
+	}, [
+		cancelScheduled,
+		commitOpen,
+		delay,
+		openOnHover
+	]);
+	const scheduleClose = React.useCallback(() => {
+		cancelScheduled();
+		if (!openRef.current) return;
+		timeoutRef.current = setTimeout(() => commitOpen(false), closeDelay);
+	}, [
+		cancelScheduled,
+		commitOpen,
+		closeDelay
+	]);
+	const context = React.useMemo(() => ({
+		open,
+		setOpen: commitOpen,
+		triggerRef,
+		scheduleOpen,
+		scheduleClose,
+		cancelScheduled,
+		closeParentOnEsc
+	}), [
+		cancelScheduled,
+		closeParentOnEsc,
+		commitOpen,
+		open,
+		scheduleClose,
+		scheduleOpen
+	]);
+	return /* @__PURE__ */ jsxs(ComboboxSubmenuContext.Provider, {
+		value: context,
+		children: [trigger, /* @__PURE__ */ jsx(Combobox.Root, {
+			...props,
+			open,
+			onOpenChange: handleRootOpenChange,
+			children
+		})]
+	});
+}
+//#endregion
+export { ComboboxSubmenu };
+
+//# sourceMappingURL=combobox-submenu.js.map

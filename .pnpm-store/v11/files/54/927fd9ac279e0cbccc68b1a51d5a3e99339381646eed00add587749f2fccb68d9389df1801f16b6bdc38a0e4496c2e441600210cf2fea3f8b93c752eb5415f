@@ -1,0 +1,22 @@
+
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/icons/arrows/double-chevron-left-filled.tsx
+function DoubleChevronLeftFilled(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsxs("g", {
+			fill: "currentColor",
+			children: [/* @__PURE__ */ jsx("path", { d: "M7.183 3.183a.626.626 0 0 1 .885.885L4.51 7.625l3.558 3.558a.626.626 0 0 1-.885.885l-4-4a.626.626 0 0 1 0-.885z" }), /* @__PURE__ */ jsx("path", { d: "M11.183 3.183a.626.626 0 0 1 .885.885L8.51 7.625l3.558 3.558a.626.626 0 0 1-.885.885l-4-4a.626.626 0 0 1 0-.885z" })]
+		})
+	});
+}
+//#endregion
+export { DoubleChevronLeftFilled };
+
+//# sourceMappingURL=double-chevron-left-filled.js.map

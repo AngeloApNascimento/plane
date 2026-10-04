@@ -1,0 +1,13 @@
+"use client";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-list.d.ts
+type SelectListProps = Omit<Select.List.Props, "className" | "style">;
+/**
+ * The container for the select items — Base UI's `Select.List`, unstyled (the popup surface is
+ * `SelectContent`; the rows are `SelectItem`s). A passthrough so consumers never import
+ * `@base-ui/react/select` themselves.
+ */
+declare function SelectList(props: SelectListProps): import("react").JSX.Element;
+//#endregion
+export { SelectList, SelectListProps };
+//# sourceMappingURL=select-list.d.ts.map

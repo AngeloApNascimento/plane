@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-text-group.d.ts
+type ToastTextGroupProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The tight vertical pairing of `ToastTitle` and `ToastDescription` at the top of a `ToastContent`.
+ * Keeps the title and description close together while sitting in the content column's wider rhythm
+ * alongside an optional progress bar and action row.
+ */
+declare function ToastTextGroup({ render, ...props }: ToastTextGroupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { ToastTextGroup, ToastTextGroupProps };
+//# sourceMappingURL=toast-text-group.d.ts.map

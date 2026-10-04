@@ -1,0 +1,20 @@
+"use client";
+import { RadioGroup as RadioGroup$2 } from "../../elements/radio/radio-group.js";
+import { jsx } from "react/jsx-runtime";
+import { RadioGroup } from "@base-ui/react/radio-group";
+//#region src/components/radio/radio-group.tsx
+/**
+* Groups a set of `Radio` options so at most one can be selected at a time. Grafts Base UI's
+* radio-group behavior (single-select state + roving focus) onto the styled `RadioGroup` frame,
+* which owns the required row-spacing `density`.
+*/
+function RadioGroup$1({ density, ...props }) {
+	return /* @__PURE__ */ jsx(RadioGroup, {
+		render: /* @__PURE__ */ jsx(RadioGroup$2, { density }),
+		...props
+	});
+}
+//#endregion
+export { RadioGroup$1 as RadioGroup };
+
+//# sourceMappingURL=radio-group.js.map

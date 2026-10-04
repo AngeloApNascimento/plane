@@ -1,0 +1,16 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/popover/variants.d.ts
+declare const popoverPopupDefaultVariants: {
+  readonly variant: "rich";
+};
+declare const popoverPopupVariants: (props?: ({
+  variant?: "text" | "rich" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type PopoverPopupVariantConfig = VariantProps<typeof popoverPopupVariants>;
+type PopoverPopupVariant = NonNullable<PopoverPopupVariantConfig["variant"]>;
+type PopoverPopupVariantProps = StrictVariantProps<typeof popoverPopupVariants, keyof typeof popoverPopupDefaultVariants>;
+//#endregion
+export { PopoverPopupVariant, PopoverPopupVariantProps, popoverPopupVariants };
+//# sourceMappingURL=variants.d.ts.map

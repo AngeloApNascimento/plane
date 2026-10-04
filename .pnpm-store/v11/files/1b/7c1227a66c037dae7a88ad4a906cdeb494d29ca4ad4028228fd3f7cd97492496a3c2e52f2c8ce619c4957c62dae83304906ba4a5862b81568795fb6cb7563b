@@ -1,0 +1,21 @@
+"use client";
+import { toastTextGroupVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toast/toast-text-group.tsx
+/**
+* The tight vertical pairing of `ToastTitle` and `ToastDescription` at the top of a `ToastContent`.
+* Keeps the title and description close together while sitting in the content column's wider rhythm
+* alongside an optional progress bar and action row.
+*/
+function ToastTextGroup({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: toastTextGroupVariants() }, props)
+	});
+}
+//#endregion
+export { ToastTextGroup };
+
+//# sourceMappingURL=toast-text-group.js.map

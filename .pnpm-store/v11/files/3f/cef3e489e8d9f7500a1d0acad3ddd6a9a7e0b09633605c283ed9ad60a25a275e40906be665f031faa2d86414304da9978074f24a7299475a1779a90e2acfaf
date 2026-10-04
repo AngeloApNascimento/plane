@@ -1,0 +1,20 @@
+"use client";
+import { toolbarItemLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar-item-label.tsx
+/**
+* The text label of a toolbar item (e.g. "Comment" on a button, "Text" on a menu trigger). Its own
+* styled `<span>` so the control holds no raw typography. Base-UI-agnostic.
+*/
+function ToolbarItemLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: toolbarItemLabelVariants() }, props)
+	});
+}
+//#endregion
+export { ToolbarItemLabel };
+
+//# sourceMappingURL=toolbar-item-label.js.map

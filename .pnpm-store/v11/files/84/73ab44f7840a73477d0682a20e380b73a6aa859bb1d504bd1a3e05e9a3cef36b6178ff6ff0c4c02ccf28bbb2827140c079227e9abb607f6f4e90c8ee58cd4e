@@ -1,0 +1,9 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/menu/menu-label-title.d.ts
+type MenuLabelTitleProps = Omit<useRender.ComponentProps<"span">, "className" | "style">;
+/** The growing title within a `MenuLabel`. Grows so a trailing `MenuLabelMeta` sits at the edge. */
+declare function MenuLabelTitle({ render, ...props }: MenuLabelTitleProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { MenuLabelTitle, MenuLabelTitleProps };
+//# sourceMappingURL=menu-label-title.d.ts.map

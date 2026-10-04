@@ -1,0 +1,12 @@
+"use client";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-group.d.ts
+type ComboboxGroupProps = Omit<Combobox.Group.Props, "className" | "style">;
+/**
+ * Groups related options under a `ComboboxGroupLabel`. Pass the group's `items` so the nested
+ * `ComboboxCollection` renders (and filters) just this group's options.
+ */
+declare function ComboboxGroup(props: ComboboxGroupProps): import("react").JSX.Element;
+//#endregion
+export { ComboboxGroup, ComboboxGroupProps };
+//# sourceMappingURL=combobox-group.d.ts.map

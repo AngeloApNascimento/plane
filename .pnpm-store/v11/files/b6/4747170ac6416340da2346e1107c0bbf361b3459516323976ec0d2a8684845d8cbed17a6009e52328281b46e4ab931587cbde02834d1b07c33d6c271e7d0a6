@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/rules-filled.d.ts
+declare function RulesFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { RulesFilled };
+//# sourceMappingURL=rules-filled.d.ts.map

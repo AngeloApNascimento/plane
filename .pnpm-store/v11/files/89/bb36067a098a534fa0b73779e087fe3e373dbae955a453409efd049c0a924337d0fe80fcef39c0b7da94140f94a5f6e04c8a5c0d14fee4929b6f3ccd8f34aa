@@ -1,0 +1,41 @@
+"use client";
+import { ComboboxPopup } from "../../elements/combobox/combobox-popup.js";
+import { Positioner } from "../../internal/positioner.js";
+import { OverlayPanel } from "../../internal/overlay-panel.js";
+import { jsx } from "react/jsx-runtime";
+import { Combobox } from "@base-ui/react/combobox";
+//#region src/components/combobox/combobox-content.shared.tsx
+function ComboboxContentSurface({ side, sideOffset, align, alignOffset, collisionPadding, collisionBoundary, collisionAvoidance, sticky, positionMethod, anchor, disableAnchorTracking, sizing, search, footer, children, ...props }) {
+	return /* @__PURE__ */ jsx(Combobox.Portal, { children: /* @__PURE__ */ jsx(Combobox.Positioner, {
+		side,
+		sideOffset,
+		align,
+		alignOffset,
+		collisionPadding,
+		collisionBoundary,
+		collisionAvoidance,
+		sticky,
+		positionMethod,
+		anchor,
+		disableAnchorTracking,
+		render: /* @__PURE__ */ jsx(Positioner, {}),
+		children: /* @__PURE__ */ jsx(Combobox.Popup, {
+			...props,
+			render: /* @__PURE__ */ jsx(OverlayPanel, {
+				elevation: "overlay",
+				radius: "lg",
+				sizing,
+				header: search,
+				footer
+			}),
+			children: /* @__PURE__ */ jsx(ComboboxPopup, {
+				elevation: "flat",
+				children
+			})
+		})
+	}) });
+}
+//#endregion
+export { ComboboxContentSurface };
+
+//# sourceMappingURL=combobox-content.shared.js.map

@@ -1,0 +1,17 @@
+"use client";
+import { drawerFooterVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/drawer/drawer-footer.tsx
+/** The drawer's footer actions region (the Figma footer). Lays its actions at the inline-end. */
+function DrawerFooter({ render, ...props }) {
+	return useRender({
+		defaultTagName: "footer",
+		render,
+		props: mergeProps({ className: drawerFooterVariants() }, props)
+	});
+}
+//#endregion
+export { DrawerFooter };
+
+//# sourceMappingURL=drawer-footer.js.map

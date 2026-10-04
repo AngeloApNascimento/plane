@@ -1,0 +1,14 @@
+"use client";
+import { ToolbarElevation, ToolbarSize, ToolbarVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/toolbar/toolbar.d.ts
+type ToolbarProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & ToolbarVariantProps;
+/**
+ * The styled toolbar row — a single `<div>`. Base-UI-agnostic: graft the toolbar behavior in
+ * `components` via `<BaseToolbar.Root render={<Toolbar/>} />`. The size-sharing behavior (so the
+ * controls inside pick up the toolbar's `size`) is the ready-made `components/toolbar`.
+ */
+declare function Toolbar({ elevation, size, render, ...props }: ToolbarProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Toolbar, type ToolbarElevation, ToolbarProps, type ToolbarSize };
+//# sourceMappingURL=toolbar.d.ts.map

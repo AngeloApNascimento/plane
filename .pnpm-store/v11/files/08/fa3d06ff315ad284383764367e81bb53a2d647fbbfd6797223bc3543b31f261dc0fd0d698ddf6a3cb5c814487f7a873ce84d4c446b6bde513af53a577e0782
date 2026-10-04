@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/insert-excerpt-filled.d.ts
+declare function InsertExcerptFilled(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { InsertExcerptFilled };
+//# sourceMappingURL=insert-excerpt-filled.d.ts.map

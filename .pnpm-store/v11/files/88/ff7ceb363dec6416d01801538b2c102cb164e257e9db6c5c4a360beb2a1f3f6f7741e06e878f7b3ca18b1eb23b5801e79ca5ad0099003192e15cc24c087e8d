@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/arrows/arrow-block-up-outline.d.ts
+declare function ArrowBlockUpOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ArrowBlockUpOutline };
+//# sourceMappingURL=arrow-block-up-outline.d.ts.map

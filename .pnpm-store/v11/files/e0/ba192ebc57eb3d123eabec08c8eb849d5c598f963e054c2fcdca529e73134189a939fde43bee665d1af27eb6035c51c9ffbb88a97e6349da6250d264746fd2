@@ -1,0 +1,3 @@
+"use client";
+import { WorkspaceAvatar } from "./workspace-avatar.js";
+export { WorkspaceAvatar };

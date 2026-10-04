@@ -1,0 +1,17 @@
+"use client";
+import { cva } from "class-variance-authority";
+//#region src/elements/avatar-group/variants.ts
+const avatarGroupVariants = cva("inline-flex items-center -space-x-1.5");
+const avatarGroupCounterVariants = cva("relative inline-flex shrink-0 items-center justify-center overflow-clip rounded-full border-subtle bg-label-orange-bg-strong text-on-color", {
+	variants: { size: {
+		"2xs": "size-4 border-sm text-caption-2xs-regular",
+		xs: "size-5 border-sm text-caption-2xs-regular",
+		sm: "size-6 border-sm text-caption-sm-regular"
+	} },
+	defaultVariants: { size: "xs" }
+});
+const avatarGroupOverflowVariants = cva("relative inline-flex shrink-0 items-center justify-center rounded-full outline-none before:absolute before:inset-s-0 before:top-1/2 before:size-[max(24px,100%)] before:-translate-y-1/2 before:rounded-full focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-accent-strong focus-visible:ring-offset-1");
+//#endregion
+export { avatarGroupCounterVariants, avatarGroupOverflowVariants, avatarGroupVariants };
+
+//# sourceMappingURL=variants.js.map

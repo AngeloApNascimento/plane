@@ -1,0 +1,13 @@
+"use client";
+import { FieldsetVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/fieldset/fieldset.d.ts
+type FieldsetProps = Omit<useRender.ComponentProps<"fieldset">, "className" | "style"> & FieldsetVariantProps;
+/**
+ * The styled `<fieldset>` container that groups a legend with related controls. Base-UI-agnostic —
+ * graft the fieldset behavior in `components` via `<BaseFieldset.Root render={<Fieldset/>} />`.
+ */
+declare function Fieldset({ bordered, render, ...props }: FieldsetProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { Fieldset, FieldsetProps };
+//# sourceMappingURL=fieldset.d.ts.map

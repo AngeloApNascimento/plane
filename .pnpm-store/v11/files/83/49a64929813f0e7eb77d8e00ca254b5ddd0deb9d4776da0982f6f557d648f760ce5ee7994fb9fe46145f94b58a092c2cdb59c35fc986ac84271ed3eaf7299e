@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/dollar-strike-outline.d.ts
+declare function DollarStrikeOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { DollarStrikeOutline };
+//# sourceMappingURL=dollar-strike-outline.d.ts.map

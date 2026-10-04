@@ -1,0 +1,15 @@
+"use client";
+import * as React from "react";
+//#region src/components/suggestion-menu/suggestion-menu-group.d.ts
+type SuggestionMenuGroupProps = Omit<React.ComponentPropsWithoutRef<"div">, "className" | "style" | "role" | "aria-labelledby"> & {
+  /** Section heading shown above the rows. Also names the group for assistive tech. */
+  label?: React.ReactNode;
+};
+/**
+ * A section of `SuggestionMenuItem` rows, with an optional heading. Sections are divided by a
+ * hairline; the last draws none.
+ */
+declare function SuggestionMenuGroup({ label, children, ...props }: SuggestionMenuGroupProps): React.JSX.Element;
+//#endregion
+export { SuggestionMenuGroup, SuggestionMenuGroupProps };
+//# sourceMappingURL=suggestion-menu-group.d.ts.map

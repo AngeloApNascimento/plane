@@ -1,0 +1,21 @@
+"use client";
+import { dialogDescriptionVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/dialog/dialog-description.tsx
+/**
+* Styled dialog description chrome (`text-body-xs-regular` tertiary). Base-UI-agnostic — graft
+* description behavior in `components` via `<BaseDialog.Description render={<DialogDescription />}
+* />`. Dialog-owned (diverges from shared `OverlayDescription`).
+*/
+function DialogDescription({ render, ...props }) {
+	return useRender({
+		defaultTagName: "p",
+		render,
+		props: mergeProps({ className: dialogDescriptionVariants() }, props)
+	});
+}
+//#endregion
+export { DialogDescription };
+
+//# sourceMappingURL=dialog-description.js.map

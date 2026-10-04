@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/webhooks-outline.d.ts
+declare function WebhooksOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { WebhooksOutline };
+//# sourceMappingURL=webhooks-outline.d.ts.map

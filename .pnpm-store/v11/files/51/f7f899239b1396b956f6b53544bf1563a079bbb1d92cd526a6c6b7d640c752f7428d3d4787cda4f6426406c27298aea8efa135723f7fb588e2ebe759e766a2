@@ -1,0 +1,25 @@
+"use client";
+import { ContextMenuContentSizing, ContextMenuSurfaceProps } from "./context-menu-content.shared.js";
+//#region src/components/context-menu/context-menu-content.d.ts
+type ContextMenuContentProps = Omit<ContextMenuSurfaceProps, "sizing"> & {
+  /**
+   * How the menu popup is sized — width for every value, plus a height cap for `menu`. `menu` is
+   * the dropdown's own 192–320px width range with a 384px height cap, `anchor` matches the
+   * trigger's width, `auto` hugs the content with a small floor, and `sm`/`md`/`lg` are the fixed
+   * picker widths (256/288/384px). Unlike `ContextMenuSubmenuContent`, this surface always resolves
+   * to a sizing — the default applies to an omitted _and_ an explicitly `undefined` value.
+   *
+   * @default "auto"
+   */
+  sizing?: ContextMenuSurfaceProps["sizing"];
+};
+/**
+ * The root context-menu surface: Base UI's portal and positioner wrapped around an elevated,
+ * scrollable `OverlayPanel` holding the flat `role="menu"` popup. Anchors to the pointer and sizes
+ * itself like a dropdown. Rows (`ContextMenuItem`, `ContextMenuSeparator`, …) are its children. A
+ * submenu's own surface is `ContextMenuSubmenuContent`, not this part.
+ */
+declare function ContextMenuContent({ sizing, ...props }: ContextMenuContentProps): import("react").JSX.Element;
+//#endregion
+export { ContextMenuContent, ContextMenuContentProps, type ContextMenuContentSizing };
+//# sourceMappingURL=context-menu-content.d.ts.map

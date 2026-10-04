@@ -1,0 +1,10 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+//#region src/elements/navigation-menu/variants.d.ts
+declare const navigationMenuLinkVariants: (props?: ({
+  appearance?: "item" | "card" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type NavigationMenuLinkVariantProps = StrictVariantProps<typeof navigationMenuLinkVariants>;
+//#endregion
+export { NavigationMenuLinkVariantProps, navigationMenuLinkVariants };
+//# sourceMappingURL=variants.d.ts.map

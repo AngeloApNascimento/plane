@@ -1,0 +1,19 @@
+"use client";
+import { ListboxGroupLabel } from "../../internal/listbox-group-label.js";
+import { jsx } from "react/jsx-runtime";
+import { Select } from "@base-ui/react/select";
+//#region src/components/select/select-group-label.tsx
+/**
+* The muted heading naming a `SelectGroup` — Base UI's `GroupLabel` behavior grafted onto the
+* shared styled listbox heading.
+*/
+function SelectGroupLabel(props) {
+	return /* @__PURE__ */ jsx(Select.GroupLabel, {
+		...props,
+		render: /* @__PURE__ */ jsx(ListboxGroupLabel, {})
+	});
+}
+//#endregion
+export { SelectGroupLabel };
+
+//# sourceMappingURL=select-group-label.js.map

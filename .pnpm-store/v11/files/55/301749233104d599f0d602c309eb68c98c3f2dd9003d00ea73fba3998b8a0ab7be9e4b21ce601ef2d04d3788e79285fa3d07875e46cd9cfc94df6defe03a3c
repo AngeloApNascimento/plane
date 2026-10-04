@@ -1,0 +1,40 @@
+"use client";
+import { FieldSize } from "../../elements/field/variants.js";
+import { AutocompleteProps } from "../autocomplete/autocomplete.js";
+import "../autocomplete/index.js";
+import * as React from "react";
+//#region src/components/autocomplete-field/autocomplete-field.d.ts
+type AutocompleteFieldProps<Value = string> = Omit<AutocompleteProps<Value>, "children" | "items"> & {
+  /** Supporting text shown below the input. Replaced by `error` when an error is set. */
+  description?: React.ReactNode;
+  /**
+   * The clear control (e.g. an `IconButton`) carrying its own localizable `aria-label`. Required
+   * here (unlike the bare `AutocompleteInputGroup`) — a labeled field is always presented as a
+   * complete picker, not a plain search box.
+   */
+  clear: React.ReactElement;
+  /**
+   * The popup-trigger control (e.g. an `IconButton`) carrying its own localizable `aria-label`.
+   * Required here for the same reason as `clear`.
+   */
+  trigger: React.ReactElement;
+  /** Message rendered when no item matches. */
+  empty: React.ReactNode;
+  /** Error text shown below the control. */
+  error?: React.ReactNode;
+  /** Helper text shown below the control. Replaced by `error` when an error is set. */
+  hint?: React.ReactNode;
+  /** Items rendered in the popup. */
+  items: readonly Value[];
+  /** Visible field label. */
+  label: string;
+  /** Label and helper text size. */
+  size: FieldSize;
+  /** Input placeholder. */
+  placeholder?: string;
+};
+/** Ready-to-use autocomplete field with label, input, popup items, and helper/error text. */
+declare function AutocompleteField<Value = string>({ description, clear, trigger, disabled, empty, error, hint, items, label, size, name, placeholder, ...autocompleteProps }: AutocompleteFieldProps<Value>): React.JSX.Element;
+//#endregion
+export { AutocompleteField, AutocompleteFieldProps, type FieldSize };
+//# sourceMappingURL=autocomplete-field.d.ts.map

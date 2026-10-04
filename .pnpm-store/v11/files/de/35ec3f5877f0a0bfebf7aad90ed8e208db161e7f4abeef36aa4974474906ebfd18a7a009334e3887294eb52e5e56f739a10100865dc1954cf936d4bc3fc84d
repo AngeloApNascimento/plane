@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/other-products/facebook.d.ts
+declare function Facebook(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { Facebook };
+//# sourceMappingURL=facebook.d.ts.map

@@ -1,0 +1,35 @@
+"use client";
+import { StrictVariantProps } from "../../internal/variant-props.js";
+import { VariantProps } from "class-variance-authority";
+//#region src/elements/toolbar/variants.d.ts
+declare const toolbarVariants: (props?: ({
+  elevation?: "flat" | "raised" | null | undefined;
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const toolbarItemDefaultVariants: {
+  readonly labeled: false;
+};
+declare const toolbarItemVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+  labeled?: boolean | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+declare const toolbarMenuTriggerButtonVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+/** Whether the toolbar draws its own surface (`raised`) or sits flush (`flat`). */
+type ToolbarElevation = NonNullable<VariantProps<typeof toolbarVariants>["elevation"]>;
+/**
+ * Control hit-target scale: `sm` (24px) or `md` (28px). Orthogonal to `elevation`. Figma's
+ * `density` maps here — `compact` → `sm`, `comfortable` → `md` (raised floaters use `sm`).
+ */
+type ToolbarSize = NonNullable<VariantProps<typeof toolbarVariants>["size"]>;
+type ToolbarVariantProps = StrictVariantProps<typeof toolbarVariants>;
+type ToolbarItemVariantProps = StrictVariantProps<typeof toolbarItemVariants, keyof typeof toolbarItemDefaultVariants>;
+type ToolbarMenuTriggerButtonVariantProps = StrictVariantProps<typeof toolbarMenuTriggerButtonVariants>;
+declare const toolbarInputVariants: (props?: ({
+  size?: "sm" | "md" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
+type ToolbarInputVariantProps = StrictVariantProps<typeof toolbarInputVariants>;
+//#endregion
+export { ToolbarElevation, ToolbarInputVariantProps, ToolbarItemVariantProps, ToolbarMenuTriggerButtonVariantProps, ToolbarSize, ToolbarVariantProps, toolbarInputVariants, toolbarItemVariants, toolbarMenuTriggerButtonVariants, toolbarVariants };
+//# sourceMappingURL=variants.d.ts.map

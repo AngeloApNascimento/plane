@@ -1,0 +1,41 @@
+"use client";
+import { ScrollAreaScrollbarSize, ScrollAreaScrollbarVisibility } from "../../elements/scroll-area/variants.js";
+import "../../elements/scroll-area/index.js";
+import * as React from "react";
+import { ScrollArea } from "@base-ui/react/scroll-area";
+//#region src/components/scroll-area/scroll-area.d.ts
+/** Which axes scroll. Drives which scrollbars (and the corner) are rendered. */
+type ScrollAreaOrientation = "vertical" | "horizontal" | "both";
+type ScrollAreaProps = Omit<ScrollArea.Root.Props, "className" | "style" | "render" | "children"> & {
+  /**
+   * Which axes scroll (required, no silent default). `vertical`/`horizontal` render a single
+   * scrollbar; `both` renders both plus the corner. Render only the axes the content can actually
+   * overflow so an unused scrollbar never reserves space or reveals.
+   */
+  orientation: ScrollAreaOrientation;
+  /**
+   * When the scrollbar is shown. `auto` hides it at rest and reveals it on hover/scroll (fades when
+   * idle). `always` keeps it permanently visible.
+   *
+   * @default "auto"
+   */
+  visibility?: ScrollAreaScrollbarVisibility;
+  /**
+   * Scrollbar gutter size (Figma Scrollbar set). Stable full gutter; pad matches native
+   * `scrollbar-*`: `sm` — 12 px / 4 → 4 px thumb; `md` — 14 / 4 → 6; `lg` — 16 / 4 → 8.
+   *
+   * @default "sm"
+   */
+  size?: ScrollAreaScrollbarSize;
+  /** The scrollable content (rendered inside the viewport). */
+  children: React.ReactNode;
+};
+/**
+ * A scroll container with propel's overlay scrollbar, built on Base UI `ScrollArea`. Use it to wrap
+ * any overflowing content (menus, panels, long lists). Place it as a child of a height-constrained
+ * flex column: it grows to fill the column and its viewport scrolls when the content overflows.
+ */
+declare function ScrollArea$1({ orientation, visibility, size, children, ...props }: ScrollAreaProps): React.JSX.Element;
+//#endregion
+export { ScrollArea$1 as ScrollArea, ScrollAreaOrientation, ScrollAreaProps, type ScrollAreaScrollbarSize, type ScrollAreaScrollbarVisibility };
+//# sourceMappingURL=scroll-area.d.ts.map

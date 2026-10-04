@@ -1,0 +1,24 @@
+"use client";
+import { otpFieldSeparatorVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/otp-field/otp-field-separator.tsx
+/**
+* A styled divider between groups of slots, e.g. `123-456`. Decorative — `aria-hidden` by default,
+* like `BreadcrumbSeparator`. Base-UI-agnostic; graft in `components` via `<BaseOTPField.Separator
+* render={<OTPFieldSeparator/>} />`.
+*/
+function OTPFieldSeparator({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({
+			"aria-hidden": true,
+			className: otpFieldSeparatorVariants()
+		}, props)
+	});
+}
+//#endregion
+export { OTPFieldSeparator };
+
+//# sourceMappingURL=otp-field-separator.js.map

@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/reload-outline.d.ts
+declare function ReloadOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ReloadOutline };
+//# sourceMappingURL=reload-outline.d.ts.map

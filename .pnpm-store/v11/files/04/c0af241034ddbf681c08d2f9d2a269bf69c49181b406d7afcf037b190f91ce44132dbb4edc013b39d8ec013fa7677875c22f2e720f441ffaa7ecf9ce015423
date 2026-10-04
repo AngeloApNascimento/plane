@@ -1,0 +1,22 @@
+
+import { jsx } from "react/jsx-runtime";
+//#region src/icons/miscellaneous/git-commit-outline.tsx
+function GitCommitOutline(props) {
+	return /* @__PURE__ */ jsx("svg", {
+		xmlns: "http://www.w3.org/2000/svg",
+		fill: "none",
+		viewBox: "0 0 16 16",
+		width: "1em",
+		height: "1em",
+		"aria-hidden": "true",
+		...props,
+		children: /* @__PURE__ */ jsx("path", {
+			fill: "currentColor",
+			d: "M8 4.708a3.29 3.29 0 0 1 3.232 2.667h3.435a.625.625 0 1 1 0 1.25h-3.435a3.292 3.292 0 0 1-6.464 0H1.334a.625.625 0 0 1 0-1.25h3.434A3.29 3.29 0 0 1 8 4.708m0 1.25a2.042 2.042 0 1 0 .001 4.084 2.042 2.042 0 0 0 0-4.084"
+		})
+	});
+}
+//#endregion
+export { GitCommitOutline };
+
+//# sourceMappingURL=git-commit-outline.js.map

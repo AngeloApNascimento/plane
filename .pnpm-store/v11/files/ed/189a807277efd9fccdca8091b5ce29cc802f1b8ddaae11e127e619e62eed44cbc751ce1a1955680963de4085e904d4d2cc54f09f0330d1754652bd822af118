@@ -1,0 +1,21 @@
+"use client";
+import { Accordion as Accordion$2 } from "../../elements/accordion/accordion.js";
+import { jsx } from "react/jsx-runtime";
+import { Accordion } from "@base-ui/react/accordion";
+//#region src/components/accordion/accordion.tsx
+/**
+* Groups a set of `AccordionItem`s. Single-open by default; pass `multiple` to allow several panels
+* open at once. Use `defaultValue` (uncontrolled) or `value` + `onValueChange` (controlled) to
+* drive which items are expanded. Grafts Base UI's accordion behavior onto the styled `Accordion`
+* frame.
+*/
+function Accordion$1(props) {
+	return /* @__PURE__ */ jsx(Accordion.Root, {
+		...props,
+		render: /* @__PURE__ */ jsx(Accordion$2, {})
+	});
+}
+//#endregion
+export { Accordion$1 as Accordion };
+
+//# sourceMappingURL=accordion.js.map

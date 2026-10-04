@@ -1,0 +1,20 @@
+"use client";
+import { sliderTrackVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/slider/slider-track.tsx
+/**
+* The styled track bar the thumb travels along. Base-UI-agnostic — graft in `components` via
+* `<BaseSlider.Track render={<SliderTrack/>} />`.
+*/
+function SliderTrack({ render, ...props }) {
+	return useRender({
+		defaultTagName: "div",
+		render,
+		props: mergeProps({ className: sliderTrackVariants() }, props)
+	});
+}
+//#endregion
+export { SliderTrack };
+
+//# sourceMappingURL=slider-track.js.map

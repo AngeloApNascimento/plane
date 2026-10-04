@@ -1,0 +1,10 @@
+"use client";
+import { Breadcrumb } from "./breadcrumb.js";
+import { BreadcrumbItem } from "./breadcrumb-item.js";
+import { BreadcrumbLink } from "./breadcrumb-link.js";
+import { BreadcrumbList } from "./breadcrumb-list.js";
+import { BreadcrumbPage } from "./breadcrumb-page.js";
+import { BreadcrumbSeparator } from "./breadcrumb-separator.js";
+import { BreadcrumbTrigger } from "./breadcrumb-trigger.js";
+import { BreadcrumbTriggerIndicator } from "./breadcrumb-trigger-indicator.js";
+export { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator, BreadcrumbTrigger, BreadcrumbTriggerIndicator };

@@ -1,0 +1,14 @@
+"use client";
+import { PreviewCard } from "@base-ui/react/preview-card";
+//#region src/components/preview-card/preview-card.d.ts
+type PreviewCardProps = Omit<PreviewCard.Root.Props, "className" | "style">;
+/**
+ * The preview-card Root — Base UI's context/state provider (renders no element of its own). A
+ * behavior-only role, so it lives in `components` (rules 1a, 2); the styled parts live in
+ * `elements/preview-card` (and shared `internal/` primitives) and are grafted onto Base UI behavior
+ * here.
+ */
+declare function PreviewCard$1(props: PreviewCardProps): import("react").JSX.Element;
+//#endregion
+export { PreviewCard$1 as PreviewCard, PreviewCardProps };
+//# sourceMappingURL=preview-card.d.ts.map

@@ -1,0 +1,14 @@
+"use client";
+import { SelectTriggerSize, SelectTriggerVariant, SelectTriggerVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/select/select-trigger.d.ts
+type SelectTriggerProps = Omit<useRender.ComponentProps<"button">, "className" | "style"> & SelectTriggerVariantProps;
+/**
+ * The styled select trigger button — wraps the selected value + trailing icon in one flex row.
+ * Base-UI-agnostic — graft the select behavior in `components` via `<BaseSelect.Trigger
+ * render={<SelectTrigger/>} />`.
+ */
+declare function SelectTrigger({ size, variant, render, ...props }: SelectTriggerProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { SelectTrigger, SelectTriggerProps, type SelectTriggerSize, type SelectTriggerVariant };
+//# sourceMappingURL=select-trigger.d.ts.map

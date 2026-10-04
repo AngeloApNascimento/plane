@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/miscellaneous/workspace-outline.d.ts
+declare function WorkspaceOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { WorkspaceOutline };
+//# sourceMappingURL=workspace-outline.d.ts.map

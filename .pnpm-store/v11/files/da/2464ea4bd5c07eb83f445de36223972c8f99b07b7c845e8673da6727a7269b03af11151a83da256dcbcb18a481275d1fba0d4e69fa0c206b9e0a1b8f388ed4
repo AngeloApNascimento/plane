@@ -1,0 +1,22 @@
+"use client";
+import { otpFieldLabelVariants } from "./variants.js";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/otp-field/otp-field-label.tsx
+/**
+* The visually-hidden accessible name for the field's first slot. Base UI ignores `aria-label` on
+* the first input and names it from `aria-labelledby` instead, so render this with an `id` and
+* point the first `OTPFieldInput`'s `aria-labelledby` at it. Without it the slot inputs fail axe's
+* "Form elements must have labels". Hidden via `sr-only`, so it stays available to assistive tech.
+*/
+function OTPFieldLabel({ render, ...props }) {
+	return useRender({
+		defaultTagName: "span",
+		render,
+		props: mergeProps({ className: otpFieldLabelVariants() }, props)
+	});
+}
+//#endregion
+export { OTPFieldLabel };
+
+//# sourceMappingURL=otp-field-label.js.map

@@ -1,0 +1,24 @@
+"use client";
+import { FieldItemControlGroup } from "../../elements/field/field-item-control-group.js";
+import { FieldItem } from "../field/field-item.js";
+import { FieldItemContent } from "../field/field-item-content.js";
+import { Checkbox } from "../checkbox/checkbox.js";
+import { useFieldOptionSize } from "../../internal/field-option-size.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region src/components/checkbox-group-field/checkbox-group-field-option.tsx
+/** A checkbox option row for use inside `CheckboxGroupField` or a custom `CheckboxGroup`. */
+function CheckboxGroupFieldOption({ label, description, size: sizeProp, ...props }) {
+	const size = useFieldOptionSize(sizeProp);
+	return /* @__PURE__ */ jsxs(FieldItem, {
+		disabled: props.disabled,
+		children: [/* @__PURE__ */ jsx(FieldItemControlGroup, { children: /* @__PURE__ */ jsx(Checkbox, { ...props }) }), /* @__PURE__ */ jsx(FieldItemContent, {
+			size,
+			description,
+			children: label
+		})]
+	});
+}
+//#endregion
+export { CheckboxGroupFieldOption };
+
+//# sourceMappingURL=checkbox-group-field-option.js.map

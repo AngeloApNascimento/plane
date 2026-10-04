@@ -1,0 +1,21 @@
+"use client";
+import { NavigationMenuLink as NavigationMenuLink$1 } from "../../elements/navigation-menu/navigation-menu-link.js";
+import { jsx } from "react/jsx-runtime";
+import { NavigationMenu } from "@base-ui/react/navigation-menu";
+//#region src/components/navigation-menu/navigation-menu-link.tsx
+/**
+* The ready-made navigable link: grafts Base UI's `NavigationMenu.Link` behavior onto the styled
+* link. `appearance="item"` is a top-level pill beside the triggers; `appearance="card"` is a
+* stacked entry inside a `NavigationMenuContent`, pairing a `NavigationMenuLinkTitle` with an
+* optional `NavigationMenuLinkDescription`.
+*/
+function NavigationMenuLink({ appearance, ...props }) {
+	return /* @__PURE__ */ jsx(NavigationMenu.Link, {
+		...props,
+		render: /* @__PURE__ */ jsx(NavigationMenuLink$1, { appearance })
+	});
+}
+//#endregion
+export { NavigationMenuLink };
+
+//# sourceMappingURL=navigation-menu-link.js.map

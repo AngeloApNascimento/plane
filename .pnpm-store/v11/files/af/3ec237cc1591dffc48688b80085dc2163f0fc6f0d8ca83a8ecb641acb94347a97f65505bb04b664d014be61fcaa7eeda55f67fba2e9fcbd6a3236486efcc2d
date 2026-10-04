@@ -1,0 +1,13 @@
+"use client";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/tooltip/tooltip-arrow.d.ts
+type TooltipArrowProps = Omit<useRender.ComponentProps<"div">, "className" | "style">;
+/**
+ * The styled tooltip caret — a rotated square clipped per `data-side` so it points back at the
+ * trigger. Base-UI-agnostic; graft in `components` via `<BaseTooltip.Arrow render={<TooltipArrow/>}
+ * />`.
+ */
+declare function TooltipArrow({ render, ...props }: TooltipArrowProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { TooltipArrow, TooltipArrowProps };
+//# sourceMappingURL=tooltip-arrow.d.ts.map

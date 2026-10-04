@@ -1,0 +1,21 @@
+"use client";
+import * as React from "react";
+import { jsx } from "react/jsx-runtime";
+//#region src/internal/field-option-size.tsx
+const FieldOptionSizeContext = React.createContext(null);
+function FieldOptionSizeProvider({ children, size }) {
+	return /* @__PURE__ */ jsx(FieldOptionSizeContext.Provider, {
+		value: size,
+		children
+	});
+}
+function useFieldOptionSize(size) {
+	const inheritedSize = React.useContext(FieldOptionSizeContext);
+	const resolvedSize = size ?? inheritedSize;
+	if (resolvedSize == null) throw new Error("Field option components require a size or a parent field composition.");
+	return resolvedSize;
+}
+//#endregion
+export { FieldOptionSizeProvider, useFieldOptionSize };
+
+//# sourceMappingURL=field-option-size.js.map

@@ -1,0 +1,22 @@
+"use client";
+import { PopoverPopupVariant, PopoverPopupVariantProps } from "./variants.js";
+import { useRender } from "@base-ui/react/use-render";
+//#region src/elements/popover/popover-popup.d.ts
+type PopoverPopupProps = Omit<useRender.ComponentProps<"div">, "className" | "style"> & Omit<PopoverPopupVariantProps, "variant"> & {
+  /**
+   * Panel look. `rich` is the padded content panel for forms and arbitrary children; `text` is
+   * the compact 296px title + description card.
+   *
+   * @default "rich"
+   */
+  variant?: PopoverPopupVariant;
+};
+/**
+ * The anchored panel surface. `rich` is the padded content panel; `text` is the compact title +
+ * description card. Base-UI-agnostic — graft in `components` via `<BasePopover.Popup
+ * render={<PopoverPopup />} />`.
+ */
+declare function PopoverPopup({ variant, render, ...props }: PopoverPopupProps): import("react").ReactElement<unknown, string | import("react").JSXElementConstructor<any>>;
+//#endregion
+export { PopoverPopup, PopoverPopupProps, type PopoverPopupVariant };
+//# sourceMappingURL=popover-popup.d.ts.map

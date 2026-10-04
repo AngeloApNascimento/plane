@@ -1,0 +1,59 @@
+"use client";
+import { Collapsible as Collapsible$2 } from "../../elements/collapsible/collapsible.js";
+import { CollapsibleHeader } from "../../elements/collapsible/collapsible-header.js";
+import { CollapsiblePanel } from "../../elements/collapsible/collapsible-panel.js";
+import { CollapsiblePanelContent } from "../../elements/collapsible/collapsible-panel-content.js";
+import { CollapsibleTrigger } from "../../elements/collapsible/collapsible-trigger.js";
+import { CollapsibleTriggerTitle } from "../../elements/collapsible/collapsible-trigger-title.js";
+import { CollapsibleTriggerTrailing } from "../../elements/collapsible/collapsible-trigger-trailing.js";
+import { DisclosureIndicator } from "../../internal/disclosure-indicator.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { ChevronDown } from "lucide-react";
+import { Collapsible } from "@base-ui/react/collapsible";
+//#region src/components/collapsible/collapsible.tsx
+/**
+* The ready-made collapsible: a single show/hide disclosure that wires the trigger and panel for
+* the 90% case. Pass `trigger` for the toggle button label and `children` for the body; optional
+* `icon` for a leading glyph and `trailing` for a header-end control (sibling of the trigger).
+* Forward `defaultOpen` (uncontrolled) or `open` + `onOpenChange` (controlled) to drive it. Set
+* `indicator={false}` to omit the rotating chevron from the trigger.
+*/
+function Collapsible$1({ icon, trigger, trailing, children, indicator = true, placement = "inline", keepMounted, hiddenUntilFound, render, ...props }) {
+	return /* @__PURE__ */ jsxs(Collapsible.Root, {
+		...props,
+		render: /* @__PURE__ */ jsx(Collapsible$2, { render }),
+		children: [/* @__PURE__ */ jsxs(CollapsibleHeader, {
+			placement,
+			children: [/* @__PURE__ */ jsxs(Collapsible.Trigger, {
+				render: /* @__PURE__ */ jsx(CollapsibleTrigger, { placement }),
+				children: [
+					placement === "inline" ? icon : null,
+					/* @__PURE__ */ jsxs(CollapsibleTriggerTitle, {
+						placement,
+						children: [placement === "sidebar" ? icon : null, trigger]
+					}),
+					indicator ? /* @__PURE__ */ jsx(DisclosureIndicator, {
+						motion: "disclose",
+						tint: "secondary",
+						children: /* @__PURE__ */ jsx(ChevronDown, {})
+					}) : null
+				]
+			}), trailing ? /* @__PURE__ */ jsx(CollapsibleTriggerTrailing, {
+				placement,
+				children: trailing
+			}) : null]
+		}), /* @__PURE__ */ jsx(Collapsible.Panel, {
+			keepMounted,
+			hiddenUntilFound,
+			render: /* @__PURE__ */ jsx(CollapsiblePanel, {}),
+			children: /* @__PURE__ */ jsx(CollapsiblePanelContent, {
+				placement,
+				children
+			})
+		})]
+	});
+}
+//#endregion
+export { Collapsible$1 as Collapsible };
+
+//# sourceMappingURL=collapsible.js.map

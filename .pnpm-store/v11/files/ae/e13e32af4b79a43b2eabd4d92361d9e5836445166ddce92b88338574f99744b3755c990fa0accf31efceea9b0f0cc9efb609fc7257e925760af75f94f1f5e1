@@ -1,0 +1,23 @@
+"use client";
+import { MenuLabel as MenuLabel$1 } from "../../elements/menu/menu-label.js";
+import { MenuLabelMeta } from "../../elements/menu/menu-label-meta.js";
+import { MenuLabelTitle } from "../../elements/menu/menu-label-title.js";
+import { jsx, jsxs } from "react/jsx-runtime";
+import { Menu } from "@base-ui/react/menu";
+//#region src/components/menu/menu-label.tsx
+/**
+* A non-interactive section heading for a group of menu items: grafts Base UI's `Menu.GroupLabel`
+* behavior onto the styled `MenuLabel`. Place it inside the `MenuGroup` it names, so Base UI wires
+* it as that group's accessible label.
+*/
+function MenuLabel({ meta, children, ...props }) {
+	return /* @__PURE__ */ jsxs(Menu.GroupLabel, {
+		...props,
+		render: /* @__PURE__ */ jsx(MenuLabel$1, {}),
+		children: [/* @__PURE__ */ jsx(MenuLabelTitle, { children }), meta != null ? /* @__PURE__ */ jsx(MenuLabelMeta, { children: meta }) : null]
+	});
+}
+//#endregion
+export { MenuLabel };
+
+//# sourceMappingURL=menu-label.js.map

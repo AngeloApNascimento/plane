@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/module-states/module-planned.d.ts
+declare function ModulePlanned(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ModulePlanned };
+//# sourceMappingURL=module-planned.d.ts.map

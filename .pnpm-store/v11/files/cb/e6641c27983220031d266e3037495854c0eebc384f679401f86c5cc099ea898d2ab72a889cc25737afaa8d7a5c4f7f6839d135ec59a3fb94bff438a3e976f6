@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/formatting-and-editors/image-outline.d.ts
+declare function ImageOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ImageOutline };
+//# sourceMappingURL=image-outline.d.ts.map

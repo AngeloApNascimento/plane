@@ -1,0 +1,7 @@
+
+import { SVGProps } from "react";
+//#region src/icons/actions/show-outline.d.ts
+declare function ShowOutline(props: SVGProps<SVGSVGElement>): import("react").JSX.Element;
+//#endregion
+export { ShowOutline };
+//# sourceMappingURL=show-outline.d.ts.map

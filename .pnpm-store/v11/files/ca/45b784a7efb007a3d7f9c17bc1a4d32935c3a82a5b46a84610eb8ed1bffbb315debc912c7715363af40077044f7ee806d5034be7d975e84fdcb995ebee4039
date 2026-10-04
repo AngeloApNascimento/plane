@@ -1,0 +1,3 @@
+"use client";
+import { CSPProvider, CSPProviderProps } from "./csp-provider.js";
+export { CSPProvider, CSPProviderProps };
